@@ -1,8 +1,8 @@
 {
-  "name": "kol-js-starter",
+  "name": "phccs",
   "version": "1.0.0",
-  "description": "Example package for KoLmafia TypeScript scripts.",
-  "main": "KoLmafia/scripts/kol-js-starter/main-script-name.js",
+  "description": "It's bean-hccs, but worse!",
+  "main": "phredhccs.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "patch-package",
@@ -28,12 +28,9 @@
     "kolmafia": "^1.0.2",
     "libram": "^0.0.5"
   },
-  "author": "Captain Scotch",
+  "author": "Phreddrickkv2",
   "license": "ISC",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/docrostov/kol-js-starter.git"
-  },
+  "repository": "git+https://github.com/horrible-little-slime/phccs.git",
   "keywords": [
     "KoLMafia",
     "JS",
@@ -42,5 +39,6 @@
   "bugs": {
     "url": "https://github.com/docrostov/kol-js-starter/issues"
   },
-  "homepage": "https://github.com/docrostov/kol-js-starter#readme"
+  "homepage": "https://github.com/docrostov/kol-js-starter#readme",
+  "private": false
 }
