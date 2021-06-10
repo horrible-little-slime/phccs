@@ -8,6 +8,7 @@ import {
   drink,
   eat,
   equip,
+  eudora,
   getCampground,
   getCounters,
   getFuel,
@@ -59,6 +60,8 @@ import {
   $class,
   uneffect,
   $effects,
+  SourceTerminal,
+  property,
 } from "libram";
 import {
   setChoice,
@@ -92,17 +95,18 @@ import {
 
 visitUrl("council.php");
 
-cliExecute("ccs phred-hccs");
+cliExecute("ccs twiddle");
 const defaultKill = Macro.step(delevel).step(easyFight).attack().repeat();
 if (!testDone(Test.COIL_WIRE)) {
   cliExecute("terminal educate digitize; terminal educate extract;");
-  setClan("Alliance From Heck");
+  setClan("Bonus Adventures from Hell");
   if (get("_clanFortuneConsultUses") < 3) {
     while (get("_clanFortuneConsultUses") < 3) {
       cliExecute("fortune cheesefax");
       cliExecute("wait 5");
     }
   }
+  setClan("Alliance From Heck");
 
   if (myLevel() === 1 && mySpleenUse() === 0) {
     while (get("_universeCalculated") < get("skillLevel144")) {
@@ -146,7 +150,7 @@ if (!testDone(Test.COIL_WIRE)) {
   }
   if (get("grimoire3Summons") === 0) {
     useSkill(1, $skill`Summon Alice's Army Cards`);
-    buy($coinmaster`Game Shoppe Snacks>`, 1, $item`tobiko marble soda`);
+    buy($coinmaster`Game Shoppe Snacks`, 1, $item`tobiko marble soda`);
   }
   if (!have($item`your cowboy boots`)) {
     visitUrl("place.php?whichplace=town_right&action=townright_ltt");
@@ -159,9 +163,11 @@ if (!testDone(Test.COIL_WIRE)) {
   if (have($item`GameInformPowerDailyPro magazine`)) {
     visitUrl("inv_use.php?whichitem=6174&confirm=Yep.");
   }
-  if (!have($item`scroll of Puddingskin`) && !have($item`dungeoneering kit`)) {
-    visitUrl("adventure.php?snarfblat=319");
-    use(1, $item`dungeoneering kit`);
+  if (eudora() === "Gameinform") {
+    if (!have($item`scroll of Puddingskin`) && !have($item`dungeoneering kit`)) {
+      visitUrl("adventure.php?snarfblat=319");
+      use(1, $item`dungeoneering kit`);
+    }
   }
 
   if (!get("_floundryItemCreated")) {
@@ -187,7 +193,7 @@ if (!testDone(Test.COIL_WIRE)) {
     }
     use(1, $item`familiar jacks`);
     cliExecute("mummery myst");
-    useFamiliar($familiar`galloping grill`);
+    useFamiliar($familiar`shorter-order cook`);
     cliExecute("mummery meat");
   }
 
@@ -226,6 +232,8 @@ if (!testDone(Test.COIL_WIRE)) {
     cliExecute("boombox meat");
   }
 
+  SourceTerminal.educate([$skill`extract`, $skill`digitize`]);
+
   Macro.step(delevel)
     .skill("digitize")
     .step(easyFight)
@@ -233,11 +241,12 @@ if (!testDone(Test.COIL_WIRE)) {
     .attack()
     .repeat()
     .setAutoAttack();
+  if (get("_sourceTerminalDigitizeMonster") === $monster`none`) {
+    Witchess.fightPiece($monster`witchess bishop`);
+    equip($slot`familiar`, $item`none`);
+  }
 
-  Witchess.fightPiece($monster`witchess bishop`);
-  equip($slot`familiar`, $item`none`);
-
-  cliExecute("terminal educate portscan");
+  SourceTerminal.educate([$skill`extract`, $skill`portscan`]);
 
   const ghostLocation = get("ghostLocation");
   if (ghostLocation) {
@@ -293,8 +302,8 @@ if (!testDone(Test.HP)) {
   ensureEffect($effect`Thaumodynamic`);
   ensureEffect($effect`You Learned Something Maybe!`);
 
-  synthExp();
-  synthMyst();
+  if (!have($effect`synthesis: learning`)) synthExp();
+  if (!have($effect`synthesis: smart`)) synthMyst();
 
   if (availableAmount($item`a ten-percent bonus`)) {
     use(1, $item`a ten-percent bonus`);
@@ -336,7 +345,7 @@ if (!testDone(Test.HP)) {
   if (!get("_clanFortuneBuffUsed")) cliExecute("fortune buff familiar");
 
   equip($slot`acc3`, $item`powerful glove`);
-  ensureEffect($effect`CHEAT CODE: Triple Size`);
+  ensureEffect($effect`Triple-Sized`);
 
   if (!get("_streamsCrossed")) {
     cliExecute("crossstreams");
@@ -443,8 +452,10 @@ if (!testDone(Test.HP)) {
       Macro.step(delevel).step(easyFight).step(candyblast).attack().repeat()
     )
     .setAutoAttack();
-  TunnelOfLove.fightAll("LOV Epaulettes", "Open Heart Surgery", "LOV Extraterrestrial Chocolate");
-  use(1, $item`lov extraterrestrial chocolate`);
+  if (!get("_loveTunnelUsed")) {
+    TunnelOfLove.fightAll("LOV Epaulettes", "Open Heart Surgery", "LOV Extraterrestrial Chocolate");
+    use(1, $item`lov extraterrestrial chocolate`);
+  }
   cliExecute("/cast * candy heart");
 
   heal();
@@ -456,38 +467,48 @@ if (!testDone(Test.HP)) {
     equip($slot`acc2`, $item`beach comb`);
     equip($slot`acc3`, $item`brutal brogues`);
     const meteors = get("_meteorShowerUses");
-    const profchain = Macro.step(delevel)
-      .step(easyFight)
-      .externalIf(
-        !haveSkill($skill`Lecture on Relativity`) && get("_meteorShowerUses") === meteors,
-        Macro.skill($skill`meteor shower`)
-      )
-      .skill($skill`lecture on relativity!`)
-      .step(candyblast)
-      .attack()
-      .repeat();
+    const profchain = () => {
+      return Macro.step(delevel)
+        .externalIf(
+          !haveSkill($skill`Lecture on Relativity`) && get("_meteorShowerUses") === meteors,
+          Macro.skill($skill`meteor shower`)
+        )
+        .skill($skill`lecture on relativity`)
+        .step(candyblast)
+        .attack()
+        .repeat();
+    };
     setAutoAttack(0);
     if (getCounters("Digitize", 0, 0) !== "") {
-      adv1($location`the madness bakery`, -1, () => {
-        return profchain.toString();
-      });
+      do {
+        adv1($location`madness bakery`, -1, () => {
+          return profchain().toString();
+        });
+      } while (get("lastEncounter") === "Our Bakery in the Middle of Our Street");
       while (inMultiFight())
         runCombat(() => {
-          return profchain.toString();
+          return profchain().toString();
         });
     } else if (kramcoCheck()) {
       equip($slot`off-hand`, $item`Kramco Sausage-o-Matic™`);
-      adv1($location`noob cave`, -1, () => {
-        return profchain.toString();
+      adv1($location`madness bakery`, -1, () => {
+        return profchain().toString();
       });
       while (inMultiFight())
         runCombat(() => {
-          return profchain.toString();
+          return profchain().toString();
+        });
+    } else if (get("_witchessFights") < 3) {
+      Witchess.fightPiece($monster`witchess bishop`);
+      runCombat(() => profchain().toString());
+      while (inMultiFight())
+        runCombat(() => {
+          return profchain().toString();
         });
     }
   }
 
-  cliExecute("backup ml");
+  cliExecute("backupcamera ml");
 
   if (
     get("_monstersMapped") < 3 &&
@@ -499,9 +520,9 @@ if (!testDone(Test.HP)) {
     useDefaultFamiliar();
     mapMacro(
       $location`the haunted pantry`,
-      $monster`posessed can of tomatoes`,
+      $monster`possessed can of tomatoes`,
       Macro.if_(
-        `monsterid ${$monster`posessed can of tomatoes`}.id`,
+        `monsterid ${$monster`possessed can of tomatoes`.id}`,
         Macro.skill($skill`reflex hammer`)
       )
     );
@@ -592,26 +613,37 @@ if (!testDone(Test.HP)) {
       $location`the madness bakery`,
       Macro.step(delevel).step(candyblast).attack().repeat()
     );
+  }
+  if (get("_backUpUses") < 11) {
     equip($slot`acc3`, $item`backup camera`);
     equip($slot`off-hand`, $item`latte lovers member's mug`);
     heal();
-    advMacroAA(
-      $location`the dire warren`,
-      Macro.skill("back-up to your last enemy").step(delevel).step(easyFight).attack().repeat(),
-      () => {
-        return get("_backUpUses") < 11;
-      },
-      () => {
-        heal();
-        useDefaultFamiliar();
-        if (
-          get("latteUnlocks").includes("carrot") &&
-          haveEquipped($item`latte lovers member's mug`)
-        ) {
-          equip($slot`off-hand`, $item`familiar scrapbook`);
+    if (
+      !property.getMonster("lastCopyableMonster")?.attributes.includes("FREE") &&
+      get("_witchessFights") < 3
+    ) {
+      defaultKill.setAutoAttack();
+      Witchess.fightPiece($monster`witchess bishop`);
+    }
+    if (property.getMonster("lastCopyableMonster")?.attributes.includes("FREE")) {
+      advMacroAA(
+        $location`the dire warren`,
+        Macro.skill("back-up to your last enemy").step(delevel).step(easyFight).attack().repeat(),
+        () => {
+          return get("_backUpUses") < 11;
+        },
+        () => {
+          heal();
+          useDefaultFamiliar();
+          if (
+            get("latteUnlocks").includes("carrot") &&
+            haveEquipped($item`latte lovers member's mug`)
+          ) {
+            equip($slot`off-hand`, $item`familiar scrapbook`);
+          }
         }
-      }
-    );
+      );
+    }
   }
 
   setChoice(1322, 2);
@@ -746,6 +778,7 @@ if (!testDone(Test.MYS)) {
   if (myBuffedstat($stat`mysticality`) - myBasestat($stat`mysticality`) < 1770) {
     throw "Not enough mysticality to cap.";
   }
+  doTest(Test.MYS);
 }
 if (!testDone(Test.MOX)) {
   useSkill(1, $skill`Bind Penne Dreadful`);
@@ -782,7 +815,8 @@ if (!testDone(Test.MOX)) {
 if (!testDone(Test.ITEM)) {
   horse("dark");
   if (availableAmount($item`astral six-pack`) !== 0) use(1, $item`astral six-pack`);
-  if (have($effect`the moxious madrigal`)) cliExecute("shrug the moxious madrigal");
+  if (have($effect`The Magical Mojomuscular Melody`))
+    cliExecute("shrug The Magical Mojomuscular Melody");
   while (myInebriety() < 5) {
     drink(1, $item`astral pilsner`);
   }
@@ -791,12 +825,14 @@ if (!testDone(Test.ITEM)) {
 
   if (!have($effect`Bat-Adjacent Form`)) {
     const run = Macro.skill($skill`become a bat`);
-    if (get("_latteBanishUsed")) {
+    if (!get("_latteBanishUsed")) {
       useFamiliar($familiar`none`);
+      equip($slot`off-hand`, $item`latte lovers member's mug`);
+      equip($slot`back`, $item`vampyric cloake`);
       run.skill($skill`throw latte`);
     } else {
       useFamiliar($familiar`frumious bandersnatch`);
-      ensureEffect($effect`the ode to booze`);
+      ensureEffect($effect`ode to booze`);
       run.step("runaway");
     }
     advMacroAA($location`dire warren`, run);
@@ -853,9 +889,9 @@ if (!testDone(Test.ITEM)) {
 
   if (get("_latteRefillsUsed") === 0) {
     const latte: string =
-      "" +
-      (get("latteUnlocks").includes("carrot") ? "carrot" : "") +
-      (get("latteUnlocks").includes("butternut") ? "butternut" : "");
+      "pumpkin " +
+      (get("latteUnlocks").includes("carrot") ? "carrot " : "vanilla ") +
+      (get("latteUnlocks").includes("butternut") ? "butternut" : "cinnamon");
     if (latte !== "") {
       cliExecute(`latte refill ${latte}`);
     }
@@ -912,7 +948,9 @@ if (!testDone(Test.HOT_RES)) {
   ensureEffect($effect`elemental saucesphere`);
   ensureEffect($effect`astral shell`);
   ensureEffect($effect`Hot-Headed`);
-  ensureEffect($effect`protection from bad stuff`);
+  if (have($item`scroll of protection from bad stuff`)) {
+    ensureEffect($effect`protection from bad stuff`);
+  }
 
   if (!have($item`meteorite guard`) && have($item`metal meteoroid`)) {
     create(1, $item`meteorite guard`);
@@ -924,6 +962,7 @@ if (!testDone(Test.HOT_RES)) {
     create(1, $item`familiar jacks`);
     use(1, $item`familiar jacks`);
   }
+  maximize("hot res", false);
   if (Math.round(numericModifier("hot resistance")) < 59) {
     while (getFuel() < 37) fuelUp();
     cliExecute("asdonmartin drive safely");
@@ -947,7 +986,7 @@ if (!testDone(Test.NONCOMBAT)) {
   ensureEffect($effect`smooth movements`);
   ensureEffect($effect`Billiards Belligerence`);
   equip($slot`acc3`, $item`powerful glove`);
-  ensureEffect($effect`CHEAT CODE: invisible avatar`);
+  ensureEffect($effect`invisible avatar`);
   ensureEffect($effect`Blessing of the bird`);
   if (!get("_clanFortuneBuffUsed")) cliExecute("fortune buff familiar");
 
@@ -1027,7 +1066,7 @@ if (!testDone(Test.FAMILIAR)) {
       }
     } else useFamiliar($familiar`exotic parrot`);
   } else useFamiliar($familiar`shorter-order cook`);
-  ensureEffect($effect`shortly stacked`);
+  if (have($item`short stack of pancakes`)) ensureEffect($effect`shortly stacked`);
   maximize("familiar weight", false);
   doTest(Test.FAMILIAR);
 }
@@ -1046,15 +1085,16 @@ if (!testDone(Test.WEAPON)) {
       advMacroAA($location`the dire warren`, Macro.skill($skill`feel hatred`));
     }
   }
-  $effects`Carol of the Bulls, Song of the North, Rage of the Reindeer, Frenzied, Bloody, Scowl of the Auk, Disdain of the War Snapper, Tenacity of the Snapper, Billiards Belligerence`.forEach(
+  $effects`Carol of the Bulls, Song of the North, Rage of the Reindeer, Scowl of the Auk, Disdain of the War Snapper, Tenacity of the Snapper, Billiards Belligerence, The Power of LOV`.forEach(
     (effect) => ensureEffect(effect)
   );
+  ensureEffect($effect`frenzied, bloody`);
 
   if (get("chateauMonster") === $monster`ungulith` && !get("_chateauMonsterFought")) {
     uniform();
     useFamiliar($familiar`melodramedary`);
     setChoice(1387, 3);
-    Macro.trySkill($skill`spit on them`)
+    Macro.trySkill($skill`spit on me`)
       .skill($skill`use the force`)
       .setAutoAttack();
     visitUrl("place.php?whichplace=chateau&action=chateau_painting");
@@ -1086,7 +1126,7 @@ if (!testDone(Test.WEAPON)) {
 }
 if (!testDone(Test.SPELL)) {
   ensureEffect($effect`Simmering`);
-  $effects`Pisces in the Skyces, Carol of the Hells, Arched Eyebrow of the Archmage, Song of Sauce, Mental A-cue-ity, We're All Made of Starfish`.forEach(
+  $effects`Pisces in the Skyces, Carol of the Hells, Arched Eyebrow of the Archmage, Song of Sauce, We're All Made of Starfish`.forEach(
     (effect) => ensureEffect(effect)
   );
 
@@ -1107,6 +1147,7 @@ if (!testDone(Test.SPELL)) {
   cliExecute("briefcase enchantment spell");
 
   if (!get("_madTeaParty")) {
+    visitUrl("clan_viplounge.php?action=lookingglass&whichfloor=2");
     cliExecute("acquire mariachi hat");
     ensureEffect($effect`Full Bottle in front of Me`);
   }
@@ -1135,7 +1176,7 @@ if (!testDone(Test.SPELL)) {
     uniform();
     useFamiliar($familiar`melodramedary`);
     if (!get("_chateauMonsterFought")) {
-      Macro.trySkill($skill`spit on them`)
+      Macro.trySkill($skill`spit on me`)
         .skill($skill`meteor shower`)
         .skill($skill`use the force`)
         .setAutoAttack();
@@ -1144,7 +1185,7 @@ if (!testDone(Test.SPELL)) {
     } else {
       advMacroAA(
         $location`the dire warren`,
-        Macro.trySkill($skill`spit on them`)
+        Macro.trySkill($skill`spit on me`)
           .skill($skill`meteor shower`)
           .skill($skill`use the force`)
       );
