@@ -473,44 +473,31 @@ if (!testDone(Test.HP)) {
     equip($slot`acc2`, $item`beach comb`);
     equip($slot`acc3`, $item`brutal brogues`);
     const meteors = get("_meteorShowerUses");
-    const profchain = () => {
-      return Macro.step(delevel)
-        .externalIf(
-          !haveSkill($skill`Lecture on Relativity`) && get("_meteorShowerUses") === meteors,
-          Macro.skill($skill`meteor shower`)
-        )
-        .skill($skill`lecture on relativity`)
-        .step(candyblast)
-        .attack()
-        .repeat();
-    };
-    setAutoAttack(0);
+    const profchain = Macro.step(delevel)
+      .if_(
+        `(!hasskill "lecture on relativity") && (match "Meteor Shower (${
+          5 - meteors
+        } charges left)")`,
+        Macro.skill($skill`meteor shower`)
+      )
+      .skill($skill`lecture on relativity`)
+      .step(candyblast)
+      .attack()
+      .repeat();
+    profchain.setAutoAttack();
     if (getCounters("Digitize", 0, 0) !== "") {
       do {
-        adv1($location`madness bakery`, -1, () => {
-          return profchain().toString();
-        });
+        adv1($location`madness bakery`, -1, "");
       } while (get("lastEncounter") === "Our Bakery in the Middle of Our Street");
-      while (inMultiFight())
-        runCombat(() => {
-          return profchain().toString();
-        });
+      while (inMultiFight()) runCombat();
     } else if (kramcoCheck()) {
       equip($slot`off-hand`, $item`Kramco Sausage-o-Matic™`);
-      adv1($location`madness bakery`, -1, () => {
-        return profchain().toString();
-      });
-      while (inMultiFight())
-        runCombat(() => {
-          return profchain().toString();
-        });
+      adv1($location`madness bakery`, -1, "");
+      while (inMultiFight()) runCombat();
     } else if (get("_witchessFights") < 3) {
       Witchess.fightPiece($monster`witchess bishop`);
-      runCombat(() => profchain().toString());
-      while (inMultiFight())
-        runCombat(() => {
-          return profchain().toString();
-        });
+      runCombat();
+      while (inMultiFight()) runCombat();
     }
   }
 
@@ -582,7 +569,7 @@ if (!testDone(Test.HP)) {
     useFamiliar($familiar`god lobster`);
     setChoice(1310, 1);
     visitUrl("main.php?fightgodlobster=1");
-    runCombat();
+    runCombat(Macro.step(delevel).step(easyFight).attack().repeat().toString());
     multiFightAutoAttack();
     runChoice(-1);
     equip($slot`familiar`, $item`god lobster's scepter`);
@@ -673,12 +660,6 @@ if (!testDone(Test.HP)) {
     }
   );
 
-  Macro.if_(
-    "!monstername sausage goblin",
-    Macro.trySkill("shattering punch").trySkill("gingerbread mob hit").trySkill("chest x-ray")
-  )
-    .if_("monstername sausage goblin", Macro.step(delevel).step(candyblast).attack().repeat())
-    .setAutoAttack();
   advMacroAA(
     $location`the neverending party`,
     Macro.if_(
