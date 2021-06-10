@@ -233,6 +233,12 @@ if (!testDone(Test.COIL_WIRE)) {
   }
 
   SourceTerminal.educate([$skill`extract`, $skill`digitize`]);
+  if (have($item`magical sausage casing`)) {
+    create(1, $item`magical sausage`);
+  }
+  if (have($item`magical sausage`)) {
+    eat(1, $item`magical sausage`);
+  }
 
   Macro.step(delevel)
     .skill("digitize")
@@ -329,7 +335,6 @@ if (!testDone(Test.HP)) {
   horse("crazy");
   ensureEffect($effect`Favored by Lyle`);
   ensureEffect($effect`Starry-Eyed`);
-  ensureEffect($effect`Triple-Sized`);
   ensureEffect($effect`We're All Made of Starfish`); // Beach Comb - should bridge all the way to spell dmg.
   if (availableAmount($item`glittery mascara`) + haveEffect($effect`glittering eyelashes`) === 0) {
     buy(1, $item`glittery mascara`);
@@ -346,6 +351,7 @@ if (!testDone(Test.HP)) {
 
   equip($slot`acc3`, $item`powerful glove`);
   ensureEffect($effect`Triple-Sized`);
+  ensureEffect($effect`Feeling Excited`);
 
   if (!get("_streamsCrossed")) {
     cliExecute("crossstreams");
@@ -757,6 +763,7 @@ if (!testDone(Test.MUS)) {
   ensureEffect($effect`Rage of the Reindeer`);
   ensureEffect($effect`Quiet Determination`);
   ensureEffect($effect`Disdain of the War Snapper`);
+  ensureEffect($effect`Feeling Excited`);
 
   maximize("muscle", false);
 
@@ -774,6 +781,7 @@ if (!testDone(Test.MUS)) {
   doTest(Test.MUS);
 }
 if (!testDone(Test.MYS)) {
+  ensureEffect($effect`Feeling Excited`);
   maximize("mysticality", false);
   if (myBuffedstat($stat`mysticality`) - myBasestat($stat`mysticality`) < 1770) {
     throw "Not enough mysticality to cap.";
@@ -781,6 +789,7 @@ if (!testDone(Test.MYS)) {
   doTest(Test.MYS);
 }
 if (!testDone(Test.MOX)) {
+  ensureEffect($effect`Feeling Excited`);
   useSkill(1, $skill`Bind Penne Dreadful`);
   ensureEffect($effect`Pomp & Circumsands`);
 
@@ -881,12 +890,6 @@ if (!testDone(Test.ITEM)) {
     );
   };
 
-  useFamiliar($familiar`trick-or-treating tot`);
-  maximize(
-    "item, 2 booze drop, -equip broken champagne bottle, -equip surprisingly capacious handbag",
-    false
-  );
-
   if (get("_latteRefillsUsed") === 0) {
     const latte: string =
       "pumpkin " +
@@ -896,6 +899,12 @@ if (!testDone(Test.ITEM)) {
       cliExecute(`latte refill ${latte}`);
     }
   }
+
+  useFamiliar($familiar`trick-or-treating tot`);
+  maximize(
+    "item, 2 booze drop, -equip broken champagne bottle, -equip surprisingly capacious handbag",
+    false
+  );
 
   if (!itemCheck()) {
     ensureEffect($effect`nearly all-natural`);
@@ -948,6 +957,7 @@ if (!testDone(Test.HOT_RES)) {
   ensureEffect($effect`elemental saucesphere`);
   ensureEffect($effect`astral shell`);
   ensureEffect($effect`Hot-Headed`);
+  ensureEffect($effect`Feeling Peaceful`);
   if (have($item`scroll of protection from bad stuff`)) {
     ensureEffect($effect`protection from bad stuff`);
   }
@@ -985,6 +995,7 @@ if (!testDone(Test.NONCOMBAT)) {
   ensureEffect($effect`do i know you from somewhere`);
   ensureEffect($effect`smooth movements`);
   ensureEffect($effect`Billiards Belligerence`);
+  ensureEffect($effect`Feeling Lonely`);
   equip($slot`acc3`, $item`powerful glove`);
   ensureEffect($effect`invisible avatar`);
   ensureEffect($effect`Blessing of the bird`);
@@ -1039,6 +1050,7 @@ if (!testDone(Test.FAMILIAR)) {
   ensureEffect($effect`do i know you from somewhere`);
   ensureEffect($effect`Billiards Belligerence`);
   ensureEffect($effect`Heart of Green`);
+  if (have($item`silver face paint`)) ensureEffect($effect`robot friends`);
   if (!get("_clanFortuneBuffUsed")) cliExecute("fortune buff familiar");
   if (have($item`burning newspaper`)) create(1, $item`burning paper crane`);
   useFamiliar($familiar`none`);

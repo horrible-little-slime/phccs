@@ -9,11 +9,13 @@ import {
   equip,
   getClanName,
   getProperty,
+  handlingChoice,
   haveEffect,
   inMultiFight,
   myMaxhp,
   print,
   restoreHp,
+  runChoice,
   runCombat,
   setAutoAttack,
   setProperty,
@@ -234,7 +236,7 @@ export function useDefaultFamiliar() {
   } else if (
     get("_neverendingPartyFreeTurns") > 0 &&
     get("_neverendingPartyFreeTurns") < 10 &&
-    get("_gothKidFights") < 2
+    get("_hipsterAdv") < 1
   ) {
     useFamiliar($familiar`mini-hipster`);
   } else if (
@@ -460,11 +462,10 @@ export function mapMacro(location: Location, monster: Monster, macro: Macro) {
   useSkill($skill`Map the Monsters`);
   if (!get("mappingMonsters")) throw `I am not actually mapping anything. Weird!`;
   else {
-    do {
-      visitUrl(toUrl(location), false, true);
-    } while (get("lastEncounter") === "LavaCo&trade; Welcomes You");
-    visitUrl(`choice.php?pwd&whichchoice=1435&option=1&heyscriptswhatsupwinkwink=${monster.id}`);
-    runCombat(macro.toString());
+    while (get("mappingMonsters")) {
+      runChoice(1, `heyscriptswhatsupwinkwink=${monster.id}`);
+      runCombat(macro.toString());
+    }
   }
 }
 
