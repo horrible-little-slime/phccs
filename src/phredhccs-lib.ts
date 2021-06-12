@@ -472,3 +472,9 @@ export function horse(horse: string) {
   if (!horse.includes("horse")) horse = horse + " horse";
   if (horsery() !== horse) cliExecute(`horsery ${horse}`);
 }
+
+export interface testDuration {
+  testName: String,
+  turnPrediction: Number,
+  turnCost: Number
+}
