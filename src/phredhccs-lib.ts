@@ -234,12 +234,16 @@ export function useDefaultFamiliar() {
     useFamiliar($familiar`melodramedary`);
     equip($slot`familiar`, $item`dromedary drinking helmet`);
   } else if (
-    !have($item`short stack of pancakes`) && !have($effect`shortly stacked`) && !testDone(Test.FAMILIAR)
+    !have($item`short stack of pancakes`) &&
+    !have($effect`shortly stacked`) &&
+    !testDone(Test.FAMILIAR)
   ) {
     useFamiliar($familiar`shorter-order cook`);
-  } else if (!have($item`burning newspaper`) && !have($item`burning paper crane`)){
+  } else if (!have($item`burning newspaper`) && !have($item`burning paper crane`)) {
     useFamiliar($familiar`garbage fire`);
-  } else { useFamiliar($familiar`puck man`); }
+  } else {
+    useFamiliar($familiar`puck man`);
+  }
 }
 
 export enum Test {
@@ -474,7 +478,20 @@ export function horse(horse: string) {
 }
 
 export interface testDuration {
-  testName: String,
-  turnPrediction: Number,
-  turnCost: Number
+  testName: String;
+  turnPrediction: Number;
+  turnCost: Number;
+}
+
+export function convertMilliseconds(milliseconds: number) {
+  const seconds = milliseconds / 100;
+  const minutes = Math.floor(seconds / 60);
+  const secondsLeft = seconds - minutes * 60;
+  const hours = Math.floor(minutes / 60);
+  const minutesLeft = minutes - hours * 60;
+  return (
+    (hours !== 0 ? `${hours} hours, ` : "") +
+    (minutesLeft !== 0 ? `${minutesLeft} minutes, ` : "") +
+    (secondsLeft !== 0 ? `${secondsLeft} seconds` : "")
+  );
 }

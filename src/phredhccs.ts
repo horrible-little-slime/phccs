@@ -95,6 +95,7 @@ import {
   synthHot,
   horsery,
   testDuration,
+  convertMilliseconds,
 } from "./phredhccs-lib";
 
 visitUrl("council.php");
@@ -1319,18 +1320,5 @@ try {
       gametimeToInt() - startTime
     )} milliseconds, assuming it ran contiguously. Otherwise, this run of the program lasted that many milliseconds. Hope whatever number you see is good!`,
     "red"
-  );
-}
-
-function convertMilliseconds(milliseconds: number) {
-  const seconds = milliseconds / 100;
-  const minutes = Math.floor(seconds / 60);
-  const secondsLeft = seconds - minutes * 60;
-  const hours = Math.floor(minutes / 60);
-  const minutesLeft = minutes - hours * 60;
-  return (
-    (hours !== 0 ? `${hours} hours, ` : "") +
-    (minutesLeft !== 0 ? `${minutesLeft} minutes, ` : "") +
-    (secondsLeft !== 0 ? `${secondsLeft} seconds` : "")
   );
 }
