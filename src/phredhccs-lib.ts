@@ -234,19 +234,12 @@ export function useDefaultFamiliar() {
     useFamiliar($familiar`melodramedary`);
     equip($slot`familiar`, $item`dromedary drinking helmet`);
   } else if (
-    get("_neverendingPartyFreeTurns") > 0 &&
-    get("_neverendingPartyFreeTurns") < 10 &&
-    get("_hipsterAdv") < 1
+    !have($item`short stack of pancakes`) && !have($effect`shortly stacked`) && !testDone(Test.FAMILIAR)
   ) {
-    useFamiliar($familiar`mini-hipster`);
-  } else if (
-    availableAmount($item`burning newspaper`) + availableAmount($item`burning paper crane`) ===
-    0
-  ) {
-    useFamiliar($familiar`garbage fire`);
-  } else {
     useFamiliar($familiar`shorter-order cook`);
-  }
+  } else if (!have($item`burning newspaper`) && !have($item`burning paper crane`)){
+    useFamiliar($familiar`garbage fire`);
+  } else { useFamiliar($familiar`puck man`); }
 }
 
 export enum Test {
@@ -379,6 +372,7 @@ export function uniform() {
   equip($slot`acc1`, $item`your cowboy boots`);
   equip($slot`acc2`, $item`codpiece`);
   equip($slot`acc3`, acc3);
+  equip($slot`back`, back);
 }
 
 export function tryUse(quantity: number, it: Item) {
@@ -463,6 +457,7 @@ export function mapMacro(location: Location, monster: Monster, macro: Macro) {
   if (!get("mappingMonsters")) throw `I am not actually mapping anything. Weird!`;
   else {
     while (get("mappingMonsters")) {
+      visitUrl(toUrl(location));
       runChoice(1, `heyscriptswhatsupwinkwink=${monster.id}`);
       runCombat(macro.toString());
     }
