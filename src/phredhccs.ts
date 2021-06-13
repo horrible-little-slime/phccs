@@ -33,6 +33,7 @@ import {
     mySpleenUse,
     myTurncount,
     numericModifier,
+    print,
     runChoice,
     runCombat,
     toEffect,
@@ -42,7 +43,6 @@ import {
     useSkill,
     visitUrl,
     weightAdjustment,
-    print,
 } from "kolmafia";
 import {
     $class,
@@ -511,7 +511,7 @@ try {
                 .attack()
                 .repeat();
             profchain.setAutoAttack();
-            if (getCounters("Digitize", 0, 0) !== "") {
+            if (getCounters("Digitize", -60, 0) !== "") {
                 do {
                     adv1($location`madness bakery`, -1, "");
                 } while (get("lastEncounter") === "Our Bakery in the Middle of Our Street");
