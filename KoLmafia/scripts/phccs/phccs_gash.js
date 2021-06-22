@@ -44214,6 +44214,7 @@ if ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.getWorkshed)() !== car && (0,libram
 if ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.getWorkshed)() !== car) throw "Unable to get the car!";
 if (!Object.getOwnPropertyNames((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.getCampground)()).includes(garden.name) && (0,libram__WEBPACK_IMPORTED_MODULE_2__.have)(garden)) (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.use)(garden);
 if (!Object.getOwnPropertyNames((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.getCampground)()).includes(garden.name)) throw "Unable to plant peppermint!";
+if ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.eudora)() !== "GameInformPowerDailyPro Magazine") (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.eudora)("game");
 (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.visitUrl)("ascend.php?action=ascend&confirm=on&confirm2=on");
 (0,_ascend__WEBPACK_IMPORTED_MODULE_1__.ascend)(_ascend__WEBPACK_IMPORTED_MODULE_1__.path.katarnCore, (0,libram__WEBPACK_IMPORTED_MODULE_2__.$class)(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["pastamancer"]))), _ascend__WEBPACK_IMPORTED_MODULE_1__.lifestyle.hardcore, "knoll", (0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["astral six-pack"]))));
 
