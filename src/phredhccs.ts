@@ -76,6 +76,7 @@ import {
     easyFight,
     ensureEffect,
     ensureInnerElf,
+    ensurePotionEffect,
     fightSausageIfAble,
     fuelUp,
     heal,
@@ -795,7 +796,9 @@ try {
         ensureEffect($effect`Quiet Determination`);
         ensureEffect($effect`Disdain of the War Snapper`);
         ensureEffect($effect`Feeling Excited`);
-
+        ensureEffect($effect`The Power of LOV`);
+        ensurePotionEffect($effect`Go Get 'Em, Tiger!`, $item`ben-gal balm`);
+        useFamiliar($familiar`disembodied hand`);
         maximize("muscle", false);
 
         for (const increaser of [
@@ -805,6 +808,7 @@ try {
         ]) {
             if (myBuffedstat($stat`muscle`) - myBasestat($stat`mysticality`) < 1770) increaser();
         }
+
         if (myBuffedstat($stat`muscle`) - myBasestat($stat`mysticality`) < 1770) {
             throw "Not enough muscle to cap.";
         }
