@@ -626,13 +626,13 @@ try {
             equip($slot`off-hand`, $item`latte lovers member's mug`);
             heal();
             if (
-                !property.getMonster("lastCopyableMonster")?.attributes.includes("FREE") &&
+                !get("lastCopyableMonster")?.attributes.includes("FREE") &&
                 get("_witchessFights") < 3
             ) {
                 defaultKill.setAutoAttack();
                 Witchess.fightPiece($monster`witchess bishop`);
             }
-            if (property.getMonster("lastCopyableMonster")?.attributes.includes("FREE")) {
+            if (get("lastCopyableMonster")?.attributes.includes("FREE")) {
                 advMacroAA(
                     $location`the dire warren`,
                     Macro.skill("back-up to your last enemy")
