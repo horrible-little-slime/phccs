@@ -891,6 +891,7 @@ try {
         if (availableAmount($item`astral six-pack`) !== 0) use(1, $item`astral six-pack`);
         if (have($effect`The Magical Mojomuscular Melody`))
             cliExecute("shrug The Magical Mojomuscular Melody");
+        useSkill($skill`the ode to booze`);
         while (myInebriety() < 5) {
             drink(1, $item`astral pilsner`);
         }
@@ -949,7 +950,7 @@ try {
         const itemCheck = () => {
             return (
                 60 -
-                    Math.floor(numericModifier("item drop") / 30 + 0.001) -
+                    Math.floor(numericModifier("item drop") / 15 + 0.001) -
                     Math.floor(numericModifier("booze drop") / 15 + 0.001) <=
                 1
             );
@@ -1003,6 +1004,7 @@ try {
         uniform();
         useFamiliar($familiar`none`);
         if (get("_monstersMapped") < 3 && !have($item`lava-proof pants`)) {
+            equip($slot`back`, $item`vampyric cloake`);
             useFamiliar($familiar`none`);
             while (getFuel() < 137) fuelUp();
             mapMacro(
@@ -1202,10 +1204,11 @@ try {
                 advMacroAA($location`the dire warren`, Macro.skill($skill`feel hatred`));
             }
         }
-        $effects`Carol of the Bulls, Song of the North, Rage of the Reindeer, Scowl of the Auk, Disdain of the War Snapper, Tenacity of the Snapper, Billiards Belligerence, The Power of LOV`.forEach(
+        $effects`Carol of the Bulls, Song of the North, Rage of the Reindeer, Scowl of the Auk, Disdain of the War Snapper, Tenacity of the Snapper, Billiards Belligerence`.forEach(
             (effect) => ensureEffect(effect)
         );
         ensureEffect($effect`frenzied, bloody`);
+        if (have($item`lov elixir #3`)) use($item`lov elixir #3`);
 
         if (get("chateauMonster") === $monster`ungulith` && !get("_chateauMonsterFought")) {
             uniform();
