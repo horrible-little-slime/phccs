@@ -107,7 +107,7 @@ const tests: testDuration[] = [];
 const startTime = gametimeToInt();
 try {
     if (!testDone(Test.COIL_WIRE)) {
-        cliExecute("terminal educate digitize; terminal educate extract;");
+        SourceTerminal.educate([$skill`extract`, $skill`portscan`]);
         setClan("Bonus Adventures from Hell");
         if (get("_clanFortuneConsultUses") < 3) {
             while (get("_clanFortuneConsultUses") < 3) {
@@ -243,27 +243,12 @@ try {
             cliExecute("boombox meat");
         }
 
-        SourceTerminal.educate([$skill`extract`, $skill`digitize`]);
         if (have($item`magical sausage casing`)) {
             create(1, $item`magical sausage`);
         }
         if (have($item`magical sausage`)) {
             eat(1, $item`magical sausage`);
         }
-
-        Macro.step(delevel)
-            .skill("digitize")
-            .step(easyFight)
-            .step(candyblast)
-            .attack()
-            .repeat()
-            .setAutoAttack();
-        if (!get("_sourceTerminalDigitizeMonster")) {
-            Witchess.fightPiece($monster`witchess bishop`);
-            equip($slot`familiar`, $item`none`);
-        }
-
-        SourceTerminal.educate([$skill`extract`, $skill`portscan`]);
 
         const ghostLocation = get("ghostLocation");
         if (ghostLocation) {
@@ -514,14 +499,11 @@ try {
                 .attack()
                 .repeat();
             profchain.setAutoAttack();
-            if (getCounters("Digitize", -60, 0) !== "") {
+            if (kramcoCheck()) {
+                equip($slot`off-hand`, $item`Kramco Sausage-o-Matic™`);
                 do {
                     adv1($location`madness bakery`, -1, "");
                 } while (get("lastEncounter") === "Our Bakery in the Middle of Our Street");
-                while (inMultiFight()) runCombat();
-            } else if (kramcoCheck()) {
-                equip($slot`off-hand`, $item`Kramco Sausage-o-Matic™`);
-                adv1($location`madness bakery`, -1, "");
                 while (inMultiFight()) runCombat();
             } else if (get("_witchessFights") < 3) {
                 Witchess.fightPiece($monster`witchess bishop`);

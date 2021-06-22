@@ -1,4 +1,12 @@
-import { cliExecute, getCampground, getWorkshed, myAdventures, use, visitUrl } from "kolmafia";
+import {
+    cliExecute,
+    eudora,
+    getCampground,
+    getWorkshed,
+    myAdventures,
+    use,
+    visitUrl,
+} from "kolmafia";
 import { $item, have, get, $class } from "libram";
 import { ascend, lifestyle, path } from "./ascend";
 
@@ -14,6 +22,8 @@ if (getWorkshed() !== car) throw "Unable to get the car!";
 if (!Object.getOwnPropertyNames(getCampground()).includes(garden.name) && have(garden)) use(garden);
 if (!Object.getOwnPropertyNames(getCampground()).includes(garden.name))
     throw "Unable to plant peppermint!";
+
+if (eudora() !== "GameInformPowerDailyPro Magazine") eudora("game");
 
 visitUrl("ascend.php?action=ascend&confirm=on&confirm2=on");
 ascend(path.katarnCore, $class`pastamancer`, lifestyle.hardcore, "knoll", $item`astral six-pack`);
