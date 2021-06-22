@@ -44208,8 +44208,8 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.cliExecute)("breakfast");
 if ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.myAdventures)() > 0) throw "You sure about that one, cowboy?";
-var car = (0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject || (_templateObject = _taggedTemplateLiteral(["asdon-martin key fob"])));
-var garden = (0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["peppermint pip packet"])));
+var car = (0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject || (_templateObject = _taggedTemplateLiteral(["Asdon Martin keyfob"])));
+var garden = (0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["Peppermint Pip Packet"])));
 if ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.getWorkshed)() !== car && (0,libram__WEBPACK_IMPORTED_MODULE_2__.have)(car) && !(0,libram__WEBPACK_IMPORTED_MODULE_2__.get)("_workshedItemUsed")) (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.use)(car);
 if ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.getWorkshed)() !== car) throw "Unable to get the car!";
 if (!Object.getOwnPropertyNames((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.getCampground)()).includes(garden.name) && (0,libram__WEBPACK_IMPORTED_MODULE_2__.have)(garden)) (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.use)(garden);

@@ -5,8 +5,8 @@ import { ascend, lifestyle, path } from "./ascend";
 cliExecute("breakfast");
 if (myAdventures() > 0) throw "You sure about that one, cowboy?";
 
-const car = $item`asdon-martin key fob`;
-const garden = $item`peppermint pip packet`;
+const car = $item`Asdon Martin keyfob`;
+const garden = $item`Peppermint Pip Packet`;
 
 if (getWorkshed() !== car && have(car) && !get("_workshedItemUsed")) use(car);
 if (getWorkshed() !== car) throw "Unable to get the car!";
