@@ -763,10 +763,11 @@ try {
         if (myMaxhp() - myBuffedstat($stat`muscle`) - 3 < 1770) {
             throw "Failed to cap HP";
         }
+        const prediction = 60 - Math.floor((myMaxhp() - myBuffedstat($stat`muscle`) - 3) / 30);
         doTest(Test.HP);
         tests.push({
             testName: "HP",
-            turnPrediction: 60 - Math.floor((myMaxhp() - myBuffedstat($stat`muscle`) - 3) / 30),
+            turnPrediction: prediction,
             turnCost: myTurncount() - startTurns,
         });
     }
@@ -796,14 +797,13 @@ try {
             throw "Not enough muscle to cap.";
         }
 
+        const prediction =
+            60 -
+            Math.floor((1 / 30) * (myBuffedstat($stat`muscle`) - myBasestat($stat`mysticality`)));
         doTest(Test.MUS);
         tests.push({
             testName: "muscle",
-            turnPrediction:
-                60 -
-                Math.floor(
-                    (1 / 30) * (myBuffedstat($stat`muscle`) - myBasestat($stat`mysticality`))
-                ),
+            turnPrediction: prediction,
             turnCost: myTurncount() - startTurns,
         });
     }
@@ -857,14 +857,13 @@ try {
         if (myBuffedstat($stat`moxie`) - myBasestat($stat`mysticality`) < 1770) {
             throw "Not enough moxie to cap.";
         }
+        const prediction =
+            60 -
+            Math.floor((1 / 30) * (myBuffedstat($stat`moxie`) - myBasestat($stat`mysticality`)));
         doTest(Test.MOX);
         tests.push({
             testName: "moxie",
-            turnPrediction:
-                60 -
-                Math.floor(
-                    (1 / 30) * (myBuffedstat($stat`moxie`) - myBasestat($stat`mysticality`))
-                ),
+            turnPrediction: prediction,
             turnCost: myTurncount() - startTurns,
         });
     }
@@ -959,13 +958,14 @@ try {
             ensureEffect($effect`nearly all-natural`);
         }
         if (!itemCheck()) throw `Failed to cap item!`;
+        const prediction =
+            60 -
+            Math.floor(numericModifier("item drop") / 30 + 0.001) -
+            Math.floor(numericModifier("booze drop") / 15 + 0.001);
         doTest(Test.ITEM);
         tests.push({
             testName: "item drop",
-            turnPrediction:
-                60 -
-                Math.floor(numericModifier("item drop") / 30 + 0.001) -
-                Math.floor(numericModifier("booze drop") / 15 + 0.001),
+            turnPrediction: prediction,
             turnCost: myTurncount() - startTurns,
         });
     }
@@ -1041,10 +1041,11 @@ try {
         if (Math.round(numericModifier("hot resistance")) < 59) {
             throw "Failed to cap hot res";
         }
+        const prediction = 60 - numericModifier("hot resistance");
         doTest(Test.HOT_RES);
         tests.push({
             testName: "hot resistance",
-            turnPrediction: 60 - numericModifier("hot resistance"),
+            turnPrediction: prediction,
             turnCost: myTurncount() - startTurns,
         });
     }
@@ -1101,11 +1102,11 @@ try {
         if (Math.round(numericModifier("combat rate")) > -40) {
             throw "failed to cap noncombat";
         }
-
+        const prediction = 60 + (20 + numericModifier("combat rate")) * 3;
         doTest(Test.NONCOMBAT);
         tests.push({
             testName: "noncombat",
-            turnPrediction: 60 + (20 + numericModifier("combat rate")) * 3,
+            turnPrediction: prediction,
             turnCost: myTurncount() - startTurns,
         });
     }
@@ -1153,26 +1154,16 @@ try {
         } else useFamiliar($familiar`shorter-order cook`);
         if (have($item`short stack of pancakes`)) ensureEffect($effect`shortly stacked`);
         maximize("familiar weight", false);
+        const prediction = 60 - Math.floor((familiarWeight(myFamiliar()) + weightAdjustment()) / 5);
         doTest(Test.FAMILIAR);
         tests.push({
             testName: "familiar weight",
-            turnPrediction:
-                60 - Math.floor((familiarWeight(myFamiliar()) + weightAdjustment()) / 5),
+            turnPrediction: prediction,
             turnCost: myTurncount() - startTurns,
         });
     }
     if (!testDone(Test.WEAPON)) {
         const startTurns = myTurncount();
-        if (getCounters("Digitize", -11, 0) !== "") {
-            uniform();
-            useDefaultFamiliar();
-            advMacroAA(
-                $location`noob cave`,
-                defaultKill,
-                () => getCounters("Digitize", -11, 0) !== "",
-                useDefaultFamiliar
-            );
-        }
         ensureInnerElf();
         if (!have($effect`do you crush what i crush`)) {
             if (have($effect`holiday yoked`) && have($item`soft green echo eyedrop antidote`)) {
@@ -1228,13 +1219,14 @@ try {
         ) {
             throw "Failed to cap weapon damage";
         }
+        const prediction =
+            60 -
+            Math.floor(numericModifier("weapon damage") / 25 + 0.001) -
+            Math.floor(numericModifier("weapon damage percent") / 25 + 0.001);
         doTest(Test.WEAPON);
         tests.push({
             testName: "weapon damage",
-            turnPrediction:
-                60 -
-                Math.floor(numericModifier("weapon damage") / 25 + 0.001) -
-                Math.floor(numericModifier("weapon damage percent") / 25 + 0.001),
+            turnPrediction: prediction,
             turnCost: myTurncount() - startTurns,
         });
     }
@@ -1326,13 +1318,14 @@ try {
             handTurns > manTurns ? $familiar`left-hand man` : $familiar`disembodied hand`;
         useFamiliar(spellFamiliar);
         maximize("spell damage", false);
+        const prediction =
+            61 -
+            Math.floor(numericModifier("spell damage") / 50 + 0.001) -
+            Math.floor(numericModifier("spell damage percent") / 50 + 0.001);
         doTest(Test.SPELL);
         tests.push({
             testName: "spell damage",
-            turnPrediction:
-                61 -
-                Math.floor(numericModifier("spell damage") / 50 + 0.001) -
-                Math.floor(numericModifier("spell damage percent") / 50 + 0.001),
+            turnPrediction: prediction,
             turnCost: myTurncount() - startTurns,
         });
     }
