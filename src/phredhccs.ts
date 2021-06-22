@@ -15,6 +15,7 @@ import {
     getCounters,
     getFuel,
     getWorkshed,
+    handlingChoice,
     haveEffect,
     haveEquipped,
     inMultiFight,
@@ -1218,6 +1219,7 @@ try {
                 .skill($skill`use the force`)
                 .setAutoAttack();
             visitUrl("place.php?whichplace=chateau&action=chateau_painting");
+            if (handlingChoice()) runChoice(-1);
             use(1, $item`corrupted marrow`);
         }
         if (!have($effect`meteor showered`)) {
@@ -1231,8 +1233,10 @@ try {
                 $location`the neverending party`,
                 Macro.skill($skill`meteor shower`).skill($skill`use the force`)
             );
+            if (handlingChoice()) runChoice(-1);
         }
         ensureEffect($effect`bow-legged swagger`);
+        ensureEffect($effect`blessing of the bird`);
         maximize("weapon damage", false);
         if (
             60 -
@@ -1310,6 +1314,7 @@ try {
                     .skill($skill`use the force`)
                     .setAutoAttack();
                 visitUrl("place.php?whichplace=chateau&action=chateau_painting");
+                if (handlingChoice()) runChoice(-1);
                 use(1, $item`corrupted marrow`);
             } else {
                 advMacroAA(
@@ -1318,6 +1323,7 @@ try {
                         .skill($skill`meteor shower`)
                         .skill($skill`use the force`)
                 );
+                if (handlingChoice()) runChoice(-1);
             }
         }
 
