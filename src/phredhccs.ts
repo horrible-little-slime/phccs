@@ -414,6 +414,7 @@ try {
             runChoice(2);
         }
         heal();
+        useDefaultFamiliar();
         advMacroAA($location`The X-32-F Combat Training Snowman`, delevel.attack().repeat(), () => {
             return !have($effect`holiday yoked`);
         });
@@ -529,6 +530,7 @@ try {
 
         cliExecute("backupcamera ml");
 
+        uniform();
         if (
             get("_monstersMapped") < 3 &&
             availableAmount($item`tomato`) +
