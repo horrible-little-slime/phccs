@@ -549,6 +549,7 @@ try {
                 )
             );
             useDefaultFamiliar();
+            uniform();
             advMacroAA(
                 $location` X-32-F Combat Training Snowman`,
                 Macro.skill($skill`feel nostalgia`).step(defaultKill)
@@ -573,7 +574,7 @@ try {
             }
             use(1, $item`Dramatic™ range`);
         }
-
+        useSkill($skill`Advanced Saucecrafting`);
         if (!have($effect`tomato power`)) {
             if (!have($item`tomato juice of powerful power`) && have($item`tomato`)) {
                 create(1, $item`tomato juice of powerful power`);
