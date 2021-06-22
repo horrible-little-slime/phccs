@@ -6,7 +6,7 @@ module.exports = {
     entry: {
         // Point "entry" to scripts you want to be CLI-eligible.
         phccs: "./src/phredhccs.ts",
-        phccs-gash: "./src/gash-hop.ts",
+        phccs_gash: "./src/gash-hop.ts",
     },
     mode: "development",
     devtool: false,
