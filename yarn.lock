@@ -1849,11 +1849,6 @@ has@^1.0.3:
   dependencies:
     function-bind "^1.1.1"
 
-he@1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/he/-/he-1.2.0.tgz#84ae65fa7eafb165fddb61566ae14baf05664f0f"
-  integrity sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==
-
 human-signals@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/human-signals/-/human-signals-2.1.0.tgz#dc91fcba42e4d06e4abaed33b3e7a3c02f514ea0"
@@ -2142,15 +2137,14 @@ kolmafia@^1.0.3:
   resolved "https://registry.yarnpkg.com/kolmafia/-/kolmafia-1.0.3.tgz#e6f9ad211eb20c54c2e999b4d9713bf25712b2da"
   integrity sha512-e9H+mhYP/xqhfX56AcbVtc5aIsrWbH2LHNQoG5S2i5k0ST4NaMoIQLxBpkFxPs1rUjHPNDcqxxN1McPviqm/BQ==
 
-libram@^0.0.8:
-  version "0.0.8"
-  resolved "https://registry.yarnpkg.com/libram/-/libram-0.0.8.tgz#d41184d8b6264e638b8e728aac7567084bd10986"
-  integrity sha512-R/SmxCFkjlfl0Cwk9P0y38FdZUGT+rz2NPMLhCinoQXJMR8DbLwwPCDEgvMZlprrCKCu+9scQEcv33qUu6jaNA==
+libram@^0.0.9:
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/libram/-/libram-0.0.9.tgz#c811545a4b645e3414ffe87c17d729d8df014fad"
+  integrity sha512-BjN2Vj7sYIrkcy4FS28s7Q/G4K4FFlwnOpGyQNjDELBM3qzsAEKNvFB79SQgvPeLorPGBJG6xg3jkCHQtQCgIw==
   dependencies:
     core-js "3.9.0"
     kolmafia "^1.0.3"
     lodash-es "^4.17.21"
-    node-html-parser "^2.0.0"
 
 loader-runner@^4.2.0:
   version "4.2.0"
@@ -2314,13 +2308,6 @@ nice-try@^1.0.4:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/nice-try/-/nice-try-1.0.5.tgz#a3378a7696ce7d223e88fc9b764bd7ef1089e366"
   integrity sha512-1nh45deeb5olNY7eX82BkPO7SSxR5SSYJiPTrTdFUVYwAl8CKMA5N9PjTYkHiRjisVcxcQ1HXdLhx2qxxJzLNQ==
-
-node-html-parser@^2.0.0:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/node-html-parser/-/node-html-parser-2.0.2.tgz#168c9cfb77ae58fe4038d84862a0fc8f2ad8e3fd"
-  integrity sha512-N2000Ho9dkabvRZcyiwm6zOpdiAzxAxcJ0Z0WNoh/yXHG0YCuiK2WpNQfN+9vheLNY/h/It11Gk7uwT4QTfk9Q==
-  dependencies:
-    he "1.2.0"
 
 node-releases@^1.1.69:
   version "1.1.70"
