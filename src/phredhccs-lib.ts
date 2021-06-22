@@ -488,7 +488,7 @@ export interface testDuration {
 }
 
 export function convertMilliseconds(milliseconds: number) {
-    const seconds = milliseconds / 100;
+    const seconds = milliseconds / 1000;
     const minutes = Math.floor(seconds / 60);
     const secondsLeft = seconds - minutes * 60;
     const hours = Math.floor(minutes / 60);

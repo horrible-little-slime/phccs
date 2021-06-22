@@ -1364,7 +1364,7 @@ try {
     print(
         `This loop took ${convertMilliseconds(
             gametimeToInt() - startTime
-        )} milliseconds, assuming it ran contiguously. Otherwise, this run of the program lasted that many milliseconds. Hope whatever number you see is good!`,
+        )} milliseconds, assuming it ran contiguously. Otherwise, this run of the program lasted that much time. Hope whatever number you see is good!`,
         "red"
     );
 }
