@@ -256,7 +256,7 @@ try {
             .attack()
             .repeat()
             .setAutoAttack();
-        if (get("_sourceTerminalDigitizeMonster") === $monster`none`) {
+        if (!get("_sourceTerminalDigitizeMonster")) {
             Witchess.fightPiece($monster`witchess bishop`);
             equip($slot`familiar`, $item`none`);
         }
