@@ -538,6 +538,7 @@ try {
                 haveEffect($effect`tomato power`) ===
                 0
         ) {
+            equip($slot`acc3`, $item`Lil' Doctor™ bag`);
             useDefaultFamiliar();
             mapMacro(
                 $location`the haunted pantry`,
