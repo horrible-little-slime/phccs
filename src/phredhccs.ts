@@ -757,7 +757,7 @@ try {
             Witchess.fightPiece($monster`witchess queen`);
         }
         if (!have($item`dented scepter`)) {
-            delevel.attack().repeat().setAutoAttack();
+            Macro.step(delevel).attack().repeat().setAutoAttack();
             uniform();
             useDefaultFamiliar();
             heal();
