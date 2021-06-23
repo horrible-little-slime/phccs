@@ -35,6 +35,7 @@ import {
     myTurncount,
     numericModifier,
     print,
+    retrieveItem,
     runChoice,
     runCombat,
     toEffect,
@@ -242,6 +243,7 @@ try {
         if (get("boomBoxSong") !== "Total Eclipse of Your Meat") {
             cliExecute("boombox meat");
         }
+        fightSausageIfAble($location`noob cave`, Macro.attack().repeat());
 
         if (have($item`magical sausage casing`)) {
             create(1, $item`magical sausage`);
@@ -264,11 +266,6 @@ try {
                     .skill("trap ghost")
             );
         }
-
-        fightSausageIfAble(
-            $location`noob cave`,
-            Macro.step(delevel).step(candyblast).attack().repeat()
-        );
 
         equip($slot`pants`, $item`cargo cultist shorts`);
         equip($slot`acc1`, $item`eight days a week pill keeper`);
@@ -337,8 +334,8 @@ try {
         cliExecute("bastille myst brutalist");
 
         horse("crazy");
-        ensureEffect($effect`Favored by Lyle`);
-        ensureEffect($effect`Starry-Eyed`);
+        //ensureEffect($effect`Favored by Lyle`);
+        //ensureEffect($effect`Starry-Eyed`);
         ensureEffect($effect`We're All Made of Starfish`); // Beach Comb - should bridge all the way to spell dmg.
         if (
             availableAmount($item`glittery mascara`) + haveEffect($effect`glittering eyelashes`) ===
@@ -401,10 +398,13 @@ try {
             runChoice(2);
         }
         heal();
-        useDefaultFamiliar();
-        advMacroAA($location`The X-32-F Combat Training Snowman`, delevel.attack().repeat(), () => {
-            return !have($effect`holiday yoked`);
-        });
+        advMacroAA(
+            $location`The X-32-F Combat Training Snowman`,
+            Macro.step(delevel).attack().repeat(),
+            () => {
+                return !have($effect`holiday yoked`);
+            }
+        );
 
         equip($slot`back`, $item`protonic accelerator pack`);
         cliExecute("fold makeshift garbage shirt");
@@ -444,7 +444,7 @@ try {
             equip($slot`off-hand`, $item`latte lover member's mug`);
             advMacroAA(
                 $location`noob cave`,
-                delevel.skill("otoscope").skill("become a bat").skill("chest x-ray"), //1
+                Macro.step(delevel).skill("otoscope").skill("become a bat").skill("chest x-ray"), //1
                 () => {
                     return getCounters("Portscan", 0, 0) !== "";
                 }
@@ -536,7 +536,7 @@ try {
             uniform();
             advMacroAA(
                 $location` X-32-F Combat Training Snowman`,
-                Macro.skill($skill`feel nostalgia`).step(defaultKill)
+                Macro.skill($skill`feel nostalgic`).step(defaultKill)
             );
         }
 
@@ -559,6 +559,7 @@ try {
             use(1, $item`Dramatic™ range`);
         }
         useSkill($skill`Advanced Saucecrafting`);
+        useSkill($skill`prevent scurvy and sobriety`);
         if (!have($effect`tomato power`)) {
             if (!have($item`tomato juice of powerful power`) && have($item`tomato`)) {
                 create(1, $item`tomato juice of powerful power`);
@@ -792,6 +793,8 @@ try {
         ]) {
             if (myBuffedstat($stat`muscle`) - myBasestat($stat`mysticality`) < 1770) increaser();
         }
+        useFamiliar($familiar`disembodied hand`);
+        maximize("muscle", false);
 
         if (myBuffedstat($stat`muscle`) - myBasestat($stat`mysticality`) < 1770) {
             throw "Not enough muscle to cap.";
@@ -852,6 +855,11 @@ try {
             tryUse(1, $item`runproof mascara`);
         }
 
+        useFamiliar($familiar`Left-Hand Man`);
+        maximize("moxie", false);
+        if (myBuffedstat($stat`moxie`) - myBasestat($stat`mysticality`) < 1770) {
+            ensureInnerElf();
+        }
         useFamiliar($familiar`Left-Hand Man`);
         maximize("moxie", false);
         if (myBuffedstat($stat`moxie`) - myBasestat($stat`mysticality`) < 1770) {
@@ -932,7 +940,7 @@ try {
         const itemCheck = () => {
             return (
                 60 -
-                    Math.floor(numericModifier("item drop") / 15 + 0.001) -
+                    Math.floor(numericModifier("item drop") / 30 + 0.001) -
                     Math.floor(numericModifier("booze drop") / 15 + 0.001) <=
                 1
             );
@@ -1039,6 +1047,9 @@ try {
             cliExecute("asdonmartin drive safely");
         }
         if (Math.round(numericModifier("hot resistance")) < 59) {
+            ensureEffect($effect`amazing`);
+        }
+        if (Math.round(numericModifier("hot resistance")) < 59) {
             throw "Failed to cap hot res";
         }
         const prediction = 60 - numericModifier("hot resistance");
@@ -1067,6 +1078,10 @@ try {
         equip($slot`acc3`, $item`powerful glove`);
         ensureEffect($effect`invisible avatar`);
         ensureEffect($effect`Blessing of the bird`);
+        if (!have($effect`gummed shoes`)) {
+            retrieveItem($item`shoe gum`);
+            use($item`shoe gum`);
+        }
         if (!get("_clanFortuneBuffUsed")) cliExecute("fortune buff familiar");
 
         if (haveEffect($effect`fat leon's phat loot lyric`))
