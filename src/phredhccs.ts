@@ -666,7 +666,7 @@ try {
         useDefaultFamiliar();
         advMacroAA(
             $location`the neverending party`,
-            Macro.step(delevel).trySkill("feel pride").step("easyFight").attack().repeat(),
+            Macro.step(delevel).trySkill("feel pride").step(easyFight).attack().repeat(),
             () => {
                 return get("_neverendingPartyFreeTurns") < 10;
             },
