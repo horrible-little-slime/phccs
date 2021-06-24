@@ -782,7 +782,10 @@ try {
         ensureEffect($effect`Disdain of the War Snapper`);
         ensureEffect($effect`Feeling Excited`);
         ensureEffect($effect`The Power of LOV`);
-        ensurePotionEffect($effect`Go Get 'Em, Tiger!`, $item`ben-gal balm`);
+        if (!have($effect`Go Get 'Em, Tiger!`)) {
+            retrieveItem($item`ben-gal balm`);
+            use(1, $item`ben-gal balm`);
+        }
         useFamiliar($familiar`disembodied hand`);
         maximize("muscle", false);
 
