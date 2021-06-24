@@ -494,7 +494,7 @@ try {
                     } charges left)")`,
                     Macro.skill($skill`meteor shower`)
                 )
-                .skill($skill`lecture on relativity`)
+                .skill("Lecture on Relativity")
                 .step(candyblast)
                 .attack()
                 .repeat();
