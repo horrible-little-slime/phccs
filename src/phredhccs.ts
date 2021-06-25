@@ -603,6 +603,7 @@ try {
 
         //do snojo here
         uniform();
+        useDefaultFamiliar();
         advMacroAA(
             $location`the x-32-f combat training snowman`,
             Macro.step(delevel).step(easyFight).attack().repeat(),
@@ -1364,7 +1365,7 @@ try {
     print(
         `This loop took ${convertMilliseconds(
             gametimeToInt() - startTime
-        )} milliseconds, assuming it ran contiguously. Otherwise, this run of the program lasted that much time. Hope whatever number you see is good!`,
+        )}, assuming it ran contiguously. Otherwise, this run of the program lasted that much time. Hope whatever number you see is good!`,
         "red"
     );
 }
