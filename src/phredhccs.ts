@@ -38,6 +38,7 @@ import {
     retrieveItem,
     runChoice,
     runCombat,
+    setAutoAttack,
     toEffect,
     totalFreeRests,
     use,
@@ -79,6 +80,7 @@ import {
     ensureEffect,
     ensureInnerElf,
     ensurePotionEffect,
+    fax,
     fightSausageIfAble,
     fuelUp,
     heal,
@@ -410,6 +412,7 @@ try {
         cliExecute("fold makeshift garbage shirt");
         equip($slot`shirt`, $item`makeshift garbage shirt`);
         heal();
+        useDefaultFamiliar();
         Macro.skill("curse of weaksauce").skill("micrometeor").attack().repeat().setAutoAttack();
         if (!have($item`battle broom`)) {
             Witchess.fightPiece($monster`Witchess Witch`);
@@ -487,24 +490,26 @@ try {
             equip($slot`acc2`, $item`beach comb`);
             equip($slot`acc3`, $item`brutal brogues`);
             const meteors = get("_meteorShowerUses");
-            const profchain = Macro.step(delevel)
-                .if_(
-                    `(!hasskill "lecture on relativity") && (match "Meteor Shower (${
-                        5 - meteors
-                    } charges left)")`,
-                    Macro.skill($skill`meteor shower`)
-                )
-                .skill("Lecture on Relativity")
-                .step(candyblast)
-                .attack()
-                .repeat();
-            profchain.setAutoAttack();
+            const profchain = () =>
+                Macro.step(delevel)
+                    .if_(
+                        `(!hasskill "lecture on relativity")`,
+                        Macro.externalIf(
+                            get("_meteorShowerUses") === meteors,
+                            Macro.skill($skill`meteor shower`)
+                        )
+                    )
+                    .trySkill("Lecture on Relativity")
+                    .step(candyblast)
+                    .attack()
+                    .repeat();
+            setAutoAttack(0);
             if (kramcoCheck()) {
                 equip($slot`off-hand`, $item`Kramco Sausage-o-Matic™`);
                 do {
-                    adv1($location`madness bakery`, -1, "");
+                    adv1($location`madness bakery`, -1, profchain().toString());
                 } while (get("lastEncounter") === "Our Bakery in the Middle of Our Street");
-                while (inMultiFight()) runCombat();
+                while (inMultiFight()) runCombat(profchain().toString());
             } else if (get("_witchessFights") < 3) {
                 Witchess.fightPiece($monster`witchess bishop`);
                 runCombat();
@@ -1202,14 +1207,15 @@ try {
         ensureEffect($effect`frenzied, bloody`);
         if (have($item`lov elixir #3`)) use($item`lov elixir #3`);
 
-        if (get("chateauMonster") === $monster`ungulith` && !get("_chateauMonsterFought")) {
+        if (!get("_photocopyUsed")) {
             uniform();
             useFamiliar($familiar`melodramedary`);
             setChoice(1387, 3);
             Macro.trySkill($skill`spit on me`)
                 .skill($skill`use the force`)
                 .setAutoAttack();
-            visitUrl("place.php?whichplace=chateau&action=chateau_painting");
+            fax($monster`ungulith`);
+            use($item`photocopied monster`);
             if (handlingChoice()) runChoice(-1);
             use(1, $item`corrupted marrow`);
         }
@@ -1300,12 +1306,13 @@ try {
         if (!have($effect`meteor showered`)) {
             uniform();
             useFamiliar($familiar`melodramedary`);
-            if (!get("_chateauMonsterFought")) {
+            if (!get("_photocopyUsed")) {
                 Macro.trySkill($skill`spit on me`)
                     .skill($skill`meteor shower`)
                     .skill($skill`use the force`)
                     .setAutoAttack();
-                visitUrl("place.php?whichplace=chateau&action=chateau_painting");
+                fax($monster`ungulith`);
+                use($item`photocopied monster`);
                 if (handlingChoice()) runChoice(-1);
                 use(1, $item`corrupted marrow`);
             } else {

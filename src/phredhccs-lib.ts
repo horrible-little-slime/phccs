@@ -1,7 +1,9 @@
 import {
+    abort,
     adv1,
     availableAmount,
     buy,
+    chatPrivate,
     choiceFollowsFight,
     cliExecute,
     containsText,
@@ -26,8 +28,20 @@ import {
     useFamiliar,
     useSkill,
     visitUrl,
+    wait,
 } from "kolmafia";
-import { $effect, $familiar, $item, $location, $skill, $slot, get, have, Macro } from "libram";
+import {
+    $effect,
+    $familiar,
+    $item,
+    $location,
+    $skill,
+    $slot,
+    get,
+    have,
+    Macro,
+    property,
+} from "libram";
 
 export function fuelUp() {
     buy(1, $item`all-purpose flower`);
@@ -498,4 +512,24 @@ export function convertMilliseconds(milliseconds: number) {
         (minutesLeft !== 0 ? `${minutesLeft} minutes, ` : "") +
         (secondsLeft !== 0 ? `${secondsLeft} seconds` : "")
     );
+}
+
+function checkFax(monster: Monster): boolean {
+    cliExecute("fax receive");
+    if (property.getString("photocopyMonster").toLowerCase() === monster.name.toLowerCase())
+        return true;
+    cliExecute("fax send");
+    return false;
+}
+
+export function fax(monster: Monster): void {
+    if (!get("_photocopyUsed")) {
+        if (checkFax(monster)) return;
+        chatPrivate("cheesefax", monster.name);
+        for (let i = 0; i < 3; i++) {
+            wait(10);
+            if (checkFax(monster)) return;
+        }
+        abort("Failed to acquire photocopied Knob Goblin Embezzler.");
+    }
 }
