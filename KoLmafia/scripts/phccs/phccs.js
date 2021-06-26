@@ -38771,7 +38771,7 @@ try {
       (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.equip)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$slot)(_templateObject135 || (_templateObject135 = _taggedTemplateLiteral(["acc2"]))), (0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject136 || (_templateObject136 = _taggedTemplateLiteral(["beach comb"]))));
       (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.equip)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$slot)(_templateObject137 || (_templateObject137 = _taggedTemplateLiteral(["acc3"]))), (0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject138 || (_templateObject138 = _taggedTemplateLiteral(["brutal brogues"]))));
       var profchain = libram__WEBPACK_IMPORTED_MODULE_2__.Macro.step(_phredhccs_lib__WEBPACK_IMPORTED_MODULE_1__.delevel).trySkill("Lecture on Relativity").step(_phredhccs_lib__WEBPACK_IMPORTED_MODULE_1__.candyblast).attack().repeat();
-      (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.setAutoAttack)(0);
+      profchain.setAutoAttack();
 
       if ((0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_1__.kramcoCheck)()) {
         (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.equip)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$slot)(_templateObject139 || (_templateObject139 = _taggedTemplateLiteral(["off-hand"]))), (0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject140 || (_templateObject140 = _taggedTemplateLiteral(["Kramco Sausage-o-Matic\u2122"]))));

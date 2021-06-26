@@ -494,7 +494,7 @@ try {
                 .step(candyblast)
                 .attack()
                 .repeat();
-            setAutoAttack(0);
+            profchain.setAutoAttack();
             if (kramcoCheck()) {
                 equip($slot`off-hand`, $item`Kramco Sausage-o-Matic™`);
                 do {
