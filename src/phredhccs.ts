@@ -489,27 +489,18 @@ try {
             equip($slot`acc1`, $item`hewn moon-rune spoon`);
             equip($slot`acc2`, $item`beach comb`);
             equip($slot`acc3`, $item`brutal brogues`);
-            const meteors = get("_meteorShowerUses");
-            const profchain = () =>
-                Macro.step(delevel)
-                    .if_(
-                        `(!hasskill "lecture on relativity")`,
-                        Macro.externalIf(
-                            get("_meteorShowerUses") === meteors,
-                            Macro.skill($skill`meteor shower`)
-                        )
-                    )
-                    .trySkill("Lecture on Relativity")
-                    .step(candyblast)
-                    .attack()
-                    .repeat();
+            const profchain = Macro.step(delevel)
+                .trySkill("Lecture on Relativity")
+                .step(candyblast)
+                .attack()
+                .repeat();
             setAutoAttack(0);
             if (kramcoCheck()) {
                 equip($slot`off-hand`, $item`Kramco Sausage-o-Matic™`);
                 do {
-                    adv1($location`madness bakery`, -1, profchain().toString());
+                    adv1($location`madness bakery`, -1, profchain.toString());
                 } while (get("lastEncounter") === "Our Bakery in the Middle of Our Street");
-                while (inMultiFight()) runCombat(profchain().toString());
+                while (inMultiFight()) runCombat(profchain.toString());
             } else if (get("_witchessFights") < 3) {
                 Witchess.fightPiece($monster`witchess bishop`);
                 runCombat();
@@ -1155,15 +1146,17 @@ try {
         horse("dark");
         uniform();
         setChoice(1387, 3);
-        advMacroAA(
-            $location`the dire warren`,
-            Macro.skill($skill`meteor shower`).skill($skill`use the force`),
-            1,
-            () => {
-                visitUrl("choice.php");
-                runChoice(3);
-            }
-        );
+        if (get("_meteorShowerUses") < 5) {
+            advMacroAA(
+                $location`the dire warren`,
+                Macro.skill($skill`meteor shower`).skill($skill`use the force`),
+                1,
+                () => {
+                    visitUrl("choice.php");
+                    runChoice(3);
+                }
+            );
+        }
         if (!have($item`astral pet sweater`)) {
             if (!have($item`cracker`)) {
                 if (get("tomeSummons") < 3) {
@@ -1220,7 +1213,7 @@ try {
             if (handlingChoice()) runChoice(-1);
             use(1, $item`corrupted marrow`);
         }
-        if (!have($effect`meteor showered`)) {
+        if (!have($effect`meteor showered`) && get("_meteorShowerUses") < 5) {
             useFamiliar($familiar`disembodied hand`);
             uniform();
             equip($slot`weapon`, $item`none`);
@@ -1309,7 +1302,7 @@ try {
             useFamiliar($familiar`melodramedary`);
             if (!get("_photocopyUsed")) {
                 Macro.trySkill($skill`spit on me`)
-                    .skill($skill`meteor shower`)
+                    .trySkill($skill`meteor shower`)
                     .skill($skill`use the force`)
                     .setAutoAttack();
                 fax($monster`ungulith`);
@@ -1320,7 +1313,7 @@ try {
                 advMacroAA(
                     $location`the dire warren`,
                     Macro.trySkill($skill`spit on me`)
-                        .skill($skill`meteor shower`)
+                        .trySkill($skill`meteor shower`)
                         .skill($skill`use the force`)
                 );
                 if (handlingChoice()) runChoice(-1);
