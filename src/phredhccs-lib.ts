@@ -303,7 +303,10 @@ export function ensureInnerElf() {
             equip($slot`acc3`, $item`Kremlin's Greatest Briefcase`);
             setChoice(326, 1);
             ensureEffect($effect`Blood Bubble`);
-            advMacro($location`The Slime Tube`, Macro.skill($skill`Tranquilizer Dart`));
+            advMacro(
+                $location`The Slime Tube`,
+                Macro.trySkill($skill`Tranquilizer Dart`).trySkill($skill`snokebomb`)
+            );
         } finally {
             setClan("Alliance From Heck");
         }
