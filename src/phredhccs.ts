@@ -1046,7 +1046,7 @@ try {
         maximize("spooky res", false);
         while (
             have($skill`Deep Dark Visions`) &&
-            haveEffect($effect`Visions of the Deep Dark Deeps`) < 50
+            haveEffect($effect`Visions of the Deep Dark Deeps`) < 30
         ) {
             if (myMp() < 20) {
                 create(1, $item`magical sausage`);
