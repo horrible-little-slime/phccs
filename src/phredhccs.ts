@@ -27,6 +27,7 @@ import {
     myBuffedstat,
     myClass,
     myFamiliar,
+    myHp,
     myInebriety,
     myLevel,
     myMaxhp,
@@ -1041,6 +1042,32 @@ try {
             create(1, $item`familiar jacks`);
             use(1, $item`familiar jacks`);
         }
+
+        maximize("spooky res", false);
+        while (
+            have($skill`Deep Dark Visions`) &&
+            haveEffect($effect`Visions of the Deep Dark Deeps`) < 50
+        ) {
+            if (myMp() < 20) {
+                create(1, $item`magical sausage`);
+                eat(1, $item`magical sausage`);
+            }
+            while (myHp() < myMaxhp()) {
+                useSkill(1, $skill`Cannelloni Cocoon`);
+            }
+            if (myMp() < 100) {
+                create(1, $item`magical sausage`);
+                eat(1, $item`magical sausage`);
+            }
+            if (Math.round(numericModifier("spooky resistance")) < 10) {
+                ensureEffect($effect`Does It Have a Skull In There??`);
+                if (Math.round(numericModifier("spooky resistance")) < 10) {
+                    throw "Not enough spooky res for Deep Dark Visions.";
+                }
+            }
+            useSkill(1, $skill`Deep Dark Visions`);
+        }
+
         maximize("hot res", false);
         if (Math.round(numericModifier("hot resistance")) < 59) {
             while (getFuel() < 37) fuelUp();
