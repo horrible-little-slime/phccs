@@ -609,17 +609,7 @@ try {
         );
         cliExecute("hottub");
 
-        if (kramcoCheck()) {
-            uniform();
-            heal();
-            useDefaultFamiliar();
-            equip($slot`off-hand`, $item`Kramco Sausage-o-Matic™`);
-            equip($slot`shirt`, $item`makeshift garbage shirt`);
-            advMacroAA(
-                $location`the madness bakery`,
-                Macro.step(delevel).step(candyblast).attack().repeat()
-            );
-        }
+        /*
         if (get("_backUpUses") < 11) {
             equip($slot`acc3`, $item`backup camera`);
             equip($slot`off-hand`, $item`latte lovers member's mug`);
@@ -654,7 +644,7 @@ try {
                     }
                 );
             }
-        }
+        }*/
 
         setChoice(1322, 2);
         setChoice(1324, 5);
