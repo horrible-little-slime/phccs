@@ -206,8 +206,6 @@ try {
             }
             use(1, $item`familiar jacks`);
             cliExecute("mummery myst");
-            useFamiliar($familiar`shorter-order cook`);
-            cliExecute("mummery meat");
         }
 
         if (get("tomeSummons") < 3) {
