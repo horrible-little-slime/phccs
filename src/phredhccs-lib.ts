@@ -435,8 +435,7 @@ export function advMacroAA(
     location: Location,
     macro: Macro,
     parameter: number | (() => boolean) = 1,
-    afterCombatAction?: () => void,
-    rebuildMacro: boolean = false
+    afterCombatAction?: () => void
 ) {
     let n = 0;
     const condition = () => {
@@ -445,9 +444,8 @@ export function advMacroAA(
     const macroText = macro.toString();
     macro.setAutoAttack();
     while (condition()) {
-        if (rebuildMacro) macro.setAutoAttack();
         adv1(location, -1, (round: number, foe: Monster, text: string) => {
-            return rebuildMacro ? macro.toString() : macroText;
+            return Macro.if_("!pastround 1", macro).toString();
         });
         if (afterCombatAction) afterCombatAction();
         n++;
@@ -458,8 +456,7 @@ export function advMacro(
     location: Location,
     macro: Macro,
     parameter: number | (() => boolean) = 1,
-    afterCombatAction?: () => void,
-    rebuildMacro: boolean = false
+    afterCombatAction?: () => void
 ) {
     setAutoAttack(0);
     let n = 0;
@@ -469,7 +466,7 @@ export function advMacro(
     const macroText = macro.toString();
     while (condition()) {
         adv1(location, -1, () => {
-            return rebuildMacro ? macro.toString() : macroText;
+            return Macro.if_("!pastround 1", macro).toString();
         });
         if (afterCombatAction) afterCombatAction();
         n++;
