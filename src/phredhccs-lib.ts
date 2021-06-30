@@ -445,7 +445,7 @@ export function advMacroAA(
     macro.setAutoAttack();
     while (condition()) {
         adv1(location, -1, (round: number, foe: Monster, text: string) => {
-            return Macro.if_("!pastround 1", macro).toString();
+            return Macro.if_("!pastround 2", macro).abort().toString();
         });
         if (afterCombatAction) afterCombatAction();
         n++;
@@ -466,7 +466,7 @@ export function advMacro(
     const macroText = macro.toString();
     while (condition()) {
         adv1(location, -1, () => {
-            return Macro.if_("!pastround 1", macro).toString();
+            return Macro.if_("!pastround 2", macro).abort().toString();
         });
         if (afterCombatAction) afterCombatAction();
         n++;

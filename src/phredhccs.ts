@@ -819,6 +819,12 @@ try {
     }
     if (!testDone(Test.MOX)) {
         const startTurns = myTurncount();
+        if (have($item`magical sausage casing`)) {
+            create(1, $item`magical sausage`);
+        }
+        if (have($item`magical sausage`)) {
+            eat(1, $item`magical sausage`);
+        }
         ensureEffect($effect`Feeling Excited`);
         useSkill(1, $skill`Bind Penne Dreadful`);
         ensureEffect($effect`Pomp & Circumsands`);
