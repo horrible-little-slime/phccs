@@ -171,7 +171,7 @@ try {
         }
 
         if (!have($item`gold detective badge`)) {
-            cliExecute("detective solver.ash");
+            visitUrl("place.php?whichplace=town_wrong&action=townwrong_precinct");
         }
         if (have($item`GameInformPowerDailyPro magazine`)) {
             visitUrl("inv_use.php?whichitem=6174&confirm=Yep.");
@@ -480,33 +480,6 @@ try {
         }
         cliExecute("/cast * candy heart");
 
-        heal();
-        if (get("_pocketProfessorLectures") === 0) {
-            useFamiliar($familiar`pocket professor`);
-            uniform();
-            equip($slot`off-hand`, $item`latte lovers member's mug`);
-            equip($slot`acc1`, $item`hewn moon-rune spoon`);
-            equip($slot`acc2`, $item`beach comb`);
-            equip($slot`acc3`, $item`brutal brogues`);
-            const profchain = Macro.step(delevel)
-                .trySkill("Lecture on Relativity")
-                .step(candyblast)
-                .attack()
-                .repeat();
-            profchain.setAutoAttack();
-            if (kramcoCheck()) {
-                equip($slot`off-hand`, $item`Kramco Sausage-o-Matic™`);
-                do {
-                    adv1($location`madness bakery`, -1, profchain.toString());
-                } while (get("lastEncounter") === "Our Bakery in the Middle of Our Street");
-                while (inMultiFight()) runCombat(profchain.toString());
-            } else if (get("_witchessFights") < 3) {
-                Witchess.fightPiece($monster`witchess bishop`);
-                runCombat();
-                while (inMultiFight()) runCombat();
-            }
-        }
-
         cliExecute("backupcamera ml");
 
         uniform();
@@ -643,6 +616,33 @@ try {
                 );
             }
         }*/
+
+        heal();
+        if (get("_pocketProfessorLectures") === 0) {
+            useFamiliar($familiar`pocket professor`);
+            uniform();
+            equip($slot`off-hand`, $item`latte lovers member's mug`);
+            equip($slot`acc1`, $item`hewn moon-rune spoon`);
+            equip($slot`acc2`, $item`beach comb`);
+            equip($slot`acc3`, $item`brutal brogues`);
+            const profchain = Macro.step(delevel)
+                .trySkill("Lecture on Relativity")
+                .step(candyblast)
+                .attack()
+                .repeat();
+            profchain.setAutoAttack();
+            if (kramcoCheck()) {
+                equip($slot`off-hand`, $item`Kramco Sausage-o-Matic™`);
+                do {
+                    adv1($location`madness bakery`, -1, profchain.toString());
+                } while (get("lastEncounter") === "Our Bakery in the Middle of Our Street");
+                while (inMultiFight()) runCombat(profchain.toString());
+            } else if (get("_witchessFights") < 3) {
+                Witchess.fightPiece($monster`witchess bishop`);
+                runCombat();
+                while (inMultiFight()) runCombat();
+            }
+        }
 
         setChoice(1322, 2);
         setChoice(1324, 5);
