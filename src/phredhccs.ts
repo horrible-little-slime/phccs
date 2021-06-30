@@ -112,13 +112,6 @@ const startTime = gametimeToInt();
 try {
     if (!testDone(Test.COIL_WIRE)) {
         SourceTerminal.educate([$skill`extract`, $skill`portscan`]);
-        setClan("Bonus Adventures from Hell");
-        if (get("_clanFortuneConsultUses") < 3) {
-            while (get("_clanFortuneConsultUses") < 3) {
-                cliExecute("fortune cheesefax");
-                cliExecute("wait 5");
-            }
-        }
         setClan("Alliance From Heck");
 
         if (myLevel() === 1 && mySpleenUse() === 0) {
