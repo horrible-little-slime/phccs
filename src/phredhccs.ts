@@ -1092,10 +1092,6 @@ try {
         equip($slot`acc3`, $item`powerful glove`);
         ensureEffect($effect`invisible avatar`);
         ensureEffect($effect`Blessing of the bird`);
-        if (!have($effect`gummed shoes`)) {
-            retrieveItem($item`shoe gum`);
-            use($item`shoe gum`);
-        }
         if (!get("_clanFortuneBuffUsed")) cliExecute("fortune buff familiar");
 
         if (haveEffect($effect`fat leon's phat loot lyric`))
@@ -1129,8 +1125,13 @@ try {
         useFamiliar($familiar`disgeist`);
         maximize("-combat, +equip kremlin", false);
         if (Math.round(numericModifier("combat rate")) > -40) {
-            throw "failed to cap noncombat";
+            if (!have($effect`shoe gummed`)) {
+                if (availableAmount($item`cop dollar`) < 10) cliExecute("detective solver.ash");
+                buy($coinmaster`Precinct Materiel Division`, 1, $item`shoe gum`);
+                use($item`shoe gum`);
+            }
         }
+        if (Math.round(numericModifier("combat rate")) > -40) throw "Failed to cap noncombat";
         const prediction = 60 + (20 + numericModifier("combat rate")) * 3;
         doTest(Test.NONCOMBAT);
         tests.push({
