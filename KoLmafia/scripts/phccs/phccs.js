@@ -39367,7 +39367,7 @@ try {
     (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.maximize)("-combat, +equip kremlin", false);
 
     if (Math.round((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.numericModifier)("combat rate")) > -40) {
-      if (!(0,libram__WEBPACK_IMPORTED_MODULE_2__.have)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$effect)(_templateObject363 || (_templateObject363 = _taggedTemplateLiteral(["shoe gummed"]))))) {
+      if (!(0,libram__WEBPACK_IMPORTED_MODULE_2__.have)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$effect)(_templateObject363 || (_templateObject363 = _taggedTemplateLiteral(["gummed shoes"]))))) {
         if ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.availableAmount)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject364 || (_templateObject364 = _taggedTemplateLiteral(["cop dollar"])))) < 10) (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.cliExecute)("detective solver.ash");
         (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.buy)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$coinmaster)(_templateObject365 || (_templateObject365 = _taggedTemplateLiteral(["Precinct Materiel Division"]))), 1, (0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject366 || (_templateObject366 = _taggedTemplateLiteral(["shoe gum"]))));
         (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.use)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject367 || (_templateObject367 = _taggedTemplateLiteral(["shoe gum"]))));

@@ -1125,7 +1125,7 @@ try {
         useFamiliar($familiar`disgeist`);
         maximize("-combat, +equip kremlin", false);
         if (Math.round(numericModifier("combat rate")) > -40) {
-            if (!have($effect`shoe gummed`)) {
+            if (!have($effect`gummed shoes`)) {
                 if (availableAmount($item`cop dollar`) < 10) cliExecute("detective solver.ash");
                 buy($coinmaster`Precinct Materiel Division`, 1, $item`shoe gum`);
                 use($item`shoe gum`);
