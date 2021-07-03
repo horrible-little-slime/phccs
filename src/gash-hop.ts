@@ -1,7 +1,9 @@
 import {
+    buy,
     cliExecute,
     eudora,
     getCampground,
+    getChateau,
     getWorkshed,
     myAdventures,
     use,
@@ -24,6 +26,9 @@ if (!Object.getOwnPropertyNames(getCampground()).includes(garden.name))
     throw "Unable to plant peppermint!";
 
 if (eudora() !== "GameInformPowerDailyPro Magazine") eudora("game");
+
+if (!getChateau()["foreign language tapes"]) buy($item`foreign language tapes`);
+if (!getChateau()["ceiling fan"]) buy($item`ceiling fan`);
 
 visitUrl("ascend.php?action=ascend&confirm=on&confirm2=on");
 ascend(path.katarnCore, $class`pastamancer`, lifestyle.hardcore, "knoll", $item`astral six-pack`);

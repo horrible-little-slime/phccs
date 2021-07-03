@@ -38084,7 +38084,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var libram__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! libram */ "../node_modules/libram/dist/index.js");
 /* harmony import */ var libram__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(libram__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _ascend__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ascend */ "./src/ascend.ts");
-var _templateObject, _templateObject2, _templateObject3, _templateObject4;
+var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5, _templateObject6;
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
@@ -38100,8 +38100,10 @@ if ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.getWorkshed)() !== car) throw "Unab
 if (!Object.getOwnPropertyNames((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.getCampground)()).includes(garden.name) && (0,libram__WEBPACK_IMPORTED_MODULE_2__.have)(garden)) (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.use)(garden);
 if (!Object.getOwnPropertyNames((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.getCampground)()).includes(garden.name)) throw "Unable to plant peppermint!";
 if ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.eudora)() !== "GameInformPowerDailyPro Magazine") (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.eudora)("game");
+if (!(0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.getChateau)()["foreign language tapes"]) (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.buy)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["foreign language tapes"]))));
+if (!(0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.getChateau)()["ceiling fan"]) (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.buy)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["ceiling fan"]))));
 (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.visitUrl)("ascend.php?action=ascend&confirm=on&confirm2=on");
-(0,_ascend__WEBPACK_IMPORTED_MODULE_1__.ascend)(_ascend__WEBPACK_IMPORTED_MODULE_1__.path.katarnCore, (0,libram__WEBPACK_IMPORTED_MODULE_2__.$class)(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["pastamancer"]))), _ascend__WEBPACK_IMPORTED_MODULE_1__.lifestyle.hardcore, "knoll", (0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["astral six-pack"]))));
+(0,_ascend__WEBPACK_IMPORTED_MODULE_1__.ascend)(_ascend__WEBPACK_IMPORTED_MODULE_1__.path.katarnCore, (0,libram__WEBPACK_IMPORTED_MODULE_2__.$class)(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["pastamancer"]))), _ascend__WEBPACK_IMPORTED_MODULE_1__.lifestyle.hardcore, "knoll", (0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["astral six-pack"]))));
 
 /***/ }),
 
