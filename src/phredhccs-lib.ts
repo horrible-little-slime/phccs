@@ -241,8 +241,8 @@ export function kramcoCheck() {
     return totalTurnsPlayed() - get("_lastSausageMonsterTurn") + 1 >= kramcoNumber;
 }
 
-export function useDefaultFamiliar() {
-    if (!get("_bagOfCandy")) {
+export function useDefaultFamiliar(canAttack: boolean = true) {
+    if (!get("_bagOfCandy") && !canAttack) {
         useFamiliar($familiar`stocking mimic`);
     } else if (get("camelSpit") !== 100) {
         useFamiliar($familiar`melodramedary`);
@@ -250,7 +250,8 @@ export function useDefaultFamiliar() {
     } else if (
         !have($item`short stack of pancakes`) &&
         !have($effect`shortly stacked`) &&
-        !testDone(Test.FAMILIAR)
+        !testDone(Test.FAMILIAR) &&
+        !canAttack
     ) {
         useFamiliar($familiar`shorter-order cook`);
     } else if (!have($item`burning newspaper`) && !have($item`burning paper crane`)) {

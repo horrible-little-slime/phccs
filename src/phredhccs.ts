@@ -265,7 +265,7 @@ try {
         equip($slot`acc1`, $item`eight days a week pill keeper`);
         equip($slot`acc2`, $item`powerful glove`);
         equip($slot`acc3`, $item`Lil' Doctor™ Bag`);
-        cliExecute("/cast * candy hearts");
+        cliExecute("/cast * candy heart");
         doTest(Test.COIL_WIRE);
         tests.push({
             testName: "wire-coiling",
@@ -879,7 +879,7 @@ try {
         if (!have($effect`Bat-Adjacent Form`)) {
             const run = Macro.skill($skill`become a bat`);
             if (!get("_latteBanishUsed")) {
-                useFamiliar($familiar`none`);
+                useDefaultFamiliar(false);
                 equip($slot`off-hand`, $item`latte lovers member's mug`);
                 equip($slot`back`, $item`vampyric cloake`);
                 run.skill($skill`throw latte`);
@@ -981,10 +981,10 @@ try {
         if (!get("_clanFortuneBuffUsed")) cliExecute("fortune buff familiar");
 
         uniform();
-        useFamiliar($familiar`none`);
+        useDefaultFamiliar(false);
         if (get("_monstersMapped") < 3 && !have($item`lava-proof pants`)) {
             equip($slot`back`, $item`vampyric cloake`);
-            useFamiliar($familiar`none`);
+            useDefaultFamiliar(false);
             while (getFuel() < 137) fuelUp();
             mapMacro(
                 $location`LavaCo™ Lamp Factory`,
@@ -1157,7 +1157,7 @@ try {
         if (have($item`silver face paint`)) ensureEffect($effect`robot friends`);
         if (!get("_clanFortuneBuffUsed")) cliExecute("fortune buff familiar");
         if (have($item`burning newspaper`)) create(1, $item`burning paper crane`);
-        useFamiliar($familiar`none`);
+        useDefaultFamiliar(false);
         horse("dark");
         uniform();
         setChoice(1387, 3);
