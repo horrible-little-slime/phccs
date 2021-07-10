@@ -242,16 +242,16 @@ export function kramcoCheck() {
 }
 
 export function useDefaultFamiliar(canAttack: boolean = true) {
-    if (!get("_bagOfCandy") && !canAttack) {
+    if (!get("_bagOfCandy") && canAttack) {
         useFamiliar($familiar`stocking mimic`);
     } else if (get("camelSpit") !== 100) {
         useFamiliar($familiar`melodramedary`);
         equip($slot`familiar`, $item`dromedary drinking helmet`);
     } else if (
+        canAttack &&
         !have($item`short stack of pancakes`) &&
         !have($effect`shortly stacked`) &&
-        !testDone(Test.FAMILIAR) &&
-        !canAttack
+        !testDone(Test.FAMILIAR)
     ) {
         useFamiliar($familiar`shorter-order cook`);
     } else if (!have($item`burning newspaper`) && !have($item`burning paper crane`)) {
