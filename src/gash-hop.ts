@@ -10,7 +10,8 @@ import {
     visitUrl,
 } from "kolmafia";
 import { $item, have, get, $class } from "libram";
-import { ascend, lifestyle, path } from "./ascend";
+import { ascend, Lifestyle } from "./ascend";
+import { Paths } from "./Path";
 
 cliExecute("breakfast");
 if (myAdventures() > 0) throw "You sure about that one, cowboy?";
@@ -31,4 +32,10 @@ if (!getChateau()["foreign language tapes"]) buy($item`foreign language tapes`);
 if (!getChateau()["ceiling fan"]) buy($item`ceiling fan`);
 
 visitUrl("ascend.php?action=ascend&confirm=on&confirm2=on");
-ascend(path.katarnCore, $class`pastamancer`, lifestyle.hardcore, "knoll", $item`astral six-pack`);
+ascend(
+    Paths.CommunityService,
+    $class`pastamancer`,
+    Lifestyle.hardcore,
+    "knoll",
+    $item`astral six-pack`
+);
