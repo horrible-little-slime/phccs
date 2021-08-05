@@ -1376,4 +1376,5 @@ try {
         )}, assuming it ran contiguously. Otherwise, this run of the program lasted that much time. Hope whatever number you see is good!`,
         "red"
     );
+    setAutoAttack(0);
 }
