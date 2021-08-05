@@ -81,14 +81,6 @@ var __read = this && this.__read || function (o, n) {
   return ar;
 };
 
-var __spread = this && this.__spread || function () {
-  for (var ar = [], i = 0; i < arguments.length; i++) {
-    ar = ar.concat(__read(arguments[i]));
-  }
-
-  return ar;
-};
-
 var __values = this && this.__values || function (o) {
   var s = typeof Symbol === "function" && Symbol.iterator,
       m = s && o[s],
@@ -104,6 +96,14 @@ var __values = this && this.__values || function (o) {
     }
   };
   throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
+};
+
+var __spread = this && this.__spread || function () {
+  for (var ar = [], i = 0; i < arguments.length; i++) {
+    ar = ar.concat(__read(arguments[i]));
+  }
+
+  return ar;
 };
 
 var __importDefault = this && this.__importDefault || function (mod) {
@@ -186,35 +186,6 @@ var WHITELIST_DEGREE_PATTERN = /*#__PURE__*/_wrapRegExp(/(.*?) \(\xB0([0-9]+)\)/
   degree: 2
 });
 
-function arrayToCountedMap(array) {
-  if (!Array.isArray(array)) return array;
-  var map = new Map();
-  array.forEach(function (item) {
-    map.set(item, (map.get(item) || 0) + 1);
-  });
-  return map;
-}
-
-function countedMapToArray(map) {
-  return __spread(map).flatMap(function (_a) {
-    var _b = __read(_a, 2),
-        item = _b[0],
-        quantity = _b[1];
-
-    return Array(quantity).fill(item);
-  });
-}
-
-function countedMapToString(map) {
-  return __spread(map).map(function (_a) {
-    var _b = __read(_a, 2),
-        item = _b[0],
-        quantity = _b[1];
-
-    return quantity + " x " + item;
-  }).join(", ");
-}
-
 var Clan =
 /** @class */
 function () {
@@ -237,13 +208,13 @@ function () {
   returnFn, // eslint-disable-next-line @typescript-eslint/no-explicit-any
   callback) {
     var borrowed = borrowFn();
-    var map = arrayToCountedMap(borrowed);
+    var map = utils_1.arrayToCountedMap(borrowed);
 
     try {
       return callback(borrowed);
     } finally {
       if (map.size > 0) {
-        var returned_1 = arrayToCountedMap(returnFn(borrowed));
+        var returned_1 = utils_1.arrayToCountedMap(returnFn(borrowed));
         map.forEach(function (quantity, item) {
           var remaining = quantity - (returned_1.get(item) || 0);
 
@@ -255,7 +226,7 @@ function () {
         });
 
         if (map.size > 0) {
-          logger_1["default"].error("Failed to return <b>" + countedMapToString(map) + "</b> to <b>" + this.name + "</b> stash");
+          logger_1["default"].error("Failed to return <b>" + utils_1.countedMapToString(map) + "</b> to <b>" + this.name + "</b> stash");
         }
       }
     }
@@ -464,7 +435,7 @@ function () {
   };
 
   Clan.prototype.take = function (items) {
-    var map = arrayToCountedMap(items);
+    var map = utils_1.arrayToCountedMap(items);
     map.forEach(function (quantity, item) {
       var e_1, _a, e_2, _b;
 
@@ -531,26 +502,26 @@ function () {
         }
       }
     });
-    return Array.isArray(items) ? countedMapToArray(map) : map;
+    return Array.isArray(items) ? utils_1.countedMapToArray(map) : map;
   };
 
   Clan.prototype.put = function (items) {
-    var map = arrayToCountedMap(items);
-    if (!this.check()) throw new Error("Wanted to return " + countedMapToString(map) + " to " + this.name + " but KoLmafia's clan data is out of sync");
+    var map = utils_1.arrayToCountedMap(items);
+    if (!this.check()) throw new Error("Wanted to return " + utils_1.countedMapToString(map) + " to " + this.name + " but KoLmafia's clan data is out of sync");
     map.forEach(function (quantity, item) {
       kolmafia_1.retrieveItem(quantity, item);
       var returned = Math.min(quantity, kolmafia_1.availableAmount(item));
       kolmafia_1.putStash(returned, item);
       map.set(item, quantity - returned);
     });
-    return Array.isArray(items) ? countedMapToArray(map) : map;
+    return Array.isArray(items) ? utils_1.countedMapToArray(map) : map;
   }; // eslint-disable-next-line @typescript-eslint/no-explicit-any
 
 
   Clan.prototype.withStash = function (items, callback) {
     var _this = this;
 
-    var map = arrayToCountedMap(items);
+    var map = utils_1.arrayToCountedMap(items);
     return Clan._withStash(function () {
       return _this.take(map);
     }, function (borrowed) {
@@ -613,6 +584,313 @@ function () {
 }();
 
 exports.Copier = Copier;
+
+/***/ }),
+
+/***/ "../node_modules/libram/dist/Kmail.js":
+/*!********************************************!*\
+  !*** ../node_modules/libram/dist/Kmail.js ***!
+  \********************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var __read = this && this.__read || function (o, n) {
+  var m = typeof Symbol === "function" && o[Symbol.iterator];
+  if (!m) return o;
+  var i = m.call(o),
+      r,
+      ar = [],
+      e;
+
+  try {
+    while ((n === void 0 || n-- > 0) && !(r = i.next()).done) {
+      ar.push(r.value);
+    }
+  } catch (error) {
+    e = {
+      error: error
+    };
+  } finally {
+    try {
+      if (r && !r.done && (m = i["return"])) m.call(i);
+    } finally {
+      if (e) throw e.error;
+    }
+  }
+
+  return ar;
+};
+
+var __spread = this && this.__spread || function () {
+  for (var ar = [], i = 0; i < arguments.length; i++) {
+    ar = ar.concat(__read(arguments[i]));
+  }
+
+  return ar;
+};
+
+var __values = this && this.__values || function (o) {
+  var s = typeof Symbol === "function" && Symbol.iterator,
+      m = s && o[s],
+      i = 0;
+  if (m) return m.call(o);
+  if (o && typeof o.length === "number") return {
+    next: function next() {
+      if (o && i >= o.length) o = void 0;
+      return {
+        value: o && o[i++],
+        done: !o
+      };
+    }
+  };
+  throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
+};
+
+Object.defineProperty(exports, "__esModule", ({
+  value: true
+}));
+
+__webpack_require__(/*! core-js/features/object/entries */ "../node_modules/libram/node_modules/core-js/features/object/entries.js");
+
+var kolmafia_1 = __webpack_require__(/*! kolmafia */ "kolmafia");
+
+var utils_1 = __webpack_require__(/*! ./utils */ "../node_modules/libram/dist/utils.js");
+
+var Kmail =
+/** @class */
+function () {
+  function Kmail(rawKmail) {
+    this.id = Number(rawKmail.id);
+    this.date = new Date(rawKmail.localtime);
+    this.type = rawKmail.type;
+    this.senderId = Number(rawKmail.fromid);
+    this.senderName = rawKmail.fromname;
+    this.message = rawKmail.message;
+  }
+  /**
+   * Parses a kmail from KoL's native format
+   *
+   * @param rawKmail Kmail in the format supplies by api.php
+   * @returns Parsed kmail
+   */
+
+
+  Kmail.parse = function (rawKmail) {
+    return new Kmail(rawKmail);
+  };
+  /**
+   * Returns all of the player's kmails
+   *
+   * @returns Parsed kmails
+   */
+
+
+  Kmail.inbox = function () {
+    return JSON.parse(kolmafia_1.visitUrl("api.php?what=kmail&for=ASSistant")).map(Kmail.parse);
+  };
+  /**
+   * Bulk delete kmails
+   *
+   * @param kmails Kmails to delete
+   * @returns Number of kmails deleted
+   */
+
+
+  Kmail["delete"] = function (kmails) {
+    var _a, _b;
+
+    var results = kolmafia_1.visitUrl("messages.php?the_action=delete&box=Inbox&pwd&" + kmails.map(function (k) {
+      return "sel" + k.id + "=on";
+    }).join("&"));
+    return Number((_b = (_a = results.match(/<td>(\d) messages? deleted.<\/td>/)) === null || _a === void 0 ? void 0 : _a[1]) !== null && _b !== void 0 ? _b : 0);
+  };
+
+  Kmail._genericSend = function (to, message, items, meat, chunkSize, constructUrl, successString) {
+    var e_1, _a;
+
+    var m = meat;
+
+    var sendableItems = __spread(utils_1.arrayToCountedMap(items).entries()).filter(function (_a) {
+      var _b = __read(_a, 1),
+          item = _b[0];
+
+      return kolmafia_1.isGiftable(item);
+    });
+
+    var result = true;
+    var chunks = utils_1.chunk(sendableItems, chunkSize);
+
+    try {
+      // Split the items to be sent into chunks of max 11 item types
+      for (var _b = __values(chunks.length > 0 ? chunks : [null]), _c = _b.next(); !_c.done; _c = _b.next()) {
+        var c = _c.value;
+        var itemsQuery = c === null ? [] : c.map(function (_a, index) {
+          var _b = __read(_a, 2),
+              item = _b[0],
+              quantity = _b[1];
+
+          return "whichitem" + (index + 1) + "=" + kolmafia_1.toInt(item) + "&howmany" + (index + 1) + "=" + quantity;
+        });
+        var r = kolmafia_1.visitUrl(constructUrl(m, itemsQuery.join("&"), itemsQuery.length));
+
+        if (r.includes("That player cannot receive Meat or items")) {
+          return Kmail.gift(to, message, items, meat);
+        } // Make sure we don't send the same batch of meat with every chunk
+
+
+        m = 0;
+        result && (result = r.includes(successString));
+      }
+    } catch (e_1_1) {
+      e_1 = {
+        error: e_1_1
+      };
+    } finally {
+      try {
+        if (_c && !_c.done && (_a = _b["return"])) _a.call(_b);
+      } finally {
+        if (e_1) throw e_1.error;
+      }
+    }
+
+    return result;
+  };
+  /**
+   * Sends a kmail to a player
+   *
+   * Sends multiple kmails if more than 11 unique item types are attached.
+   * Ignores any ungiftable items.
+   * Sends a gift package to players in run
+   *
+   * @param to The player name or id to receive the kmail
+   * @param message The text contents of the message
+   * @param items The items to be attached
+   * @param meat The quantity of meat to be attached
+   * @returns True if the kmail was successfully sent
+   */
+
+
+  Kmail.send = function (to, message, items, meat) {
+    if (message === void 0) {
+      message = "";
+    }
+
+    if (items === void 0) {
+      items = [];
+    }
+
+    if (meat === void 0) {
+      meat = 0;
+    }
+
+    return Kmail._genericSend(to, message, items, meat, 11, function (meat, itemsQuery) {
+      return "sendmessage.php?action=send&pwd&towho=" + to + "&message=" + message + (itemsQuery ? "&" + itemsQuery : "") + "&sendmeat=" + meat;
+    }, ">Message sent.</");
+  };
+  /**
+   * Sends a gift to a player
+   *
+   * Sends multiple kmails if more than 3 unique item types are attached.
+   * Ignores any ungiftable items.
+   *
+   * @param to The player name or id to receive the gift
+   * @param note The note on the outside of the gift
+   * @param items The items to be attached
+   * @param meat The quantity of meat to be attached
+   * @param insideNode The note on the inside of the gift
+   * @returns True if the gift was successfully sent
+   */
+
+
+  Kmail.gift = function (to, message, items, meat, insideNote) {
+    if (message === void 0) {
+      message = "";
+    }
+
+    if (items === void 0) {
+      items = [];
+    }
+
+    if (meat === void 0) {
+      meat = 0;
+    }
+
+    if (insideNote === void 0) {
+      insideNote = "";
+    }
+
+    var baseUrl = "town_sendgift.php?action=Yep.&pwd&fromwhere=0&note=" + message + "&insidenote=" + insideNote + "&towho=" + to;
+    return Kmail._genericSend(to, message, items, meat, 3, function (m, itemsQuery, chunkSize) {
+      return baseUrl + "&whichpackage=" + chunkSize + (itemsQuery ? "&" + itemsQuery : "") + "&sendmeat=" + m;
+    }, ">Package sent.</");
+  };
+  /**
+   * Delete the kmail
+   *
+   * @returns Whether the kmail was deleted
+   */
+
+
+  Kmail.prototype["delete"] = function () {
+    return Kmail["delete"]([this]) === 1;
+  };
+  /**
+   * Get items attached to the kmail
+   *
+   * @returns Map of items attached to the kmail and their quantities
+   */
+
+
+  Kmail.prototype.items = function () {
+    return new Map(Object.entries(kolmafia_1.extractItems(this.message)).map(function (_a) {
+      var _b = __read(_a, 2),
+          itemName = _b[0],
+          quantity = _b[1];
+
+      return [Item.get(itemName), quantity];
+    }));
+  };
+  /**
+   * Get meat attached to the kmail
+   *
+   * @returns Meat attached to the kmail
+   */
+
+
+  Kmail.prototype.meat = function () {
+    return kolmafia_1.extractMeat(this.message);
+  };
+  /**
+   * Reply to kmail
+   *
+   * @see Kmail.send
+   *
+   * @returns True if the kmail was successfully sent
+   */
+
+
+  Kmail.prototype.reply = function (message, items, meat) {
+    if (message === void 0) {
+      message = "";
+    }
+
+    if (items === void 0) {
+      items = [];
+    }
+
+    if (meat === void 0) {
+      meat = 0;
+    }
+
+    return Kmail.send(this.senderId, message, items, meat);
+  };
+
+  return Kmail;
+}();
+
+exports.default = Kmail;
 
 /***/ }),
 
@@ -1309,7 +1587,7 @@ var __importDefault = this && this.__importDefault || function (mod) {
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
-exports.set = exports.get = exports.property = exports.console = exports.logger = void 0;
+exports.withChoice = exports.withChoices = exports.withProperty = exports.withProperties = exports.setProperties = exports.set = exports.get = exports.property = exports.console = exports.logger = exports.Kmail = void 0;
 
 __exportStar(__webpack_require__(/*! ./Clan */ "../node_modules/libram/dist/Clan.js"), exports);
 
@@ -1326,6 +1604,15 @@ __exportStar(__webpack_require__(/*! ./resources */ "../node_modules/libram/dist
 __exportStar(__webpack_require__(/*! ./since */ "../node_modules/libram/dist/since.js"), exports);
 
 __exportStar(__webpack_require__(/*! ./template-string */ "../node_modules/libram/dist/template-string.js"), exports);
+
+var Kmail_1 = __webpack_require__(/*! ./Kmail */ "../node_modules/libram/dist/Kmail.js");
+
+Object.defineProperty(exports, "Kmail", ({
+  enumerable: true,
+  get: function get() {
+    return __importDefault(Kmail_1)["default"];
+  }
+}));
 
 var logger_1 = __webpack_require__(/*! ./logger */ "../node_modules/libram/dist/logger.js");
 
@@ -1350,6 +1637,36 @@ Object.defineProperty(exports, "set", ({
   enumerable: true,
   get: function get() {
     return property_1.set;
+  }
+}));
+Object.defineProperty(exports, "setProperties", ({
+  enumerable: true,
+  get: function get() {
+    return property_1.setProperties;
+  }
+}));
+Object.defineProperty(exports, "withProperties", ({
+  enumerable: true,
+  get: function get() {
+    return property_1.withProperties;
+  }
+}));
+Object.defineProperty(exports, "withProperty", ({
+  enumerable: true,
+  get: function get() {
+    return property_1.withProperty;
+  }
+}));
+Object.defineProperty(exports, "withChoices", ({
+  enumerable: true,
+  get: function get() {
+    return property_1.withChoices;
+  }
+}));
+Object.defineProperty(exports, "withChoice", ({
+  enumerable: true,
+  get: function get() {
+    return property_1.withChoice;
   }
 }));
 
@@ -3578,7 +3895,7 @@ function isUnfinishedIceSculptureUsed() {
 exports.isUnfinishedIceSculptureUsed = isUnfinishedIceSculptureUsed;
 
 function couldUseUnfinishedIceSculpture() {
-  return lib_1.have(template_string_1.$item(templateObject_3 || (templateObject_3 = __makeTemplateObject(["unfinished ice sculpture"], ["unfinished ice sculpture"])))) && !lib_1.have(template_string_1.$item(templateObject_4 || (templateObject_4 = __makeTemplateObject(["finished ice sculpture"], ["finished ice sculpture"]))));
+  return lib_1.have(template_string_1.$item(templateObject_3 || (templateObject_3 = __makeTemplateObject(["unfinished ice sculpture"], ["unfinished ice sculpture"])))) && !lib_1.have(template_string_1.$item(templateObject_4 || (templateObject_4 = __makeTemplateObject(["ice sculpture"], ["ice sculpture"]))));
 }
 
 exports.couldUseUnfinishedIceSculpture = couldUseUnfinishedIceSculpture;
@@ -3707,7 +4024,7 @@ var property_1 = __webpack_require__(/*! ../../property */ "../node_modules/libr
 
 var template_string_1 = __webpack_require__(/*! ../../template-string */ "../node_modules/libram/dist/template-string.js");
 
-exports.item = template_string_1.$item(templateObject_1 || (templateObject_1 = __makeTemplateObject(["Source Terminal"], ["Source Terminal"])));
+exports.item = template_string_1.$item(templateObject_1 || (templateObject_1 = __makeTemplateObject(["Source terminal"], ["Source terminal"])));
 
 function have() {
   return lib_1.haveInCampground(exports.item);
@@ -4386,7 +4703,7 @@ var property_1 = __webpack_require__(/*! ../../property */ "../node_modules/libr
 
 var template_string_1 = __webpack_require__(/*! ../../template-string */ "../node_modules/libram/dist/template-string.js");
 
-exports.item = template_string_1.$item(templateObject_1 || (templateObject_1 = __makeTemplateObject(["guzzlr tablet"], ["guzzlr tablet"])));
+exports.item = template_string_1.$item(templateObject_1 || (templateObject_1 = __makeTemplateObject(["Guzzlr tablet"], ["Guzzlr tablet"])));
 
 function have() {
   return lib_1.have(exports.item);
@@ -4584,7 +4901,7 @@ exports.getBooze = getBooze;
  * List of the platinum cocktails
  */
 
-exports.Cocktails = template_string_1.$items(templateObject_2 || (templateObject_2 = __makeTemplateObject(["buttery boy, steamboat, ghiaccio colada, nog-on-the-cob, sourfinger"], ["buttery boy, steamboat, ghiaccio colada, nog-on-the-cob, sourfinger"])));
+exports.Cocktails = template_string_1.$items(templateObject_2 || (templateObject_2 = __makeTemplateObject(["Buttery Boy, Steamboat, Ghiaccio Colada, Nog-on-the-Cob, Sourfinger"], ["Buttery Boy, Steamboat, Ghiaccio Colada, Nog-on-the-Cob, Sourfinger"])));
 /**
  * Returns true if the user has a platinum cocktail in their inventory
  */
@@ -5242,15 +5559,50 @@ exports.$thralls = createPluralConstant(Thrall);
 /*!********************************************!*\
   !*** ../node_modules/libram/dist/utils.js ***!
   \********************************************/
-/***/ ((__unused_webpack_module, exports) => {
+/***/ (function(__unused_webpack_module, exports) {
 
 "use strict";
 
 
+var __read = this && this.__read || function (o, n) {
+  var m = typeof Symbol === "function" && o[Symbol.iterator];
+  if (!m) return o;
+  var i = m.call(o),
+      r,
+      ar = [],
+      e;
+
+  try {
+    while ((n === void 0 || n-- > 0) && !(r = i.next()).done) {
+      ar.push(r.value);
+    }
+  } catch (error) {
+    e = {
+      error: error
+    };
+  } finally {
+    try {
+      if (r && !r.done && (m = i["return"])) m.call(i);
+    } finally {
+      if (e) throw e.error;
+    }
+  }
+
+  return ar;
+};
+
+var __spread = this && this.__spread || function () {
+  for (var ar = [], i = 0; i < arguments.length; i++) {
+    ar = ar.concat(__read(arguments[i]));
+  }
+
+  return ar;
+};
+
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
-exports.chunk = exports.clamp = exports.parseNumber = exports.notNull = void 0;
+exports.countedMapToString = exports.countedMapToArray = exports.arrayToCountedMap = exports.chunk = exports.clamp = exports.parseNumber = exports.notNull = void 0;
 
 function notNull(value) {
   return value !== null;
@@ -5294,6 +5646,41 @@ function chunk(array, chunkSize) {
 }
 
 exports.chunk = chunk;
+
+function arrayToCountedMap(array) {
+  if (!Array.isArray(array)) return array;
+  var map = new Map();
+  array.forEach(function (item) {
+    map.set(item, (map.get(item) || 0) + 1);
+  });
+  return map;
+}
+
+exports.arrayToCountedMap = arrayToCountedMap;
+
+function countedMapToArray(map) {
+  return __spread(map).flatMap(function (_a) {
+    var _b = __read(_a, 2),
+        item = _b[0],
+        quantity = _b[1];
+
+    return Array(quantity).fill(item);
+  });
+}
+
+exports.countedMapToArray = countedMapToArray;
+
+function countedMapToString(map) {
+  return __spread(map).map(function (_a) {
+    var _b = __read(_a, 2),
+        item = _b[0],
+        quantity = _b[1];
+
+    return quantity + " x " + item;
+  }).join(", ");
+}
+
+exports.countedMapToString = countedMapToString;
 
 /***/ }),
 
@@ -11308,7 +11695,7 @@ if ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.getWorkshed)() !== car && (0,libram
 if ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.getWorkshed)() !== car) throw "Unable to get the car!";
 if (!Object.getOwnPropertyNames((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.getCampground)()).includes(garden.name) && (0,libram__WEBPACK_IMPORTED_MODULE_3__.have)(garden)) (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.use)(garden);
 if (!Object.getOwnPropertyNames((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.getCampground)()).includes(garden.name)) throw "Unable to plant peppermint!";
-if ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.eudora)() !== "GameInformPowerDailyPro Magazine") (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.eudora)("game");
+if ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.eudora)() !== "Our Daily Candles") (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.eudora)("Candles");
 if (!(0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.getChateau)()["foreign language tapes"]) (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.buy)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$item)(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["foreign language tapes"]))));
 if (!(0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.getChateau)()["ceiling fan"]) (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.buy)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$item)(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["ceiling fan"]))));
 (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.visitUrl)("ascend.php?action=ascend&confirm=on&confirm2=on");
