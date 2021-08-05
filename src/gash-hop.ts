@@ -26,7 +26,7 @@ if (!Object.getOwnPropertyNames(getCampground()).includes(garden.name) && have(g
 if (!Object.getOwnPropertyNames(getCampground()).includes(garden.name))
     throw "Unable to plant peppermint!";
 
-if (eudora() !== "GameInformPowerDailyPro Magazine") eudora("game");
+if (eudora() !== "Our Daily Candles") eudora("Candles");
 
 if (!getChateau()["foreign language tapes"]) buy($item`foreign language tapes`);
 if (!getChateau()["ceiling fan"]) buy($item`ceiling fan`);
