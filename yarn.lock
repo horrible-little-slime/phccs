@@ -1400,6 +1400,11 @@ core-js-compat@^3.8.0:
     browserslist "^4.16.1"
     semver "7.0.0"
 
+core-js@3.15.2:
+  version "3.15.2"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.15.2.tgz#740660d2ff55ef34ce664d7e2455119c5bdd3d61"
+  integrity sha512-tKs41J7NJVuaya8DxIOCnl8QuPHx5/ZVbFo1oKgVl1qHFBBrDctzQGtuLjPpRdNTWmKPH6oEvgN/MUID+l485Q==
+
 core-js@3.9.0:
   version "3.9.0"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.9.0.tgz#790b1bb11553a2272b36e2625c7179db345492f8"
@@ -2137,6 +2142,18 @@ kolmafia@^1.0.3:
   resolved "https://registry.yarnpkg.com/kolmafia/-/kolmafia-1.0.3.tgz#e6f9ad211eb20c54c2e999b4d9713bf25712b2da"
   integrity sha512-e9H+mhYP/xqhfX56AcbVtc5aIsrWbH2LHNQoG5S2i5k0ST4NaMoIQLxBpkFxPs1rUjHPNDcqxxN1McPviqm/BQ==
 
+kolmafia@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/kolmafia/-/kolmafia-1.1.2.tgz#1a05e9b6fc5408bccae9b4ff685f52cc767b3937"
+  integrity sha512-fJSJZgOQ92lI6kTLqSoP8+JZFjRT5RjZyWi84tEYatb1K4VxtCjthAwzO9q4ZKEBCTOABM8KLbQmbLlSIIkNJQ==
+
+"libram@C:\\Users\\wnwil\\Desktop\\my horrible little doings\\libram":
+  version "0.2.2"
+  dependencies:
+    core-js "3.15.2"
+    kolmafia "^1.1.2"
+    lodash "^4.17.21"
+
 libram@^0.0.9:
   version "0.0.9"
   resolved "https://registry.yarnpkg.com/libram/-/libram-0.0.9.tgz#c811545a4b645e3414ffe87c17d729d8df014fad"
@@ -2183,6 +2200,11 @@ lodash@^4.17.19:
   version "4.17.20"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.20.tgz#b44a9b6297bcb698f1c51a3545a2b3b368d59c52"
   integrity sha512-PlhdFcillOINfeV7Ni6oF1TAEayyZBoZ8bcshTHqOYJYlrqzRK5hagpagky5o4HfCzzd1TRkXPMFq6cKk9rGmA==
+
+lodash@^4.17.21:
+  version "4.17.21"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
+  integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
 
 make-dir@^2.1.0:
   version "2.1.0"
