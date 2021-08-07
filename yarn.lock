@@ -2132,18 +2132,18 @@ kolmafia@^1.0.11:
   resolved "https://registry.yarnpkg.com/kolmafia/-/kolmafia-1.0.11.tgz#9778ea2d77e382e736ef09ee4f5d19039c43bc3e"
   integrity sha512-+49aea1Y2oCVQmaCbrf6N/tPFbxn9LCnucK0A12/FGU5gWoN6nrY1y61QG4mEFoO+WtmkOJq9WPG/+Cb1bsD/Q==
 
-kolmafia@^1.1.1:
+kolmafia@^1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/kolmafia/-/kolmafia-1.1.2.tgz#1a05e9b6fc5408bccae9b4ff685f52cc767b3937"
   integrity sha512-fJSJZgOQ92lI6kTLqSoP8+JZFjRT5RjZyWi84tEYatb1K4VxtCjthAwzO9q4ZKEBCTOABM8KLbQmbLlSIIkNJQ==
 
-libram@0.2.3:
-  version "0.2.3"
-  resolved "https://registry.yarnpkg.com/libram/-/libram-0.2.3.tgz#3db1dc5a33887b88d19422ca1e460a98cfe1485f"
-  integrity sha512-+vFyudh/eAcFqpCkBUxWau53BN0bb4X60bIv6NtaY6LruSC8lVEArw1CZNifk9YWuNxcI1pYP4aipY5OuauuLQ==
+libram@^0.2.5:
+  version "0.2.5"
+  resolved "https://registry.yarnpkg.com/libram/-/libram-0.2.5.tgz#48ccc545ff1648ca3cd9397d6bc3970330da2d9e"
+  integrity sha512-1SUEuW0uAzfVz8gyScaH7a2tX/GXlGz4Rl6OdIN98UEjVCiQ8/D4ff582HAgre6RotBn7Txlp1ihcJVyO95csQ==
   dependencies:
     core-js "3.15.2"
-    kolmafia "^1.1.1"
+    kolmafia "^1.1.2"
     lodash "^4.17.21"
 
 loader-runner@^4.2.0:
