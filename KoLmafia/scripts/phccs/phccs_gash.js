@@ -12152,7 +12152,7 @@ function _templateObject6() {
 }
 
 function _templateObject5() {
-  var data = _taggedTemplateLiteral(["foreign language tapes "]);
+  var data = _taggedTemplateLiteral(["foreign language tapes"]);
 
   _templateObject5 = function _templateObject5() {
     return data;
