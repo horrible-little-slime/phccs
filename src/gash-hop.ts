@@ -8,7 +8,7 @@ prepareAscension(
     },
     {
         desk: $item`continental juice bar`,
-        nightstand: $item`foreign language tapes `,
+        nightstand: $item`foreign language tapes`,
         ceiling: $item`ceiling fan`,
     }
 );
