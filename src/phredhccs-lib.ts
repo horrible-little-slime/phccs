@@ -40,8 +40,11 @@ import {
     get,
     have,
     Macro,
+    PropertiesManager,
     property,
 } from "libram";
+
+export const PropertyManager = new PropertiesManager();
 
 export function fuelUp() {
     buy(1, $item`all-purpose flower`);
@@ -376,7 +379,7 @@ export function setClan(target: string) {
 
 export function setChoice(adv: number, choice: number) {
     //stolen directly from bean
-    setProperty(`choiceAdventure${adv}`, `${choice}`);
+    PropertyManager.setChoices({ [adv]: choice });
 }
 
 export function uniform() {
@@ -531,6 +534,6 @@ export function fax(monster: Monster): void {
             wait(10);
             if (checkFax(monster)) return;
         }
-        abort("Failed to acquire photocopied Knob Goblin Embezzler.");
+        abort(`Failed to acquire photocopied ${monster.name}.`);
     }
 }

@@ -90,6 +90,7 @@ import {
     kramcoCheck,
     mapMacro,
     multiFightAutoAttack,
+    PropertyManager,
     setChoice,
     setClan,
     synthExp,
@@ -978,6 +979,7 @@ try {
         ensureEffect($effect`Leash of Linguini`);
         ensureEffect($effect`Blood Bond`);
         ensureEffect($effect`Billiards Belligerence`);
+        ensureEffect($effect`Singer's Faithful Ocelot`);
         if (!get("_clanFortuneBuffUsed")) cliExecute("fortune buff familiar");
 
         uniform();
@@ -1298,7 +1300,7 @@ try {
             ensureEffect($effect`Baconstoned`);
         }
 
-        if (!have($effect`saucefingers`) && myClass() === $class`sauceror` && myLevel() >= 15) {
+        if (!have($effect`saucefingers`) && myClass() === $class`pastamancer` && myLevel() >= 15) {
             useFamiliar($familiar`mini-adventurer`);
             horse("dark");
             uniform();
@@ -1377,4 +1379,5 @@ try {
         "red"
     );
     setAutoAttack(0);
+    PropertyManager.resetAll();
 }
