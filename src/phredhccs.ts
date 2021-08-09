@@ -65,6 +65,7 @@ import {
     have,
     Macro,
     property,
+    set,
     SourceTerminal,
     TunnelOfLove,
     uneffect,
@@ -1173,6 +1174,7 @@ try {
                     runChoice(3);
                 }
             );
+            set("_meteorShowerUses", 1 + get("_meteorShowerUses"));
         }
         if (!have($item`astral pet sweater`)) {
             if (!have($item`cracker`)) {
@@ -1242,6 +1244,7 @@ try {
                 Macro.skill($skill`meteor shower`).skill($skill`use the force`)
             );
             if (handlingChoice()) runChoice(-1);
+            set("_meteorShowerUses", 1 + get("_meteorShowerUses"));
         }
         ensureEffect($effect`bow-legged swagger`);
         ensureEffect($effect`blessing of the bird`);
@@ -1335,6 +1338,17 @@ try {
                 );
                 if (handlingChoice()) runChoice(-1);
             }
+        }
+
+        if (!have($effect`meteor showered`) && get("_meteorShowerUses") < 5) {
+            uniform();
+            setChoice(1387, 3);
+            advMacroAA(
+                $location`the dire warren`,
+                Macro.skill($skill`meteor shower`).skill($skill`use the force`)
+            );
+            if (handlingChoice()) runChoice(-1);
+            set("_meteorShowerUses", 1 + get("_meteorShowerUses"));
         }
 
         buy(3, $item`obsidian nutcracker`);
