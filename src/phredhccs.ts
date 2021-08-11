@@ -1313,7 +1313,7 @@ try {
             advMacroAA(
                 $location`the dire warren`,
                 Macro.externalIf(
-                    have($effect`cowrruption`) && have($effect`spat upon`),
+                    have($effect`cowrruption`) && have($effect`spit upon`),
                     Macro.skill("Meteor Shower").skill("Use the Force")
                 ).skill($skill`feel hatred`),
                 () => have($effect`saucefingers`)
