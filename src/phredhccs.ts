@@ -1303,6 +1303,8 @@ try {
             ensureEffect($effect`Baconstoned`);
         }
 
+        ensureInnerElf();
+
         if (!have($effect`saucefingers`) && myClass() === $class`pastamancer` && myLevel() >= 15) {
             useFamiliar($familiar`mini-adventurer`);
             horse("dark");
@@ -1310,12 +1312,13 @@ try {
             setChoice(768, 4);
             advMacroAA(
                 $location`the dire warren`,
-                Macro.skill($skill`feel hatred`),
-                () => get("miniAdvClass") === 0
+                Macro.externalIf(
+                    have($effect`cowrruption`) && have($effect`spat upon`),
+                    Macro.skill("Meteor Shower").skill("Use the Force")
+                ).skill($skill`feel hatred`),
+                () => have($effect`saucefingers`)
             );
         }
-
-        ensureInnerElf();
 
         if (!have($effect`meteor showered`)) {
             uniform();
