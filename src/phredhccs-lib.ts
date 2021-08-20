@@ -15,6 +15,7 @@ import {
     haveEffect,
     inMultiFight,
     myMaxhp,
+    myTurncount,
     print,
     restoreHp,
     runChoice,
@@ -32,6 +33,7 @@ import {
 } from "kolmafia";
 import {
     $effect,
+    $effects,
     $familiar,
     $item,
     $location,
@@ -377,8 +379,7 @@ export function setClan(target: string) {
     return true;
 }
 
-export function setChoice(adv: number, choice: number) {
-    //stolen directly from bean
+export function setChoice(adv: number, choice: number | string) {
     PropertyManager.setChoices({ [adv]: choice });
 }
 
@@ -412,18 +413,6 @@ export function tryUse(quantity: number, it: Item) {
         return false;
     }
 }
-
-export const delevel = Macro.skill("curse of weaksauce")
-    .skill("micrometeor")
-    .item("time-spinner")
-    .skill("summon love gnats");
-
-export const candyblast = Macro.while_(
-    '!match "Hey, some of it is even intact afterwards!"',
-    Macro.skill("candyblast")
-);
-
-export const easyFight = Macro.skill("extract").skill("sing along");
 
 export function multiFightAutoAttack() {
     while (choiceFollowsFight() || inMultiFight()) {
@@ -536,4 +525,52 @@ export function fax(monster: Monster): void {
         }
         abort(`Failed to acquire photocopied ${monster.name}.`);
     }
+}
+
+export const tests: testDuration[] = [];
+
+export function testWrapper(name: string, test: Test, prepare: () => number) {
+    if (testDone(test)) return;
+    const startTurns = myTurncount();
+    const predictedTurns = prepare();
+    doTest(test);
+    tests.push({
+        testName: name,
+        turnPrediction: predictedTurns,
+        turnCost: myTurncount() - startTurns,
+    });
+}
+
+export function questStep(questName: string): number {
+    const stringStep = property.getString(questName);
+    if (stringStep === "unstarted" || stringStep === "") return -1;
+    else if (stringStep === "started") return 0;
+    else if (stringStep === "finished") return 999;
+    else {
+        if (stringStep.substring(0, 4) !== "step") {
+            throw "Quest state parsing error.";
+        }
+        return parseInt(stringStep.substring(4), 10);
+    }
+}
+
+const heads = [
+    $effect`hot-headed`,
+    $effect`cold as nice`,
+    $effect`a brush with grossness`,
+    $effect`does it have a skull in there???`,
+    $effect`oiled , slick`,
+    $effect`lack of body-building`,
+    $effect`we're all made of starfish`,
+    $effect`pomp & circumsands`,
+    $effect`resting beach face`,
+    $effect`do i know you from somewhere?`,
+    $effect`you learned something maybe!`,
+];
+
+export function tryHead(effect: Effect) {
+    if (!heads.includes(effect)) return;
+    const headNumber = 1 + heads.indexOf(effect);
+    if (get("_beachHeadsUsed").split(",").includes(headNumber.toString())) return;
+    ensureEffect(effect);
 }

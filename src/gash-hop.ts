@@ -9,7 +9,10 @@ const safariTargets = [
     "Beldur",
     "worthawholebean",
     "ReverKiller",
+    "Asmodais",
+    "The Dictator",
 ];
+
 while ($skill`Experience Safari`.timescast < get("skillLevel180") && safariTargets) {
     useSkill($skill`Experience Safari`, 1, safariTargets[0]);
     safariTargets.shift();
