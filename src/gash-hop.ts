@@ -21,7 +21,7 @@ while ($skill`Experience Safari`.timescast < get("skillLevel180") && safariTarge
 prepareAscension(
     {
         workshed: $item`Asdon Martin keyfob`,
-        garden: $item`Peppermint pip packet`,
+        garden: $item`Peppermint Pip Packet`,
         eudora: $item`Our Daily Candles™ order form`,
     },
     {

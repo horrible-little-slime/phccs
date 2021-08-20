@@ -1,11 +1,11 @@
-import { visitUrl, cliExecute, gametimeToInt, print, setAutoAttack } from "kolmafia";
+import { cliExecute, gametimeToInt, print, setAutoAttack, visitUrl } from "kolmafia";
 import coilWire from "./coil wire";
 import familiarTest from "./familiarweight";
 import hotTest from "./hotres";
 import HPTest from "./HP";
 import itemTest from "./item";
 import noncombatTest from "./noncombat";
-import { testWrapper, Test, convertMilliseconds, PropertyManager, tests } from "./phredhccs-lib";
+import { convertMilliseconds, PropertyManager, Test, tests, testWrapper } from "./phredhccs-lib";
 import spellTest from "./spell";
 import { moxTest, muscleTest, mystTest } from "./stattests";
 import weaponTest from "./weapon";
@@ -43,4 +43,3 @@ try {
     setAutoAttack(0);
     PropertyManager.resetAll();
 }
-

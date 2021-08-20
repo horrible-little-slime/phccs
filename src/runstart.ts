@@ -1,19 +1,18 @@
 import {
-    visitUrl,
     autosell,
     buy,
-    useSkill,
-    myLevel,
-    mySpleenUse,
     cliExecute,
     create,
+    eudoraItem,
+    myLevel,
+    mySpleenUse,
+    runChoice,
     use,
     useFamiliar,
-    runChoice,
-    eudora,
-    eudoraItem,
+    useSkill,
+    visitUrl,
 } from "kolmafia";
-import { $item, have, get, $skill, $coinmaster, $familiar, SourceTerminal } from "libram";
+import { $coinmaster, $familiar, $item, $skill, get, have, SourceTerminal } from "libram";
 import { setClan, tryUse } from "./phredhccs-lib";
 
 function juiceBar() {
@@ -37,9 +36,9 @@ function grimoires() {
         useSkill(1, $skill`Summon Confiscated Things`);
         autosell(1, $item`glow-in-the-dark necklace`);
         autosell(1, $item`"KICK ME" sign`);
-        autosell(1, $item`LCD Game: Burger Belt`);
-        autosell(1, $item`LCD Game: Food Eater`);
-        autosell(1, $item`LCD Game: Garbage River`);
+        autosell(1, $item`LCD game: Burger Belt`);
+        autosell(1, $item`LCD game: Food Eater`);
+        autosell(1, $item`LCD game: Garbage River`);
     }
     if (!get("grimoire2Summons")) {
         useSkill(1, $skill`Summon Tasteful Items`);
@@ -60,7 +59,7 @@ function grimoires() {
 }
 
 function setSettings() {
-    SourceTerminal.educate([$skill`extract`, $skill`portscan`]);
+    SourceTerminal.educate([$skill`Extract`, $skill`Portscan`]);
     setClan("Alliance From Heck");
 }
 
@@ -80,11 +79,11 @@ function getTurns() {
 
 function prepGear() {
     if (!have($item`dromedary drinking helmet`)) {
-        useFamiliar($familiar`melodramedary`);
-        if (!have($item`familiar jacks`)) {
-            create(1, $item`familiar jacks`);
+        useFamiliar($familiar`Melodramedary`);
+        if (!have($item`box of Familiar Jacks`)) {
+            create(1, $item`box of Familiar Jacks`);
         }
-        use(1, $item`familiar jacks`);
+        use(1, $item`box of Familiar Jacks`);
         cliExecute("mummery myst");
     }
     if (!have($item`your cowboy boots`)) {
@@ -143,7 +142,7 @@ function scavenge() {
     }
 }
 
-export function runStart() {
+export function runStart(): void {
     setSettings();
     toot();
     getTurns();
@@ -152,4 +151,5 @@ export function runStart() {
     vote();
     grimoires();
     prepGear();
+    scavenge();
 }

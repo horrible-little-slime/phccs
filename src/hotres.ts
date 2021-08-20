@@ -16,15 +16,15 @@ import {
     useSkill,
 } from "kolmafia";
 import {
-    get,
     $effect,
-    have,
-    $item,
     $familiar,
+    $item,
     $location,
     $monster,
     $skill,
     $slot,
+    get,
+    have,
     Macro,
 } from "libram";
 import { universalWeightBuffs } from "./familiarweight";
@@ -41,11 +41,11 @@ import {
 const predictor = () => 60 - numericModifier("hot resistance");
 
 function castBuffs() {
-    universalWeightBuffs()
+    universalWeightBuffs();
 
     tryHead($effect`Hot-Headed`);
-    if (!have($effect`synthesis: hot`)) synthHot();
-    
+    if (!have($effect`Synthesis: Hot`)) synthHot();
+
     if (!have($item`tenderizing hammer`)) {
         buy(1, $item`tenderizing hammer`);
     }
@@ -56,15 +56,15 @@ function castBuffs() {
         if (!have($item`lotion of sleaziness`)) create(1, $item`lotion of sleaziness`);
         if (have($item`lotion of sleaziness`)) use(1, $item`lotion of sleaziness`);
     }
-    if (!have($effect` Flame-Retardant Trousers`) && have($item`hot powder`)) {
+    if (!have($effect`Flame-Retardant Trousers`) && have($item`hot powder`)) {
         use(1, $item`hot powder`);
     }
 
-    ensureEffect($effect`elemental saucesphere`);
-    ensureEffect($effect`astral shell`);
+    ensureEffect($effect`Elemental Saucesphere`);
+    ensureEffect($effect`Astral Shell`);
     ensureEffect($effect`Feeling Peaceful`);
-    if (have($item`scroll of protection from bad stuff`)) {
-        ensureEffect($effect`protection from bad stuff`);
+    if (have($item`scroll of Protection from Bad Stuff`)) {
+        ensureEffect($effect`Protection from Bad Stuff`);
     }
 
     if (!have($item`meteorite guard`) && have($item`metal meteoroid`)) {
@@ -82,7 +82,7 @@ function itsHerFactory() {
         mapMacro(
             $location`LavaCo™ Lamp Factory`,
             $monster`factory worker (female)`,
-            Macro.skill($skill`become a cloud of mist`).skill(
+            Macro.skill($skill`Become a Cloud of Mist`).skill(
                 $skill`Asdon Martin: Missile Launcher`
             )
         );
@@ -91,10 +91,10 @@ function itsHerFactory() {
 
 function deepDarkVisions() {
     horse("pale");
-    useFamiliar($familiar`exotic parrot`);
+    useFamiliar($familiar`Exotic Parrot`);
     if (!have($item`astral pet sweater`) && get("tomeSummons") < 3) {
-        create(1, $item`familiar jacks`);
-        use(1, $item`familiar jacks`);
+        create(1, $item`box of Familiar Jacks`);
+        use(1, $item`box of Familiar Jacks`);
     }
 
     maximize("spooky res", false);
@@ -130,14 +130,14 @@ function testPrep() {
             while (getFuel() < 37) fuelUp();
             cliExecute("asdonmartin drive safely");
         },
-        () => ensureEffect($effect`amazing`),
+        () => ensureEffect($effect`Amazing`),
     ];
     for (const improvement of improvements) {
         if (predictor() > 1) improvement();
     }
 }
 
-export default function hotTest() {
+export default function hotTest(): number {
     castBuffs();
     itsHerFactory();
     deepDarkVisions();

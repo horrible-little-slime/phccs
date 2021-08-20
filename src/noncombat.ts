@@ -1,55 +1,55 @@
 import {
-    numericModifier,
-    cliExecute,
-    equip,
-    haveEffect,
-    getFuel,
-    useFamiliar,
-    visitUrl,
-    runCombat,
-    runChoice,
-    maximize,
     availableAmount,
     buy,
+    cliExecute,
+    equip,
+    getFuel,
+    haveEffect,
+    maximize,
+    numericModifier,
+    runChoice,
+    runCombat,
     use,
+    useFamiliar,
+    visitUrl,
 } from "kolmafia";
-import { get, have, $effect, $slot, $item, $familiar, $coinmaster } from "libram";
+import { $coinmaster, $effect, $familiar, $item, $slot, get, have } from "libram";
 import { universalWeightBuffs } from "./familiarweight";
 import { defaultKill } from "./phccs-macros";
-import { ensureEffect, fuelUp, horse, uniform, heal, setChoice } from "./phredhccs-lib";
+import { ensureEffect, fuelUp, heal, horse, setChoice, uniform } from "./phredhccs-lib";
 
 const predictor = () => 60 - numericModifier("hot resistance");
 
 function castBuffs() {
     universalWeightBuffs();
-    ensureEffect($effect`smooth movements`);
+    ensureEffect($effect`Smooth Movements`);
     ensureEffect($effect`Billiards Belligerence`);
     ensureEffect($effect`Feeling Lonely`);
-    equip($slot`acc3`, $item`powerful glove`);
-    ensureEffect($effect`invisible avatar`);
-    ensureEffect($effect`Blessing of the bird`);
+    equip($slot`acc3`, $item`Powerful Glove`);
+    ensureEffect($effect`Invisible Avatar`);
+    ensureEffect($effect`Blessing of the Bird`);
     if (!get("_clanFortuneBuffUsed")) cliExecute("fortune buff familiar");
 
-    if (haveEffect($effect`fat leon's phat loot lyric`))
+    if (haveEffect($effect`Fat Leon's Phat Loot Lyric`))
         cliExecute("shrug fat leon's phat loot lyric");
-    ensureEffect($effect`sonata of sneakiness`);
+    ensureEffect($effect`The Sonata of Sneakiness`);
 
     if (!get("_olympicSwimmingPool")) cliExecute("swim sprints");
 
     while (getFuel() < 37) fuelUp();
-    if (!have($effect`driving stealthily`)) cliExecute("asdonmartin drive stealthily");
+    if (!have($effect`Driving Stealthily`)) cliExecute("asdonmartin drive stealthily");
 
     horse("dark");
 }
 
 function godLobster() {
     if (
-        !have($effect`silence of the god lobster`) &&
+        !have($effect`Silence of the God Lobster`) &&
         get("_godLobsterFights") < 3 &&
-        have($item`god lobster's ring`)
+        have($item`God Lobster's Ring`)
     ) {
-        useFamiliar($familiar`god lobster`);
-        equip($slot`familiar`, $item`god lobster's ring`);
+        useFamiliar($familiar`God Lobster`);
+        equip($slot`familiar`, $item`God Lobster's Ring`);
         uniform();
         defaultKill.setAutoAttack();
         heal();
@@ -62,10 +62,10 @@ function godLobster() {
 }
 
 function testPrep() {
-    useFamiliar($familiar`disgeist`);
+    useFamiliar($familiar`Disgeist`);
     maximize("-combat, +equip kremlin", false);
     if (predictor() > 1) {
-        if (!have($effect`gummed shoes`)) {
+        if (!have($effect`Gummed Shoes`)) {
             if (availableAmount($item`cop dollar`) < 10) cliExecute("detective solver.ash");
             buy($coinmaster`Precinct Materiel Division`, 1, $item`shoe gum`);
             use($item`shoe gum`);
@@ -73,7 +73,7 @@ function testPrep() {
     }
 }
 
-export default function noncombatTest() {
+export default function noncombatTest(): number {
     castBuffs();
     godLobster();
     testPrep();

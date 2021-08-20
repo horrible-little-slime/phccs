@@ -1,37 +1,37 @@
 import {
-    numericModifier,
-    useFamiliar,
-    use,
-    handlingChoice,
-    runChoice,
     equip,
+    handlingChoice,
     maximize,
+    numericModifier,
+    runChoice,
+    use,
+    useFamiliar,
     useSkill,
 } from "kolmafia";
 import {
-    have,
     $effect,
-    $item,
-    uneffect,
-    $familiar,
-    $location,
-    Macro,
-    $skill,
     $effects,
-    get,
+    $familiar,
+    $item,
+    $location,
     $monster,
+    $skill,
     $slot,
+    get,
+    have,
+    Macro,
     set,
+    uneffect,
 } from "libram";
 import {
-    uniform,
-    horsery,
-    horse,
     advMacroAA,
     ensureEffect,
-    setChoice,
     fax,
+    horse,
+    horsery,
+    setChoice,
     tryHead,
+    uniform,
 } from "./phredhccs-lib";
 
 const predictor = () =>
@@ -40,37 +40,37 @@ const predictor = () =>
     Math.floor(numericModifier("weapon damage percent") / 25 + 0.001);
 
 function getCrushed() {
-    if (!have($effect`do you crush what i crush`)) {
-        if (have($effect`holiday yoked`) && have($item`soft green echo eyedrop antidote`)) {
-            uneffect($effect`holiday yoked`);
+    if (!have($effect`Do You Crush What I Crush?`)) {
+        if (have($effect`Holiday Yoked`) && have($item`soft green echo eyedrop antidote`)) {
+            uneffect($effect`Holiday Yoked`);
         }
-        if (!have($effect`holiday yoked`)) {
-            useFamiliar($familiar`ghost of crimbo carols`);
+        if (!have($effect`Holiday Yoked`)) {
+            useFamiliar($familiar`Ghost of Crimbo Carols`);
             uniform();
             if (horsery().includes("pale")) {
                 horse("dark");
             }
-            advMacroAA($location`the dire warren`, Macro.skill($skill`feel hatred`));
+            advMacroAA($location`The Dire Warren`, Macro.skill($skill`Feel Hatred`));
         }
     }
 }
 
 function castBuffs() {
-    $effects`Carol of the Bulls, Song of the North, Rage of the Reindeer, Scowl of the Auk, Disdain of the War Snapper, Tenacity of the Snapper, Billiards Belligerence, blessing of the bird`.forEach(
+    $effects`Carol of the Bulls, Song of the North, Rage of the Reindeer, Scowl of the Auk, Disdain of the War Snapper, Tenacity of the Snapper, Billiards Belligerence, Blessing of the Bird`.forEach(
         (effect) => ensureEffect(effect)
     );
-    ensureEffect($effect`frenzied, bloody`);
-    if (have($item`lov elixir #3`)) use($item`lov elixir #3`);
+    ensureEffect($effect`Frenzied, Bloody`);
+    if (have($item`LOV Elixir #3`)) use($item`LOV Elixir #3`);
     tryHead($effect`Lack of Body-Building`);
 }
 
 function forceSpit() {
     if (!get("_photocopyUsed")) {
         uniform();
-        useFamiliar($familiar`melodramedary`);
+        useFamiliar($familiar`Melodramedary`);
         setChoice(1387, 3);
-        Macro.trySkill($skill`spit on me`)
-            .skill($skill`use the force`)
+        Macro.trySkill($skill`%fn, spit on me!`)
+            .skill($skill`Use the Force`)
             .setAutoAttack();
         fax($monster`ungulith`);
         use($item`photocopied monster`);
@@ -79,16 +79,16 @@ function forceSpit() {
 }
 
 function kungFuMeteors() {
-    if (!have($effect`meteor showered`) && get("_meteorShowerUses") < 5) {
-        useFamiliar($familiar`disembodied hand`);
+    if (!have($effect`Meteor Showered`) && get("_meteorShowerUses") < 5) {
+        useFamiliar($familiar`Disembodied Hand`);
         uniform();
         equip($slot`weapon`, $item`none`);
         equip($slot`off-hand`, $item`none`);
-        equip($slot`familiar`, $item`fourth of may cosplay saber`);
+        equip($slot`familiar`, $item`Fourth of May Cosplay Saber`);
         setChoice(1387, 3);
         advMacroAA(
-            $location`the neverending party`,
-            Macro.skill($skill`meteor shower`).skill($skill`use the force`)
+            $location`The Neverending Party`,
+            Macro.skill($skill`Meteor Shower`).skill($skill`Use the Force`)
         );
         if (handlingChoice()) runChoice(-1);
         set("_meteorShowerUses", 1 + get("_meteorShowerUses"));
@@ -97,16 +97,17 @@ function kungFuMeteors() {
 
 function testPrep() {
     if (have($item`corrupted marrow`)) use($item`corrupted marrow`);
-    if (!get("_bowleggedSwaggerUsed")) useSkill($skill`bow-legged swagger`);
-    useFamiliar($familiar`disembodied hand`);
+    if (!get("_bowleggedSwaggerUsed")) useSkill($skill`Bow-Legged Swagger`);
+    useFamiliar($familiar`Disembodied Hand`);
     maximize("weapon damage", false);
 }
 
-export default function weaponTest() {
+export default function weaponTest(): number {
     castBuffs();
     getCrushed();
     forceSpit();
     kungFuMeteors();
+    testPrep();
     if (predictor() > 1) throw "Failed to cap weapon damage!";
     return predictor();
 }

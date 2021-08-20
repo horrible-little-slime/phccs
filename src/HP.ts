@@ -1,50 +1,49 @@
 import {
-    visitUrl,
-    equip,
+    adv1,
     availableAmount,
-    use,
-    runChoice,
-    cliExecute,
-    numericModifier,
-    useSkill,
-    haveEffect,
     buy,
+    cliExecute,
     create,
     eat,
+    equip,
     getCampground,
     getCounters,
+    haveEffect,
     knollAvailable,
     maximize,
     mpCost,
-    myMp,
-    toEffect,
-    totalFreeRests,
-    useFamiliar,
-    runCombat,
-    adv1,
-    inMultiFight,
     myBuffedstat,
     myMaxhp,
+    myMp,
     myThrall,
+    numericModifier,
+    runChoice,
+    runCombat,
+    toEffect,
+    totalFreeRests,
+    use,
+    useFamiliar,
+    useSkill,
+    visitUrl,
 } from "kolmafia";
 import {
-    have,
     $effect,
-    $item,
-    $slot,
-    get,
-    $skill,
     $familiar,
+    $item,
     $location,
     $monster,
+    $skill,
     $skills,
+    $slot,
+    $stat,
+    $thrall,
+    get,
+    have,
     Macro,
     TunnelOfLove,
     Witchess,
-    $stat,
-    $thrall,
 } from "libram";
-import { delevel, easyFight, candyblast, defaultKill } from "./phccs-macros";
+import { candyblast, defaultKill, delevel, easyFight } from "./phccs-macros";
 import {
     advMacro,
     advMacroAA,
@@ -53,7 +52,6 @@ import {
     kramcoCheck,
     mapMacro,
     multiFightAutoAttack,
-    PropertyManager,
     questStep,
     setChoice,
     synthExp,
@@ -71,7 +69,7 @@ function initialExp() {
     ensureEffect($effect`Inscrutable Gaze`);
     ensureEffect($effect`Thaumodynamic`);
 
-    if (!have($effect`synthesis: learning`)) synthExp();
+    if (!have($effect`Synthesis: Learning`)) synthExp();
 
     equip($item`familiar scrapbook`, $slot`off-hand`);
 
@@ -79,7 +77,7 @@ function initialExp() {
         use(1, $item`a ten-percent bonus`);
     }
     cliExecute("bastille myst brutalist");
-    if (get("_daycareGymScavenges") == 0) {
+    if (get("_daycareGymScavenges") === 0) {
         visitUrl("place.php?whichplace=town_wrong&action=townwrong_boxingdaycare");
         runChoice(3);
         runChoice(2);
@@ -107,7 +105,7 @@ function buffMyst() {
     }
 
     ensureEffect($effect`Uncucumbered`);
-    if (!have($effect`synthesis: smart`)) synthMyst();
+    if (!have($effect`Synthesis: Smart`)) synthMyst();
 
     tryHead($effect`You Learned Something Maybe!`);
     tryHead($effect`We're All Made of Starfish`);
@@ -116,7 +114,7 @@ function buffMyst() {
     if (!get("telescopeLookedHigh")) ensureEffect($effect`Starry-Eyed`);
 
     if (
-        availableAmount($item`glittery mascara`) + haveEffect($effect`glittering eyelashes`) ===
+        availableAmount($item`glittery mascara`) + haveEffect($effect`Glittering Eyelashes`) ===
         0
     ) {
         buy(1, $item`glittery mascara`);
@@ -127,13 +125,13 @@ function buffMyst() {
         cliExecute("crossstreams");
     }
 
-    equip($slot`acc3`, $item`powerful glove`);
+    equip($slot`acc3`, $item`Powerful Glove`);
     ensureEffect($effect`Triple-Sized`);
     ensureEffect($effect`Feeling Excited`);
 }
 
 function castBuffs() {
-    useFamiliar($familiar`left-hand man`);
+    useFamiliar($familiar`Left-Hand Man`);
     maximize("mp", false);
 
     if (get("_sausagesEaten") === 0) {
@@ -147,14 +145,14 @@ function castBuffs() {
     if (!have($item`turtle totem`)) cliExecute("acquire turtle totem");
     if (!have($item`saucepan`)) cliExecute("acquire saucepan");
 
-    const castableBuffs = $skills`The Magical Mojomuscular Melody, Stevedave's Shanty of Superiority, Fat Leon's Phat Loot Lyric, The Polka of Plenty, leash of linguini, empathy of the newt, blood bond, blood bubble, Song of Bravado, Get Big`;
+    const castableBuffs = $skills`The Magical Mojomuscular Melody, Stevedave's Shanty of Superiority, Fat Leon's Phat Loot Lyric, The Polka of Plenty, Leash of Linguini, Empathy of the Newt, Blood Bond, Blood Bubble, Song of Bravado, Get Big`;
     castableBuffs.forEach((buff) => {
         if (!have(toEffect(buff))) {
             if (myMp() < mpCost(buff)) {
                 if (totalFreeRests() > get("timesRested")) {
                     visitUrl("place.php?whichplace=chateau&action=chateau_restbox");
-                } else if (availableAmount($item`psychokinetic energy`) >= 1) {
-                    use(2, $item`psychokinetic energy`);
+                } else if (availableAmount($item`psychokinetic energy blob`) >= 1) {
+                    use(2, $item`psychokinetic energy blob`);
                 } else {
                     eat(1, $item`magical sausage`);
                 }
@@ -166,7 +164,7 @@ function castBuffs() {
 
 function getYoked() {
     uniform();
-    useFamiliar($familiar`ghost of crimbo carols`);
+    useFamiliar($familiar`Ghost of Crimbo Carols`);
     if (get("snojoSetting") === "NONE") {
         visitUrl("place.php?whichplace=snojo&action=snojo_controller");
         runChoice(2);
@@ -176,7 +174,7 @@ function getYoked() {
         $location`The X-32-F Combat Training Snowman`,
         Macro.step(delevel).attack().repeat(),
         () => {
-            return !have($effect`holiday yoked`);
+            return !have($effect`Holiday Yoked`);
         }
     );
 }
@@ -201,7 +199,7 @@ function witchGhostAgent() {
 
     const ghostLocation = get("ghostLocation");
     if (ghostLocation) {
-        equip($slot`off-hand`, $item`latte lover member's mug`);
+        equip($slot`off-hand`, $item`latte lovers member's mug`);
         useDefaultFamiliar();
         advMacro(
             ghostLocation,
@@ -219,9 +217,9 @@ function witchGhostAgent() {
         useDefaultFamiliar();
         equip($slot`acc2`, $item`gold detective badge`);
         equip($slot`acc3`, $item`Lil' Doctor™ bag`);
-        equip($slot`off-hand`, $item`latte lover member's mug`);
+        equip($slot`off-hand`, $item`latte lovers member's mug`);
         advMacroAA(
-            $location`noob cave`,
+            $location`Noob Cave`,
             Macro.step(delevel).skill("otoscope").skill("become a bat").skill("chest x-ray"), //1
             () => {
                 return getCounters("Portscan", 0, 0) !== "";
@@ -229,8 +227,8 @@ function witchGhostAgent() {
         );
         const desertAccessItem = knollAvailable()
             ? $item`bitchin' meatcar`
-            : $item`desert bus pass`;
-        if (availableAmount(desertAccessItem) == 0) {
+            : $item`Desert Bus pass`;
+        if (!have(desertAccessItem)) {
             cliExecute(`acquire ${desertAccessItem.name}`);
         }
         visitUrl("place.php?whichplace=desertbeach&action=db_nukehouse");
@@ -260,7 +258,7 @@ function lov() {
             "Open Heart Surgery",
             "LOV Extraterrestrial Chocolate"
         );
-        use(1, $item`lov extraterrestrial chocolate`);
+        use(1, $item`LOV Extraterrestrial Chocolate`);
     }
     cliExecute("/cast * candy heart");
 }
@@ -273,24 +271,24 @@ function tomatoJuice() {
         get("_monstersMapped") < 3 &&
         availableAmount($item`tomato`) +
             availableAmount($item`tomato juice of powerful power`) +
-            haveEffect($effect`tomato power`) ===
+            haveEffect($effect`Tomato Power`) ===
             0
     ) {
         equip($slot`acc3`, $item`Lil' Doctor™ bag`);
         useDefaultFamiliar();
         mapMacro(
-            $location`the haunted pantry`,
+            $location`The Haunted Pantry`,
             $monster`possessed can of tomatoes`,
             Macro.if_(
                 `monsterid ${$monster`possessed can of tomatoes`.id}`,
-                Macro.skill($skill`reflex hammer`)
+                Macro.skill($skill`Reflex Hammer`)
             )
         );
         useDefaultFamiliar();
         uniform();
         advMacroAA(
-            $location` X-32-F Combat Training Snowman`,
-            Macro.skill($skill`feel nostalgic`).step(defaultKill)
+            $location`The X-32-F Combat Training Snowman`,
+            Macro.skill($skill`Feel Nostalgic`).step(defaultKill)
         );
     }
 
@@ -301,8 +299,8 @@ function tomatoJuice() {
         use(1, $item`Dramatic™ range`);
     }
     useSkill($skill`Advanced Saucecrafting`);
-    useSkill($skill`prevent scurvy and sobriety`);
-    if (!have($effect`tomato power`)) {
+    useSkill($skill`Prevent Scurvy and Sobriety`);
+    if (!have($effect`Tomato Power`)) {
         if (!have($item`tomato juice of powerful power`) && have($item`tomato`)) {
             create(1, $item`tomato juice of powerful power`);
         }
@@ -310,7 +308,7 @@ function tomatoJuice() {
             use(1, $item`tomato juice of powerful power`);
         }
     }
-    if (!have($effect`mystically oiled`)) {
+    if (!have($effect`Mystically Oiled`)) {
         if (!have($item`ointment of the occult`)) {
             create(1, $item`ointment of the occult`);
         }
@@ -324,11 +322,11 @@ function ninjaCostume() {
     if (get("_monstersMapped") < 3 && !have($item`li'l ninja costume`)) {
         useDefaultFamiliar();
         mapMacro(
-            $location`haiku dungeon`,
+            $location`The Haiku Dungeon`,
             $monster`amateur ninja`,
             Macro.if_(
                 `monsterid ${$monster`amateur ninja`.id}`,
-                Macro.skill($skill`gingerbread mob hit`)
+                Macro.skill($skill`Gingerbread Mob Hit`)
             ).step("abort")
         );
     }
@@ -339,19 +337,19 @@ function godLob() {
         Macro.step(delevel).step(easyFight).attack().repeat().setAutoAttack();
         uniform();
         heal();
-        useFamiliar($familiar`god lobster`);
+        useFamiliar($familiar`God Lobster`);
         setChoice(1310, 1);
         visitUrl("main.php?fightgodlobster=1");
         runCombat(Macro.step(delevel).step(easyFight).attack().repeat().toString());
         multiFightAutoAttack();
         runChoice(-1);
-        equip($slot`familiar`, $item`god lobster's scepter`);
+        equip($slot`familiar`, $item`God Lobster's Scepter`);
         heal();
         visitUrl("main.php?fightgodlobster=1");
         runCombat();
         multiFightAutoAttack();
         runChoice(-1);
-        equip($slot`familiar`, $item`god lobster's ring`);
+        equip($slot`familiar`, $item`God Lobster's Ring`);
     }
 }
 
@@ -359,7 +357,7 @@ function snojo() {
     uniform();
     useDefaultFamiliar();
     advMacroAA(
-        $location`the x-32-f combat training snowman`,
+        $location`The X-32-F Combat Training Snowman`,
         Macro.step(delevel).step(easyFight).attack().repeat(),
         () => {
             return get("_snojoFreeFights") < 10;
@@ -375,12 +373,12 @@ function snojo() {
 function lectureChain() {
     heal();
     if (get("_pocketProfessorLectures") === 0) {
-        useFamiliar($familiar`pocket professor`);
+        useFamiliar($familiar`Pocket Professor`);
         uniform();
         equip($slot`off-hand`, $item`latte lovers member's mug`);
         equip($slot`acc1`, $item`hewn moon-rune spoon`);
-        equip($slot`acc2`, $item`beach comb`);
-        equip($slot`acc3`, $item`brutal brogues`);
+        equip($slot`acc2`, $item`Beach Comb`);
+        equip($slot`acc3`, $item`Brutal brogues`);
         const profchain = Macro.step(delevel)
             .trySkill("Lecture on Relativity")
             .step(candyblast)
@@ -390,11 +388,11 @@ function lectureChain() {
         if (kramcoCheck()) {
             equip($slot`off-hand`, $item`Kramco Sausage-o-Matic™`);
             do {
-                adv1($location`madness bakery`, -1, profchain.toString());
+                adv1($location`Madness Bakery`, -1, profchain.toString());
             } while (get("lastEncounter") === "Our Bakery in the Middle of Our Street");
             multiFightAutoAttack();
         } else if (get("_witchessFights") < 3) {
-            Witchess.fightPiece($monster`witchess bishop`);
+            Witchess.fightPiece($monster`Witchess Bishop`);
             multiFightAutoAttack();
         }
     }
@@ -423,7 +421,7 @@ function NEP() {
     equip($slot`off-hand`, $item`Kramco Sausage-o-Matic™`);
     useDefaultFamiliar();
     advMacroAA(
-        $location`the neverending party`,
+        $location`The Neverending Party`,
         Macro.step(delevel).trySkill("feel pride").step(easyFight).attack().repeat(),
         () => {
             return get("_neverendingPartyFreeTurns") < 10;
@@ -440,7 +438,7 @@ function NEP() {
         }
     );
     advMacroAA(
-        $location`the neverending party`,
+        $location`The Neverending Party`,
         Macro.if_(
             "!monstername sausage goblin",
             Macro.trySkill("shattering punch")
@@ -460,7 +458,7 @@ function NEP() {
     );
     equip($slot`acc3`, $item`Lil' Doctor™ bag`);
     advMacroAA(
-        $location`the neverending party`,
+        $location`The Neverending Party`,
         Macro.if_(
             "!monstername sausage goblin",
             Macro.trySkill("shattering punch")
@@ -484,9 +482,9 @@ function mElfLeveling() {
     uniform();
     cliExecute("fold garbage shirt");
     equip($slot`shirt`, $item`makeshift garbage shirt`);
-    useFamiliar($familiar`machine elf`);
+    useFamiliar($familiar`Machine Elf`);
     advMacroAA(
-        $location`the deep machine tunnels`,
+        $location`The Deep Machine Tunnels`,
         defaultKill,
         () => {
             return get("_machineTunnelsAdv") < 5;
@@ -506,22 +504,22 @@ function royalty() {
         uniform();
         useDefaultFamiliar();
         heal();
-        Witchess.fightPiece($monster`witchess queen`);
+        Witchess.fightPiece($monster`Witchess Queen`);
     }
     if (!have($item`dented scepter`)) {
         Macro.step(delevel).attack().repeat().setAutoAttack();
         uniform();
         useDefaultFamiliar();
         heal();
-        Witchess.fightPiece($monster`witchess king`);
+        Witchess.fightPiece($monster`Witchess King`);
     }
 }
 
 function restAndBuff() {
     while (get("timesRested") < totalFreeRests()) {
-        ensureEffect($effect`song of starch`);
+        ensureEffect($effect`Song of Starch`);
         if (myThrall() !== $thrall`undead elbow macaroni`)
-            useSkill($skill`bind undead elbow macaroni`);
+            useSkill($skill`Bind Undead Elbow Macaroni`);
         cliExecute("/cast * candy heart");
         visitUrl("place.php?whichplace=chateau&action=chateau_restbox");
     }
@@ -535,7 +533,7 @@ function testPrep() {
     }
 }
 
-export default function HPTest() {
+export default function HPTest(): number {
     initialExp();
     buffMyst();
     castBuffs();

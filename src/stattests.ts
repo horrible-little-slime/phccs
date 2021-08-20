@@ -1,17 +1,17 @@
 import {
-    myBuffedstat,
-    myBasestat,
-    useSkill,
-    retrieveItem,
-    use,
-    useFamiliar,
-    maximize,
     availableAmount,
     create,
     eat,
     itemAmount,
+    maximize,
+    myBasestat,
+    myBuffedstat,
+    retrieveItem,
+    use,
+    useFamiliar,
+    useSkill,
 } from "kolmafia";
-import { $stat, $skill, $effect, have, $item, $familiar, get } from "libram";
+import { $effect, $familiar, $item, $skill, $stat, get, have } from "libram";
 import { ensureEffect, ensureInnerElf, tryUse } from "./phredhccs-lib";
 
 const musclePredictor = () =>
@@ -27,18 +27,19 @@ function musclebuffs() {
     ensureEffect($effect`Feeling Excited`);
     ensureEffect($effect`The Power of LOV`);
     if (!have($effect`Go Get 'Em, Tiger!`)) {
-        retrieveItem($item`ben-gal balm`);
-        use(1, $item`ben-gal balm`);
+        retrieveItem($item`Ben-Gal™ Balm`);
+        use(1, $item`Ben-Gal™ Balm`);
     }
 }
 
 function muscleTestPrep() {
-    useFamiliar($familiar`disembodied hand`);
+    useFamiliar($familiar`Disembodied Hand`);
     maximize("muscle", false);
 
     for (const increaser of [
-        () => { if (!get(""))
-            ensureEffect($effect`Lack of Body-Building`)}, // will stay on all the way to weapon damage.
+        () => {
+            if (!get("")) ensureEffect($effect`Lack of Body-Building`);
+        }, // will stay on all the way to weapon damage.
         () => ensureEffect($effect`Ham-Fisted`),
         () => ensureInnerElf(),
     ]) {
@@ -46,9 +47,9 @@ function muscleTestPrep() {
     }
 }
 
-export function muscleTest() {
+export function muscleTest(): number {
     musclebuffs();
-    muscleTest();
+    muscleTestPrep();
     return musclePredictor();
 }
 
@@ -60,11 +61,11 @@ function mystbuffs() {
 }
 
 function mystTestPrep() {
-    useFamiliar($familiar`disembodied hand`);
+    useFamiliar($familiar`Disembodied Hand`);
     maximize("mysticality", false);
 }
 
-export function mystTest() {
+export function mystTest(): number {
     mystbuffs();
     mystTestPrep();
     if (mystPredictor() > 1) throw "Not enough mysticality to cap";
@@ -85,14 +86,14 @@ function moxBuffs() {
     useSkill(1, $skill`Bind Penne Dreadful`);
     ensureEffect($effect`Pomp & Circumsands`);
 
-    use(1, $item`Bird-a-Day Calendar`);
+    use(1, $item`Bird-a-Day calendar`);
     ensureEffect($effect`Blessing of the Bird`);
 
     ensureEffect($effect`Quiet Desperation`);
     ensureEffect($effect`Disco Fever`);
     ensureEffect($effect`Blubbered Up`);
     ensureEffect($effect`Mariachi Mood`);
-    ensureEffect($effect`disco state of mind`);
+    ensureEffect($effect`Disco State of Mind`);
     use(availableAmount($item`rhinestone`), $item`rhinestone`);
 
     if (availableAmount($item`dollop of barbecue sauce`) > 0) {
@@ -117,7 +118,7 @@ function moxTestPrep() {
     maximize("moxie", false);
 }
 
-export function moxTest() {
+export function moxTest(): number {
     moxBuffs();
     moxTestPrep();
     if (moxPredictor() > 1) {

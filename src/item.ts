@@ -1,39 +1,39 @@
 import {
-    numericModifier,
     availableAmount,
-    use,
     cliExecute,
-    useSkill,
-    myInebriety,
-    drink,
-    getWorkshed,
-    getFuel,
-    visitUrl,
     create,
-    myClass,
+    drink,
     equip,
-    useFamiliar,
+    getFuel,
+    getWorkshed,
     maximize,
+    myClass,
+    myInebriety,
+    numericModifier,
+    use,
+    useFamiliar,
+    useSkill,
+    visitUrl,
 } from "kolmafia";
 import {
-    $item,
-    have,
-    $effect,
-    $skill,
     $class,
-    get,
-    Macro,
-    $slot,
+    $effect,
     $familiar,
+    $item,
     $location,
+    $skill,
+    $slot,
+    get,
+    have,
+    Macro,
 } from "libram";
 import {
-    horse,
-    synthItem,
+    advMacroAA,
     ensureEffect,
     fuelUp,
+    horse,
+    synthItem,
     useDefaultFamiliar,
-    advMacroAA,
 } from "./phredhccs-lib";
 
 const predictor = () =>
@@ -46,25 +46,25 @@ function prelude() {
     if (availableAmount($item`astral six-pack`) !== 0) use(1, $item`astral six-pack`);
     if (have($effect`The Magical Mojomuscular Melody`))
         cliExecute("shrug The Magical Mojomuscular Melody");
-    useSkill($skill`the ode to booze`);
+    useSkill($skill`The Ode to Booze`);
     while (myInebriety() < 5) {
         drink(1, $item`astral pilsner`);
     }
 }
 
 function castBuffs() {
-    if (!have($effect`synthesis: collection`)) synthItem();
+    if (!have($effect`Synthesis: Collection`)) synthItem();
     cliExecute("shrug ode");
-    ensureEffect($effect`fat leon's phat loot lyric`);
+    ensureEffect($effect`Fat Leon's Phat Loot Lyric`);
     ensureEffect($effect`The Spirit of Taking`);
     ensureEffect($effect`items.enh`);
 
-    if (getWorkshed() === $item`Asdon Martin keyfob` && !have($effect`driving observantly`)) {
+    if (getWorkshed() === $item`Asdon Martin keyfob` && !have($effect`Driving Observantly`)) {
         if (getFuel() < 37) fuelUp();
         cliExecute("asdonmartin drive observantly");
     }
 
-    if (!have($effect`I See Everything Thrice`)) {
+    if (!have($effect`I See Everything Thrice!`)) {
         if (!have($item`government`)) {
             if (!have($item`anticheese`)) {
                 visitUrl("place.php?whichplace=desertbeach&action=db_nukehouse");
@@ -78,11 +78,11 @@ function castBuffs() {
         }
     }
 
-    if (myClass() === $class`pastamancer` && !get("_barrelPrayer")) {
+    if (myClass() === $class`Pastamancer` && !get("_barrelPrayer")) {
         cliExecute("barrelprayer buff");
     }
 
-    if (have($item`lavender candy heart`)) ensureEffect($effect`heart of lavender`);
+    if (have($item`lavender candy heart`)) ensureEffect($effect`Heart of Lavender`);
 }
 
 function batForm() {
@@ -90,36 +90,34 @@ function batForm() {
         get("_latteRefillsUsed") < 3 &&
         numericModifier($item`latte lovers member's mug`, "Item Drop") < 20
     ) {
-        const latte: string =
-            "pumpkin " +
-            (get("latteUnlocks").includes("carrot") ? "carrot " : "vanilla ") +
-            (get("latteUnlocks").includes("butternut") ? "butternut" : "cinnamon");
+        const latte = `pumpkin ${get("latteUnlocks").includes("carrot") ? "carrot " : "vanilla "}${
+            get("latteUnlocks").includes("butternut") ? "butternut" : "cinnamon"
+        }`;
         if (latte !== "") {
             cliExecute(`latte refill ${latte}`);
         }
     }
     if (!have($effect`Bat-Adjacent Form`)) {
-        const run = Macro.skill($skill`become a bat`);
+        const run = Macro.skill($skill`Become a Bat`);
         if (!get("_latteBanishUsed")) {
             useDefaultFamiliar(false);
             equip($slot`off-hand`, $item`latte lovers member's mug`);
             equip($slot`back`, $item`vampyric cloake`);
-            run.skill($skill`throw latte`);
+            run.skill($skill`Throw Latte on Opponent`);
         } else {
-            useFamiliar($familiar`frumious bandersnatch`);
-            ensureEffect($effect`ode to booze`);
+            useFamiliar($familiar`Frumious Bandersnatch`);
+            ensureEffect($effect`Ode to Booze`);
             run.step("runaway");
         }
-        advMacroAA($location`dire warren`, run);
+        advMacroAA($location`The Dire Warren`, run);
     }
     if (
         get("_latteRefillsUsed") < 3 &&
         numericModifier($item`latte lovers member's mug`, "Item Drop") < 20
     ) {
-        const latte: string =
-            "pumpkin " +
-            (get("latteUnlocks").includes("carrot") ? "carrot " : "vanilla ") +
-            (get("latteUnlocks").includes("butternut") ? "butternut" : "cinnamon");
+        const latte = `pumpkin ${get("latteUnlocks").includes("carrot") ? "carrot " : "vanilla "}${
+            get("latteUnlocks").includes("butternut") ? "butternut" : "cinnamon"
+        }`;
         if (latte !== "") {
             cliExecute(`latte refill ${latte}`);
         }
@@ -128,17 +126,17 @@ function batForm() {
 
 function testPrep() {
     if (!get("_steelyEyedSquintUsed")) {
-        ensureEffect($effect`steely-eyed squint`);
+        ensureEffect($effect`Steely-Eyed Squint`);
     }
-    useFamiliar($familiar`trick-or-treating tot`);
+    useFamiliar($familiar`Trick-or-Treating Tot`);
     maximize(
         "item, 2 booze drop, -equip broken champagne bottle, -equip surprisingly capacious handbag",
         false
     );
-    if (predictor() > 1) ensureEffect($effect`nearly all-natural`);
+    if (predictor() > 1) ensureEffect($effect`Nearly All-Natural`);
 }
 
-export default function itemTest() {
+export default function itemTest(): number {
     prelude();
     castBuffs();
     batForm();

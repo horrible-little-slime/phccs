@@ -1,7 +1,7 @@
-import { equip, create, eat, cliExecute } from "kolmafia";
-import { $slot, $item, $location, Macro, have, get, $skill } from "libram";
+import { cliExecute, create, eat, equip } from "kolmafia";
+import { $item, $location, $skill, $slot, get, have, Macro } from "libram";
 import { delevel, easyFight } from "./phccs-macros";
-import { uniform, useDefaultFamiliar, fightSausageIfAble, advMacro } from "./phredhccs-lib";
+import { advMacro, fightSausageIfAble, uniform, useDefaultFamiliar } from "./phredhccs-lib";
 import { runStart } from "./runstart";
 
 function firstFights() {
@@ -9,8 +9,8 @@ function firstFights() {
     equip($slot`back`, $item`protonic accelerator pack`);
     useDefaultFamiliar();
     fightSausageIfAble(
-        $location`noob cave`,
-        Macro.skill($skill`micrometeorite`)
+        $location`Noob Cave`,
+        Macro.skill($skill`Micrometeorite`)
             .attack()
             .repeat()
     );
@@ -24,7 +24,7 @@ function firstFights() {
 
     const ghostLocation = get("ghostLocation");
     if (ghostLocation) {
-        equip($slot`off-hand`, $item`latte lover member's mug`);
+        equip($slot`off-hand`, $item`latte lovers member's mug`);
         useDefaultFamiliar();
         advMacro(
             ghostLocation,
@@ -39,14 +39,14 @@ function firstFights() {
 }
 
 function playDressUp() {
-    equip($slot`pants`, $item`cargo cultist shorts`);
-    equip($slot`acc1`, $item`eight days a week pill keeper`);
-    equip($slot`acc2`, $item`powerful glove`);
-    equip($slot`acc3`, $item`Lil' Doctor™ Bag`);
+    equip($slot`pants`, $item`Cargo Cultist Shorts`);
+    equip($slot`acc1`, $item`Eight Days a Week Pill Keeper`);
+    equip($slot`acc2`, $item`Powerful Glove`);
+    equip($slot`acc3`, $item`Lil' Doctor™ bag`);
     cliExecute("/cast * candy heart");
 }
 
-export default function coilWire() {
+export default function coilWire(): number {
     runStart();
     firstFights();
     playDressUp();

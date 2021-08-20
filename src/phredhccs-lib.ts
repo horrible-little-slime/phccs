@@ -11,7 +11,6 @@ import {
     equip,
     getClanName,
     getProperty,
-    handlingChoice,
     haveEffect,
     inMultiFight,
     myMaxhp,
@@ -33,7 +32,6 @@ import {
 } from "kolmafia";
 import {
     $effect,
-    $effects,
     $familiar,
     $item,
     $location,
@@ -48,24 +46,24 @@ import {
 
 export const PropertyManager = new PropertiesManager();
 
-export function fuelUp() {
+export function fuelUp(): void {
     buy(1, $item`all-purpose flower`);
     use(1, $item`all-purpose flower`);
     buy(availableAmount($item`wad of dough`), $item`soda water`);
-    create(availableAmount($item`wad of dough`), $item`soda bread`);
-    cliExecute(`asdonmartin fuel ${availableAmount($item`soda bread`)} soda bread`);
+    create(availableAmount($item`wad of dough`), $item`loaf of soda bread`);
+    cliExecute(`asdonmartin fuel ${availableAmount($item`loaf of soda bread`)} soda bread`);
 }
 
-export function synthExp() {
+export function synthExp(): void {
     if (get("harvestGardenHardcore") === "none") {
         visitUrl("campground.php?action=garden");
     }
     if (get("_candySummons") === 0) {
-        useSkill(1, $skill`summon crimbo candy`);
+        useSkill(1, $skill`Summon Crimbo Candy`);
     }
-    const fudge = $item`crimbo fudge`;
-    const pecan = $item`crimbo candied pecan`;
-    const bark = $item`crimbo peppermint bark`;
+    const fudge = $item`Crimbo fudge`;
+    const pecan = $item`Crimbo candied pecan`;
+    const bark = $item`Crimbo peppermint bark`;
     const fudges = availableAmount(fudge);
     const pecans = availableAmount(pecan);
     const barks = availableAmount(bark);
@@ -87,22 +85,22 @@ export function synthExp() {
             sweetSynthesis($item`sugar shotgun`, $item`peppermint sprout`);
         }
     }
-    if (haveEffect($effect`synthesis: learning`) === 0) {
+    if (haveEffect($effect`Synthesis: Learning`) === 0) {
         throw "I'm very embarrassed, and I'm sorry to admit it, but I failed to synthesize learning. Pwease fix me :c.";
     }
 }
 
-export function synthItem() {
+export function synthItem(): void {
     if (get("harvestGardenHardcore") === "none") {
         visitUrl("campground.php?action=garden");
     }
     if (get("_candySummons") === 0) {
-        useSkill(1, $skill`summon crimbo candy`);
+        useSkill(1, $skill`Summon Crimbo Candy`);
     }
-    const fudge = $item`crimbo fudge`;
-    const pecan = $item`crimbo candied pecan`;
-    const bark = $item`crimbo peppermint bark`;
-    const fudges = availableAmount(fudge);
+    //const fudge = $item`Crimbo fudge`;
+    const pecan = $item`Crimbo candied pecan`;
+    const bark = $item`Crimbo peppermint bark`;
+    //const fudges = availableAmount(fudge);
     const pecans = availableAmount(pecan);
     const barks = availableAmount(bark);
     if (barks >= 2) {
@@ -117,31 +115,31 @@ export function synthItem() {
             sweetSynthesis($item`peppermint sprout`, $item`peppermint twist`);
         }
     }
-    if (haveEffect($effect`synthesis: collection`) === 0) {
+    if (haveEffect($effect`Synthesis: Collection`) === 0) {
         throw "I'm very embarrassed, and I'm sorry to admit it, but I failed to synthesize collection. Pwease fix me :c.";
     }
 }
 
-export function synthMyst() {
+export function synthMyst(): void {
     if (get("harvestGardenHardcore") === "none") {
         visitUrl("campground.php?action=garden");
     }
     if (get("_candySummons") === 0) {
-        useSkill(1, $skill`summon crimbo candy`);
+        useSkill(1, $skill`Summon Crimbo Candy`);
     }
-    const fudge = $item`crimbo fudge`;
-    const pecan = $item`crimbo candied pecan`;
-    const bark = $item`crimbo peppermint bark`;
-    const fudges = availableAmount(fudge);
-    const pecans = availableAmount(pecan);
-    const barks = availableAmount(bark);
+    //const fudge = $item`Crimbo fudge`;
+    //const pecan = $item`Crimbo candied pecan`;
+    //const bark = $item`Crimbo peppermint bark`;
+    //const fudges = availableAmount(fudge);
+    //const pecans = availableAmount(pecan);
+    //const barks = availableAmount(bark);
     if (availableAmount($item`bag of many confections`) >= 1) {
         if (!get("_chubbyAndPlumpUsed")) {
-            useSkill(1, $skill`chubby and plump`);
+            useSkill(1, $skill`Chubby and Plump`);
         }
-        sweetSynthesis($item`chubby and plump`, $item`bag of many confections`);
+        sweetSynthesis($item`Chubby and Plump bar`, $item`bag of many confections`);
     } else {
-        const mint = $item`senior mints`;
+        const mint = $item`Senior Mints`;
         const mints = availableAmount(mint);
         const orangeHeart = $item`orange candy heart`;
         const orangeHearts = () => availableAmount(orangeHeart);
@@ -149,7 +147,7 @@ export function synthMyst() {
         const pinkHearts = () => availableAmount($item`pink candy heart`);
         let n = 0;
         while (mints + orangeHearts() + pinkHearts() === 0 && n < 11) {
-            useSkill(1, $skill`summon candy heart`);
+            useSkill(1, $skill`Summon Candy Heart`);
             n++;
         }
         if (mints + orangeHearts() + pinkHearts() === 0) {
@@ -166,14 +164,14 @@ export function synthMyst() {
             sweetSynthesis(pinkHeart, $item`peppermint twist`);
         }
     }
-    if (haveEffect($effect`synthesis: smart`) === 0) {
+    if (haveEffect($effect`Synthesis: Smart`) === 0) {
         throw "I'm very embarrassed, and I'm sorry to admit it, but I failed to synthesize smart. Pwease fix me :c.";
     }
 }
 
-export function synthHot() {
+export function synthHot(): void {
     //none of us are free of sin. i know how to write this better now, but i won't <3
-    const wintoMint = $item`wint-o-fresh mint`;
+    const wintoMint = $item`Wint-O-Fresh mint`;
     const wintoMints = availableAmount(wintoMint);
     const whiteHeart = $item`white candy heart`;
     const whiteHearts = () => availableAmount(whiteHeart);
@@ -181,13 +179,13 @@ export function synthHot() {
     const greenHearts = () => availableAmount(greenHeart);
     const orangeHeart = $item`orange candy heart`;
     const orangeHearts = () => availableAmount(orangeHeart);
-    const coldHot = $item`cold hots candy`;
+    const coldHot = $item`Cold Hots candy`;
     const coldHots = availableAmount(coldHot);
-    const daffyTaffy = $item`daffy taffy`;
+    const daffyTaffy = $item`Daffy Taffy`;
     const daffyTaffys = availableAmount(daffyTaffy);
     const yellowHeart = $item`yellow candy heart`;
     const yellowHearts = () => availableAmount(yellowHeart);
-    const mrMediocre = $item`mr. mediocrebar`;
+    const mrMediocre = $item`Mr. Mediocrebar`;
     const mrMediocres = availableAmount(mrMediocre);
     const lavenderHeart = $item`lavender candy heart`;
     const lavenderHearts = () => availableAmount(lavenderHeart);
@@ -200,7 +198,7 @@ export function synthHot() {
         pinkHearts() !== 2 &&
         n <= 11
     ) {
-        useSkill(1, $skill`summon candy heart`);
+        useSkill(1, $skill`Summon Candy Heart`);
         n++;
     }
     if (n > 11) {
@@ -235,34 +233,34 @@ export function synthHot() {
     } else {
         sweetSynthesis(pinkHeart, pinkHeart);
     }
-    if (haveEffect($effect`synthesis: hot`) === 0) {
+    if (haveEffect($effect`Synthesis: Hot`) === 0) {
         throw "I'm very embarrassed, and I'm sorry to admit it, but I failed to synthesize hot. Pwease fix me :c.";
     }
 }
 
-export function kramcoCheck() {
+export function kramcoCheck(): boolean {
     const kramcoNumber =
         5 + 3 * get("_sausageFights") + Math.pow(Math.max(0, get("_sausageFights") - 5), 3);
     return totalTurnsPlayed() - get("_lastSausageMonsterTurn") + 1 >= kramcoNumber;
 }
 
-export function useDefaultFamiliar(canAttack: boolean = true) {
+export function useDefaultFamiliar(canAttack = true): void {
     if (!get("_bagOfCandy") && canAttack) {
-        useFamiliar($familiar`stocking mimic`);
+        useFamiliar($familiar`Stocking Mimic`);
     } else if (get("camelSpit") !== 100) {
-        useFamiliar($familiar`melodramedary`);
+        useFamiliar($familiar`Melodramedary`);
         equip($slot`familiar`, $item`dromedary drinking helmet`);
     } else if (
         canAttack &&
         !have($item`short stack of pancakes`) &&
-        !have($effect`shortly stacked`) &&
+        !have($effect`Shortly Stacked`) &&
         !testDone(Test.FAMILIAR)
     ) {
-        useFamiliar($familiar`shorter-order cook`);
+        useFamiliar($familiar`Shorter-Order Cook`);
     } else if (!have($item`burning newspaper`) && !have($item`burning paper crane`)) {
-        useFamiliar($familiar`garbage fire`);
+        useFamiliar($familiar`Garbage Fire`);
     } else {
-        useFamiliar($familiar`puck man`);
+        useFamiliar($familiar`Puck Man`);
     }
 }
 
@@ -281,14 +279,14 @@ export enum Test {
     DONATE = 30,
 }
 
-export function testDone(testNum: number) {
+export function testDone(testNum: number): boolean {
     //stolen directly from bean
     print(`Checking test ${testNum}...`);
     const text = visitUrl("council.php");
     return !containsText(text, `<input type=hidden name=option value=${testNum}>`);
 }
 
-export function doTest(testNum: number) {
+export function doTest(testNum: number): void {
     //stolen directly from bean
     if (!testDone(testNum)) {
         visitUrl(`choice.php?whichchoice=1089&option=${testNum}`);
@@ -300,7 +298,7 @@ export function doTest(testNum: number) {
     }
 }
 
-export function ensureInnerElf() {
+export function ensureInnerElf(): void {
     //stolen merely mostly from bean
     if (!have($effect`Inner Elf`)) {
         setClan("Hobopolis Vacation Home");
@@ -311,7 +309,7 @@ export function ensureInnerElf() {
             ensureEffect($effect`Blood Bubble`);
             advMacro(
                 $location`The Slime Tube`,
-                Macro.trySkill($skill`Tranquilizer Dart`).trySkill($skill`snokebomb`)
+                Macro.trySkill($skill`KGB tranquilizer dart`).trySkill($skill`Snokebomb`)
             );
         } finally {
             setClan("Alliance From Heck");
@@ -319,7 +317,7 @@ export function ensureInnerElf() {
     }
 }
 
-export function fightSausageIfAble(location: Location, macro: Macro) {
+export function fightSausageIfAble(location: Location, macro: Macro): void {
     if (kramcoCheck()) {
         equip($slot`off-hand`, $item`Kramco Sausage-o-Matic™`);
         const sausages = get("_sausageFights");
@@ -332,7 +330,7 @@ export function fightSausageIfAble(location: Location, macro: Macro) {
     }
 }
 
-export function ensurePotionEffect(ef: Effect, potion: Item) {
+export function ensurePotionEffect(ef: Effect, potion: Item): void {
     //stolen directly from bean
     if (haveEffect(ef) === 0) {
         if (availableAmount(potion) === 0) {
@@ -346,7 +344,7 @@ export function ensurePotionEffect(ef: Effect, potion: Item) {
     }
 }
 
-export function ensureEffect(ef: Effect, turns = 1) {
+export function ensureEffect(ef: Effect, turns = 1): void {
     //stolen directly from bean
     if (haveEffect(ef) < turns) {
         if (!cliExecute(ef.default) || haveEffect(ef) === 0) {
@@ -357,7 +355,7 @@ export function ensureEffect(ef: Effect, turns = 1) {
     }
 }
 
-export function setClan(target: string) {
+export function setClan(target: string): boolean {
     //stolen directly from bean
     if (getClanName() !== target) {
         const clanCache = JSON.parse(getProperty("hccs_clanCache") || "{}");
@@ -379,25 +377,25 @@ export function setClan(target: string) {
     return true;
 }
 
-export function setChoice(adv: number, choice: number | string) {
+export function setChoice(adv: number, choice: number | string): void {
     PropertyManager.setChoices({ [adv]: choice });
 }
 
-export function uniform() {
+export function uniform(): void {
     const pants =
         availableAmount($item`pantogram pants`) !== 0
             ? $item`pantogram pants`
             : $item`old sweatpants`;
     const acc3 =
-        availableAmount($item`battle broom`) !== 0 ? $item`battle broom` : $item`powerful glove`;
+        availableAmount($item`battle broom`) !== 0 ? $item`battle broom` : $item`Powerful Glove`;
     const back =
-        availableAmount($item`lov epaulettes`) !== 0
-            ? $item`lov epaulettes`
+        availableAmount($item`LOV Epaulettes`) !== 0
+            ? $item`LOV Epaulettes`
             : $item`vampyric cloake`;
-    equip($slot`hat`, $item`iunion crown`);
+    equip($slot`hat`, $item`Iunion Crown`);
     equip($slot`shirt`, $item`fresh coat of paint`);
     equip($slot`pants`, pants);
-    equip($slot`weapon`, $item`fourth of may cosplay saber`);
+    equip($slot`weapon`, $item`Fourth of May Cosplay Saber`);
     equip($slot`off-hand`, $item`familiar scrapbook`);
     equip($slot`acc1`, $item`your cowboy boots`);
     equip($slot`acc2`, $item`codpiece`);
@@ -405,7 +403,7 @@ export function uniform() {
     equip($slot`back`, back);
 }
 
-export function tryUse(quantity: number, it: Item) {
+export function tryUse(quantity: number, it: Item): boolean {
     //ripped straight from bean
     if (availableAmount(it) > 0) {
         return use(quantity, it);
@@ -414,13 +412,13 @@ export function tryUse(quantity: number, it: Item) {
     }
 }
 
-export function multiFightAutoAttack() {
+export function multiFightAutoAttack(): void {
     while (choiceFollowsFight() || inMultiFight()) {
         visitUrl("choice.php");
     }
 }
 
-export function heal() {
+export function heal(): void {
     restoreHp(myMaxhp());
 }
 
@@ -429,15 +427,14 @@ export function advMacroAA(
     macro: Macro,
     parameter: number | (() => boolean) = 1,
     afterCombatAction?: () => void
-) {
+): void {
     let n = 0;
     const condition = () => {
         return typeof parameter === "number" ? n < parameter : parameter();
     };
-    const macroText = macro.toString();
     macro.setAutoAttack();
     while (condition()) {
-        adv1(location, -1, (round: number, foe: Monster, text: string) => {
+        adv1(location, -1, () => {
             return Macro.if_("!pastround 2", macro).abort().toString();
         });
         if (afterCombatAction) afterCombatAction();
@@ -450,13 +447,13 @@ export function advMacro(
     macro: Macro,
     parameter: number | (() => boolean) = 1,
     afterCombatAction?: () => void
-) {
+): void {
     setAutoAttack(0);
     let n = 0;
     const condition = () => {
         return typeof parameter === "number" ? n < parameter : parameter();
     };
-    const macroText = macro.toString();
+
     while (condition()) {
         adv1(location, -1, () => {
             return Macro.if_("!pastround 2", macro).abort().toString();
@@ -466,7 +463,7 @@ export function advMacro(
     }
 }
 
-export function mapMacro(location: Location, monster: Monster, macro: Macro) {
+export function mapMacro(location: Location, monster: Monster, macro: Macro): void {
     macro.setAutoAttack();
     useSkill($skill`Map the Monsters`);
     if (!get("mappingMonsters")) throw `I am not actually mapping anything. Weird!`;
@@ -479,22 +476,22 @@ export function mapMacro(location: Location, monster: Monster, macro: Macro) {
     }
 }
 
-export function horsery() {
+export function horsery(): string {
     return get("_horsery");
 }
 
-export function horse(horse: string) {
-    if (!horse.includes("horse")) horse = horse + " horse";
+export function horse(horse: string): void {
+    if (!horse.includes("horse")) horse = `${horse} horse`;
     if (horsery() !== horse) cliExecute(`horsery ${horse}`);
 }
 
 export interface testDuration {
-    testName: String;
-    turnPrediction: Number;
-    turnCost: Number;
+    testName: string;
+    turnPrediction: number;
+    turnCost: number;
 }
 
-export function convertMilliseconds(milliseconds: number) {
+export function convertMilliseconds(milliseconds: number): string {
     const seconds = milliseconds / 1000;
     const minutes = Math.floor(seconds / 60);
     const secondsLeft = seconds - minutes * 60;
@@ -529,7 +526,7 @@ export function fax(monster: Monster): void {
 
 export const tests: testDuration[] = [];
 
-export function testWrapper(name: string, test: Test, prepare: () => number) {
+export function testWrapper(name: string, test: Test, prepare: () => number): void {
     if (testDone(test)) return;
     const startTurns = myTurncount();
     const predictedTurns = prepare();
@@ -555,20 +552,20 @@ export function questStep(questName: string): number {
 }
 
 const heads = [
-    $effect`hot-headed`,
-    $effect`cold as nice`,
-    $effect`a brush with grossness`,
-    $effect`does it have a skull in there???`,
-    $effect`oiled , slick`,
-    $effect`lack of body-building`,
-    $effect`we're all made of starfish`,
-    $effect`pomp & circumsands`,
-    $effect`resting beach face`,
-    $effect`do i know you from somewhere?`,
-    $effect`you learned something maybe!`,
+    $effect`Hot-Headed`,
+    $effect`Cold as Nice`,
+    $effect`A Brush with Grossness`,
+    $effect`Does It Have a Skull In There??`,
+    $effect`Oiled, Slick`,
+    $effect`Lack of Body-Building`,
+    $effect`We're All Made of Starfish`,
+    $effect`Pomp & Circumsands`,
+    $effect`Resting Beach Face`,
+    $effect`Do I Know You From Somewhere?`,
+    $effect`You Learned Something Maybe!`,
 ];
 
-export function tryHead(effect: Effect) {
+export function tryHead(effect: Effect): void {
     if (!heads.includes(effect)) return;
     const headNumber = 1 + heads.indexOf(effect);
     if (get("_beachHeadsUsed").split(",").includes(headNumber.toString())) return;

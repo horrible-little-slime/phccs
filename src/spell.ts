@@ -1,29 +1,29 @@
 import {
-    numericModifier,
-    cliExecute,
     availableAmount,
-    useSkill,
-    create,
-    visitUrl,
-    myClass,
-    myLevel,
-    useFamiliar,
-    handlingChoice,
-    runChoice,
     buy,
+    cliExecute,
+    create,
+    handlingChoice,
     itemAmount,
     maximize,
+    myClass,
+    myLevel,
+    numericModifier,
+    runChoice,
+    useFamiliar,
+    useSkill,
+    visitUrl,
 } from "kolmafia";
 import {
+    $class,
     $effect,
     $effects,
-    get,
-    $item,
-    $skill,
-    have,
-    $class,
     $familiar,
+    $item,
     $location,
+    $skill,
+    get,
+    have,
     Macro,
     set,
 } from "libram";
@@ -54,7 +54,7 @@ function castBuffs() {
 
     if (availableAmount($item`LOV Elixir #6`) > 0) ensureEffect($effect`The Magic of LOV`);
 
-    if (get("tomeSummons") < 3) useSkill(1, $skill`summon sugar sheets`);
+    if (get("tomeSummons") < 3) useSkill(1, $skill`Summon Sugar Sheets`);
     if (have($item`sugar sheet`)) create(1, $item`sugar chapeau`);
     visitUrl("shop.php?whichshop=lathe");
     if (availableAmount($item`flimsy hardwood scraps`) > 0) {
@@ -77,29 +77,29 @@ function castBuffs() {
 }
 
 function fingies() {
-    if (!have($effect`saucefingers`) && myClass() === $class`pastamancer` && myLevel() >= 15) {
-        useFamiliar($familiar`mini-adventurer`);
+    if (!have($effect`Saucefingers`) && myClass() === $class`Pastamancer` && myLevel() >= 15) {
+        useFamiliar($familiar`Mini-Adventurer`);
         horse("dark");
         uniform();
         setChoice(768, 4);
         advMacroAA(
-            $location`the dire warren`,
+            $location`The Dire Warren`,
             Macro.externalIf(
-                have($effect`cowrruption`) && have($effect`spit upon`),
+                have($effect`Cowrruption`) && have($effect`Spit Upon`),
                 Macro.skill("Meteor Shower").skill("Use the Force")
-            ).skill($skill`feel hatred`),
-            () => have($effect`saucefingers`)
+            ).skill($skill`Feel Hatred`),
+            () => have($effect`Saucefingers`)
         );
     }
 }
 
 function shower() {
-    if (!have($effect`meteor showered`) && get("_meteorShowerUses") < 5) {
+    if (!have($effect`Meteor Showered`) && get("_meteorShowerUses") < 5) {
         uniform();
         setChoice(1387, 3);
         advMacroAA(
-            $location`the dire warren`,
-            Macro.skill($skill`meteor shower`).skill($skill`use the force`)
+            $location`The Dire Warren`,
+            Macro.skill($skill`Meteor Shower`).skill($skill`Use the Force`)
         );
         if (handlingChoice()) runChoice(-1);
         set("_meteorShowerUses", 1 + get("_meteorShowerUses"));
@@ -110,19 +110,19 @@ function testPrep() {
     if (!have($item`obsidian nutcracker`, 2)) {
         buy(2 - itemAmount($item`obsidian nutcracker`), $item`obsidian nutcracker`);
     }
-    useFamiliar($familiar`disembodied hand`);
+    useFamiliar($familiar`Disembodied Hand`);
     maximize("spell damage", false);
     const handTurns = predictor();
-    useFamiliar($familiar`left-hand man`);
+    useFamiliar($familiar`Left-Hand Man`);
     maximize("spell damage", false);
     const manTurns = predictor();
     if (handTurns > manTurns) {
-        useFamiliar($familiar`disembodied hand`);
+        useFamiliar($familiar`Disembodied Hand`);
         maximize("spell damage", false);
     }
 }
 
-export default function spellTest() {
+export default function spellTest(): number {
     castBuffs();
     fingies();
     ensureInnerElf();

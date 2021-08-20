@@ -1,27 +1,27 @@
 import {
     cliExecute,
     create,
-    useFamiliar,
-    use,
-    visitUrl,
-    runChoice,
-    maximize,
     familiarWeight,
+    maximize,
     myFamiliar,
+    runChoice,
+    use,
+    useFamiliar,
+    visitUrl,
     weightAdjustment,
 } from "kolmafia";
-import { $effect, get, have, $item, $familiar, $location, Macro, $skill, set } from "libram";
+import { $effect, $familiar, $item, $location, $skill, get, have, Macro, set } from "libram";
 import {
-    ensureEffect,
-    useDefaultFamiliar,
-    horse,
-    uniform,
-    setChoice,
     advMacroAA,
+    ensureEffect,
+    horse,
+    setChoice,
     tryHead,
+    uniform,
+    useDefaultFamiliar,
 } from "./phredhccs-lib";
 
-export function universalWeightBuffs() {
+export function universalWeightBuffs(): void {
     ensureEffect($effect`Empathy`);
     ensureEffect($effect`Leash of Linguini`);
     ensureEffect($effect`Blood Bond`);
@@ -31,11 +31,11 @@ export function universalWeightBuffs() {
     if (!get("_freePillKeeperUsed")) {
         cliExecute("pillkeeper familiar");
     }
-    if (!have($effect`puzzle champ`)) {
+    if (!have($effect`Puzzle Champ`)) {
         cliExecute("witchess");
     }
-    
-    tryHead($effect`do i know you from somewhere`);
+
+    tryHead($effect`Do I Know You From Somewhere?`);
 
     if (have($item`green candy heart`)) ensureEffect($effect`Heart of Green`);
 }
@@ -43,14 +43,14 @@ export function universalWeightBuffs() {
 function gearAndUncommonBuffs() {
     if (!get("_clanFortuneBuffUsed")) cliExecute("fortune buff familiar");
     if (have($item`burning newspaper`)) create(1, $item`burning paper crane`);
-    if (have($item`short stack of pancakes`)) ensureEffect($effect`shortly stacked`);
+    if (have($item`short stack of pancakes`)) ensureEffect($effect`Shortly Stacked`);
     if (!have($item`cracker`)) {
         if (get("tomeSummons") < 3) {
-            useFamiliar($familiar`exotic parrot`);
-            create(1, $item`familiar jacks`);
-            use(1, $item`familiar jacks`);
+            useFamiliar($familiar`Exotic Parrot`);
+            create(1, $item`box of Familiar Jacks`);
+            use(1, $item`box of Familiar Jacks`);
         } else {
-            useFamiliar($familiar`baby bugged bugbear`);
+            useFamiliar($familiar`Baby Bugged Bugbear`);
             visitUrl("arena.php");
         }
     }
@@ -61,10 +61,10 @@ function takeAShower() {
     horse("dark");
     uniform();
     setChoice(1387, 3);
-    if (get("_meteorShowerUses") < 5 && !have($effect`meteor showered`)) {
+    if (get("_meteorShowerUses") < 5 && !have($effect`Meteor Showered`)) {
         advMacroAA(
-            $location`the dire warren`,
-            Macro.skill($skill`meteor shower`).skill($skill`use the force`),
+            $location`The Dire Warren`,
+            Macro.skill($skill`Meteor Shower`).skill($skill`Use the Force`),
             1,
             () => {
                 visitUrl("choice.php");
@@ -76,13 +76,13 @@ function takeAShower() {
 }
 
 function testPrep() {
-    if (have($item`cracker`)) useFamiliar($familiar`exotic parrot`);
-    else useFamiliar($familiar`baby bugged bugbear`);
+    if (have($item`cracker`)) useFamiliar($familiar`Exotic Parrot`);
+    else useFamiliar($familiar`Baby Bugged Bugbear`);
     maximize("Familiar Weight", false);
-    if (have($item`silver face paint`)) ensureEffect($effect`robot friends`);
+    if (have($item`silver face paint`)) ensureEffect($effect`Robot Friends`);
 }
 
-export default function familiarTest() {
+export default function familiarTest(): number {
     universalWeightBuffs();
     gearAndUncommonBuffs();
     takeAShower();
