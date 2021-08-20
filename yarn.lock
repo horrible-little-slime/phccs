@@ -816,6 +816,14 @@
     "@babel/helper-validator-option" "^7.12.1"
     "@babel/plugin-transform-typescript" "^7.12.1"
 
+"@babel/runtime-corejs3@^7.14.9":
+  version "7.15.3"
+  resolved "https://registry.yarnpkg.com/@babel/runtime-corejs3/-/runtime-corejs3-7.15.3.tgz#28754263988198f2a928c09733ade2fb4d28089d"
+  integrity sha512-30A3lP+sRL6ml8uhoJSs+8jwpKzbw8CqBvDc1laeptxPm5FahumJxirigcbD2qTs71Sonvj1cyZB0OKGAmxQ+A==
+  dependencies:
+    core-js-pure "^3.16.0"
+    regenerator-runtime "^0.13.4"
+
 "@babel/runtime@^7.8.4":
   version "7.12.5"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.12.5.tgz#410e7e487441e1b360c29be715d870d9b985882e"
@@ -1400,6 +1408,11 @@ core-js-compat@^3.8.0:
     browserslist "^4.16.1"
     semver "7.0.0"
 
+core-js-pure@^3.16.0:
+  version "3.16.2"
+  resolved "https://registry.yarnpkg.com/core-js-pure/-/core-js-pure-3.16.2.tgz#0ef4b79cabafb251ea86eb7d139b42bd98c533e8"
+  integrity sha512-oxKe64UH049mJqrKkynWp6Vu0Rlm/BTXO/bJZuN2mmR3RtOFNepLlSWDd1eo16PzHpQAoNG97rLU1V/YxesJjw==
+
 core-js@3.15.2:
   version "3.15.2"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.15.2.tgz#740660d2ff55ef34ce664d7e2455119c5bdd3d61"
@@ -1522,6 +1535,14 @@ escape-string-regexp@^1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-1.0.5.tgz#1b61c0562190a8dff6ae3bb2cf0200ca130b86d4"
   integrity sha1-G2HAViGQqN/2rjuyzwIAyhMLhtQ=
+
+eslint-plugin-libram@^0.1.7:
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-libram/-/eslint-plugin-libram-0.1.7.tgz#23f36d5b3c16023f6c01b30bc579c417b7796c4a"
+  integrity sha512-bEJEG2g2VdLOMLwiFdfP8RklLNWwh+eA3gjxUNf1owxkcXjhJlFxWKjHbJ5wiL2L5ZauQ/qLIKQIyIvMcKv76w==
+  dependencies:
+    html-entities "^2.3.2"
+    requireindex "~1.1.0"
 
 eslint-scope@^5.1.1:
   version "5.1.1"
@@ -1849,6 +1870,11 @@ has@^1.0.3:
   dependencies:
     function-bind "^1.1.1"
 
+html-entities@^2.3.2:
+  version "2.3.2"
+  resolved "https://registry.yarnpkg.com/html-entities/-/html-entities-2.3.2.tgz#760b404685cb1d794e4f4b744332e3b00dcfe488"
+  integrity sha512-c3Ab/url5ksaT0WyleslpBEthOzWhrjQbg75y7XUsfSzi3Dgzt0l8w5e7DylRn15MTlMMD58dTfzddNS2kcAjQ==
+
 human-signals@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/human-signals/-/human-signals-2.1.0.tgz#dc91fcba42e4d06e4abaed33b3e7a3c02f514ea0"
@@ -2137,11 +2163,12 @@ kolmafia@^1.1.2:
   resolved "https://registry.yarnpkg.com/kolmafia/-/kolmafia-1.1.2.tgz#1a05e9b6fc5408bccae9b4ff685f52cc767b3937"
   integrity sha512-fJSJZgOQ92lI6kTLqSoP8+JZFjRT5RjZyWi84tEYatb1K4VxtCjthAwzO9q4ZKEBCTOABM8KLbQmbLlSIIkNJQ==
 
-libram@^0.2.5:
-  version "0.2.5"
-  resolved "https://registry.yarnpkg.com/libram/-/libram-0.2.5.tgz#48ccc545ff1648ca3cd9397d6bc3970330da2d9e"
-  integrity sha512-1SUEuW0uAzfVz8gyScaH7a2tX/GXlGz4Rl6OdIN98UEjVCiQ8/D4ff582HAgre6RotBn7Txlp1ihcJVyO95csQ==
+libram@^0.2.7:
+  version "0.2.7"
+  resolved "https://registry.yarnpkg.com/libram/-/libram-0.2.7.tgz#9906edc24c7ed821b54f8375995d4c57644dc9aa"
+  integrity sha512-k+SD0gUwJ6iJA6xpEjkSXrGa+ICGNGCkoFI9moOCJqTMJAGTDRnKiLZzH8AI2+KUzZqBs+L7yF6FeAzZntKbTg==
   dependencies:
+    "@babel/runtime-corejs3" "^7.14.9"
     core-js "3.15.2"
     kolmafia "^1.1.2"
     lodash "^4.17.21"
@@ -2628,6 +2655,11 @@ repeat-string@^1.6.1:
   version "1.6.1"
   resolved "https://registry.yarnpkg.com/repeat-string/-/repeat-string-1.6.1.tgz#8dcae470e1c88abc2d600fff4a776286da75e637"
   integrity sha1-jcrkcOHIirwtYA//Sndihtp15jc=
+
+requireindex@~1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/requireindex/-/requireindex-1.1.0.tgz#e5404b81557ef75db6e49c5a72004893fe03e162"
+  integrity sha1-5UBLgVV+91225JxacgBIk/4D4WI=
 
 resolve-cwd@^3.0.0:
   version "3.0.0"
