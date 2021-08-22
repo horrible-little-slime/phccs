@@ -1,5 +1,4 @@
 import {
-    adv1,
     availableAmount,
     buy,
     cliExecute,
@@ -50,7 +49,6 @@ import {
     advMacroAA,
     ensureEffect,
     heal,
-    kramcoCheck,
     mapMacro,
     multiFightAutoAttack,
     questStep,
@@ -355,34 +353,6 @@ function snojo() {
     cliExecute("hottub");
 }
 
-function lectureChain() {
-    heal();
-    if (get("_pocketProfessorLectures") === 0) {
-        useFamiliar($familiar`Pocket Professor`);
-        uniform();
-        equip($slot`off-hand`, $item`latte lovers member's mug`);
-        equip($slot`acc1`, $item`hewn moon-rune spoon`);
-        equip($slot`acc2`, $item`Beach Comb`);
-        equip($slot`acc3`, $item`Brutal brogues`);
-        const profchain = Macro.step(delevel)
-            .trySkill("Lecture on Relativity")
-            .step(candyblast)
-            .attack()
-            .repeat();
-        profchain.setAutoAttack();
-        if (kramcoCheck()) {
-            equip($slot`off-hand`, $item`Kramco Sausage-o-Matic™`);
-            do {
-                adv1($location`Madness Bakery`, -1, profchain.toString());
-            } while (get("lastEncounter") === "Our Bakery in the Middle of Our Street");
-            multiFightAutoAttack();
-        } else if (get("_witchessFights") < 3) {
-            Witchess.fightPiece($monster`Witchess Bishop`);
-            multiFightAutoAttack();
-        }
-    }
-}
-
 function NEP() {
     if (get("_questPartyFair") === "unstarted") {
         setChoice(1322, "");
@@ -533,7 +503,6 @@ export default function HPTest(): number {
     lov();
     godLob();
     snojo();
-    lectureChain();
     mElfLeveling();
     NEP();
     royalty();
