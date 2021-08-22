@@ -10,7 +10,20 @@ import {
     visitUrl,
     weightAdjustment,
 } from "kolmafia";
-import { $effect, $familiar, $item, $location, $skill, get, have, Macro, set } from "libram";
+import {
+    $effect,
+    $familiar,
+    $item,
+    $location,
+    $monster,
+    $skill,
+    get,
+    have,
+    Macro,
+    set,
+    Witchess,
+} from "libram";
+import { defaultKill } from "./phccs-macros";
 import {
     advMacroAA,
     ensureEffect,
@@ -18,7 +31,6 @@ import {
     setChoice,
     tryHead,
     uniform,
-    useDefaultFamiliar,
 } from "./phredhccs-lib";
 
 export function universalWeightBuffs(): void {
@@ -56,8 +68,29 @@ function gearAndUncommonBuffs() {
     }
 }
 
+function familiarStuff() {
+    while (
+        get("_shortOrderCookCharge") < 11 &&
+        5 - Witchess.fightsDone() > 11 - get("_shortOrderCookCharge")
+    ) {
+        useFamiliar($familiar`Shorter-Order Cook`);
+        uniform();
+        defaultKill.setAutoAttack();
+        Witchess.fightPiece($monster`Witchess Bishop`);
+    }
+    while (
+        get("garbageFireProgress") < 30 &&
+        5 - Witchess.fightsDone() > 30 - get("garbageFireProgress")
+    ) {
+        useFamiliar($familiar`Garbage Fire`);
+        uniform();
+        defaultKill.setAutoAttack();
+        Witchess.fightPiece($monster`Witchess Bishop`);
+    }
+}
+
 function takeAShower() {
-    useDefaultFamiliar(false);
+    useFamiliar($familiar`none`);
     horse("dark");
     uniform();
     setChoice(1387, 3);
@@ -78,12 +111,14 @@ function takeAShower() {
 function testPrep() {
     if (have($item`cracker`)) useFamiliar($familiar`Exotic Parrot`);
     else useFamiliar($familiar`Baby Bugged Bugbear`);
+
     maximize("Familiar Weight", false);
     if (have($item`silver face paint`)) ensureEffect($effect`Robot Friends`);
 }
 
 export default function familiarTest(): number {
     universalWeightBuffs();
+    familiarStuff();
     gearAndUncommonBuffs();
     takeAShower();
     testPrep();

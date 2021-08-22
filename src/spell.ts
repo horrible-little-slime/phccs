@@ -94,6 +94,7 @@ function fingies() {
 }
 
 function shower() {
+    useFamiliar($familiar`none`);
     if (!have($effect`Meteor Showered`) && get("_meteorShowerUses") < 5) {
         uniform();
         setChoice(1387, 3);

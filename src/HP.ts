@@ -9,6 +9,7 @@ import {
     getCampground,
     getCounters,
     haveEffect,
+    haveEquipped,
     knollAvailable,
     maximize,
     mpCost,
@@ -77,13 +78,6 @@ function initialExp() {
         use(1, $item`a ten-percent bonus`);
     }
     cliExecute("bastille myst brutalist");
-    if (get("_daycareGymScavenges") === 0) {
-        visitUrl("place.php?whichplace=town_wrong&action=townwrong_boxingdaycare");
-        runChoice(3);
-        runChoice(2);
-        runChoice(5);
-        runChoice(4);
-    }
 }
 
 function buffMyst() {
@@ -145,21 +139,22 @@ function castBuffs() {
     if (!have($item`turtle totem`)) cliExecute("acquire turtle totem");
     if (!have($item`saucepan`)) cliExecute("acquire saucepan");
 
-    const castableBuffs = $skills`The Magical Mojomuscular Melody, Stevedave's Shanty of Superiority, Fat Leon's Phat Loot Lyric, The Polka of Plenty, Leash of Linguini, Empathy of the Newt, Blood Bond, Blood Bubble, Song of Bravado, Get Big`;
-    castableBuffs.forEach((buff) => {
-        if (!have(toEffect(buff))) {
-            if (myMp() < mpCost(buff)) {
-                if (totalFreeRests() > get("timesRested")) {
-                    visitUrl("place.php?whichplace=chateau&action=chateau_restbox");
-                } else if (availableAmount($item`psychokinetic energy blob`) >= 1) {
-                    use(2, $item`psychokinetic energy blob`);
-                } else {
-                    eat(1, $item`magical sausage`);
+    $skills`The Magical Mojomuscular Melody, Stevedave's Shanty of Superiority, Fat Leon's Phat Loot Lyric, The Polka of Plenty, Leash of Linguini, Empathy of the Newt, Blood Bond, Blood Bubble, Song of Bravado, Get Big`.forEach(
+        (buff) => {
+            if (!have(toEffect(buff))) {
+                if (myMp() < mpCost(buff)) {
+                    if (totalFreeRests() > get("timesRested")) {
+                        visitUrl("place.php?whichplace=chateau&action=chateau_restbox");
+                    } else if (availableAmount($item`psychokinetic energy blob`) >= 1) {
+                        use(2, $item`psychokinetic energy blob`);
+                    } else {
+                        eat(1, $item`magical sausage`);
+                    }
                 }
+                useSkill(1, buff);
             }
-            useSkill(1, buff);
         }
-    });
+    );
 }
 
 function getYoked() {
@@ -192,7 +187,7 @@ function witchGhostAgent() {
     }
     equip($slot`acc3`, $item`battle broom`);
 
-    if (get("questM25Armorer") === "unstarted") {
+    if (!questStep("questM25Armorer")) {
         visitUrl("shop.php?whichshop=armory&action=talk");
         runChoice(1);
     }
@@ -263,12 +258,12 @@ function lov() {
     cliExecute("/cast * candy heart");
 }
 
-function tomatoJuice() {
+function tomatoJuiceAndNinjaCostume() {
     cliExecute("backupcamera ml");
 
     uniform();
     if (
-        get("_monstersMapped") < 3 &&
+        get("_monstersMapped") < 2 &&
         availableAmount($item`tomato`) +
             availableAmount($item`tomato juice of powerful power`) +
             haveEffect($effect`Tomato Power`) ===
@@ -284,11 +279,15 @@ function tomatoJuice() {
                 Macro.skill($skill`Reflex Hammer`)
             )
         );
-        useDefaultFamiliar();
+        useDefaultFamiliar(false);
         uniform();
-        advMacroAA(
-            $location`The X-32-F Combat Training Snowman`,
-            Macro.skill($skill`Feel Nostalgic`).step(defaultKill)
+        mapMacro(
+            $location`The Haiku Dungeon`,
+            $monster`amateur ninja`,
+            Macro.if_(
+                `monsterid ${$monster`amateur ninja`.id}`,
+                Macro.skill($skill`Feel Nostalgic`).skill($skill`Gingerbread Mob Hit`)
+            ).step("abort")
         );
     }
 
@@ -315,20 +314,6 @@ function tomatoJuice() {
         if (have($item`ointment of the occult`)) {
             use(1, $item`ointment of the occult`);
         }
-    }
-}
-
-function ninjaCostume() {
-    if (get("_monstersMapped") < 3 && !have($item`li'l ninja costume`)) {
-        useDefaultFamiliar();
-        mapMacro(
-            $location`The Haiku Dungeon`,
-            $monster`amateur ninja`,
-            Macro.if_(
-                `monsterid ${$monster`amateur ninja`.id}`,
-                Macro.skill($skill`Gingerbread Mob Hit`)
-            ).step("abort")
-        );
     }
 }
 
@@ -429,7 +414,7 @@ function NEP() {
         () => {
             useDefaultFamiliar();
             heal();
-            if (get("_sausageFights") > 2) {
+            if (get("_sausageFights") > 3 && haveEquipped($item`Kramco Sausage-o-Matic™`)) {
                 equip($slot`off-hand`, $item`familiar scrapbook`);
             }
             if (get("choiceAdventure1324") !== 5 && questStep("_questPartyFair") > 0) {
@@ -451,6 +436,9 @@ function NEP() {
         () => {
             heal();
             useDefaultFamiliar();
+            if (get("_sausageFights") > 3 && haveEquipped($item`Kramco Sausage-o-Matic™`)) {
+                equip($slot`off-hand`, $item`familiar scrapbook`);
+            }
             if (get("choiceAdventure1324") !== 5 && questStep("_questPartyFair") > 0) {
                 setChoice(1324, 5);
             }
@@ -471,6 +459,9 @@ function NEP() {
         () => {
             heal();
             useDefaultFamiliar();
+            if (get("_sausageFights") > 3 && haveEquipped($item`Kramco Sausage-o-Matic™`)) {
+                equip($slot`off-hand`, $item`familiar scrapbook`);
+            }
             if (get("choiceAdventure1324") !== 5 && questStep("_questPartyFair") > 0) {
                 setChoice(1324, 5);
             }
@@ -537,11 +528,10 @@ export default function HPTest(): number {
     initialExp();
     buffMyst();
     castBuffs();
-    tomatoJuice();
+    tomatoJuiceAndNinjaCostume();
     getYoked();
     witchGhostAgent();
     lov();
-    ninjaCostume();
     godLob();
     snojo();
     lectureChain();

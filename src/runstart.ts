@@ -12,7 +12,7 @@ import {
     useSkill,
     visitUrl,
 } from "kolmafia";
-import { $coinmaster, $familiar, $item, $skill, get, have, SourceTerminal } from "libram";
+import { $coinmaster, $familiar, $item, $items, $skill, get, have, SourceTerminal } from "libram";
 import { setClan, tryUse } from "./phredhccs-lib";
 
 function juiceBar() {
@@ -34,23 +34,15 @@ function toot() {
 function grimoires() {
     if (!get("_grimoireConfiscatorSummons")) {
         useSkill(1, $skill`Summon Confiscated Things`);
-        autosell(1, $item`glow-in-the-dark necklace`);
-        autosell(1, $item`"KICK ME" sign`);
-        autosell(1, $item`LCD game: Burger Belt`);
-        autosell(1, $item`LCD game: Food Eater`);
-        autosell(1, $item`LCD game: Garbage River`);
+        $items`glow-in-the-dark necklace, "KICK ME" sign, LCD game: Burger Belt, LCD game: Food Eater, LCD game: Garbage River`.forEach(
+            (item) => autosell(1, item)
+        );
     }
     if (!get("grimoire2Summons")) {
         useSkill(1, $skill`Summon Tasteful Items`);
-        autosell(5, $item`black-and-blue light`);
-        autosell(5, $item`blue plasma ball`);
-        autosell(5, $item`cheap studded belt`);
-        autosell(5, $item`flavored foot massage oil`);
-        autosell(5, $item`foam dart`);
-        autosell(5, $item`Loudmouth Larry Lamprey`);
-        autosell(5, $item`personal massager`);
-        autosell(5, $item`personalized coffee mug`);
-        autosell(5, $item`stick-on eyebrow piercing`);
+        $items`black-and-blue light, blue plasma ball, cheap studded belt, flavored foot massage oil, foam dart, Loudmouth Larry Lamprey, personal massager, personalized coffee mug, stick-on eyebrow piercing`.forEach(
+            (item) => autosell(5, item)
+        );
     }
     if (!get("grimoire3Summons")) {
         useSkill(1, $skill`Summon Alice's Army Cards`);
@@ -64,7 +56,7 @@ function setSettings() {
 }
 
 function getTurns() {
-    if (myLevel() === 1 && mySpleenUse() === 0) {
+    if (myLevel() === 1 && !mySpleenUse()) {
         while (get("_universeCalculated") < get("skillLevel144")) {
             cliExecute("numberology 69");
         }

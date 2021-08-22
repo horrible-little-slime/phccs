@@ -115,7 +115,7 @@ function batForm() {
         get("_latteRefillsUsed") < 3 &&
         numericModifier($item`latte lovers member's mug`, "Item Drop") < 20
     ) {
-        const latte = `pumpkin ${get("latteUnlocks").includes("carrot") ? "carrot " : "vanilla "}${
+        const latte = `pumpkin ${get("latteUnlocks").includes("carrot") ? "carrot" : "vanilla"} ${
             get("latteUnlocks").includes("butternut") ? "butternut" : "cinnamon"
         }`;
         if (latte !== "") {
