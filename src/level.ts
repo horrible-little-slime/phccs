@@ -12,11 +12,8 @@ import {
     knollAvailable,
     maximize,
     mpCost,
-    myBuffedstat,
     myLevel,
-    myMaxhp,
     myMp,
-    myThrall,
     numericModifier,
     runChoice,
     runCombat,
@@ -36,8 +33,6 @@ import {
     $skill,
     $skills,
     $slot,
-    $stat,
-    $thrall,
     get,
     have,
     Macro,
@@ -492,22 +487,12 @@ function royalty() {
 
 function restAndBuff() {
     while (get("timesRested") < totalFreeRests()) {
-        ensureEffect($effect`Song of Starch`);
-        if (myThrall() !== $thrall`Elbow Macaroni`) useSkill($skill`Bind Undead Elbow Macaroni`);
         cliExecute("/cast * candy heart");
         visitUrl("place.php?whichplace=chateau&action=chateau_restbox");
     }
 }
-const predictor = () => 60 - Math.floor((myMaxhp() - myBuffedstat($stat`muscle`) - 3) / 30);
-function testPrep() {
-    maximize("hp", false);
 
-    if (predictor() > 1) {
-        throw "Failed to cap HP";
-    }
-}
-
-export default function HPTest(): number {
+export default function levelUp(): void {
     initialExp();
     buffMyst();
     castBuffs();
@@ -521,6 +506,4 @@ export default function HPTest(): number {
     NEP();
     royalty();
     restAndBuff();
-    testPrep();
-    return predictor();
 }

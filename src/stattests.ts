@@ -6,12 +6,14 @@ import {
     maximize,
     myBasestat,
     myBuffedstat,
+    myMaxhp,
+    myThrall,
     retrieveItem,
     use,
     useFamiliar,
     useSkill,
 } from "kolmafia";
-import { $effect, $familiar, $item, $skill, $stat, get, have } from "libram";
+import { $effect, $familiar, $item, $skill, $stat, $thrall, get, have } from "libram";
 import { ensureEffect, ensureInnerElf, tryUse } from "./phredhccs-lib";
 
 const musclePredictor = () =>
@@ -125,4 +127,18 @@ export function moxTest(): number {
         throw "Not enough moxie to cap.";
     }
     return moxPredictor();
+}
+
+const hpPredictor = () => 60 - Math.floor((myMaxhp() - myBuffedstat($stat`muscle`) - 3) / 30);
+function hpTestPrep() {
+    if (myThrall() !== $thrall`Elbow Macaroni`) useSkill($skill`Bind Undead Elbow Macaroni`);
+    maximize("hp", false);
+}
+
+export function HPTest(): number {
+    hpTestPrep();
+    if (hpPredictor() > 1) {
+        throw "Failed to cap HP";
+    }
+    return hpPredictor();
 }

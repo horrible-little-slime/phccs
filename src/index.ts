@@ -2,12 +2,11 @@ import { cliExecute, gametimeToInt, print, setAutoAttack, visitUrl } from "kolma
 import coilWire from "./coil wire";
 import familiarTest from "./familiarweight";
 import hotTest from "./hotres";
-import HPTest from "./HP";
 import itemTest from "./item";
 import noncombatTest from "./noncombat";
 import { convertMilliseconds, PropertyManager, Test, tests, testWrapper } from "./phredhccs-lib";
 import spellTest from "./spell";
-import { moxTest, muscleTest, mystTest } from "./stattests";
+import { HPTest, moxTest, muscleTest, mystTest } from "./stattests";
 import weaponTest from "./weapon";
 
 //preamble
@@ -17,10 +16,11 @@ cliExecute("ccs twiddle");
 const startTime = gametimeToInt();
 try {
     testWrapper("wire-coiling", Test.COIL_WIRE, coilWire);
+    levelUp();
+    testWrapper("moxie", Test.MOX, moxTest);
     testWrapper("HP", Test.HP, HPTest);
     testWrapper("muscle", Test.MUS, muscleTest);
     testWrapper("mysticality", Test.MYS, mystTest);
-    testWrapper("moxie", Test.MOX, moxTest);
     testWrapper("item", Test.ITEM, itemTest);
     testWrapper("hot res", Test.HOT_RES, hotTest);
     testWrapper("noncombat", Test.NONCOMBAT, noncombatTest);
@@ -43,3 +43,7 @@ try {
     setAutoAttack(0);
     PropertyManager.resetAll();
 }
+function levelUp() {
+    throw new Error("Function not implemented.");
+}
+
