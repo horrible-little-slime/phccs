@@ -13,6 +13,7 @@ import {
     maximize,
     mpCost,
     myBuffedstat,
+    myLevel,
     myMaxhp,
     myMp,
     myThrall,
@@ -48,6 +49,7 @@ import {
     advMacro,
     advMacroAA,
     ensureEffect,
+    ensureInnerElf,
     heal,
     mapMacro,
     multiFightAutoAttack,
@@ -390,6 +392,10 @@ function NEP() {
             if (get("choiceAdventure1324") !== 5 && questStep("_questPartyFair") > 0) {
                 setChoice(1324, 5);
             }
+            if (myLevel() >= 13 && !have($effect`Inner Elf`)) {
+                ensureInnerElf();
+                uniform();
+            }
         }
     );
     advMacroAA(
@@ -411,6 +417,10 @@ function NEP() {
             }
             if (get("choiceAdventure1324") !== 5 && questStep("_questPartyFair") > 0) {
                 setChoice(1324, 5);
+            }
+            if (myLevel() >= 13 && !have($effect`Inner Elf`)) {
+                ensureInnerElf();
+                uniform();
             }
         }
     );
@@ -434,6 +444,10 @@ function NEP() {
             }
             if (get("choiceAdventure1324") !== 5 && questStep("_questPartyFair") > 0) {
                 setChoice(1324, 5);
+            }
+            if (myLevel() >= 13 && !have($effect`Inner Elf`)) {
+                ensureInnerElf();
+                equip($slot`acc3`, $item`Lil' Doctor™ bag`);
             }
         }
     );
