@@ -5,7 +5,7 @@ var packageData = require("./package.json");
 module.exports = {
     entry: {
         // Point "entry" to scripts you want to be CLI-eligible.
-        phccs: "./src/phredhccs.ts",
+        phccs: "./src/index.ts",
         phccs_gash: "./src/gash-hop.ts",
     },
     mode: "development",
