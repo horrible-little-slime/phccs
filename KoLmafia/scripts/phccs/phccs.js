@@ -18947,7 +18947,7 @@ function royalty() {
 function restAndBuff() {
   while ((0,libram__WEBPACK_IMPORTED_MODULE_3__.get)("timesRested") < (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.totalFreeRests)()) {
     (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.ensureEffect)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$effect)(_templateObject143 || (_templateObject143 = _taggedTemplateLiteral(["Song of Starch"]))));
-    if ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.myThrall)() !== (0,libram__WEBPACK_IMPORTED_MODULE_3__.$thrall)(_templateObject144 || (_templateObject144 = _taggedTemplateLiteral(["undead elbow macaroni"])))) (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.useSkill)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$skill)(_templateObject145 || (_templateObject145 = _taggedTemplateLiteral(["Bind Undead Elbow Macaroni"]))));
+    if ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.myThrall)() !== (0,libram__WEBPACK_IMPORTED_MODULE_3__.$thrall)(_templateObject144 || (_templateObject144 = _taggedTemplateLiteral(["Elbow Macaroni"])))) (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.useSkill)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$skill)(_templateObject145 || (_templateObject145 = _taggedTemplateLiteral(["Bind Undead Elbow Macaroni"]))));
     (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.cliExecute)("/cast * candy heart");
     (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.visitUrl)("place.php?whichplace=chateau&action=chateau_restbox");
   }
@@ -20184,7 +20184,7 @@ var heads = [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$effect)(_templateObject102 
 function tryHead(effect) {
   if (!heads.includes(effect)) return;
   var headNumber = 1 + heads.indexOf(effect);
-  if ((0,libram__WEBPACK_IMPORTED_MODULE_1__.get)("_beachHeadsUsed").split(",").includes(headNumber.toString())) return;
+  if (libram__WEBPACK_IMPORTED_MODULE_1__.property.getString("_beachHeadsUsed").split(",").includes(headNumber.toString())) return;
   ensureEffect(effect);
 }
 
@@ -20316,6 +20316,8 @@ function prepGear() {
   if ((0,libram__WEBPACK_IMPORTED_MODULE_2__.get)("boomBoxSong") !== "Total Eclipse of Your Meat") {
     (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.cliExecute)("boombox meat");
   }
+
+  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.cliExecute)("briefcase enchantment weapon hot -combat");
 }
 
 function vote() {
@@ -20718,6 +20720,7 @@ function weaponTest() {
   castBuffs();
   getCrushed();
   forceSpit();
+  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_1__.ensureInnerElf)();
   kungFuMeteors();
   testPrep();
   if (predictor() > 1) throw "Failed to cap weapon damage!";

@@ -568,6 +568,6 @@ const heads = [
 export function tryHead(effect: Effect): void {
     if (!heads.includes(effect)) return;
     const headNumber = 1 + heads.indexOf(effect);
-    if (get("_beachHeadsUsed").split(",").includes(headNumber.toString())) return;
+    if (property.getString("_beachHeadsUsed").split(",").includes(headNumber.toString())) return;
     ensureEffect(effect);
 }

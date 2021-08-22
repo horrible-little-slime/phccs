@@ -26,6 +26,7 @@ import {
 import {
     advMacroAA,
     ensureEffect,
+    ensureInnerElf,
     fax,
     horse,
     horsery,
@@ -106,6 +107,7 @@ export default function weaponTest(): number {
     castBuffs();
     getCrushed();
     forceSpit();
+    ensureInnerElf();
     kungFuMeteors();
     testPrep();
     if (predictor() > 1) throw "Failed to cap weapon damage!";

@@ -509,8 +509,7 @@ function royalty() {
 function restAndBuff() {
     while (get("timesRested") < totalFreeRests()) {
         ensureEffect($effect`Song of Starch`);
-        if (myThrall() !== $thrall`undead elbow macaroni`)
-            useSkill($skill`Bind Undead Elbow Macaroni`);
+        if (myThrall() !== $thrall`Elbow Macaroni`) useSkill($skill`Bind Undead Elbow Macaroni`);
         cliExecute("/cast * candy heart");
         visitUrl("place.php?whichplace=chateau&action=chateau_restbox");
     }

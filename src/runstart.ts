@@ -107,6 +107,8 @@ function prepGear() {
     if (get("boomBoxSong") !== "Total Eclipse of Your Meat") {
         cliExecute("boombox meat");
     }
+
+    cliExecute("briefcase enchantment weapon hot -combat");
 }
 
 function vote() {
