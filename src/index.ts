@@ -3,6 +3,7 @@ import coilWire from "./coil wire";
 import familiarTest from "./familiarweight";
 import hotTest from "./hotres";
 import itemTest from "./item";
+import levelUp from "./level";
 import noncombatTest from "./noncombat";
 import { convertMilliseconds, PropertyManager, Test, tests, testWrapper } from "./phredhccs-lib";
 import spellTest from "./spell";
@@ -43,7 +44,3 @@ try {
     setAutoAttack(0);
     PropertyManager.resetAll();
 }
-function levelUp() {
-    throw new Error("Function not implemented.");
-}
-
