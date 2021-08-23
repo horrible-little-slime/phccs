@@ -138,6 +138,8 @@ export function moxTest(): number {
 const hpPredictor = () => 60 - Math.floor((myMaxhp() - myBuffedstat($stat`muscle`) - 3) / 30);
 function hpTestPrep() {
     if (myThrall() !== $thrall`Elbow Macaroni`) useSkill($skill`Bind Undead Elbow Macaroni`);
+    useFamiliar($familiar`Left-Hand Man`);
+    ensureEffect($effect`Song of Starch`);
     maximize("hp", false);
 }
 

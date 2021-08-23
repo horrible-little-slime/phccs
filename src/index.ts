@@ -1,4 +1,4 @@
-import { cliExecute, gametimeToInt, print, setAutoAttack, visitUrl } from "kolmafia";
+import { cliExecute, gametimeToInt, myLevel, print, setAutoAttack, visitUrl } from "kolmafia";
 import coilWire from "./coil wire";
 import familiarTest from "./familiarweight";
 import hotTest from "./hotres";
@@ -17,7 +17,7 @@ cliExecute("ccs twiddle");
 const startTime = gametimeToInt();
 try {
     testWrapper("wire-coiling", Test.COIL_WIRE, coilWire);
-    levelUp();
+    if (myLevel() < 13) levelUp();
     testWrapper("moxie", Test.MOX, moxTest);
     testWrapper("HP", Test.HP, HPTest);
     testWrapper("muscle", Test.MUS, muscleTest);
