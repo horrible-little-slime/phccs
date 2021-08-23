@@ -332,7 +332,7 @@ export function fightSausageIfAble(location: Location, macro: Macro): void {
 
 export function ensurePotionEffect(ef: Effect, potion: Item): void {
     //stolen directly from bean
-    if (haveEffect(ef) === 0) {
+    if (!have(ef)) {
         if (availableAmount(potion) === 0) {
             create(1, potion);
         }

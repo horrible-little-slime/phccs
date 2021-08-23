@@ -15,6 +15,7 @@ import {
     myLevel,
     myMp,
     numericModifier,
+    outfit,
     runChoice,
     runCombat,
     toEffect,
@@ -388,8 +389,9 @@ function NEP() {
                 setChoice(1324, 5);
             }
             if (myLevel() >= 13 && !have($effect`Inner Elf`)) {
+                cliExecute("checkpoint");
                 ensureInnerElf();
-                uniform();
+                outfit("checkpoint");
             }
         }
     );
@@ -414,8 +416,9 @@ function NEP() {
                 setChoice(1324, 5);
             }
             if (myLevel() >= 13 && !have($effect`Inner Elf`)) {
+                cliExecute("checkpoint");
                 ensureInnerElf();
-                uniform();
+                outfit("checkpoint");
             }
         }
     );
@@ -441,8 +444,9 @@ function NEP() {
                 setChoice(1324, 5);
             }
             if (myLevel() >= 13 && !have($effect`Inner Elf`)) {
+                cliExecute("checkpoint");
                 ensureInnerElf();
-                equip($slot`acc3`, $item`Lil' Doctor™ bag`);
+                outfit("checkpoint");
             }
         }
     );
