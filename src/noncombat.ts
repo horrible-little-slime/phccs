@@ -18,7 +18,7 @@ import { universalWeightBuffs } from "./familiarweight";
 import { defaultKill } from "./phccs-macros";
 import { ensureEffect, fuelUp, heal, horse, setChoice, uniform } from "./phredhccs-lib";
 
-const predictor = () => 60 - numericModifier("hot resistance");
+const predictor = () => 60 + (20 + numericModifier("combat rate")) * 3;
 
 function castBuffs() {
     universalWeightBuffs();

@@ -171,6 +171,10 @@ function getYoked() {
 }
 
 function witchGhostAgent() {
+    if (questStep("questM25Armorer") === -1) {
+        visitUrl("shop.php?whichshop=armory&action=talk");
+        runChoice(1);
+    }
     uniform();
     equip($slot`back`, $item`protonic accelerator pack`);
     cliExecute("fold makeshift garbage shirt");

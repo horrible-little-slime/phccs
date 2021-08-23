@@ -7,13 +7,12 @@ import {
     myBasestat,
     myBuffedstat,
     myMaxhp,
-    myThrall,
     retrieveItem,
     use,
     useFamiliar,
     useSkill,
 } from "kolmafia";
-import { $effect, $familiar, $item, $skill, $stat, $thrall, get, have } from "libram";
+import { $effect, $familiar, $item, $skill, $stat, get, have } from "libram";
 import { ensureEffect, ensureInnerElf, tryUse } from "./phredhccs-lib";
 
 const musclePredictor = () =>
@@ -135,15 +134,29 @@ export function moxTest(): number {
     return moxPredictor();
 }
 
+function hpBuffs() {
+    useSkill(1, $skill`Bind Undead Elbow Macaroni`);
+    ensureEffect($effect`Big`);
+    ensureEffect($effect`Song of Starch`);
+    ensureEffect($effect`Rage of the Reindeer`);
+    ensureEffect($effect`Quiet Determination`);
+    ensureEffect($effect`Disdain of the War Snapper`);
+    ensureEffect($effect`Feeling Excited`);
+    ensureEffect($effect`The Power of LOV`);
+    if (!have($effect`Go Get 'Em, Tiger!`)) {
+        retrieveItem($item`Ben-Gal™ Balm`);
+        use(1, $item`Ben-Gal™ Balm`);
+    }
+}
+
 const hpPredictor = () => 60 - Math.floor((myMaxhp() - myBuffedstat($stat`muscle`) - 3) / 30);
 function hpTestPrep() {
-    if (myThrall() !== $thrall`Elbow Macaroni`) useSkill($skill`Bind Undead Elbow Macaroni`);
     useFamiliar($familiar`Left-Hand Man`);
-    ensureEffect($effect`Song of Starch`);
     maximize("hp", false);
 }
 
 export function HPTest(): number {
+    hpBuffs();
     hpTestPrep();
     if (hpPredictor() > 1) {
         throw "Failed to cap HP";
