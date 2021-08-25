@@ -5,7 +5,6 @@ import {
     create,
     eat,
     equip,
-    getCampground,
     getCounters,
     haveEffect,
     haveEquipped,
@@ -181,16 +180,12 @@ function witchGhostAgent() {
     equip($slot`shirt`, $item`makeshift garbage shirt`);
     heal();
     useDefaultFamiliar();
+    use(availableAmount($item`psychokinetic energy blob`), $item`psychokinetic energy blob`);
     Macro.skill("curse of weaksauce").skill("micrometeor").attack().repeat().setAutoAttack();
     if (!have($item`battle broom`)) {
         Witchess.fightPiece($monster`Witchess Witch`);
     }
     equip($slot`acc3`, $item`battle broom`);
-
-    if (!questStep("questM25Armorer")) {
-        visitUrl("shop.php?whichshop=armory&action=talk");
-        runChoice(1);
-    }
 
     const ghostLocation = get("ghostLocation");
     if (ghostLocation) {
@@ -261,6 +256,9 @@ function lov() {
 function tomatoJuiceAndNinjaCostume() {
     cliExecute("backupcamera ml");
 
+    if (have($item`magical sausage casing`) || have($item`magical sausage`)) {
+        cliExecute("eat magic sausage");
+    }
     uniform();
     if (
         get("_monstersMapped") < 2 &&
@@ -281,6 +279,7 @@ function tomatoJuiceAndNinjaCostume() {
         );
         useDefaultFamiliar(false);
         uniform();
+        if (myMp() < 30) use($item`psychokinetic energy blob`);
         mapMacro(
             $location`The Haiku Dungeon`,
             $monster`amateur ninja`,
@@ -291,7 +290,7 @@ function tomatoJuiceAndNinjaCostume() {
         );
     }
 
-    if (getCampground()["Dramatic™ range"] !== 1) {
+    if (!get("hasRange")) {
         if (!have($item`Dramatic™ range`)) {
             buy(1, $item`Dramatic™ range`);
         }
