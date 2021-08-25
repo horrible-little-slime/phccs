@@ -20186,7 +20186,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var libram__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! libram */ "../node_modules/libram/dist/index.js");
 /* harmony import */ var libram__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(libram__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _phredhccs_lib__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./phredhccs-lib */ "./src/phredhccs-lib.ts");
-var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5, _templateObject6, _templateObject7, _templateObject8, _templateObject9, _templateObject10, _templateObject11, _templateObject12, _templateObject13, _templateObject14, _templateObject15, _templateObject16, _templateObject17, _templateObject18, _templateObject19, _templateObject20, _templateObject21, _templateObject22, _templateObject23, _templateObject24, _templateObject25, _templateObject26, _templateObject27, _templateObject28, _templateObject29, _templateObject30, _templateObject31, _templateObject32, _templateObject33, _templateObject34;
+var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5, _templateObject6, _templateObject7, _templateObject8, _templateObject9, _templateObject10, _templateObject11, _templateObject12, _templateObject13, _templateObject14, _templateObject15, _templateObject16, _templateObject17, _templateObject18, _templateObject19, _templateObject20, _templateObject21, _templateObject22, _templateObject23, _templateObject24, _templateObject25, _templateObject26, _templateObject27, _templateObject28, _templateObject29, _templateObject30, _templateObject31, _templateObject32, _templateObject33, _templateObject34, _templateObject35;
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
@@ -20270,18 +20270,23 @@ function prepGear() {
     (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.runChoice)(5);
   }
 
-  if (!(0,libram__WEBPACK_IMPORTED_MODULE_2__.have)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject26 || (_templateObject26 = _taggedTemplateLiteral(["gold detective badge"]))))) {
+  if ((0,libram__WEBPACK_IMPORTED_MODULE_2__.have)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject26 || (_templateObject26 = _taggedTemplateLiteral(["Fourth of May Cosplay Saber"])))) && !(0,libram__WEBPACK_IMPORTED_MODULE_2__.get)("_saberMod")) {
+    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.visitUrl)('main.php?action=may4');
+    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.runChoice)(4);
+  }
+
+  if (!(0,libram__WEBPACK_IMPORTED_MODULE_2__.have)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject27 || (_templateObject27 = _taggedTemplateLiteral(["gold detective badge"]))))) {
     (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.visitUrl)("place.php?whichplace=town_wrong&action=townwrong_precinct");
   }
 
-  if ((0,libram__WEBPACK_IMPORTED_MODULE_2__.have)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject27 || (_templateObject27 = _taggedTemplateLiteral(["GameInformPowerDailyPro magazine"]))))) {
+  if ((0,libram__WEBPACK_IMPORTED_MODULE_2__.have)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject28 || (_templateObject28 = _taggedTemplateLiteral(["GameInformPowerDailyPro magazine"]))))) {
     (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.visitUrl)("inv_use.php?whichitem=6174&confirm=Yep.");
   }
 
-  if ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.eudoraItem)() === (0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject28 || (_templateObject28 = _taggedTemplateLiteral(["GameInformPowerDailyPro subscription card"])))) {
-    if (!(0,libram__WEBPACK_IMPORTED_MODULE_2__.have)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject29 || (_templateObject29 = _taggedTemplateLiteral(["scroll of Puddingskin"])))) && !(0,libram__WEBPACK_IMPORTED_MODULE_2__.have)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject30 || (_templateObject30 = _taggedTemplateLiteral(["dungeoneering kit"]))))) {
+  if ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.eudoraItem)() === (0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject29 || (_templateObject29 = _taggedTemplateLiteral(["GameInformPowerDailyPro subscription card"])))) {
+    if (!(0,libram__WEBPACK_IMPORTED_MODULE_2__.have)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject30 || (_templateObject30 = _taggedTemplateLiteral(["scroll of Puddingskin"])))) && !(0,libram__WEBPACK_IMPORTED_MODULE_2__.have)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject31 || (_templateObject31 = _taggedTemplateLiteral(["dungeoneering kit"]))))) {
       (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.visitUrl)("adventure.php?snarfblat=319");
-      (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.use)(1, (0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject31 || (_templateObject31 = _taggedTemplateLiteral(["dungeoneering kit"]))));
+      (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.use)(1, (0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject32 || (_templateObject32 = _taggedTemplateLiteral(["dungeoneering kit"]))));
     }
   }
 
@@ -20289,7 +20294,7 @@ function prepGear() {
     (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.cliExecute)("acquire codpiece");
   }
 
-  if (!(0,libram__WEBPACK_IMPORTED_MODULE_2__.have)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject32 || (_templateObject32 = _taggedTemplateLiteral(["pantogram pants"]))))) {
+  if (!(0,libram__WEBPACK_IMPORTED_MODULE_2__.have)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject33 || (_templateObject33 = _taggedTemplateLiteral(["pantogram pants"]))))) {
     (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.cliExecute)("pantogram mysticality|hot|drops of blood|some self-respect|your dreams|silent");
   }
 
@@ -20310,8 +20315,8 @@ function vote() {
 function deck() {
   if (!(0,libram__WEBPACK_IMPORTED_MODULE_2__.get)("_deckCardsDrawn")) {
     (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.cliExecute)("cheat ancestral; cheat island; cheat 1952");
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.autosell)(1, (0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject33 || (_templateObject33 = _taggedTemplateLiteral(["1952 Mickey Mantle card"]))));
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.useSkill)(2, (0,libram__WEBPACK_IMPORTED_MODULE_2__.$skill)(_templateObject34 || (_templateObject34 = _taggedTemplateLiteral(["Ancestral Recall"]))));
+    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.autosell)(1, (0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject34 || (_templateObject34 = _taggedTemplateLiteral(["1952 Mickey Mantle card"]))));
+    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.useSkill)(2, (0,libram__WEBPACK_IMPORTED_MODULE_2__.$skill)(_templateObject35 || (_templateObject35 = _taggedTemplateLiteral(["Ancestral Recall"]))));
   }
 }
 
