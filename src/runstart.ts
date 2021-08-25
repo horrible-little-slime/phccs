@@ -83,6 +83,11 @@ function prepGear() {
         runChoice(5);
     }
 
+    if (have($item`Fourth of May Cosplay Saber`) && !get("_saberMod")) {
+        visitUrl('main.php?action=may4');
+        runChoice(4);
+    }
+
     if (!have($item`gold detective badge`)) {
         visitUrl("place.php?whichplace=town_wrong&action=townwrong_precinct");
     }
