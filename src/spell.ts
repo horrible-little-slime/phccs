@@ -87,7 +87,7 @@ function fingies() {
                 have($effect`Cowrruption`) && have($effect`Spit Upon`),
                 Macro.skill("Meteor Shower").skill("Use the Force")
             ).skill($skill`Feel Hatred`),
-            () => have($effect`Saucefingers`)
+            () => !have($effect`Saucefingers`)
         );
     }
 }

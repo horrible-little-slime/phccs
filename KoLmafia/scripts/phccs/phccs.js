@@ -20430,7 +20430,7 @@ function fingies() {
     (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_1__.uniform)();
     (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_1__.setChoice)(768, 4);
     (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_1__.advMacroAA)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$location)(_templateObject18 || (_templateObject18 = _taggedTemplateLiteral(["The Dire Warren"]))), libram__WEBPACK_IMPORTED_MODULE_2__.Macro.externalIf((0,libram__WEBPACK_IMPORTED_MODULE_2__.have)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$effect)(_templateObject19 || (_templateObject19 = _taggedTemplateLiteral(["Cowrruption"])))) && (0,libram__WEBPACK_IMPORTED_MODULE_2__.have)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$effect)(_templateObject20 || (_templateObject20 = _taggedTemplateLiteral(["Spit Upon"])))), libram__WEBPACK_IMPORTED_MODULE_2__.Macro.skill("Meteor Shower").skill("Use the Force")).skill((0,libram__WEBPACK_IMPORTED_MODULE_2__.$skill)(_templateObject21 || (_templateObject21 = _taggedTemplateLiteral(["Feel Hatred"])))), function () {
-      return (0,libram__WEBPACK_IMPORTED_MODULE_2__.have)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$effect)(_templateObject22 || (_templateObject22 = _taggedTemplateLiteral(["Saucefingers"]))));
+      return !(0,libram__WEBPACK_IMPORTED_MODULE_2__.have)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$effect)(_templateObject22 || (_templateObject22 = _taggedTemplateLiteral(["Saucefingers"]))));
     });
   }
 }
