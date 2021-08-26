@@ -18907,6 +18907,7 @@ __webpack_require__.r(__webpack_exports__);
 
  //preamble
 
+if ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.myPathId)() !== 25) (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.abort)();
 (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.visitUrl)("council.php");
 (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.cliExecute)("ccs twiddle");
 var startTime = (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.gametimeToInt)();

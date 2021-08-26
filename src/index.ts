@@ -1,4 +1,13 @@
-import { cliExecute, gametimeToInt, myLevel, print, setAutoAttack, visitUrl } from "kolmafia";
+import {
+    abort,
+    cliExecute,
+    gametimeToInt,
+    myLevel,
+    myPathId,
+    print,
+    setAutoAttack,
+    visitUrl,
+} from "kolmafia";
 import coilWire from "./coil wire";
 import familiarTest from "./familiarweight";
 import hotTest from "./hotres";
@@ -11,6 +20,7 @@ import { HPTest, moxTest, muscleTest, mystTest } from "./stattests";
 import weaponTest from "./weapon";
 
 //preamble
+if (myPathId() !== 25) abort();
 visitUrl("council.php");
 cliExecute("ccs twiddle");
 
