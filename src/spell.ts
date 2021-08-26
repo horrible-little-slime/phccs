@@ -4,7 +4,6 @@ import {
     cliExecute,
     create,
     handlingChoice,
-    itemAmount,
     maximize,
     myClass,
     myLevel,
@@ -108,19 +107,12 @@ function shower() {
 }
 
 function testPrep() {
-    if (!have($item`obsidian nutcracker`, 2)) {
-        buy(2 - itemAmount($item`obsidian nutcracker`), $item`obsidian nutcracker`);
+    if (have($item`obsidian nutcracker`)) {
+        buy($item`obsidian nutcracker`);
     }
-    useFamiliar($familiar`Disembodied Hand`);
-    maximize("spell damage", false);
-    const handTurns = predictor();
+
     useFamiliar($familiar`Left-Hand Man`);
     maximize("spell damage", false);
-    const manTurns = predictor();
-    if (handTurns > manTurns) {
-        useFamiliar($familiar`Disembodied Hand`);
-        maximize("spell damage", false);
-    }
 }
 
 export default function spellTest(): number {
