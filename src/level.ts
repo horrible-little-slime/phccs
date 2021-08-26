@@ -45,6 +45,7 @@ import {
     advMacroAA,
     ensureEffect,
     ensureInnerElf,
+    ensureMp,
     heal,
     mapMacro,
     multiFightAutoAttack,
@@ -180,7 +181,7 @@ function witchGhostAgent() {
     equip($slot`shirt`, $item`makeshift garbage shirt`);
     heal();
     useDefaultFamiliar();
-    use(availableAmount($item`psychokinetic energy blob`), $item`psychokinetic energy blob`);
+    ensureMp(100);
     Macro.skill("curse of weaksauce").skill("micrometeor").attack().repeat().setAutoAttack();
     if (!have($item`battle broom`)) {
         Witchess.fightPiece($monster`Witchess Witch`);
@@ -279,7 +280,7 @@ function tomatoJuiceAndNinjaCostume() {
         );
         useDefaultFamiliar(false);
         uniform();
-        if (myMp() < 30) use($item`psychokinetic energy blob`);
+        ensureMp(30);
         mapMacro(
             $location`The Haiku Dungeon`,
             $monster`amateur ninja`,
