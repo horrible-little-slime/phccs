@@ -8,15 +8,20 @@ import {
     cliExecute,
     containsText,
     create,
+    eat,
     equip,
     getClanName,
     getProperty,
     haveEffect,
     inMultiFight,
     myMaxhp,
+    myMaxmp,
+    myMp,
     myTurncount,
     print,
     restoreHp,
+    restoreMp,
+    retrieveItem,
     runChoice,
     runCombat,
     setAutoAttack,
@@ -570,4 +575,20 @@ export function tryHead(effect: Effect): void {
     const headNumber = 1 + heads.indexOf(effect);
     if (property.getString("_beachHeadsUsed").split(",").includes(headNumber.toString())) return;
     ensureEffect(effect);
+}
+
+export function ensureMp(mp: number): void {
+    if (myMp() > mp) return;
+    if (mp > myMaxmp()) throw `Insufficient maximum mp!`;
+    while (
+        have($item`magical sausage`) ||
+        (have($item`magical sausage casing`) && myMp() < mp && get("_sausagesEaten") < 23)
+    ) {
+        retrieveItem($item`magical sausage`);
+        eat($item`magical sausage`);
+    }
+    while (have($item`psychokinetic energy blob`) && myMp() < mp) {
+        use($item`psychokinetic energy blob`);
+    }
+    if (myMp() < mp) restoreMp(mp);
 }
