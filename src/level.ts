@@ -103,12 +103,6 @@ function buffMyst() {
     if (!get("_lyleFavored")) ensureEffect($effect`Favored by Lyle`);
     if (!get("telescopeLookedHigh")) ensureEffect($effect`Starry-Eyed`);
 
-    if (
-        availableAmount($item`glittery mascara`) + haveEffect($effect`Glittering Eyelashes`) ===
-        0
-    ) {
-        buy(1, $item`glittery mascara`);
-    }
     ensureEffect($effect`Glittering Eyelashes`);
 
     if (!get("_streamsCrossed")) {
@@ -118,6 +112,9 @@ function buffMyst() {
     equip($slot`acc3`, $item`Powerful Glove`);
     ensureEffect($effect`Triple-Sized`);
     ensureEffect($effect`Feeling Excited`);
+
+    // eslint-disable-next-line libram/verify-constants
+    if (have($item`votive of confidence`)) use($item`votive of confidence`);
 }
 
 function castBuffs() {

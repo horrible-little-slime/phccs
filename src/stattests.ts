@@ -90,9 +90,6 @@ function moxBuffs() {
     use(1, $item`Bird-a-Day calendar`);
     ensureEffect($effect`Blessing of the Bird`);
 
-    // eslint-disable-next-line libram/verify-constants
-    if (have($item`votive of confidence`)) use($item`votive of confidence`);
-
     if (get("_favoriteBirdVisited")) useSkill($skill`Visit your Favorite Bird`);
 
     ensureEffect($effect`Quiet Desperation`);
