@@ -34,7 +34,7 @@ import {
     tryHead,
     useDefaultFamiliar,
 } from "./phredhccs-lib";
-import uniform from "./outfits";
+import uniform, { weaponOutfit } from "./outfits";
 
 const predictor = () =>
     60 -
@@ -105,7 +105,7 @@ function testPrep() {
     if (have($item`corrupted marrow`)) use($item`corrupted marrow`);
     if (!get("_bowleggedSwaggerUsed")) useSkill($skill`Bow-Legged Swagger`);
     useFamiliar($familiar`Disembodied Hand`);
-    maximize("weapon damage", false);
+    weaponOutfit();
 }
 
 export default function weaponTest(): number {

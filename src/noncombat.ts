@@ -5,7 +5,6 @@ import {
     equip,
     getFuel,
     haveEffect,
-    maximize,
     numericModifier,
     runChoice,
     runCombat,
@@ -17,7 +16,7 @@ import { $coinmaster, $effect, $familiar, $item, $slot, get, have } from "libram
 import { universalWeightBuffs } from "./familiarweight";
 import { defaultKill } from "./phccs-macros";
 import { ensureEffect, fuelUp, heal, horse, setChoice } from "./phredhccs-lib";
-import uniform from "./outfits";
+import uniform, { noncombatOutfit } from "./outfits";
 
 const predictor = () => 60 + (20 + numericModifier("combat rate")) * 3;
 
@@ -62,8 +61,7 @@ function godLobster() {
 }
 
 function testPrep() {
-    useFamiliar($familiar`Disgeist`);
-    maximize("-combat, +equip kremlin", false);
+    noncombatOutfit();
     if (predictor() > 1) {
         if (!have($effect`Gummed Shoes`)) {
             if (availableAmount($item`cop dollar`) < 10) cliExecute("detective solver.ash");

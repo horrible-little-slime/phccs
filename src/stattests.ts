@@ -13,6 +13,7 @@ import {
     useSkill,
 } from "kolmafia";
 import { $effect, $familiar, $item, $skill, $stat, get, have } from "libram";
+import { hpOutfit, moxieOutfit, muscleOutfit, mysticalityOutfit } from "./outfits";
 import { ensureEffect, ensureInnerElf, maximizeFamiliar, tryUse } from "./phredhccs-lib";
 
 const musclePredictor = () =>
@@ -34,8 +35,7 @@ function musclebuffs() {
 }
 
 function muscleTestPrep() {
-    useFamiliar(maximizeFamiliar);
-    maximize("muscle", false);
+    muscleOutfit();
 
     for (const increaser of [
         () => {
@@ -62,8 +62,7 @@ function mystbuffs() {
 }
 
 function mystTestPrep() {
-    useFamiliar(maximizeFamiliar);
-    maximize("mysticality", false);
+    mysticalityOutfit();
 }
 
 export function mystTest(): number {
@@ -118,8 +117,7 @@ function moxTestPrep() {
     if (moxPredictor() > 1) {
         ensureInnerElf();
     }
-    useFamiliar($familiar`Left-Hand Man`);
-    maximize("moxie", false);
+    moxieOutfit();
 }
 
 export function moxTest(): number {
@@ -148,8 +146,7 @@ function hpBuffs() {
 
 const hpPredictor = () => 60 - Math.floor((myMaxhp() - myBuffedstat($stat`muscle`) - 3) / 30);
 function hpTestPrep() {
-    useFamiliar($familiar`Left-Hand Man`);
-    maximize("hp", false);
+    hpOutfit();
 }
 
 export function HPTest(): number {

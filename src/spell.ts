@@ -27,7 +27,7 @@ import {
     set,
 } from "libram";
 import { advMacroAA, ensureEffect, ensureInnerElf, horse, setChoice } from "./phredhccs-lib";
-import uniform from "./outfits";
+import uniform, { spellOutfit } from "./outfits";
 
 const predictor = () =>
     61 -
@@ -106,12 +106,7 @@ function shower() {
 }
 
 function testPrep() {
-    if (have($item`obsidian nutcracker`)) {
-        buy($item`obsidian nutcracker`);
-    }
-
-    useFamiliar($familiar`Left-Hand Man`);
-    maximize("spell damage", false);
+    spellOutfit();
 }
 
 export default function spellTest(): number {

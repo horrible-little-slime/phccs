@@ -1,7 +1,8 @@
 import { cliExecute, create, eat, equip } from "kolmafia";
 import { $item, $location, $skill, $slot, get, have, Macro } from "libram";
+import uniform, { wireOutfit } from "./outfits";
 import { delevel, easyFight } from "./phccs-macros";
-import { advMacro, fightSausageIfAble, uniform, useDefaultFamiliar } from "./phredhccs-lib";
+import { advMacro, fightSausageIfAble, useDefaultFamiliar } from "./phredhccs-lib";
 import { runStart } from "./runstart";
 
 function firstFights() {
@@ -38,17 +39,10 @@ function firstFights() {
     }
 }
 
-function playDressUp() {
-    equip($slot`pants`, $item`Cargo Cultist Shorts`);
-    equip($slot`acc1`, $item`Eight Days a Week Pill Keeper`);
-    equip($slot`acc2`, $item`Powerful Glove`);
-    equip($slot`acc3`, $item`Lil' Doctor™ bag`);
-    cliExecute("/cast * candy heart");
-}
-
 export default function coilWire(): number {
     runStart();
     firstFights();
-    playDressUp();
+    wireOutfit();
+    cliExecute("/cast * candy heart");
     return 60;
 }

@@ -37,7 +37,7 @@ import {
     tryHead,
     useDefaultFamiliar,
 } from "./phredhccs-lib";
-import uniform from "./outfits";
+import uniform, { hotresOutfit } from "./outfits";
 const predictor = () => 60 - numericModifier("hot resistance");
 
 function castBuffs() {
@@ -124,7 +124,7 @@ function deepDarkVisions() {
 }
 
 function testPrep() {
-    maximize("hot res", false);
+    hotresOutfit();
     const improvements = [
         () => {
             while (getFuel() < 37) fuelUp();

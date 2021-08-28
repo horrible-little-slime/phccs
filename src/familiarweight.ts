@@ -2,7 +2,6 @@ import {
     cliExecute,
     create,
     familiarWeight,
-    maximize,
     myFamiliar,
     runChoice,
     use,
@@ -25,7 +24,7 @@ import {
 } from "libram";
 import { defaultKill } from "./phccs-macros";
 import { advMacroAA, ensureEffect, horse, setChoice, tryHead } from "./phredhccs-lib";
-import uniform from "./outfits";
+import uniform, { famweightOutfit } from "./outfits";
 
 export function universalWeightBuffs(): void {
     ensureEffect($effect`Empathy`);
@@ -103,10 +102,7 @@ function takeAShower() {
 }
 
 function testPrep() {
-    if (have($item`cracker`)) useFamiliar($familiar`Exotic Parrot`);
-    else useFamiliar($familiar`Baby Bugged Bugbear`);
-
-    maximize("Familiar Weight", false);
+    famweightOutfit();
     if (have($item`silver face paint`)) ensureEffect($effect`Robot Friends`);
 }
 

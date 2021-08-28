@@ -27,6 +27,7 @@ import {
     have,
     Macro,
 } from "libram";
+import { itemOutfit } from "./outfits";
 import {
     advMacroAA,
     ensureEffect,
@@ -129,10 +130,7 @@ function testPrep() {
         ensureEffect($effect`Steely-Eyed Squint`);
     }
     useFamiliar($familiar`Trick-or-Treating Tot`);
-    maximize(
-        "item, 2 booze drop, -equip broken champagne bottle, -equip surprisingly capacious handbag",
-        false
-    );
+    itemOutfit();
     if (predictor() > 1) ensureEffect($effect`Nearly All-Natural`);
 }
 
