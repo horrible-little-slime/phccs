@@ -1,7 +1,6 @@
 import {
     equip,
     handlingChoice,
-    maximize,
     numericModifier,
     runChoice,
     use,

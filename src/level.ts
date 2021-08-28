@@ -14,7 +14,6 @@ import {
     myLevel,
     myMp,
     numericModifier,
-    outfit,
     runChoice,
     runCombat,
     toEffect,

@@ -6,7 +6,6 @@ import {
     equip,
     getFuel,
     getWorkshed,
-    maximize,
     myClass,
     myInebriety,
     numericModifier,

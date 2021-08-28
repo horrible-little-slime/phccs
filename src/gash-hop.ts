@@ -33,7 +33,6 @@ prepareAscension(
     {
         workshed: $item`Asdon Martin keyfob`,
         garden: $item`Peppermint Pip Packet`,
-        // eslint-disable-next-line libram/verify-constants
         eudora: $item`Our Daily Candles™ order form`,
     },
     {

@@ -48,7 +48,7 @@ import {
     PropertiesManager,
     property,
 } from "libram";
-import { withOutfit, Outfit } from "./outfits";
+import { Outfit, withOutfit } from "./outfits";
 
 export const PropertyManager = new PropertiesManager();
 
@@ -312,7 +312,7 @@ export function ensureInnerElf(): void {
             withOutfit(
                 new Outfit(
                     new Map<Slot, Item>([[$slot`acc3`, $item`Kremlin's Greatest Briefcase`]]),
-                    $familiar`machine elf`
+                    $familiar`Machine Elf`
                 ),
                 () => {
                     ensureEffect($effect`Blood Bubble`);

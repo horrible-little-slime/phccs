@@ -14,7 +14,7 @@ import {
 } from "kolmafia";
 import { $effect, $familiar, $item, $skill, $stat, get, have } from "libram";
 import { hpOutfit, moxieOutfit, muscleOutfit, mysticalityOutfit } from "./outfits";
-import { ensureEffect, ensureInnerElf, maximizeFamiliar, tryUse } from "./phredhccs-lib";
+import { ensureEffect, ensureInnerElf, tryUse } from "./phredhccs-lib";
 
 const musclePredictor = () =>
     60 - Math.floor((1 / 30) * (myBuffedstat($stat`muscle`) - myBasestat($stat`mysticality`)));
