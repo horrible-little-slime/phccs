@@ -5,6 +5,11 @@ export class Outfit {
     equips: Map<Slot, Item>;
     familiar?: Familiar;
 
+    /**
+     *
+     * @param equips Map of what to equip and where
+     * @param familiar Optional familiar to use with outfit
+     */
     constructor(equips: Map<Slot, Item>, familiar?: Familiar) {
         this.equips = equips;
         this.familiar = familiar;
@@ -25,9 +30,22 @@ export class Outfit {
         }
     }
 
-    static doYourBest(outfit: Map<Slot, Item | Item[]>, familiar?: Familiar): Outfit {
+    /**
+     * Identical to withOutfit; executes callback function with equipped outfit, and returns to original outfit
+     * @param callback Function to execute
+     */
+    with<T>(callback: () => T): T {
+        return withOutfit(this, callback);
+    }
+
+    /**
+     * Makes the best outfit it can with what you've got
+     * @param equips Map of what to equip and where; will use first item in array that it can, and willl not add things to outfit otherwise
+     * @param familiar Optional familiar to use with outfit
+     */
+    static doYourBest(equips: Map<Slot, Item | Item[]>, familiar?: Familiar): Outfit {
         const returnValue = new Map<Slot, Item>();
-        for (const [slot, itemOrItems] of outfit.entries()) {
+        for (const [slot, itemOrItems] of equips.entries()) {
             const item = Array.isArray(itemOrItems)
                 ? itemOrItems.find((item) => have(item))
                 : itemOrItems;
@@ -36,6 +54,10 @@ export class Outfit {
         return new Outfit(returnValue, familiar);
     }
 
+    /**
+     * Saves current outfit as an Outfit
+     * @param withFamiliar Option to store current familiar as part of outfit
+     */
     static current(withFamiliar = false): Outfit {
         const familiar = withFamiliar ? myFamiliar() : undefined;
         const slots = $slots`hat, shirt, back, weapon, off-hand, pants, acc1, acc2, acc3`;
@@ -49,6 +71,12 @@ export class Outfit {
     }
 }
 
+/**
+ * Execute callback while wearing given outfit
+ * Then return to what you were previously wearing
+ * @param outfit Outfit to use
+ * @param callback Function to execute
+ */
 export function withOutfit<T>(outfit: Outfit, callback: () => T): T {
     const withFamiliar = outfit.familiar !== undefined;
     const cachedOutfit = Outfit.current(withFamiliar);
