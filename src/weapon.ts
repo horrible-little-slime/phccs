@@ -33,6 +33,7 @@ import {
     setChoice,
     tryHead,
     uniform,
+    useDefaultFamiliar,
 } from "./phredhccs-lib";
 
 const predictor = () =>
@@ -81,11 +82,15 @@ function forceSpit() {
 
 function kungFuMeteors() {
     if (!have($effect`Meteor Showered`) && get("_meteorShowerUses") < 5) {
-        useFamiliar($familiar`Disembodied Hand`);
         uniform();
-        equip($slot`weapon`, $item`none`);
-        equip($slot`off-hand`, $item`none`);
-        equip($slot`familiar`, $item`Fourth of May Cosplay Saber`);
+        if (have($familiar`Disembodied Hand`)) {
+            useFamiliar($familiar`Disembodied Hand`);
+            equip($slot`weapon`, $item`none`);
+            equip($slot`off-hand`, $item`none`);
+            equip($slot`familiar`, $item`Fourth of May Cosplay Saber`);
+        } else {
+            useDefaultFamiliar(false);
+        }
         setChoice(1387, 3);
         advMacroAA(
             $location`The Neverending Party`,

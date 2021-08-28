@@ -76,7 +76,12 @@ function castBuffs() {
 }
 
 function fingies() {
-    if (!have($effect`Saucefingers`) && myClass() === $class`Pastamancer` && myLevel() >= 15) {
+    if (
+        !have($effect`Saucefingers`) &&
+        myClass() === $class`Pastamancer` &&
+        myLevel() >= 15 &&
+        have($familiar`Mini-Adventurer`)
+    ) {
         useFamiliar($familiar`Mini-Adventurer`);
         horse("dark");
         uniform();

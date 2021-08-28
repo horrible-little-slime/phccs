@@ -396,6 +396,7 @@ function NEP() {
                 cliExecute("checkpoint");
                 ensureInnerElf();
                 outfit("checkpoint");
+                useDefaultFamiliar();
             }
         }
     );
@@ -423,6 +424,7 @@ function NEP() {
                 cliExecute("checkpoint");
                 ensureInnerElf();
                 outfit("checkpoint");
+                useDefaultFamiliar();
             }
         }
     );
@@ -451,6 +453,7 @@ function NEP() {
                 cliExecute("checkpoint");
                 ensureInnerElf();
                 outfit("checkpoint");
+                useDefaultFamiliar();
             }
         }
     );
@@ -475,7 +478,7 @@ function royalty() {
     if (!have($item`very pointy crown`)) {
         Macro.tryItem("jam band flyer")
             .tryItem("gas can")
-            .item("time-spinner")
+            .tryItem("time-spinner")
             .attack()
             .repeat()
             .setAutoAttack();

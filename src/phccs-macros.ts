@@ -2,7 +2,7 @@ import { Macro } from "libram";
 
 export const delevel = Macro.skill("curse of weaksauce")
     .skill("micrometeor")
-    .item("time-spinner")
+    .tryItem("time-spinner")
     .skill("summon love gnats");
 
 export const candyblast = Macro.while_(

@@ -23,7 +23,6 @@ const predictor = () => 60 + (20 + numericModifier("combat rate")) * 3;
 function castBuffs() {
     universalWeightBuffs();
     ensureEffect($effect`Smooth Movements`);
-    ensureEffect($effect`Billiards Belligerence`);
     ensureEffect($effect`Feeling Lonely`);
     equip($slot`acc3`, $item`Powerful Glove`);
     ensureEffect($effect`Invisible Avatar`);

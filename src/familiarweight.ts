@@ -24,14 +24,7 @@ import {
     Witchess,
 } from "libram";
 import { defaultKill } from "./phccs-macros";
-import {
-    advMacroAA,
-    ensureEffect,
-    horse,
-    setChoice,
-    tryHead,
-    uniform,
-} from "./phredhccs-lib";
+import { advMacroAA, ensureEffect, horse, setChoice, tryHead, uniform } from "./phredhccs-lib";
 
 export function universalWeightBuffs(): void {
     ensureEffect($effect`Empathy`);
@@ -61,7 +54,7 @@ function gearAndUncommonBuffs() {
             useFamiliar($familiar`Exotic Parrot`);
             create(1, $item`box of Familiar Jacks`);
             use(1, $item`box of Familiar Jacks`);
-        } else {
+        } else if (have($familiar`Baby Bugged Bugbear`)) {
             useFamiliar($familiar`Baby Bugged Bugbear`);
             visitUrl("arena.php");
         }

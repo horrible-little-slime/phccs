@@ -32,19 +32,19 @@ function toot() {
 }
 
 function grimoires() {
-    if (!get("_grimoireConfiscatorSummons")) {
+    if (!get("_grimoireConfiscatorSummons") && have($skill`Summon Confiscated Things`)) {
         useSkill(1, $skill`Summon Confiscated Things`);
         $items`glow-in-the-dark necklace, "KICK ME" sign, LCD game: Burger Belt, LCD game: Food Eater, LCD game: Garbage River`.forEach(
             (item) => autosell(1, item)
         );
     }
-    if (!get("grimoire2Summons")) {
+    if (!get("grimoire2Summons") && have($skill`Summon Tasteful Items`)) {
         useSkill(1, $skill`Summon Tasteful Items`);
         $items`black-and-blue light, blue plasma ball, cheap studded belt, flavored foot massage oil, foam dart, Loudmouth Larry Lamprey, personal massager, personalized coffee mug, stick-on eyebrow piercing`.forEach(
             (item) => autosell(5, item)
         );
     }
-    if (!get("grimoire3Summons")) {
+    if (!get("grimoire3Summons") && have($skill`Summon Alice's Army Cards`)) {
         useSkill(1, $skill`Summon Alice's Army Cards`);
         buy($coinmaster`Game Shoppe Snacks`, 1, $item`tobiko marble soda`);
     }

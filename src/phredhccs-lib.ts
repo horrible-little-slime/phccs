@@ -592,3 +592,7 @@ export function ensureMp(mp: number): void {
     }
     if (myMp() < mp) restoreMp(mp);
 }
+
+export const maximizeFamiliar = have($familiar`Disembodied Hand`)
+    ? $familiar`Disembodied Hand`
+    : $familiar`Left-Hand Man`;

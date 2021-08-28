@@ -13,7 +13,7 @@ import {
     useSkill,
 } from "kolmafia";
 import { $effect, $familiar, $item, $skill, $stat, get, have } from "libram";
-import { ensureEffect, ensureInnerElf, tryUse } from "./phredhccs-lib";
+import { ensureEffect, ensureInnerElf, maximizeFamiliar, tryUse } from "./phredhccs-lib";
 
 const musclePredictor = () =>
     60 - Math.floor((1 / 30) * (myBuffedstat($stat`muscle`) - myBasestat($stat`mysticality`)));
@@ -34,7 +34,7 @@ function musclebuffs() {
 }
 
 function muscleTestPrep() {
-    useFamiliar($familiar`Disembodied Hand`);
+    useFamiliar(maximizeFamiliar);
     maximize("muscle", false);
 
     for (const increaser of [
@@ -62,7 +62,7 @@ function mystbuffs() {
 }
 
 function mystTestPrep() {
-    useFamiliar($familiar`Disembodied Hand`);
+    useFamiliar(maximizeFamiliar);
     maximize("mysticality", false);
 }
 
