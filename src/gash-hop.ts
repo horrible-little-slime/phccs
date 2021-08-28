@@ -1,5 +1,16 @@
 import { useSkill } from "kolmafia";
-import { $class, $item, $skill, ascend, get, Lifestyle, Paths, prepareAscension } from "libram";
+import {
+    $class,
+    $familiar,
+    $item,
+    $skill,
+    ascend,
+    get,
+    have,
+    Lifestyle,
+    Paths,
+    prepareAscension,
+} from "libram";
 
 const safariTargets = [
     "Phillammon",
@@ -13,7 +24,7 @@ const safariTargets = [
     "The Dictator",
 ];
 
-while ($skill`Experience Safari`.timescast < get("skillLevel180") && safariTargets) {
+while ($skill`Experience Safari`.timescast < get("skillLevel180") && safariTargets.length) {
     useSkill($skill`Experience Safari`, 1, safariTargets[0]);
     safariTargets.shift();
 }
@@ -22,6 +33,7 @@ prepareAscension(
     {
         workshed: $item`Asdon Martin keyfob`,
         garden: $item`Peppermint Pip Packet`,
+        // eslint-disable-next-line libram/verify-constants
         eudora: $item`Our Daily Candles™ order form`,
     },
     {
@@ -31,10 +43,15 @@ prepareAscension(
     }
 );
 
+const pet = have($familiar`Baby Bugged Bugbear`)
+    ? $item`astral statuette`
+    : $item`astral pet sweater`;
+
 ascend(
     Paths.CommunityService,
     $class`Pastamancer`,
     Lifestyle.hardcore,
     "knoll",
-    $item`astral six-pack`
+    $item`astral six-pack`,
+    pet
 );
