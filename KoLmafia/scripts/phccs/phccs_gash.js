@@ -18562,7 +18562,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var kolmafia__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(kolmafia__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var libram__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! libram */ "../node_modules/libram/dist/index.js");
 /* harmony import */ var libram__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(libram__WEBPACK_IMPORTED_MODULE_1__);
-var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5, _templateObject6, _templateObject7, _templateObject8, _templateObject9, _templateObject10;
+var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5, _templateObject6, _templateObject7, _templateObject8, _templateObject9, _templateObject10, _templateObject11, _templateObject12, _templateObject13;
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
@@ -18570,7 +18570,7 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 var safariTargets = ["Phillammon", "Busta_Rhymes", "Manendra", "Gausie", "Beldur", "worthawholebean", "ReverKiller", "Asmodais", "The Dictator"];
 
-while ((0,libram__WEBPACK_IMPORTED_MODULE_1__.$skill)(_templateObject || (_templateObject = _taggedTemplateLiteral(["Experience Safari"]))).timescast < (0,libram__WEBPACK_IMPORTED_MODULE_1__.get)("skillLevel180") && safariTargets) {
+while ((0,libram__WEBPACK_IMPORTED_MODULE_1__.$skill)(_templateObject || (_templateObject = _taggedTemplateLiteral(["Experience Safari"]))).timescast < (0,libram__WEBPACK_IMPORTED_MODULE_1__.get)("skillLevel180") && safariTargets.length) {
   (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.useSkill)((0,libram__WEBPACK_IMPORTED_MODULE_1__.$skill)(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["Experience Safari"]))), 1, safariTargets[0]);
   safariTargets.shift();
 }
@@ -18578,13 +18578,15 @@ while ((0,libram__WEBPACK_IMPORTED_MODULE_1__.$skill)(_templateObject || (_templ
 (0,libram__WEBPACK_IMPORTED_MODULE_1__.prepareAscension)({
   workshed: (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["Asdon Martin keyfob"]))),
   garden: (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["Peppermint Pip Packet"]))),
+  // eslint-disable-next-line libram/verify-constants
   eudora: (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["Our Daily Candles\u2122 order form"])))
 }, {
   desk: (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["continental juice bar"]))),
   nightstand: (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject7 || (_templateObject7 = _taggedTemplateLiteral(["foreign language tapes"]))),
   ceiling: (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject8 || (_templateObject8 = _taggedTemplateLiteral(["ceiling fan"])))
 });
-(0,libram__WEBPACK_IMPORTED_MODULE_1__.ascend)(libram__WEBPACK_IMPORTED_MODULE_1__.Paths.CommunityService, (0,libram__WEBPACK_IMPORTED_MODULE_1__.$class)(_templateObject9 || (_templateObject9 = _taggedTemplateLiteral(["Pastamancer"]))), libram__WEBPACK_IMPORTED_MODULE_1__.Lifestyle.hardcore, "knoll", (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject10 || (_templateObject10 = _taggedTemplateLiteral(["astral six-pack"]))));
+var pet = (0,libram__WEBPACK_IMPORTED_MODULE_1__.have)((0,libram__WEBPACK_IMPORTED_MODULE_1__.$familiar)(_templateObject9 || (_templateObject9 = _taggedTemplateLiteral(["Baby Bugged Bugbear"])))) ? (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject10 || (_templateObject10 = _taggedTemplateLiteral(["astral statuette"]))) : (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject11 || (_templateObject11 = _taggedTemplateLiteral(["astral pet sweater"])));
+(0,libram__WEBPACK_IMPORTED_MODULE_1__.ascend)(libram__WEBPACK_IMPORTED_MODULE_1__.Paths.CommunityService, (0,libram__WEBPACK_IMPORTED_MODULE_1__.$class)(_templateObject12 || (_templateObject12 = _taggedTemplateLiteral(["Pastamancer"]))), libram__WEBPACK_IMPORTED_MODULE_1__.Lifestyle.hardcore, "knoll", (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject13 || (_templateObject13 = _taggedTemplateLiteral(["astral six-pack"]))), pet);
 
 /***/ }),
 
