@@ -1,7 +1,7 @@
-import { cliExecute, equip, equippedItem, useFamiliar } from "kolmafia";
-import { $familiar, $item, $items, $slot, have } from "libram";
+import { cliExecute, equip, equippedItem, myFamiliar, useFamiliar } from "kolmafia";
+import { $familiar, $item, $items, $slot, $slots, have } from "libram";
 
-class Outfit {
+export class Outfit {
     equips: Map<Slot, Item>;
     familiar?: Familiar;
 
@@ -34,6 +34,29 @@ class Outfit {
             if (item) returnValue.set(slot, item);
         }
         return new Outfit(returnValue, familiar);
+    }
+
+    static current(withFamiliar = false): Outfit {
+        const familiar = withFamiliar ? myFamiliar() : undefined;
+        const slots = $slots`hat, shirt, back, weapon, off-hand, pants, acc1, acc2, acc3`;
+        if (withFamiliar) slots.push($slot`familiar`);
+        const outfitMap = new Map<Slot, Item>();
+        for (const slot of slots) {
+            const item = equippedItem(slot);
+            if (item !== $item`none`) outfitMap.set(slot, item);
+        }
+        return new Outfit(outfitMap, familiar);
+    }
+}
+
+export function withOutfit(outfit: Outfit, action: () => void) {
+    const withFamiliar = outfit.familiar !== undefined;
+    const cachedOutfit = Outfit.current(withFamiliar);
+    outfit.dress();
+    try {
+        action();
+    } finally {
+        cachedOutfit.dress();
     }
 }
 

@@ -390,10 +390,7 @@ function NEP() {
                 setChoice(1324, 5);
             }
             if (myLevel() >= 13 && !have($effect`Inner Elf`)) {
-                cliExecute("checkpoint");
                 ensureInnerElf();
-                outfit("checkpoint");
-                useDefaultFamiliar();
             }
         }
     );
@@ -418,10 +415,7 @@ function NEP() {
                 setChoice(1324, 5);
             }
             if (myLevel() >= 13 && !have($effect`Inner Elf`)) {
-                cliExecute("checkpoint");
                 ensureInnerElf();
-                outfit("checkpoint");
-                useDefaultFamiliar();
             }
         }
     );
@@ -447,10 +441,7 @@ function NEP() {
                 setChoice(1324, 5);
             }
             if (myLevel() >= 13 && !have($effect`Inner Elf`)) {
-                cliExecute("checkpoint");
                 ensureInnerElf();
-                outfit("checkpoint");
-                useDefaultFamiliar();
             }
         }
     );

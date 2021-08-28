@@ -48,6 +48,7 @@ import {
     PropertiesManager,
     property,
 } from "libram";
+import { withOutfit, Outfit } from "./outfits";
 
 export const PropertyManager = new PropertiesManager();
 
@@ -308,13 +309,18 @@ export function ensureInnerElf(): void {
     if (!have($effect`Inner Elf`)) {
         setClan(get("phccs_elfClan", "Hobopolis Vacation Home"));
         try {
-            useFamiliar($familiar`Machine Elf`);
-            equip($slot`acc3`, $item`Kremlin's Greatest Briefcase`);
-            setChoice(326, 1);
-            ensureEffect($effect`Blood Bubble`);
-            advMacro(
-                $location`The Slime Tube`,
-                Macro.trySkill($skill`KGB tranquilizer dart`).trySkill($skill`Snokebomb`)
+            withOutfit(
+                new Outfit(
+                    new Map<Slot, Item>([[$slot`acc3`, $item`Kremlin's Greatest Briefcase`]]),
+                    $familiar`machine elf`
+                ),
+                () => {
+                    ensureEffect($effect`Blood Bubble`);
+                    advMacro(
+                        $location`The Slime Tube`,
+                        Macro.trySkill($skill`KGB tranquilizer dart`).trySkill($skill`Snokebomb`)
+                    );
+                }
             );
         } finally {
             setClan(get("phccs_mainClan", "Alliance From Heck"));
