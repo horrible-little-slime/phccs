@@ -54,9 +54,9 @@ import {
     synthExp,
     synthMyst,
     tryHead,
-    uniform,
     useDefaultFamiliar,
 } from "./phredhccs-lib";
+import uniform from "./outfits";
 
 function initialExp() {
     if (!have($effect`That's Just Cloud-Talk, Man`)) {

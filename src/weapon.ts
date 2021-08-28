@@ -32,9 +32,9 @@ import {
     horsery,
     setChoice,
     tryHead,
-    uniform,
     useDefaultFamiliar,
 } from "./phredhccs-lib";
+import uniform from "./outfits";
 
 const predictor = () =>
     60 -

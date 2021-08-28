@@ -386,28 +386,6 @@ export function setChoice(adv: number, choice: number | string): void {
     PropertyManager.setChoices({ [adv]: choice });
 }
 
-export function uniform(): void {
-    const pants =
-        availableAmount($item`pantogram pants`) !== 0
-            ? $item`pantogram pants`
-            : $item`old sweatpants`;
-    const acc3 =
-        availableAmount($item`battle broom`) !== 0 ? $item`battle broom` : $item`Powerful Glove`;
-    const back =
-        availableAmount($item`LOV Epaulettes`) !== 0
-            ? $item`LOV Epaulettes`
-            : $item`vampyric cloake`;
-    equip($slot`hat`, $item`Iunion Crown`);
-    equip($slot`shirt`, $item`fresh coat of paint`);
-    equip($slot`pants`, pants);
-    equip($slot`weapon`, $item`Fourth of May Cosplay Saber`);
-    equip($slot`off-hand`, $item`familiar scrapbook`);
-    equip($slot`acc1`, $item`your cowboy boots`);
-    equip($slot`acc2`, $item`codpiece`);
-    equip($slot`acc3`, acc3);
-    equip($slot`back`, back);
-}
-
 export function tryUse(quantity: number, it: Item): boolean {
     //ripped straight from bean
     if (availableAmount(it) > 0) {

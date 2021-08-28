@@ -24,7 +24,8 @@ import {
     Witchess,
 } from "libram";
 import { defaultKill } from "./phccs-macros";
-import { advMacroAA, ensureEffect, horse, setChoice, tryHead, uniform } from "./phredhccs-lib";
+import { advMacroAA, ensureEffect, horse, setChoice, tryHead } from "./phredhccs-lib";
+import uniform from "./outfits";
 
 export function universalWeightBuffs(): void {
     ensureEffect($effect`Empathy`);

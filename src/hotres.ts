@@ -35,9 +35,9 @@ import {
     mapMacro,
     synthHot,
     tryHead,
-    uniform,
     useDefaultFamiliar,
 } from "./phredhccs-lib";
+import uniform from "./outfits";
 const predictor = () => 60 - numericModifier("hot resistance");
 
 function castBuffs() {
