@@ -306,7 +306,7 @@ export function doTest(testNum: number): void {
 export function ensureInnerElf(): void {
     //stolen merely mostly from bean
     if (!have($effect`Inner Elf`)) {
-        setClan("Hobopolis Vacation Home");
+        setClan(get("phccs_elfClan", "Hobopolis Vacation Home"));
         try {
             useFamiliar($familiar`Machine Elf`);
             equip($slot`acc3`, $item`Kremlin's Greatest Briefcase`);
@@ -317,7 +317,7 @@ export function ensureInnerElf(): void {
                 Macro.trySkill($skill`KGB tranquilizer dart`).trySkill($skill`Snokebomb`)
             );
         } finally {
-            setClan("Alliance From Heck");
+            setClan(get("phccs_mainClan", "Alliance From Heck"));
         }
     }
 }

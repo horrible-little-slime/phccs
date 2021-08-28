@@ -52,7 +52,7 @@ function grimoires() {
 
 function setSettings() {
     SourceTerminal.educate([$skill`Extract`, $skill`Portscan`]);
-    setClan("Alliance From Heck");
+    setClan(get("phccs_mainClan", "Alliance From Heck"));
 }
 
 function getTurns() {
@@ -84,7 +84,7 @@ function prepGear() {
     }
 
     if (have($item`Fourth of May Cosplay Saber`) && !get("_saberMod")) {
-        visitUrl('main.php?action=may4');
+        visitUrl("main.php?action=may4");
         runChoice(4);
     }
 
