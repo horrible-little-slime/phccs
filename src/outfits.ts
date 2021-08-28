@@ -49,17 +49,15 @@ export class Outfit {
     }
 }
 
-export function withOutfit<T>(outfit: Outfit, action: () => T): T {
+export function withOutfit<T>(outfit: Outfit, callback: () => T): T {
     const withFamiliar = outfit.familiar !== undefined;
     const cachedOutfit = Outfit.current(withFamiliar);
     outfit.dress();
-    let returnValue: T;
     try {
-        returnValue = action();
+        return callback();
     } finally {
         cachedOutfit.dress();
     }
-    return returnValue;
 }
 
 export default function uniform(): void {
