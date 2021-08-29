@@ -142,8 +142,8 @@ export function hpOutfit(): void {
     Outfit.doYourBest(
         new Map<Slot, Item | Item[]>([
             [$slot`hat`, $item`wad of used tape`],
-            [$slot`off-hand`, $item`Fourth of May Cosplay Saber`],
             [$slot`weapon`, $item`dented scepter`],
+            [$slot`off-hand`, $item`Fourth of May Cosplay Saber`],
             [$slot`shirt`, $items`shoe ad T-shirt, fresh coat of paint`],
             [$slot`back`, $item`unwrapped knock-off retro superhero cape`],
             [$slot`pants`, $item`Cargo Cultist Shorts`],
@@ -161,13 +161,13 @@ export function muscleOutfit(): void {
     Outfit.doYourBest(
         new Map<Slot, Item | Item[]>([
             [$slot`hat`, $item`wad of used tape`],
+            [$slot`weapon`, $item`dented scepter`],
             [
                 $slot`off-hand`,
                 have($familiar`Disembodied Hand`)
                     ? $item`cosmetic football`
                     : $item`Fourth of May Cosplay Saber`,
             ],
-            [$slot`weapon`, $item`dented scepter`],
             [$slot`shirt`, $items`shoe ad T-shirt, fresh coat of paint`],
             [$slot`back`, $item`unwrapped knock-off retro superhero cape`],
             [$slot`pants`, $item`Cargo Cultist Shorts`],
@@ -206,14 +206,14 @@ export function mysticalityOutfit(): void {
 
 export function itemOutfit(): void {
     if (!have($item`wad of used tape`)) cliExecute("fold wad of used tape");
-    new Outfit(
-        new Map<Slot, Item>([
+    Outfit.doYourBest(
+        new Map<Slot, Item | Item[]>([
             [$slot`hat`, $item`wad of used tape`],
             [$slot`off-hand`, $item`Kramco Sausage-o-Matic™`],
             [$slot`back`, $item`protonic accelerator pack`],
             [$slot`acc1`, $item`Guzzlr tablet`],
             [$slot`acc2`, $item`gold detective badge`],
-            [$slot`acc3`, $item`government-issued night-vision goggles`],
+            [$slot`acc3`, $items`government-issued night-vision goggles`],
             [$slot`familiar`, $item`li'l ninja costume`],
         ]),
         $familiar`Trick-or-Treating Tot`
@@ -270,7 +270,7 @@ export function famweightOutfit(): void {
             [$slot`familiar`, familiarAndEquip.equip],
         ]),
         familiarAndEquip.fam
-    );
+    ).dress();
 }
 
 export function weaponOutfit(): void {
@@ -284,7 +284,7 @@ export function weaponOutfit(): void {
             [$slot`acc2`, $item`Kremlin's Greatest Briefcase`],
             [$slot`acc3`, $item`Powerful Glove`],
         ])
-    );
+    ).dress();
 }
 
 export function spellOutfit(): void {
