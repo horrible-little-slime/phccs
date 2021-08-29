@@ -161,7 +161,12 @@ export function muscleOutfit(): void {
     Outfit.doYourBest(
         new Map<Slot, Item | Item[]>([
             [$slot`hat`, $item`wad of used tape`],
-            [$slot`off-hand`, $item`cosmetic football`],
+            [
+                $slot`off-hand`,
+                have($familiar`Disembodied Hand`)
+                    ? $item`cosmetic football`
+                    : $item`Fourth of May Cosplay Saber`,
+            ],
             [$slot`weapon`, $item`dented scepter`],
             [$slot`shirt`, $items`shoe ad T-shirt, fresh coat of paint`],
             [$slot`back`, $item`unwrapped knock-off retro superhero cape`],
@@ -169,9 +174,14 @@ export function muscleOutfit(): void {
             [$slot`acc1`, $item`Brutal brogues`],
             [$slot`acc2`, $item`Retrospecs`],
             [$slot`acc3`, $item`Kremlin's Greatest Briefcase`],
-            [$slot`familiar`, $item`Fourth of May Cosplay Saber`],
+            [
+                $slot`familiar`,
+                have($familiar`Disembodied Hand`)
+                    ? $item`Fourth of May Cosplay Saber`
+                    : $item`miniature crystal ball`,
+            ],
         ]),
-        $familiar`Disembodied Hand`
+        have($familiar`Disembodied Hand`) ? $familiar`Disembodied Hand` : undefined
     ).dress();
 }
 
