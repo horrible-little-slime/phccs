@@ -17,8 +17,8 @@ export class Outfit {
 
     dress(): void {
         if (this.familiar) useFamiliar(this.familiar);
-        const targetEquipment = Array.from(this.equips.keys());
-        for (const slot in Slot.all()) {
+        const targetEquipment = Array.from(this.equips.values());
+        for (const slot of Slot.all()) {
             if (
                 targetEquipment.includes(equippedItem(slot)) &&
                 this.equips.get(slot) !== equippedItem(slot)
