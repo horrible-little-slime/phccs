@@ -80,10 +80,7 @@ function fingies() {
         setChoice(768, 4);
         advMacroAA(
             $location`The Dire Warren`,
-            Macro.externalIf(
-                have($effect`Cowrruption`) && have($effect`Spit Upon`),
-                Macro.skill("Meteor Shower").skill("Use the Force")
-            ).skill($skill`Feel Hatred`),
+            Macro.skill($skill`Feel Hatred`),
             () => !have($effect`Saucefingers`)
         );
     }
