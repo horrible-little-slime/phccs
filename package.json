@@ -1,7 +1,7 @@
 {
     "name": "phccs",
-    "version": "1.0.0",
-    "description": "It's bean-hccs, but worse!",
+    "version": "2.0.0",
+    "description": "A hardcore community service script that operates under the assumption that you are me",
     "main": "phredhccs.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
@@ -42,8 +42,8 @@
         "TS"
     ],
     "bugs": {
-        "url": "https://github.com/docrostov/kol-js-starter/issues"
+        "url": "https://github.com/horrible-little-slime/phccs/issues"
     },
-    "homepage": "https://github.com/docrostov/kol-js-starter#readme",
+    "homepage": "https://github.com/horrible-little-slime/phccs#readme",
     "private": false
 }
