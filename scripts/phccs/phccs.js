@@ -19597,13 +19597,13 @@ function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Sy
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
 function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e2) { throw _e2; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e3) { didErr = true; err = _e3; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
 
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -19636,27 +19636,37 @@ var Outfit = /*#__PURE__*/function () {
     key: "dress",
     value: function dress() {
       if (this.familiar) (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.useFamiliar)(this.familiar);
-      var targetEquipment = Array.from(this.equips.keys());
+      var targetEquipment = Array.from(this.equips.values());
 
-      for (var slot in Slot.all()) {
-        if (targetEquipment.includes((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.equippedItem)(slot)) && this.equips.get(slot) !== (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.equippedItem)(slot)) (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.equip)(slot, (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject || (_templateObject = _taggedTemplateLiteral(["none"]))));
-      }
-
-      var _iterator = _createForOfIteratorHelper(this.equips.entries()),
+      var _iterator = _createForOfIteratorHelper(Slot.all()),
           _step;
 
       try {
         for (_iterator.s(); !(_step = _iterator.n()).done;) {
-          var _step$value = _slicedToArray(_step.value, 2),
-              _slot = _step$value[0],
-              item = _step$value[1];
-
-          (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.equip)(_slot, item);
+          var slot = _step.value;
+          if (targetEquipment.includes((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.equippedItem)(slot)) && this.equips.get(slot) !== (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.equippedItem)(slot)) (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.equip)(slot, (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject || (_templateObject = _taggedTemplateLiteral(["none"]))));
         }
       } catch (err) {
         _iterator.e(err);
       } finally {
         _iterator.f();
+      }
+
+      var _iterator2 = _createForOfIteratorHelper(this.equips.entries()),
+          _step2;
+
+      try {
+        for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+          var _step2$value = _slicedToArray(_step2.value, 2),
+              _slot = _step2$value[0],
+              item = _step2$value[1];
+
+          (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.equip)(_slot, item);
+        }
+      } catch (err) {
+        _iterator2.e(err);
+      } finally {
+        _iterator2.f();
       }
     }
     /**
@@ -19680,14 +19690,14 @@ var Outfit = /*#__PURE__*/function () {
     value: function doYourBest(equips, familiar) {
       var returnValue = new Map();
 
-      var _iterator2 = _createForOfIteratorHelper(equips.entries()),
-          _step2;
+      var _iterator3 = _createForOfIteratorHelper(equips.entries()),
+          _step3;
 
       try {
-        for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
-          var _step2$value = _slicedToArray(_step2.value, 2),
-              slot = _step2$value[0],
-              itemOrItems = _step2$value[1];
+        for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
+          var _step3$value = _slicedToArray(_step3.value, 2),
+              slot = _step3$value[0],
+              itemOrItems = _step3$value[1];
 
           var item = Array.isArray(itemOrItems) ? itemOrItems.find(function (item) {
             return (0,libram__WEBPACK_IMPORTED_MODULE_1__.have)(item);
@@ -19695,9 +19705,9 @@ var Outfit = /*#__PURE__*/function () {
           if (item) returnValue.set(slot, item);
         }
       } catch (err) {
-        _iterator2.e(err);
+        _iterator3.e(err);
       } finally {
-        _iterator2.f();
+        _iterator3.f();
       }
 
       return new Outfit(returnValue, familiar);
@@ -19716,19 +19726,19 @@ var Outfit = /*#__PURE__*/function () {
       if (withFamiliar) slots.push((0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["familiar"]))));
       var outfitMap = new Map();
 
-      var _iterator3 = _createForOfIteratorHelper(slots),
-          _step3;
+      var _iterator4 = _createForOfIteratorHelper(slots),
+          _step4;
 
       try {
-        for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
-          var slot = _step3.value;
+        for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
+          var slot = _step4.value;
           var item = (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.equippedItem)(slot);
           if (item !== (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["none"])))) outfitMap.set(slot, item);
         }
       } catch (err) {
-        _iterator3.e(err);
+        _iterator4.e(err);
       } finally {
-        _iterator3.f();
+        _iterator4.f();
       }
 
       return new Outfit(outfitMap, familiar);
