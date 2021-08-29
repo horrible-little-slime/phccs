@@ -28,7 +28,7 @@ import { advMacroAA, ensureEffect, ensureInnerElf, horse, setChoice } from "./ph
 import uniform, { spellOutfit } from "./outfits";
 
 const predictor = () =>
-    61 -
+    60 -
     Math.floor(numericModifier("spell damage") / 50 + 0.001) -
     Math.floor(numericModifier("spell damage percent") / 50 + 0.001);
 
