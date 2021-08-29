@@ -1,4 +1,4 @@
-import { cliExecute, equip, equippedItem, myFamiliar, useFamiliar } from "kolmafia";
+import { cliExecute, equip, equippedItem, myFamiliar, toSlot, useFamiliar } from "kolmafia";
 import { $familiar, $item, $items, $slot, $slots, have } from "libram";
 
 export class Outfit {
@@ -25,6 +25,14 @@ export class Outfit {
             )
                 equip(slot, $item`none`);
         }
+
+        //prevent DFSS errors
+        const offHand = this.equips.get($slot`off-hand`);
+        const weapon = this.equips.get($slot`weapon`);
+        if (offHand && toSlot(offHand) === $slot`weapon` && weapon) {
+            equip($slot`weapon`, weapon);
+        }
+
         for (const [slot, item] of this.equips.entries()) {
             equip(slot, item);
         }
