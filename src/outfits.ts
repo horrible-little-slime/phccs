@@ -6,7 +6,7 @@ export class Outfit {
     familiar?: Familiar;
 
     /**
-     *
+     * Construct an outfit object, for rapid equipping
      * @param equips Map of what to equip and where
      * @param familiar Optional familiar to use with outfit
      */
