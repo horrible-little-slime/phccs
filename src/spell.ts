@@ -113,5 +113,5 @@ export default function spellTest(): number {
     ensureInnerElf();
     shower();
     testPrep();
-    return predictor();
+    return 1 + predictor();
 }
