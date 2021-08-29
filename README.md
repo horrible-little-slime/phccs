@@ -7,7 +7,7 @@ If you aren't me, it may not work for you! It assumes you own a lot of things, a
 At present, PHCCS requires the following iotms/expensive old items to operate:
  * Peppermint Garden
  * Asdon Martin
- * Chateau
+ * Chateau (no monster needed, but it should be set to ceiling fan/foreign language tapes/juice bar)
  * Volcano
  * Mumming Trunk
  * Camel
@@ -20,8 +20,8 @@ At present, PHCCS requires the following iotms/expensive old items to operate:
  * Kramco
  * Scrapbook
  * Pantogram
- * LT&T
- * Detective (boots set to +50% myst, and +res)
+ * LT&T  (boots set to +50% myst, and +res)
+ * Detective
  * Machine Elf
  * KGBriefcase
  * Pillkeeper
