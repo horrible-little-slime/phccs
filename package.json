@@ -8,6 +8,7 @@
         "build": "npm run build:types && npm run build:js",
         "build:types": "tsc",
         "build:js": "webpack",
+        "lint": "eslint src && prettier --check .",
         "watch": "webpack --watch --progress"
     },
     "devDependencies": {
