@@ -30,7 +30,7 @@
         "webpack-cli": "^4.2.0"
     },
     "dependencies": {
-        "kolmafia": "^1.1.2",
+        "kolmafia": "^1.2.0",
         "libram": "^0.2.7"
     },
     "author": "Phreddrickkv2",
