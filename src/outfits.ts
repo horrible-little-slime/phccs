@@ -167,7 +167,7 @@ export function muscleOutfit(): void {
             [
                 $slot`off-hand`,
                 have($familiar`Disembodied Hand`)
-                    ? $item`cosmetic football`
+                    ? $items`cosmetic football`
                     : $item`Fourth of May Cosplay Saber`,
             ],
             [$slot`shirt`, $items`shoe ad T-shirt, fresh coat of paint`],
