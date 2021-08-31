@@ -1,10 +1,7 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./node_modules/core-js/internals/a-function.js":
-/*!******************************************************!*\
-  !*** ./node_modules/core-js/internals/a-function.js ***!
-  \******************************************************/
+/***/ 6163:
 /***/ ((module) => {
 
 module.exports = function (it) {
@@ -17,13 +14,10 @@ module.exports = function (it) {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/a-possible-prototype.js":
-/*!****************************************************************!*\
-  !*** ./node_modules/core-js/internals/a-possible-prototype.js ***!
-  \****************************************************************/
+/***/ 9882:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
+var isObject = __webpack_require__(794);
 
 module.exports = function (it) {
   if (!isObject(it) && it !== null) {
@@ -35,17 +29,14 @@ module.exports = function (it) {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/add-to-unscopables.js":
-/*!**************************************************************!*\
-  !*** ./node_modules/core-js/internals/add-to-unscopables.js ***!
-  \**************************************************************/
+/***/ 6288:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
+var wellKnownSymbol = __webpack_require__(3649);
 
-var create = __webpack_require__(/*! ../internals/object-create */ "./node_modules/core-js/internals/object-create.js");
+var create = __webpack_require__(3590);
 
-var definePropertyModule = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/core-js/internals/object-define-property.js");
+var definePropertyModule = __webpack_require__(4615);
 
 var UNSCOPABLES = wellKnownSymbol('unscopables');
 var ArrayPrototype = Array.prototype; // Array.prototype[@@unscopables]
@@ -65,16 +56,13 @@ module.exports = function (key) {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/advance-string-index.js":
-/*!****************************************************************!*\
-  !*** ./node_modules/core-js/internals/advance-string-index.js ***!
-  \****************************************************************/
+/***/ 6733:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-var charAt = __webpack_require__(/*! ../internals/string-multibyte */ "./node_modules/core-js/internals/string-multibyte.js").charAt; // `AdvanceStringIndex` abstract operation
+var charAt = __webpack_require__(6389).charAt; // `AdvanceStringIndex` abstract operation
 // https://tc39.es/ecma262/#sec-advancestringindex
 
 
@@ -84,13 +72,10 @@ module.exports = function (S, index, unicode) {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/an-object.js":
-/*!*****************************************************!*\
-  !*** ./node_modules/core-js/internals/an-object.js ***!
-  \*****************************************************/
+/***/ 2569:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
+var isObject = __webpack_require__(794);
 
 module.exports = function (it) {
   if (!isObject(it)) {
@@ -102,20 +87,17 @@ module.exports = function (it) {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/array-fill.js":
-/*!******************************************************!*\
-  !*** ./node_modules/core-js/internals/array-fill.js ***!
-  \******************************************************/
+/***/ 3579:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-var toObject = __webpack_require__(/*! ../internals/to-object */ "./node_modules/core-js/internals/to-object.js");
+var toObject = __webpack_require__(1324);
 
-var toAbsoluteIndex = __webpack_require__(/*! ../internals/to-absolute-index */ "./node_modules/core-js/internals/to-absolute-index.js");
+var toAbsoluteIndex = __webpack_require__(6782);
 
-var toLength = __webpack_require__(/*! ../internals/to-length */ "./node_modules/core-js/internals/to-length.js"); // `Array.prototype.fill` method implementation
+var toLength = __webpack_require__(97); // `Array.prototype.fill` method implementation
 // https://tc39.es/ecma262/#sec-array.prototype.fill
 
 
@@ -138,17 +120,14 @@ module.exports = function fill(value
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/array-includes.js":
-/*!**********************************************************!*\
-  !*** ./node_modules/core-js/internals/array-includes.js ***!
-  \**********************************************************/
+/***/ 5766:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var toIndexedObject = __webpack_require__(/*! ../internals/to-indexed-object */ "./node_modules/core-js/internals/to-indexed-object.js");
+var toIndexedObject = __webpack_require__(2977);
 
-var toLength = __webpack_require__(/*! ../internals/to-length */ "./node_modules/core-js/internals/to-length.js");
+var toLength = __webpack_require__(97);
 
-var toAbsoluteIndex = __webpack_require__(/*! ../internals/to-absolute-index */ "./node_modules/core-js/internals/to-absolute-index.js"); // `Array.prototype.{ indexOf, includes }` methods implementation
+var toAbsoluteIndex = __webpack_require__(6782); // `Array.prototype.{ indexOf, includes }` methods implementation
 
 
 var createMethod = function createMethod(IS_INCLUDES) {
@@ -181,21 +160,18 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/array-iteration.js":
-/*!***********************************************************!*\
-  !*** ./node_modules/core-js/internals/array-iteration.js ***!
-  \***********************************************************/
+/***/ 4805:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var bind = __webpack_require__(/*! ../internals/function-bind-context */ "./node_modules/core-js/internals/function-bind-context.js");
+var bind = __webpack_require__(2938);
 
-var IndexedObject = __webpack_require__(/*! ../internals/indexed-object */ "./node_modules/core-js/internals/indexed-object.js");
+var IndexedObject = __webpack_require__(5044);
 
-var toObject = __webpack_require__(/*! ../internals/to-object */ "./node_modules/core-js/internals/to-object.js");
+var toObject = __webpack_require__(1324);
 
-var toLength = __webpack_require__(/*! ../internals/to-length */ "./node_modules/core-js/internals/to-length.js");
+var toLength = __webpack_require__(97);
 
-var arraySpeciesCreate = __webpack_require__(/*! ../internals/array-species-create */ "./node_modules/core-js/internals/array-species-create.js");
+var arraySpeciesCreate = __webpack_require__(4822);
 
 var push = [].push; // `Array.prototype.{ forEach, map, filter, some, every, find, findIndex, filterOut }` methods implementation
 
@@ -286,17 +262,14 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/array-method-has-species-support.js":
-/*!****************************************************************************!*\
-  !*** ./node_modules/core-js/internals/array-method-has-species-support.js ***!
-  \****************************************************************************/
+/***/ 9269:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
+var fails = __webpack_require__(6544);
 
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
+var wellKnownSymbol = __webpack_require__(3649);
 
-var V8_VERSION = __webpack_require__(/*! ../internals/engine-v8-version */ "./node_modules/core-js/internals/engine-v8-version.js");
+var V8_VERSION = __webpack_require__(4061);
 
 var SPECIES = wellKnownSymbol('species');
 
@@ -320,16 +293,13 @@ module.exports = function (METHOD_NAME) {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/array-method-is-strict.js":
-/*!******************************************************************!*\
-  !*** ./node_modules/core-js/internals/array-method-is-strict.js ***!
-  \******************************************************************/
+/***/ 906:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
+var fails = __webpack_require__(6544);
 
 module.exports = function (METHOD_NAME, argument) {
   var method = [][METHOD_NAME];
@@ -343,10 +313,7 @@ module.exports = function (METHOD_NAME, argument) {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/array-sort.js":
-/*!******************************************************!*\
-  !*** ./node_modules/core-js/internals/array-sort.js ***!
-  \******************************************************/
+/***/ 5744:
 /***/ ((module) => {
 
 // TODO: use something more complex like timsort?
@@ -399,17 +366,14 @@ module.exports = mergeSort;
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/array-species-create.js":
-/*!****************************************************************!*\
-  !*** ./node_modules/core-js/internals/array-species-create.js ***!
-  \****************************************************************/
+/***/ 4822:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
+var isObject = __webpack_require__(794);
 
-var isArray = __webpack_require__(/*! ../internals/is-array */ "./node_modules/core-js/internals/is-array.js");
+var isArray = __webpack_require__(4521);
 
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
+var wellKnownSymbol = __webpack_require__(3649);
 
 var SPECIES = wellKnownSymbol('species'); // `ArraySpeciesCreate` abstract operation
 // https://tc39.es/ecma262/#sec-arrayspeciescreate
@@ -431,10 +395,7 @@ module.exports = function (originalArray, length) {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/classof-raw.js":
-/*!*******************************************************!*\
-  !*** ./node_modules/core-js/internals/classof-raw.js ***!
-  \*******************************************************/
+/***/ 9624:
 /***/ ((module) => {
 
 var toString = {}.toString;
@@ -445,17 +406,14 @@ module.exports = function (it) {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/classof.js":
-/*!***************************************************!*\
-  !*** ./node_modules/core-js/internals/classof.js ***!
-  \***************************************************/
+/***/ 3058:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var TO_STRING_TAG_SUPPORT = __webpack_require__(/*! ../internals/to-string-tag-support */ "./node_modules/core-js/internals/to-string-tag-support.js");
+var TO_STRING_TAG_SUPPORT = __webpack_require__(8191);
 
-var classofRaw = __webpack_require__(/*! ../internals/classof-raw */ "./node_modules/core-js/internals/classof-raw.js");
+var classofRaw = __webpack_require__(9624);
 
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
+var wellKnownSymbol = __webpack_require__(3649);
 
 var TO_STRING_TAG = wellKnownSymbol('toStringTag'); // ES3 wrong here
 
@@ -482,19 +440,16 @@ module.exports = TO_STRING_TAG_SUPPORT ? classofRaw : function (it) {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/copy-constructor-properties.js":
-/*!***********************************************************************!*\
-  !*** ./node_modules/core-js/internals/copy-constructor-properties.js ***!
-  \***********************************************************************/
+/***/ 3478:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var has = __webpack_require__(/*! ../internals/has */ "./node_modules/core-js/internals/has.js");
+var has = __webpack_require__(4402);
 
-var ownKeys = __webpack_require__(/*! ../internals/own-keys */ "./node_modules/core-js/internals/own-keys.js");
+var ownKeys = __webpack_require__(929);
 
-var getOwnPropertyDescriptorModule = __webpack_require__(/*! ../internals/object-get-own-property-descriptor */ "./node_modules/core-js/internals/object-get-own-property-descriptor.js");
+var getOwnPropertyDescriptorModule = __webpack_require__(6683);
 
-var definePropertyModule = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/core-js/internals/object-define-property.js");
+var definePropertyModule = __webpack_require__(4615);
 
 module.exports = function (target, source) {
   var keys = ownKeys(source);
@@ -509,13 +464,10 @@ module.exports = function (target, source) {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/correct-is-regexp-logic.js":
-/*!*******************************************************************!*\
-  !*** ./node_modules/core-js/internals/correct-is-regexp-logic.js ***!
-  \*******************************************************************/
+/***/ 3989:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
+var wellKnownSymbol = __webpack_require__(3649);
 
 var MATCH = wellKnownSymbol('match');
 
@@ -538,13 +490,10 @@ module.exports = function (METHOD_NAME) {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/correct-prototype-getter.js":
-/*!********************************************************************!*\
-  !*** ./node_modules/core-js/internals/correct-prototype-getter.js ***!
-  \********************************************************************/
+/***/ 926:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
+var fails = __webpack_require__(6544);
 
 module.exports = !fails(function () {
   function F() {
@@ -558,24 +507,21 @@ module.exports = !fails(function () {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/create-iterator-constructor.js":
-/*!***********************************************************************!*\
-  !*** ./node_modules/core-js/internals/create-iterator-constructor.js ***!
-  \***********************************************************************/
+/***/ 4683:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-var IteratorPrototype = __webpack_require__(/*! ../internals/iterators-core */ "./node_modules/core-js/internals/iterators-core.js").IteratorPrototype;
+var IteratorPrototype = __webpack_require__(2365).IteratorPrototype;
 
-var create = __webpack_require__(/*! ../internals/object-create */ "./node_modules/core-js/internals/object-create.js");
+var create = __webpack_require__(3590);
 
-var createPropertyDescriptor = __webpack_require__(/*! ../internals/create-property-descriptor */ "./node_modules/core-js/internals/create-property-descriptor.js");
+var createPropertyDescriptor = __webpack_require__(4677);
 
-var setToStringTag = __webpack_require__(/*! ../internals/set-to-string-tag */ "./node_modules/core-js/internals/set-to-string-tag.js");
+var setToStringTag = __webpack_require__(8821);
 
-var Iterators = __webpack_require__(/*! ../internals/iterators */ "./node_modules/core-js/internals/iterators.js");
+var Iterators = __webpack_require__(339);
 
 var returnThis = function returnThis() {
   return this;
@@ -593,17 +539,14 @@ module.exports = function (IteratorConstructor, NAME, next) {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/create-non-enumerable-property.js":
-/*!**************************************************************************!*\
-  !*** ./node_modules/core-js/internals/create-non-enumerable-property.js ***!
-  \**************************************************************************/
+/***/ 57:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/core-js/internals/descriptors.js");
+var DESCRIPTORS = __webpack_require__(8494);
 
-var definePropertyModule = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/core-js/internals/object-define-property.js");
+var definePropertyModule = __webpack_require__(4615);
 
-var createPropertyDescriptor = __webpack_require__(/*! ../internals/create-property-descriptor */ "./node_modules/core-js/internals/create-property-descriptor.js");
+var createPropertyDescriptor = __webpack_require__(4677);
 
 module.exports = DESCRIPTORS ? function (object, key, value) {
   return definePropertyModule.f(object, key, createPropertyDescriptor(1, value));
@@ -614,10 +557,7 @@ module.exports = DESCRIPTORS ? function (object, key, value) {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/create-property-descriptor.js":
-/*!**********************************************************************!*\
-  !*** ./node_modules/core-js/internals/create-property-descriptor.js ***!
-  \**********************************************************************/
+/***/ 4677:
 /***/ ((module) => {
 
 module.exports = function (bitmap, value) {
@@ -631,20 +571,17 @@ module.exports = function (bitmap, value) {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/create-property.js":
-/*!***********************************************************!*\
-  !*** ./node_modules/core-js/internals/create-property.js ***!
-  \***********************************************************/
+/***/ 5999:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-var toPrimitive = __webpack_require__(/*! ../internals/to-primitive */ "./node_modules/core-js/internals/to-primitive.js");
+var toPrimitive = __webpack_require__(2670);
 
-var definePropertyModule = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/core-js/internals/object-define-property.js");
+var definePropertyModule = __webpack_require__(4615);
 
-var createPropertyDescriptor = __webpack_require__(/*! ../internals/create-property-descriptor */ "./node_modules/core-js/internals/create-property-descriptor.js");
+var createPropertyDescriptor = __webpack_require__(4677);
 
 module.exports = function (object, key, value) {
   var propertyKey = toPrimitive(key);
@@ -653,36 +590,33 @@ module.exports = function (object, key, value) {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/define-iterator.js":
-/*!***********************************************************!*\
-  !*** ./node_modules/core-js/internals/define-iterator.js ***!
-  \***********************************************************/
+/***/ 9012:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var $ = __webpack_require__(7263);
 
-var createIteratorConstructor = __webpack_require__(/*! ../internals/create-iterator-constructor */ "./node_modules/core-js/internals/create-iterator-constructor.js");
+var createIteratorConstructor = __webpack_require__(4683);
 
-var getPrototypeOf = __webpack_require__(/*! ../internals/object-get-prototype-of */ "./node_modules/core-js/internals/object-get-prototype-of.js");
+var getPrototypeOf = __webpack_require__(729);
 
-var setPrototypeOf = __webpack_require__(/*! ../internals/object-set-prototype-of */ "./node_modules/core-js/internals/object-set-prototype-of.js");
+var setPrototypeOf = __webpack_require__(7496);
 
-var setToStringTag = __webpack_require__(/*! ../internals/set-to-string-tag */ "./node_modules/core-js/internals/set-to-string-tag.js");
+var setToStringTag = __webpack_require__(8821);
 
-var createNonEnumerableProperty = __webpack_require__(/*! ../internals/create-non-enumerable-property */ "./node_modules/core-js/internals/create-non-enumerable-property.js");
+var createNonEnumerableProperty = __webpack_require__(57);
 
-var redefine = __webpack_require__(/*! ../internals/redefine */ "./node_modules/core-js/internals/redefine.js");
+var redefine = __webpack_require__(1270);
 
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
+var wellKnownSymbol = __webpack_require__(3649);
 
-var IS_PURE = __webpack_require__(/*! ../internals/is-pure */ "./node_modules/core-js/internals/is-pure.js");
+var IS_PURE = __webpack_require__(6268);
 
-var Iterators = __webpack_require__(/*! ../internals/iterators */ "./node_modules/core-js/internals/iterators.js");
+var Iterators = __webpack_require__(339);
 
-var IteratorsCore = __webpack_require__(/*! ../internals/iterators-core */ "./node_modules/core-js/internals/iterators-core.js");
+var IteratorsCore = __webpack_require__(2365);
 
 var IteratorPrototype = IteratorsCore.IteratorPrototype;
 var BUGGY_SAFARI_ITERATORS = IteratorsCore.BUGGY_SAFARI_ITERATORS;
@@ -788,19 +722,16 @@ module.exports = function (Iterable, NAME, IteratorConstructor, next, DEFAULT, I
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/define-well-known-symbol.js":
-/*!********************************************************************!*\
-  !*** ./node_modules/core-js/internals/define-well-known-symbol.js ***!
-  \********************************************************************/
+/***/ 2219:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var path = __webpack_require__(/*! ../internals/path */ "./node_modules/core-js/internals/path.js");
+var path = __webpack_require__(1287);
 
-var has = __webpack_require__(/*! ../internals/has */ "./node_modules/core-js/internals/has.js");
+var has = __webpack_require__(4402);
 
-var wrappedWellKnownSymbolModule = __webpack_require__(/*! ../internals/well-known-symbol-wrapped */ "./node_modules/core-js/internals/well-known-symbol-wrapped.js");
+var wrappedWellKnownSymbolModule = __webpack_require__(491);
 
-var defineProperty = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/core-js/internals/object-define-property.js").f;
+var defineProperty = __webpack_require__(4615).f;
 
 module.exports = function (NAME) {
   var _Symbol = path.Symbol || (path.Symbol = {});
@@ -812,13 +743,10 @@ module.exports = function (NAME) {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/descriptors.js":
-/*!*******************************************************!*\
-  !*** ./node_modules/core-js/internals/descriptors.js ***!
-  \*******************************************************/
+/***/ 8494:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js"); // Detect IE8's incomplete defineProperty implementation
+var fails = __webpack_require__(6544); // Detect IE8's incomplete defineProperty implementation
 
 
 module.exports = !fails(function () {
@@ -832,15 +760,12 @@ module.exports = !fails(function () {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/document-create-element.js":
-/*!*******************************************************************!*\
-  !*** ./node_modules/core-js/internals/document-create-element.js ***!
-  \*******************************************************************/
+/***/ 6668:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
+var global = __webpack_require__(7583);
 
-var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
+var isObject = __webpack_require__(794);
 
 var document = global.document; // typeof document.createElement is 'object' in old IE
 
@@ -852,52 +777,40 @@ module.exports = function (it) {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/engine-ff-version.js":
-/*!*************************************************************!*\
-  !*** ./node_modules/core-js/internals/engine-ff-version.js ***!
-  \*************************************************************/
+/***/ 5857:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var userAgent = __webpack_require__(/*! ../internals/engine-user-agent */ "./node_modules/core-js/internals/engine-user-agent.js");
+var userAgent = __webpack_require__(6918);
 
 var firefox = userAgent.match(/firefox\/(\d+)/i);
 module.exports = !!firefox && +firefox[1];
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/engine-is-ie-or-edge.js":
-/*!****************************************************************!*\
-  !*** ./node_modules/core-js/internals/engine-is-ie-or-edge.js ***!
-  \****************************************************************/
+/***/ 924:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var UA = __webpack_require__(/*! ../internals/engine-user-agent */ "./node_modules/core-js/internals/engine-user-agent.js");
+var UA = __webpack_require__(6918);
 
 module.exports = /MSIE|Trident/.test(UA);
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/engine-user-agent.js":
-/*!*************************************************************!*\
-  !*** ./node_modules/core-js/internals/engine-user-agent.js ***!
-  \*************************************************************/
+/***/ 6918:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var getBuiltIn = __webpack_require__(/*! ../internals/get-built-in */ "./node_modules/core-js/internals/get-built-in.js");
+var getBuiltIn = __webpack_require__(5897);
 
 module.exports = getBuiltIn('navigator', 'userAgent') || '';
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/engine-v8-version.js":
-/*!*************************************************************!*\
-  !*** ./node_modules/core-js/internals/engine-v8-version.js ***!
-  \*************************************************************/
+/***/ 4061:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
+var global = __webpack_require__(7583);
 
-var userAgent = __webpack_require__(/*! ../internals/engine-user-agent */ "./node_modules/core-js/internals/engine-user-agent.js");
+var userAgent = __webpack_require__(6918);
 
 var process = global.process;
 var versions = process && process.versions;
@@ -920,23 +833,17 @@ module.exports = version && +version;
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/engine-webkit-version.js":
-/*!*****************************************************************!*\
-  !*** ./node_modules/core-js/internals/engine-webkit-version.js ***!
-  \*****************************************************************/
+/***/ 3:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var userAgent = __webpack_require__(/*! ../internals/engine-user-agent */ "./node_modules/core-js/internals/engine-user-agent.js");
+var userAgent = __webpack_require__(6918);
 
 var webkit = userAgent.match(/AppleWebKit\/(\d+)\./);
 module.exports = !!webkit && +webkit[1];
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/enum-bug-keys.js":
-/*!*********************************************************!*\
-  !*** ./node_modules/core-js/internals/enum-bug-keys.js ***!
-  \*********************************************************/
+/***/ 5690:
 /***/ ((module) => {
 
 // IE8- don't enum bug keys
@@ -944,27 +851,24 @@ module.exports = ['constructor', 'hasOwnProperty', 'isPrototypeOf', 'propertyIsE
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/export.js":
-/*!**************************************************!*\
-  !*** ./node_modules/core-js/internals/export.js ***!
-  \**************************************************/
+/***/ 7263:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
+var global = __webpack_require__(7583);
 
-var getOwnPropertyDescriptor = __webpack_require__(/*! ../internals/object-get-own-property-descriptor */ "./node_modules/core-js/internals/object-get-own-property-descriptor.js").f;
+var getOwnPropertyDescriptor = __webpack_require__(6683).f;
 
-var createNonEnumerableProperty = __webpack_require__(/*! ../internals/create-non-enumerable-property */ "./node_modules/core-js/internals/create-non-enumerable-property.js");
+var createNonEnumerableProperty = __webpack_require__(57);
 
-var redefine = __webpack_require__(/*! ../internals/redefine */ "./node_modules/core-js/internals/redefine.js");
+var redefine = __webpack_require__(1270);
 
-var setGlobal = __webpack_require__(/*! ../internals/set-global */ "./node_modules/core-js/internals/set-global.js");
+var setGlobal = __webpack_require__(460);
 
-var copyConstructorProperties = __webpack_require__(/*! ../internals/copy-constructor-properties */ "./node_modules/core-js/internals/copy-constructor-properties.js");
+var copyConstructorProperties = __webpack_require__(3478);
 
-var isForced = __webpack_require__(/*! ../internals/is-forced */ "./node_modules/core-js/internals/is-forced.js");
+var isForced = __webpack_require__(4451);
 /*
   options.target      - name of the target object
   options.global      - target is the global object
@@ -1022,10 +926,7 @@ module.exports = function (options, source) {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/fails.js":
-/*!*************************************************!*\
-  !*** ./node_modules/core-js/internals/fails.js ***!
-  \*************************************************/
+/***/ 6544:
 /***/ ((module) => {
 
 module.exports = function (exec) {
@@ -1038,26 +939,23 @@ module.exports = function (exec) {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/fix-regexp-well-known-symbol-logic.js":
-/*!******************************************************************************!*\
-  !*** ./node_modules/core-js/internals/fix-regexp-well-known-symbol-logic.js ***!
-  \******************************************************************************/
+/***/ 783:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
  // TODO: Remove from `core-js@4` since it's moved to entry points
 
-__webpack_require__(/*! ../modules/es.regexp.exec */ "./node_modules/core-js/modules/es.regexp.exec.js");
+__webpack_require__(2322);
 
-var redefine = __webpack_require__(/*! ../internals/redefine */ "./node_modules/core-js/internals/redefine.js");
+var redefine = __webpack_require__(1270);
 
-var regexpExec = __webpack_require__(/*! ../internals/regexp-exec */ "./node_modules/core-js/internals/regexp-exec.js");
+var regexpExec = __webpack_require__(8445);
 
-var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
+var fails = __webpack_require__(6544);
 
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
+var wellKnownSymbol = __webpack_require__(3649);
 
-var createNonEnumerableProperty = __webpack_require__(/*! ../internals/create-non-enumerable-property */ "./node_modules/core-js/internals/create-non-enumerable-property.js");
+var createNonEnumerableProperty = __webpack_require__(57);
 
 var SPECIES = wellKnownSymbol('species');
 var RegExpPrototype = RegExp.prototype;
@@ -1140,20 +1038,17 @@ module.exports = function (KEY, exec, FORCED, SHAM) {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/flatten-into-array.js":
-/*!**************************************************************!*\
-  !*** ./node_modules/core-js/internals/flatten-into-array.js ***!
-  \**************************************************************/
+/***/ 1266:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-var isArray = __webpack_require__(/*! ../internals/is-array */ "./node_modules/core-js/internals/is-array.js");
+var isArray = __webpack_require__(4521);
 
-var toLength = __webpack_require__(/*! ../internals/to-length */ "./node_modules/core-js/internals/to-length.js");
+var toLength = __webpack_require__(97);
 
-var bind = __webpack_require__(/*! ../internals/function-bind-context */ "./node_modules/core-js/internals/function-bind-context.js"); // `FlattenIntoArray` abstract operation
+var bind = __webpack_require__(2938); // `FlattenIntoArray` abstract operation
 // https://tc39.github.io/proposal-flatMap/#sec-FlattenIntoArray
 
 
@@ -1187,13 +1082,10 @@ module.exports = flattenIntoArray;
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/function-bind-context.js":
-/*!*****************************************************************!*\
-  !*** ./node_modules/core-js/internals/function-bind-context.js ***!
-  \*****************************************************************/
+/***/ 2938:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var aFunction = __webpack_require__(/*! ../internals/a-function */ "./node_modules/core-js/internals/a-function.js"); // optional / simple context binding
+var aFunction = __webpack_require__(6163); // optional / simple context binding
 
 
 module.exports = function (fn, that, length) {
@@ -1229,18 +1121,15 @@ module.exports = function (fn, that, length) {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/function-bind.js":
-/*!*********************************************************!*\
-  !*** ./node_modules/core-js/internals/function-bind.js ***!
-  \*********************************************************/
+/***/ 1335:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-var aFunction = __webpack_require__(/*! ../internals/a-function */ "./node_modules/core-js/internals/a-function.js");
+var aFunction = __webpack_require__(6163);
 
-var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
+var isObject = __webpack_require__(794);
 
 var slice = [].slice;
 var factories = {};
@@ -1277,15 +1166,12 @@ module.exports = Function.bind || function bind(that
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/get-built-in.js":
-/*!********************************************************!*\
-  !*** ./node_modules/core-js/internals/get-built-in.js ***!
-  \********************************************************/
+/***/ 5897:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var path = __webpack_require__(/*! ../internals/path */ "./node_modules/core-js/internals/path.js");
+var path = __webpack_require__(1287);
 
-var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
+var global = __webpack_require__(7583);
 
 var aFunction = function aFunction(variable) {
   return typeof variable == 'function' ? variable : undefined;
@@ -1297,17 +1183,14 @@ module.exports = function (namespace, method) {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/get-iterator-method.js":
-/*!***************************************************************!*\
-  !*** ./node_modules/core-js/internals/get-iterator-method.js ***!
-  \***************************************************************/
+/***/ 8272:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var classof = __webpack_require__(/*! ../internals/classof */ "./node_modules/core-js/internals/classof.js");
+var classof = __webpack_require__(3058);
 
-var Iterators = __webpack_require__(/*! ../internals/iterators */ "./node_modules/core-js/internals/iterators.js");
+var Iterators = __webpack_require__(339);
 
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
+var wellKnownSymbol = __webpack_require__(3649);
 
 var ITERATOR = wellKnownSymbol('iterator');
 
@@ -1317,13 +1200,10 @@ module.exports = function (it) {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/get-substitution.js":
-/*!************************************************************!*\
-  !*** ./node_modules/core-js/internals/get-substitution.js ***!
-  \************************************************************/
+/***/ 4305:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var toObject = __webpack_require__(/*! ../internals/to-object */ "./node_modules/core-js/internals/to-object.js");
+var toObject = __webpack_require__(1324);
 
 var floor = Math.floor;
 var replace = ''.replace;
@@ -1382,10 +1262,7 @@ module.exports = function (matched, str, position, captures, namedCaptures, repl
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/global.js":
-/*!**************************************************!*\
-  !*** ./node_modules/core-js/internals/global.js ***!
-  \**************************************************/
+/***/ 7583:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -1404,13 +1281,10 @@ function () {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/has.js":
-/*!***********************************************!*\
-  !*** ./node_modules/core-js/internals/has.js ***!
-  \***********************************************/
+/***/ 4402:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var toObject = __webpack_require__(/*! ../internals/to-object */ "./node_modules/core-js/internals/to-object.js");
+var toObject = __webpack_require__(1324);
 
 var hasOwnProperty = {}.hasOwnProperty;
 
@@ -1420,39 +1294,30 @@ module.exports = Object.hasOwn || function hasOwn(it, key) {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/hidden-keys.js":
-/*!*******************************************************!*\
-  !*** ./node_modules/core-js/internals/hidden-keys.js ***!
-  \*******************************************************/
+/***/ 4639:
 /***/ ((module) => {
 
 module.exports = {};
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/html.js":
-/*!************************************************!*\
-  !*** ./node_modules/core-js/internals/html.js ***!
-  \************************************************/
+/***/ 482:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var getBuiltIn = __webpack_require__(/*! ../internals/get-built-in */ "./node_modules/core-js/internals/get-built-in.js");
+var getBuiltIn = __webpack_require__(5897);
 
 module.exports = getBuiltIn('document', 'documentElement');
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/ie8-dom-define.js":
-/*!**********************************************************!*\
-  !*** ./node_modules/core-js/internals/ie8-dom-define.js ***!
-  \**********************************************************/
+/***/ 275:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/core-js/internals/descriptors.js");
+var DESCRIPTORS = __webpack_require__(8494);
 
-var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
+var fails = __webpack_require__(6544);
 
-var createElement = __webpack_require__(/*! ../internals/document-create-element */ "./node_modules/core-js/internals/document-create-element.js"); // Thank's IE8 for his funny defineProperty
+var createElement = __webpack_require__(6668); // Thank's IE8 for his funny defineProperty
 
 
 module.exports = !DESCRIPTORS && !fails(function () {
@@ -1466,15 +1331,12 @@ module.exports = !DESCRIPTORS && !fails(function () {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/indexed-object.js":
-/*!**********************************************************!*\
-  !*** ./node_modules/core-js/internals/indexed-object.js ***!
-  \**********************************************************/
+/***/ 5044:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
+var fails = __webpack_require__(6544);
 
-var classof = __webpack_require__(/*! ../internals/classof-raw */ "./node_modules/core-js/internals/classof-raw.js");
+var classof = __webpack_require__(9624);
 
 var split = ''.split; // fallback for non-array-like ES3 and non-enumerable old V8 strings
 
@@ -1488,15 +1350,12 @@ module.exports = fails(function () {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/inherit-if-required.js":
-/*!***************************************************************!*\
-  !*** ./node_modules/core-js/internals/inherit-if-required.js ***!
-  \***************************************************************/
+/***/ 434:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
+var isObject = __webpack_require__(794);
 
-var setPrototypeOf = __webpack_require__(/*! ../internals/object-set-prototype-of */ "./node_modules/core-js/internals/object-set-prototype-of.js"); // makes subclassing work correct for wrapped built-ins
+var setPrototypeOf = __webpack_require__(7496); // makes subclassing work correct for wrapped built-ins
 
 
 module.exports = function ($this, dummy, Wrapper) {
@@ -1509,13 +1368,10 @@ module.exports = function ($this, dummy, Wrapper) {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/inspect-source.js":
-/*!**********************************************************!*\
-  !*** ./node_modules/core-js/internals/inspect-source.js ***!
-  \**********************************************************/
+/***/ 9734:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var store = __webpack_require__(/*! ../internals/shared-store */ "./node_modules/core-js/internals/shared-store.js");
+var store = __webpack_require__(1314);
 
 var functionToString = Function.toString; // this helper broken in `core-js@3.4.1-3.4.4`, so we can't use `shared` helper
 
@@ -1529,27 +1385,24 @@ module.exports = store.inspectSource;
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/internal-state.js":
-/*!**********************************************************!*\
-  !*** ./node_modules/core-js/internals/internal-state.js ***!
-  \**********************************************************/
+/***/ 2743:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var NATIVE_WEAK_MAP = __webpack_require__(/*! ../internals/native-weak-map */ "./node_modules/core-js/internals/native-weak-map.js");
+var NATIVE_WEAK_MAP = __webpack_require__(9491);
 
-var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
+var global = __webpack_require__(7583);
 
-var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
+var isObject = __webpack_require__(794);
 
-var createNonEnumerableProperty = __webpack_require__(/*! ../internals/create-non-enumerable-property */ "./node_modules/core-js/internals/create-non-enumerable-property.js");
+var createNonEnumerableProperty = __webpack_require__(57);
 
-var objectHas = __webpack_require__(/*! ../internals/has */ "./node_modules/core-js/internals/has.js");
+var objectHas = __webpack_require__(4402);
 
-var shared = __webpack_require__(/*! ../internals/shared-store */ "./node_modules/core-js/internals/shared-store.js");
+var shared = __webpack_require__(1314);
 
-var sharedKey = __webpack_require__(/*! ../internals/shared-key */ "./node_modules/core-js/internals/shared-key.js");
+var sharedKey = __webpack_require__(9137);
 
-var hiddenKeys = __webpack_require__(/*! ../internals/hidden-keys */ "./node_modules/core-js/internals/hidden-keys.js");
+var hiddenKeys = __webpack_require__(4639);
 
 var OBJECT_ALREADY_INITIALIZED = 'Object already initialized';
 var WeakMap = global.WeakMap;
@@ -1621,15 +1474,12 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/is-array-iterator-method.js":
-/*!********************************************************************!*\
-  !*** ./node_modules/core-js/internals/is-array-iterator-method.js ***!
-  \********************************************************************/
+/***/ 114:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
+var wellKnownSymbol = __webpack_require__(3649);
 
-var Iterators = __webpack_require__(/*! ../internals/iterators */ "./node_modules/core-js/internals/iterators.js");
+var Iterators = __webpack_require__(339);
 
 var ITERATOR = wellKnownSymbol('iterator');
 var ArrayPrototype = Array.prototype; // check on default Array iterator
@@ -1640,13 +1490,10 @@ module.exports = function (it) {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/is-array.js":
-/*!****************************************************!*\
-  !*** ./node_modules/core-js/internals/is-array.js ***!
-  \****************************************************/
+/***/ 4521:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var classof = __webpack_require__(/*! ../internals/classof-raw */ "./node_modules/core-js/internals/classof-raw.js"); // `IsArray` abstract operation
+var classof = __webpack_require__(9624); // `IsArray` abstract operation
 // https://tc39.es/ecma262/#sec-isarray
 // eslint-disable-next-line es/no-array-isarray -- safe
 
@@ -1657,13 +1504,10 @@ module.exports = Array.isArray || function isArray(arg) {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/is-forced.js":
-/*!*****************************************************!*\
-  !*** ./node_modules/core-js/internals/is-forced.js ***!
-  \*****************************************************/
+/***/ 4451:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
+var fails = __webpack_require__(6544);
 
 var replacement = /#|\.prototype\./;
 
@@ -1683,10 +1527,7 @@ module.exports = isForced;
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/is-object.js":
-/*!*****************************************************!*\
-  !*** ./node_modules/core-js/internals/is-object.js ***!
-  \*****************************************************/
+/***/ 794:
 /***/ ((module) => {
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -1697,27 +1538,21 @@ module.exports = function (it) {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/is-pure.js":
-/*!***************************************************!*\
-  !*** ./node_modules/core-js/internals/is-pure.js ***!
-  \***************************************************/
+/***/ 6268:
 /***/ ((module) => {
 
 module.exports = false;
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/is-regexp.js":
-/*!*****************************************************!*\
-  !*** ./node_modules/core-js/internals/is-regexp.js ***!
-  \*****************************************************/
+/***/ 7574:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
+var isObject = __webpack_require__(794);
 
-var classof = __webpack_require__(/*! ../internals/classof-raw */ "./node_modules/core-js/internals/classof-raw.js");
+var classof = __webpack_require__(9624);
 
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
+var wellKnownSymbol = __webpack_require__(3649);
 
 var MATCH = wellKnownSymbol('match'); // `IsRegExp` abstract operation
 // https://tc39.es/ecma262/#sec-isregexp
@@ -1729,25 +1564,22 @@ module.exports = function (it) {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/iterate.js":
-/*!***************************************************!*\
-  !*** ./node_modules/core-js/internals/iterate.js ***!
-  \***************************************************/
+/***/ 4026:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
+var anObject = __webpack_require__(2569);
 
-var isArrayIteratorMethod = __webpack_require__(/*! ../internals/is-array-iterator-method */ "./node_modules/core-js/internals/is-array-iterator-method.js");
+var isArrayIteratorMethod = __webpack_require__(114);
 
-var toLength = __webpack_require__(/*! ../internals/to-length */ "./node_modules/core-js/internals/to-length.js");
+var toLength = __webpack_require__(97);
 
-var bind = __webpack_require__(/*! ../internals/function-bind-context */ "./node_modules/core-js/internals/function-bind-context.js");
+var bind = __webpack_require__(2938);
 
-var getIteratorMethod = __webpack_require__(/*! ../internals/get-iterator-method */ "./node_modules/core-js/internals/get-iterator-method.js");
+var getIteratorMethod = __webpack_require__(8272);
 
-var iteratorClose = __webpack_require__(/*! ../internals/iterator-close */ "./node_modules/core-js/internals/iterator-close.js");
+var iteratorClose = __webpack_require__(7093);
 
 var Result = function Result(stopped, result) {
   this.stopped = stopped;
@@ -1812,13 +1644,10 @@ module.exports = function (iterable, unboundFunction, options) {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/iterator-close.js":
-/*!**********************************************************!*\
-  !*** ./node_modules/core-js/internals/iterator-close.js ***!
-  \**********************************************************/
+/***/ 7093:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
+var anObject = __webpack_require__(2569);
 
 module.exports = function (iterator) {
   var returnMethod = iterator['return'];
@@ -1830,26 +1659,23 @@ module.exports = function (iterator) {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/iterators-core.js":
-/*!**********************************************************!*\
-  !*** ./node_modules/core-js/internals/iterators-core.js ***!
-  \**********************************************************/
+/***/ 2365:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
+var fails = __webpack_require__(6544);
 
-var getPrototypeOf = __webpack_require__(/*! ../internals/object-get-prototype-of */ "./node_modules/core-js/internals/object-get-prototype-of.js");
+var getPrototypeOf = __webpack_require__(729);
 
-var createNonEnumerableProperty = __webpack_require__(/*! ../internals/create-non-enumerable-property */ "./node_modules/core-js/internals/create-non-enumerable-property.js");
+var createNonEnumerableProperty = __webpack_require__(57);
 
-var has = __webpack_require__(/*! ../internals/has */ "./node_modules/core-js/internals/has.js");
+var has = __webpack_require__(4402);
 
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
+var wellKnownSymbol = __webpack_require__(3649);
 
-var IS_PURE = __webpack_require__(/*! ../internals/is-pure */ "./node_modules/core-js/internals/is-pure.js");
+var IS_PURE = __webpack_require__(6268);
 
 var ITERATOR = wellKnownSymbol('iterator');
 var BUGGY_SAFARI_ITERATORS = false;
@@ -1891,26 +1717,20 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/iterators.js":
-/*!*****************************************************!*\
-  !*** ./node_modules/core-js/internals/iterators.js ***!
-  \*****************************************************/
+/***/ 339:
 /***/ ((module) => {
 
 module.exports = {};
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/native-symbol.js":
-/*!*********************************************************!*\
-  !*** ./node_modules/core-js/internals/native-symbol.js ***!
-  \*********************************************************/
+/***/ 8640:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 /* eslint-disable es/no-symbol -- required for testing */
-var V8_VERSION = __webpack_require__(/*! ../internals/engine-v8-version */ "./node_modules/core-js/internals/engine-v8-version.js");
+var V8_VERSION = __webpack_require__(4061);
 
-var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js"); // eslint-disable-next-line es/no-object-getownpropertysymbols -- required for testing
+var fails = __webpack_require__(6544); // eslint-disable-next-line es/no-object-getownpropertysymbols -- required for testing
 
 
 module.exports = !!Object.getOwnPropertySymbols && !fails(function () {
@@ -1923,28 +1743,22 @@ module.exports = !!Object.getOwnPropertySymbols && !fails(function () {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/native-weak-map.js":
-/*!***********************************************************!*\
-  !*** ./node_modules/core-js/internals/native-weak-map.js ***!
-  \***********************************************************/
+/***/ 9491:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
+var global = __webpack_require__(7583);
 
-var inspectSource = __webpack_require__(/*! ../internals/inspect-source */ "./node_modules/core-js/internals/inspect-source.js");
+var inspectSource = __webpack_require__(9734);
 
 var WeakMap = global.WeakMap;
 module.exports = typeof WeakMap === 'function' && /native code/.test(inspectSource(WeakMap));
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/not-a-regexp.js":
-/*!********************************************************!*\
-  !*** ./node_modules/core-js/internals/not-a-regexp.js ***!
-  \********************************************************/
+/***/ 9041:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var isRegExp = __webpack_require__(/*! ../internals/is-regexp */ "./node_modules/core-js/internals/is-regexp.js");
+var isRegExp = __webpack_require__(7574);
 
 module.exports = function (it) {
   if (isRegExp(it)) {
@@ -1956,17 +1770,14 @@ module.exports = function (it) {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/number-parse-int.js":
-/*!************************************************************!*\
-  !*** ./node_modules/core-js/internals/number-parse-int.js ***!
-  \************************************************************/
+/***/ 5407:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
+var global = __webpack_require__(7583);
 
-var trim = __webpack_require__(/*! ../internals/string-trim */ "./node_modules/core-js/internals/string-trim.js").trim;
+var trim = __webpack_require__(8940).trim;
 
-var whitespaces = __webpack_require__(/*! ../internals/whitespaces */ "./node_modules/core-js/internals/whitespaces.js");
+var whitespaces = __webpack_require__(771);
 
 var $parseInt = global.parseInt;
 var hex = /^[+-]?0[Xx]/;
@@ -1980,28 +1791,25 @@ module.exports = FORCED ? function parseInt(string, radix) {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/object-assign.js":
-/*!*********************************************************!*\
-  !*** ./node_modules/core-js/internals/object-assign.js ***!
-  \*********************************************************/
+/***/ 9304:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/core-js/internals/descriptors.js");
+var DESCRIPTORS = __webpack_require__(8494);
 
-var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
+var fails = __webpack_require__(6544);
 
-var objectKeys = __webpack_require__(/*! ../internals/object-keys */ "./node_modules/core-js/internals/object-keys.js");
+var objectKeys = __webpack_require__(5432);
 
-var getOwnPropertySymbolsModule = __webpack_require__(/*! ../internals/object-get-own-property-symbols */ "./node_modules/core-js/internals/object-get-own-property-symbols.js");
+var getOwnPropertySymbolsModule = __webpack_require__(4012);
 
-var propertyIsEnumerableModule = __webpack_require__(/*! ../internals/object-property-is-enumerable */ "./node_modules/core-js/internals/object-property-is-enumerable.js");
+var propertyIsEnumerableModule = __webpack_require__(112);
 
-var toObject = __webpack_require__(/*! ../internals/to-object */ "./node_modules/core-js/internals/to-object.js");
+var toObject = __webpack_require__(1324);
 
-var IndexedObject = __webpack_require__(/*! ../internals/indexed-object */ "./node_modules/core-js/internals/indexed-object.js"); // eslint-disable-next-line es/no-object-assign -- safe
+var IndexedObject = __webpack_require__(5044); // eslint-disable-next-line es/no-object-assign -- safe
 
 
 var $assign = Object.assign; // eslint-disable-next-line es/no-object-defineproperty -- required for testing
@@ -2061,25 +1869,22 @@ module.exports = !$assign || fails(function () {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/object-create.js":
-/*!*********************************************************!*\
-  !*** ./node_modules/core-js/internals/object-create.js ***!
-  \*********************************************************/
+/***/ 3590:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
+var anObject = __webpack_require__(2569);
 
-var defineProperties = __webpack_require__(/*! ../internals/object-define-properties */ "./node_modules/core-js/internals/object-define-properties.js");
+var defineProperties = __webpack_require__(8728);
 
-var enumBugKeys = __webpack_require__(/*! ../internals/enum-bug-keys */ "./node_modules/core-js/internals/enum-bug-keys.js");
+var enumBugKeys = __webpack_require__(5690);
 
-var hiddenKeys = __webpack_require__(/*! ../internals/hidden-keys */ "./node_modules/core-js/internals/hidden-keys.js");
+var hiddenKeys = __webpack_require__(4639);
 
-var html = __webpack_require__(/*! ../internals/html */ "./node_modules/core-js/internals/html.js");
+var html = __webpack_require__(482);
 
-var documentCreateElement = __webpack_require__(/*! ../internals/document-create-element */ "./node_modules/core-js/internals/document-create-element.js");
+var documentCreateElement = __webpack_require__(6668);
 
-var sharedKey = __webpack_require__(/*! ../internals/shared-key */ "./node_modules/core-js/internals/shared-key.js");
+var sharedKey = __webpack_require__(9137);
 
 var GT = '>';
 var LT = '<';
@@ -2166,19 +1971,16 @@ module.exports = Object.create || function create(O, Properties) {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/object-define-properties.js":
-/*!********************************************************************!*\
-  !*** ./node_modules/core-js/internals/object-define-properties.js ***!
-  \********************************************************************/
+/***/ 8728:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/core-js/internals/descriptors.js");
+var DESCRIPTORS = __webpack_require__(8494);
 
-var definePropertyModule = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/core-js/internals/object-define-property.js");
+var definePropertyModule = __webpack_require__(4615);
 
-var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
+var anObject = __webpack_require__(2569);
 
-var objectKeys = __webpack_require__(/*! ../internals/object-keys */ "./node_modules/core-js/internals/object-keys.js"); // `Object.defineProperties` method
+var objectKeys = __webpack_require__(5432); // `Object.defineProperties` method
 // https://tc39.es/ecma262/#sec-object.defineproperties
 // eslint-disable-next-line es/no-object-defineproperties -- safe
 
@@ -2199,19 +2001,16 @@ module.exports = DESCRIPTORS ? Object.defineProperties : function defineProperti
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/object-define-property.js":
-/*!******************************************************************!*\
-  !*** ./node_modules/core-js/internals/object-define-property.js ***!
-  \******************************************************************/
+/***/ 4615:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/core-js/internals/descriptors.js");
+var DESCRIPTORS = __webpack_require__(8494);
 
-var IE8_DOM_DEFINE = __webpack_require__(/*! ../internals/ie8-dom-define */ "./node_modules/core-js/internals/ie8-dom-define.js");
+var IE8_DOM_DEFINE = __webpack_require__(275);
 
-var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
+var anObject = __webpack_require__(2569);
 
-var toPrimitive = __webpack_require__(/*! ../internals/to-primitive */ "./node_modules/core-js/internals/to-primitive.js"); // eslint-disable-next-line es/no-object-defineproperty -- safe
+var toPrimitive = __webpack_require__(2670); // eslint-disable-next-line es/no-object-defineproperty -- safe
 
 
 var $defineProperty = Object.defineProperty; // `Object.defineProperty` method
@@ -2233,25 +2032,22 @@ exports.f = DESCRIPTORS ? $defineProperty : function defineProperty(O, P, Attrib
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/object-get-own-property-descriptor.js":
-/*!******************************************************************************!*\
-  !*** ./node_modules/core-js/internals/object-get-own-property-descriptor.js ***!
-  \******************************************************************************/
+/***/ 6683:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/core-js/internals/descriptors.js");
+var DESCRIPTORS = __webpack_require__(8494);
 
-var propertyIsEnumerableModule = __webpack_require__(/*! ../internals/object-property-is-enumerable */ "./node_modules/core-js/internals/object-property-is-enumerable.js");
+var propertyIsEnumerableModule = __webpack_require__(112);
 
-var createPropertyDescriptor = __webpack_require__(/*! ../internals/create-property-descriptor */ "./node_modules/core-js/internals/create-property-descriptor.js");
+var createPropertyDescriptor = __webpack_require__(4677);
 
-var toIndexedObject = __webpack_require__(/*! ../internals/to-indexed-object */ "./node_modules/core-js/internals/to-indexed-object.js");
+var toIndexedObject = __webpack_require__(2977);
 
-var toPrimitive = __webpack_require__(/*! ../internals/to-primitive */ "./node_modules/core-js/internals/to-primitive.js");
+var toPrimitive = __webpack_require__(2670);
 
-var has = __webpack_require__(/*! ../internals/has */ "./node_modules/core-js/internals/has.js");
+var has = __webpack_require__(4402);
 
-var IE8_DOM_DEFINE = __webpack_require__(/*! ../internals/ie8-dom-define */ "./node_modules/core-js/internals/ie8-dom-define.js"); // eslint-disable-next-line es/no-object-getownpropertydescriptor -- safe
+var IE8_DOM_DEFINE = __webpack_require__(275); // eslint-disable-next-line es/no-object-getownpropertydescriptor -- safe
 
 
 var $getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor; // `Object.getOwnPropertyDescriptor` method
@@ -2270,18 +2066,15 @@ exports.f = DESCRIPTORS ? $getOwnPropertyDescriptor : function getOwnPropertyDes
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/object-get-own-property-names-external.js":
-/*!**********************************************************************************!*\
-  !*** ./node_modules/core-js/internals/object-get-own-property-names-external.js ***!
-  \**********************************************************************************/
+/***/ 3130:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 /* eslint-disable es/no-object-getownpropertynames -- safe */
-var toIndexedObject = __webpack_require__(/*! ../internals/to-indexed-object */ "./node_modules/core-js/internals/to-indexed-object.js");
+var toIndexedObject = __webpack_require__(2977);
 
-var $getOwnPropertyNames = __webpack_require__(/*! ../internals/object-get-own-property-names */ "./node_modules/core-js/internals/object-get-own-property-names.js").f;
+var $getOwnPropertyNames = __webpack_require__(9275).f;
 
 var toString = {}.toString;
 var windowNames = (typeof window === "undefined" ? "undefined" : _typeof(window)) == 'object' && window && Object.getOwnPropertyNames ? Object.getOwnPropertyNames(window) : [];
@@ -2301,15 +2094,12 @@ module.exports.f = function getOwnPropertyNames(it) {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/object-get-own-property-names.js":
-/*!*************************************************************************!*\
-  !*** ./node_modules/core-js/internals/object-get-own-property-names.js ***!
-  \*************************************************************************/
+/***/ 9275:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-var internalObjectKeys = __webpack_require__(/*! ../internals/object-keys-internal */ "./node_modules/core-js/internals/object-keys-internal.js");
+var internalObjectKeys = __webpack_require__(8356);
 
-var enumBugKeys = __webpack_require__(/*! ../internals/enum-bug-keys */ "./node_modules/core-js/internals/enum-bug-keys.js");
+var enumBugKeys = __webpack_require__(5690);
 
 var hiddenKeys = enumBugKeys.concat('length', 'prototype'); // `Object.getOwnPropertyNames` method
 // https://tc39.es/ecma262/#sec-object.getownpropertynames
@@ -2321,10 +2111,7 @@ exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/object-get-own-property-symbols.js":
-/*!***************************************************************************!*\
-  !*** ./node_modules/core-js/internals/object-get-own-property-symbols.js ***!
-  \***************************************************************************/
+/***/ 4012:
 /***/ ((__unused_webpack_module, exports) => {
 
 // eslint-disable-next-line es/no-object-getownpropertysymbols -- safe
@@ -2332,19 +2119,16 @@ exports.f = Object.getOwnPropertySymbols;
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/object-get-prototype-of.js":
-/*!*******************************************************************!*\
-  !*** ./node_modules/core-js/internals/object-get-prototype-of.js ***!
-  \*******************************************************************/
+/***/ 729:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var has = __webpack_require__(/*! ../internals/has */ "./node_modules/core-js/internals/has.js");
+var has = __webpack_require__(4402);
 
-var toObject = __webpack_require__(/*! ../internals/to-object */ "./node_modules/core-js/internals/to-object.js");
+var toObject = __webpack_require__(1324);
 
-var sharedKey = __webpack_require__(/*! ../internals/shared-key */ "./node_modules/core-js/internals/shared-key.js");
+var sharedKey = __webpack_require__(9137);
 
-var CORRECT_PROTOTYPE_GETTER = __webpack_require__(/*! ../internals/correct-prototype-getter */ "./node_modules/core-js/internals/correct-prototype-getter.js");
+var CORRECT_PROTOTYPE_GETTER = __webpack_require__(926);
 
 var IE_PROTO = sharedKey('IE_PROTO');
 var ObjectPrototype = Object.prototype; // `Object.getPrototypeOf` method
@@ -2364,19 +2148,16 @@ module.exports = CORRECT_PROTOTYPE_GETTER ? Object.getPrototypeOf : function (O)
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/object-keys-internal.js":
-/*!****************************************************************!*\
-  !*** ./node_modules/core-js/internals/object-keys-internal.js ***!
-  \****************************************************************/
+/***/ 8356:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var has = __webpack_require__(/*! ../internals/has */ "./node_modules/core-js/internals/has.js");
+var has = __webpack_require__(4402);
 
-var toIndexedObject = __webpack_require__(/*! ../internals/to-indexed-object */ "./node_modules/core-js/internals/to-indexed-object.js");
+var toIndexedObject = __webpack_require__(2977);
 
-var indexOf = __webpack_require__(/*! ../internals/array-includes */ "./node_modules/core-js/internals/array-includes.js").indexOf;
+var indexOf = __webpack_require__(5766).indexOf;
 
-var hiddenKeys = __webpack_require__(/*! ../internals/hidden-keys */ "./node_modules/core-js/internals/hidden-keys.js");
+var hiddenKeys = __webpack_require__(4639);
 
 module.exports = function (object, names) {
   var O = toIndexedObject(object);
@@ -2400,15 +2181,12 @@ module.exports = function (object, names) {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/object-keys.js":
-/*!*******************************************************!*\
-  !*** ./node_modules/core-js/internals/object-keys.js ***!
-  \*******************************************************/
+/***/ 5432:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var internalObjectKeys = __webpack_require__(/*! ../internals/object-keys-internal */ "./node_modules/core-js/internals/object-keys-internal.js");
+var internalObjectKeys = __webpack_require__(8356);
 
-var enumBugKeys = __webpack_require__(/*! ../internals/enum-bug-keys */ "./node_modules/core-js/internals/enum-bug-keys.js"); // `Object.keys` method
+var enumBugKeys = __webpack_require__(5690); // `Object.keys` method
 // https://tc39.es/ecma262/#sec-object.keys
 // eslint-disable-next-line es/no-object-keys -- safe
 
@@ -2419,10 +2197,7 @@ module.exports = Object.keys || function keys(O) {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/object-property-is-enumerable.js":
-/*!*************************************************************************!*\
-  !*** ./node_modules/core-js/internals/object-property-is-enumerable.js ***!
-  \*************************************************************************/
+/***/ 112:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -2444,16 +2219,13 @@ exports.f = NASHORN_BUG ? function propertyIsEnumerable(V) {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/object-set-prototype-of.js":
-/*!*******************************************************************!*\
-  !*** ./node_modules/core-js/internals/object-set-prototype-of.js ***!
-  \*******************************************************************/
+/***/ 7496:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 /* eslint-disable no-proto -- safe */
-var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
+var anObject = __webpack_require__(2569);
 
-var aPossiblePrototype = __webpack_require__(/*! ../internals/a-possible-prototype */ "./node_modules/core-js/internals/a-possible-prototype.js"); // `Object.setPrototypeOf` method
+var aPossiblePrototype = __webpack_require__(9882); // `Object.setPrototypeOf` method
 // https://tc39.es/ecma262/#sec-object.setprototypeof
 // Works with __proto__ only. Old v8 can't work with null proto objects.
 // eslint-disable-next-line es/no-object-setprototypeof -- safe
@@ -2483,19 +2255,16 @@ module.exports = Object.setPrototypeOf || ('__proto__' in {} ? function () {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/object-to-array.js":
-/*!***********************************************************!*\
-  !*** ./node_modules/core-js/internals/object-to-array.js ***!
-  \***********************************************************/
+/***/ 9953:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/core-js/internals/descriptors.js");
+var DESCRIPTORS = __webpack_require__(8494);
 
-var objectKeys = __webpack_require__(/*! ../internals/object-keys */ "./node_modules/core-js/internals/object-keys.js");
+var objectKeys = __webpack_require__(5432);
 
-var toIndexedObject = __webpack_require__(/*! ../internals/to-indexed-object */ "./node_modules/core-js/internals/to-indexed-object.js");
+var toIndexedObject = __webpack_require__(2977);
 
-var propertyIsEnumerable = __webpack_require__(/*! ../internals/object-property-is-enumerable */ "./node_modules/core-js/internals/object-property-is-enumerable.js").f; // `Object.{ entries, values }` methods implementation
+var propertyIsEnumerable = __webpack_require__(112).f; // `Object.{ entries, values }` methods implementation
 
 
 var createMethod = function createMethod(TO_ENTRIES) {
@@ -2530,18 +2299,15 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/object-to-string.js":
-/*!************************************************************!*\
-  !*** ./node_modules/core-js/internals/object-to-string.js ***!
-  \************************************************************/
+/***/ 3060:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-var TO_STRING_TAG_SUPPORT = __webpack_require__(/*! ../internals/to-string-tag-support */ "./node_modules/core-js/internals/to-string-tag-support.js");
+var TO_STRING_TAG_SUPPORT = __webpack_require__(8191);
 
-var classof = __webpack_require__(/*! ../internals/classof */ "./node_modules/core-js/internals/classof.js"); // `Object.prototype.toString` method implementation
+var classof = __webpack_require__(3058); // `Object.prototype.toString` method implementation
 // https://tc39.es/ecma262/#sec-object.prototype.tostring
 
 
@@ -2551,19 +2317,16 @@ module.exports = TO_STRING_TAG_SUPPORT ? {}.toString : function toString() {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/own-keys.js":
-/*!****************************************************!*\
-  !*** ./node_modules/core-js/internals/own-keys.js ***!
-  \****************************************************/
+/***/ 929:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var getBuiltIn = __webpack_require__(/*! ../internals/get-built-in */ "./node_modules/core-js/internals/get-built-in.js");
+var getBuiltIn = __webpack_require__(5897);
 
-var getOwnPropertyNamesModule = __webpack_require__(/*! ../internals/object-get-own-property-names */ "./node_modules/core-js/internals/object-get-own-property-names.js");
+var getOwnPropertyNamesModule = __webpack_require__(9275);
 
-var getOwnPropertySymbolsModule = __webpack_require__(/*! ../internals/object-get-own-property-symbols */ "./node_modules/core-js/internals/object-get-own-property-symbols.js");
+var getOwnPropertySymbolsModule = __webpack_require__(4012);
 
-var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js"); // all object keys, includes non-enumerable and symbols
+var anObject = __webpack_require__(2569); // all object keys, includes non-enumerable and symbols
 
 
 module.exports = getBuiltIn('Reflect', 'ownKeys') || function ownKeys(it) {
@@ -2574,35 +2337,29 @@ module.exports = getBuiltIn('Reflect', 'ownKeys') || function ownKeys(it) {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/path.js":
-/*!************************************************!*\
-  !*** ./node_modules/core-js/internals/path.js ***!
-  \************************************************/
+/***/ 1287:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
+var global = __webpack_require__(7583);
 
 module.exports = global;
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/redefine.js":
-/*!****************************************************!*\
-  !*** ./node_modules/core-js/internals/redefine.js ***!
-  \****************************************************/
+/***/ 1270:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
+var global = __webpack_require__(7583);
 
-var createNonEnumerableProperty = __webpack_require__(/*! ../internals/create-non-enumerable-property */ "./node_modules/core-js/internals/create-non-enumerable-property.js");
+var createNonEnumerableProperty = __webpack_require__(57);
 
-var has = __webpack_require__(/*! ../internals/has */ "./node_modules/core-js/internals/has.js");
+var has = __webpack_require__(4402);
 
-var setGlobal = __webpack_require__(/*! ../internals/set-global */ "./node_modules/core-js/internals/set-global.js");
+var setGlobal = __webpack_require__(460);
 
-var inspectSource = __webpack_require__(/*! ../internals/inspect-source */ "./node_modules/core-js/internals/inspect-source.js");
+var inspectSource = __webpack_require__(9734);
 
-var InternalStateModule = __webpack_require__(/*! ../internals/internal-state */ "./node_modules/core-js/internals/internal-state.js");
+var InternalStateModule = __webpack_require__(2743);
 
 var getInternalState = InternalStateModule.get;
 var enforceInternalState = InternalStateModule.enforce;
@@ -2641,17 +2398,14 @@ var TEMPLATE = String(String).split('String');
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/regexp-exec-abstract.js":
-/*!****************************************************************!*\
-  !*** ./node_modules/core-js/internals/regexp-exec-abstract.js ***!
-  \****************************************************************/
+/***/ 4214:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-var classof = __webpack_require__(/*! ./classof-raw */ "./node_modules/core-js/internals/classof-raw.js");
+var classof = __webpack_require__(9624);
 
-var regexpExec = __webpack_require__(/*! ./regexp-exec */ "./node_modules/core-js/internals/regexp-exec.js"); // `RegExpExec` abstract operation
+var regexpExec = __webpack_require__(8445); // `RegExpExec` abstract operation
 // https://tc39.es/ecma262/#sec-regexpexec
 
 
@@ -2677,10 +2431,7 @@ module.exports = function (R, S) {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/regexp-exec.js":
-/*!*******************************************************!*\
-  !*** ./node_modules/core-js/internals/regexp-exec.js ***!
-  \*******************************************************/
+/***/ 8445:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
@@ -2689,19 +2440,19 @@ module.exports = function (R, S) {
 
 /* eslint-disable regexp/no-useless-quantifier -- testing */
 
-var regexpFlags = __webpack_require__(/*! ../internals/regexp-flags */ "./node_modules/core-js/internals/regexp-flags.js");
+var regexpFlags = __webpack_require__(1118);
 
-var stickyHelpers = __webpack_require__(/*! ../internals/regexp-sticky-helpers */ "./node_modules/core-js/internals/regexp-sticky-helpers.js");
+var stickyHelpers = __webpack_require__(5230);
 
-var shared = __webpack_require__(/*! ../internals/shared */ "./node_modules/core-js/internals/shared.js");
+var shared = __webpack_require__(7836);
 
-var create = __webpack_require__(/*! ../internals/object-create */ "./node_modules/core-js/internals/object-create.js");
+var create = __webpack_require__(3590);
 
-var getInternalState = __webpack_require__(/*! ../internals/internal-state */ "./node_modules/core-js/internals/internal-state.js").get;
+var getInternalState = __webpack_require__(2743).get;
 
-var UNSUPPORTED_DOT_ALL = __webpack_require__(/*! ../internals/regexp-unsupported-dot-all */ "./node_modules/core-js/internals/regexp-unsupported-dot-all.js");
+var UNSUPPORTED_DOT_ALL = __webpack_require__(4121);
 
-var UNSUPPORTED_NCG = __webpack_require__(/*! ../internals/regexp-unsupported-ncg */ "./node_modules/core-js/internals/regexp-unsupported-ncg.js");
+var UNSUPPORTED_NCG = __webpack_require__(1712);
 
 var nativeExec = RegExp.prototype.exec;
 var nativeReplace = shared('native-string-replace', String.prototype.replace);
@@ -2807,16 +2558,13 @@ module.exports = patchedExec;
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/regexp-flags.js":
-/*!********************************************************!*\
-  !*** ./node_modules/core-js/internals/regexp-flags.js ***!
-  \********************************************************/
+/***/ 1118:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js"); // `RegExp.prototype.flags` getter implementation
+var anObject = __webpack_require__(2569); // `RegExp.prototype.flags` getter implementation
 // https://tc39.es/ecma262/#sec-get-regexp.prototype.flags
 
 
@@ -2834,13 +2582,10 @@ module.exports = function () {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/regexp-sticky-helpers.js":
-/*!*****************************************************************!*\
-  !*** ./node_modules/core-js/internals/regexp-sticky-helpers.js ***!
-  \*****************************************************************/
+/***/ 5230:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js"); // babel-minify transpiles RegExp('a', 'y') -> /a/y and it causes SyntaxError,
+var fails = __webpack_require__(6544); // babel-minify transpiles RegExp('a', 'y') -> /a/y and it causes SyntaxError,
 
 
 var RE = function RE(s, f) {
@@ -2861,15 +2606,12 @@ exports.BROKEN_CARET = fails(function () {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/regexp-unsupported-dot-all.js":
-/*!**********************************************************************!*\
-  !*** ./node_modules/core-js/internals/regexp-unsupported-dot-all.js ***!
-  \**********************************************************************/
+/***/ 4121:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-var fails = __webpack_require__(/*! ./fails */ "./node_modules/core-js/internals/fails.js");
+var fails = __webpack_require__(6544);
 
 module.exports = fails(function () {
   // babel-minify transpiles RegExp('.', 's') -> /./s and it causes SyntaxError
@@ -2879,15 +2621,12 @@ module.exports = fails(function () {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/regexp-unsupported-ncg.js":
-/*!******************************************************************!*\
-  !*** ./node_modules/core-js/internals/regexp-unsupported-ncg.js ***!
-  \******************************************************************/
+/***/ 1712:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-var fails = __webpack_require__(/*! ./fails */ "./node_modules/core-js/internals/fails.js");
+var fails = __webpack_require__(6544);
 
 module.exports = fails(function () {
   // babel-minify transpiles RegExp('.', 'g') -> /./g and it causes SyntaxError
@@ -2897,10 +2636,7 @@ module.exports = fails(function () {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/require-object-coercible.js":
-/*!********************************************************************!*\
-  !*** ./node_modules/core-js/internals/require-object-coercible.js ***!
-  \********************************************************************/
+/***/ 3955:
 /***/ ((module) => {
 
 // `RequireObjectCoercible` abstract operation
@@ -2912,15 +2648,12 @@ module.exports = function (it) {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/set-global.js":
-/*!******************************************************!*\
-  !*** ./node_modules/core-js/internals/set-global.js ***!
-  \******************************************************/
+/***/ 460:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
+var global = __webpack_require__(7583);
 
-var createNonEnumerableProperty = __webpack_require__(/*! ../internals/create-non-enumerable-property */ "./node_modules/core-js/internals/create-non-enumerable-property.js");
+var createNonEnumerableProperty = __webpack_require__(57);
 
 module.exports = function (key, value) {
   try {
@@ -2934,22 +2667,19 @@ module.exports = function (key, value) {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/set-species.js":
-/*!*******************************************************!*\
-  !*** ./node_modules/core-js/internals/set-species.js ***!
-  \*******************************************************/
+/***/ 7730:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-var getBuiltIn = __webpack_require__(/*! ../internals/get-built-in */ "./node_modules/core-js/internals/get-built-in.js");
+var getBuiltIn = __webpack_require__(5897);
 
-var definePropertyModule = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/core-js/internals/object-define-property.js");
+var definePropertyModule = __webpack_require__(4615);
 
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
+var wellKnownSymbol = __webpack_require__(3649);
 
-var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/core-js/internals/descriptors.js");
+var DESCRIPTORS = __webpack_require__(8494);
 
 var SPECIES = wellKnownSymbol('species');
 
@@ -2969,17 +2699,14 @@ module.exports = function (CONSTRUCTOR_NAME) {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/set-to-string-tag.js":
-/*!*************************************************************!*\
-  !*** ./node_modules/core-js/internals/set-to-string-tag.js ***!
-  \*************************************************************/
+/***/ 8821:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var defineProperty = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/core-js/internals/object-define-property.js").f;
+var defineProperty = __webpack_require__(4615).f;
 
-var has = __webpack_require__(/*! ../internals/has */ "./node_modules/core-js/internals/has.js");
+var has = __webpack_require__(4402);
 
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
+var wellKnownSymbol = __webpack_require__(3649);
 
 var TO_STRING_TAG = wellKnownSymbol('toStringTag');
 
@@ -2994,15 +2721,12 @@ module.exports = function (it, TAG, STATIC) {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/shared-key.js":
-/*!******************************************************!*\
-  !*** ./node_modules/core-js/internals/shared-key.js ***!
-  \******************************************************/
+/***/ 9137:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var shared = __webpack_require__(/*! ../internals/shared */ "./node_modules/core-js/internals/shared.js");
+var shared = __webpack_require__(7836);
 
-var uid = __webpack_require__(/*! ../internals/uid */ "./node_modules/core-js/internals/uid.js");
+var uid = __webpack_require__(8284);
 
 var keys = shared('keys');
 
@@ -3012,15 +2736,12 @@ module.exports = function (key) {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/shared-store.js":
-/*!********************************************************!*\
-  !*** ./node_modules/core-js/internals/shared-store.js ***!
-  \********************************************************/
+/***/ 1314:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
+var global = __webpack_require__(7583);
 
-var setGlobal = __webpack_require__(/*! ../internals/set-global */ "./node_modules/core-js/internals/set-global.js");
+var setGlobal = __webpack_require__(460);
 
 var SHARED = '__core-js_shared__';
 var store = global[SHARED] || setGlobal(SHARED, {});
@@ -3028,15 +2749,12 @@ module.exports = store;
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/shared.js":
-/*!**************************************************!*\
-  !*** ./node_modules/core-js/internals/shared.js ***!
-  \**************************************************/
+/***/ 7836:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var IS_PURE = __webpack_require__(/*! ../internals/is-pure */ "./node_modules/core-js/internals/is-pure.js");
+var IS_PURE = __webpack_require__(6268);
 
-var store = __webpack_require__(/*! ../internals/shared-store */ "./node_modules/core-js/internals/shared-store.js");
+var store = __webpack_require__(1314);
 
 (module.exports = function (key, value) {
   return store[key] || (store[key] = value !== undefined ? value : {});
@@ -3048,17 +2766,14 @@ var store = __webpack_require__(/*! ../internals/shared-store */ "./node_modules
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/species-constructor.js":
-/*!***************************************************************!*\
-  !*** ./node_modules/core-js/internals/species-constructor.js ***!
-  \***************************************************************/
+/***/ 564:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
+var anObject = __webpack_require__(2569);
 
-var aFunction = __webpack_require__(/*! ../internals/a-function */ "./node_modules/core-js/internals/a-function.js");
+var aFunction = __webpack_require__(6163);
 
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
+var wellKnownSymbol = __webpack_require__(3649);
 
 var SPECIES = wellKnownSymbol('species'); // `SpeciesConstructor` abstract operation
 // https://tc39.es/ecma262/#sec-speciesconstructor
@@ -3071,15 +2786,12 @@ module.exports = function (O, defaultConstructor) {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/string-multibyte.js":
-/*!************************************************************!*\
-  !*** ./node_modules/core-js/internals/string-multibyte.js ***!
-  \************************************************************/
+/***/ 6389:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var toInteger = __webpack_require__(/*! ../internals/to-integer */ "./node_modules/core-js/internals/to-integer.js");
+var toInteger = __webpack_require__(5089);
 
-var requireObjectCoercible = __webpack_require__(/*! ../internals/require-object-coercible */ "./node_modules/core-js/internals/require-object-coercible.js"); // `String.prototype.{ codePointAt, at }` methods implementation
+var requireObjectCoercible = __webpack_require__(3955); // `String.prototype.{ codePointAt, at }` methods implementation
 
 
 var createMethod = function createMethod(CONVERT_TO_STRING) {
@@ -3105,15 +2817,12 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/string-trim.js":
-/*!*******************************************************!*\
-  !*** ./node_modules/core-js/internals/string-trim.js ***!
-  \*******************************************************/
+/***/ 8940:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var requireObjectCoercible = __webpack_require__(/*! ../internals/require-object-coercible */ "./node_modules/core-js/internals/require-object-coercible.js");
+var requireObjectCoercible = __webpack_require__(3955);
 
-var whitespaces = __webpack_require__(/*! ../internals/whitespaces */ "./node_modules/core-js/internals/whitespaces.js");
+var whitespaces = __webpack_require__(771);
 
 var whitespace = '[' + whitespaces + ']';
 var ltrim = RegExp('^' + whitespace + whitespace + '*');
@@ -3142,13 +2851,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/to-absolute-index.js":
-/*!*************************************************************!*\
-  !*** ./node_modules/core-js/internals/to-absolute-index.js ***!
-  \*************************************************************/
+/***/ 6782:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var toInteger = __webpack_require__(/*! ../internals/to-integer */ "./node_modules/core-js/internals/to-integer.js");
+var toInteger = __webpack_require__(5089);
 
 var max = Math.max;
 var min = Math.min; // Helper for a popular repeating case of the spec:
@@ -3162,16 +2868,13 @@ module.exports = function (index, length) {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/to-indexed-object.js":
-/*!*************************************************************!*\
-  !*** ./node_modules/core-js/internals/to-indexed-object.js ***!
-  \*************************************************************/
+/***/ 2977:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 // toObject with fallback for non-array-like ES3 strings
-var IndexedObject = __webpack_require__(/*! ../internals/indexed-object */ "./node_modules/core-js/internals/indexed-object.js");
+var IndexedObject = __webpack_require__(5044);
 
-var requireObjectCoercible = __webpack_require__(/*! ../internals/require-object-coercible */ "./node_modules/core-js/internals/require-object-coercible.js");
+var requireObjectCoercible = __webpack_require__(3955);
 
 module.exports = function (it) {
   return IndexedObject(requireObjectCoercible(it));
@@ -3179,10 +2882,7 @@ module.exports = function (it) {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/to-integer.js":
-/*!******************************************************!*\
-  !*** ./node_modules/core-js/internals/to-integer.js ***!
-  \******************************************************/
+/***/ 5089:
 /***/ ((module) => {
 
 var ceil = Math.ceil;
@@ -3195,13 +2895,10 @@ module.exports = function (argument) {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/to-length.js":
-/*!*****************************************************!*\
-  !*** ./node_modules/core-js/internals/to-length.js ***!
-  \*****************************************************/
+/***/ 97:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var toInteger = __webpack_require__(/*! ../internals/to-integer */ "./node_modules/core-js/internals/to-integer.js");
+var toInteger = __webpack_require__(5089);
 
 var min = Math.min; // `ToLength` abstract operation
 // https://tc39.es/ecma262/#sec-tolength
@@ -3212,13 +2909,10 @@ module.exports = function (argument) {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/to-object.js":
-/*!*****************************************************!*\
-  !*** ./node_modules/core-js/internals/to-object.js ***!
-  \*****************************************************/
+/***/ 1324:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var requireObjectCoercible = __webpack_require__(/*! ../internals/require-object-coercible */ "./node_modules/core-js/internals/require-object-coercible.js"); // `ToObject` abstract operation
+var requireObjectCoercible = __webpack_require__(3955); // `ToObject` abstract operation
 // https://tc39.es/ecma262/#sec-toobject
 
 
@@ -3228,13 +2922,10 @@ module.exports = function (argument) {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/to-primitive.js":
-/*!********************************************************!*\
-  !*** ./node_modules/core-js/internals/to-primitive.js ***!
-  \********************************************************/
+/***/ 2670:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js"); // `ToPrimitive` abstract operation
+var isObject = __webpack_require__(794); // `ToPrimitive` abstract operation
 // https://tc39.es/ecma262/#sec-toprimitive
 // instead of the ES6 spec version, we didn't implement @@toPrimitive case
 // and the second argument - flag - preferred type is a string
@@ -3251,13 +2942,10 @@ module.exports = function (input, PREFERRED_STRING) {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/to-string-tag-support.js":
-/*!*****************************************************************!*\
-  !*** ./node_modules/core-js/internals/to-string-tag-support.js ***!
-  \*****************************************************************/
+/***/ 8191:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
+var wellKnownSymbol = __webpack_require__(3649);
 
 var TO_STRING_TAG = wellKnownSymbol('toStringTag');
 var test = {};
@@ -3266,10 +2954,7 @@ module.exports = String(test) === '[object z]';
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/uid.js":
-/*!***********************************************!*\
-  !*** ./node_modules/core-js/internals/uid.js ***!
-  \***********************************************/
+/***/ 8284:
 /***/ ((module) => {
 
 var id = 0;
@@ -3281,50 +2966,41 @@ module.exports = function (key) {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/use-symbol-as-uid.js":
-/*!*************************************************************!*\
-  !*** ./node_modules/core-js/internals/use-symbol-as-uid.js ***!
-  \*************************************************************/
+/***/ 7786:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 /* eslint-disable es/no-symbol -- required for testing */
-var NATIVE_SYMBOL = __webpack_require__(/*! ../internals/native-symbol */ "./node_modules/core-js/internals/native-symbol.js");
+var NATIVE_SYMBOL = __webpack_require__(8640);
 
 module.exports = NATIVE_SYMBOL && !Symbol.sham && _typeof(Symbol.iterator) == 'symbol';
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/well-known-symbol-wrapped.js":
-/*!*********************************************************************!*\
-  !*** ./node_modules/core-js/internals/well-known-symbol-wrapped.js ***!
-  \*********************************************************************/
+/***/ 491:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
+var wellKnownSymbol = __webpack_require__(3649);
 
 exports.f = wellKnownSymbol;
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/well-known-symbol.js":
-/*!*************************************************************!*\
-  !*** ./node_modules/core-js/internals/well-known-symbol.js ***!
-  \*************************************************************/
+/***/ 3649:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
+var global = __webpack_require__(7583);
 
-var shared = __webpack_require__(/*! ../internals/shared */ "./node_modules/core-js/internals/shared.js");
+var shared = __webpack_require__(7836);
 
-var has = __webpack_require__(/*! ../internals/has */ "./node_modules/core-js/internals/has.js");
+var has = __webpack_require__(4402);
 
-var uid = __webpack_require__(/*! ../internals/uid */ "./node_modules/core-js/internals/uid.js");
+var uid = __webpack_require__(8284);
 
-var NATIVE_SYMBOL = __webpack_require__(/*! ../internals/native-symbol */ "./node_modules/core-js/internals/native-symbol.js");
+var NATIVE_SYMBOL = __webpack_require__(8640);
 
-var USE_SYMBOL_AS_UID = __webpack_require__(/*! ../internals/use-symbol-as-uid */ "./node_modules/core-js/internals/use-symbol-as-uid.js");
+var USE_SYMBOL_AS_UID = __webpack_require__(7786);
 
 var WellKnownSymbolsStore = shared('wks');
 var _Symbol = global.Symbol;
@@ -3344,10 +3020,7 @@ module.exports = function (name) {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/internals/whitespaces.js":
-/*!*******************************************************!*\
-  !*** ./node_modules/core-js/internals/whitespaces.js ***!
-  \*******************************************************/
+/***/ 771:
 /***/ ((module) => {
 
 // a string of all valid unicode whitespaces
@@ -3355,36 +3028,33 @@ module.exports = "\t\n\x0B\f\r \xA0\u1680\u2000\u2001\u2002" + "\u2003\u2004\u20
 
 /***/ }),
 
-/***/ "./node_modules/core-js/modules/es.array.concat.js":
-/*!*********************************************************!*\
-  !*** ./node_modules/core-js/modules/es.array.concat.js ***!
-  \*********************************************************/
+/***/ 1646:
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var $ = __webpack_require__(7263);
 
-var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
+var fails = __webpack_require__(6544);
 
-var isArray = __webpack_require__(/*! ../internals/is-array */ "./node_modules/core-js/internals/is-array.js");
+var isArray = __webpack_require__(4521);
 
-var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
+var isObject = __webpack_require__(794);
 
-var toObject = __webpack_require__(/*! ../internals/to-object */ "./node_modules/core-js/internals/to-object.js");
+var toObject = __webpack_require__(1324);
 
-var toLength = __webpack_require__(/*! ../internals/to-length */ "./node_modules/core-js/internals/to-length.js");
+var toLength = __webpack_require__(97);
 
-var createProperty = __webpack_require__(/*! ../internals/create-property */ "./node_modules/core-js/internals/create-property.js");
+var createProperty = __webpack_require__(5999);
 
-var arraySpeciesCreate = __webpack_require__(/*! ../internals/array-species-create */ "./node_modules/core-js/internals/array-species-create.js");
+var arraySpeciesCreate = __webpack_require__(4822);
 
-var arrayMethodHasSpeciesSupport = __webpack_require__(/*! ../internals/array-method-has-species-support */ "./node_modules/core-js/internals/array-method-has-species-support.js");
+var arrayMethodHasSpeciesSupport = __webpack_require__(9269);
 
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
+var wellKnownSymbol = __webpack_require__(3649);
 
-var V8_VERSION = __webpack_require__(/*! ../internals/engine-v8-version */ "./node_modules/core-js/internals/engine-v8-version.js");
+var V8_VERSION = __webpack_require__(4061);
 
 var IS_CONCAT_SPREADABLE = wellKnownSymbol('isConcatSpreadable');
 var MAX_SAFE_INTEGER = 0x1FFFFFFFFFFFFF;
@@ -3444,17 +3114,14 @@ $({
 
 /***/ }),
 
-/***/ "./node_modules/core-js/modules/es.array.fill.js":
-/*!*******************************************************!*\
-  !*** ./node_modules/core-js/modules/es.array.fill.js ***!
-  \*******************************************************/
+/***/ 1271:
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var $ = __webpack_require__(7263);
 
-var fill = __webpack_require__(/*! ../internals/array-fill */ "./node_modules/core-js/internals/array-fill.js");
+var fill = __webpack_require__(3579);
 
-var addToUnscopables = __webpack_require__(/*! ../internals/add-to-unscopables */ "./node_modules/core-js/internals/add-to-unscopables.js"); // `Array.prototype.fill` method
+var addToUnscopables = __webpack_require__(6288); // `Array.prototype.fill` method
 // https://tc39.es/ecma262/#sec-array.prototype.fill
 
 
@@ -3469,20 +3136,17 @@ addToUnscopables('fill');
 
 /***/ }),
 
-/***/ "./node_modules/core-js/modules/es.array.filter.js":
-/*!*********************************************************!*\
-  !*** ./node_modules/core-js/modules/es.array.filter.js ***!
-  \*********************************************************/
+/***/ 8833:
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var $ = __webpack_require__(7263);
 
-var $filter = __webpack_require__(/*! ../internals/array-iteration */ "./node_modules/core-js/internals/array-iteration.js").filter;
+var $filter = __webpack_require__(4805).filter;
 
-var arrayMethodHasSpeciesSupport = __webpack_require__(/*! ../internals/array-method-has-species-support */ "./node_modules/core-js/internals/array-method-has-species-support.js");
+var arrayMethodHasSpeciesSupport = __webpack_require__(9269);
 
 var HAS_SPECIES_SUPPORT = arrayMethodHasSpeciesSupport('filter'); // `Array.prototype.filter` method
 // https://tc39.es/ecma262/#sec-array.prototype.filter
@@ -3502,20 +3166,17 @@ $({
 
 /***/ }),
 
-/***/ "./node_modules/core-js/modules/es.array.find.js":
-/*!*******************************************************!*\
-  !*** ./node_modules/core-js/modules/es.array.find.js ***!
-  \*******************************************************/
+/***/ 7715:
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var $ = __webpack_require__(7263);
 
-var $find = __webpack_require__(/*! ../internals/array-iteration */ "./node_modules/core-js/internals/array-iteration.js").find;
+var $find = __webpack_require__(4805).find;
 
-var addToUnscopables = __webpack_require__(/*! ../internals/add-to-unscopables */ "./node_modules/core-js/internals/add-to-unscopables.js");
+var addToUnscopables = __webpack_require__(6288);
 
 var FIND = 'find';
 var SKIPS_HOLES = true; // Shouldn't skip holes
@@ -3541,26 +3202,23 @@ addToUnscopables(FIND);
 
 /***/ }),
 
-/***/ "./node_modules/core-js/modules/es.array.flat-map.js":
-/*!***********************************************************!*\
-  !*** ./node_modules/core-js/modules/es.array.flat-map.js ***!
-  \***********************************************************/
+/***/ 655:
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var $ = __webpack_require__(7263);
 
-var flattenIntoArray = __webpack_require__(/*! ../internals/flatten-into-array */ "./node_modules/core-js/internals/flatten-into-array.js");
+var flattenIntoArray = __webpack_require__(1266);
 
-var toObject = __webpack_require__(/*! ../internals/to-object */ "./node_modules/core-js/internals/to-object.js");
+var toObject = __webpack_require__(1324);
 
-var toLength = __webpack_require__(/*! ../internals/to-length */ "./node_modules/core-js/internals/to-length.js");
+var toLength = __webpack_require__(97);
 
-var aFunction = __webpack_require__(/*! ../internals/a-function */ "./node_modules/core-js/internals/a-function.js");
+var aFunction = __webpack_require__(6163);
 
-var arraySpeciesCreate = __webpack_require__(/*! ../internals/array-species-create */ "./node_modules/core-js/internals/array-species-create.js"); // `Array.prototype.flatMap` method
+var arraySpeciesCreate = __webpack_require__(4822); // `Array.prototype.flatMap` method
 // https://tc39.es/ecma262/#sec-array.prototype.flatmap
 
 
@@ -3583,20 +3241,17 @@ $({
 
 /***/ }),
 
-/***/ "./node_modules/core-js/modules/es.array.includes.js":
-/*!***********************************************************!*\
-  !*** ./node_modules/core-js/modules/es.array.includes.js ***!
-  \***********************************************************/
+/***/ 2076:
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var $ = __webpack_require__(7263);
 
-var $includes = __webpack_require__(/*! ../internals/array-includes */ "./node_modules/core-js/internals/array-includes.js").includes;
+var $includes = __webpack_require__(5766).includes;
 
-var addToUnscopables = __webpack_require__(/*! ../internals/add-to-unscopables */ "./node_modules/core-js/internals/add-to-unscopables.js"); // `Array.prototype.includes` method
+var addToUnscopables = __webpack_require__(6288); // `Array.prototype.includes` method
 // https://tc39.es/ecma262/#sec-array.prototype.includes
 
 
@@ -3615,24 +3270,21 @@ addToUnscopables('includes');
 
 /***/ }),
 
-/***/ "./node_modules/core-js/modules/es.array.iterator.js":
-/*!***********************************************************!*\
-  !*** ./node_modules/core-js/modules/es.array.iterator.js ***!
-  \***********************************************************/
+/***/ 5677:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-var toIndexedObject = __webpack_require__(/*! ../internals/to-indexed-object */ "./node_modules/core-js/internals/to-indexed-object.js");
+var toIndexedObject = __webpack_require__(2977);
 
-var addToUnscopables = __webpack_require__(/*! ../internals/add-to-unscopables */ "./node_modules/core-js/internals/add-to-unscopables.js");
+var addToUnscopables = __webpack_require__(6288);
 
-var Iterators = __webpack_require__(/*! ../internals/iterators */ "./node_modules/core-js/internals/iterators.js");
+var Iterators = __webpack_require__(339);
 
-var InternalStateModule = __webpack_require__(/*! ../internals/internal-state */ "./node_modules/core-js/internals/internal-state.js");
+var InternalStateModule = __webpack_require__(2743);
 
-var defineIterator = __webpack_require__(/*! ../internals/define-iterator */ "./node_modules/core-js/internals/define-iterator.js");
+var defineIterator = __webpack_require__(9012);
 
 var ARRAY_ITERATOR = 'Array Iterator';
 var setInternalState = InternalStateModule.set;
@@ -3696,20 +3348,17 @@ addToUnscopables('entries');
 
 /***/ }),
 
-/***/ "./node_modules/core-js/modules/es.array.map.js":
-/*!******************************************************!*\
-  !*** ./node_modules/core-js/modules/es.array.map.js ***!
-  \******************************************************/
+/***/ 2070:
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var $ = __webpack_require__(7263);
 
-var $map = __webpack_require__(/*! ../internals/array-iteration */ "./node_modules/core-js/internals/array-iteration.js").map;
+var $map = __webpack_require__(4805).map;
 
-var arrayMethodHasSpeciesSupport = __webpack_require__(/*! ../internals/array-method-has-species-support */ "./node_modules/core-js/internals/array-method-has-species-support.js");
+var arrayMethodHasSpeciesSupport = __webpack_require__(9269);
 
 var HAS_SPECIES_SUPPORT = arrayMethodHasSpeciesSupport('map'); // `Array.prototype.map` method
 // https://tc39.es/ecma262/#sec-array.prototype.map
@@ -3729,32 +3378,29 @@ $({
 
 /***/ }),
 
-/***/ "./node_modules/core-js/modules/es.array.slice.js":
-/*!********************************************************!*\
-  !*** ./node_modules/core-js/modules/es.array.slice.js ***!
-  \********************************************************/
+/***/ 288:
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var $ = __webpack_require__(7263);
 
-var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
+var isObject = __webpack_require__(794);
 
-var isArray = __webpack_require__(/*! ../internals/is-array */ "./node_modules/core-js/internals/is-array.js");
+var isArray = __webpack_require__(4521);
 
-var toAbsoluteIndex = __webpack_require__(/*! ../internals/to-absolute-index */ "./node_modules/core-js/internals/to-absolute-index.js");
+var toAbsoluteIndex = __webpack_require__(6782);
 
-var toLength = __webpack_require__(/*! ../internals/to-length */ "./node_modules/core-js/internals/to-length.js");
+var toLength = __webpack_require__(97);
 
-var toIndexedObject = __webpack_require__(/*! ../internals/to-indexed-object */ "./node_modules/core-js/internals/to-indexed-object.js");
+var toIndexedObject = __webpack_require__(2977);
 
-var createProperty = __webpack_require__(/*! ../internals/create-property */ "./node_modules/core-js/internals/create-property.js");
+var createProperty = __webpack_require__(5999);
 
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
+var wellKnownSymbol = __webpack_require__(3649);
 
-var arrayMethodHasSpeciesSupport = __webpack_require__(/*! ../internals/array-method-has-species-support */ "./node_modules/core-js/internals/array-method-has-species-support.js");
+var arrayMethodHasSpeciesSupport = __webpack_require__(9269);
 
 var HAS_SPECIES_SUPPORT = arrayMethodHasSpeciesSupport('slice');
 var SPECIES = wellKnownSymbol('species');
@@ -3804,36 +3450,33 @@ $({
 
 /***/ }),
 
-/***/ "./node_modules/core-js/modules/es.array.sort.js":
-/*!*******************************************************!*\
-  !*** ./node_modules/core-js/modules/es.array.sort.js ***!
-  \*******************************************************/
+/***/ 4486:
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var $ = __webpack_require__(7263);
 
-var aFunction = __webpack_require__(/*! ../internals/a-function */ "./node_modules/core-js/internals/a-function.js");
+var aFunction = __webpack_require__(6163);
 
-var toObject = __webpack_require__(/*! ../internals/to-object */ "./node_modules/core-js/internals/to-object.js");
+var toObject = __webpack_require__(1324);
 
-var toLength = __webpack_require__(/*! ../internals/to-length */ "./node_modules/core-js/internals/to-length.js");
+var toLength = __webpack_require__(97);
 
-var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
+var fails = __webpack_require__(6544);
 
-var internalSort = __webpack_require__(/*! ../internals/array-sort */ "./node_modules/core-js/internals/array-sort.js");
+var internalSort = __webpack_require__(5744);
 
-var arrayMethodIsStrict = __webpack_require__(/*! ../internals/array-method-is-strict */ "./node_modules/core-js/internals/array-method-is-strict.js");
+var arrayMethodIsStrict = __webpack_require__(906);
 
-var FF = __webpack_require__(/*! ../internals/engine-ff-version */ "./node_modules/core-js/internals/engine-ff-version.js");
+var FF = __webpack_require__(5857);
 
-var IE_OR_EDGE = __webpack_require__(/*! ../internals/engine-is-ie-or-edge */ "./node_modules/core-js/internals/engine-is-ie-or-edge.js");
+var IE_OR_EDGE = __webpack_require__(924);
 
-var V8 = __webpack_require__(/*! ../internals/engine-v8-version */ "./node_modules/core-js/internals/engine-v8-version.js");
+var V8 = __webpack_require__(4061);
 
-var WEBKIT = __webpack_require__(/*! ../internals/engine-webkit-version */ "./node_modules/core-js/internals/engine-webkit-version.js");
+var WEBKIT = __webpack_require__(3);
 
 var test = [];
 var nativeSort = test.sort; // IE8-
@@ -3943,30 +3586,24 @@ $({
 
 /***/ }),
 
-/***/ "./node_modules/core-js/modules/es.array.unscopables.flat-map.js":
-/*!***********************************************************************!*\
-  !*** ./node_modules/core-js/modules/es.array.unscopables.flat-map.js ***!
-  \***********************************************************************/
+/***/ 6270:
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 // this method was added to unscopables after implementation
 // in popular engines, so it's moved to a separate module
-var addToUnscopables = __webpack_require__(/*! ../internals/add-to-unscopables */ "./node_modules/core-js/internals/add-to-unscopables.js"); // https://tc39.es/ecma262/#sec-array.prototype-@@unscopables
+var addToUnscopables = __webpack_require__(6288); // https://tc39.es/ecma262/#sec-array.prototype-@@unscopables
 
 
 addToUnscopables('flatMap');
 
 /***/ }),
 
-/***/ "./node_modules/core-js/modules/es.number.parse-int.js":
-/*!*************************************************************!*\
-  !*** ./node_modules/core-js/modules/es.number.parse-int.js ***!
-  \*************************************************************/
+/***/ 6016:
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var $ = __webpack_require__(7263);
 
-var parseInt = __webpack_require__(/*! ../internals/number-parse-int */ "./node_modules/core-js/internals/number-parse-int.js"); // `Number.parseInt` method
+var parseInt = __webpack_require__(5407); // `Number.parseInt` method
 // https://tc39.es/ecma262/#sec-number.parseint
 // eslint-disable-next-line es/no-number-parseint -- required for testing
 
@@ -3981,15 +3618,12 @@ $({
 
 /***/ }),
 
-/***/ "./node_modules/core-js/modules/es.object.assign.js":
-/*!**********************************************************!*\
-  !*** ./node_modules/core-js/modules/es.object.assign.js ***!
-  \**********************************************************/
+/***/ 4517:
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var $ = __webpack_require__(7263);
 
-var assign = __webpack_require__(/*! ../internals/object-assign */ "./node_modules/core-js/internals/object-assign.js"); // `Object.assign` method
+var assign = __webpack_require__(9304); // `Object.assign` method
 // https://tc39.es/ecma262/#sec-object.assign
 // eslint-disable-next-line es/no-object-assign -- required for testing
 
@@ -4004,15 +3638,12 @@ $({
 
 /***/ }),
 
-/***/ "./node_modules/core-js/modules/es.object.entries.js":
-/*!***********************************************************!*\
-  !*** ./node_modules/core-js/modules/es.object.entries.js ***!
-  \***********************************************************/
+/***/ 6737:
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var $ = __webpack_require__(7263);
 
-var $entries = __webpack_require__(/*! ../internals/object-to-array */ "./node_modules/core-js/internals/object-to-array.js").entries; // `Object.entries` method
+var $entries = __webpack_require__(9953).entries; // `Object.entries` method
 // https://tc39.es/ecma262/#sec-object.entries
 
 
@@ -4027,17 +3658,14 @@ $({
 
 /***/ }),
 
-/***/ "./node_modules/core-js/modules/es.object.from-entries.js":
-/*!****************************************************************!*\
-  !*** ./node_modules/core-js/modules/es.object.from-entries.js ***!
-  \****************************************************************/
+/***/ 5809:
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var $ = __webpack_require__(7263);
 
-var iterate = __webpack_require__(/*! ../internals/iterate */ "./node_modules/core-js/internals/iterate.js");
+var iterate = __webpack_require__(4026);
 
-var createProperty = __webpack_require__(/*! ../internals/create-property */ "./node_modules/core-js/internals/create-property.js"); // `Object.fromEntries` method
+var createProperty = __webpack_require__(5999); // `Object.fromEntries` method
 // https://github.com/tc39/proposal-object-from-entries
 
 
@@ -4058,23 +3686,20 @@ $({
 
 /***/ }),
 
-/***/ "./node_modules/core-js/modules/es.object.get-own-property-descriptors.js":
-/*!********************************************************************************!*\
-  !*** ./node_modules/core-js/modules/es.object.get-own-property-descriptors.js ***!
-  \********************************************************************************/
+/***/ 9174:
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var $ = __webpack_require__(7263);
 
-var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/core-js/internals/descriptors.js");
+var DESCRIPTORS = __webpack_require__(8494);
 
-var ownKeys = __webpack_require__(/*! ../internals/own-keys */ "./node_modules/core-js/internals/own-keys.js");
+var ownKeys = __webpack_require__(929);
 
-var toIndexedObject = __webpack_require__(/*! ../internals/to-indexed-object */ "./node_modules/core-js/internals/to-indexed-object.js");
+var toIndexedObject = __webpack_require__(2977);
 
-var getOwnPropertyDescriptorModule = __webpack_require__(/*! ../internals/object-get-own-property-descriptor */ "./node_modules/core-js/internals/object-get-own-property-descriptor.js");
+var getOwnPropertyDescriptorModule = __webpack_require__(6683);
 
-var createProperty = __webpack_require__(/*! ../internals/create-property */ "./node_modules/core-js/internals/create-property.js"); // `Object.getOwnPropertyDescriptors` method
+var createProperty = __webpack_require__(5999); // `Object.getOwnPropertyDescriptors` method
 // https://tc39.es/ecma262/#sec-object.getownpropertydescriptors
 
 
@@ -4102,17 +3727,14 @@ $({
 
 /***/ }),
 
-/***/ "./node_modules/core-js/modules/es.object.to-string.js":
-/*!*************************************************************!*\
-  !*** ./node_modules/core-js/modules/es.object.to-string.js ***!
-  \*************************************************************/
+/***/ 6394:
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-var TO_STRING_TAG_SUPPORT = __webpack_require__(/*! ../internals/to-string-tag-support */ "./node_modules/core-js/internals/to-string-tag-support.js");
+var TO_STRING_TAG_SUPPORT = __webpack_require__(8191);
 
-var redefine = __webpack_require__(/*! ../internals/redefine */ "./node_modules/core-js/internals/redefine.js");
+var redefine = __webpack_require__(1270);
 
-var toString = __webpack_require__(/*! ../internals/object-to-string */ "./node_modules/core-js/internals/object-to-string.js"); // `Object.prototype.toString` method
+var toString = __webpack_require__(3060); // `Object.prototype.toString` method
 // https://tc39.es/ecma262/#sec-object.prototype.tostring
 
 
@@ -4124,15 +3746,12 @@ if (!TO_STRING_TAG_SUPPORT) {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/modules/es.object.values.js":
-/*!**********************************************************!*\
-  !*** ./node_modules/core-js/modules/es.object.values.js ***!
-  \**********************************************************/
+/***/ 9628:
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var $ = __webpack_require__(7263);
 
-var $values = __webpack_require__(/*! ../internals/object-to-array */ "./node_modules/core-js/internals/object-to-array.js").values; // `Object.values` method
+var $values = __webpack_require__(9953).values; // `Object.values` method
 // https://tc39.es/ecma262/#sec-object.values
 
 
@@ -4147,27 +3766,24 @@ $({
 
 /***/ }),
 
-/***/ "./node_modules/core-js/modules/es.reflect.construct.js":
-/*!**************************************************************!*\
-  !*** ./node_modules/core-js/modules/es.reflect.construct.js ***!
-  \**************************************************************/
+/***/ 3080:
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var $ = __webpack_require__(7263);
 
-var getBuiltIn = __webpack_require__(/*! ../internals/get-built-in */ "./node_modules/core-js/internals/get-built-in.js");
+var getBuiltIn = __webpack_require__(5897);
 
-var aFunction = __webpack_require__(/*! ../internals/a-function */ "./node_modules/core-js/internals/a-function.js");
+var aFunction = __webpack_require__(6163);
 
-var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
+var anObject = __webpack_require__(2569);
 
-var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
+var isObject = __webpack_require__(794);
 
-var create = __webpack_require__(/*! ../internals/object-create */ "./node_modules/core-js/internals/object-create.js");
+var create = __webpack_require__(3590);
 
-var bind = __webpack_require__(/*! ../internals/function-bind */ "./node_modules/core-js/internals/function-bind.js");
+var bind = __webpack_require__(1335);
 
-var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
+var fails = __webpack_require__(6544);
 
 var nativeConstruct = getBuiltIn('Reflect', 'construct'); // `Reflect.construct` method
 // https://tc39.es/ecma262/#sec-reflect.construct
@@ -4238,47 +3854,44 @@ $({
 
 /***/ }),
 
-/***/ "./node_modules/core-js/modules/es.regexp.constructor.js":
-/*!***************************************************************!*\
-  !*** ./node_modules/core-js/modules/es.regexp.constructor.js ***!
-  \***************************************************************/
+/***/ 7390:
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/core-js/internals/descriptors.js");
+var DESCRIPTORS = __webpack_require__(8494);
 
-var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
+var global = __webpack_require__(7583);
 
-var isForced = __webpack_require__(/*! ../internals/is-forced */ "./node_modules/core-js/internals/is-forced.js");
+var isForced = __webpack_require__(4451);
 
-var inheritIfRequired = __webpack_require__(/*! ../internals/inherit-if-required */ "./node_modules/core-js/internals/inherit-if-required.js");
+var inheritIfRequired = __webpack_require__(434);
 
-var createNonEnumerableProperty = __webpack_require__(/*! ../internals/create-non-enumerable-property */ "./node_modules/core-js/internals/create-non-enumerable-property.js");
+var createNonEnumerableProperty = __webpack_require__(57);
 
-var defineProperty = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/core-js/internals/object-define-property.js").f;
+var defineProperty = __webpack_require__(4615).f;
 
-var getOwnPropertyNames = __webpack_require__(/*! ../internals/object-get-own-property-names */ "./node_modules/core-js/internals/object-get-own-property-names.js").f;
+var getOwnPropertyNames = __webpack_require__(9275).f;
 
-var isRegExp = __webpack_require__(/*! ../internals/is-regexp */ "./node_modules/core-js/internals/is-regexp.js");
+var isRegExp = __webpack_require__(7574);
 
-var getFlags = __webpack_require__(/*! ../internals/regexp-flags */ "./node_modules/core-js/internals/regexp-flags.js");
+var getFlags = __webpack_require__(1118);
 
-var stickyHelpers = __webpack_require__(/*! ../internals/regexp-sticky-helpers */ "./node_modules/core-js/internals/regexp-sticky-helpers.js");
+var stickyHelpers = __webpack_require__(5230);
 
-var redefine = __webpack_require__(/*! ../internals/redefine */ "./node_modules/core-js/internals/redefine.js");
+var redefine = __webpack_require__(1270);
 
-var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
+var fails = __webpack_require__(6544);
 
-var has = __webpack_require__(/*! ../internals/has */ "./node_modules/core-js/internals/has.js");
+var has = __webpack_require__(4402);
 
-var enforceInternalState = __webpack_require__(/*! ../internals/internal-state */ "./node_modules/core-js/internals/internal-state.js").enforce;
+var enforceInternalState = __webpack_require__(2743).enforce;
 
-var setSpecies = __webpack_require__(/*! ../internals/set-species */ "./node_modules/core-js/internals/set-species.js");
+var setSpecies = __webpack_require__(7730);
 
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
+var wellKnownSymbol = __webpack_require__(3649);
 
-var UNSUPPORTED_DOT_ALL = __webpack_require__(/*! ../internals/regexp-unsupported-dot-all */ "./node_modules/core-js/internals/regexp-unsupported-dot-all.js");
+var UNSUPPORTED_DOT_ALL = __webpack_require__(4121);
 
-var UNSUPPORTED_NCG = __webpack_require__(/*! ../internals/regexp-unsupported-ncg */ "./node_modules/core-js/internals/regexp-unsupported-ncg.js");
+var UNSUPPORTED_NCG = __webpack_require__(1712);
 
 var MATCH = wellKnownSymbol('match');
 var NativeRegExp = global.RegExp;
@@ -4470,18 +4083,15 @@ setSpecies('RegExp');
 
 /***/ }),
 
-/***/ "./node_modules/core-js/modules/es.regexp.exec.js":
-/*!********************************************************!*\
-  !*** ./node_modules/core-js/modules/es.regexp.exec.js ***!
-  \********************************************************/
+/***/ 2322:
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var $ = __webpack_require__(7263);
 
-var exec = __webpack_require__(/*! ../internals/regexp-exec */ "./node_modules/core-js/internals/regexp-exec.js"); // `RegExp.prototype.exec` method
+var exec = __webpack_require__(8445); // `RegExp.prototype.exec` method
 // https://tc39.es/ecma262/#sec-regexp.prototype.exec
 
 
@@ -4495,22 +4105,19 @@ $({
 
 /***/ }),
 
-/***/ "./node_modules/core-js/modules/es.regexp.to-string.js":
-/*!*************************************************************!*\
-  !*** ./node_modules/core-js/modules/es.regexp.to-string.js ***!
-  \*************************************************************/
+/***/ 4669:
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-var redefine = __webpack_require__(/*! ../internals/redefine */ "./node_modules/core-js/internals/redefine.js");
+var redefine = __webpack_require__(1270);
 
-var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
+var anObject = __webpack_require__(2569);
 
-var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
+var fails = __webpack_require__(6544);
 
-var flags = __webpack_require__(/*! ../internals/regexp-flags */ "./node_modules/core-js/internals/regexp-flags.js");
+var flags = __webpack_require__(1118);
 
 var TO_STRING = 'toString';
 var RegExpPrototype = RegExp.prototype;
@@ -4539,28 +4146,25 @@ if (NOT_GENERIC || INCORRECT_NAME) {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/modules/es.string.ends-with.js":
-/*!*************************************************************!*\
-  !*** ./node_modules/core-js/modules/es.string.ends-with.js ***!
-  \*************************************************************/
+/***/ 3223:
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var $ = __webpack_require__(7263);
 
-var getOwnPropertyDescriptor = __webpack_require__(/*! ../internals/object-get-own-property-descriptor */ "./node_modules/core-js/internals/object-get-own-property-descriptor.js").f;
+var getOwnPropertyDescriptor = __webpack_require__(6683).f;
 
-var toLength = __webpack_require__(/*! ../internals/to-length */ "./node_modules/core-js/internals/to-length.js");
+var toLength = __webpack_require__(97);
 
-var notARegExp = __webpack_require__(/*! ../internals/not-a-regexp */ "./node_modules/core-js/internals/not-a-regexp.js");
+var notARegExp = __webpack_require__(9041);
 
-var requireObjectCoercible = __webpack_require__(/*! ../internals/require-object-coercible */ "./node_modules/core-js/internals/require-object-coercible.js");
+var requireObjectCoercible = __webpack_require__(3955);
 
-var correctIsRegExpLogic = __webpack_require__(/*! ../internals/correct-is-regexp-logic */ "./node_modules/core-js/internals/correct-is-regexp-logic.js");
+var correctIsRegExpLogic = __webpack_require__(3989);
 
-var IS_PURE = __webpack_require__(/*! ../internals/is-pure */ "./node_modules/core-js/internals/is-pure.js"); // eslint-disable-next-line es/no-string-prototype-endswith -- safe
+var IS_PURE = __webpack_require__(6268); // eslint-disable-next-line es/no-string-prototype-endswith -- safe
 
 
 var $endsWith = ''.endsWith;
@@ -4593,22 +4197,19 @@ $({
 
 /***/ }),
 
-/***/ "./node_modules/core-js/modules/es.string.includes.js":
-/*!************************************************************!*\
-  !*** ./node_modules/core-js/modules/es.string.includes.js ***!
-  \************************************************************/
+/***/ 7723:
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var $ = __webpack_require__(7263);
 
-var notARegExp = __webpack_require__(/*! ../internals/not-a-regexp */ "./node_modules/core-js/internals/not-a-regexp.js");
+var notARegExp = __webpack_require__(9041);
 
-var requireObjectCoercible = __webpack_require__(/*! ../internals/require-object-coercible */ "./node_modules/core-js/internals/require-object-coercible.js");
+var requireObjectCoercible = __webpack_require__(3955);
 
-var correctIsRegExpLogic = __webpack_require__(/*! ../internals/correct-is-regexp-logic */ "./node_modules/core-js/internals/correct-is-regexp-logic.js"); // `String.prototype.includes` method
+var correctIsRegExpLogic = __webpack_require__(3989); // `String.prototype.includes` method
 // https://tc39.es/ecma262/#sec-string.prototype.includes
 
 
@@ -4626,26 +4227,23 @@ $({
 
 /***/ }),
 
-/***/ "./node_modules/core-js/modules/es.string.match.js":
-/*!*********************************************************!*\
-  !*** ./node_modules/core-js/modules/es.string.match.js ***!
-  \*********************************************************/
+/***/ 5017:
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-var fixRegExpWellKnownSymbolLogic = __webpack_require__(/*! ../internals/fix-regexp-well-known-symbol-logic */ "./node_modules/core-js/internals/fix-regexp-well-known-symbol-logic.js");
+var fixRegExpWellKnownSymbolLogic = __webpack_require__(783);
 
-var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
+var anObject = __webpack_require__(2569);
 
-var toLength = __webpack_require__(/*! ../internals/to-length */ "./node_modules/core-js/internals/to-length.js");
+var toLength = __webpack_require__(97);
 
-var requireObjectCoercible = __webpack_require__(/*! ../internals/require-object-coercible */ "./node_modules/core-js/internals/require-object-coercible.js");
+var requireObjectCoercible = __webpack_require__(3955);
 
-var advanceStringIndex = __webpack_require__(/*! ../internals/advance-string-index */ "./node_modules/core-js/internals/advance-string-index.js");
+var advanceStringIndex = __webpack_require__(6733);
 
-var regExpExec = __webpack_require__(/*! ../internals/regexp-exec-abstract */ "./node_modules/core-js/internals/regexp-exec-abstract.js"); // @@match logic
+var regExpExec = __webpack_require__(4214); // @@match logic
 
 
 fixRegExpWellKnownSymbolLogic('match', function (MATCH, nativeMatch, maybeCallNative) {
@@ -4682,34 +4280,31 @@ fixRegExpWellKnownSymbolLogic('match', function (MATCH, nativeMatch, maybeCallNa
 
 /***/ }),
 
-/***/ "./node_modules/core-js/modules/es.string.replace.js":
-/*!***********************************************************!*\
-  !*** ./node_modules/core-js/modules/es.string.replace.js ***!
-  \***********************************************************/
+/***/ 3296:
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-var fixRegExpWellKnownSymbolLogic = __webpack_require__(/*! ../internals/fix-regexp-well-known-symbol-logic */ "./node_modules/core-js/internals/fix-regexp-well-known-symbol-logic.js");
+var fixRegExpWellKnownSymbolLogic = __webpack_require__(783);
 
-var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
+var fails = __webpack_require__(6544);
 
-var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
+var anObject = __webpack_require__(2569);
 
-var toLength = __webpack_require__(/*! ../internals/to-length */ "./node_modules/core-js/internals/to-length.js");
+var toLength = __webpack_require__(97);
 
-var toInteger = __webpack_require__(/*! ../internals/to-integer */ "./node_modules/core-js/internals/to-integer.js");
+var toInteger = __webpack_require__(5089);
 
-var requireObjectCoercible = __webpack_require__(/*! ../internals/require-object-coercible */ "./node_modules/core-js/internals/require-object-coercible.js");
+var requireObjectCoercible = __webpack_require__(3955);
 
-var advanceStringIndex = __webpack_require__(/*! ../internals/advance-string-index */ "./node_modules/core-js/internals/advance-string-index.js");
+var advanceStringIndex = __webpack_require__(6733);
 
-var getSubstitution = __webpack_require__(/*! ../internals/get-substitution */ "./node_modules/core-js/internals/get-substitution.js");
+var getSubstitution = __webpack_require__(4305);
 
-var regExpExec = __webpack_require__(/*! ../internals/regexp-exec-abstract */ "./node_modules/core-js/internals/regexp-exec-abstract.js");
+var regExpExec = __webpack_require__(4214);
 
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
+var wellKnownSymbol = __webpack_require__(3649);
 
 var REPLACE = wellKnownSymbol('replace');
 var max = Math.max;
@@ -4826,36 +4421,33 @@ fixRegExpWellKnownSymbolLogic('replace', function (_, nativeReplace, maybeCallNa
 
 /***/ }),
 
-/***/ "./node_modules/core-js/modules/es.string.split.js":
-/*!*********************************************************!*\
-  !*** ./node_modules/core-js/modules/es.string.split.js ***!
-  \*********************************************************/
+/***/ 9268:
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-var fixRegExpWellKnownSymbolLogic = __webpack_require__(/*! ../internals/fix-regexp-well-known-symbol-logic */ "./node_modules/core-js/internals/fix-regexp-well-known-symbol-logic.js");
+var fixRegExpWellKnownSymbolLogic = __webpack_require__(783);
 
-var isRegExp = __webpack_require__(/*! ../internals/is-regexp */ "./node_modules/core-js/internals/is-regexp.js");
+var isRegExp = __webpack_require__(7574);
 
-var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
+var anObject = __webpack_require__(2569);
 
-var requireObjectCoercible = __webpack_require__(/*! ../internals/require-object-coercible */ "./node_modules/core-js/internals/require-object-coercible.js");
+var requireObjectCoercible = __webpack_require__(3955);
 
-var speciesConstructor = __webpack_require__(/*! ../internals/species-constructor */ "./node_modules/core-js/internals/species-constructor.js");
+var speciesConstructor = __webpack_require__(564);
 
-var advanceStringIndex = __webpack_require__(/*! ../internals/advance-string-index */ "./node_modules/core-js/internals/advance-string-index.js");
+var advanceStringIndex = __webpack_require__(6733);
 
-var toLength = __webpack_require__(/*! ../internals/to-length */ "./node_modules/core-js/internals/to-length.js");
+var toLength = __webpack_require__(97);
 
-var callRegExpExec = __webpack_require__(/*! ../internals/regexp-exec-abstract */ "./node_modules/core-js/internals/regexp-exec-abstract.js");
+var callRegExpExec = __webpack_require__(4214);
 
-var regexpExec = __webpack_require__(/*! ../internals/regexp-exec */ "./node_modules/core-js/internals/regexp-exec.js");
+var regexpExec = __webpack_require__(8445);
 
-var stickyHelpers = __webpack_require__(/*! ../internals/regexp-sticky-helpers */ "./node_modules/core-js/internals/regexp-sticky-helpers.js");
+var stickyHelpers = __webpack_require__(5230);
 
-var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
+var fails = __webpack_require__(6544);
 
 var UNSUPPORTED_Y = stickyHelpers.UNSUPPORTED_Y;
 var arrayPush = [].push;
@@ -4983,10 +4575,7 @@ fixRegExpWellKnownSymbolLogic('split', function (SPLIT, nativeSplit, maybeCallNa
 
 /***/ }),
 
-/***/ "./node_modules/core-js/modules/es.symbol.description.js":
-/*!***************************************************************!*\
-  !*** ./node_modules/core-js/modules/es.symbol.description.js ***!
-  \***************************************************************/
+/***/ 8407:
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
@@ -4994,19 +4583,19 @@ fixRegExpWellKnownSymbolLogic('split', function (SPLIT, nativeSplit, maybeCallNa
 // https://tc39.es/ecma262/#sec-symbol.prototype.description
 
 
-var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var $ = __webpack_require__(7263);
 
-var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/core-js/internals/descriptors.js");
+var DESCRIPTORS = __webpack_require__(8494);
 
-var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
+var global = __webpack_require__(7583);
 
-var has = __webpack_require__(/*! ../internals/has */ "./node_modules/core-js/internals/has.js");
+var has = __webpack_require__(4402);
 
-var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
+var isObject = __webpack_require__(794);
 
-var defineProperty = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/core-js/internals/object-define-property.js").f;
+var defineProperty = __webpack_require__(4615).f;
 
-var copyConstructorProperties = __webpack_require__(/*! ../internals/copy-constructor-properties */ "./node_modules/core-js/internals/copy-constructor-properties.js");
+var copyConstructorProperties = __webpack_require__(3478);
 
 var NativeSymbol = global.Symbol;
 
@@ -5050,10 +4639,7 @@ NativeSymbol().description !== undefined)) {
 
 /***/ }),
 
-/***/ "./node_modules/core-js/modules/es.symbol.js":
-/*!***************************************************!*\
-  !*** ./node_modules/core-js/modules/es.symbol.js ***!
-  \***************************************************/
+/***/ 2004:
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
@@ -5061,77 +4647,77 @@ NativeSymbol().description !== undefined)) {
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/core-js/internals/export.js");
+var $ = __webpack_require__(7263);
 
-var global = __webpack_require__(/*! ../internals/global */ "./node_modules/core-js/internals/global.js");
+var global = __webpack_require__(7583);
 
-var getBuiltIn = __webpack_require__(/*! ../internals/get-built-in */ "./node_modules/core-js/internals/get-built-in.js");
+var getBuiltIn = __webpack_require__(5897);
 
-var IS_PURE = __webpack_require__(/*! ../internals/is-pure */ "./node_modules/core-js/internals/is-pure.js");
+var IS_PURE = __webpack_require__(6268);
 
-var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/core-js/internals/descriptors.js");
+var DESCRIPTORS = __webpack_require__(8494);
 
-var NATIVE_SYMBOL = __webpack_require__(/*! ../internals/native-symbol */ "./node_modules/core-js/internals/native-symbol.js");
+var NATIVE_SYMBOL = __webpack_require__(8640);
 
-var USE_SYMBOL_AS_UID = __webpack_require__(/*! ../internals/use-symbol-as-uid */ "./node_modules/core-js/internals/use-symbol-as-uid.js");
+var USE_SYMBOL_AS_UID = __webpack_require__(7786);
 
-var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/core-js/internals/fails.js");
+var fails = __webpack_require__(6544);
 
-var has = __webpack_require__(/*! ../internals/has */ "./node_modules/core-js/internals/has.js");
+var has = __webpack_require__(4402);
 
-var isArray = __webpack_require__(/*! ../internals/is-array */ "./node_modules/core-js/internals/is-array.js");
+var isArray = __webpack_require__(4521);
 
-var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/core-js/internals/is-object.js");
+var isObject = __webpack_require__(794);
 
-var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/core-js/internals/an-object.js");
+var anObject = __webpack_require__(2569);
 
-var toObject = __webpack_require__(/*! ../internals/to-object */ "./node_modules/core-js/internals/to-object.js");
+var toObject = __webpack_require__(1324);
 
-var toIndexedObject = __webpack_require__(/*! ../internals/to-indexed-object */ "./node_modules/core-js/internals/to-indexed-object.js");
+var toIndexedObject = __webpack_require__(2977);
 
-var toPrimitive = __webpack_require__(/*! ../internals/to-primitive */ "./node_modules/core-js/internals/to-primitive.js");
+var toPrimitive = __webpack_require__(2670);
 
-var createPropertyDescriptor = __webpack_require__(/*! ../internals/create-property-descriptor */ "./node_modules/core-js/internals/create-property-descriptor.js");
+var createPropertyDescriptor = __webpack_require__(4677);
 
-var nativeObjectCreate = __webpack_require__(/*! ../internals/object-create */ "./node_modules/core-js/internals/object-create.js");
+var nativeObjectCreate = __webpack_require__(3590);
 
-var objectKeys = __webpack_require__(/*! ../internals/object-keys */ "./node_modules/core-js/internals/object-keys.js");
+var objectKeys = __webpack_require__(5432);
 
-var getOwnPropertyNamesModule = __webpack_require__(/*! ../internals/object-get-own-property-names */ "./node_modules/core-js/internals/object-get-own-property-names.js");
+var getOwnPropertyNamesModule = __webpack_require__(9275);
 
-var getOwnPropertyNamesExternal = __webpack_require__(/*! ../internals/object-get-own-property-names-external */ "./node_modules/core-js/internals/object-get-own-property-names-external.js");
+var getOwnPropertyNamesExternal = __webpack_require__(3130);
 
-var getOwnPropertySymbolsModule = __webpack_require__(/*! ../internals/object-get-own-property-symbols */ "./node_modules/core-js/internals/object-get-own-property-symbols.js");
+var getOwnPropertySymbolsModule = __webpack_require__(4012);
 
-var getOwnPropertyDescriptorModule = __webpack_require__(/*! ../internals/object-get-own-property-descriptor */ "./node_modules/core-js/internals/object-get-own-property-descriptor.js");
+var getOwnPropertyDescriptorModule = __webpack_require__(6683);
 
-var definePropertyModule = __webpack_require__(/*! ../internals/object-define-property */ "./node_modules/core-js/internals/object-define-property.js");
+var definePropertyModule = __webpack_require__(4615);
 
-var propertyIsEnumerableModule = __webpack_require__(/*! ../internals/object-property-is-enumerable */ "./node_modules/core-js/internals/object-property-is-enumerable.js");
+var propertyIsEnumerableModule = __webpack_require__(112);
 
-var createNonEnumerableProperty = __webpack_require__(/*! ../internals/create-non-enumerable-property */ "./node_modules/core-js/internals/create-non-enumerable-property.js");
+var createNonEnumerableProperty = __webpack_require__(57);
 
-var redefine = __webpack_require__(/*! ../internals/redefine */ "./node_modules/core-js/internals/redefine.js");
+var redefine = __webpack_require__(1270);
 
-var shared = __webpack_require__(/*! ../internals/shared */ "./node_modules/core-js/internals/shared.js");
+var shared = __webpack_require__(7836);
 
-var sharedKey = __webpack_require__(/*! ../internals/shared-key */ "./node_modules/core-js/internals/shared-key.js");
+var sharedKey = __webpack_require__(9137);
 
-var hiddenKeys = __webpack_require__(/*! ../internals/hidden-keys */ "./node_modules/core-js/internals/hidden-keys.js");
+var hiddenKeys = __webpack_require__(4639);
 
-var uid = __webpack_require__(/*! ../internals/uid */ "./node_modules/core-js/internals/uid.js");
+var uid = __webpack_require__(8284);
 
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/core-js/internals/well-known-symbol.js");
+var wellKnownSymbol = __webpack_require__(3649);
 
-var wrappedWellKnownSymbolModule = __webpack_require__(/*! ../internals/well-known-symbol-wrapped */ "./node_modules/core-js/internals/well-known-symbol-wrapped.js");
+var wrappedWellKnownSymbolModule = __webpack_require__(491);
 
-var defineWellKnownSymbol = __webpack_require__(/*! ../internals/define-well-known-symbol */ "./node_modules/core-js/internals/define-well-known-symbol.js");
+var defineWellKnownSymbol = __webpack_require__(2219);
 
-var setToStringTag = __webpack_require__(/*! ../internals/set-to-string-tag */ "./node_modules/core-js/internals/set-to-string-tag.js");
+var setToStringTag = __webpack_require__(8821);
 
-var InternalStateModule = __webpack_require__(/*! ../internals/internal-state */ "./node_modules/core-js/internals/internal-state.js");
+var InternalStateModule = __webpack_require__(2743);
 
-var $forEach = __webpack_require__(/*! ../internals/array-iteration */ "./node_modules/core-js/internals/array-iteration.js").forEach;
+var $forEach = __webpack_require__(4805).forEach;
 
 var HIDDEN = sharedKey('hidden');
 var SYMBOL = 'Symbol';
@@ -5458,10 +5044,7 @@ hiddenKeys[HIDDEN] = true;
 
 /***/ }),
 
-/***/ "./node_modules/libram/dist/Clan.js":
-/*!******************************************!*\
-  !*** ./node_modules/libram/dist/Clan.js ***!
-  \******************************************/
+/***/ 1662:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -5469,56 +5052,56 @@ hiddenKeys[HIDDEN] = true;
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-__webpack_require__(/*! core-js/modules/es.object.to-string.js */ "./node_modules/core-js/modules/es.object.to-string.js");
+__webpack_require__(6394);
 
-__webpack_require__(/*! core-js/modules/es.regexp.to-string.js */ "./node_modules/core-js/modules/es.regexp.to-string.js");
+__webpack_require__(4669);
 
-__webpack_require__(/*! core-js/modules/es.reflect.construct.js */ "./node_modules/core-js/modules/es.reflect.construct.js");
+__webpack_require__(3080);
 
-__webpack_require__(/*! core-js/modules/es.array.iterator.js */ "./node_modules/core-js/modules/es.array.iterator.js");
+__webpack_require__(5677);
 
-__webpack_require__(/*! core-js/modules/es.regexp.constructor.js */ "./node_modules/core-js/modules/es.regexp.constructor.js");
+__webpack_require__(7390);
 
-__webpack_require__(/*! core-js/modules/es.string.replace.js */ "./node_modules/core-js/modules/es.string.replace.js");
+__webpack_require__(3296);
 
-__webpack_require__(/*! core-js/modules/es.symbol.js */ "./node_modules/core-js/modules/es.symbol.js");
+__webpack_require__(2004);
 
-__webpack_require__(/*! core-js/modules/es.symbol.description.js */ "./node_modules/core-js/modules/es.symbol.description.js");
+__webpack_require__(8407);
 
-__webpack_require__(/*! core-js/modules/es.array.slice.js */ "./node_modules/core-js/modules/es.array.slice.js");
+__webpack_require__(288);
 
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports.Clan = exports.ClanError = void 0;
 
-__webpack_require__(/*! core-js/modules/es.array.includes.js */ "./node_modules/core-js/modules/es.array.includes.js");
+__webpack_require__(2076);
 
-__webpack_require__(/*! core-js/modules/es.string.includes.js */ "./node_modules/core-js/modules/es.string.includes.js");
+__webpack_require__(7723);
 
-__webpack_require__(/*! core-js/modules/es.regexp.exec.js */ "./node_modules/core-js/modules/es.regexp.exec.js");
+__webpack_require__(2322);
 
-__webpack_require__(/*! core-js/modules/es.string.match.js */ "./node_modules/core-js/modules/es.string.match.js");
+__webpack_require__(5017);
 
-__webpack_require__(/*! core-js/modules/es.array.filter.js */ "./node_modules/core-js/modules/es.array.filter.js");
+__webpack_require__(8833);
 
-__webpack_require__(/*! core-js/modules/es.array.map.js */ "./node_modules/core-js/modules/es.array.map.js");
+__webpack_require__(2070);
 
-__webpack_require__(/*! core-js/modules/es.number.parse-int.js */ "./node_modules/core-js/modules/es.number.parse-int.js");
+__webpack_require__(6016);
 
-__webpack_require__(/*! core-js/modules/es.array.find.js */ "./node_modules/core-js/modules/es.array.find.js");
+__webpack_require__(7715);
 
-__webpack_require__(/*! core-js/modules/es.array.sort.js */ "./node_modules/core-js/modules/es.array.sort.js");
+__webpack_require__(4486);
 
-__webpack_require__(/*! core-js/modules/es.array.concat.js */ "./node_modules/core-js/modules/es.array.concat.js");
+__webpack_require__(1646);
 
-var _kolmafia = __webpack_require__(/*! kolmafia */ "kolmafia");
+var _kolmafia = __webpack_require__(1664);
 
-var _lib = __webpack_require__(/*! ./lib */ "./node_modules/libram/dist/lib.js");
+var _lib = __webpack_require__(3311);
 
-var _logger = _interopRequireDefault(__webpack_require__(/*! ./logger */ "./node_modules/libram/dist/logger.js"));
+var _logger = _interopRequireDefault(__webpack_require__(8685));
 
-var _utils = __webpack_require__(/*! ./utils */ "./node_modules/libram/dist/utils.js");
+var _utils = __webpack_require__(8588);
 
 var _class;
 
@@ -6370,10 +5953,7 @@ exports.Clan = Clan;
 
 /***/ }),
 
-/***/ "./node_modules/libram/dist/Copier.js":
-/*!********************************************!*\
-  !*** ./node_modules/libram/dist/Copier.js ***!
-  \********************************************/
+/***/ 3425:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
@@ -6445,10 +6025,7 @@ exports.Copier = Copier;
 
 /***/ }),
 
-/***/ "./node_modules/libram/dist/Dungeon.js":
-/*!*********************************************!*\
-  !*** ./node_modules/libram/dist/Dungeon.js ***!
-  \*********************************************/
+/***/ 7912:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -6459,27 +6036,27 @@ Object.defineProperty(exports, "__esModule", ({
 }));
 exports.Dreadsylvania = exports.SlimeTube = exports.Hobopolis = exports.default = void 0;
 
-__webpack_require__(/*! core-js/modules/es.array.find.js */ "./node_modules/core-js/modules/es.array.find.js");
+__webpack_require__(7715);
 
-__webpack_require__(/*! core-js/modules/es.array.includes.js */ "./node_modules/core-js/modules/es.array.includes.js");
+__webpack_require__(2076);
 
-__webpack_require__(/*! core-js/modules/es.string.includes.js */ "./node_modules/core-js/modules/es.string.includes.js");
+__webpack_require__(7723);
 
-__webpack_require__(/*! core-js/modules/es.regexp.exec.js */ "./node_modules/core-js/modules/es.regexp.exec.js");
+__webpack_require__(2322);
 
-__webpack_require__(/*! core-js/modules/es.string.match.js */ "./node_modules/core-js/modules/es.string.match.js");
+__webpack_require__(5017);
 
-__webpack_require__(/*! core-js/modules/es.array.concat.js */ "./node_modules/core-js/modules/es.array.concat.js");
+__webpack_require__(1646);
 
-__webpack_require__(/*! core-js/modules/es.array.slice.js */ "./node_modules/core-js/modules/es.array.slice.js");
+__webpack_require__(288);
 
-var _kolmafia = __webpack_require__(/*! kolmafia */ "kolmafia");
+var _kolmafia = __webpack_require__(1664);
 
-var _Clan = __webpack_require__(/*! ./Clan */ "./node_modules/libram/dist/Clan.js");
+var _Clan = __webpack_require__(1662);
 
-var _lib = __webpack_require__(/*! ./lib */ "./node_modules/libram/dist/lib.js");
+var _lib = __webpack_require__(3311);
 
-var _templateString = __webpack_require__(/*! ./template-string */ "./node_modules/libram/dist/template-string.js");
+var _templateString = __webpack_require__(678);
 
 var _templateObject, _templateObject2, _templateObject3;
 
@@ -6665,49 +6242,46 @@ exports.Dreadsylvania = Dreadsylvania;
 
 /***/ }),
 
-/***/ "./node_modules/libram/dist/Kmail.js":
-/*!*******************************************!*\
-  !*** ./node_modules/libram/dist/Kmail.js ***!
-  \*******************************************/
+/***/ 9477:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
 
-__webpack_require__(/*! core-js/modules/es.symbol.js */ "./node_modules/core-js/modules/es.symbol.js");
+__webpack_require__(2004);
 
-__webpack_require__(/*! core-js/modules/es.symbol.description.js */ "./node_modules/core-js/modules/es.symbol.description.js");
+__webpack_require__(8407);
 
-__webpack_require__(/*! core-js/modules/es.array.slice.js */ "./node_modules/core-js/modules/es.array.slice.js");
+__webpack_require__(288);
 
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports.default = void 0;
 
-__webpack_require__(/*! core-js/modules/es.array.iterator.js */ "./node_modules/core-js/modules/es.array.iterator.js");
+__webpack_require__(5677);
 
-__webpack_require__(/*! core-js/modules/es.object.to-string.js */ "./node_modules/core-js/modules/es.object.to-string.js");
+__webpack_require__(6394);
 
-__webpack_require__(/*! core-js/modules/es.array.map.js */ "./node_modules/core-js/modules/es.array.map.js");
+__webpack_require__(2070);
 
-__webpack_require__(/*! core-js/modules/es.object.entries.js */ "./node_modules/core-js/modules/es.object.entries.js");
+__webpack_require__(6737);
 
-__webpack_require__(/*! core-js/modules/es.regexp.exec.js */ "./node_modules/core-js/modules/es.regexp.exec.js");
+__webpack_require__(2322);
 
-__webpack_require__(/*! core-js/modules/es.string.match.js */ "./node_modules/core-js/modules/es.string.match.js");
+__webpack_require__(5017);
 
-__webpack_require__(/*! core-js/modules/es.array.filter.js */ "./node_modules/core-js/modules/es.array.filter.js");
+__webpack_require__(8833);
 
-__webpack_require__(/*! core-js/modules/es.array.concat.js */ "./node_modules/core-js/modules/es.array.concat.js");
+__webpack_require__(1646);
 
-__webpack_require__(/*! core-js/modules/es.array.includes.js */ "./node_modules/core-js/modules/es.array.includes.js");
+__webpack_require__(2076);
 
-__webpack_require__(/*! core-js/modules/es.string.includes.js */ "./node_modules/core-js/modules/es.string.includes.js");
+__webpack_require__(7723);
 
-var _kolmafia = __webpack_require__(/*! kolmafia */ "kolmafia");
+var _kolmafia = __webpack_require__(1664);
 
-var _utils = __webpack_require__(/*! ./utils */ "./node_modules/libram/dist/utils.js");
+var _utils = __webpack_require__(8588);
 
 function _createForOfIteratorHelper(o, allowArrayLike) {
   var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"];
@@ -7106,23 +6680,20 @@ exports.default = Kmail;
 
 /***/ }),
 
-/***/ "./node_modules/libram/dist/Path.js":
-/*!******************************************!*\
-  !*** ./node_modules/libram/dist/Path.js ***!
-  \******************************************/
+/***/ 6906:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
 
-__webpack_require__(/*! core-js/modules/es.array.slice.js */ "./node_modules/core-js/modules/es.array.slice.js");
+__webpack_require__(288);
 
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports.Paths = exports.Path = void 0;
 
-var _templateString = __webpack_require__(/*! ./template-string */ "./node_modules/libram/dist/template-string.js");
+var _templateString = __webpack_require__(678);
 
 var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5, _templateObject6, _templateObject7, _templateObject8, _templateObject9, _templateObject10;
 
@@ -7264,16 +6835,13 @@ exports.Paths = Paths;
 
 /***/ }),
 
-/***/ "./node_modules/libram/dist/ascend.js":
-/*!********************************************!*\
-  !*** ./node_modules/libram/dist/ascend.js ***!
-  \********************************************/
+/***/ 1689:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
 
-__webpack_require__(/*! core-js/modules/es.array.slice.js */ "./node_modules/core-js/modules/es.array.slice.js");
+__webpack_require__(288);
 
 Object.defineProperty(exports, "__esModule", ({
   value: true
@@ -7282,25 +6850,25 @@ exports.ascend = ascend;
 exports.prepareAscension = prepareAscension;
 exports.Lifestyle = void 0;
 
-__webpack_require__(/*! core-js/modules/es.array.includes.js */ "./node_modules/core-js/modules/es.array.includes.js");
+__webpack_require__(2076);
 
-__webpack_require__(/*! core-js/modules/es.string.includes.js */ "./node_modules/core-js/modules/es.string.includes.js");
+__webpack_require__(7723);
 
-__webpack_require__(/*! core-js/modules/es.array.concat.js */ "./node_modules/core-js/modules/es.array.concat.js");
+__webpack_require__(1646);
 
-__webpack_require__(/*! core-js/modules/es.object.to-string.js */ "./node_modules/core-js/modules/es.object.to-string.js");
+__webpack_require__(6394);
 
-__webpack_require__(/*! core-js/modules/es.regexp.to-string.js */ "./node_modules/core-js/modules/es.regexp.to-string.js");
+__webpack_require__(4669);
 
-var _kolmafia = __webpack_require__(/*! kolmafia */ "kolmafia");
+var _kolmafia = __webpack_require__(1664);
 
-var _templateString = __webpack_require__(/*! ./template-string */ "./node_modules/libram/dist/template-string.js");
+var _templateString = __webpack_require__(678);
 
-var _property = __webpack_require__(/*! ./property */ "./node_modules/libram/dist/property.js");
+var _property = __webpack_require__(1347);
 
-var _resources = __webpack_require__(/*! ./resources */ "./node_modules/libram/dist/resources/index.js");
+var _resources = __webpack_require__(1895);
 
-var _lib = __webpack_require__(/*! ./lib */ "./node_modules/libram/dist/lib.js");
+var _lib = __webpack_require__(3311);
 
 var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5, _templateObject6, _templateObject7, _templateObject8, _templateObject9, _templateObject10, _templateObject11, _templateObject12;
 
@@ -7478,22 +7046,19 @@ function prepareAscension(ascensionItems, chateauItems) {
 
 /***/ }),
 
-/***/ "./node_modules/libram/dist/combat.js":
-/*!********************************************!*\
-  !*** ./node_modules/libram/dist/combat.js ***!
-  \********************************************/
+/***/ 1762:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
 
-__webpack_require__(/*! core-js/modules/es.array.slice.js */ "./node_modules/core-js/modules/es.array.slice.js");
+__webpack_require__(288);
 
-__webpack_require__(/*! core-js/modules/es.symbol.js */ "./node_modules/core-js/modules/es.symbol.js");
+__webpack_require__(2004);
 
-__webpack_require__(/*! core-js/modules/es.symbol.description.js */ "./node_modules/core-js/modules/es.symbol.description.js");
+__webpack_require__(8407);
 
-__webpack_require__(/*! core-js/modules/es.array.iterator.js */ "./node_modules/core-js/modules/es.array.iterator.js");
+__webpack_require__(5677);
 
 Object.defineProperty(exports, "__esModule", ({
   value: true
@@ -7503,31 +7068,31 @@ exports.adventureMacro = adventureMacro;
 exports.adventureMacroAuto = adventureMacroAuto;
 exports.Macro = void 0;
 
-__webpack_require__(/*! core-js/modules/es.array.map.js */ "./node_modules/core-js/modules/es.array.map.js");
+__webpack_require__(2070);
 
-__webpack_require__(/*! core-js/modules/es.array.includes.js */ "./node_modules/core-js/modules/es.array.includes.js");
+__webpack_require__(2076);
 
-__webpack_require__(/*! core-js/modules/es.string.includes.js */ "./node_modules/core-js/modules/es.string.includes.js");
+__webpack_require__(7723);
 
-__webpack_require__(/*! core-js/modules/es.object.to-string.js */ "./node_modules/core-js/modules/es.object.to-string.js");
+__webpack_require__(6394);
 
-__webpack_require__(/*! core-js/modules/es.regexp.to-string.js */ "./node_modules/core-js/modules/es.regexp.to-string.js");
+__webpack_require__(4669);
 
-__webpack_require__(/*! core-js/modules/es.regexp.exec.js */ "./node_modules/core-js/modules/es.regexp.exec.js");
+__webpack_require__(2322);
 
-__webpack_require__(/*! core-js/modules/es.string.match.js */ "./node_modules/core-js/modules/es.string.match.js");
+__webpack_require__(5017);
 
-__webpack_require__(/*! core-js/modules/es.array.concat.js */ "./node_modules/core-js/modules/es.array.concat.js");
+__webpack_require__(1646);
 
-__webpack_require__(/*! core-js/modules/es.array.filter.js */ "./node_modules/core-js/modules/es.array.filter.js");
+__webpack_require__(8833);
 
-__webpack_require__(/*! core-js/modules/es.string.split.js */ "./node_modules/core-js/modules/es.string.split.js");
+__webpack_require__(9268);
 
-var _kolmafia = __webpack_require__(/*! kolmafia */ "kolmafia");
+var _kolmafia = __webpack_require__(1664);
 
-var _templateString = __webpack_require__(/*! ./template-string */ "./node_modules/libram/dist/template-string.js");
+var _templateString = __webpack_require__(678);
 
-var _property = __webpack_require__(/*! ./property */ "./node_modules/libram/dist/property.js");
+var _property = __webpack_require__(1347);
 
 var _templateObject, _templateObject2;
 
@@ -8137,10 +7702,7 @@ function adventureMacroAuto(loc, autoMacro) {
 
 /***/ }),
 
-/***/ "./node_modules/libram/dist/console.js":
-/*!*********************************************!*\
-  !*** ./node_modules/libram/dist/console.js ***!
-  \*********************************************/
+/***/ 6448:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -8151,13 +7713,13 @@ Object.defineProperty(exports, "__esModule", ({
 }));
 exports.error = exports.warn = exports.info = exports.log = void 0;
 
-__webpack_require__(/*! core-js/modules/es.array.map.js */ "./node_modules/core-js/modules/es.array.map.js");
+__webpack_require__(2070);
 
-__webpack_require__(/*! core-js/modules/es.object.to-string.js */ "./node_modules/core-js/modules/es.object.to-string.js");
+__webpack_require__(6394);
 
-__webpack_require__(/*! core-js/modules/es.regexp.to-string.js */ "./node_modules/core-js/modules/es.regexp.to-string.js");
+__webpack_require__(4669);
 
-var _kolmafia = __webpack_require__(/*! kolmafia */ "kolmafia"); // eslint-disable-next-line @typescript-eslint/no-explicit-any
+var _kolmafia = __webpack_require__(1664); // eslint-disable-next-line @typescript-eslint/no-explicit-any
 
 
 var logColor = function logColor(color) {
@@ -8189,10 +7751,7 @@ exports.error = error;
 
 /***/ }),
 
-/***/ "./node_modules/libram/dist/index.js":
-/*!*******************************************!*\
-  !*** ./node_modules/libram/dist/index.js ***!
-  \*******************************************/
+/***/ 9803:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -8200,9 +7759,9 @@ exports.error = error;
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-__webpack_require__(/*! core-js/modules/es.array.iterator.js */ "./node_modules/core-js/modules/es.array.iterator.js");
+__webpack_require__(5677);
 
-__webpack_require__(/*! core-js/modules/es.object.to-string.js */ "./node_modules/core-js/modules/es.object.to-string.js");
+__webpack_require__(6394);
 
 Object.defineProperty(exports, "__esModule", ({
   value: true
@@ -8290,7 +7849,7 @@ Object.defineProperty(exports, "withChoice", ({
 }));
 exports.property = exports.console = void 0;
 
-var _ascend = __webpack_require__(/*! ./ascend */ "./node_modules/libram/dist/ascend.js");
+var _ascend = __webpack_require__(1689);
 
 Object.keys(_ascend).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -8304,7 +7863,7 @@ Object.keys(_ascend).forEach(function (key) {
   });
 });
 
-var _Clan = __webpack_require__(/*! ./Clan */ "./node_modules/libram/dist/Clan.js");
+var _Clan = __webpack_require__(1662);
 
 Object.keys(_Clan).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -8318,7 +7877,7 @@ Object.keys(_Clan).forEach(function (key) {
   });
 });
 
-var _combat = __webpack_require__(/*! ./combat */ "./node_modules/libram/dist/combat.js");
+var _combat = __webpack_require__(1762);
 
 Object.keys(_combat).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -8332,7 +7891,7 @@ Object.keys(_combat).forEach(function (key) {
   });
 });
 
-var _Dungeon = __webpack_require__(/*! ./Dungeon */ "./node_modules/libram/dist/Dungeon.js");
+var _Dungeon = __webpack_require__(7912);
 
 Object.keys(_Dungeon).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -8346,7 +7905,7 @@ Object.keys(_Dungeon).forEach(function (key) {
   });
 });
 
-var _lib = __webpack_require__(/*! ./lib */ "./node_modules/libram/dist/lib.js");
+var _lib = __webpack_require__(3311);
 
 Object.keys(_lib).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -8360,7 +7919,7 @@ Object.keys(_lib).forEach(function (key) {
   });
 });
 
-var _maximize = __webpack_require__(/*! ./maximize */ "./node_modules/libram/dist/maximize.js");
+var _maximize = __webpack_require__(9376);
 
 Object.keys(_maximize).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -8374,7 +7933,7 @@ Object.keys(_maximize).forEach(function (key) {
   });
 });
 
-var _mood = __webpack_require__(/*! ./mood */ "./node_modules/libram/dist/mood.js");
+var _mood = __webpack_require__(6115);
 
 Object.keys(_mood).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -8388,7 +7947,7 @@ Object.keys(_mood).forEach(function (key) {
   });
 });
 
-var _resources = __webpack_require__(/*! ./resources */ "./node_modules/libram/dist/resources/index.js");
+var _resources = __webpack_require__(1895);
 
 Object.keys(_resources).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -8402,7 +7961,7 @@ Object.keys(_resources).forEach(function (key) {
   });
 });
 
-var _since = __webpack_require__(/*! ./since */ "./node_modules/libram/dist/since.js");
+var _since = __webpack_require__(1157);
 
 Object.keys(_since).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -8416,7 +7975,7 @@ Object.keys(_since).forEach(function (key) {
   });
 });
 
-var _templateString = __webpack_require__(/*! ./template-string */ "./node_modules/libram/dist/template-string.js");
+var _templateString = __webpack_require__(678);
 
 Object.keys(_templateString).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -8430,9 +7989,9 @@ Object.keys(_templateString).forEach(function (key) {
   });
 });
 
-var _Kmail = _interopRequireDefault(__webpack_require__(/*! ./Kmail */ "./node_modules/libram/dist/Kmail.js"));
+var _Kmail = _interopRequireDefault(__webpack_require__(9477));
 
-var _Path = __webpack_require__(/*! ./Path */ "./node_modules/libram/dist/Path.js");
+var _Path = __webpack_require__(6906);
 
 Object.keys(_Path).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -8446,13 +8005,13 @@ Object.keys(_Path).forEach(function (key) {
   });
 });
 
-var _logger = _interopRequireWildcard(__webpack_require__(/*! ./logger */ "./node_modules/libram/dist/logger.js"));
+var _logger = _interopRequireWildcard(__webpack_require__(8685));
 
-var _console = _interopRequireWildcard(__webpack_require__(/*! ./console */ "./node_modules/libram/dist/console.js"));
+var _console = _interopRequireWildcard(__webpack_require__(6448));
 
 exports.console = _console;
 
-var _property = _interopRequireWildcard(__webpack_require__(/*! ./property */ "./node_modules/libram/dist/property.js"));
+var _property = _interopRequireWildcard(__webpack_require__(1347));
 
 exports.property = _property;
 
@@ -8514,20 +8073,17 @@ function _interopRequireDefault(obj) {
 
 /***/ }),
 
-/***/ "./node_modules/libram/dist/lib.js":
-/*!*****************************************!*\
-  !*** ./node_modules/libram/dist/lib.js ***!
-  \*****************************************/
+/***/ 3311:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
 
-__webpack_require__(/*! core-js/modules/es.array.slice.js */ "./node_modules/core-js/modules/es.array.slice.js");
+__webpack_require__(288);
 
-__webpack_require__(/*! core-js/modules/es.symbol.js */ "./node_modules/core-js/modules/es.symbol.js");
+__webpack_require__(2004);
 
-__webpack_require__(/*! core-js/modules/es.symbol.description.js */ "./node_modules/core-js/modules/es.symbol.description.js");
+__webpack_require__(8407);
 
 Object.defineProperty(exports, "__esModule", ({
   value: true
@@ -8563,41 +8119,41 @@ exports.uneffect = uneffect;
 exports.getPlayerFromIdOrName = getPlayerFromIdOrName;
 exports.Wanderer = void 0;
 
-__webpack_require__(/*! core-js/modules/es.array.map.js */ "./node_modules/core-js/modules/es.array.map.js");
+__webpack_require__(2070);
 
-__webpack_require__(/*! core-js/modules/es.array.filter.js */ "./node_modules/core-js/modules/es.array.filter.js");
+__webpack_require__(8833);
 
-__webpack_require__(/*! core-js/modules/es.array.includes.js */ "./node_modules/core-js/modules/es.array.includes.js");
+__webpack_require__(2076);
 
-__webpack_require__(/*! core-js/modules/es.string.includes.js */ "./node_modules/core-js/modules/es.string.includes.js");
+__webpack_require__(7723);
 
-__webpack_require__(/*! core-js/modules/es.regexp.constructor.js */ "./node_modules/core-js/modules/es.regexp.constructor.js");
+__webpack_require__(7390);
 
-__webpack_require__(/*! core-js/modules/es.regexp.exec.js */ "./node_modules/core-js/modules/es.regexp.exec.js");
+__webpack_require__(2322);
 
-__webpack_require__(/*! core-js/modules/es.regexp.to-string.js */ "./node_modules/core-js/modules/es.regexp.to-string.js");
+__webpack_require__(4669);
 
-__webpack_require__(/*! core-js/modules/es.string.match.js */ "./node_modules/core-js/modules/es.string.match.js");
+__webpack_require__(5017);
 
-__webpack_require__(/*! core-js/modules/es.number.parse-int.js */ "./node_modules/core-js/modules/es.number.parse-int.js");
+__webpack_require__(6016);
 
-__webpack_require__(/*! core-js/modules/es.array.sort.js */ "./node_modules/core-js/modules/es.array.sort.js");
+__webpack_require__(4486);
 
-__webpack_require__(/*! core-js/modules/es.object.entries.js */ "./node_modules/core-js/modules/es.object.entries.js");
+__webpack_require__(6737);
 
-__webpack_require__(/*! core-js/modules/es.string.split.js */ "./node_modules/core-js/modules/es.string.split.js");
+__webpack_require__(9268);
 
-__webpack_require__(/*! core-js/modules/es.array.iterator.js */ "./node_modules/core-js/modules/es.array.iterator.js");
+__webpack_require__(5677);
 
-__webpack_require__(/*! core-js/modules/es.object.to-string.js */ "./node_modules/core-js/modules/es.object.to-string.js");
+__webpack_require__(6394);
 
-var _kolmafia = __webpack_require__(/*! kolmafia */ "kolmafia");
+var _kolmafia = __webpack_require__(1664);
 
-var _templateString = __webpack_require__(/*! ./template-string */ "./node_modules/libram/dist/template-string.js");
+var _templateString = __webpack_require__(678);
 
-var _property = __webpack_require__(/*! ./property */ "./node_modules/libram/dist/property.js");
+var _property = __webpack_require__(1347);
 
-var _utils = __webpack_require__(/*! ./utils */ "./node_modules/libram/dist/utils.js");
+var _utils = __webpack_require__(8588);
 
 var _templateObject, _templateObject2;
 
@@ -9265,10 +8821,7 @@ function getPlayerFromIdOrName(idOrName) {
 
 /***/ }),
 
-/***/ "./node_modules/libram/dist/logger.js":
-/*!********************************************!*\
-  !*** ./node_modules/libram/dist/logger.js ***!
-  \********************************************/
+/***/ 8685:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -9279,11 +8832,11 @@ Object.defineProperty(exports, "__esModule", ({
 }));
 exports.default = void 0;
 
-__webpack_require__(/*! core-js/modules/es.object.to-string.js */ "./node_modules/core-js/modules/es.object.to-string.js");
+__webpack_require__(6394);
 
-__webpack_require__(/*! core-js/modules/es.regexp.to-string.js */ "./node_modules/core-js/modules/es.regexp.to-string.js");
+__webpack_require__(4669);
 
-var _kolmafia = __webpack_require__(/*! kolmafia */ "kolmafia");
+var _kolmafia = __webpack_require__(1664);
 
 function _classCallCheck(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
@@ -9379,22 +8932,19 @@ exports.default = _default;
 
 /***/ }),
 
-/***/ "./node_modules/libram/dist/maximize.js":
-/*!**********************************************!*\
-  !*** ./node_modules/libram/dist/maximize.js ***!
-  \**********************************************/
+/***/ 9376:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
 
-__webpack_require__(/*! core-js/modules/es.array.slice.js */ "./node_modules/core-js/modules/es.array.slice.js");
+__webpack_require__(288);
 
-__webpack_require__(/*! core-js/modules/es.symbol.js */ "./node_modules/core-js/modules/es.symbol.js");
+__webpack_require__(2004);
 
-__webpack_require__(/*! core-js/modules/es.symbol.description.js */ "./node_modules/core-js/modules/es.symbol.description.js");
+__webpack_require__(8407);
 
-__webpack_require__(/*! core-js/modules/es.object.get-own-property-descriptors.js */ "./node_modules/core-js/modules/es.object.get-own-property-descriptors.js");
+__webpack_require__(9174);
 
 Object.defineProperty(exports, "__esModule", ({
   value: true
@@ -9404,31 +8954,31 @@ exports.maximizeCached = maximizeCached;
 exports.maximizeRequirementsCached = maximizeRequirementsCached;
 exports.Requirement = void 0;
 
-__webpack_require__(/*! core-js/modules/es.array.iterator.js */ "./node_modules/core-js/modules/es.array.iterator.js");
+__webpack_require__(5677);
 
-__webpack_require__(/*! core-js/modules/es.object.to-string.js */ "./node_modules/core-js/modules/es.object.to-string.js");
+__webpack_require__(6394);
 
-__webpack_require__(/*! core-js/modules/es.object.assign.js */ "./node_modules/core-js/modules/es.object.assign.js");
+__webpack_require__(4517);
 
-__webpack_require__(/*! core-js/modules/es.array.map.js */ "./node_modules/core-js/modules/es.array.map.js");
+__webpack_require__(2070);
 
-__webpack_require__(/*! core-js/modules/es.array.filter.js */ "./node_modules/core-js/modules/es.array.filter.js");
+__webpack_require__(8833);
 
-__webpack_require__(/*! core-js/modules/es.array.concat.js */ "./node_modules/core-js/modules/es.array.concat.js");
+__webpack_require__(1646);
 
-__webpack_require__(/*! core-js/modules/es.array.includes.js */ "./node_modules/core-js/modules/es.array.includes.js");
+__webpack_require__(2076);
 
-__webpack_require__(/*! core-js/modules/es.string.includes.js */ "./node_modules/core-js/modules/es.string.includes.js");
+__webpack_require__(7723);
 
-__webpack_require__(/*! core-js/modules/es.array.sort.js */ "./node_modules/core-js/modules/es.array.sort.js");
+__webpack_require__(4486);
 
-var _kolmafia = __webpack_require__(/*! kolmafia */ "kolmafia");
+var _kolmafia = __webpack_require__(1664);
 
-var _templateString = __webpack_require__(/*! ./template-string */ "./node_modules/libram/dist/template-string.js");
+var _templateString = __webpack_require__(678);
 
-var _logger = _interopRequireDefault(__webpack_require__(/*! ./logger */ "./node_modules/libram/dist/logger.js"));
+var _logger = _interopRequireDefault(__webpack_require__(8685));
 
-var _merge2 = _interopRequireDefault(__webpack_require__(/*! lodash/merge */ "./node_modules/lodash/merge.js"));
+var _merge2 = _interopRequireDefault(__webpack_require__(4299));
 
 var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5, _templateObject6, _templateObject7, _templateObject8, _templateObject9, _templateObject10, _templateObject11, _templateObject12, _templateObject13, _templateObject14, _templateObject15, _templateObject16, _templateObject17, _templateObject18, _templateObject19, _templateObject20, _templateObject21, _templateObject22, _templateObject23, _templateObject24, _templateObject25, _templateObject26, _templateObject27, _templateObject28, _templateObject29, _templateObject30, _templateObject31, _templateObject32, _templateObject33, _templateObject34, _templateObject35, _templateObject36, _templateObject37;
 
@@ -10106,10 +9656,7 @@ function maximizeRequirementsCached(requirements) {
 
 /***/ }),
 
-/***/ "./node_modules/libram/dist/mood.js":
-/*!******************************************!*\
-  !*** ./node_modules/libram/dist/mood.js ***!
-  \******************************************/
+/***/ 6115:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -10117,42 +9664,42 @@ function maximizeRequirementsCached(requirements) {
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-__webpack_require__(/*! core-js/modules/es.reflect.construct.js */ "./node_modules/core-js/modules/es.reflect.construct.js");
+__webpack_require__(3080);
 
-__webpack_require__(/*! core-js/modules/es.array.slice.js */ "./node_modules/core-js/modules/es.array.slice.js");
+__webpack_require__(288);
 
-__webpack_require__(/*! core-js/modules/es.object.to-string.js */ "./node_modules/core-js/modules/es.object.to-string.js");
+__webpack_require__(6394);
 
-__webpack_require__(/*! core-js/modules/es.symbol.js */ "./node_modules/core-js/modules/es.symbol.js");
+__webpack_require__(2004);
 
-__webpack_require__(/*! core-js/modules/es.symbol.description.js */ "./node_modules/core-js/modules/es.symbol.description.js");
+__webpack_require__(8407);
 
-__webpack_require__(/*! core-js/modules/es.array.iterator.js */ "./node_modules/core-js/modules/es.array.iterator.js");
+__webpack_require__(5677);
 
-__webpack_require__(/*! core-js/modules/es.array.filter.js */ "./node_modules/core-js/modules/es.array.filter.js");
+__webpack_require__(8833);
 
-__webpack_require__(/*! core-js/modules/es.object.get-own-property-descriptors.js */ "./node_modules/core-js/modules/es.object.get-own-property-descriptors.js");
+__webpack_require__(9174);
 
 Object.defineProperty(exports, "__esModule", ({
   value: true
 }));
 exports.Mood = exports.MagicalSausages = exports.OscusSoda = exports.MpSource = void 0;
 
-__webpack_require__(/*! core-js/modules/es.array.find.js */ "./node_modules/core-js/modules/es.array.find.js");
+__webpack_require__(7715);
 
-__webpack_require__(/*! core-js/modules/es.array.includes.js */ "./node_modules/core-js/modules/es.array.includes.js");
+__webpack_require__(2076);
 
-__webpack_require__(/*! core-js/modules/es.string.includes.js */ "./node_modules/core-js/modules/es.string.includes.js");
+__webpack_require__(7723);
 
-var _kolmafia = __webpack_require__(/*! kolmafia */ "kolmafia");
+var _kolmafia = __webpack_require__(1664);
 
-var _lib = __webpack_require__(/*! ./lib */ "./node_modules/libram/dist/lib.js");
+var _lib = __webpack_require__(3311);
 
-var _property = __webpack_require__(/*! ./property */ "./node_modules/libram/dist/property.js");
+var _property = __webpack_require__(1347);
 
-var _templateString = __webpack_require__(/*! ./template-string */ "./node_modules/libram/dist/template-string.js");
+var _templateString = __webpack_require__(678);
 
-var _utils = __webpack_require__(/*! ./utils */ "./node_modules/libram/dist/utils.js");
+var _utils = __webpack_require__(8588);
 
 var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5, _templateObject6, _templateObject7, _templateObject8, _templateObject9, _templateObject10, _templateObject11, _templateObject12;
 
@@ -10920,20 +10467,17 @@ _defineProperty(Mood, "defaultOptions", {
 
 /***/ }),
 
-/***/ "./node_modules/libram/dist/property.js":
-/*!**********************************************!*\
-  !*** ./node_modules/libram/dist/property.js ***!
-  \**********************************************/
+/***/ 1347:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
 
-__webpack_require__(/*! core-js/modules/es.symbol.js */ "./node_modules/core-js/modules/es.symbol.js");
+__webpack_require__(2004);
 
-__webpack_require__(/*! core-js/modules/es.symbol.description.js */ "./node_modules/core-js/modules/es.symbol.description.js");
+__webpack_require__(8407);
 
-__webpack_require__(/*! core-js/modules/es.array.slice.js */ "./node_modules/core-js/modules/es.array.slice.js");
+__webpack_require__(288);
 
 Object.defineProperty(exports, "__esModule", ({
   value: true
@@ -10947,25 +10491,25 @@ exports.withChoices = withChoices;
 exports.withChoice = withChoice;
 exports.PropertiesManager = exports.getThrall = exports.getStat = exports.getSlot = exports.getSkill = exports.getServant = exports.getPhylum = exports.getMonster = exports.getLocation = exports.getItem = exports.getFamiliar = exports.getElement = exports.getEffect = exports.getCoinmaster = exports.getClass = exports.getBounty = exports.getNumber = exports.getBoolean = exports.getCommaSeparated = exports.getString = void 0;
 
-__webpack_require__(/*! core-js/modules/es.regexp.exec.js */ "./node_modules/core-js/modules/es.regexp.exec.js");
+__webpack_require__(2322);
 
-__webpack_require__(/*! core-js/modules/es.string.split.js */ "./node_modules/core-js/modules/es.string.split.js");
+__webpack_require__(9268);
 
-__webpack_require__(/*! core-js/modules/es.object.to-string.js */ "./node_modules/core-js/modules/es.object.to-string.js");
+__webpack_require__(6394);
 
-__webpack_require__(/*! core-js/modules/es.regexp.to-string.js */ "./node_modules/core-js/modules/es.regexp.to-string.js");
+__webpack_require__(4669);
 
-__webpack_require__(/*! core-js/modules/es.object.entries.js */ "./node_modules/core-js/modules/es.object.entries.js");
+__webpack_require__(6737);
 
-__webpack_require__(/*! core-js/modules/es.array.iterator.js */ "./node_modules/core-js/modules/es.array.iterator.js");
+__webpack_require__(5677);
 
-__webpack_require__(/*! core-js/modules/es.object.from-entries.js */ "./node_modules/core-js/modules/es.object.from-entries.js");
+__webpack_require__(5809);
 
-__webpack_require__(/*! core-js/modules/es.array.map.js */ "./node_modules/core-js/modules/es.array.map.js");
+__webpack_require__(2070);
 
-var _kolmafia = __webpack_require__(/*! kolmafia */ "kolmafia");
+var _kolmafia = __webpack_require__(1664);
 
-var _propertyTyping = __webpack_require__(/*! ./propertyTyping */ "./node_modules/libram/dist/propertyTyping.js");
+var _propertyTyping = __webpack_require__(9412);
 
 function _classCallCheck(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
@@ -11275,10 +10819,7 @@ exports.PropertiesManager = PropertiesManager;
 
 /***/ }),
 
-/***/ "./node_modules/libram/dist/propertyTyping.js":
-/*!****************************************************!*\
-  !*** ./node_modules/libram/dist/propertyTyping.js ***!
-  \****************************************************/
+/***/ 9412:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -11295,9 +10836,9 @@ exports.isMonsterProperty = isMonsterProperty;
 exports.isFamiliarProperty = isFamiliarProperty;
 exports.isStatProperty = isStatProperty;
 
-__webpack_require__(/*! core-js/modules/es.array.includes.js */ "./node_modules/core-js/modules/es.array.includes.js");
+__webpack_require__(2076);
 
-__webpack_require__(/*! core-js/modules/es.string.ends-with.js */ "./node_modules/core-js/modules/es.string.ends-with.js");
+__webpack_require__(3223);
 
 function isNumericProperty(property, value) {
   return !isNaN(Number(value)) && !isNaN(parseFloat(value));
@@ -11344,24 +10885,21 @@ function isStatProperty(property) {
 
 /***/ }),
 
-/***/ "./node_modules/libram/dist/resources/2009/Bandersnatch.js":
-/*!*****************************************************************!*\
-  !*** ./node_modules/libram/dist/resources/2009/Bandersnatch.js ***!
-  \*****************************************************************/
+/***/ 5661:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
 
-__webpack_require__(/*! core-js/modules/es.array.slice.js */ "./node_modules/core-js/modules/es.array.slice.js");
+__webpack_require__(288);
 
-__webpack_require__(/*! core-js/modules/es.object.to-string.js */ "./node_modules/core-js/modules/es.object.to-string.js");
+__webpack_require__(6394);
 
-__webpack_require__(/*! core-js/modules/es.symbol.js */ "./node_modules/core-js/modules/es.symbol.js");
+__webpack_require__(2004);
 
-__webpack_require__(/*! core-js/modules/es.symbol.description.js */ "./node_modules/core-js/modules/es.symbol.description.js");
+__webpack_require__(8407);
 
-__webpack_require__(/*! core-js/modules/es.array.iterator.js */ "./node_modules/core-js/modules/es.array.iterator.js");
+__webpack_require__(5677);
 
 Object.defineProperty(exports, "__esModule", ({
   value: true
@@ -11375,17 +10913,17 @@ exports.canRunaway = canRunaway;
 exports.prepareRunaway = prepareRunaway;
 exports.familiar = void 0;
 
-__webpack_require__(/*! core-js/modules/es.array.includes.js */ "./node_modules/core-js/modules/es.array.includes.js");
+__webpack_require__(2076);
 
-__webpack_require__(/*! core-js/modules/es.string.includes.js */ "./node_modules/core-js/modules/es.string.includes.js");
+__webpack_require__(7723);
 
-var _kolmafia = __webpack_require__(/*! kolmafia */ "kolmafia");
+var _kolmafia = __webpack_require__(1664);
 
-var _property = __webpack_require__(/*! ../../property */ "./node_modules/libram/dist/property.js");
+var _property = __webpack_require__(1347);
 
-var _templateString = __webpack_require__(/*! ../../template-string */ "./node_modules/libram/dist/template-string.js");
+var _templateString = __webpack_require__(678);
 
-var _lib = __webpack_require__(/*! ../../lib */ "./node_modules/libram/dist/lib.js");
+var _lib = __webpack_require__(3311);
 
 var _templateObject, _templateObject2, _templateObject3;
 
@@ -11592,16 +11130,13 @@ function prepareRunaway(songsToRemove) {
 
 /***/ }),
 
-/***/ "./node_modules/libram/dist/resources/2009/SpookyPutty.js":
-/*!****************************************************************!*\
-  !*** ./node_modules/libram/dist/resources/2009/SpookyPutty.js ***!
-  \****************************************************************/
+/***/ 7235:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
 
-__webpack_require__(/*! core-js/modules/es.array.slice.js */ "./node_modules/core-js/modules/es.array.slice.js");
+__webpack_require__(288);
 
 Object.defineProperty(exports, "__esModule", ({
   value: true
@@ -11613,13 +11148,13 @@ exports.getSpookyPuttySheetMonster = getSpookyPuttySheetMonster;
 exports.useSpookyPuttySheet = useSpookyPuttySheet;
 exports.sheet = void 0;
 
-var _kolmafia = __webpack_require__(/*! kolmafia */ "kolmafia");
+var _kolmafia = __webpack_require__(1664);
 
-var _lib = __webpack_require__(/*! ../../lib */ "./node_modules/libram/dist/lib.js");
+var _lib = __webpack_require__(3311);
 
-var _property = __webpack_require__(/*! ../../property */ "./node_modules/libram/dist/property.js");
+var _property = __webpack_require__(1347);
 
-var _templateString = __webpack_require__(/*! ../../template-string */ "./node_modules/libram/dist/template-string.js");
+var _templateString = __webpack_require__(678);
 
 var _templateObject;
 
@@ -11664,16 +11199,13 @@ function useSpookyPuttySheet() {
 
 /***/ }),
 
-/***/ "./node_modules/libram/dist/resources/2011/ObtuseAngel.js":
-/*!****************************************************************!*\
-  !*** ./node_modules/libram/dist/resources/2011/ObtuseAngel.js ***!
-  \****************************************************************/
+/***/ 3758:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
 
-__webpack_require__(/*! core-js/modules/es.array.slice.js */ "./node_modules/core-js/modules/es.array.slice.js");
+__webpack_require__(288);
 
 Object.defineProperty(exports, "__esModule", ({
   value: true
@@ -11687,15 +11219,15 @@ exports.canUseBadlyRomanticArrow = canUseBadlyRomanticArrow;
 exports.getBadlyRomanticArrowMonster = getBadlyRomanticArrowMonster;
 exports.BadlyRomanticArrow = exports.familiar = void 0;
 
-var _kolmafia = __webpack_require__(/*! kolmafia */ "kolmafia");
+var _kolmafia = __webpack_require__(1664);
 
-var _Copier = __webpack_require__(/*! ../../Copier */ "./node_modules/libram/dist/Copier.js");
+var _Copier = __webpack_require__(3425);
 
-var _lib = __webpack_require__(/*! ../../lib */ "./node_modules/libram/dist/lib.js");
+var _lib = __webpack_require__(3311);
 
-var _property = __webpack_require__(/*! ../../property */ "./node_modules/libram/dist/property.js");
+var _property = __webpack_require__(1347);
 
-var _templateString = __webpack_require__(/*! ../../template-string */ "./node_modules/libram/dist/template-string.js");
+var _templateString = __webpack_require__(678);
 
 var _templateObject;
 
@@ -11783,16 +11315,13 @@ exports.BadlyRomanticArrow = BadlyRomanticArrow;
 
 /***/ }),
 
-/***/ "./node_modules/libram/dist/resources/2012/RainDoh.js":
-/*!************************************************************!*\
-  !*** ./node_modules/libram/dist/resources/2012/RainDoh.js ***!
-  \************************************************************/
+/***/ 4945:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
 
-__webpack_require__(/*! core-js/modules/es.array.slice.js */ "./node_modules/core-js/modules/es.array.slice.js");
+__webpack_require__(288);
 
 Object.defineProperty(exports, "__esModule", ({
   value: true
@@ -11803,13 +11332,13 @@ exports.getRainDohBlackBoxMonster = getRainDohBlackBoxMonster;
 exports.useRainDohBlackBox = useRainDohBlackBox;
 exports.box = void 0;
 
-var _kolmafia = __webpack_require__(/*! kolmafia */ "kolmafia");
+var _kolmafia = __webpack_require__(1664);
 
-var _lib = __webpack_require__(/*! ../../lib */ "./node_modules/libram/dist/lib.js");
+var _lib = __webpack_require__(3311);
 
-var _property = __webpack_require__(/*! ../../property */ "./node_modules/libram/dist/property.js");
+var _property = __webpack_require__(1347);
 
-var _templateString = __webpack_require__(/*! ../../template-string */ "./node_modules/libram/dist/template-string.js");
+var _templateString = __webpack_require__(678);
 
 var _templateObject;
 
@@ -11848,16 +11377,13 @@ function useRainDohBlackBox() {
 
 /***/ }),
 
-/***/ "./node_modules/libram/dist/resources/2014/WinterGarden.js":
-/*!*****************************************************************!*\
-  !*** ./node_modules/libram/dist/resources/2014/WinterGarden.js ***!
-  \*****************************************************************/
+/***/ 5915:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
 
-__webpack_require__(/*! core-js/modules/es.array.slice.js */ "./node_modules/core-js/modules/es.array.slice.js");
+__webpack_require__(288);
 
 Object.defineProperty(exports, "__esModule", ({
   value: true
@@ -11869,13 +11395,13 @@ exports.couldUseUnfinishedIceSculpture = couldUseUnfinishedIceSculpture;
 exports.getUnfinishedIceSculptureMonster = getUnfinishedIceSculptureMonster;
 exports.UnfinishedIceSculpture = void 0;
 
-var _Copier = __webpack_require__(/*! ../../Copier */ "./node_modules/libram/dist/Copier.js");
+var _Copier = __webpack_require__(3425);
 
-var _property = __webpack_require__(/*! ../../property */ "./node_modules/libram/dist/property.js");
+var _property = __webpack_require__(1347);
 
-var _lib = __webpack_require__(/*! ../../lib */ "./node_modules/libram/dist/lib.js");
+var _lib = __webpack_require__(3311);
 
-var _templateString = __webpack_require__(/*! ../../template-string */ "./node_modules/libram/dist/template-string.js");
+var _templateString = __webpack_require__(678);
 
 var _templateObject, _templateObject2, _templateObject3, _templateObject4;
 
@@ -11922,16 +11448,13 @@ exports.UnfinishedIceSculpture = UnfinishedIceSculpture;
 
 /***/ }),
 
-/***/ "./node_modules/libram/dist/resources/2015/ChateauMantegna.js":
-/*!********************************************************************!*\
-  !*** ./node_modules/libram/dist/resources/2015/ChateauMantegna.js ***!
-  \********************************************************************/
+/***/ 7975:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
 
-__webpack_require__(/*! core-js/modules/es.array.slice.js */ "./node_modules/core-js/modules/es.array.slice.js");
+__webpack_require__(288);
 
 Object.defineProperty(exports, "__esModule", ({
   value: true
@@ -11947,17 +11470,17 @@ exports.changeDesk = changeDesk;
 exports.changeCeiling = changeCeiling;
 exports.changeNightstand = changeNightstand;
 
-__webpack_require__(/*! core-js/modules/es.array.find.js */ "./node_modules/core-js/modules/es.array.find.js");
+__webpack_require__(7715);
 
-__webpack_require__(/*! core-js/modules/es.array.includes.js */ "./node_modules/core-js/modules/es.array.includes.js");
+__webpack_require__(2076);
 
-__webpack_require__(/*! core-js/modules/es.string.includes.js */ "./node_modules/core-js/modules/es.string.includes.js");
+__webpack_require__(7723);
 
-var _kolmafia = __webpack_require__(/*! kolmafia */ "kolmafia");
+var _kolmafia = __webpack_require__(1664);
 
-var _templateString = __webpack_require__(/*! ../../template-string */ "./node_modules/libram/dist/template-string.js");
+var _templateString = __webpack_require__(678);
 
-var _property = __webpack_require__(/*! ../../property */ "./node_modules/libram/dist/property.js");
+var _property = __webpack_require__(1347);
 
 var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5, _templateObject6;
 
@@ -12035,18 +11558,15 @@ function changeNightstand(nightstand) {
 
 /***/ }),
 
-/***/ "./node_modules/libram/dist/resources/2016/SourceTerminal.js":
-/*!*******************************************************************!*\
-  !*** ./node_modules/libram/dist/resources/2016/SourceTerminal.js ***!
-  \*******************************************************************/
+/***/ 1577:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
 
-__webpack_require__(/*! core-js/modules/es.symbol.js */ "./node_modules/core-js/modules/es.symbol.js");
+__webpack_require__(2004);
 
-__webpack_require__(/*! core-js/modules/es.symbol.description.js */ "./node_modules/core-js/modules/es.symbol.description.js");
+__webpack_require__(8407);
 
 Object.defineProperty(exports, "__esModule", ({
   value: true
@@ -12072,37 +11592,37 @@ exports.getEnhanceUses = getEnhanceUses;
 exports.getPortscanUses = getPortscanUses;
 exports.Digitize = exports.Items = exports.Skills = exports.RolloverBuffs = exports.Buffs = exports.item = void 0;
 
-__webpack_require__(/*! core-js/modules/es.array.includes.js */ "./node_modules/core-js/modules/es.array.includes.js");
+__webpack_require__(2076);
 
-__webpack_require__(/*! core-js/modules/es.string.includes.js */ "./node_modules/core-js/modules/es.string.includes.js");
+__webpack_require__(7723);
 
-__webpack_require__(/*! core-js/modules/es.object.values.js */ "./node_modules/core-js/modules/es.object.values.js");
+__webpack_require__(9628);
 
-__webpack_require__(/*! core-js/modules/es.array.slice.js */ "./node_modules/core-js/modules/es.array.slice.js");
+__webpack_require__(288);
 
-__webpack_require__(/*! core-js/modules/es.array.map.js */ "./node_modules/core-js/modules/es.array.map.js");
+__webpack_require__(2070);
 
-__webpack_require__(/*! core-js/modules/es.array.filter.js */ "./node_modules/core-js/modules/es.array.filter.js");
+__webpack_require__(8833);
 
-__webpack_require__(/*! core-js/modules/es.array.iterator.js */ "./node_modules/core-js/modules/es.array.iterator.js");
+__webpack_require__(5677);
 
-__webpack_require__(/*! core-js/modules/es.object.to-string.js */ "./node_modules/core-js/modules/es.object.to-string.js");
+__webpack_require__(6394);
 
-__webpack_require__(/*! core-js/modules/es.regexp.exec.js */ "./node_modules/core-js/modules/es.regexp.exec.js");
+__webpack_require__(2322);
 
-__webpack_require__(/*! core-js/modules/es.string.split.js */ "./node_modules/core-js/modules/es.string.split.js");
+__webpack_require__(9268);
 
-var _kolmafia = __webpack_require__(/*! kolmafia */ "kolmafia");
+var _kolmafia = __webpack_require__(1664);
 
-var _isEqual = _interopRequireDefault(__webpack_require__(/*! lodash/isEqual */ "./node_modules/lodash/isEqual.js"));
+var _isEqual = _interopRequireDefault(__webpack_require__(7120));
 
-var _Copier = __webpack_require__(/*! ../../Copier */ "./node_modules/libram/dist/Copier.js");
+var _Copier = __webpack_require__(3425);
 
-var _lib = __webpack_require__(/*! ../../lib */ "./node_modules/libram/dist/lib.js");
+var _lib = __webpack_require__(3311);
 
-var _property = __webpack_require__(/*! ../../property */ "./node_modules/libram/dist/property.js");
+var _property = __webpack_require__(1347);
 
-var _templateString = __webpack_require__(/*! ../../template-string */ "./node_modules/libram/dist/template-string.js");
+var _templateString = __webpack_require__(678);
 
 var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5, _templateObject6, _templateObject7, _templateObject8, _templateObject9, _templateObject10, _templateObject11, _templateObject12, _templateObject13, _templateObject14, _templateObject15, _templateObject16, _templateObject17, _templateObject18, _templateObject19, _templateObject20, _templateObject21, _templateObject22, _templateObject23, _templateObject24, _templateObject25, _templateObject26, _templateObject27;
 
@@ -12482,16 +12002,13 @@ function getPortscanUses() {
 
 /***/ }),
 
-/***/ "./node_modules/libram/dist/resources/2016/Witchess.js":
-/*!*************************************************************!*\
-  !*** ./node_modules/libram/dist/resources/2016/Witchess.js ***!
-  \*************************************************************/
+/***/ 7271:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
 
-__webpack_require__(/*! core-js/modules/es.array.slice.js */ "./node_modules/core-js/modules/es.array.slice.js");
+__webpack_require__(288);
 
 Object.defineProperty(exports, "__esModule", ({
   value: true
@@ -12501,19 +12018,19 @@ exports.fightsDone = fightsDone;
 exports.fightPiece = fightPiece;
 exports.pieces = exports.item = void 0;
 
-__webpack_require__(/*! core-js/modules/es.array.includes.js */ "./node_modules/core-js/modules/es.array.includes.js");
+__webpack_require__(2076);
 
-__webpack_require__(/*! core-js/modules/es.string.includes.js */ "./node_modules/core-js/modules/es.string.includes.js");
+__webpack_require__(7723);
 
-__webpack_require__(/*! core-js/modules/es.array.concat.js */ "./node_modules/core-js/modules/es.array.concat.js");
+__webpack_require__(1646);
 
-var _kolmafia = __webpack_require__(/*! kolmafia */ "kolmafia");
+var _kolmafia = __webpack_require__(1664);
 
-var _lib = __webpack_require__(/*! ../../lib */ "./node_modules/libram/dist/lib.js");
+var _lib = __webpack_require__(3311);
 
-var _property = __webpack_require__(/*! ../../property */ "./node_modules/libram/dist/property.js");
+var _property = __webpack_require__(1347);
 
-var _templateString = __webpack_require__(/*! ../../template-string */ "./node_modules/libram/dist/template-string.js");
+var _templateString = __webpack_require__(678);
 
 var _templateObject;
 
@@ -12563,16 +12080,13 @@ function fightPiece(piece) {
 
 /***/ }),
 
-/***/ "./node_modules/libram/dist/resources/2017/TunnelOfLove.js":
-/*!*****************************************************************!*\
-  !*** ./node_modules/libram/dist/resources/2017/TunnelOfLove.js ***!
-  \*****************************************************************/
+/***/ 6255:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
 
-__webpack_require__(/*! core-js/modules/es.array.slice.js */ "./node_modules/core-js/modules/es.array.slice.js");
+__webpack_require__(288);
 
 Object.defineProperty(exports, "__esModule", ({
   value: true
@@ -12586,15 +12100,15 @@ exports.getLovEnamorangMonster = getLovEnamorangMonster;
 exports.fightAll = fightAll;
 exports.LovEnamorang = void 0;
 
-var _kolmafia = __webpack_require__(/*! kolmafia */ "kolmafia");
+var _kolmafia = __webpack_require__(1664);
 
-var _Copier = __webpack_require__(/*! ../../Copier */ "./node_modules/libram/dist/Copier.js");
+var _Copier = __webpack_require__(3425);
 
-var _lib = __webpack_require__(/*! ../../lib */ "./node_modules/libram/dist/lib.js");
+var _lib = __webpack_require__(3311);
 
-var _property = __webpack_require__(/*! ../../property */ "./node_modules/libram/dist/property.js");
+var _property = __webpack_require__(1347);
 
-var _templateString = __webpack_require__(/*! ../../template-string */ "./node_modules/libram/dist/template-string.js");
+var _templateString = __webpack_require__(678);
 
 var _templateObject, _templateObject2;
 
@@ -12718,16 +12232,13 @@ function fightAll(equipment, effect, extra) {
 
 /***/ }),
 
-/***/ "./node_modules/libram/dist/resources/2018/SongBoom.js":
-/*!*************************************************************!*\
-  !*** ./node_modules/libram/dist/resources/2018/SongBoom.js ***!
-  \*************************************************************/
+/***/ 2211:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
 
-__webpack_require__(/*! core-js/modules/es.array.slice.js */ "./node_modules/core-js/modules/es.array.slice.js");
+__webpack_require__(288);
 
 Object.defineProperty(exports, "__esModule", ({
   value: true
@@ -12739,17 +12250,17 @@ exports.setSong = setSong;
 exports.dropProgress = dropProgress;
 exports.songBoomSongs = exports.item = void 0;
 
-__webpack_require__(/*! core-js/modules/es.array.iterator.js */ "./node_modules/core-js/modules/es.array.iterator.js");
+__webpack_require__(5677);
 
-__webpack_require__(/*! core-js/modules/es.object.to-string.js */ "./node_modules/core-js/modules/es.object.to-string.js");
+__webpack_require__(6394);
 
-var _kolmafia = __webpack_require__(/*! kolmafia */ "kolmafia");
+var _kolmafia = __webpack_require__(1664);
 
-var _lib = __webpack_require__(/*! ../../lib */ "./node_modules/libram/dist/lib.js");
+var _lib = __webpack_require__(3311);
 
-var _property = __webpack_require__(/*! ../../property */ "./node_modules/libram/dist/property.js");
+var _property = __webpack_require__(1347);
 
-var _templateString = __webpack_require__(/*! ../../template-string */ "./node_modules/libram/dist/template-string.js");
+var _templateString = __webpack_require__(678);
 
 var _templateObject;
 
@@ -12824,16 +12335,13 @@ function dropProgress() {
 
 /***/ }),
 
-/***/ "./node_modules/libram/dist/resources/2020/Guzzlr.js":
-/*!***********************************************************!*\
-  !*** ./node_modules/libram/dist/resources/2020/Guzzlr.js ***!
-  \***********************************************************/
+/***/ 5352:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
 
-__webpack_require__(/*! core-js/modules/es.array.slice.js */ "./node_modules/core-js/modules/es.array.slice.js");
+__webpack_require__(288);
 
 Object.defineProperty(exports, "__esModule", ({
   value: true
@@ -12862,13 +12370,13 @@ exports.havePlatinumBooze = havePlatinumBooze;
 exports.haveBooze = haveBooze;
 exports.Cocktails = exports.item = void 0;
 
-var _kolmafia = __webpack_require__(/*! kolmafia */ "kolmafia");
+var _kolmafia = __webpack_require__(1664);
 
-var _lib = __webpack_require__(/*! ../../lib */ "./node_modules/libram/dist/lib.js");
+var _lib = __webpack_require__(3311);
 
-var _property = __webpack_require__(/*! ../../property */ "./node_modules/libram/dist/property.js");
+var _property = __webpack_require__(1347);
 
-var _templateString = __webpack_require__(/*! ../../template-string */ "./node_modules/libram/dist/template-string.js");
+var _templateString = __webpack_require__(678);
 
 var _templateObject, _templateObject2, _templateObject3;
 
@@ -13098,10 +12606,7 @@ function haveBooze() {
 
 /***/ }),
 
-/***/ "./node_modules/libram/dist/resources/index.js":
-/*!*****************************************************!*\
-  !*** ./node_modules/libram/dist/resources/index.js ***!
-  \*****************************************************/
+/***/ 1895:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -13109,9 +12614,9 @@ function haveBooze() {
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-__webpack_require__(/*! core-js/modules/es.array.iterator.js */ "./node_modules/core-js/modules/es.array.iterator.js");
+__webpack_require__(5677);
 
-__webpack_require__(/*! core-js/modules/es.object.to-string.js */ "./node_modules/core-js/modules/es.object.to-string.js");
+__webpack_require__(6394);
 
 Object.defineProperty(exports, "__esModule", ({
   value: true
@@ -13131,51 +12636,51 @@ var _exportNames = {
 };
 exports.Guzzlr = exports.Witchess = exports.WinterGarden = exports.TunnelOfLove = exports.SpookyPutty = exports.SourceTerminal = exports.SongBoom = exports.RainDoh = exports.ObtuseAngel = exports.ChateauMantegna = exports.Bandersnatch = void 0;
 
-var _Bandersnatch = _interopRequireWildcard(__webpack_require__(/*! ./2009/Bandersnatch */ "./node_modules/libram/dist/resources/2009/Bandersnatch.js"));
+var _Bandersnatch = _interopRequireWildcard(__webpack_require__(5661));
 
 exports.Bandersnatch = _Bandersnatch;
 
-var _ChateauMantegna = _interopRequireWildcard(__webpack_require__(/*! ./2015/ChateauMantegna */ "./node_modules/libram/dist/resources/2015/ChateauMantegna.js"));
+var _ChateauMantegna = _interopRequireWildcard(__webpack_require__(7975));
 
 exports.ChateauMantegna = _ChateauMantegna;
 
-var _ObtuseAngel = _interopRequireWildcard(__webpack_require__(/*! ./2011/ObtuseAngel */ "./node_modules/libram/dist/resources/2011/ObtuseAngel.js"));
+var _ObtuseAngel = _interopRequireWildcard(__webpack_require__(3758));
 
 exports.ObtuseAngel = _ObtuseAngel;
 
-var _RainDoh = _interopRequireWildcard(__webpack_require__(/*! ./2012/RainDoh */ "./node_modules/libram/dist/resources/2012/RainDoh.js"));
+var _RainDoh = _interopRequireWildcard(__webpack_require__(4945));
 
 exports.RainDoh = _RainDoh;
 
-var _SongBoom = _interopRequireWildcard(__webpack_require__(/*! ./2018/SongBoom */ "./node_modules/libram/dist/resources/2018/SongBoom.js"));
+var _SongBoom = _interopRequireWildcard(__webpack_require__(2211));
 
 exports.SongBoom = _SongBoom;
 
-var _SourceTerminal = _interopRequireWildcard(__webpack_require__(/*! ./2016/SourceTerminal */ "./node_modules/libram/dist/resources/2016/SourceTerminal.js"));
+var _SourceTerminal = _interopRequireWildcard(__webpack_require__(1577));
 
 exports.SourceTerminal = _SourceTerminal;
 
-var _SpookyPutty = _interopRequireWildcard(__webpack_require__(/*! ./2009/SpookyPutty */ "./node_modules/libram/dist/resources/2009/SpookyPutty.js"));
+var _SpookyPutty = _interopRequireWildcard(__webpack_require__(7235));
 
 exports.SpookyPutty = _SpookyPutty;
 
-var _TunnelOfLove = _interopRequireWildcard(__webpack_require__(/*! ./2017/TunnelOfLove */ "./node_modules/libram/dist/resources/2017/TunnelOfLove.js"));
+var _TunnelOfLove = _interopRequireWildcard(__webpack_require__(6255));
 
 exports.TunnelOfLove = _TunnelOfLove;
 
-var _WinterGarden = _interopRequireWildcard(__webpack_require__(/*! ./2014/WinterGarden */ "./node_modules/libram/dist/resources/2014/WinterGarden.js"));
+var _WinterGarden = _interopRequireWildcard(__webpack_require__(5915));
 
 exports.WinterGarden = _WinterGarden;
 
-var _Witchess = _interopRequireWildcard(__webpack_require__(/*! ./2016/Witchess */ "./node_modules/libram/dist/resources/2016/Witchess.js"));
+var _Witchess = _interopRequireWildcard(__webpack_require__(7271));
 
 exports.Witchess = _Witchess;
 
-var _Guzzlr = _interopRequireWildcard(__webpack_require__(/*! ./2020/Guzzlr */ "./node_modules/libram/dist/resources/2020/Guzzlr.js"));
+var _Guzzlr = _interopRequireWildcard(__webpack_require__(5352));
 
 exports.Guzzlr = _Guzzlr;
 
-var _puttyLikes = __webpack_require__(/*! ./putty-likes */ "./node_modules/libram/dist/resources/putty-likes.js");
+var _puttyLikes = __webpack_require__(5231);
 
 Object.keys(_puttyLikes).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
@@ -13241,10 +12746,7 @@ function _interopRequireWildcard(obj, nodeInterop) {
 
 /***/ }),
 
-/***/ "./node_modules/libram/dist/resources/putty-likes.js":
-/*!***********************************************************!*\
-  !*** ./node_modules/libram/dist/resources/putty-likes.js ***!
-  \***********************************************************/
+/***/ 5231:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -13258,11 +12760,11 @@ exports.couldUseRainDohBlackBox = couldUseRainDohBlackBox;
 exports.couldUseSpookyPuttySheet = couldUseSpookyPuttySheet;
 exports.SpookyPuttySheet = exports.RainDohBlackBox = void 0;
 
-var _Copier = __webpack_require__(/*! ../Copier */ "./node_modules/libram/dist/Copier.js");
+var _Copier = __webpack_require__(3425);
 
-var _SpookyPutty = __webpack_require__(/*! ./2009/SpookyPutty */ "./node_modules/libram/dist/resources/2009/SpookyPutty.js");
+var _SpookyPutty = __webpack_require__(7235);
 
-var _RainDoh = __webpack_require__(/*! ./2012/RainDoh */ "./node_modules/libram/dist/resources/2012/RainDoh.js");
+var _RainDoh = __webpack_require__(4945);
 
 function getTotalPuttyLikeCopiesMade() {
   return (0, _SpookyPutty.getSpookyPuttySheetCopiesMade)() + (0, _RainDoh.getRainDohBlackBoxCopiesMade)();
@@ -13302,10 +12804,7 @@ exports.SpookyPuttySheet = SpookyPuttySheet;
 
 /***/ }),
 
-/***/ "./node_modules/libram/dist/since.js":
-/*!*******************************************!*\
-  !*** ./node_modules/libram/dist/since.js ***!
-  \*******************************************/
+/***/ 1157:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -13313,13 +12812,13 @@ exports.SpookyPuttySheet = SpookyPuttySheet;
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-__webpack_require__(/*! core-js/modules/es.object.to-string.js */ "./node_modules/core-js/modules/es.object.to-string.js");
+__webpack_require__(6394);
 
-__webpack_require__(/*! core-js/modules/es.regexp.to-string.js */ "./node_modules/core-js/modules/es.regexp.to-string.js");
+__webpack_require__(4669);
 
-__webpack_require__(/*! core-js/modules/es.reflect.construct.js */ "./node_modules/core-js/modules/es.reflect.construct.js");
+__webpack_require__(3080);
 
-__webpack_require__(/*! core-js/modules/es.array.iterator.js */ "./node_modules/core-js/modules/es.array.iterator.js");
+__webpack_require__(5677);
 
 Object.defineProperty(exports, "__esModule", ({
   value: true
@@ -13328,11 +12827,11 @@ exports.sinceKolmafiaRevision = sinceKolmafiaRevision;
 exports.sinceKolmafiaVersion = sinceKolmafiaVersion;
 exports.KolmafiaVersionError = void 0;
 
-__webpack_require__(/*! core-js/modules/es.array.concat.js */ "./node_modules/core-js/modules/es.array.concat.js");
+__webpack_require__(1646);
 
-__webpack_require__(/*! core-js/modules/es.regexp.exec.js */ "./node_modules/core-js/modules/es.regexp.exec.js");
+__webpack_require__(2322);
 
-var _kolmafia = __webpack_require__(/*! kolmafia */ "kolmafia");
+var _kolmafia = __webpack_require__(1664);
 
 function _classCallCheck(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
@@ -13595,10 +13094,7 @@ function sinceKolmafiaVersion(majorVersion, minorVersion) {
 
 /***/ }),
 
-/***/ "./node_modules/libram/dist/template-string.js":
-/*!*****************************************************!*\
-  !*** ./node_modules/libram/dist/template-string.js ***!
-  \*****************************************************/
+/***/ 678:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -13609,11 +13105,11 @@ Object.defineProperty(exports, "__esModule", ({
 }));
 exports.$thralls = exports.$thrall = exports.$stats = exports.$stat = exports.$slots = exports.$slot = exports.$skills = exports.$skill = exports.$servants = exports.$servant = exports.$phyla = exports.$phylum = exports.$monsters = exports.$monster = exports.$locations = exports.$location = exports.$items = exports.$item = exports.$familiars = exports.$familiar = exports.$elements = exports.$element = exports.$effects = exports.$effect = exports.$coinmasters = exports.$coinmaster = exports.$classes = exports.$class = exports.$bounties = exports.$bounty = void 0;
 
-__webpack_require__(/*! core-js/modules/es.array.concat.js */ "./node_modules/core-js/modules/es.array.concat.js");
+__webpack_require__(1646);
 
-__webpack_require__(/*! core-js/modules/es.regexp.exec.js */ "./node_modules/core-js/modules/es.regexp.exec.js");
+__webpack_require__(2322);
 
-__webpack_require__(/*! core-js/modules/es.string.split.js */ "./node_modules/core-js/modules/es.string.split.js");
+__webpack_require__(9268);
 
 var concatTemplateString = function concatTemplateString(literals) {
   for (var _len = arguments.length, placeholders = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
@@ -13910,18 +13406,15 @@ exports.$thralls = $thralls;
 
 /***/ }),
 
-/***/ "./node_modules/libram/dist/utils.js":
-/*!*******************************************!*\
-  !*** ./node_modules/libram/dist/utils.js ***!
-  \*******************************************/
+/***/ 8588:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 
 
-__webpack_require__(/*! core-js/modules/es.symbol.js */ "./node_modules/core-js/modules/es.symbol.js");
+__webpack_require__(2004);
 
-__webpack_require__(/*! core-js/modules/es.symbol.description.js */ "./node_modules/core-js/modules/es.symbol.description.js");
+__webpack_require__(8407);
 
 Object.defineProperty(exports, "__esModule", ({
   value: true
@@ -13936,27 +13429,27 @@ exports.countedMapToString = countedMapToString;
 exports.sum = sum;
 exports.sumNumbers = sumNumbers;
 
-__webpack_require__(/*! core-js/modules/es.number.parse-int.js */ "./node_modules/core-js/modules/es.number.parse-int.js");
+__webpack_require__(6016);
 
-__webpack_require__(/*! core-js/modules/es.regexp.exec.js */ "./node_modules/core-js/modules/es.regexp.exec.js");
+__webpack_require__(2322);
 
-__webpack_require__(/*! core-js/modules/es.string.replace.js */ "./node_modules/core-js/modules/es.string.replace.js");
+__webpack_require__(3296);
 
-__webpack_require__(/*! core-js/modules/es.array.slice.js */ "./node_modules/core-js/modules/es.array.slice.js");
+__webpack_require__(288);
 
-__webpack_require__(/*! core-js/modules/es.array.iterator.js */ "./node_modules/core-js/modules/es.array.iterator.js");
+__webpack_require__(5677);
 
-__webpack_require__(/*! core-js/modules/es.object.to-string.js */ "./node_modules/core-js/modules/es.object.to-string.js");
+__webpack_require__(6394);
 
-__webpack_require__(/*! core-js/modules/es.array.flat-map.js */ "./node_modules/core-js/modules/es.array.flat-map.js");
+__webpack_require__(655);
 
-__webpack_require__(/*! core-js/modules/es.array.unscopables.flat-map.js */ "./node_modules/core-js/modules/es.array.unscopables.flat-map.js");
+__webpack_require__(6270);
 
-__webpack_require__(/*! core-js/modules/es.array.fill.js */ "./node_modules/core-js/modules/es.array.fill.js");
+__webpack_require__(1271);
 
-__webpack_require__(/*! core-js/modules/es.array.map.js */ "./node_modules/core-js/modules/es.array.map.js");
+__webpack_require__(2070);
 
-__webpack_require__(/*! core-js/modules/es.array.concat.js */ "./node_modules/core-js/modules/es.array.concat.js");
+__webpack_require__(1646);
 
 function _slicedToArray(arr, i) {
   return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
@@ -14121,14 +13614,11 @@ function sumNumbers(addends) {
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_DataView.js":
-/*!******************************************!*\
-  !*** ./node_modules/lodash/_DataView.js ***!
-  \******************************************/
+/***/ 9940:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var getNative = __webpack_require__(/*! ./_getNative */ "./node_modules/lodash/_getNative.js"),
-    root = __webpack_require__(/*! ./_root */ "./node_modules/lodash/_root.js");
+var getNative = __webpack_require__(3203),
+    root = __webpack_require__(4362);
 /* Built-in method references that are verified to be native. */
 
 
@@ -14137,17 +13627,14 @@ module.exports = DataView;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_Hash.js":
-/*!**************************************!*\
-  !*** ./node_modules/lodash/_Hash.js ***!
-  \**************************************/
+/***/ 1979:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var hashClear = __webpack_require__(/*! ./_hashClear */ "./node_modules/lodash/_hashClear.js"),
-    hashDelete = __webpack_require__(/*! ./_hashDelete */ "./node_modules/lodash/_hashDelete.js"),
-    hashGet = __webpack_require__(/*! ./_hashGet */ "./node_modules/lodash/_hashGet.js"),
-    hashHas = __webpack_require__(/*! ./_hashHas */ "./node_modules/lodash/_hashHas.js"),
-    hashSet = __webpack_require__(/*! ./_hashSet */ "./node_modules/lodash/_hashSet.js");
+var hashClear = __webpack_require__(9129),
+    hashDelete = __webpack_require__(9047),
+    hashGet = __webpack_require__(3486),
+    hashHas = __webpack_require__(4786),
+    hashSet = __webpack_require__(6444);
 /**
  * Creates a hash object.
  *
@@ -14178,17 +13665,14 @@ module.exports = Hash;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_ListCache.js":
-/*!*******************************************!*\
-  !*** ./node_modules/lodash/_ListCache.js ***!
-  \*******************************************/
+/***/ 2768:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var listCacheClear = __webpack_require__(/*! ./_listCacheClear */ "./node_modules/lodash/_listCacheClear.js"),
-    listCacheDelete = __webpack_require__(/*! ./_listCacheDelete */ "./node_modules/lodash/_listCacheDelete.js"),
-    listCacheGet = __webpack_require__(/*! ./_listCacheGet */ "./node_modules/lodash/_listCacheGet.js"),
-    listCacheHas = __webpack_require__(/*! ./_listCacheHas */ "./node_modules/lodash/_listCacheHas.js"),
-    listCacheSet = __webpack_require__(/*! ./_listCacheSet */ "./node_modules/lodash/_listCacheSet.js");
+var listCacheClear = __webpack_require__(3708),
+    listCacheDelete = __webpack_require__(6993),
+    listCacheGet = __webpack_require__(286),
+    listCacheHas = __webpack_require__(1678),
+    listCacheSet = __webpack_require__(9743);
 /**
  * Creates an list cache object.
  *
@@ -14219,14 +13703,11 @@ module.exports = ListCache;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_Map.js":
-/*!*************************************!*\
-  !*** ./node_modules/lodash/_Map.js ***!
-  \*************************************/
+/***/ 4804:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var getNative = __webpack_require__(/*! ./_getNative */ "./node_modules/lodash/_getNative.js"),
-    root = __webpack_require__(/*! ./_root */ "./node_modules/lodash/_root.js");
+var getNative = __webpack_require__(3203),
+    root = __webpack_require__(4362);
 /* Built-in method references that are verified to be native. */
 
 
@@ -14235,17 +13716,14 @@ module.exports = Map;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_MapCache.js":
-/*!******************************************!*\
-  !*** ./node_modules/lodash/_MapCache.js ***!
-  \******************************************/
+/***/ 8423:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var mapCacheClear = __webpack_require__(/*! ./_mapCacheClear */ "./node_modules/lodash/_mapCacheClear.js"),
-    mapCacheDelete = __webpack_require__(/*! ./_mapCacheDelete */ "./node_modules/lodash/_mapCacheDelete.js"),
-    mapCacheGet = __webpack_require__(/*! ./_mapCacheGet */ "./node_modules/lodash/_mapCacheGet.js"),
-    mapCacheHas = __webpack_require__(/*! ./_mapCacheHas */ "./node_modules/lodash/_mapCacheHas.js"),
-    mapCacheSet = __webpack_require__(/*! ./_mapCacheSet */ "./node_modules/lodash/_mapCacheSet.js");
+var mapCacheClear = __webpack_require__(6977),
+    mapCacheDelete = __webpack_require__(7474),
+    mapCacheGet = __webpack_require__(727),
+    mapCacheHas = __webpack_require__(3653),
+    mapCacheSet = __webpack_require__(6140);
 /**
  * Creates a map cache object to store key-value pairs.
  *
@@ -14276,14 +13754,11 @@ module.exports = MapCache;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_Promise.js":
-/*!*****************************************!*\
-  !*** ./node_modules/lodash/_Promise.js ***!
-  \*****************************************/
+/***/ 7114:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var getNative = __webpack_require__(/*! ./_getNative */ "./node_modules/lodash/_getNative.js"),
-    root = __webpack_require__(/*! ./_root */ "./node_modules/lodash/_root.js");
+var getNative = __webpack_require__(3203),
+    root = __webpack_require__(4362);
 /* Built-in method references that are verified to be native. */
 
 
@@ -14292,14 +13767,11 @@ module.exports = Promise;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_Set.js":
-/*!*************************************!*\
-  !*** ./node_modules/lodash/_Set.js ***!
-  \*************************************/
+/***/ 689:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var getNative = __webpack_require__(/*! ./_getNative */ "./node_modules/lodash/_getNative.js"),
-    root = __webpack_require__(/*! ./_root */ "./node_modules/lodash/_root.js");
+var getNative = __webpack_require__(3203),
+    root = __webpack_require__(4362);
 /* Built-in method references that are verified to be native. */
 
 
@@ -14308,15 +13780,12 @@ module.exports = Set;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_SetCache.js":
-/*!******************************************!*\
-  !*** ./node_modules/lodash/_SetCache.js ***!
-  \******************************************/
+/***/ 9832:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var MapCache = __webpack_require__(/*! ./_MapCache */ "./node_modules/lodash/_MapCache.js"),
-    setCacheAdd = __webpack_require__(/*! ./_setCacheAdd */ "./node_modules/lodash/_setCacheAdd.js"),
-    setCacheHas = __webpack_require__(/*! ./_setCacheHas */ "./node_modules/lodash/_setCacheHas.js");
+var MapCache = __webpack_require__(8423),
+    setCacheAdd = __webpack_require__(9911),
+    setCacheHas = __webpack_require__(7447);
 /**
  *
  * Creates an array cache object to store unique values.
@@ -14344,18 +13813,15 @@ module.exports = SetCache;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_Stack.js":
-/*!***************************************!*\
-  !*** ./node_modules/lodash/_Stack.js ***!
-  \***************************************/
+/***/ 959:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var ListCache = __webpack_require__(/*! ./_ListCache */ "./node_modules/lodash/_ListCache.js"),
-    stackClear = __webpack_require__(/*! ./_stackClear */ "./node_modules/lodash/_stackClear.js"),
-    stackDelete = __webpack_require__(/*! ./_stackDelete */ "./node_modules/lodash/_stackDelete.js"),
-    stackGet = __webpack_require__(/*! ./_stackGet */ "./node_modules/lodash/_stackGet.js"),
-    stackHas = __webpack_require__(/*! ./_stackHas */ "./node_modules/lodash/_stackHas.js"),
-    stackSet = __webpack_require__(/*! ./_stackSet */ "./node_modules/lodash/_stackSet.js");
+var ListCache = __webpack_require__(2768),
+    stackClear = __webpack_require__(7553),
+    stackDelete = __webpack_require__(6038),
+    stackGet = __webpack_require__(2397),
+    stackHas = __webpack_require__(2421),
+    stackSet = __webpack_require__(2936);
 /**
  * Creates a stack cache object to store key-value pairs.
  *
@@ -14380,13 +13846,10 @@ module.exports = Stack;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_Symbol.js":
-/*!****************************************!*\
-  !*** ./node_modules/lodash/_Symbol.js ***!
-  \****************************************/
+/***/ 2773:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var root = __webpack_require__(/*! ./_root */ "./node_modules/lodash/_root.js");
+var root = __webpack_require__(4362);
 /** Built-in value references. */
 
 
@@ -14395,13 +13858,10 @@ module.exports = _Symbol;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_Uint8Array.js":
-/*!********************************************!*\
-  !*** ./node_modules/lodash/_Uint8Array.js ***!
-  \********************************************/
+/***/ 2496:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var root = __webpack_require__(/*! ./_root */ "./node_modules/lodash/_root.js");
+var root = __webpack_require__(4362);
 /** Built-in value references. */
 
 
@@ -14410,14 +13870,11 @@ module.exports = Uint8Array;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_WeakMap.js":
-/*!*****************************************!*\
-  !*** ./node_modules/lodash/_WeakMap.js ***!
-  \*****************************************/
+/***/ 5284:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var getNative = __webpack_require__(/*! ./_getNative */ "./node_modules/lodash/_getNative.js"),
-    root = __webpack_require__(/*! ./_root */ "./node_modules/lodash/_root.js");
+var getNative = __webpack_require__(3203),
+    root = __webpack_require__(4362);
 /* Built-in method references that are verified to be native. */
 
 
@@ -14426,10 +13883,7 @@ module.exports = WeakMap;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_apply.js":
-/*!***************************************!*\
-  !*** ./node_modules/lodash/_apply.js ***!
-  \***************************************/
+/***/ 8835:
 /***/ ((module) => {
 
 /**
@@ -14464,10 +13918,7 @@ module.exports = apply;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_arrayFilter.js":
-/*!*********************************************!*\
-  !*** ./node_modules/lodash/_arrayFilter.js ***!
-  \*********************************************/
+/***/ 6523:
 /***/ ((module) => {
 
 /**
@@ -14500,18 +13951,15 @@ module.exports = arrayFilter;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_arrayLikeKeys.js":
-/*!***********************************************!*\
-  !*** ./node_modules/lodash/_arrayLikeKeys.js ***!
-  \***********************************************/
+/***/ 8083:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var baseTimes = __webpack_require__(/*! ./_baseTimes */ "./node_modules/lodash/_baseTimes.js"),
-    isArguments = __webpack_require__(/*! ./isArguments */ "./node_modules/lodash/isArguments.js"),
-    isArray = __webpack_require__(/*! ./isArray */ "./node_modules/lodash/isArray.js"),
-    isBuffer = __webpack_require__(/*! ./isBuffer */ "./node_modules/lodash/isBuffer.js"),
-    isIndex = __webpack_require__(/*! ./_isIndex */ "./node_modules/lodash/_isIndex.js"),
-    isTypedArray = __webpack_require__(/*! ./isTypedArray */ "./node_modules/lodash/isTypedArray.js");
+var baseTimes = __webpack_require__(5094),
+    isArguments = __webpack_require__(9246),
+    isArray = __webpack_require__(3670),
+    isBuffer = __webpack_require__(2343),
+    isIndex = __webpack_require__(4782),
+    isTypedArray = __webpack_require__(1589);
 /** Used for built-in method references. */
 
 
@@ -14552,10 +14000,7 @@ module.exports = arrayLikeKeys;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_arrayPush.js":
-/*!*******************************************!*\
-  !*** ./node_modules/lodash/_arrayPush.js ***!
-  \*******************************************/
+/***/ 8421:
 /***/ ((module) => {
 
 /**
@@ -14582,10 +14027,7 @@ module.exports = arrayPush;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_arraySome.js":
-/*!*******************************************!*\
-  !*** ./node_modules/lodash/_arraySome.js ***!
-  \*******************************************/
+/***/ 4481:
 /***/ ((module) => {
 
 /**
@@ -14615,14 +14057,11 @@ module.exports = arraySome;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_assignMergeValue.js":
-/*!**************************************************!*\
-  !*** ./node_modules/lodash/_assignMergeValue.js ***!
-  \**************************************************/
+/***/ 8505:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var baseAssignValue = __webpack_require__(/*! ./_baseAssignValue */ "./node_modules/lodash/_baseAssignValue.js"),
-    eq = __webpack_require__(/*! ./eq */ "./node_modules/lodash/eq.js");
+var baseAssignValue = __webpack_require__(5515),
+    eq = __webpack_require__(7950);
 /**
  * This function is like `assignValue` except that it doesn't assign
  * `undefined` values.
@@ -14644,14 +14083,11 @@ module.exports = assignMergeValue;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_assignValue.js":
-/*!*********************************************!*\
-  !*** ./node_modules/lodash/_assignValue.js ***!
-  \*********************************************/
+/***/ 879:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var baseAssignValue = __webpack_require__(/*! ./_baseAssignValue */ "./node_modules/lodash/_baseAssignValue.js"),
-    eq = __webpack_require__(/*! ./eq */ "./node_modules/lodash/eq.js");
+var baseAssignValue = __webpack_require__(5515),
+    eq = __webpack_require__(7950);
 /** Used for built-in method references. */
 
 
@@ -14682,13 +14118,10 @@ module.exports = assignValue;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_assocIndexOf.js":
-/*!**********************************************!*\
-  !*** ./node_modules/lodash/_assocIndexOf.js ***!
-  \**********************************************/
+/***/ 6213:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var eq = __webpack_require__(/*! ./eq */ "./node_modules/lodash/eq.js");
+var eq = __webpack_require__(7950);
 /**
  * Gets the index at which the `key` is found in `array` of key-value pairs.
  *
@@ -14715,13 +14148,10 @@ module.exports = assocIndexOf;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_baseAssignValue.js":
-/*!*************************************************!*\
-  !*** ./node_modules/lodash/_baseAssignValue.js ***!
-  \*************************************************/
+/***/ 5515:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var defineProperty = __webpack_require__(/*! ./_defineProperty */ "./node_modules/lodash/_defineProperty.js");
+var defineProperty = __webpack_require__(1742);
 /**
  * The base implementation of `assignValue` and `assignMergeValue` without
  * value checks.
@@ -14750,13 +14180,10 @@ module.exports = baseAssignValue;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_baseCreate.js":
-/*!********************************************!*\
-  !*** ./node_modules/lodash/_baseCreate.js ***!
-  \********************************************/
+/***/ 346:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var isObject = __webpack_require__(/*! ./isObject */ "./node_modules/lodash/isObject.js");
+var isObject = __webpack_require__(71);
 /** Built-in value references. */
 
 
@@ -14793,13 +14220,10 @@ module.exports = baseCreate;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_baseFor.js":
-/*!*****************************************!*\
-  !*** ./node_modules/lodash/_baseFor.js ***!
-  \*****************************************/
+/***/ 7079:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var createBaseFor = __webpack_require__(/*! ./_createBaseFor */ "./node_modules/lodash/_createBaseFor.js");
+var createBaseFor = __webpack_require__(7924);
 /**
  * The base implementation of `baseForOwn` which iterates over `object`
  * properties returned by `keysFunc` and invokes `iteratee` for each property.
@@ -14818,14 +14242,11 @@ module.exports = baseFor;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_baseGetAllKeys.js":
-/*!************************************************!*\
-  !*** ./node_modules/lodash/_baseGetAllKeys.js ***!
-  \************************************************/
+/***/ 891:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var arrayPush = __webpack_require__(/*! ./_arrayPush */ "./node_modules/lodash/_arrayPush.js"),
-    isArray = __webpack_require__(/*! ./isArray */ "./node_modules/lodash/isArray.js");
+var arrayPush = __webpack_require__(8421),
+    isArray = __webpack_require__(3670);
 /**
  * The base implementation of `getAllKeys` and `getAllKeysIn` which uses
  * `keysFunc` and `symbolsFunc` to get the enumerable property names and
@@ -14848,15 +14269,12 @@ module.exports = baseGetAllKeys;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_baseGetTag.js":
-/*!********************************************!*\
-  !*** ./node_modules/lodash/_baseGetTag.js ***!
-  \********************************************/
+/***/ 1185:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var _Symbol = __webpack_require__(/*! ./_Symbol */ "./node_modules/lodash/_Symbol.js"),
-    getRawTag = __webpack_require__(/*! ./_getRawTag */ "./node_modules/lodash/_getRawTag.js"),
-    objectToString = __webpack_require__(/*! ./_objectToString */ "./node_modules/lodash/_objectToString.js");
+var _Symbol = __webpack_require__(2773),
+    getRawTag = __webpack_require__(3888),
+    objectToString = __webpack_require__(2299);
 /** `Object#toString` result references. */
 
 
@@ -14885,14 +14303,11 @@ module.exports = baseGetTag;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_baseIsArguments.js":
-/*!*************************************************!*\
-  !*** ./node_modules/lodash/_baseIsArguments.js ***!
-  \*************************************************/
+/***/ 1075:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var baseGetTag = __webpack_require__(/*! ./_baseGetTag */ "./node_modules/lodash/_baseGetTag.js"),
-    isObjectLike = __webpack_require__(/*! ./isObjectLike */ "./node_modules/lodash/isObjectLike.js");
+var baseGetTag = __webpack_require__(1185),
+    isObjectLike = __webpack_require__(4939);
 /** `Object#toString` result references. */
 
 
@@ -14913,14 +14328,11 @@ module.exports = baseIsArguments;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_baseIsEqual.js":
-/*!*********************************************!*\
-  !*** ./node_modules/lodash/_baseIsEqual.js ***!
-  \*********************************************/
+/***/ 9856:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var baseIsEqualDeep = __webpack_require__(/*! ./_baseIsEqualDeep */ "./node_modules/lodash/_baseIsEqualDeep.js"),
-    isObjectLike = __webpack_require__(/*! ./isObjectLike */ "./node_modules/lodash/isObjectLike.js");
+var baseIsEqualDeep = __webpack_require__(1829),
+    isObjectLike = __webpack_require__(4939);
 /**
  * The base implementation of `_.isEqual` which supports partial comparisons
  * and tracks traversed objects.
@@ -14953,20 +14365,17 @@ module.exports = baseIsEqual;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_baseIsEqualDeep.js":
-/*!*************************************************!*\
-  !*** ./node_modules/lodash/_baseIsEqualDeep.js ***!
-  \*************************************************/
+/***/ 1829:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var Stack = __webpack_require__(/*! ./_Stack */ "./node_modules/lodash/_Stack.js"),
-    equalArrays = __webpack_require__(/*! ./_equalArrays */ "./node_modules/lodash/_equalArrays.js"),
-    equalByTag = __webpack_require__(/*! ./_equalByTag */ "./node_modules/lodash/_equalByTag.js"),
-    equalObjects = __webpack_require__(/*! ./_equalObjects */ "./node_modules/lodash/_equalObjects.js"),
-    getTag = __webpack_require__(/*! ./_getTag */ "./node_modules/lodash/_getTag.js"),
-    isArray = __webpack_require__(/*! ./isArray */ "./node_modules/lodash/isArray.js"),
-    isBuffer = __webpack_require__(/*! ./isBuffer */ "./node_modules/lodash/isBuffer.js"),
-    isTypedArray = __webpack_require__(/*! ./isTypedArray */ "./node_modules/lodash/isTypedArray.js");
+var Stack = __webpack_require__(959),
+    equalArrays = __webpack_require__(3426),
+    equalByTag = __webpack_require__(1402),
+    equalObjects = __webpack_require__(4572),
+    getTag = __webpack_require__(2417),
+    isArray = __webpack_require__(3670),
+    isBuffer = __webpack_require__(2343),
+    isTypedArray = __webpack_require__(1589);
 /** Used to compose bitmasks for value comparisons. */
 
 
@@ -15046,16 +14455,13 @@ module.exports = baseIsEqualDeep;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_baseIsNative.js":
-/*!**********************************************!*\
-  !*** ./node_modules/lodash/_baseIsNative.js ***!
-  \**********************************************/
+/***/ 4106:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var isFunction = __webpack_require__(/*! ./isFunction */ "./node_modules/lodash/isFunction.js"),
-    isMasked = __webpack_require__(/*! ./_isMasked */ "./node_modules/lodash/_isMasked.js"),
-    isObject = __webpack_require__(/*! ./isObject */ "./node_modules/lodash/isObject.js"),
-    toSource = __webpack_require__(/*! ./_toSource */ "./node_modules/lodash/_toSource.js");
+var isFunction = __webpack_require__(3626),
+    isMasked = __webpack_require__(9249),
+    isObject = __webpack_require__(71),
+    toSource = __webpack_require__(1214);
 /**
  * Used to match `RegExp`
  * [syntax characters](http://ecma-international.org/ecma-262/7.0/#sec-patterns).
@@ -15101,15 +14507,12 @@ module.exports = baseIsNative;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_baseIsTypedArray.js":
-/*!**************************************************!*\
-  !*** ./node_modules/lodash/_baseIsTypedArray.js ***!
-  \**************************************************/
+/***/ 3638:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var baseGetTag = __webpack_require__(/*! ./_baseGetTag */ "./node_modules/lodash/_baseGetTag.js"),
-    isLength = __webpack_require__(/*! ./isLength */ "./node_modules/lodash/isLength.js"),
-    isObjectLike = __webpack_require__(/*! ./isObjectLike */ "./node_modules/lodash/isObjectLike.js");
+var baseGetTag = __webpack_require__(1185),
+    isLength = __webpack_require__(7100),
+    isObjectLike = __webpack_require__(4939);
 /** `Object#toString` result references. */
 
 
@@ -15158,14 +14561,11 @@ module.exports = baseIsTypedArray;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_baseKeys.js":
-/*!******************************************!*\
-  !*** ./node_modules/lodash/_baseKeys.js ***!
-  \******************************************/
+/***/ 7521:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var isPrototype = __webpack_require__(/*! ./_isPrototype */ "./node_modules/lodash/_isPrototype.js"),
-    nativeKeys = __webpack_require__(/*! ./_nativeKeys */ "./node_modules/lodash/_nativeKeys.js");
+var isPrototype = __webpack_require__(2803),
+    nativeKeys = __webpack_require__(3865);
 /** Used for built-in method references. */
 
 
@@ -15201,15 +14601,12 @@ module.exports = baseKeys;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_baseKeysIn.js":
-/*!********************************************!*\
-  !*** ./node_modules/lodash/_baseKeysIn.js ***!
-  \********************************************/
+/***/ 173:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var isObject = __webpack_require__(/*! ./isObject */ "./node_modules/lodash/isObject.js"),
-    isPrototype = __webpack_require__(/*! ./_isPrototype */ "./node_modules/lodash/_isPrototype.js"),
-    nativeKeysIn = __webpack_require__(/*! ./_nativeKeysIn */ "./node_modules/lodash/_nativeKeysIn.js");
+var isObject = __webpack_require__(71),
+    isPrototype = __webpack_require__(2803),
+    nativeKeysIn = __webpack_require__(5842);
 /** Used for built-in method references. */
 
 
@@ -15246,19 +14643,16 @@ module.exports = baseKeysIn;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_baseMerge.js":
-/*!*******************************************!*\
-  !*** ./node_modules/lodash/_baseMerge.js ***!
-  \*******************************************/
+/***/ 6681:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var Stack = __webpack_require__(/*! ./_Stack */ "./node_modules/lodash/_Stack.js"),
-    assignMergeValue = __webpack_require__(/*! ./_assignMergeValue */ "./node_modules/lodash/_assignMergeValue.js"),
-    baseFor = __webpack_require__(/*! ./_baseFor */ "./node_modules/lodash/_baseFor.js"),
-    baseMergeDeep = __webpack_require__(/*! ./_baseMergeDeep */ "./node_modules/lodash/_baseMergeDeep.js"),
-    isObject = __webpack_require__(/*! ./isObject */ "./node_modules/lodash/isObject.js"),
-    keysIn = __webpack_require__(/*! ./keysIn */ "./node_modules/lodash/keysIn.js"),
-    safeGet = __webpack_require__(/*! ./_safeGet */ "./node_modules/lodash/_safeGet.js");
+var Stack = __webpack_require__(959),
+    assignMergeValue = __webpack_require__(8505),
+    baseFor = __webpack_require__(7079),
+    baseMergeDeep = __webpack_require__(3874),
+    isObject = __webpack_require__(71),
+    keysIn = __webpack_require__(1291),
+    safeGet = __webpack_require__(1952);
 /**
  * The base implementation of `_.merge` without support for multiple sources.
  *
@@ -15298,27 +14692,24 @@ module.exports = baseMerge;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_baseMergeDeep.js":
-/*!***********************************************!*\
-  !*** ./node_modules/lodash/_baseMergeDeep.js ***!
-  \***********************************************/
+/***/ 3874:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var assignMergeValue = __webpack_require__(/*! ./_assignMergeValue */ "./node_modules/lodash/_assignMergeValue.js"),
-    cloneBuffer = __webpack_require__(/*! ./_cloneBuffer */ "./node_modules/lodash/_cloneBuffer.js"),
-    cloneTypedArray = __webpack_require__(/*! ./_cloneTypedArray */ "./node_modules/lodash/_cloneTypedArray.js"),
-    copyArray = __webpack_require__(/*! ./_copyArray */ "./node_modules/lodash/_copyArray.js"),
-    initCloneObject = __webpack_require__(/*! ./_initCloneObject */ "./node_modules/lodash/_initCloneObject.js"),
-    isArguments = __webpack_require__(/*! ./isArguments */ "./node_modules/lodash/isArguments.js"),
-    isArray = __webpack_require__(/*! ./isArray */ "./node_modules/lodash/isArray.js"),
-    isArrayLikeObject = __webpack_require__(/*! ./isArrayLikeObject */ "./node_modules/lodash/isArrayLikeObject.js"),
-    isBuffer = __webpack_require__(/*! ./isBuffer */ "./node_modules/lodash/isBuffer.js"),
-    isFunction = __webpack_require__(/*! ./isFunction */ "./node_modules/lodash/isFunction.js"),
-    isObject = __webpack_require__(/*! ./isObject */ "./node_modules/lodash/isObject.js"),
-    isPlainObject = __webpack_require__(/*! ./isPlainObject */ "./node_modules/lodash/isPlainObject.js"),
-    isTypedArray = __webpack_require__(/*! ./isTypedArray */ "./node_modules/lodash/isTypedArray.js"),
-    safeGet = __webpack_require__(/*! ./_safeGet */ "./node_modules/lodash/_safeGet.js"),
-    toPlainObject = __webpack_require__(/*! ./toPlainObject */ "./node_modules/lodash/toPlainObject.js");
+var assignMergeValue = __webpack_require__(8505),
+    cloneBuffer = __webpack_require__(8288),
+    cloneTypedArray = __webpack_require__(1234),
+    copyArray = __webpack_require__(9430),
+    initCloneObject = __webpack_require__(3632),
+    isArguments = __webpack_require__(9246),
+    isArray = __webpack_require__(3670),
+    isArrayLikeObject = __webpack_require__(3566),
+    isBuffer = __webpack_require__(2343),
+    isFunction = __webpack_require__(3626),
+    isObject = __webpack_require__(71),
+    isPlainObject = __webpack_require__(3902),
+    isTypedArray = __webpack_require__(1589),
+    safeGet = __webpack_require__(1952),
+    toPlainObject = __webpack_require__(5151);
 /**
  * A specialized version of `baseMerge` for arrays and objects which performs
  * deep merges and tracks traversed objects enabling objects with circular
@@ -15396,15 +14787,12 @@ module.exports = baseMergeDeep;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_baseRest.js":
-/*!******************************************!*\
-  !*** ./node_modules/lodash/_baseRest.js ***!
-  \******************************************/
+/***/ 9541:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var identity = __webpack_require__(/*! ./identity */ "./node_modules/lodash/identity.js"),
-    overRest = __webpack_require__(/*! ./_overRest */ "./node_modules/lodash/_overRest.js"),
-    setToString = __webpack_require__(/*! ./_setToString */ "./node_modules/lodash/_setToString.js");
+var identity = __webpack_require__(1559),
+    overRest = __webpack_require__(3549),
+    setToString = __webpack_require__(5121);
 /**
  * The base implementation of `_.rest` which doesn't validate or coerce arguments.
  *
@@ -15423,15 +14811,12 @@ module.exports = baseRest;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_baseSetToString.js":
-/*!*************************************************!*\
-  !*** ./node_modules/lodash/_baseSetToString.js ***!
-  \*************************************************/
+/***/ 4233:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var constant = __webpack_require__(/*! ./constant */ "./node_modules/lodash/constant.js"),
-    defineProperty = __webpack_require__(/*! ./_defineProperty */ "./node_modules/lodash/_defineProperty.js"),
-    identity = __webpack_require__(/*! ./identity */ "./node_modules/lodash/identity.js");
+var constant = __webpack_require__(7622),
+    defineProperty = __webpack_require__(1742),
+    identity = __webpack_require__(1559);
 /**
  * The base implementation of `setToString` without support for hot loop shorting.
  *
@@ -15454,10 +14839,7 @@ module.exports = baseSetToString;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_baseTimes.js":
-/*!*******************************************!*\
-  !*** ./node_modules/lodash/_baseTimes.js ***!
-  \*******************************************/
+/***/ 5094:
 /***/ ((module) => {
 
 /**
@@ -15484,10 +14866,7 @@ module.exports = baseTimes;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_baseUnary.js":
-/*!*******************************************!*\
-  !*** ./node_modules/lodash/_baseUnary.js ***!
-  \*******************************************/
+/***/ 9081:
 /***/ ((module) => {
 
 /**
@@ -15507,10 +14886,7 @@ module.exports = baseUnary;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_cacheHas.js":
-/*!******************************************!*\
-  !*** ./node_modules/lodash/_cacheHas.js ***!
-  \******************************************/
+/***/ 3159:
 /***/ ((module) => {
 
 /**
@@ -15529,13 +14905,10 @@ module.exports = cacheHas;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_cloneArrayBuffer.js":
-/*!**************************************************!*\
-  !*** ./node_modules/lodash/_cloneArrayBuffer.js ***!
-  \**************************************************/
+/***/ 4899:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var Uint8Array = __webpack_require__(/*! ./_Uint8Array */ "./node_modules/lodash/_Uint8Array.js");
+var Uint8Array = __webpack_require__(2496);
 /**
  * Creates a clone of `arrayBuffer`.
  *
@@ -15555,16 +14928,13 @@ module.exports = cloneArrayBuffer;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_cloneBuffer.js":
-/*!*********************************************!*\
-  !*** ./node_modules/lodash/_cloneBuffer.js ***!
-  \*********************************************/
+/***/ 8288:
 /***/ ((module, exports, __webpack_require__) => {
 
 /* module decorator */ module = __webpack_require__.nmd(module);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-var root = __webpack_require__(/*! ./_root */ "./node_modules/lodash/_root.js");
+var root = __webpack_require__(4362);
 /** Detect free variable `exports`. */
 
 
@@ -15603,13 +14973,10 @@ module.exports = cloneBuffer;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_cloneTypedArray.js":
-/*!*************************************************!*\
-  !*** ./node_modules/lodash/_cloneTypedArray.js ***!
-  \*************************************************/
+/***/ 1234:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var cloneArrayBuffer = __webpack_require__(/*! ./_cloneArrayBuffer */ "./node_modules/lodash/_cloneArrayBuffer.js");
+var cloneArrayBuffer = __webpack_require__(4899);
 /**
  * Creates a clone of `typedArray`.
  *
@@ -15629,10 +14996,7 @@ module.exports = cloneTypedArray;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_copyArray.js":
-/*!*******************************************!*\
-  !*** ./node_modules/lodash/_copyArray.js ***!
-  \*******************************************/
+/***/ 9430:
 /***/ ((module) => {
 
 /**
@@ -15659,14 +15023,11 @@ module.exports = copyArray;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_copyObject.js":
-/*!********************************************!*\
-  !*** ./node_modules/lodash/_copyObject.js ***!
-  \********************************************/
+/***/ 7841:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var assignValue = __webpack_require__(/*! ./_assignValue */ "./node_modules/lodash/_assignValue.js"),
-    baseAssignValue = __webpack_require__(/*! ./_baseAssignValue */ "./node_modules/lodash/_baseAssignValue.js");
+var assignValue = __webpack_require__(879),
+    baseAssignValue = __webpack_require__(5515);
 /**
  * Copies properties of `source` to `object`.
  *
@@ -15707,13 +15068,10 @@ module.exports = copyObject;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_coreJsData.js":
-/*!********************************************!*\
-  !*** ./node_modules/lodash/_coreJsData.js ***!
-  \********************************************/
+/***/ 1741:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var root = __webpack_require__(/*! ./_root */ "./node_modules/lodash/_root.js");
+var root = __webpack_require__(4362);
 /** Used to detect overreaching core-js shims. */
 
 
@@ -15722,14 +15080,11 @@ module.exports = coreJsData;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_createAssigner.js":
-/*!************************************************!*\
-  !*** ./node_modules/lodash/_createAssigner.js ***!
-  \************************************************/
+/***/ 661:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var baseRest = __webpack_require__(/*! ./_baseRest */ "./node_modules/lodash/_baseRest.js"),
-    isIterateeCall = __webpack_require__(/*! ./_isIterateeCall */ "./node_modules/lodash/_isIterateeCall.js");
+var baseRest = __webpack_require__(9541),
+    isIterateeCall = __webpack_require__(2985);
 /**
  * Creates a function like `_.assign`.
  *
@@ -15770,10 +15125,7 @@ module.exports = createAssigner;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_createBaseFor.js":
-/*!***********************************************!*\
-  !*** ./node_modules/lodash/_createBaseFor.js ***!
-  \***********************************************/
+/***/ 7924:
 /***/ ((module) => {
 
 /**
@@ -15806,13 +15158,10 @@ module.exports = createBaseFor;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_defineProperty.js":
-/*!************************************************!*\
-  !*** ./node_modules/lodash/_defineProperty.js ***!
-  \************************************************/
+/***/ 1742:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var getNative = __webpack_require__(/*! ./_getNative */ "./node_modules/lodash/_getNative.js");
+var getNative = __webpack_require__(3203);
 
 var defineProperty = function () {
   try {
@@ -15826,15 +15175,12 @@ module.exports = defineProperty;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_equalArrays.js":
-/*!*********************************************!*\
-  !*** ./node_modules/lodash/_equalArrays.js ***!
-  \*********************************************/
+/***/ 3426:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var SetCache = __webpack_require__(/*! ./_SetCache */ "./node_modules/lodash/_SetCache.js"),
-    arraySome = __webpack_require__(/*! ./_arraySome */ "./node_modules/lodash/_arraySome.js"),
-    cacheHas = __webpack_require__(/*! ./_cacheHas */ "./node_modules/lodash/_cacheHas.js");
+var SetCache = __webpack_require__(9832),
+    arraySome = __webpack_require__(4481),
+    cacheHas = __webpack_require__(3159);
 /** Used to compose bitmasks for value comparisons. */
 
 
@@ -15919,18 +15265,15 @@ module.exports = equalArrays;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_equalByTag.js":
-/*!********************************************!*\
-  !*** ./node_modules/lodash/_equalByTag.js ***!
-  \********************************************/
+/***/ 1402:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var _Symbol = __webpack_require__(/*! ./_Symbol */ "./node_modules/lodash/_Symbol.js"),
-    Uint8Array = __webpack_require__(/*! ./_Uint8Array */ "./node_modules/lodash/_Uint8Array.js"),
-    eq = __webpack_require__(/*! ./eq */ "./node_modules/lodash/eq.js"),
-    equalArrays = __webpack_require__(/*! ./_equalArrays */ "./node_modules/lodash/_equalArrays.js"),
-    mapToArray = __webpack_require__(/*! ./_mapToArray */ "./node_modules/lodash/_mapToArray.js"),
-    setToArray = __webpack_require__(/*! ./_setToArray */ "./node_modules/lodash/_setToArray.js");
+var _Symbol = __webpack_require__(2773),
+    Uint8Array = __webpack_require__(2496),
+    eq = __webpack_require__(7950),
+    equalArrays = __webpack_require__(3426),
+    mapToArray = __webpack_require__(8961),
+    setToArray = __webpack_require__(6983);
 /** Used to compose bitmasks for value comparisons. */
 
 
@@ -16044,13 +15387,10 @@ module.exports = equalByTag;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_equalObjects.js":
-/*!**********************************************!*\
-  !*** ./node_modules/lodash/_equalObjects.js ***!
-  \**********************************************/
+/***/ 4572:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var getAllKeys = __webpack_require__(/*! ./_getAllKeys */ "./node_modules/lodash/_getAllKeys.js");
+var getAllKeys = __webpack_require__(5788);
 /** Used to compose bitmasks for value comparisons. */
 
 
@@ -16145,10 +15485,7 @@ module.exports = equalObjects;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_freeGlobal.js":
-/*!********************************************!*\
-  !*** ./node_modules/lodash/_freeGlobal.js ***!
-  \********************************************/
+/***/ 8556:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -16159,15 +15496,12 @@ module.exports = freeGlobal;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_getAllKeys.js":
-/*!********************************************!*\
-  !*** ./node_modules/lodash/_getAllKeys.js ***!
-  \********************************************/
+/***/ 5788:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var baseGetAllKeys = __webpack_require__(/*! ./_baseGetAllKeys */ "./node_modules/lodash/_baseGetAllKeys.js"),
-    getSymbols = __webpack_require__(/*! ./_getSymbols */ "./node_modules/lodash/_getSymbols.js"),
-    keys = __webpack_require__(/*! ./keys */ "./node_modules/lodash/keys.js");
+var baseGetAllKeys = __webpack_require__(891),
+    getSymbols = __webpack_require__(7976),
+    keys = __webpack_require__(3225);
 /**
  * Creates an array of own enumerable property names and symbols of `object`.
  *
@@ -16185,13 +15519,10 @@ module.exports = getAllKeys;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_getMapData.js":
-/*!********************************************!*\
-  !*** ./node_modules/lodash/_getMapData.js ***!
-  \********************************************/
+/***/ 404:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var isKeyable = __webpack_require__(/*! ./_isKeyable */ "./node_modules/lodash/_isKeyable.js");
+var isKeyable = __webpack_require__(4480);
 /**
  * Gets the data for `map`.
  *
@@ -16211,14 +15542,11 @@ module.exports = getMapData;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_getNative.js":
-/*!*******************************************!*\
-  !*** ./node_modules/lodash/_getNative.js ***!
-  \*******************************************/
+/***/ 3203:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var baseIsNative = __webpack_require__(/*! ./_baseIsNative */ "./node_modules/lodash/_baseIsNative.js"),
-    getValue = __webpack_require__(/*! ./_getValue */ "./node_modules/lodash/_getValue.js");
+var baseIsNative = __webpack_require__(4106),
+    getValue = __webpack_require__(7338);
 /**
  * Gets the native function at `key` of `object`.
  *
@@ -16238,13 +15566,10 @@ module.exports = getNative;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_getPrototype.js":
-/*!**********************************************!*\
-  !*** ./node_modules/lodash/_getPrototype.js ***!
-  \**********************************************/
+/***/ 2107:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var overArg = __webpack_require__(/*! ./_overArg */ "./node_modules/lodash/_overArg.js");
+var overArg = __webpack_require__(5290);
 /** Built-in value references. */
 
 
@@ -16253,13 +15578,10 @@ module.exports = getPrototype;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_getRawTag.js":
-/*!*******************************************!*\
-  !*** ./node_modules/lodash/_getRawTag.js ***!
-  \*******************************************/
+/***/ 3888:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var _Symbol = __webpack_require__(/*! ./_Symbol */ "./node_modules/lodash/_Symbol.js");
+var _Symbol = __webpack_require__(2773);
 /** Used for built-in method references. */
 
 
@@ -16311,14 +15633,11 @@ module.exports = getRawTag;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_getSymbols.js":
-/*!********************************************!*\
-  !*** ./node_modules/lodash/_getSymbols.js ***!
-  \********************************************/
+/***/ 7976:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var arrayFilter = __webpack_require__(/*! ./_arrayFilter */ "./node_modules/lodash/_arrayFilter.js"),
-    stubArray = __webpack_require__(/*! ./stubArray */ "./node_modules/lodash/stubArray.js");
+var arrayFilter = __webpack_require__(6523),
+    stubArray = __webpack_require__(4043);
 /** Used for built-in method references. */
 
 
@@ -16351,19 +15670,16 @@ module.exports = getSymbols;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_getTag.js":
-/*!****************************************!*\
-  !*** ./node_modules/lodash/_getTag.js ***!
-  \****************************************/
+/***/ 2417:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var DataView = __webpack_require__(/*! ./_DataView */ "./node_modules/lodash/_DataView.js"),
-    Map = __webpack_require__(/*! ./_Map */ "./node_modules/lodash/_Map.js"),
-    Promise = __webpack_require__(/*! ./_Promise */ "./node_modules/lodash/_Promise.js"),
-    Set = __webpack_require__(/*! ./_Set */ "./node_modules/lodash/_Set.js"),
-    WeakMap = __webpack_require__(/*! ./_WeakMap */ "./node_modules/lodash/_WeakMap.js"),
-    baseGetTag = __webpack_require__(/*! ./_baseGetTag */ "./node_modules/lodash/_baseGetTag.js"),
-    toSource = __webpack_require__(/*! ./_toSource */ "./node_modules/lodash/_toSource.js");
+var DataView = __webpack_require__(9940),
+    Map = __webpack_require__(4804),
+    Promise = __webpack_require__(7114),
+    Set = __webpack_require__(689),
+    WeakMap = __webpack_require__(5284),
+    baseGetTag = __webpack_require__(1185),
+    toSource = __webpack_require__(1214);
 /** `Object#toString` result references. */
 
 
@@ -16423,10 +15739,7 @@ module.exports = getTag;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_getValue.js":
-/*!******************************************!*\
-  !*** ./node_modules/lodash/_getValue.js ***!
-  \******************************************/
+/***/ 7338:
 /***/ ((module) => {
 
 /**
@@ -16445,13 +15758,10 @@ module.exports = getValue;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_hashClear.js":
-/*!*******************************************!*\
-  !*** ./node_modules/lodash/_hashClear.js ***!
-  \*******************************************/
+/***/ 9129:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var nativeCreate = __webpack_require__(/*! ./_nativeCreate */ "./node_modules/lodash/_nativeCreate.js");
+var nativeCreate = __webpack_require__(6326);
 /**
  * Removes all key-value entries from the hash.
  *
@@ -16470,10 +15780,7 @@ module.exports = hashClear;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_hashDelete.js":
-/*!********************************************!*\
-  !*** ./node_modules/lodash/_hashDelete.js ***!
-  \********************************************/
+/***/ 9047:
 /***/ ((module) => {
 
 /**
@@ -16496,13 +15803,10 @@ module.exports = hashDelete;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_hashGet.js":
-/*!*****************************************!*\
-  !*** ./node_modules/lodash/_hashGet.js ***!
-  \*****************************************/
+/***/ 3486:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var nativeCreate = __webpack_require__(/*! ./_nativeCreate */ "./node_modules/lodash/_nativeCreate.js");
+var nativeCreate = __webpack_require__(6326);
 /** Used to stand-in for `undefined` hash values. */
 
 
@@ -16538,13 +15842,10 @@ module.exports = hashGet;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_hashHas.js":
-/*!*****************************************!*\
-  !*** ./node_modules/lodash/_hashHas.js ***!
-  \*****************************************/
+/***/ 4786:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var nativeCreate = __webpack_require__(/*! ./_nativeCreate */ "./node_modules/lodash/_nativeCreate.js");
+var nativeCreate = __webpack_require__(6326);
 /** Used for built-in method references. */
 
 
@@ -16571,13 +15872,10 @@ module.exports = hashHas;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_hashSet.js":
-/*!*****************************************!*\
-  !*** ./node_modules/lodash/_hashSet.js ***!
-  \*****************************************/
+/***/ 6444:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var nativeCreate = __webpack_require__(/*! ./_nativeCreate */ "./node_modules/lodash/_nativeCreate.js");
+var nativeCreate = __webpack_require__(6326);
 /** Used to stand-in for `undefined` hash values. */
 
 
@@ -16604,15 +15902,12 @@ module.exports = hashSet;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_initCloneObject.js":
-/*!*************************************************!*\
-  !*** ./node_modules/lodash/_initCloneObject.js ***!
-  \*************************************************/
+/***/ 3632:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var baseCreate = __webpack_require__(/*! ./_baseCreate */ "./node_modules/lodash/_baseCreate.js"),
-    getPrototype = __webpack_require__(/*! ./_getPrototype */ "./node_modules/lodash/_getPrototype.js"),
-    isPrototype = __webpack_require__(/*! ./_isPrototype */ "./node_modules/lodash/_isPrototype.js");
+var baseCreate = __webpack_require__(346),
+    getPrototype = __webpack_require__(2107),
+    isPrototype = __webpack_require__(2803);
 /**
  * Initializes an object clone.
  *
@@ -16630,10 +15925,7 @@ module.exports = initCloneObject;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_isIndex.js":
-/*!*****************************************!*\
-  !*** ./node_modules/lodash/_isIndex.js ***!
-  \*****************************************/
+/***/ 4782:
 /***/ ((module) => {
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -16663,18 +15955,15 @@ module.exports = isIndex;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_isIterateeCall.js":
-/*!************************************************!*\
-  !*** ./node_modules/lodash/_isIterateeCall.js ***!
-  \************************************************/
+/***/ 2985:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-var eq = __webpack_require__(/*! ./eq */ "./node_modules/lodash/eq.js"),
-    isArrayLike = __webpack_require__(/*! ./isArrayLike */ "./node_modules/lodash/isArrayLike.js"),
-    isIndex = __webpack_require__(/*! ./_isIndex */ "./node_modules/lodash/_isIndex.js"),
-    isObject = __webpack_require__(/*! ./isObject */ "./node_modules/lodash/isObject.js");
+var eq = __webpack_require__(7950),
+    isArrayLike = __webpack_require__(6175),
+    isIndex = __webpack_require__(4782),
+    isObject = __webpack_require__(71);
 /**
  * Checks if the given arguments are from an iteratee call.
  *
@@ -16705,10 +15994,7 @@ module.exports = isIterateeCall;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_isKeyable.js":
-/*!*******************************************!*\
-  !*** ./node_modules/lodash/_isKeyable.js ***!
-  \*******************************************/
+/***/ 4480:
 /***/ ((module) => {
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -16730,13 +16016,10 @@ module.exports = isKeyable;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_isMasked.js":
-/*!******************************************!*\
-  !*** ./node_modules/lodash/_isMasked.js ***!
-  \******************************************/
+/***/ 9249:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var coreJsData = __webpack_require__(/*! ./_coreJsData */ "./node_modules/lodash/_coreJsData.js");
+var coreJsData = __webpack_require__(1741);
 /** Used to detect methods masquerading as native. */
 
 
@@ -16761,10 +16044,7 @@ module.exports = isMasked;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_isPrototype.js":
-/*!*********************************************!*\
-  !*** ./node_modules/lodash/_isPrototype.js ***!
-  \*********************************************/
+/***/ 2803:
 /***/ ((module) => {
 
 /** Used for built-in method references. */
@@ -16787,10 +16067,7 @@ module.exports = isPrototype;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_listCacheClear.js":
-/*!************************************************!*\
-  !*** ./node_modules/lodash/_listCacheClear.js ***!
-  \************************************************/
+/***/ 3708:
 /***/ ((module) => {
 
 /**
@@ -16809,13 +16086,10 @@ module.exports = listCacheClear;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_listCacheDelete.js":
-/*!*************************************************!*\
-  !*** ./node_modules/lodash/_listCacheDelete.js ***!
-  \*************************************************/
+/***/ 6993:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var assocIndexOf = __webpack_require__(/*! ./_assocIndexOf */ "./node_modules/lodash/_assocIndexOf.js");
+var assocIndexOf = __webpack_require__(6213);
 /** Used for built-in method references. */
 
 
@@ -16857,13 +16131,10 @@ module.exports = listCacheDelete;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_listCacheGet.js":
-/*!**********************************************!*\
-  !*** ./node_modules/lodash/_listCacheGet.js ***!
-  \**********************************************/
+/***/ 286:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var assocIndexOf = __webpack_require__(/*! ./_assocIndexOf */ "./node_modules/lodash/_assocIndexOf.js");
+var assocIndexOf = __webpack_require__(6213);
 /**
  * Gets the list cache value for `key`.
  *
@@ -16885,13 +16156,10 @@ module.exports = listCacheGet;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_listCacheHas.js":
-/*!**********************************************!*\
-  !*** ./node_modules/lodash/_listCacheHas.js ***!
-  \**********************************************/
+/***/ 1678:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var assocIndexOf = __webpack_require__(/*! ./_assocIndexOf */ "./node_modules/lodash/_assocIndexOf.js");
+var assocIndexOf = __webpack_require__(6213);
 /**
  * Checks if a list cache value for `key` exists.
  *
@@ -16911,13 +16179,10 @@ module.exports = listCacheHas;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_listCacheSet.js":
-/*!**********************************************!*\
-  !*** ./node_modules/lodash/_listCacheSet.js ***!
-  \**********************************************/
+/***/ 9743:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var assocIndexOf = __webpack_require__(/*! ./_assocIndexOf */ "./node_modules/lodash/_assocIndexOf.js");
+var assocIndexOf = __webpack_require__(6213);
 /**
  * Sets the list cache `key` to `value`.
  *
@@ -16948,15 +16213,12 @@ module.exports = listCacheSet;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_mapCacheClear.js":
-/*!***********************************************!*\
-  !*** ./node_modules/lodash/_mapCacheClear.js ***!
-  \***********************************************/
+/***/ 6977:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var Hash = __webpack_require__(/*! ./_Hash */ "./node_modules/lodash/_Hash.js"),
-    ListCache = __webpack_require__(/*! ./_ListCache */ "./node_modules/lodash/_ListCache.js"),
-    Map = __webpack_require__(/*! ./_Map */ "./node_modules/lodash/_Map.js");
+var Hash = __webpack_require__(1979),
+    ListCache = __webpack_require__(2768),
+    Map = __webpack_require__(4804);
 /**
  * Removes all key-value entries from the map.
  *
@@ -16979,13 +16241,10 @@ module.exports = mapCacheClear;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_mapCacheDelete.js":
-/*!************************************************!*\
-  !*** ./node_modules/lodash/_mapCacheDelete.js ***!
-  \************************************************/
+/***/ 7474:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var getMapData = __webpack_require__(/*! ./_getMapData */ "./node_modules/lodash/_getMapData.js");
+var getMapData = __webpack_require__(404);
 /**
  * Removes `key` and its value from the map.
  *
@@ -17007,13 +16266,10 @@ module.exports = mapCacheDelete;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_mapCacheGet.js":
-/*!*********************************************!*\
-  !*** ./node_modules/lodash/_mapCacheGet.js ***!
-  \*********************************************/
+/***/ 727:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var getMapData = __webpack_require__(/*! ./_getMapData */ "./node_modules/lodash/_getMapData.js");
+var getMapData = __webpack_require__(404);
 /**
  * Gets the map value for `key`.
  *
@@ -17033,13 +16289,10 @@ module.exports = mapCacheGet;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_mapCacheHas.js":
-/*!*********************************************!*\
-  !*** ./node_modules/lodash/_mapCacheHas.js ***!
-  \*********************************************/
+/***/ 3653:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var getMapData = __webpack_require__(/*! ./_getMapData */ "./node_modules/lodash/_getMapData.js");
+var getMapData = __webpack_require__(404);
 /**
  * Checks if a map value for `key` exists.
  *
@@ -17059,13 +16312,10 @@ module.exports = mapCacheHas;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_mapCacheSet.js":
-/*!*********************************************!*\
-  !*** ./node_modules/lodash/_mapCacheSet.js ***!
-  \*********************************************/
+/***/ 6140:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var getMapData = __webpack_require__(/*! ./_getMapData */ "./node_modules/lodash/_getMapData.js");
+var getMapData = __webpack_require__(404);
 /**
  * Sets the map `key` to `value`.
  *
@@ -17090,10 +16340,7 @@ module.exports = mapCacheSet;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_mapToArray.js":
-/*!********************************************!*\
-  !*** ./node_modules/lodash/_mapToArray.js ***!
-  \********************************************/
+/***/ 8961:
 /***/ ((module) => {
 
 /**
@@ -17116,13 +16363,10 @@ module.exports = mapToArray;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_nativeCreate.js":
-/*!**********************************************!*\
-  !*** ./node_modules/lodash/_nativeCreate.js ***!
-  \**********************************************/
+/***/ 6326:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var getNative = __webpack_require__(/*! ./_getNative */ "./node_modules/lodash/_getNative.js");
+var getNative = __webpack_require__(3203);
 /* Built-in method references that are verified to be native. */
 
 
@@ -17131,13 +16375,10 @@ module.exports = nativeCreate;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_nativeKeys.js":
-/*!********************************************!*\
-  !*** ./node_modules/lodash/_nativeKeys.js ***!
-  \********************************************/
+/***/ 3865:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var overArg = __webpack_require__(/*! ./_overArg */ "./node_modules/lodash/_overArg.js");
+var overArg = __webpack_require__(5290);
 /* Built-in method references for those with the same name as other `lodash` methods. */
 
 
@@ -17146,10 +16387,7 @@ module.exports = nativeKeys;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_nativeKeysIn.js":
-/*!**********************************************!*\
-  !*** ./node_modules/lodash/_nativeKeysIn.js ***!
-  \**********************************************/
+/***/ 5842:
 /***/ ((module) => {
 
 /**
@@ -17177,16 +16415,13 @@ module.exports = nativeKeysIn;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_nodeUtil.js":
-/*!******************************************!*\
-  !*** ./node_modules/lodash/_nodeUtil.js ***!
-  \******************************************/
+/***/ 1985:
 /***/ ((module, exports, __webpack_require__) => {
 
 /* module decorator */ module = __webpack_require__.nmd(module);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-var freeGlobal = __webpack_require__(/*! ./_freeGlobal */ "./node_modules/lodash/_freeGlobal.js");
+var freeGlobal = __webpack_require__(8556);
 /** Detect free variable `exports`. */
 
 
@@ -17220,10 +16455,7 @@ module.exports = nodeUtil;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_objectToString.js":
-/*!************************************************!*\
-  !*** ./node_modules/lodash/_objectToString.js ***!
-  \************************************************/
+/***/ 2299:
 /***/ ((module) => {
 
 /** Used for built-in method references. */
@@ -17251,10 +16483,7 @@ module.exports = objectToString;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_overArg.js":
-/*!*****************************************!*\
-  !*** ./node_modules/lodash/_overArg.js ***!
-  \*****************************************/
+/***/ 5290:
 /***/ ((module) => {
 
 /**
@@ -17275,13 +16504,10 @@ module.exports = overArg;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_overRest.js":
-/*!******************************************!*\
-  !*** ./node_modules/lodash/_overRest.js ***!
-  \******************************************/
+/***/ 3549:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var apply = __webpack_require__(/*! ./_apply */ "./node_modules/lodash/_apply.js");
+var apply = __webpack_require__(8835);
 /* Built-in method references for those with the same name as other `lodash` methods. */
 
 
@@ -17324,15 +16550,12 @@ module.exports = overRest;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_root.js":
-/*!**************************************!*\
-  !*** ./node_modules/lodash/_root.js ***!
-  \**************************************/
+/***/ 4362:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-var freeGlobal = __webpack_require__(/*! ./_freeGlobal */ "./node_modules/lodash/_freeGlobal.js");
+var freeGlobal = __webpack_require__(8556);
 /** Detect free variable `self`. */
 
 
@@ -17344,10 +16567,7 @@ module.exports = root;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_safeGet.js":
-/*!*****************************************!*\
-  !*** ./node_modules/lodash/_safeGet.js ***!
-  \*****************************************/
+/***/ 1952:
 /***/ ((module) => {
 
 /**
@@ -17374,10 +16594,7 @@ module.exports = safeGet;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_setCacheAdd.js":
-/*!*********************************************!*\
-  !*** ./node_modules/lodash/_setCacheAdd.js ***!
-  \*********************************************/
+/***/ 9911:
 /***/ ((module) => {
 
 /** Used to stand-in for `undefined` hash values. */
@@ -17403,10 +16620,7 @@ module.exports = setCacheAdd;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_setCacheHas.js":
-/*!*********************************************!*\
-  !*** ./node_modules/lodash/_setCacheHas.js ***!
-  \*********************************************/
+/***/ 7447:
 /***/ ((module) => {
 
 /**
@@ -17426,10 +16640,7 @@ module.exports = setCacheHas;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_setToArray.js":
-/*!********************************************!*\
-  !*** ./node_modules/lodash/_setToArray.js ***!
-  \********************************************/
+/***/ 6983:
 /***/ ((module) => {
 
 /**
@@ -17452,14 +16663,11 @@ module.exports = setToArray;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_setToString.js":
-/*!*********************************************!*\
-  !*** ./node_modules/lodash/_setToString.js ***!
-  \*********************************************/
+/***/ 5121:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var baseSetToString = __webpack_require__(/*! ./_baseSetToString */ "./node_modules/lodash/_baseSetToString.js"),
-    shortOut = __webpack_require__(/*! ./_shortOut */ "./node_modules/lodash/_shortOut.js");
+var baseSetToString = __webpack_require__(4233),
+    shortOut = __webpack_require__(2369);
 /**
  * Sets the `toString` method of `func` to return `string`.
  *
@@ -17475,10 +16683,7 @@ module.exports = setToString;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_shortOut.js":
-/*!******************************************!*\
-  !*** ./node_modules/lodash/_shortOut.js ***!
-  \******************************************/
+/***/ 2369:
 /***/ ((module) => {
 
 /** Used to detect hot functions by number of calls within a span of milliseconds. */
@@ -17521,13 +16726,10 @@ module.exports = shortOut;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_stackClear.js":
-/*!********************************************!*\
-  !*** ./node_modules/lodash/_stackClear.js ***!
-  \********************************************/
+/***/ 7553:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var ListCache = __webpack_require__(/*! ./_ListCache */ "./node_modules/lodash/_ListCache.js");
+var ListCache = __webpack_require__(2768);
 /**
  * Removes all key-value entries from the stack.
  *
@@ -17546,10 +16748,7 @@ module.exports = stackClear;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_stackDelete.js":
-/*!*********************************************!*\
-  !*** ./node_modules/lodash/_stackDelete.js ***!
-  \*********************************************/
+/***/ 6038:
 /***/ ((module) => {
 
 /**
@@ -17572,10 +16771,7 @@ module.exports = stackDelete;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_stackGet.js":
-/*!******************************************!*\
-  !*** ./node_modules/lodash/_stackGet.js ***!
-  \******************************************/
+/***/ 2397:
 /***/ ((module) => {
 
 /**
@@ -17595,10 +16791,7 @@ module.exports = stackGet;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_stackHas.js":
-/*!******************************************!*\
-  !*** ./node_modules/lodash/_stackHas.js ***!
-  \******************************************/
+/***/ 2421:
 /***/ ((module) => {
 
 /**
@@ -17618,15 +16811,12 @@ module.exports = stackHas;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_stackSet.js":
-/*!******************************************!*\
-  !*** ./node_modules/lodash/_stackSet.js ***!
-  \******************************************/
+/***/ 2936:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var ListCache = __webpack_require__(/*! ./_ListCache */ "./node_modules/lodash/_ListCache.js"),
-    Map = __webpack_require__(/*! ./_Map */ "./node_modules/lodash/_Map.js"),
-    MapCache = __webpack_require__(/*! ./_MapCache */ "./node_modules/lodash/_MapCache.js");
+var ListCache = __webpack_require__(2768),
+    Map = __webpack_require__(4804),
+    MapCache = __webpack_require__(8423);
 /** Used as the size to enable large array optimizations. */
 
 
@@ -17666,10 +16856,7 @@ module.exports = stackSet;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/_toSource.js":
-/*!******************************************!*\
-  !*** ./node_modules/lodash/_toSource.js ***!
-  \******************************************/
+/***/ 1214:
 /***/ ((module) => {
 
 /** Used for built-in method references. */
@@ -17703,10 +16890,7 @@ module.exports = toSource;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/constant.js":
-/*!*****************************************!*\
-  !*** ./node_modules/lodash/constant.js ***!
-  \*****************************************/
+/***/ 7622:
 /***/ ((module) => {
 
 /**
@@ -17738,10 +16922,7 @@ module.exports = constant;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/eq.js":
-/*!***********************************!*\
-  !*** ./node_modules/lodash/eq.js ***!
-  \***********************************/
+/***/ 7950:
 /***/ ((module) => {
 
 /**
@@ -17784,10 +16965,7 @@ module.exports = eq;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/identity.js":
-/*!*****************************************!*\
-  !*** ./node_modules/lodash/identity.js ***!
-  \*****************************************/
+/***/ 1559:
 /***/ ((module) => {
 
 /**
@@ -17814,14 +16992,11 @@ module.exports = identity;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/isArguments.js":
-/*!********************************************!*\
-  !*** ./node_modules/lodash/isArguments.js ***!
-  \********************************************/
+/***/ 9246:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var baseIsArguments = __webpack_require__(/*! ./_baseIsArguments */ "./node_modules/lodash/_baseIsArguments.js"),
-    isObjectLike = __webpack_require__(/*! ./isObjectLike */ "./node_modules/lodash/isObjectLike.js");
+var baseIsArguments = __webpack_require__(1075),
+    isObjectLike = __webpack_require__(4939);
 /** Used for built-in method references. */
 
 
@@ -17860,10 +17035,7 @@ module.exports = isArguments;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/isArray.js":
-/*!****************************************!*\
-  !*** ./node_modules/lodash/isArray.js ***!
-  \****************************************/
+/***/ 3670:
 /***/ ((module) => {
 
 /**
@@ -17894,14 +17066,11 @@ module.exports = isArray;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/isArrayLike.js":
-/*!********************************************!*\
-  !*** ./node_modules/lodash/isArrayLike.js ***!
-  \********************************************/
+/***/ 6175:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var isFunction = __webpack_require__(/*! ./isFunction */ "./node_modules/lodash/isFunction.js"),
-    isLength = __webpack_require__(/*! ./isLength */ "./node_modules/lodash/isLength.js");
+var isFunction = __webpack_require__(3626),
+    isLength = __webpack_require__(7100);
 /**
  * Checks if `value` is array-like. A value is considered array-like if it's
  * not a function and has a `value.length` that's an integer greater than or
@@ -17937,14 +17106,11 @@ module.exports = isArrayLike;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/isArrayLikeObject.js":
-/*!**************************************************!*\
-  !*** ./node_modules/lodash/isArrayLikeObject.js ***!
-  \**************************************************/
+/***/ 3566:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var isArrayLike = __webpack_require__(/*! ./isArrayLike */ "./node_modules/lodash/isArrayLike.js"),
-    isObjectLike = __webpack_require__(/*! ./isObjectLike */ "./node_modules/lodash/isObjectLike.js");
+var isArrayLike = __webpack_require__(6175),
+    isObjectLike = __webpack_require__(4939);
 /**
  * This method is like `_.isArrayLike` except that it also checks if `value`
  * is an object.
@@ -17980,17 +17146,14 @@ module.exports = isArrayLikeObject;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/isBuffer.js":
-/*!*****************************************!*\
-  !*** ./node_modules/lodash/isBuffer.js ***!
-  \*****************************************/
+/***/ 2343:
 /***/ ((module, exports, __webpack_require__) => {
 
 /* module decorator */ module = __webpack_require__.nmd(module);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-var root = __webpack_require__(/*! ./_root */ "./node_modules/lodash/_root.js"),
-    stubFalse = __webpack_require__(/*! ./stubFalse */ "./node_modules/lodash/stubFalse.js");
+var root = __webpack_require__(4362),
+    stubFalse = __webpack_require__(3444);
 /** Detect free variable `exports`. */
 
 
@@ -18030,13 +17193,10 @@ module.exports = isBuffer;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/isEqual.js":
-/*!****************************************!*\
-  !*** ./node_modules/lodash/isEqual.js ***!
-  \****************************************/
+/***/ 7120:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var baseIsEqual = __webpack_require__(/*! ./_baseIsEqual */ "./node_modules/lodash/_baseIsEqual.js");
+var baseIsEqual = __webpack_require__(9856);
 /**
  * Performs a deep comparison between two values to determine if they are
  * equivalent.
@@ -18075,14 +17235,11 @@ module.exports = isEqual;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/isFunction.js":
-/*!*******************************************!*\
-  !*** ./node_modules/lodash/isFunction.js ***!
-  \*******************************************/
+/***/ 3626:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var baseGetTag = __webpack_require__(/*! ./_baseGetTag */ "./node_modules/lodash/_baseGetTag.js"),
-    isObject = __webpack_require__(/*! ./isObject */ "./node_modules/lodash/isObject.js");
+var baseGetTag = __webpack_require__(1185),
+    isObject = __webpack_require__(71);
 /** `Object#toString` result references. */
 
 
@@ -18123,10 +17280,7 @@ module.exports = isFunction;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/isLength.js":
-/*!*****************************************!*\
-  !*** ./node_modules/lodash/isLength.js ***!
-  \*****************************************/
+/***/ 7100:
 /***/ ((module) => {
 
 /** Used as references for various `Number` constants. */
@@ -18166,10 +17320,7 @@ module.exports = isLength;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/isObject.js":
-/*!*****************************************!*\
-  !*** ./node_modules/lodash/isObject.js ***!
-  \*****************************************/
+/***/ 71:
 /***/ ((module) => {
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -18209,10 +17360,7 @@ module.exports = isObject;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/isObjectLike.js":
-/*!*********************************************!*\
-  !*** ./node_modules/lodash/isObjectLike.js ***!
-  \*********************************************/
+/***/ 4939:
 /***/ ((module) => {
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -18249,15 +17397,12 @@ module.exports = isObjectLike;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/isPlainObject.js":
-/*!**********************************************!*\
-  !*** ./node_modules/lodash/isPlainObject.js ***!
-  \**********************************************/
+/***/ 3902:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var baseGetTag = __webpack_require__(/*! ./_baseGetTag */ "./node_modules/lodash/_baseGetTag.js"),
-    getPrototype = __webpack_require__(/*! ./_getPrototype */ "./node_modules/lodash/_getPrototype.js"),
-    isObjectLike = __webpack_require__(/*! ./isObjectLike */ "./node_modules/lodash/isObjectLike.js");
+var baseGetTag = __webpack_require__(1185),
+    getPrototype = __webpack_require__(2107),
+    isObjectLike = __webpack_require__(4939);
 /** `Object#toString` result references. */
 
 
@@ -18323,15 +17468,12 @@ module.exports = isPlainObject;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/isTypedArray.js":
-/*!*********************************************!*\
-  !*** ./node_modules/lodash/isTypedArray.js ***!
-  \*********************************************/
+/***/ 1589:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var baseIsTypedArray = __webpack_require__(/*! ./_baseIsTypedArray */ "./node_modules/lodash/_baseIsTypedArray.js"),
-    baseUnary = __webpack_require__(/*! ./_baseUnary */ "./node_modules/lodash/_baseUnary.js"),
-    nodeUtil = __webpack_require__(/*! ./_nodeUtil */ "./node_modules/lodash/_nodeUtil.js");
+var baseIsTypedArray = __webpack_require__(3638),
+    baseUnary = __webpack_require__(9081),
+    nodeUtil = __webpack_require__(1985);
 /* Node.js helper references. */
 
 
@@ -18359,15 +17501,12 @@ module.exports = isTypedArray;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/keys.js":
-/*!*************************************!*\
-  !*** ./node_modules/lodash/keys.js ***!
-  \*************************************/
+/***/ 3225:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var arrayLikeKeys = __webpack_require__(/*! ./_arrayLikeKeys */ "./node_modules/lodash/_arrayLikeKeys.js"),
-    baseKeys = __webpack_require__(/*! ./_baseKeys */ "./node_modules/lodash/_baseKeys.js"),
-    isArrayLike = __webpack_require__(/*! ./isArrayLike */ "./node_modules/lodash/isArrayLike.js");
+var arrayLikeKeys = __webpack_require__(8083),
+    baseKeys = __webpack_require__(7521),
+    isArrayLike = __webpack_require__(6175);
 /**
  * Creates an array of the own enumerable property names of `object`.
  *
@@ -18406,15 +17545,12 @@ module.exports = keys;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/keysIn.js":
-/*!***************************************!*\
-  !*** ./node_modules/lodash/keysIn.js ***!
-  \***************************************/
+/***/ 1291:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var arrayLikeKeys = __webpack_require__(/*! ./_arrayLikeKeys */ "./node_modules/lodash/_arrayLikeKeys.js"),
-    baseKeysIn = __webpack_require__(/*! ./_baseKeysIn */ "./node_modules/lodash/_baseKeysIn.js"),
-    isArrayLike = __webpack_require__(/*! ./isArrayLike */ "./node_modules/lodash/isArrayLike.js");
+var arrayLikeKeys = __webpack_require__(8083),
+    baseKeysIn = __webpack_require__(173),
+    isArrayLike = __webpack_require__(6175);
 /**
  * Creates an array of the own and inherited enumerable property names of `object`.
  *
@@ -18448,14 +17584,11 @@ module.exports = keysIn;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/merge.js":
-/*!**************************************!*\
-  !*** ./node_modules/lodash/merge.js ***!
-  \**************************************/
+/***/ 4299:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var baseMerge = __webpack_require__(/*! ./_baseMerge */ "./node_modules/lodash/_baseMerge.js"),
-    createAssigner = __webpack_require__(/*! ./_createAssigner */ "./node_modules/lodash/_createAssigner.js");
+var baseMerge = __webpack_require__(6681),
+    createAssigner = __webpack_require__(661);
 /**
  * This method is like `_.assign` except that it recursively merges own and
  * inherited enumerable string keyed properties of source objects into the
@@ -18496,10 +17629,7 @@ module.exports = merge;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/stubArray.js":
-/*!******************************************!*\
-  !*** ./node_modules/lodash/stubArray.js ***!
-  \******************************************/
+/***/ 4043:
 /***/ ((module) => {
 
 /**
@@ -18528,10 +17658,7 @@ module.exports = stubArray;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/stubFalse.js":
-/*!******************************************!*\
-  !*** ./node_modules/lodash/stubFalse.js ***!
-  \******************************************/
+/***/ 3444:
 /***/ ((module) => {
 
 /**
@@ -18555,14 +17682,11 @@ module.exports = stubFalse;
 
 /***/ }),
 
-/***/ "./node_modules/lodash/toPlainObject.js":
-/*!**********************************************!*\
-  !*** ./node_modules/lodash/toPlainObject.js ***!
-  \**********************************************/
+/***/ 5151:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var copyObject = __webpack_require__(/*! ./_copyObject */ "./node_modules/lodash/_copyObject.js"),
-    keysIn = __webpack_require__(/*! ./keysIn */ "./node_modules/lodash/keysIn.js");
+var copyObject = __webpack_require__(7841),
+    keysIn = __webpack_require__(1291);
 /**
  * Converts `value` to a plain object flattening inherited enumerable string
  * keyed properties of `value` to own properties of the plain object.
@@ -18597,1049 +17721,18 @@ module.exports = toPlainObject;
 
 /***/ }),
 
-/***/ "./src/coil wire.ts":
-/*!**************************!*\
-  !*** ./src/coil wire.ts ***!
-  \**************************/
+/***/ 2817:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
+// ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ coilWire)
-/* harmony export */ });
-/* harmony import */ var kolmafia__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! kolmafia */ "kolmafia");
-/* harmony import */ var kolmafia__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(kolmafia__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var libram__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! libram */ "./node_modules/libram/dist/index.js");
-/* harmony import */ var libram__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(libram__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _outfits__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./outfits */ "./src/outfits.ts");
-/* harmony import */ var _phccs_macros__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./phccs-macros */ "./src/phccs-macros.ts");
-/* harmony import */ var _phredhccs_lib__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./phredhccs-lib */ "./src/phredhccs-lib.ts");
-/* harmony import */ var _runstart__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./runstart */ "./src/runstart.ts");
-var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5, _templateObject6, _templateObject7, _templateObject8, _templateObject9, _templateObject10;
 
-function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
-
-
-
-
-
-
-
-
-function firstFights() {
-  (0,_outfits__WEBPACK_IMPORTED_MODULE_1__.default)();
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.equip)((0,libram__WEBPACK_IMPORTED_MODULE_5__.$slot)(_templateObject || (_templateObject = _taggedTemplateLiteral(["back"]))), (0,libram__WEBPACK_IMPORTED_MODULE_5__.$item)(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["protonic accelerator pack"]))));
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_3__.useDefaultFamiliar)();
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_3__.fightSausageIfAble)((0,libram__WEBPACK_IMPORTED_MODULE_5__.$location)(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["Noob Cave"]))), libram__WEBPACK_IMPORTED_MODULE_5__.Macro.skill((0,libram__WEBPACK_IMPORTED_MODULE_5__.$skill)(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["Micrometeorite"])))).attack().repeat());
-
-  if ((0,libram__WEBPACK_IMPORTED_MODULE_5__.have)((0,libram__WEBPACK_IMPORTED_MODULE_5__.$item)(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["magical sausage casing"]))))) {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.create)(1, (0,libram__WEBPACK_IMPORTED_MODULE_5__.$item)(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["magical sausage"]))));
-  }
-
-  if ((0,libram__WEBPACK_IMPORTED_MODULE_5__.have)((0,libram__WEBPACK_IMPORTED_MODULE_5__.$item)(_templateObject7 || (_templateObject7 = _taggedTemplateLiteral(["magical sausage"]))))) {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.eat)(1, (0,libram__WEBPACK_IMPORTED_MODULE_5__.$item)(_templateObject8 || (_templateObject8 = _taggedTemplateLiteral(["magical sausage"]))));
-  }
-
-  var ghostLocation = (0,libram__WEBPACK_IMPORTED_MODULE_5__.get)("ghostLocation");
-
-  if (ghostLocation) {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.equip)((0,libram__WEBPACK_IMPORTED_MODULE_5__.$slot)(_templateObject9 || (_templateObject9 = _taggedTemplateLiteral(["off-hand"]))), (0,libram__WEBPACK_IMPORTED_MODULE_5__.$item)(_templateObject10 || (_templateObject10 = _taggedTemplateLiteral(["latte lovers member's mug"]))));
-    (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_3__.useDefaultFamiliar)();
-    (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_3__.advMacro)(ghostLocation, libram__WEBPACK_IMPORTED_MODULE_5__.Macro.step(_phccs_macros__WEBPACK_IMPORTED_MODULE_2__.delevel).step(_phccs_macros__WEBPACK_IMPORTED_MODULE_2__.easyFight).skill("shoot ghost").skill("shoot ghost").skill("shoot ghost").skill("trap ghost"));
-  }
-}
-
-function coilWire() {
-  (0,_runstart__WEBPACK_IMPORTED_MODULE_4__.runStart)();
-  firstFights();
-  (0,_outfits__WEBPACK_IMPORTED_MODULE_1__.wireOutfit)();
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.cliExecute)("/cast * candy heart");
-  return 60;
-}
-
-/***/ }),
-
-/***/ "./src/familiarweight.ts":
-/*!*******************************!*\
-  !*** ./src/familiarweight.ts ***!
-  \*******************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "universalWeightBuffs": () => (/* binding */ universalWeightBuffs),
-/* harmony export */   "default": () => (/* binding */ familiarTest)
-/* harmony export */ });
-/* harmony import */ var kolmafia__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! kolmafia */ "kolmafia");
-/* harmony import */ var kolmafia__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(kolmafia__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var libram__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! libram */ "./node_modules/libram/dist/index.js");
-/* harmony import */ var libram__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(libram__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _phccs_macros__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./phccs-macros */ "./src/phccs-macros.ts");
-/* harmony import */ var _phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./phredhccs-lib */ "./src/phredhccs-lib.ts");
-/* harmony import */ var _outfits__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./outfits */ "./src/outfits.ts");
-var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5, _templateObject6, _templateObject7, _templateObject8, _templateObject9, _templateObject10, _templateObject11, _templateObject12, _templateObject13, _templateObject14, _templateObject15, _templateObject16, _templateObject17, _templateObject18, _templateObject19, _templateObject20, _templateObject21, _templateObject22, _templateObject23, _templateObject24, _templateObject25, _templateObject26, _templateObject27, _templateObject28, _templateObject29;
-
-function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
-
-
-
-
-
-
-function universalWeightBuffs() {
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.ensureEffect)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$effect)(_templateObject || (_templateObject = _taggedTemplateLiteral(["Empathy"]))));
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.ensureEffect)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$effect)(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["Leash of Linguini"]))));
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.ensureEffect)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$effect)(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["Blood Bond"]))));
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.ensureEffect)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$effect)(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["Billiards Belligerence"]))));
-  if (!(0,libram__WEBPACK_IMPORTED_MODULE_4__.get)("_clanFortuneBuffUsed")) (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.cliExecute)("fortune buff familiar");
-
-  if (!(0,libram__WEBPACK_IMPORTED_MODULE_4__.get)("_freePillKeeperUsed")) {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.cliExecute)("pillkeeper familiar");
-  }
-
-  if (!(0,libram__WEBPACK_IMPORTED_MODULE_4__.have)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$effect)(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["Puzzle Champ"]))))) {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.cliExecute)("witchess");
-  }
-
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.tryHead)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$effect)(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["Do I Know You From Somewhere?"]))));
-  if ((0,libram__WEBPACK_IMPORTED_MODULE_4__.have)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject7 || (_templateObject7 = _taggedTemplateLiteral(["green candy heart"]))))) (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.ensureEffect)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$effect)(_templateObject8 || (_templateObject8 = _taggedTemplateLiteral(["Heart of Green"]))));
-}
-
-function gearAndUncommonBuffs() {
-  if (!(0,libram__WEBPACK_IMPORTED_MODULE_4__.get)("_clanFortuneBuffUsed")) (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.cliExecute)("fortune buff familiar");
-  if ((0,libram__WEBPACK_IMPORTED_MODULE_4__.have)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject9 || (_templateObject9 = _taggedTemplateLiteral(["burning newspaper"]))))) (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.create)(1, (0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject10 || (_templateObject10 = _taggedTemplateLiteral(["burning paper crane"]))));
-  if ((0,libram__WEBPACK_IMPORTED_MODULE_4__.have)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject11 || (_templateObject11 = _taggedTemplateLiteral(["short stack of pancakes"]))))) (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.ensureEffect)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$effect)(_templateObject12 || (_templateObject12 = _taggedTemplateLiteral(["Shortly Stacked"]))));
-
-  if (!(0,libram__WEBPACK_IMPORTED_MODULE_4__.have)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject13 || (_templateObject13 = _taggedTemplateLiteral(["cracker"]))))) {
-    if ((0,libram__WEBPACK_IMPORTED_MODULE_4__.get)("tomeSummons") < 3) {
-      (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.useFamiliar)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$familiar)(_templateObject14 || (_templateObject14 = _taggedTemplateLiteral(["Exotic Parrot"]))));
-      (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.create)(1, (0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject15 || (_templateObject15 = _taggedTemplateLiteral(["box of Familiar Jacks"]))));
-      (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.use)(1, (0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject16 || (_templateObject16 = _taggedTemplateLiteral(["box of Familiar Jacks"]))));
-    } else if ((0,libram__WEBPACK_IMPORTED_MODULE_4__.have)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$familiar)(_templateObject17 || (_templateObject17 = _taggedTemplateLiteral(["Baby Bugged Bugbear"]))))) {
-      (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.useFamiliar)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$familiar)(_templateObject18 || (_templateObject18 = _taggedTemplateLiteral(["Baby Bugged Bugbear"]))));
-      (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.visitUrl)("arena.php");
-    }
-  }
-}
-
-function familiarStuff() {
-  while ((0,libram__WEBPACK_IMPORTED_MODULE_4__.get)("_shortOrderCookCharge") < 11 && 5 - libram__WEBPACK_IMPORTED_MODULE_4__.Witchess.fightsDone() > 11 - (0,libram__WEBPACK_IMPORTED_MODULE_4__.get)("_shortOrderCookCharge")) {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.useFamiliar)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$familiar)(_templateObject19 || (_templateObject19 = _taggedTemplateLiteral(["Shorter-Order Cook"]))));
-    (0,_outfits__WEBPACK_IMPORTED_MODULE_3__.default)();
-    _phccs_macros__WEBPACK_IMPORTED_MODULE_1__.defaultKill.setAutoAttack();
-    libram__WEBPACK_IMPORTED_MODULE_4__.Witchess.fightPiece((0,libram__WEBPACK_IMPORTED_MODULE_4__.$monster)(_templateObject20 || (_templateObject20 = _taggedTemplateLiteral(["Witchess Bishop"]))));
-  }
-
-  while ((0,libram__WEBPACK_IMPORTED_MODULE_4__.get)("garbageFireProgress") < 30 && 5 - libram__WEBPACK_IMPORTED_MODULE_4__.Witchess.fightsDone() > 30 - (0,libram__WEBPACK_IMPORTED_MODULE_4__.get)("garbageFireProgress")) {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.useFamiliar)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$familiar)(_templateObject21 || (_templateObject21 = _taggedTemplateLiteral(["Garbage Fire"]))));
-    (0,_outfits__WEBPACK_IMPORTED_MODULE_3__.default)();
-    _phccs_macros__WEBPACK_IMPORTED_MODULE_1__.defaultKill.setAutoAttack();
-    libram__WEBPACK_IMPORTED_MODULE_4__.Witchess.fightPiece((0,libram__WEBPACK_IMPORTED_MODULE_4__.$monster)(_templateObject22 || (_templateObject22 = _taggedTemplateLiteral(["Witchess Bishop"]))));
-  }
-}
-
-function takeAShower() {
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.useFamiliar)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$familiar)(_templateObject23 || (_templateObject23 = _taggedTemplateLiteral(["none"]))));
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.horse)("dark");
-  (0,_outfits__WEBPACK_IMPORTED_MODULE_3__.default)();
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.setChoice)(1387, 3);
-
-  if ((0,libram__WEBPACK_IMPORTED_MODULE_4__.get)("_meteorShowerUses") < 5 && !(0,libram__WEBPACK_IMPORTED_MODULE_4__.have)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$effect)(_templateObject24 || (_templateObject24 = _taggedTemplateLiteral(["Meteor Showered"]))))) {
-    (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.advMacroAA)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$location)(_templateObject25 || (_templateObject25 = _taggedTemplateLiteral(["The Dire Warren"]))), libram__WEBPACK_IMPORTED_MODULE_4__.Macro.skill((0,libram__WEBPACK_IMPORTED_MODULE_4__.$skill)(_templateObject26 || (_templateObject26 = _taggedTemplateLiteral(["Meteor Shower"])))).skill((0,libram__WEBPACK_IMPORTED_MODULE_4__.$skill)(_templateObject27 || (_templateObject27 = _taggedTemplateLiteral(["Use the Force"])))), 1, function () {
-      (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.visitUrl)("choice.php");
-      (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.runChoice)(3);
-    });
-    (0,libram__WEBPACK_IMPORTED_MODULE_4__.set)("_meteorShowerUses", 1 + (0,libram__WEBPACK_IMPORTED_MODULE_4__.get)("_meteorShowerUses"));
-  }
-}
-
-function testPrep() {
-  (0,_outfits__WEBPACK_IMPORTED_MODULE_3__.famweightOutfit)();
-  if ((0,libram__WEBPACK_IMPORTED_MODULE_4__.have)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject28 || (_templateObject28 = _taggedTemplateLiteral(["silver face paint"]))))) (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.ensureEffect)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$effect)(_templateObject29 || (_templateObject29 = _taggedTemplateLiteral(["Robot Friends"]))));
-}
-
-function familiarTest() {
-  universalWeightBuffs();
-  familiarStuff();
-  gearAndUncommonBuffs();
-  takeAShower();
-  testPrep();
-  return 60 - Math.floor(((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.familiarWeight)((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.myFamiliar)()) + (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.weightAdjustment)()) / 5);
-}
-
-/***/ }),
-
-/***/ "./src/hotres.ts":
-/*!***********************!*\
-  !*** ./src/hotres.ts ***!
-  \***********************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ hotTest)
-/* harmony export */ });
-/* harmony import */ var kolmafia__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! kolmafia */ "kolmafia");
-/* harmony import */ var kolmafia__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(kolmafia__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var libram__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! libram */ "./node_modules/libram/dist/index.js");
-/* harmony import */ var libram__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(libram__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _familiarweight__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./familiarweight */ "./src/familiarweight.ts");
-/* harmony import */ var _phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./phredhccs-lib */ "./src/phredhccs-lib.ts");
-/* harmony import */ var _outfits__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./outfits */ "./src/outfits.ts");
-var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5, _templateObject6, _templateObject7, _templateObject8, _templateObject9, _templateObject10, _templateObject11, _templateObject12, _templateObject13, _templateObject14, _templateObject15, _templateObject16, _templateObject17, _templateObject18, _templateObject19, _templateObject20, _templateObject21, _templateObject22, _templateObject23, _templateObject24, _templateObject25, _templateObject26, _templateObject27, _templateObject28, _templateObject29, _templateObject30, _templateObject31, _templateObject32, _templateObject33, _templateObject34, _templateObject35, _templateObject36, _templateObject37, _templateObject38, _templateObject39, _templateObject40, _templateObject41;
-
-function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
-
-
-
-
-
-
-
-var predictor = function predictor() {
-  return 60 - (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.numericModifier)("hot resistance");
-};
-
-function castBuffs() {
-  (0,_familiarweight__WEBPACK_IMPORTED_MODULE_1__.universalWeightBuffs)();
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.tryHead)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$effect)(_templateObject || (_templateObject = _taggedTemplateLiteral(["Hot-Headed"]))));
-  if (!(0,libram__WEBPACK_IMPORTED_MODULE_4__.have)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$effect)(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["Synthesis: Hot"]))))) (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.synthHot)();
-
-  if (!(0,libram__WEBPACK_IMPORTED_MODULE_4__.have)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["tenderizing hammer"]))))) {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.buy)(1, (0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["tenderizing hammer"]))));
-  }
-
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.cliExecute)("smash * ratty knitted cap");
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.cliExecute)("smash * red-hot sausage fork");
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.cliExecute)("smash * smoldering bagel punch");
-
-  if (!(0,libram__WEBPACK_IMPORTED_MODULE_4__.have)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$effect)(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["Sleazy Hands"]))))) {
-    if (!(0,libram__WEBPACK_IMPORTED_MODULE_4__.have)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["lotion of sleaziness"]))))) (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.create)(1, (0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject7 || (_templateObject7 = _taggedTemplateLiteral(["lotion of sleaziness"]))));
-    if ((0,libram__WEBPACK_IMPORTED_MODULE_4__.have)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject8 || (_templateObject8 = _taggedTemplateLiteral(["lotion of sleaziness"]))))) (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.use)(1, (0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject9 || (_templateObject9 = _taggedTemplateLiteral(["lotion of sleaziness"]))));
-  }
-
-  if (!(0,libram__WEBPACK_IMPORTED_MODULE_4__.have)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$effect)(_templateObject10 || (_templateObject10 = _taggedTemplateLiteral(["Flame-Retardant Trousers"])))) && (0,libram__WEBPACK_IMPORTED_MODULE_4__.have)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject11 || (_templateObject11 = _taggedTemplateLiteral(["hot powder"]))))) {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.use)(1, (0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject12 || (_templateObject12 = _taggedTemplateLiteral(["hot powder"]))));
-  }
-
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.ensureEffect)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$effect)(_templateObject13 || (_templateObject13 = _taggedTemplateLiteral(["Elemental Saucesphere"]))));
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.ensureEffect)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$effect)(_templateObject14 || (_templateObject14 = _taggedTemplateLiteral(["Astral Shell"]))));
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.ensureEffect)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$effect)(_templateObject15 || (_templateObject15 = _taggedTemplateLiteral(["Feeling Peaceful"]))));
-
-  if ((0,libram__WEBPACK_IMPORTED_MODULE_4__.have)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject16 || (_templateObject16 = _taggedTemplateLiteral(["scroll of Protection from Bad Stuff"]))))) {
-    (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.ensureEffect)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$effect)(_templateObject17 || (_templateObject17 = _taggedTemplateLiteral(["Protection from Bad Stuff"]))));
-  }
-
-  if (!(0,libram__WEBPACK_IMPORTED_MODULE_4__.have)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject18 || (_templateObject18 = _taggedTemplateLiteral(["meteorite guard"])))) && (0,libram__WEBPACK_IMPORTED_MODULE_4__.have)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject19 || (_templateObject19 = _taggedTemplateLiteral(["metal meteoroid"]))))) {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.create)(1, (0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject20 || (_templateObject20 = _taggedTemplateLiteral(["meteorite guard"]))));
-  }
-}
-
-function itsHerFactory() {
-  (0,_outfits__WEBPACK_IMPORTED_MODULE_3__.default)();
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.useDefaultFamiliar)(false);
-
-  if ((0,libram__WEBPACK_IMPORTED_MODULE_4__.get)("_monstersMapped") < 3 && !(0,libram__WEBPACK_IMPORTED_MODULE_4__.have)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject21 || (_templateObject21 = _taggedTemplateLiteral(["lava-proof pants"]))))) {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.equip)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$slot)(_templateObject22 || (_templateObject22 = _taggedTemplateLiteral(["back"]))), (0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject23 || (_templateObject23 = _taggedTemplateLiteral(["vampyric cloake"]))));
-    (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.useDefaultFamiliar)(false);
-
-    while ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.getFuel)() < 137) {
-      (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.fuelUp)();
-    }
-
-    (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.mapMacro)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$location)(_templateObject24 || (_templateObject24 = _taggedTemplateLiteral(["LavaCo\u2122 Lamp Factory"]))), (0,libram__WEBPACK_IMPORTED_MODULE_4__.$monster)(_templateObject25 || (_templateObject25 = _taggedTemplateLiteral(["factory worker (female)"]))), libram__WEBPACK_IMPORTED_MODULE_4__.Macro.skill((0,libram__WEBPACK_IMPORTED_MODULE_4__.$skill)(_templateObject26 || (_templateObject26 = _taggedTemplateLiteral(["Become a Cloud of Mist"])))).skill((0,libram__WEBPACK_IMPORTED_MODULE_4__.$skill)(_templateObject27 || (_templateObject27 = _taggedTemplateLiteral(["Asdon Martin: Missile Launcher"])))));
-  }
-}
-
-function deepDarkVisions() {
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.horse)("pale");
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.useFamiliar)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$familiar)(_templateObject28 || (_templateObject28 = _taggedTemplateLiteral(["Exotic Parrot"]))));
-
-  if (!(0,libram__WEBPACK_IMPORTED_MODULE_4__.have)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject29 || (_templateObject29 = _taggedTemplateLiteral(["astral pet sweater"])))) && (0,libram__WEBPACK_IMPORTED_MODULE_4__.get)("tomeSummons") < 3) {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.create)(1, (0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject30 || (_templateObject30 = _taggedTemplateLiteral(["box of Familiar Jacks"]))));
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.use)(1, (0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject31 || (_templateObject31 = _taggedTemplateLiteral(["box of Familiar Jacks"]))));
-  }
-
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.maximize)("spooky res", false);
-
-  while ((0,libram__WEBPACK_IMPORTED_MODULE_4__.have)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$skill)(_templateObject32 || (_templateObject32 = _taggedTemplateLiteral(["Deep Dark Visions"])))) && (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.haveEffect)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$effect)(_templateObject33 || (_templateObject33 = _taggedTemplateLiteral(["Visions of the Deep Dark Deeps"])))) < 30) {
-    if ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.myMp)() < 20) {
-      (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.create)(1, (0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject34 || (_templateObject34 = _taggedTemplateLiteral(["magical sausage"]))));
-      (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.eat)(1, (0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject35 || (_templateObject35 = _taggedTemplateLiteral(["magical sausage"]))));
-    }
-
-    while ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.myHp)() < (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.myMaxhp)()) {
-      (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.useSkill)(1, (0,libram__WEBPACK_IMPORTED_MODULE_4__.$skill)(_templateObject36 || (_templateObject36 = _taggedTemplateLiteral(["Cannelloni Cocoon"]))));
-    }
-
-    if ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.myMp)() < 100) {
-      (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.create)(1, (0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject37 || (_templateObject37 = _taggedTemplateLiteral(["magical sausage"]))));
-      (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.eat)(1, (0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject38 || (_templateObject38 = _taggedTemplateLiteral(["magical sausage"]))));
-    }
-
-    if (Math.round((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.numericModifier)("spooky resistance")) < 10) {
-      (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.ensureEffect)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$effect)(_templateObject39 || (_templateObject39 = _taggedTemplateLiteral(["Does It Have a Skull In There??"]))));
-
-      if (Math.round((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.numericModifier)("spooky resistance")) < 10) {
-        throw "Not enough spooky res for Deep Dark Visions.";
-      }
-    }
-
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.useSkill)(1, (0,libram__WEBPACK_IMPORTED_MODULE_4__.$skill)(_templateObject40 || (_templateObject40 = _taggedTemplateLiteral(["Deep Dark Visions"]))));
-  }
-}
-
-function testPrep() {
-  (0,_outfits__WEBPACK_IMPORTED_MODULE_3__.hotresOutfit)();
-  var improvements = [function () {
-    while ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.getFuel)() < 37) {
-      (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.fuelUp)();
-    }
-
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.cliExecute)("asdonmartin drive safely");
-  }, function () {
-    return (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.ensureEffect)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$effect)(_templateObject41 || (_templateObject41 = _taggedTemplateLiteral(["Amazing"]))));
-  }];
-
-  for (var _i = 0, _improvements = improvements; _i < _improvements.length; _i++) {
-    var improvement = _improvements[_i];
-    if (predictor() > 1) improvement();
-  }
-}
-
-function hotTest() {
-  castBuffs();
-  itsHerFactory();
-  deepDarkVisions();
-  testPrep();
-  return predictor();
-}
-
-/***/ }),
-
-/***/ "./src/index.ts":
-/*!**********************!*\
-  !*** ./src/index.ts ***!
-  \**********************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var kolmafia__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! kolmafia */ "kolmafia");
-/* harmony import */ var kolmafia__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(kolmafia__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _coil_wire__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./coil wire */ "./src/coil wire.ts");
-/* harmony import */ var _familiarweight__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./familiarweight */ "./src/familiarweight.ts");
-/* harmony import */ var _hotres__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./hotres */ "./src/hotres.ts");
-/* harmony import */ var _item__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./item */ "./src/item.ts");
-/* harmony import */ var _level__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./level */ "./src/level.ts");
-/* harmony import */ var _noncombat__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./noncombat */ "./src/noncombat.ts");
-/* harmony import */ var _phredhccs_lib__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./phredhccs-lib */ "./src/phredhccs-lib.ts");
-/* harmony import */ var _spell__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./spell */ "./src/spell.ts");
-/* harmony import */ var _stattests__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./stattests */ "./src/stattests.ts");
-/* harmony import */ var _weapon__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./weapon */ "./src/weapon.ts");
-
-
-
-
-
-
-
-
-
-
- //preamble
-
-if ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.myPathId)() !== 25) (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.abort)();
-(0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.visitUrl)("council.php");
-(0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.cliExecute)("ccs twiddle");
-var startTime = (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.gametimeToInt)();
-
-try {
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_7__.testWrapper)("wire-coiling", _phredhccs_lib__WEBPACK_IMPORTED_MODULE_7__.Test.COIL_WIRE, _coil_wire__WEBPACK_IMPORTED_MODULE_1__.default);
-  if ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.myLevel)() < 13) (0,_level__WEBPACK_IMPORTED_MODULE_5__.default)();
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_7__.testWrapper)("moxie", _phredhccs_lib__WEBPACK_IMPORTED_MODULE_7__.Test.MOX, _stattests__WEBPACK_IMPORTED_MODULE_9__.moxTest);
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_7__.testWrapper)("HP", _phredhccs_lib__WEBPACK_IMPORTED_MODULE_7__.Test.HP, _stattests__WEBPACK_IMPORTED_MODULE_9__.HPTest);
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_7__.testWrapper)("muscle", _phredhccs_lib__WEBPACK_IMPORTED_MODULE_7__.Test.MUS, _stattests__WEBPACK_IMPORTED_MODULE_9__.muscleTest);
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_7__.testWrapper)("mysticality", _phredhccs_lib__WEBPACK_IMPORTED_MODULE_7__.Test.MYS, _stattests__WEBPACK_IMPORTED_MODULE_9__.mystTest);
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_7__.testWrapper)("item", _phredhccs_lib__WEBPACK_IMPORTED_MODULE_7__.Test.ITEM, _item__WEBPACK_IMPORTED_MODULE_4__.default);
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_7__.testWrapper)("hot res", _phredhccs_lib__WEBPACK_IMPORTED_MODULE_7__.Test.HOT_RES, _hotres__WEBPACK_IMPORTED_MODULE_3__.default);
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_7__.testWrapper)("noncombat", _phredhccs_lib__WEBPACK_IMPORTED_MODULE_7__.Test.NONCOMBAT, _noncombat__WEBPACK_IMPORTED_MODULE_6__.default);
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_7__.testWrapper)("familiar", _phredhccs_lib__WEBPACK_IMPORTED_MODULE_7__.Test.FAMILIAR, _familiarweight__WEBPACK_IMPORTED_MODULE_2__.default);
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_7__.testWrapper)("weapon damage", _phredhccs_lib__WEBPACK_IMPORTED_MODULE_7__.Test.WEAPON, _weapon__WEBPACK_IMPORTED_MODULE_10__.default);
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_7__.testWrapper)("spell damage", _phredhccs_lib__WEBPACK_IMPORTED_MODULE_7__.Test.SPELL, _spell__WEBPACK_IMPORTED_MODULE_8__.default);
-} finally {
-  _phredhccs_lib__WEBPACK_IMPORTED_MODULE_7__.tests.forEach(function (testDuration) {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.print)("We expected the ".concat(testDuration.testName, " test to take ").concat(testDuration.turnPrediction, " turns, and it cost ").concat(testDuration.turnCost, " turns."), "blue");
-  });
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.print)("This loop took ".concat((0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_7__.convertMilliseconds)((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.gametimeToInt)() - startTime), ", assuming it ran contiguously. Otherwise, this run of the program lasted that much time. Hope whatever number you see is good!"), "red");
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.setAutoAttack)(0);
-  _phredhccs_lib__WEBPACK_IMPORTED_MODULE_7__.PropertyManager.resetAll();
-}
-
-/***/ }),
-
-/***/ "./src/item.ts":
-/*!*********************!*\
-  !*** ./src/item.ts ***!
-  \*********************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ itemTest)
-/* harmony export */ });
-/* harmony import */ var kolmafia__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! kolmafia */ "kolmafia");
-/* harmony import */ var kolmafia__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(kolmafia__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var libram__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! libram */ "./node_modules/libram/dist/index.js");
-/* harmony import */ var libram__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(libram__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _outfits__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./outfits */ "./src/outfits.ts");
-/* harmony import */ var _phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./phredhccs-lib */ "./src/phredhccs-lib.ts");
-var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5, _templateObject6, _templateObject7, _templateObject8, _templateObject9, _templateObject10, _templateObject11, _templateObject12, _templateObject13, _templateObject14, _templateObject15, _templateObject16, _templateObject17, _templateObject18, _templateObject19, _templateObject20, _templateObject21, _templateObject22, _templateObject23, _templateObject24, _templateObject25, _templateObject26, _templateObject27, _templateObject28, _templateObject29, _templateObject30, _templateObject31, _templateObject32, _templateObject33, _templateObject34, _templateObject35, _templateObject36;
-
-function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
-
-
-
-
-
-
-var predictor = function predictor() {
-  return 60 - Math.floor((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.numericModifier)("item drop") / 30 + 0.001) - Math.floor((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.numericModifier)("booze drop") / 15 + 0.001);
-};
-
-function prelude() {
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.horse)("dark");
-  if ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.availableAmount)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$item)(_templateObject || (_templateObject = _taggedTemplateLiteral(["astral six-pack"])))) !== 0) (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.use)(1, (0,libram__WEBPACK_IMPORTED_MODULE_3__.$item)(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["astral six-pack"]))));
-  if ((0,libram__WEBPACK_IMPORTED_MODULE_3__.have)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$effect)(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["The Magical Mojomuscular Melody"]))))) (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.cliExecute)("shrug The Magical Mojomuscular Melody");
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.useSkill)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$skill)(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["The Ode to Booze"]))));
-
-  while ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.myInebriety)() < 5) {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.drink)(1, (0,libram__WEBPACK_IMPORTED_MODULE_3__.$item)(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["astral pilsner"]))));
-  }
-}
-
-function castBuffs() {
-  if (!(0,libram__WEBPACK_IMPORTED_MODULE_3__.have)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$effect)(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["Synthesis: Collection"]))))) (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.synthItem)();
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.cliExecute)("shrug ode");
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.ensureEffect)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$effect)(_templateObject7 || (_templateObject7 = _taggedTemplateLiteral(["Fat Leon's Phat Loot Lyric"]))));
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.ensureEffect)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$effect)(_templateObject8 || (_templateObject8 = _taggedTemplateLiteral(["The Spirit of Taking"]))));
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.ensureEffect)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$effect)(_templateObject9 || (_templateObject9 = _taggedTemplateLiteral(["items.enh"]))));
-
-  if ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.getWorkshed)() === (0,libram__WEBPACK_IMPORTED_MODULE_3__.$item)(_templateObject10 || (_templateObject10 = _taggedTemplateLiteral(["Asdon Martin keyfob"]))) && !(0,libram__WEBPACK_IMPORTED_MODULE_3__.have)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$effect)(_templateObject11 || (_templateObject11 = _taggedTemplateLiteral(["Driving Observantly"]))))) {
-    if ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.getFuel)() < 37) (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.fuelUp)();
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.cliExecute)("asdonmartin drive observantly");
-  }
-
-  if (!(0,libram__WEBPACK_IMPORTED_MODULE_3__.have)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$effect)(_templateObject12 || (_templateObject12 = _taggedTemplateLiteral(["I See Everything Thrice!"]))))) {
-    if (!(0,libram__WEBPACK_IMPORTED_MODULE_3__.have)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$item)(_templateObject13 || (_templateObject13 = _taggedTemplateLiteral(["government"]))))) {
-      if (!(0,libram__WEBPACK_IMPORTED_MODULE_3__.have)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$item)(_templateObject14 || (_templateObject14 = _taggedTemplateLiteral(["anticheese"]))))) {
-        (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.visitUrl)("place.php?whichplace=desertbeach&action=db_nukehouse");
-      }
-
-      if ((0,libram__WEBPACK_IMPORTED_MODULE_3__.have)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$item)(_templateObject15 || (_templateObject15 = _taggedTemplateLiteral(["government cheese"]))))) {
-        (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.create)(1, (0,libram__WEBPACK_IMPORTED_MODULE_3__.$item)(_templateObject16 || (_templateObject16 = _taggedTemplateLiteral(["government"]))));
-      }
-    }
-
-    if ((0,libram__WEBPACK_IMPORTED_MODULE_3__.have)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$item)(_templateObject17 || (_templateObject17 = _taggedTemplateLiteral(["government"]))))) {
-      (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.use)(1, (0,libram__WEBPACK_IMPORTED_MODULE_3__.$item)(_templateObject18 || (_templateObject18 = _taggedTemplateLiteral(["government"]))));
-    }
-  }
-
-  if ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.myClass)() === (0,libram__WEBPACK_IMPORTED_MODULE_3__.$class)(_templateObject19 || (_templateObject19 = _taggedTemplateLiteral(["Pastamancer"]))) && !(0,libram__WEBPACK_IMPORTED_MODULE_3__.get)("_barrelPrayer")) {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.cliExecute)("barrelprayer buff");
-  }
-
-  if ((0,libram__WEBPACK_IMPORTED_MODULE_3__.have)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$item)(_templateObject20 || (_templateObject20 = _taggedTemplateLiteral(["lavender candy heart"]))))) (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.ensureEffect)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$effect)(_templateObject21 || (_templateObject21 = _taggedTemplateLiteral(["Heart of Lavender"]))));
-}
-
-function batForm() {
-  if ((0,libram__WEBPACK_IMPORTED_MODULE_3__.get)("_latteRefillsUsed") < 3 && (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.numericModifier)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$item)(_templateObject22 || (_templateObject22 = _taggedTemplateLiteral(["latte lovers member's mug"]))), "Item Drop") < 20) {
-    var latte = "pumpkin ".concat((0,libram__WEBPACK_IMPORTED_MODULE_3__.get)("latteUnlocks").includes("carrot") ? "carrot " : "vanilla ").concat((0,libram__WEBPACK_IMPORTED_MODULE_3__.get)("latteUnlocks").includes("butternut") ? "butternut" : "cinnamon");
-
-    if (latte !== "") {
-      (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.cliExecute)("latte refill ".concat(latte));
-    }
-  }
-
-  if (!(0,libram__WEBPACK_IMPORTED_MODULE_3__.have)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$effect)(_templateObject23 || (_templateObject23 = _taggedTemplateLiteral(["Bat-Adjacent Form"]))))) {
-    var run = libram__WEBPACK_IMPORTED_MODULE_3__.Macro.skill((0,libram__WEBPACK_IMPORTED_MODULE_3__.$skill)(_templateObject24 || (_templateObject24 = _taggedTemplateLiteral(["Become a Bat"]))));
-
-    if (!(0,libram__WEBPACK_IMPORTED_MODULE_3__.get)("_latteBanishUsed")) {
-      (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.useDefaultFamiliar)(false);
-      (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.equip)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$slot)(_templateObject25 || (_templateObject25 = _taggedTemplateLiteral(["off-hand"]))), (0,libram__WEBPACK_IMPORTED_MODULE_3__.$item)(_templateObject26 || (_templateObject26 = _taggedTemplateLiteral(["latte lovers member's mug"]))));
-      (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.equip)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$slot)(_templateObject27 || (_templateObject27 = _taggedTemplateLiteral(["back"]))), (0,libram__WEBPACK_IMPORTED_MODULE_3__.$item)(_templateObject28 || (_templateObject28 = _taggedTemplateLiteral(["vampyric cloake"]))));
-      run.skill((0,libram__WEBPACK_IMPORTED_MODULE_3__.$skill)(_templateObject29 || (_templateObject29 = _taggedTemplateLiteral(["Throw Latte on Opponent"]))));
-    } else {
-      (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.useFamiliar)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$familiar)(_templateObject30 || (_templateObject30 = _taggedTemplateLiteral(["Frumious Bandersnatch"]))));
-      (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.ensureEffect)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$effect)(_templateObject31 || (_templateObject31 = _taggedTemplateLiteral(["Ode to Booze"]))));
-      run.step("runaway");
-    }
-
-    (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.advMacroAA)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$location)(_templateObject32 || (_templateObject32 = _taggedTemplateLiteral(["The Dire Warren"]))), run);
-  }
-
-  if ((0,libram__WEBPACK_IMPORTED_MODULE_3__.get)("_latteRefillsUsed") < 3 && (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.numericModifier)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$item)(_templateObject33 || (_templateObject33 = _taggedTemplateLiteral(["latte lovers member's mug"]))), "Item Drop") < 20) {
-    var _latte = "pumpkin ".concat((0,libram__WEBPACK_IMPORTED_MODULE_3__.get)("latteUnlocks").includes("carrot") ? "carrot" : "vanilla", " ").concat((0,libram__WEBPACK_IMPORTED_MODULE_3__.get)("latteUnlocks").includes("butternut") ? "butternut" : "cinnamon");
-
-    if (_latte !== "") {
-      (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.cliExecute)("latte refill ".concat(_latte));
-    }
-  }
-}
-
-function testPrep() {
-  if (!(0,libram__WEBPACK_IMPORTED_MODULE_3__.get)("_steelyEyedSquintUsed")) {
-    (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.ensureEffect)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$effect)(_templateObject34 || (_templateObject34 = _taggedTemplateLiteral(["Steely-Eyed Squint"]))));
-  }
-
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.useFamiliar)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$familiar)(_templateObject35 || (_templateObject35 = _taggedTemplateLiteral(["Trick-or-Treating Tot"]))));
-  (0,_outfits__WEBPACK_IMPORTED_MODULE_1__.itemOutfit)();
-  if (predictor() > 1) (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.ensureEffect)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$effect)(_templateObject36 || (_templateObject36 = _taggedTemplateLiteral(["Nearly All-Natural"]))));
-}
-
-function itemTest() {
-  prelude();
-  castBuffs();
-  batForm();
-  testPrep();
-  if (predictor() > 1) throw "Failed to cap item";
-  return predictor();
-}
-
-/***/ }),
-
-/***/ "./src/level.ts":
-/*!**********************!*\
-  !*** ./src/level.ts ***!
-  \**********************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ levelUp)
-/* harmony export */ });
-/* harmony import */ var kolmafia__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! kolmafia */ "kolmafia");
-/* harmony import */ var kolmafia__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(kolmafia__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var libram__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! libram */ "./node_modules/libram/dist/index.js");
-/* harmony import */ var libram__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(libram__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _phccs_macros__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./phccs-macros */ "./src/phccs-macros.ts");
-/* harmony import */ var _phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./phredhccs-lib */ "./src/phredhccs-lib.ts");
-/* harmony import */ var _outfits__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./outfits */ "./src/outfits.ts");
-var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5, _templateObject6, _templateObject7, _templateObject8, _templateObject9, _templateObject10, _templateObject11, _templateObject12, _templateObject13, _templateObject14, _templateObject15, _templateObject16, _templateObject17, _templateObject18, _templateObject19, _templateObject20, _templateObject21, _templateObject22, _templateObject23, _templateObject24, _templateObject25, _templateObject26, _templateObject27, _templateObject28, _templateObject29, _templateObject30, _templateObject31, _templateObject32, _templateObject33, _templateObject34, _templateObject35, _templateObject36, _templateObject37, _templateObject38, _templateObject39, _templateObject40, _templateObject41, _templateObject42, _templateObject43, _templateObject44, _templateObject45, _templateObject46, _templateObject47, _templateObject48, _templateObject49, _templateObject50, _templateObject51, _templateObject52, _templateObject53, _templateObject54, _templateObject55, _templateObject56, _templateObject57, _templateObject58, _templateObject59, _templateObject60, _templateObject61, _templateObject62, _templateObject63, _templateObject64, _templateObject65, _templateObject66, _templateObject67, _templateObject68, _templateObject69, _templateObject70, _templateObject71, _templateObject72, _templateObject73, _templateObject74, _templateObject75, _templateObject76, _templateObject77, _templateObject78, _templateObject79, _templateObject80, _templateObject81, _templateObject82, _templateObject83, _templateObject84, _templateObject85, _templateObject86, _templateObject87, _templateObject88, _templateObject89, _templateObject90, _templateObject91, _templateObject92, _templateObject93, _templateObject94, _templateObject95, _templateObject96, _templateObject97, _templateObject98, _templateObject99, _templateObject100, _templateObject101, _templateObject102, _templateObject103, _templateObject104, _templateObject105, _templateObject106, _templateObject107, _templateObject108, _templateObject109, _templateObject110, _templateObject111, _templateObject112, _templateObject113, _templateObject114, _templateObject115, _templateObject116, _templateObject117, _templateObject118, _templateObject119, _templateObject120, _templateObject121, _templateObject122, _templateObject123, _templateObject124, _templateObject125, _templateObject126, _templateObject127, _templateObject128, _templateObject129, _templateObject130, _templateObject131, _templateObject132, _templateObject133;
-
-function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
-
-
-
-
-
-
-
-function initialExp() {
-  if (!(0,libram__WEBPACK_IMPORTED_MODULE_4__.have)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$effect)(_templateObject || (_templateObject = _taggedTemplateLiteral(["That's Just Cloud-Talk, Man"]))))) {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.visitUrl)("place.php?whichplace=campaway&action=campaway_sky");
-  }
-
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.ensureEffect)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$effect)(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["Inscrutable Gaze"]))));
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.ensureEffect)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$effect)(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["Thaumodynamic"]))));
-  if (!(0,libram__WEBPACK_IMPORTED_MODULE_4__.have)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$effect)(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["Synthesis: Learning"]))))) (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.synthExp)();
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.equip)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["familiar scrapbook"]))), (0,libram__WEBPACK_IMPORTED_MODULE_4__.$slot)(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["off-hand"]))));
-
-  if ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.availableAmount)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject7 || (_templateObject7 = _taggedTemplateLiteral(["a ten-percent bonus"]))))) {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.use)(1, (0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject8 || (_templateObject8 = _taggedTemplateLiteral(["a ten-percent bonus"]))));
-  }
-
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.cliExecute)("bastille myst brutalist");
-}
-
-function buffMyst() {
-  var lovePotion = (0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject9 || (_templateObject9 = _taggedTemplateLiteral(["Love Potion #0"])));
-  var loveEffect = (0,libram__WEBPACK_IMPORTED_MODULE_4__.$effect)(_templateObject10 || (_templateObject10 = _taggedTemplateLiteral(["Tainted Love Potion"])));
-
-  if (!(0,libram__WEBPACK_IMPORTED_MODULE_4__.have)(loveEffect)) {
-    if (!(0,libram__WEBPACK_IMPORTED_MODULE_4__.have)(lovePotion)) {
-      (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.useSkill)(1, (0,libram__WEBPACK_IMPORTED_MODULE_4__.$skill)(_templateObject11 || (_templateObject11 = _taggedTemplateLiteral(["Love Mixology"]))));
-    }
-
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.visitUrl)("desc_effect.php?whicheffect=".concat(loveEffect.descid));
-
-    if ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.numericModifier)(loveEffect, "mysticality") > 10 && (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.numericModifier)(loveEffect, "muscle") > -30 && (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.numericModifier)(loveEffect, "moxie") > -30 && (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.numericModifier)(loveEffect, "maximum hp percent") > -0.001) {
-      (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.use)(1, lovePotion);
-    }
-  }
-
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.ensureEffect)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$effect)(_templateObject12 || (_templateObject12 = _taggedTemplateLiteral(["Uncucumbered"]))));
-  if (!(0,libram__WEBPACK_IMPORTED_MODULE_4__.have)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$effect)(_templateObject13 || (_templateObject13 = _taggedTemplateLiteral(["Synthesis: Smart"]))))) (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.synthMyst)();
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.tryHead)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$effect)(_templateObject14 || (_templateObject14 = _taggedTemplateLiteral(["You Learned Something Maybe!"]))));
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.tryHead)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$effect)(_templateObject15 || (_templateObject15 = _taggedTemplateLiteral(["We're All Made of Starfish"]))));
-  if (!(0,libram__WEBPACK_IMPORTED_MODULE_4__.get)("_lyleFavored")) (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.ensureEffect)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$effect)(_templateObject16 || (_templateObject16 = _taggedTemplateLiteral(["Favored by Lyle"]))));
-  if (!(0,libram__WEBPACK_IMPORTED_MODULE_4__.get)("telescopeLookedHigh")) (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.ensureEffect)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$effect)(_templateObject17 || (_templateObject17 = _taggedTemplateLiteral(["Starry-Eyed"]))));
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.ensureEffect)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$effect)(_templateObject18 || (_templateObject18 = _taggedTemplateLiteral(["Glittering Eyelashes"]))));
-
-  if (!(0,libram__WEBPACK_IMPORTED_MODULE_4__.get)("_streamsCrossed")) {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.cliExecute)("crossstreams");
-  }
-
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.equip)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$slot)(_templateObject19 || (_templateObject19 = _taggedTemplateLiteral(["acc3"]))), (0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject20 || (_templateObject20 = _taggedTemplateLiteral(["Powerful Glove"]))));
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.ensureEffect)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$effect)(_templateObject21 || (_templateObject21 = _taggedTemplateLiteral(["Triple-Sized"]))));
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.ensureEffect)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$effect)(_templateObject22 || (_templateObject22 = _taggedTemplateLiteral(["Feeling Excited"])))); // eslint-disable-next-line libram/verify-constants
-
-  if ((0,libram__WEBPACK_IMPORTED_MODULE_4__.have)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject23 || (_templateObject23 = _taggedTemplateLiteral(["votive of confidence"]))))) (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.use)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject24 || (_templateObject24 = _taggedTemplateLiteral(["votive of confidence"]))));
-}
-
-function castBuffs() {
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.useFamiliar)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$familiar)(_templateObject25 || (_templateObject25 = _taggedTemplateLiteral(["Left-Hand Man"]))));
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.maximize)("mp", false);
-
-  if ((0,libram__WEBPACK_IMPORTED_MODULE_4__.get)("_sausagesEaten") === 0) {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.cliExecute)("eat 1 magic sausage");
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.useSkill)(1, (0,libram__WEBPACK_IMPORTED_MODULE_4__.$skill)(_templateObject26 || (_templateObject26 = _taggedTemplateLiteral(["Advanced Saucecrafting"]))));
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.useSkill)(1, (0,libram__WEBPACK_IMPORTED_MODULE_4__.$skill)(_templateObject27 || (_templateObject27 = _taggedTemplateLiteral(["Advanced Cocktailcrafting"]))));
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.useSkill)(1, (0,libram__WEBPACK_IMPORTED_MODULE_4__.$skill)(_templateObject28 || (_templateObject28 = _taggedTemplateLiteral(["Acquire Rhinestones"]))));
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.useSkill)(1, (0,libram__WEBPACK_IMPORTED_MODULE_4__.$skill)(_templateObject29 || (_templateObject29 = _taggedTemplateLiteral(["Prevent Scurvy and Sobriety"]))));
-  }
-
-  if (!(0,libram__WEBPACK_IMPORTED_MODULE_4__.have)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject30 || (_templateObject30 = _taggedTemplateLiteral(["turtle totem"]))))) (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.cliExecute)("acquire turtle totem");
-  if (!(0,libram__WEBPACK_IMPORTED_MODULE_4__.have)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject31 || (_templateObject31 = _taggedTemplateLiteral(["saucepan"]))))) (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.cliExecute)("acquire saucepan");
-  (0,libram__WEBPACK_IMPORTED_MODULE_4__.$skills)(_templateObject32 || (_templateObject32 = _taggedTemplateLiteral(["The Magical Mojomuscular Melody, Stevedave's Shanty of Superiority, Fat Leon's Phat Loot Lyric, The Polka of Plenty, Leash of Linguini, Empathy of the Newt, Blood Bond, Blood Bubble, Song of Bravado, Get Big"]))).forEach(function (buff) {
-    if (!(0,libram__WEBPACK_IMPORTED_MODULE_4__.have)((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.toEffect)(buff))) {
-      if ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.myMp)() < (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.mpCost)(buff)) {
-        if ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.totalFreeRests)() > (0,libram__WEBPACK_IMPORTED_MODULE_4__.get)("timesRested")) {
-          (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.visitUrl)("place.php?whichplace=chateau&action=chateau_restbox");
-        } else if ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.availableAmount)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject33 || (_templateObject33 = _taggedTemplateLiteral(["psychokinetic energy blob"])))) >= 1) {
-          (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.use)(2, (0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject34 || (_templateObject34 = _taggedTemplateLiteral(["psychokinetic energy blob"]))));
-        } else {
-          (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.eat)(1, (0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject35 || (_templateObject35 = _taggedTemplateLiteral(["magical sausage"]))));
-        }
-      }
-
-      (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.useSkill)(1, buff);
-    }
-  });
-}
-
-function getYoked() {
-  (0,_outfits__WEBPACK_IMPORTED_MODULE_3__.default)();
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.useFamiliar)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$familiar)(_templateObject36 || (_templateObject36 = _taggedTemplateLiteral(["Ghost of Crimbo Carols"]))));
-
-  if ((0,libram__WEBPACK_IMPORTED_MODULE_4__.get)("snojoSetting") === "NONE") {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.visitUrl)("place.php?whichplace=snojo&action=snojo_controller");
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.runChoice)(2);
-  }
-
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.heal)();
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.advMacroAA)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$location)(_templateObject37 || (_templateObject37 = _taggedTemplateLiteral(["The X-32-F Combat Training Snowman"]))), libram__WEBPACK_IMPORTED_MODULE_4__.Macro.step(_phccs_macros__WEBPACK_IMPORTED_MODULE_1__.delevel).attack().repeat(), function () {
-    return !(0,libram__WEBPACK_IMPORTED_MODULE_4__.have)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$effect)(_templateObject38 || (_templateObject38 = _taggedTemplateLiteral(["Holiday Yoked"]))));
-  });
-}
-
-function witchGhostAgent() {
-  if ((0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.questStep)("questM25Armorer") === -1) {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.visitUrl)("shop.php?whichshop=armory&action=talk");
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.runChoice)(1);
-  }
-
-  (0,_outfits__WEBPACK_IMPORTED_MODULE_3__.default)();
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.equip)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$slot)(_templateObject39 || (_templateObject39 = _taggedTemplateLiteral(["back"]))), (0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject40 || (_templateObject40 = _taggedTemplateLiteral(["protonic accelerator pack"]))));
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.cliExecute)("fold makeshift garbage shirt");
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.equip)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$slot)(_templateObject41 || (_templateObject41 = _taggedTemplateLiteral(["shirt"]))), (0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject42 || (_templateObject42 = _taggedTemplateLiteral(["makeshift garbage shirt"]))));
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.heal)();
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.useDefaultFamiliar)();
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.ensureMp)(100);
-  libram__WEBPACK_IMPORTED_MODULE_4__.Macro.skill("curse of weaksauce").skill("micrometeor").attack().repeat().setAutoAttack();
-
-  if (!(0,libram__WEBPACK_IMPORTED_MODULE_4__.have)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject43 || (_templateObject43 = _taggedTemplateLiteral(["battle broom"]))))) {
-    libram__WEBPACK_IMPORTED_MODULE_4__.Witchess.fightPiece((0,libram__WEBPACK_IMPORTED_MODULE_4__.$monster)(_templateObject44 || (_templateObject44 = _taggedTemplateLiteral(["Witchess Witch"]))));
-  }
-
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.equip)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$slot)(_templateObject45 || (_templateObject45 = _taggedTemplateLiteral(["acc3"]))), (0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject46 || (_templateObject46 = _taggedTemplateLiteral(["battle broom"]))));
-  var ghostLocation = (0,libram__WEBPACK_IMPORTED_MODULE_4__.get)("ghostLocation");
-
-  if (ghostLocation) {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.equip)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$slot)(_templateObject47 || (_templateObject47 = _taggedTemplateLiteral(["off-hand"]))), (0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject48 || (_templateObject48 = _taggedTemplateLiteral(["latte lovers member's mug"]))));
-    (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.useDefaultFamiliar)();
-    (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.advMacro)(ghostLocation, libram__WEBPACK_IMPORTED_MODULE_4__.Macro.step(_phccs_macros__WEBPACK_IMPORTED_MODULE_1__.delevel).step(_phccs_macros__WEBPACK_IMPORTED_MODULE_1__.easyFight).skill("portscan").skill("shoot ghost").skill("shoot ghost").skill("shoot ghost").skill("trap ghost"));
-  }
-
-  if (!(0,libram__WEBPACK_IMPORTED_MODULE_4__.have)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject49 || (_templateObject49 = _taggedTemplateLiteral(["government"])))) && !(0,libram__WEBPACK_IMPORTED_MODULE_4__.have)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject50 || (_templateObject50 = _taggedTemplateLiteral(["government cheese"]))))) {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.equip)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$slot)(_templateObject51 || (_templateObject51 = _taggedTemplateLiteral(["back"]))), (0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject52 || (_templateObject52 = _taggedTemplateLiteral(["vampyric cloake"]))));
-    (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.useDefaultFamiliar)();
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.equip)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$slot)(_templateObject53 || (_templateObject53 = _taggedTemplateLiteral(["acc2"]))), (0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject54 || (_templateObject54 = _taggedTemplateLiteral(["gold detective badge"]))));
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.equip)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$slot)(_templateObject55 || (_templateObject55 = _taggedTemplateLiteral(["acc3"]))), (0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject56 || (_templateObject56 = _taggedTemplateLiteral(["Lil' Doctor\u2122 bag"]))));
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.equip)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$slot)(_templateObject57 || (_templateObject57 = _taggedTemplateLiteral(["off-hand"]))), (0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject58 || (_templateObject58 = _taggedTemplateLiteral(["latte lovers member's mug"]))));
-    (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.advMacroAA)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$location)(_templateObject59 || (_templateObject59 = _taggedTemplateLiteral(["Noob Cave"]))), libram__WEBPACK_IMPORTED_MODULE_4__.Macro.step(_phccs_macros__WEBPACK_IMPORTED_MODULE_1__.delevel).skill("otoscope").skill("become a bat").skill("chest x-ray"), //1
-    function () {
-      return (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.getCounters)("Portscan", 0, 0) !== "";
-    });
-    var desertAccessItem = (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.knollAvailable)() ? (0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject60 || (_templateObject60 = _taggedTemplateLiteral(["bitchin' meatcar"]))) : (0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject61 || (_templateObject61 = _taggedTemplateLiteral(["Desert Bus pass"])));
-
-    if (!(0,libram__WEBPACK_IMPORTED_MODULE_4__.have)(desertAccessItem)) {
-      (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.cliExecute)("acquire ".concat(desertAccessItem.name));
-    }
-
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.visitUrl)("place.php?whichplace=desertbeach&action=db_nukehouse");
-  }
-}
-
-function lov() {
-  (0,_outfits__WEBPACK_IMPORTED_MODULE_3__.default)();
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.equip)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$slot)(_templateObject62 || (_templateObject62 = _taggedTemplateLiteral(["back"]))), (0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject63 || (_templateObject63 = _taggedTemplateLiteral(["protonic accelerator pack"]))));
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.cliExecute)("fold makeshift garbage shirt");
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.equip)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$slot)(_templateObject64 || (_templateObject64 = _taggedTemplateLiteral(["shirt"]))), (0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject65 || (_templateObject65 = _taggedTemplateLiteral(["makeshift garbage shirt"]))));
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.heal)();
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.useDefaultFamiliar)();
-  libram__WEBPACK_IMPORTED_MODULE_4__.Macro.if_("monstername LOV enforcer", libram__WEBPACK_IMPORTED_MODULE_4__.Macro.attack().repeat()).if_("monstername LOV Engineer", libram__WEBPACK_IMPORTED_MODULE_4__.Macro.step(_phccs_macros__WEBPACK_IMPORTED_MODULE_1__.candyblast).skill("weapon of the pastalord").repeat()).if_("monstername LOV equivocator", libram__WEBPACK_IMPORTED_MODULE_4__.Macro.step(_phccs_macros__WEBPACK_IMPORTED_MODULE_1__.delevel).step(_phccs_macros__WEBPACK_IMPORTED_MODULE_1__.easyFight).step(_phccs_macros__WEBPACK_IMPORTED_MODULE_1__.candyblast).attack().repeat()).setAutoAttack();
-
-  if (!(0,libram__WEBPACK_IMPORTED_MODULE_4__.get)("_loveTunnelUsed")) {
-    libram__WEBPACK_IMPORTED_MODULE_4__.TunnelOfLove.fightAll("LOV Epaulettes", "Open Heart Surgery", "LOV Extraterrestrial Chocolate");
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.use)(1, (0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject66 || (_templateObject66 = _taggedTemplateLiteral(["LOV Extraterrestrial Chocolate"]))));
-  }
-
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.cliExecute)("/cast * candy heart");
-}
-
-function tomatoJuiceAndNinjaCostume() {
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.cliExecute)("backupcamera ml");
-
-  if ((0,libram__WEBPACK_IMPORTED_MODULE_4__.have)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject67 || (_templateObject67 = _taggedTemplateLiteral(["magical sausage casing"])))) || (0,libram__WEBPACK_IMPORTED_MODULE_4__.have)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject68 || (_templateObject68 = _taggedTemplateLiteral(["magical sausage"]))))) {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.cliExecute)("eat magic sausage");
-  }
-
-  (0,_outfits__WEBPACK_IMPORTED_MODULE_3__.default)();
-
-  if ((0,libram__WEBPACK_IMPORTED_MODULE_4__.get)("_monstersMapped") < 2 && (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.availableAmount)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject69 || (_templateObject69 = _taggedTemplateLiteral(["tomato"])))) + (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.availableAmount)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject70 || (_templateObject70 = _taggedTemplateLiteral(["tomato juice of powerful power"])))) + (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.haveEffect)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$effect)(_templateObject71 || (_templateObject71 = _taggedTemplateLiteral(["Tomato Power"])))) === 0) {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.equip)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$slot)(_templateObject72 || (_templateObject72 = _taggedTemplateLiteral(["acc3"]))), (0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject73 || (_templateObject73 = _taggedTemplateLiteral(["Lil' Doctor\u2122 bag"]))));
-    (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.useDefaultFamiliar)();
-    (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.mapMacro)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$location)(_templateObject74 || (_templateObject74 = _taggedTemplateLiteral(["The Haunted Pantry"]))), (0,libram__WEBPACK_IMPORTED_MODULE_4__.$monster)(_templateObject75 || (_templateObject75 = _taggedTemplateLiteral(["possessed can of tomatoes"]))), libram__WEBPACK_IMPORTED_MODULE_4__.Macro.if_("monsterid ".concat((0,libram__WEBPACK_IMPORTED_MODULE_4__.$monster)(_templateObject76 || (_templateObject76 = _taggedTemplateLiteral(["possessed can of tomatoes"]))).id), libram__WEBPACK_IMPORTED_MODULE_4__.Macro.skill((0,libram__WEBPACK_IMPORTED_MODULE_4__.$skill)(_templateObject77 || (_templateObject77 = _taggedTemplateLiteral(["Reflex Hammer"]))))));
-    (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.useDefaultFamiliar)(false);
-    (0,_outfits__WEBPACK_IMPORTED_MODULE_3__.default)();
-    (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.ensureMp)(30);
-    (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.mapMacro)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$location)(_templateObject78 || (_templateObject78 = _taggedTemplateLiteral(["The Haiku Dungeon"]))), (0,libram__WEBPACK_IMPORTED_MODULE_4__.$monster)(_templateObject79 || (_templateObject79 = _taggedTemplateLiteral(["amateur ninja"]))), libram__WEBPACK_IMPORTED_MODULE_4__.Macro.if_("monsterid ".concat((0,libram__WEBPACK_IMPORTED_MODULE_4__.$monster)(_templateObject80 || (_templateObject80 = _taggedTemplateLiteral(["amateur ninja"]))).id), libram__WEBPACK_IMPORTED_MODULE_4__.Macro.skill((0,libram__WEBPACK_IMPORTED_MODULE_4__.$skill)(_templateObject81 || (_templateObject81 = _taggedTemplateLiteral(["Feel Nostalgic"])))).skill((0,libram__WEBPACK_IMPORTED_MODULE_4__.$skill)(_templateObject82 || (_templateObject82 = _taggedTemplateLiteral(["Gingerbread Mob Hit"]))))).step("abort"));
-  }
-
-  if (!(0,libram__WEBPACK_IMPORTED_MODULE_4__.get)("hasRange")) {
-    if (!(0,libram__WEBPACK_IMPORTED_MODULE_4__.have)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject83 || (_templateObject83 = _taggedTemplateLiteral(["Dramatic\u2122 range"]))))) {
-      (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.buy)(1, (0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject84 || (_templateObject84 = _taggedTemplateLiteral(["Dramatic\u2122 range"]))));
-    }
-
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.use)(1, (0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject85 || (_templateObject85 = _taggedTemplateLiteral(["Dramatic\u2122 range"]))));
-  }
-
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.useSkill)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$skill)(_templateObject86 || (_templateObject86 = _taggedTemplateLiteral(["Advanced Saucecrafting"]))));
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.useSkill)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$skill)(_templateObject87 || (_templateObject87 = _taggedTemplateLiteral(["Prevent Scurvy and Sobriety"]))));
-
-  if (!(0,libram__WEBPACK_IMPORTED_MODULE_4__.have)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$effect)(_templateObject88 || (_templateObject88 = _taggedTemplateLiteral(["Tomato Power"]))))) {
-    if (!(0,libram__WEBPACK_IMPORTED_MODULE_4__.have)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject89 || (_templateObject89 = _taggedTemplateLiteral(["tomato juice of powerful power"])))) && (0,libram__WEBPACK_IMPORTED_MODULE_4__.have)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject90 || (_templateObject90 = _taggedTemplateLiteral(["tomato"]))))) {
-      (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.create)(1, (0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject91 || (_templateObject91 = _taggedTemplateLiteral(["tomato juice of powerful power"]))));
-    }
-
-    if ((0,libram__WEBPACK_IMPORTED_MODULE_4__.have)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject92 || (_templateObject92 = _taggedTemplateLiteral(["tomato juice of powerful power"]))))) {
-      (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.use)(1, (0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject93 || (_templateObject93 = _taggedTemplateLiteral(["tomato juice of powerful power"]))));
-    }
-  }
-
-  if (!(0,libram__WEBPACK_IMPORTED_MODULE_4__.have)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$effect)(_templateObject94 || (_templateObject94 = _taggedTemplateLiteral(["Mystically Oiled"]))))) {
-    if (!(0,libram__WEBPACK_IMPORTED_MODULE_4__.have)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject95 || (_templateObject95 = _taggedTemplateLiteral(["ointment of the occult"]))))) {
-      (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.create)(1, (0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject96 || (_templateObject96 = _taggedTemplateLiteral(["ointment of the occult"]))));
-    }
-
-    if ((0,libram__WEBPACK_IMPORTED_MODULE_4__.have)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject97 || (_templateObject97 = _taggedTemplateLiteral(["ointment of the occult"]))))) {
-      (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.use)(1, (0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject98 || (_templateObject98 = _taggedTemplateLiteral(["ointment of the occult"]))));
-    }
-  }
-}
-
-function godLob() {
-  if ((0,libram__WEBPACK_IMPORTED_MODULE_4__.get)("_godLobsterFights") === 0) {
-    libram__WEBPACK_IMPORTED_MODULE_4__.Macro.step(_phccs_macros__WEBPACK_IMPORTED_MODULE_1__.delevel).step(_phccs_macros__WEBPACK_IMPORTED_MODULE_1__.easyFight).attack().repeat().setAutoAttack();
-    (0,_outfits__WEBPACK_IMPORTED_MODULE_3__.default)();
-    (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.heal)();
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.useFamiliar)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$familiar)(_templateObject99 || (_templateObject99 = _taggedTemplateLiteral(["God Lobster"]))));
-    (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.setChoice)(1310, 1);
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.visitUrl)("main.php?fightgodlobster=1");
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.runCombat)(libram__WEBPACK_IMPORTED_MODULE_4__.Macro.step(_phccs_macros__WEBPACK_IMPORTED_MODULE_1__.delevel).step(_phccs_macros__WEBPACK_IMPORTED_MODULE_1__.easyFight).attack().repeat().toString());
-    (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.multiFightAutoAttack)();
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.runChoice)(-1);
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.equip)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$slot)(_templateObject100 || (_templateObject100 = _taggedTemplateLiteral(["familiar"]))), (0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject101 || (_templateObject101 = _taggedTemplateLiteral(["God Lobster's Scepter"]))));
-    (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.heal)();
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.visitUrl)("main.php?fightgodlobster=1");
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.runCombat)();
-    (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.multiFightAutoAttack)();
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.runChoice)(-1);
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.equip)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$slot)(_templateObject102 || (_templateObject102 = _taggedTemplateLiteral(["familiar"]))), (0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject103 || (_templateObject103 = _taggedTemplateLiteral(["God Lobster's Ring"]))));
-  }
-}
-
-function snojo() {
-  (0,_outfits__WEBPACK_IMPORTED_MODULE_3__.default)();
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.useDefaultFamiliar)();
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.advMacroAA)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$location)(_templateObject104 || (_templateObject104 = _taggedTemplateLiteral(["The X-32-F Combat Training Snowman"]))), libram__WEBPACK_IMPORTED_MODULE_4__.Macro.step(_phccs_macros__WEBPACK_IMPORTED_MODULE_1__.delevel).step(_phccs_macros__WEBPACK_IMPORTED_MODULE_1__.easyFight).attack().repeat(), function () {
-    return (0,libram__WEBPACK_IMPORTED_MODULE_4__.get)("_snojoFreeFights") < 10;
-  }, function () {
-    (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.heal)();
-    (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.useDefaultFamiliar)();
-  });
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.cliExecute)("hottub");
-}
-
-function NEP() {
-  if ((0,libram__WEBPACK_IMPORTED_MODULE_4__.get)("_questPartyFair") === "unstarted") {
-    (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.setChoice)(1322, "");
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.visitUrl)("adventure.php?snarfblat=528");
-
-    if ((0,libram__WEBPACK_IMPORTED_MODULE_4__.get)("_questPartyFairQuest") === "food") {
-      (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.runChoice)(1);
-      (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.setChoice)(1324, 2);
-      (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.setChoice)(1326, 3);
-    } else if ((0,libram__WEBPACK_IMPORTED_MODULE_4__.get)("_questPartyFairQuest") === "booze") {
-      (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.runChoice)(1);
-      (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.setChoice)(1324, 3);
-      (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.setChoice)(1327, 3);
-    } else {
-      (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.runChoice)(2);
-      (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.setChoice)(1324, 5);
-    }
-  }
-
-  (0,_outfits__WEBPACK_IMPORTED_MODULE_3__.default)();
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.equip)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$slot)(_templateObject105 || (_templateObject105 = _taggedTemplateLiteral(["shirt"]))), (0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject106 || (_templateObject106 = _taggedTemplateLiteral(["makeshift garbage shirt"]))));
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.equip)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$slot)(_templateObject107 || (_templateObject107 = _taggedTemplateLiteral(["off-hand"]))), (0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject108 || (_templateObject108 = _taggedTemplateLiteral(["Kramco Sausage-o-Matic\u2122"]))));
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.useDefaultFamiliar)();
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.advMacroAA)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$location)(_templateObject109 || (_templateObject109 = _taggedTemplateLiteral(["The Neverending Party"]))), libram__WEBPACK_IMPORTED_MODULE_4__.Macro.step(_phccs_macros__WEBPACK_IMPORTED_MODULE_1__.delevel).trySkill("feel pride").step(_phccs_macros__WEBPACK_IMPORTED_MODULE_1__.easyFight).attack().repeat(), function () {
-    return (0,libram__WEBPACK_IMPORTED_MODULE_4__.get)("_neverendingPartyFreeTurns") < 10;
-  }, function () {
-    (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.useDefaultFamiliar)();
-    (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.heal)();
-
-    if ((0,libram__WEBPACK_IMPORTED_MODULE_4__.get)("_sausageFights") > 3 && (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.haveEquipped)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject110 || (_templateObject110 = _taggedTemplateLiteral(["Kramco Sausage-o-Matic\u2122"]))))) {
-      (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.equip)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$slot)(_templateObject111 || (_templateObject111 = _taggedTemplateLiteral(["off-hand"]))), (0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject112 || (_templateObject112 = _taggedTemplateLiteral(["familiar scrapbook"]))));
-    }
-
-    if ((0,libram__WEBPACK_IMPORTED_MODULE_4__.get)("choiceAdventure1324") !== 5 && (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.questStep)("_questPartyFair") > 0) {
-      (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.setChoice)(1324, 5);
-    }
-
-    if ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.myLevel)() >= 13 && !(0,libram__WEBPACK_IMPORTED_MODULE_4__.have)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$effect)(_templateObject113 || (_templateObject113 = _taggedTemplateLiteral(["Inner Elf"]))))) {
-      (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.ensureInnerElf)();
-    }
-  });
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.advMacroAA)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$location)(_templateObject114 || (_templateObject114 = _taggedTemplateLiteral(["The Neverending Party"]))), libram__WEBPACK_IMPORTED_MODULE_4__.Macro.if_("!monstername sausage goblin", libram__WEBPACK_IMPORTED_MODULE_4__.Macro.trySkill("shattering punch").trySkill("gingerbread mob hit").trySkill("chest x-ray")).if_("monstername sausage goblin", libram__WEBPACK_IMPORTED_MODULE_4__.Macro.step(_phccs_macros__WEBPACK_IMPORTED_MODULE_1__.delevel).step(_phccs_macros__WEBPACK_IMPORTED_MODULE_1__.candyblast).attack().repeat()), function () {
-    return (0,libram__WEBPACK_IMPORTED_MODULE_4__.get)("_shatteringPunchUsed") < 3 && !(0,libram__WEBPACK_IMPORTED_MODULE_4__.get)("_gingerbreadMobHitUsed");
-  }, function () {
-    (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.heal)();
-    (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.useDefaultFamiliar)();
-
-    if ((0,libram__WEBPACK_IMPORTED_MODULE_4__.get)("_sausageFights") > 3 && (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.haveEquipped)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject115 || (_templateObject115 = _taggedTemplateLiteral(["Kramco Sausage-o-Matic\u2122"]))))) {
-      (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.equip)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$slot)(_templateObject116 || (_templateObject116 = _taggedTemplateLiteral(["off-hand"]))), (0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject117 || (_templateObject117 = _taggedTemplateLiteral(["familiar scrapbook"]))));
-    }
-
-    if ((0,libram__WEBPACK_IMPORTED_MODULE_4__.get)("choiceAdventure1324") !== 5 && (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.questStep)("_questPartyFair") > 0) {
-      (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.setChoice)(1324, 5);
-    }
-
-    if ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.myLevel)() >= 13 && !(0,libram__WEBPACK_IMPORTED_MODULE_4__.have)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$effect)(_templateObject118 || (_templateObject118 = _taggedTemplateLiteral(["Inner Elf"]))))) {
-      (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.ensureInnerElf)();
-    }
-  });
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.equip)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$slot)(_templateObject119 || (_templateObject119 = _taggedTemplateLiteral(["acc3"]))), (0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject120 || (_templateObject120 = _taggedTemplateLiteral(["Lil' Doctor\u2122 bag"]))));
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.advMacroAA)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$location)(_templateObject121 || (_templateObject121 = _taggedTemplateLiteral(["The Neverending Party"]))), libram__WEBPACK_IMPORTED_MODULE_4__.Macro.if_("!monstername sausage goblin", libram__WEBPACK_IMPORTED_MODULE_4__.Macro.trySkill("shattering punch").trySkill("gingerbread mob hit").trySkill("chest x-ray")).if_("monstername sausage goblin", libram__WEBPACK_IMPORTED_MODULE_4__.Macro.step(_phccs_macros__WEBPACK_IMPORTED_MODULE_1__.delevel).step(_phccs_macros__WEBPACK_IMPORTED_MODULE_1__.candyblast).attack().repeat()), function () {
-    return (0,libram__WEBPACK_IMPORTED_MODULE_4__.get)("_chestXRayUsed") < 3;
-  }, function () {
-    (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.heal)();
-    (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.useDefaultFamiliar)();
-
-    if ((0,libram__WEBPACK_IMPORTED_MODULE_4__.get)("_sausageFights") > 3 && (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.haveEquipped)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject122 || (_templateObject122 = _taggedTemplateLiteral(["Kramco Sausage-o-Matic\u2122"]))))) {
-      (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.equip)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$slot)(_templateObject123 || (_templateObject123 = _taggedTemplateLiteral(["off-hand"]))), (0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject124 || (_templateObject124 = _taggedTemplateLiteral(["familiar scrapbook"]))));
-    }
-
-    if ((0,libram__WEBPACK_IMPORTED_MODULE_4__.get)("choiceAdventure1324") !== 5 && (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.questStep)("_questPartyFair") > 0) {
-      (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.setChoice)(1324, 5);
-    }
-
-    if ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.myLevel)() >= 13 && !(0,libram__WEBPACK_IMPORTED_MODULE_4__.have)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$effect)(_templateObject125 || (_templateObject125 = _taggedTemplateLiteral(["Inner Elf"]))))) {
-      (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.ensureInnerElf)();
-    }
-  });
-}
-
-function mElfLeveling() {
-  (0,_outfits__WEBPACK_IMPORTED_MODULE_3__.default)();
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.cliExecute)("fold garbage shirt");
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.equip)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$slot)(_templateObject126 || (_templateObject126 = _taggedTemplateLiteral(["shirt"]))), (0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject127 || (_templateObject127 = _taggedTemplateLiteral(["makeshift garbage shirt"]))));
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.useFamiliar)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$familiar)(_templateObject128 || (_templateObject128 = _taggedTemplateLiteral(["Machine Elf"]))));
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.advMacroAA)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$location)(_templateObject129 || (_templateObject129 = _taggedTemplateLiteral(["The Deep Machine Tunnels"]))), _phccs_macros__WEBPACK_IMPORTED_MODULE_1__.defaultKill, function () {
-    return (0,libram__WEBPACK_IMPORTED_MODULE_4__.get)("_machineTunnelsAdv") < 5;
-  }, _phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.heal);
-}
-
-function royalty() {
-  if (!(0,libram__WEBPACK_IMPORTED_MODULE_4__.have)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject130 || (_templateObject130 = _taggedTemplateLiteral(["very pointy crown"]))))) {
-    libram__WEBPACK_IMPORTED_MODULE_4__.Macro.tryItem("jam band flyer").tryItem("gas can").tryItem("time-spinner").attack().repeat().setAutoAttack();
-    (0,_outfits__WEBPACK_IMPORTED_MODULE_3__.default)();
-    (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.useDefaultFamiliar)();
-    (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.heal)();
-    libram__WEBPACK_IMPORTED_MODULE_4__.Witchess.fightPiece((0,libram__WEBPACK_IMPORTED_MODULE_4__.$monster)(_templateObject131 || (_templateObject131 = _taggedTemplateLiteral(["Witchess Queen"]))));
-  }
-
-  if (!(0,libram__WEBPACK_IMPORTED_MODULE_4__.have)((0,libram__WEBPACK_IMPORTED_MODULE_4__.$item)(_templateObject132 || (_templateObject132 = _taggedTemplateLiteral(["dented scepter"]))))) {
-    libram__WEBPACK_IMPORTED_MODULE_4__.Macro.step(_phccs_macros__WEBPACK_IMPORTED_MODULE_1__.delevel).attack().repeat().setAutoAttack();
-    (0,_outfits__WEBPACK_IMPORTED_MODULE_3__.default)();
-    (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.useDefaultFamiliar)();
-    (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.heal)();
-    libram__WEBPACK_IMPORTED_MODULE_4__.Witchess.fightPiece((0,libram__WEBPACK_IMPORTED_MODULE_4__.$monster)(_templateObject133 || (_templateObject133 = _taggedTemplateLiteral(["Witchess King"]))));
-  }
-}
-
-function restAndBuff() {
-  while ((0,libram__WEBPACK_IMPORTED_MODULE_4__.get)("timesRested") < (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.totalFreeRests)()) {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.cliExecute)("/cast * candy heart");
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.visitUrl)("place.php?whichplace=chateau&action=chateau_restbox");
-  }
-}
-
-function levelUp() {
-  initialExp();
-  buffMyst();
-  castBuffs();
-  tomatoJuiceAndNinjaCostume();
-  getYoked();
-  witchGhostAgent();
-  lov();
-  godLob();
-  snojo();
-  mElfLeveling();
-  NEP();
-  royalty();
-  restAndBuff();
-}
-
-/***/ }),
-
-/***/ "./src/noncombat.ts":
-/*!**************************!*\
-  !*** ./src/noncombat.ts ***!
-  \**************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ noncombatTest)
-/* harmony export */ });
-/* harmony import */ var kolmafia__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! kolmafia */ "kolmafia");
-/* harmony import */ var kolmafia__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(kolmafia__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var libram__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! libram */ "./node_modules/libram/dist/index.js");
-/* harmony import */ var libram__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(libram__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _familiarweight__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./familiarweight */ "./src/familiarweight.ts");
-/* harmony import */ var _phccs_macros__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./phccs-macros */ "./src/phccs-macros.ts");
-/* harmony import */ var _phredhccs_lib__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./phredhccs-lib */ "./src/phredhccs-lib.ts");
-/* harmony import */ var _outfits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./outfits */ "./src/outfits.ts");
-var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5, _templateObject6, _templateObject7, _templateObject8, _templateObject9, _templateObject10, _templateObject11, _templateObject12, _templateObject13, _templateObject14, _templateObject15, _templateObject16, _templateObject17, _templateObject18, _templateObject19;
-
-function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
-
-
-
-
-
-
-
-
-var predictor = function predictor() {
-  return 60 + (20 + (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.numericModifier)("combat rate")) * 3;
-};
-
-function castBuffs() {
-  (0,_familiarweight__WEBPACK_IMPORTED_MODULE_1__.universalWeightBuffs)();
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_3__.ensureEffect)((0,libram__WEBPACK_IMPORTED_MODULE_5__.$effect)(_templateObject || (_templateObject = _taggedTemplateLiteral(["Smooth Movements"]))));
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_3__.ensureEffect)((0,libram__WEBPACK_IMPORTED_MODULE_5__.$effect)(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["Feeling Lonely"]))));
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.equip)((0,libram__WEBPACK_IMPORTED_MODULE_5__.$slot)(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["acc3"]))), (0,libram__WEBPACK_IMPORTED_MODULE_5__.$item)(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["Powerful Glove"]))));
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_3__.ensureEffect)((0,libram__WEBPACK_IMPORTED_MODULE_5__.$effect)(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["Invisible Avatar"]))));
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_3__.ensureEffect)((0,libram__WEBPACK_IMPORTED_MODULE_5__.$effect)(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["Blessing of the Bird"]))));
-  if (!(0,libram__WEBPACK_IMPORTED_MODULE_5__.get)("_clanFortuneBuffUsed")) (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.cliExecute)("fortune buff familiar");
-  if ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.haveEffect)((0,libram__WEBPACK_IMPORTED_MODULE_5__.$effect)(_templateObject7 || (_templateObject7 = _taggedTemplateLiteral(["Fat Leon's Phat Loot Lyric"]))))) (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.cliExecute)("shrug fat leon's phat loot lyric");
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_3__.ensureEffect)((0,libram__WEBPACK_IMPORTED_MODULE_5__.$effect)(_templateObject8 || (_templateObject8 = _taggedTemplateLiteral(["The Sonata of Sneakiness"]))));
-  if (!(0,libram__WEBPACK_IMPORTED_MODULE_5__.get)("_olympicSwimmingPool")) (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.cliExecute)("swim sprints");
-
-  while ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.getFuel)() < 37) {
-    (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_3__.fuelUp)();
-  }
-
-  if (!(0,libram__WEBPACK_IMPORTED_MODULE_5__.have)((0,libram__WEBPACK_IMPORTED_MODULE_5__.$effect)(_templateObject9 || (_templateObject9 = _taggedTemplateLiteral(["Driving Stealthily"]))))) (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.cliExecute)("asdonmartin drive stealthily");
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_3__.horse)("dark");
-}
-
-function godLobster() {
-  if (!(0,libram__WEBPACK_IMPORTED_MODULE_5__.have)((0,libram__WEBPACK_IMPORTED_MODULE_5__.$effect)(_templateObject10 || (_templateObject10 = _taggedTemplateLiteral(["Silence of the God Lobster"])))) && (0,libram__WEBPACK_IMPORTED_MODULE_5__.get)("_godLobsterFights") < 3 && (0,libram__WEBPACK_IMPORTED_MODULE_5__.have)((0,libram__WEBPACK_IMPORTED_MODULE_5__.$item)(_templateObject11 || (_templateObject11 = _taggedTemplateLiteral(["God Lobster's Ring"]))))) {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.useFamiliar)((0,libram__WEBPACK_IMPORTED_MODULE_5__.$familiar)(_templateObject12 || (_templateObject12 = _taggedTemplateLiteral(["God Lobster"]))));
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.equip)((0,libram__WEBPACK_IMPORTED_MODULE_5__.$slot)(_templateObject13 || (_templateObject13 = _taggedTemplateLiteral(["familiar"]))), (0,libram__WEBPACK_IMPORTED_MODULE_5__.$item)(_templateObject14 || (_templateObject14 = _taggedTemplateLiteral(["God Lobster's Ring"]))));
-    (0,_outfits__WEBPACK_IMPORTED_MODULE_4__.default)();
-    _phccs_macros__WEBPACK_IMPORTED_MODULE_2__.defaultKill.setAutoAttack();
-    (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_3__.heal)();
-    (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_3__.setChoice)(1310, 2);
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.visitUrl)("main.php?fightgodlobster=1");
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.runCombat)(_phccs_macros__WEBPACK_IMPORTED_MODULE_2__.defaultKill.toString());
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.visitUrl)("choice.php");
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.runChoice)(-1);
-  }
-}
-
-function testPrep() {
-  (0,_outfits__WEBPACK_IMPORTED_MODULE_4__.noncombatOutfit)();
-
-  if (predictor() > 1) {
-    if (!(0,libram__WEBPACK_IMPORTED_MODULE_5__.have)((0,libram__WEBPACK_IMPORTED_MODULE_5__.$effect)(_templateObject15 || (_templateObject15 = _taggedTemplateLiteral(["Gummed Shoes"]))))) {
-      if ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.availableAmount)((0,libram__WEBPACK_IMPORTED_MODULE_5__.$item)(_templateObject16 || (_templateObject16 = _taggedTemplateLiteral(["cop dollar"])))) < 10) (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.cliExecute)("detective solver.ash");
-      (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.buy)((0,libram__WEBPACK_IMPORTED_MODULE_5__.$coinmaster)(_templateObject17 || (_templateObject17 = _taggedTemplateLiteral(["Precinct Materiel Division"]))), 1, (0,libram__WEBPACK_IMPORTED_MODULE_5__.$item)(_templateObject18 || (_templateObject18 = _taggedTemplateLiteral(["shoe gum"]))));
-      (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.use)((0,libram__WEBPACK_IMPORTED_MODULE_5__.$item)(_templateObject19 || (_templateObject19 = _taggedTemplateLiteral(["shoe gum"]))));
-    }
-  }
-}
-
-function noncombatTest() {
-  castBuffs();
-  godLobster();
-  testPrep();
-  if (predictor() > 1) throw "Failed to cap noncombat";
-  return predictor();
-}
-
-/***/ }),
-
-/***/ "./src/outfits.ts":
-/*!************************!*\
-  !*** ./src/outfits.ts ***!
-  \************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Outfit": () => (/* binding */ Outfit),
-/* harmony export */   "withOutfit": () => (/* binding */ withOutfit),
-/* harmony export */   "default": () => (/* binding */ uniform),
-/* harmony export */   "wireOutfit": () => (/* binding */ wireOutfit),
-/* harmony export */   "moxieOutfit": () => (/* binding */ moxieOutfit),
-/* harmony export */   "hpOutfit": () => (/* binding */ hpOutfit),
-/* harmony export */   "muscleOutfit": () => (/* binding */ muscleOutfit),
-/* harmony export */   "mysticalityOutfit": () => (/* binding */ mysticalityOutfit),
-/* harmony export */   "itemOutfit": () => (/* binding */ itemOutfit),
-/* harmony export */   "hotresOutfit": () => (/* binding */ hotresOutfit),
-/* harmony export */   "noncombatOutfit": () => (/* binding */ noncombatOutfit),
-/* harmony export */   "famweightOutfit": () => (/* binding */ famweightOutfit),
-/* harmony export */   "weaponOutfit": () => (/* binding */ weaponOutfit),
-/* harmony export */   "spellOutfit": () => (/* binding */ spellOutfit)
-/* harmony export */ });
-/* harmony import */ var kolmafia__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! kolmafia */ "kolmafia");
-/* harmony import */ var kolmafia__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(kolmafia__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var libram__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! libram */ "./node_modules/libram/dist/index.js");
-/* harmony import */ var libram__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(libram__WEBPACK_IMPORTED_MODULE_1__);
+// EXTERNAL MODULE: external "kolmafia"
+var external_kolmafia_ = __webpack_require__(1664);
+// EXTERNAL MODULE: ./node_modules/libram/dist/index.js
+var dist = __webpack_require__(9803);
+;// CONCATENATED MODULE: ./src/outfits.ts
 var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5, _templateObject6, _templateObject7, _templateObject8, _templateObject9, _templateObject10, _templateObject11, _templateObject12, _templateObject13, _templateObject14, _templateObject15, _templateObject16, _templateObject17, _templateObject18, _templateObject19, _templateObject20, _templateObject21, _templateObject22, _templateObject23, _templateObject24, _templateObject25, _templateObject26, _templateObject27, _templateObject28, _templateObject29, _templateObject30, _templateObject31, _templateObject32, _templateObject33, _templateObject34, _templateObject35, _templateObject36, _templateObject37, _templateObject38, _templateObject39, _templateObject40, _templateObject41, _templateObject42, _templateObject43, _templateObject44, _templateObject45, _templateObject46, _templateObject47, _templateObject48, _templateObject49, _templateObject50, _templateObject51, _templateObject52, _templateObject53, _templateObject54, _templateObject55, _templateObject56, _templateObject57, _templateObject58, _templateObject59, _templateObject60, _templateObject61, _templateObject62, _templateObject63, _templateObject64, _templateObject65, _templateObject66, _templateObject67, _templateObject68, _templateObject69, _templateObject70, _templateObject71, _templateObject72, _templateObject73, _templateObject74, _templateObject75, _templateObject76, _templateObject77, _templateObject78, _templateObject79, _templateObject80, _templateObject81, _templateObject82, _templateObject83, _templateObject84, _templateObject85, _templateObject86, _templateObject87, _templateObject88, _templateObject89, _templateObject90, _templateObject91, _templateObject92, _templateObject93, _templateObject94, _templateObject95, _templateObject96, _templateObject97, _templateObject98, _templateObject99, _templateObject100, _templateObject101, _templateObject102, _templateObject103, _templateObject104, _templateObject105, _templateObject106, _templateObject107, _templateObject108, _templateObject109, _templateObject110, _templateObject111, _templateObject112, _templateObject113, _templateObject114, _templateObject115, _templateObject116, _templateObject117, _templateObject118, _templateObject119, _templateObject120, _templateObject121, _templateObject122, _templateObject123, _templateObject124, _templateObject125, _templateObject126, _templateObject127, _templateObject128, _templateObject129, _templateObject130, _templateObject131, _templateObject132, _templateObject133, _templateObject134, _templateObject135, _templateObject136, _templateObject137, _templateObject138, _templateObject139, _templateObject140, _templateObject141, _templateObject142, _templateObject143, _templateObject144, _templateObject145, _templateObject146, _templateObject147, _templateObject148, _templateObject149, _templateObject150, _templateObject151, _templateObject152, _templateObject153, _templateObject154, _templateObject155, _templateObject156, _templateObject157, _templateObject158, _templateObject159, _templateObject160, _templateObject161, _templateObject162, _templateObject163, _templateObject164, _templateObject165, _templateObject166, _templateObject167, _templateObject168, _templateObject169, _templateObject170, _templateObject171, _templateObject172, _templateObject173, _templateObject174, _templateObject175, _templateObject176, _templateObject177, _templateObject178, _templateObject179, _templateObject180, _templateObject181, _templateObject182, _templateObject183, _templateObject184, _templateObject185, _templateObject186, _templateObject187, _templateObject188, _templateObject189, _templateObject190, _templateObject191, _templateObject192, _templateObject193, _templateObject194, _templateObject195, _templateObject196, _templateObject197, _templateObject198, _templateObject199, _templateObject200, _templateObject201, _templateObject202, _templateObject203, _templateObject204, _templateObject205, _templateObject206, _templateObject207, _templateObject208, _templateObject209, _templateObject210, _templateObject211, _templateObject212, _templateObject213, _templateObject214, _templateObject215, _templateObject216, _templateObject217, _templateObject218, _templateObject219, _templateObject220, _templateObject221, _templateObject222, _templateObject223;
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
@@ -19688,7 +17781,7 @@ var Outfit = /*#__PURE__*/function () {
   _createClass(Outfit, [{
     key: "dress",
     value: function dress() {
-      if (this.familiar) (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.useFamiliar)(this.familiar);
+      if (this.familiar) (0,external_kolmafia_.useFamiliar)(this.familiar);
       var targetEquipment = Array.from(this.equips.values());
 
       var _iterator = _createForOfIteratorHelper(Slot.all()),
@@ -19697,7 +17790,7 @@ var Outfit = /*#__PURE__*/function () {
       try {
         for (_iterator.s(); !(_step = _iterator.n()).done;) {
           var slot = _step.value;
-          if (targetEquipment.includes((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.equippedItem)(slot)) && this.equips.get(slot) !== (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.equippedItem)(slot)) (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.equip)(slot, (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject || (_templateObject = _taggedTemplateLiteral(["none"]))));
+          if (targetEquipment.includes((0,external_kolmafia_.equippedItem)(slot)) && this.equips.get(slot) !== (0,external_kolmafia_.equippedItem)(slot)) (0,external_kolmafia_.equip)(slot, (0,dist.$item)(_templateObject || (_templateObject = _taggedTemplateLiteral(["none"]))));
         }
       } catch (err) {
         _iterator.e(err);
@@ -19705,14 +17798,14 @@ var Outfit = /*#__PURE__*/function () {
         _iterator.f();
       }
 
-      var _iterator2 = _createForOfIteratorHelper((0,libram__WEBPACK_IMPORTED_MODULE_1__.$slots)(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["weapon, off-hand, hat, back, shirt, pants, acc1, acc2, acc3, familiar, buddy-bjorn, crown-of-thrones"])))),
+      var _iterator2 = _createForOfIteratorHelper((0,dist.$slots)(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["weapon, off-hand, hat, back, shirt, pants, acc1, acc2, acc3, familiar, buddy-bjorn, crown-of-thrones"])))),
           _step2;
 
       try {
         for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
           var _slot = _step2.value;
           var equipment = this.equips.get(_slot);
-          if (equipment) (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.equip)(_slot, equipment);
+          if (equipment) (0,external_kolmafia_.equip)(_slot, equipment);
         }
       } catch (err) {
         _iterator2.e(err);
@@ -19751,7 +17844,7 @@ var Outfit = /*#__PURE__*/function () {
               itemOrItems = _step3$value[1];
 
           var item = Array.isArray(itemOrItems) ? itemOrItems.find(function (item) {
-            return (0,libram__WEBPACK_IMPORTED_MODULE_1__.have)(item);
+            return (0,dist.have)(item);
           }) : itemOrItems;
           if (item) returnValue.set(slot, item);
         }
@@ -19772,9 +17865,9 @@ var Outfit = /*#__PURE__*/function () {
     key: "current",
     value: function current() {
       var withFamiliar = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
-      var familiar = withFamiliar ? (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.myFamiliar)() : undefined;
-      var slots = (0,libram__WEBPACK_IMPORTED_MODULE_1__.$slots)(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["hat, shirt, back, weapon, off-hand, pants, acc1, acc2, acc3"])));
-      if (withFamiliar) slots.push((0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["familiar"]))));
+      var familiar = withFamiliar ? (0,external_kolmafia_.myFamiliar)() : undefined;
+      var slots = (0,dist.$slots)(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["hat, shirt, back, weapon, off-hand, pants, acc1, acc2, acc3"])));
+      if (withFamiliar) slots.push((0,dist.$slot)(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["familiar"]))));
       var outfitMap = new Map();
 
       var _iterator4 = _createForOfIteratorHelper(slots),
@@ -19783,8 +17876,8 @@ var Outfit = /*#__PURE__*/function () {
       try {
         for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
           var slot = _step4.value;
-          var item = (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.equippedItem)(slot);
-          if (item !== (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["none"])))) outfitMap.set(slot, item);
+          var item = (0,external_kolmafia_.equippedItem)(slot);
+          if (item !== (0,dist.$item)(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["none"])))) outfitMap.set(slot, item);
         }
       } catch (err) {
         _iterator4.e(err);
@@ -19817,233 +17910,165 @@ function withOutfit(outfit, callback) {
   }
 }
 function uniform() {
-  Outfit.doYourBest(new Map([[(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["hat"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject7 || (_templateObject7 = _taggedTemplateLiteral(["Iunion Crown"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject8 || (_templateObject8 = _taggedTemplateLiteral(["shirt"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject9 || (_templateObject9 = _taggedTemplateLiteral(["fresh coat of paint"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject10 || (_templateObject10 = _taggedTemplateLiteral(["pants"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$items)(_templateObject11 || (_templateObject11 = _taggedTemplateLiteral(["pantogram pants, old sweatpants"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject12 || (_templateObject12 = _taggedTemplateLiteral(["weapon"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject13 || (_templateObject13 = _taggedTemplateLiteral(["Fourth of May Cosplay Saber"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject14 || (_templateObject14 = _taggedTemplateLiteral(["off-hand"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject15 || (_templateObject15 = _taggedTemplateLiteral(["familiar scrapbook"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject16 || (_templateObject16 = _taggedTemplateLiteral(["acc1"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject17 || (_templateObject17 = _taggedTemplateLiteral(["your cowboy boots"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject18 || (_templateObject18 = _taggedTemplateLiteral(["acc2"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject19 || (_templateObject19 = _taggedTemplateLiteral(["codpiece"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject20 || (_templateObject20 = _taggedTemplateLiteral(["acc3"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$items)(_templateObject21 || (_templateObject21 = _taggedTemplateLiteral(["battle broom, Powerful Glove"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject22 || (_templateObject22 = _taggedTemplateLiteral(["back"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$items)(_templateObject23 || (_templateObject23 = _taggedTemplateLiteral(["LOV Epaulettes, vampyric cloake"])))]])).dress();
+  Outfit.doYourBest(new Map([[(0,dist.$slot)(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["hat"]))), (0,dist.$item)(_templateObject7 || (_templateObject7 = _taggedTemplateLiteral(["Iunion Crown"])))], [(0,dist.$slot)(_templateObject8 || (_templateObject8 = _taggedTemplateLiteral(["shirt"]))), (0,dist.$item)(_templateObject9 || (_templateObject9 = _taggedTemplateLiteral(["fresh coat of paint"])))], [(0,dist.$slot)(_templateObject10 || (_templateObject10 = _taggedTemplateLiteral(["pants"]))), (0,dist.$items)(_templateObject11 || (_templateObject11 = _taggedTemplateLiteral(["pantogram pants, old sweatpants"])))], [(0,dist.$slot)(_templateObject12 || (_templateObject12 = _taggedTemplateLiteral(["weapon"]))), (0,dist.$item)(_templateObject13 || (_templateObject13 = _taggedTemplateLiteral(["Fourth of May Cosplay Saber"])))], [(0,dist.$slot)(_templateObject14 || (_templateObject14 = _taggedTemplateLiteral(["off-hand"]))), (0,dist.$item)(_templateObject15 || (_templateObject15 = _taggedTemplateLiteral(["familiar scrapbook"])))], [(0,dist.$slot)(_templateObject16 || (_templateObject16 = _taggedTemplateLiteral(["acc1"]))), (0,dist.$item)(_templateObject17 || (_templateObject17 = _taggedTemplateLiteral(["your cowboy boots"])))], [(0,dist.$slot)(_templateObject18 || (_templateObject18 = _taggedTemplateLiteral(["acc2"]))), (0,dist.$item)(_templateObject19 || (_templateObject19 = _taggedTemplateLiteral(["codpiece"])))], [(0,dist.$slot)(_templateObject20 || (_templateObject20 = _taggedTemplateLiteral(["acc3"]))), (0,dist.$items)(_templateObject21 || (_templateObject21 = _taggedTemplateLiteral(["battle broom, Powerful Glove"])))], [(0,dist.$slot)(_templateObject22 || (_templateObject22 = _taggedTemplateLiteral(["back"]))), (0,dist.$items)(_templateObject23 || (_templateObject23 = _taggedTemplateLiteral(["LOV Epaulettes, vampyric cloake"])))]])).dress();
 }
 function wireOutfit() {
-  new Outfit(new Map([[(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject24 || (_templateObject24 = _taggedTemplateLiteral(["hat"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject25 || (_templateObject25 = _taggedTemplateLiteral(["Iunion Crown"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject26 || (_templateObject26 = _taggedTemplateLiteral(["shirt"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject27 || (_templateObject27 = _taggedTemplateLiteral(["fresh coat of paint"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject28 || (_templateObject28 = _taggedTemplateLiteral(["pants"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject29 || (_templateObject29 = _taggedTemplateLiteral(["Cargo Cultist Shorts"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject30 || (_templateObject30 = _taggedTemplateLiteral(["weapon"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject31 || (_templateObject31 = _taggedTemplateLiteral(["Fourth of May Cosplay Saber"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject32 || (_templateObject32 = _taggedTemplateLiteral(["off-hand"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject33 || (_templateObject33 = _taggedTemplateLiteral(["familiar scrapbook"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject34 || (_templateObject34 = _taggedTemplateLiteral(["acc1"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject35 || (_templateObject35 = _taggedTemplateLiteral(["Eight Days a Week Pill Keeper"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject36 || (_templateObject36 = _taggedTemplateLiteral(["acc2"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject37 || (_templateObject37 = _taggedTemplateLiteral(["Powerful Glove"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject38 || (_templateObject38 = _taggedTemplateLiteral(["acc3"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject39 || (_templateObject39 = _taggedTemplateLiteral(["Lil' Doctor\u2122 bag"])))]])).dress();
+  new Outfit(new Map([[(0,dist.$slot)(_templateObject24 || (_templateObject24 = _taggedTemplateLiteral(["hat"]))), (0,dist.$item)(_templateObject25 || (_templateObject25 = _taggedTemplateLiteral(["Iunion Crown"])))], [(0,dist.$slot)(_templateObject26 || (_templateObject26 = _taggedTemplateLiteral(["shirt"]))), (0,dist.$item)(_templateObject27 || (_templateObject27 = _taggedTemplateLiteral(["fresh coat of paint"])))], [(0,dist.$slot)(_templateObject28 || (_templateObject28 = _taggedTemplateLiteral(["pants"]))), (0,dist.$item)(_templateObject29 || (_templateObject29 = _taggedTemplateLiteral(["Cargo Cultist Shorts"])))], [(0,dist.$slot)(_templateObject30 || (_templateObject30 = _taggedTemplateLiteral(["weapon"]))), (0,dist.$item)(_templateObject31 || (_templateObject31 = _taggedTemplateLiteral(["Fourth of May Cosplay Saber"])))], [(0,dist.$slot)(_templateObject32 || (_templateObject32 = _taggedTemplateLiteral(["off-hand"]))), (0,dist.$item)(_templateObject33 || (_templateObject33 = _taggedTemplateLiteral(["familiar scrapbook"])))], [(0,dist.$slot)(_templateObject34 || (_templateObject34 = _taggedTemplateLiteral(["acc1"]))), (0,dist.$item)(_templateObject35 || (_templateObject35 = _taggedTemplateLiteral(["Eight Days a Week Pill Keeper"])))], [(0,dist.$slot)(_templateObject36 || (_templateObject36 = _taggedTemplateLiteral(["acc2"]))), (0,dist.$item)(_templateObject37 || (_templateObject37 = _taggedTemplateLiteral(["Powerful Glove"])))], [(0,dist.$slot)(_templateObject38 || (_templateObject38 = _taggedTemplateLiteral(["acc3"]))), (0,dist.$item)(_templateObject39 || (_templateObject39 = _taggedTemplateLiteral(["Lil' Doctor\u2122 bag"])))]])).dress();
 }
 function moxieOutfit() {
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.cliExecute)("retrocape robot");
-  Outfit.doYourBest(new Map([[(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject40 || (_templateObject40 = _taggedTemplateLiteral(["hat"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject41 || (_templateObject41 = _taggedTemplateLiteral(["very pointy crown"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject42 || (_templateObject42 = _taggedTemplateLiteral(["shirt"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$items)(_templateObject43 || (_templateObject43 = _taggedTemplateLiteral(["shoe ad T-shirt, fresh coat of paint"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject44 || (_templateObject44 = _taggedTemplateLiteral(["back"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject45 || (_templateObject45 = _taggedTemplateLiteral(["unwrapped knock-off retro superhero cape"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject46 || (_templateObject46 = _taggedTemplateLiteral(["weapon"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject47 || (_templateObject47 = _taggedTemplateLiteral(["Fourth of May Cosplay Saber"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject48 || (_templateObject48 = _taggedTemplateLiteral(["pants"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject49 || (_templateObject49 = _taggedTemplateLiteral(["Cargo Cultist Shorts"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject50 || (_templateObject50 = _taggedTemplateLiteral(["acc1"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject51 || (_templateObject51 = _taggedTemplateLiteral(["Beach Comb"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject52 || (_templateObject52 = _taggedTemplateLiteral(["acc2"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject53 || (_templateObject53 = _taggedTemplateLiteral(["\"I Voted!\" sticker"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject54 || (_templateObject54 = _taggedTemplateLiteral(["acc3"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject55 || (_templateObject55 = _taggedTemplateLiteral(["Retrospecs"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject56 || (_templateObject56 = _taggedTemplateLiteral(["familiar"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject57 || (_templateObject57 = _taggedTemplateLiteral(["miniature crystal ball"])))]])).dress();
+  (0,external_kolmafia_.cliExecute)("retrocape robot");
+  Outfit.doYourBest(new Map([[(0,dist.$slot)(_templateObject40 || (_templateObject40 = _taggedTemplateLiteral(["hat"]))), (0,dist.$item)(_templateObject41 || (_templateObject41 = _taggedTemplateLiteral(["very pointy crown"])))], [(0,dist.$slot)(_templateObject42 || (_templateObject42 = _taggedTemplateLiteral(["shirt"]))), (0,dist.$items)(_templateObject43 || (_templateObject43 = _taggedTemplateLiteral(["shoe ad T-shirt, fresh coat of paint"])))], [(0,dist.$slot)(_templateObject44 || (_templateObject44 = _taggedTemplateLiteral(["back"]))), (0,dist.$item)(_templateObject45 || (_templateObject45 = _taggedTemplateLiteral(["unwrapped knock-off retro superhero cape"])))], [(0,dist.$slot)(_templateObject46 || (_templateObject46 = _taggedTemplateLiteral(["weapon"]))), (0,dist.$item)(_templateObject47 || (_templateObject47 = _taggedTemplateLiteral(["Fourth of May Cosplay Saber"])))], [(0,dist.$slot)(_templateObject48 || (_templateObject48 = _taggedTemplateLiteral(["pants"]))), (0,dist.$item)(_templateObject49 || (_templateObject49 = _taggedTemplateLiteral(["Cargo Cultist Shorts"])))], [(0,dist.$slot)(_templateObject50 || (_templateObject50 = _taggedTemplateLiteral(["acc1"]))), (0,dist.$item)(_templateObject51 || (_templateObject51 = _taggedTemplateLiteral(["Beach Comb"])))], [(0,dist.$slot)(_templateObject52 || (_templateObject52 = _taggedTemplateLiteral(["acc2"]))), (0,dist.$item)(_templateObject53 || (_templateObject53 = _taggedTemplateLiteral(["\"I Voted!\" sticker"])))], [(0,dist.$slot)(_templateObject54 || (_templateObject54 = _taggedTemplateLiteral(["acc3"]))), (0,dist.$item)(_templateObject55 || (_templateObject55 = _taggedTemplateLiteral(["Retrospecs"])))], [(0,dist.$slot)(_templateObject56 || (_templateObject56 = _taggedTemplateLiteral(["familiar"]))), (0,dist.$item)(_templateObject57 || (_templateObject57 = _taggedTemplateLiteral(["miniature crystal ball"])))]])).dress();
 }
 function hpOutfit() {
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.cliExecute)("retrocape vampire");
-  if (!(0,libram__WEBPACK_IMPORTED_MODULE_1__.have)((0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject58 || (_templateObject58 = _taggedTemplateLiteral(["wad of used tape"]))))) (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.cliExecute)("fold wad of used tape");
-  Outfit.doYourBest(new Map([[(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject59 || (_templateObject59 = _taggedTemplateLiteral(["hat"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject60 || (_templateObject60 = _taggedTemplateLiteral(["wad of used tape"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject61 || (_templateObject61 = _taggedTemplateLiteral(["weapon"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject62 || (_templateObject62 = _taggedTemplateLiteral(["dented scepter"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject63 || (_templateObject63 = _taggedTemplateLiteral(["off-hand"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject64 || (_templateObject64 = _taggedTemplateLiteral(["Fourth of May Cosplay Saber"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject65 || (_templateObject65 = _taggedTemplateLiteral(["shirt"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$items)(_templateObject66 || (_templateObject66 = _taggedTemplateLiteral(["shoe ad T-shirt, fresh coat of paint"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject67 || (_templateObject67 = _taggedTemplateLiteral(["back"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject68 || (_templateObject68 = _taggedTemplateLiteral(["unwrapped knock-off retro superhero cape"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject69 || (_templateObject69 = _taggedTemplateLiteral(["pants"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject70 || (_templateObject70 = _taggedTemplateLiteral(["Cargo Cultist Shorts"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject71 || (_templateObject71 = _taggedTemplateLiteral(["acc1"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject72 || (_templateObject72 = _taggedTemplateLiteral(["Brutal brogues"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject73 || (_templateObject73 = _taggedTemplateLiteral(["acc2"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject74 || (_templateObject74 = _taggedTemplateLiteral(["Retrospecs"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject75 || (_templateObject75 = _taggedTemplateLiteral(["acc3"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject76 || (_templateObject76 = _taggedTemplateLiteral(["Kremlin's Greatest Briefcase"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject77 || (_templateObject77 = _taggedTemplateLiteral(["familiar"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject78 || (_templateObject78 = _taggedTemplateLiteral(["miniature crystal ball"])))]])).dress();
+  (0,external_kolmafia_.cliExecute)("retrocape vampire");
+  if (!(0,dist.have)((0,dist.$item)(_templateObject58 || (_templateObject58 = _taggedTemplateLiteral(["wad of used tape"]))))) (0,external_kolmafia_.cliExecute)("fold wad of used tape");
+  Outfit.doYourBest(new Map([[(0,dist.$slot)(_templateObject59 || (_templateObject59 = _taggedTemplateLiteral(["hat"]))), (0,dist.$item)(_templateObject60 || (_templateObject60 = _taggedTemplateLiteral(["wad of used tape"])))], [(0,dist.$slot)(_templateObject61 || (_templateObject61 = _taggedTemplateLiteral(["weapon"]))), (0,dist.$item)(_templateObject62 || (_templateObject62 = _taggedTemplateLiteral(["dented scepter"])))], [(0,dist.$slot)(_templateObject63 || (_templateObject63 = _taggedTemplateLiteral(["off-hand"]))), (0,dist.$item)(_templateObject64 || (_templateObject64 = _taggedTemplateLiteral(["Fourth of May Cosplay Saber"])))], [(0,dist.$slot)(_templateObject65 || (_templateObject65 = _taggedTemplateLiteral(["shirt"]))), (0,dist.$items)(_templateObject66 || (_templateObject66 = _taggedTemplateLiteral(["shoe ad T-shirt, fresh coat of paint"])))], [(0,dist.$slot)(_templateObject67 || (_templateObject67 = _taggedTemplateLiteral(["back"]))), (0,dist.$item)(_templateObject68 || (_templateObject68 = _taggedTemplateLiteral(["unwrapped knock-off retro superhero cape"])))], [(0,dist.$slot)(_templateObject69 || (_templateObject69 = _taggedTemplateLiteral(["pants"]))), (0,dist.$item)(_templateObject70 || (_templateObject70 = _taggedTemplateLiteral(["Cargo Cultist Shorts"])))], [(0,dist.$slot)(_templateObject71 || (_templateObject71 = _taggedTemplateLiteral(["acc1"]))), (0,dist.$item)(_templateObject72 || (_templateObject72 = _taggedTemplateLiteral(["Brutal brogues"])))], [(0,dist.$slot)(_templateObject73 || (_templateObject73 = _taggedTemplateLiteral(["acc2"]))), (0,dist.$item)(_templateObject74 || (_templateObject74 = _taggedTemplateLiteral(["Retrospecs"])))], [(0,dist.$slot)(_templateObject75 || (_templateObject75 = _taggedTemplateLiteral(["acc3"]))), (0,dist.$item)(_templateObject76 || (_templateObject76 = _taggedTemplateLiteral(["Kremlin's Greatest Briefcase"])))], [(0,dist.$slot)(_templateObject77 || (_templateObject77 = _taggedTemplateLiteral(["familiar"]))), (0,dist.$item)(_templateObject78 || (_templateObject78 = _taggedTemplateLiteral(["miniature crystal ball"])))]])).dress();
 }
 function muscleOutfit() {
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.cliExecute)("retrocape vampire");
-  if (!(0,libram__WEBPACK_IMPORTED_MODULE_1__.have)((0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject79 || (_templateObject79 = _taggedTemplateLiteral(["wad of used tape"]))))) (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.cliExecute)("fold wad of used tape");
-  Outfit.doYourBest(new Map([[(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject80 || (_templateObject80 = _taggedTemplateLiteral(["hat"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject81 || (_templateObject81 = _taggedTemplateLiteral(["wad of used tape"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject82 || (_templateObject82 = _taggedTemplateLiteral(["weapon"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject83 || (_templateObject83 = _taggedTemplateLiteral(["dented scepter"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject84 || (_templateObject84 = _taggedTemplateLiteral(["off-hand"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.have)((0,libram__WEBPACK_IMPORTED_MODULE_1__.$familiar)(_templateObject85 || (_templateObject85 = _taggedTemplateLiteral(["Disembodied Hand"])))) ? (0,libram__WEBPACK_IMPORTED_MODULE_1__.$items)(_templateObject86 || (_templateObject86 = _taggedTemplateLiteral(["cosmetic football"]))) : (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject87 || (_templateObject87 = _taggedTemplateLiteral(["Fourth of May Cosplay Saber"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject88 || (_templateObject88 = _taggedTemplateLiteral(["shirt"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$items)(_templateObject89 || (_templateObject89 = _taggedTemplateLiteral(["shoe ad T-shirt, fresh coat of paint"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject90 || (_templateObject90 = _taggedTemplateLiteral(["back"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject91 || (_templateObject91 = _taggedTemplateLiteral(["unwrapped knock-off retro superhero cape"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject92 || (_templateObject92 = _taggedTemplateLiteral(["pants"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject93 || (_templateObject93 = _taggedTemplateLiteral(["Cargo Cultist Shorts"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject94 || (_templateObject94 = _taggedTemplateLiteral(["acc1"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject95 || (_templateObject95 = _taggedTemplateLiteral(["Brutal brogues"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject96 || (_templateObject96 = _taggedTemplateLiteral(["acc2"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject97 || (_templateObject97 = _taggedTemplateLiteral(["Retrospecs"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject98 || (_templateObject98 = _taggedTemplateLiteral(["acc3"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject99 || (_templateObject99 = _taggedTemplateLiteral(["Kremlin's Greatest Briefcase"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject100 || (_templateObject100 = _taggedTemplateLiteral(["familiar"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.have)((0,libram__WEBPACK_IMPORTED_MODULE_1__.$familiar)(_templateObject101 || (_templateObject101 = _taggedTemplateLiteral(["Disembodied Hand"])))) ? (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject102 || (_templateObject102 = _taggedTemplateLiteral(["Fourth of May Cosplay Saber"]))) : (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject103 || (_templateObject103 = _taggedTemplateLiteral(["miniature crystal ball"])))]]), (0,libram__WEBPACK_IMPORTED_MODULE_1__.have)((0,libram__WEBPACK_IMPORTED_MODULE_1__.$familiar)(_templateObject104 || (_templateObject104 = _taggedTemplateLiteral(["Disembodied Hand"])))) ? (0,libram__WEBPACK_IMPORTED_MODULE_1__.$familiar)(_templateObject105 || (_templateObject105 = _taggedTemplateLiteral(["Disembodied Hand"]))) : undefined).dress();
+  (0,external_kolmafia_.cliExecute)("retrocape vampire");
+  if (!(0,dist.have)((0,dist.$item)(_templateObject79 || (_templateObject79 = _taggedTemplateLiteral(["wad of used tape"]))))) (0,external_kolmafia_.cliExecute)("fold wad of used tape");
+  Outfit.doYourBest(new Map([[(0,dist.$slot)(_templateObject80 || (_templateObject80 = _taggedTemplateLiteral(["hat"]))), (0,dist.$item)(_templateObject81 || (_templateObject81 = _taggedTemplateLiteral(["wad of used tape"])))], [(0,dist.$slot)(_templateObject82 || (_templateObject82 = _taggedTemplateLiteral(["weapon"]))), (0,dist.$item)(_templateObject83 || (_templateObject83 = _taggedTemplateLiteral(["dented scepter"])))], [(0,dist.$slot)(_templateObject84 || (_templateObject84 = _taggedTemplateLiteral(["off-hand"]))), (0,dist.have)((0,dist.$familiar)(_templateObject85 || (_templateObject85 = _taggedTemplateLiteral(["Disembodied Hand"])))) ? (0,dist.$items)(_templateObject86 || (_templateObject86 = _taggedTemplateLiteral(["cosmetic football"]))) : (0,dist.$item)(_templateObject87 || (_templateObject87 = _taggedTemplateLiteral(["Fourth of May Cosplay Saber"])))], [(0,dist.$slot)(_templateObject88 || (_templateObject88 = _taggedTemplateLiteral(["shirt"]))), (0,dist.$items)(_templateObject89 || (_templateObject89 = _taggedTemplateLiteral(["shoe ad T-shirt, fresh coat of paint"])))], [(0,dist.$slot)(_templateObject90 || (_templateObject90 = _taggedTemplateLiteral(["back"]))), (0,dist.$item)(_templateObject91 || (_templateObject91 = _taggedTemplateLiteral(["unwrapped knock-off retro superhero cape"])))], [(0,dist.$slot)(_templateObject92 || (_templateObject92 = _taggedTemplateLiteral(["pants"]))), (0,dist.$item)(_templateObject93 || (_templateObject93 = _taggedTemplateLiteral(["Cargo Cultist Shorts"])))], [(0,dist.$slot)(_templateObject94 || (_templateObject94 = _taggedTemplateLiteral(["acc1"]))), (0,dist.$item)(_templateObject95 || (_templateObject95 = _taggedTemplateLiteral(["Brutal brogues"])))], [(0,dist.$slot)(_templateObject96 || (_templateObject96 = _taggedTemplateLiteral(["acc2"]))), (0,dist.$item)(_templateObject97 || (_templateObject97 = _taggedTemplateLiteral(["Retrospecs"])))], [(0,dist.$slot)(_templateObject98 || (_templateObject98 = _taggedTemplateLiteral(["acc3"]))), (0,dist.$item)(_templateObject99 || (_templateObject99 = _taggedTemplateLiteral(["Kremlin's Greatest Briefcase"])))], [(0,dist.$slot)(_templateObject100 || (_templateObject100 = _taggedTemplateLiteral(["familiar"]))), (0,dist.have)((0,dist.$familiar)(_templateObject101 || (_templateObject101 = _taggedTemplateLiteral(["Disembodied Hand"])))) ? (0,dist.$item)(_templateObject102 || (_templateObject102 = _taggedTemplateLiteral(["Fourth of May Cosplay Saber"]))) : (0,dist.$item)(_templateObject103 || (_templateObject103 = _taggedTemplateLiteral(["miniature crystal ball"])))]]), (0,dist.have)((0,dist.$familiar)(_templateObject104 || (_templateObject104 = _taggedTemplateLiteral(["Disembodied Hand"])))) ? (0,dist.$familiar)(_templateObject105 || (_templateObject105 = _taggedTemplateLiteral(["Disembodied Hand"]))) : undefined).dress();
 }
 function mysticalityOutfit() {
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.cliExecute)("retrocape heck");
-  Outfit.doYourBest(new Map([[(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject106 || (_templateObject106 = _taggedTemplateLiteral(["hat"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject107 || (_templateObject107 = _taggedTemplateLiteral(["wad of used tape"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject108 || (_templateObject108 = _taggedTemplateLiteral(["weapon"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject109 || (_templateObject109 = _taggedTemplateLiteral(["Fourth of May Cosplay Saber"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject110 || (_templateObject110 = _taggedTemplateLiteral(["off-hand"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject111 || (_templateObject111 = _taggedTemplateLiteral(["astral statuette"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject112 || (_templateObject112 = _taggedTemplateLiteral(["back"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject113 || (_templateObject113 = _taggedTemplateLiteral(["unwrapped knock-off retro superhero cape"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject114 || (_templateObject114 = _taggedTemplateLiteral(["shirt"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$items)(_templateObject115 || (_templateObject115 = _taggedTemplateLiteral(["denim jacket, shoe ad T-shirt, fresh coat of paint"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject116 || (_templateObject116 = _taggedTemplateLiteral(["pants"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject117 || (_templateObject117 = _taggedTemplateLiteral(["pantogram pants"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject118 || (_templateObject118 = _taggedTemplateLiteral(["acc1"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject119 || (_templateObject119 = _taggedTemplateLiteral(["your cowboy boots"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject120 || (_templateObject120 = _taggedTemplateLiteral(["acc2"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject121 || (_templateObject121 = _taggedTemplateLiteral(["codpiece"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject122 || (_templateObject122 = _taggedTemplateLiteral(["acc3"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject123 || (_templateObject123 = _taggedTemplateLiteral(["battle broom"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject124 || (_templateObject124 = _taggedTemplateLiteral(["familiar"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject125 || (_templateObject125 = _taggedTemplateLiteral(["Abracandalabra"])))]]), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$familiar)(_templateObject126 || (_templateObject126 = _taggedTemplateLiteral(["Left-Hand Man"])))).dress();
+  (0,external_kolmafia_.cliExecute)("retrocape heck");
+  Outfit.doYourBest(new Map([[(0,dist.$slot)(_templateObject106 || (_templateObject106 = _taggedTemplateLiteral(["hat"]))), (0,dist.$item)(_templateObject107 || (_templateObject107 = _taggedTemplateLiteral(["wad of used tape"])))], [(0,dist.$slot)(_templateObject108 || (_templateObject108 = _taggedTemplateLiteral(["weapon"]))), (0,dist.$item)(_templateObject109 || (_templateObject109 = _taggedTemplateLiteral(["Fourth of May Cosplay Saber"])))], [(0,dist.$slot)(_templateObject110 || (_templateObject110 = _taggedTemplateLiteral(["off-hand"]))), (0,dist.$item)(_templateObject111 || (_templateObject111 = _taggedTemplateLiteral(["astral statuette"])))], [(0,dist.$slot)(_templateObject112 || (_templateObject112 = _taggedTemplateLiteral(["back"]))), (0,dist.$item)(_templateObject113 || (_templateObject113 = _taggedTemplateLiteral(["unwrapped knock-off retro superhero cape"])))], [(0,dist.$slot)(_templateObject114 || (_templateObject114 = _taggedTemplateLiteral(["shirt"]))), (0,dist.$items)(_templateObject115 || (_templateObject115 = _taggedTemplateLiteral(["denim jacket, shoe ad T-shirt, fresh coat of paint"])))], [(0,dist.$slot)(_templateObject116 || (_templateObject116 = _taggedTemplateLiteral(["pants"]))), (0,dist.$item)(_templateObject117 || (_templateObject117 = _taggedTemplateLiteral(["pantogram pants"])))], [(0,dist.$slot)(_templateObject118 || (_templateObject118 = _taggedTemplateLiteral(["acc1"]))), (0,dist.$item)(_templateObject119 || (_templateObject119 = _taggedTemplateLiteral(["your cowboy boots"])))], [(0,dist.$slot)(_templateObject120 || (_templateObject120 = _taggedTemplateLiteral(["acc2"]))), (0,dist.$item)(_templateObject121 || (_templateObject121 = _taggedTemplateLiteral(["codpiece"])))], [(0,dist.$slot)(_templateObject122 || (_templateObject122 = _taggedTemplateLiteral(["acc3"]))), (0,dist.$item)(_templateObject123 || (_templateObject123 = _taggedTemplateLiteral(["battle broom"])))], [(0,dist.$slot)(_templateObject124 || (_templateObject124 = _taggedTemplateLiteral(["familiar"]))), (0,dist.$item)(_templateObject125 || (_templateObject125 = _taggedTemplateLiteral(["Abracandalabra"])))]]), (0,dist.$familiar)(_templateObject126 || (_templateObject126 = _taggedTemplateLiteral(["Left-Hand Man"])))).dress();
 }
 function itemOutfit() {
-  if (!(0,libram__WEBPACK_IMPORTED_MODULE_1__.have)((0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject127 || (_templateObject127 = _taggedTemplateLiteral(["wad of used tape"]))))) (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.cliExecute)("fold wad of used tape");
-  Outfit.doYourBest(new Map([[(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject128 || (_templateObject128 = _taggedTemplateLiteral(["hat"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject129 || (_templateObject129 = _taggedTemplateLiteral(["wad of used tape"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject130 || (_templateObject130 = _taggedTemplateLiteral(["off-hand"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject131 || (_templateObject131 = _taggedTemplateLiteral(["Kramco Sausage-o-Matic\u2122"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject132 || (_templateObject132 = _taggedTemplateLiteral(["back"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject133 || (_templateObject133 = _taggedTemplateLiteral(["protonic accelerator pack"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject134 || (_templateObject134 = _taggedTemplateLiteral(["acc1"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject135 || (_templateObject135 = _taggedTemplateLiteral(["Guzzlr tablet"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject136 || (_templateObject136 = _taggedTemplateLiteral(["acc2"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject137 || (_templateObject137 = _taggedTemplateLiteral(["gold detective badge"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject138 || (_templateObject138 = _taggedTemplateLiteral(["acc3"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$items)(_templateObject139 || (_templateObject139 = _taggedTemplateLiteral(["government-issued night-vision goggles"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject140 || (_templateObject140 = _taggedTemplateLiteral(["familiar"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject141 || (_templateObject141 = _taggedTemplateLiteral(["li'l ninja costume"])))]]), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$familiar)(_templateObject142 || (_templateObject142 = _taggedTemplateLiteral(["Trick-or-Treating Tot"])))).dress();
+  if (!(0,dist.have)((0,dist.$item)(_templateObject127 || (_templateObject127 = _taggedTemplateLiteral(["wad of used tape"]))))) (0,external_kolmafia_.cliExecute)("fold wad of used tape");
+  Outfit.doYourBest(new Map([[(0,dist.$slot)(_templateObject128 || (_templateObject128 = _taggedTemplateLiteral(["hat"]))), (0,dist.$item)(_templateObject129 || (_templateObject129 = _taggedTemplateLiteral(["wad of used tape"])))], [(0,dist.$slot)(_templateObject130 || (_templateObject130 = _taggedTemplateLiteral(["off-hand"]))), (0,dist.$item)(_templateObject131 || (_templateObject131 = _taggedTemplateLiteral(["Kramco Sausage-o-Matic\u2122"])))], [(0,dist.$slot)(_templateObject132 || (_templateObject132 = _taggedTemplateLiteral(["back"]))), (0,dist.$item)(_templateObject133 || (_templateObject133 = _taggedTemplateLiteral(["protonic accelerator pack"])))], [(0,dist.$slot)(_templateObject134 || (_templateObject134 = _taggedTemplateLiteral(["acc1"]))), (0,dist.$item)(_templateObject135 || (_templateObject135 = _taggedTemplateLiteral(["Guzzlr tablet"])))], [(0,dist.$slot)(_templateObject136 || (_templateObject136 = _taggedTemplateLiteral(["acc2"]))), (0,dist.$item)(_templateObject137 || (_templateObject137 = _taggedTemplateLiteral(["gold detective badge"])))], [(0,dist.$slot)(_templateObject138 || (_templateObject138 = _taggedTemplateLiteral(["acc3"]))), (0,dist.$items)(_templateObject139 || (_templateObject139 = _taggedTemplateLiteral(["government-issued night-vision goggles"])))], [(0,dist.$slot)(_templateObject140 || (_templateObject140 = _taggedTemplateLiteral(["familiar"]))), (0,dist.$item)(_templateObject141 || (_templateObject141 = _taggedTemplateLiteral(["li'l ninja costume"])))]]), (0,dist.$familiar)(_templateObject142 || (_templateObject142 = _taggedTemplateLiteral(["Trick-or-Treating Tot"])))).dress();
 }
 function hotresOutfit() {
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.cliExecute)("retrocape vampire hold");
-  Outfit.doYourBest(new Map([[(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject143 || (_templateObject143 = _taggedTemplateLiteral(["back"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject144 || (_templateObject144 = _taggedTemplateLiteral(["unwrapped knock-off retro superhero cape"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject145 || (_templateObject145 = _taggedTemplateLiteral(["off-hand"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject146 || (_templateObject146 = _taggedTemplateLiteral(["meteorite guard"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject147 || (_templateObject147 = _taggedTemplateLiteral(["pants"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject148 || (_templateObject148 = _taggedTemplateLiteral(["lava-proof pants"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject149 || (_templateObject149 = _taggedTemplateLiteral(["acc1"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject150 || (_templateObject150 = _taggedTemplateLiteral(["your cowboy boots"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject151 || (_templateObject151 = _taggedTemplateLiteral(["acc2"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject152 || (_templateObject152 = _taggedTemplateLiteral(["heat-resistant gloves"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject153 || (_templateObject153 = _taggedTemplateLiteral(["acc3"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject154 || (_templateObject154 = _taggedTemplateLiteral(["Kremlin's Greatest Briefcase"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject155 || (_templateObject155 = _taggedTemplateLiteral(["familiar"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$items)(_templateObject156 || (_templateObject156 = _taggedTemplateLiteral(["cracker"])))]]), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$familiar)(_templateObject157 || (_templateObject157 = _taggedTemplateLiteral(["Exotic Parrot"])))).dress();
+  (0,external_kolmafia_.cliExecute)("retrocape vampire hold");
+  Outfit.doYourBest(new Map([[(0,dist.$slot)(_templateObject143 || (_templateObject143 = _taggedTemplateLiteral(["back"]))), (0,dist.$item)(_templateObject144 || (_templateObject144 = _taggedTemplateLiteral(["unwrapped knock-off retro superhero cape"])))], [(0,dist.$slot)(_templateObject145 || (_templateObject145 = _taggedTemplateLiteral(["off-hand"]))), (0,dist.$item)(_templateObject146 || (_templateObject146 = _taggedTemplateLiteral(["meteorite guard"])))], [(0,dist.$slot)(_templateObject147 || (_templateObject147 = _taggedTemplateLiteral(["pants"]))), (0,dist.$item)(_templateObject148 || (_templateObject148 = _taggedTemplateLiteral(["lava-proof pants"])))], [(0,dist.$slot)(_templateObject149 || (_templateObject149 = _taggedTemplateLiteral(["acc1"]))), (0,dist.$item)(_templateObject150 || (_templateObject150 = _taggedTemplateLiteral(["your cowboy boots"])))], [(0,dist.$slot)(_templateObject151 || (_templateObject151 = _taggedTemplateLiteral(["acc2"]))), (0,dist.$item)(_templateObject152 || (_templateObject152 = _taggedTemplateLiteral(["heat-resistant gloves"])))], [(0,dist.$slot)(_templateObject153 || (_templateObject153 = _taggedTemplateLiteral(["acc3"]))), (0,dist.$item)(_templateObject154 || (_templateObject154 = _taggedTemplateLiteral(["Kremlin's Greatest Briefcase"])))], [(0,dist.$slot)(_templateObject155 || (_templateObject155 = _taggedTemplateLiteral(["familiar"]))), (0,dist.$items)(_templateObject156 || (_templateObject156 = _taggedTemplateLiteral(["cracker"])))]]), (0,dist.$familiar)(_templateObject157 || (_templateObject157 = _taggedTemplateLiteral(["Exotic Parrot"])))).dress();
 }
 function noncombatOutfit() {
-  Outfit.doYourBest(new Map([[(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject158 || (_templateObject158 = _taggedTemplateLiteral(["hat"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject159 || (_templateObject159 = _taggedTemplateLiteral(["very pointy crown"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject160 || (_templateObject160 = _taggedTemplateLiteral(["back"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject161 || (_templateObject161 = _taggedTemplateLiteral(["protonic accelerator pack"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject162 || (_templateObject162 = _taggedTemplateLiteral(["weapon"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject163 || (_templateObject163 = _taggedTemplateLiteral(["Fourth of May Cosplay Saber"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject164 || (_templateObject164 = _taggedTemplateLiteral(["off-hand"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$items)(_templateObject165 || (_templateObject165 = _taggedTemplateLiteral(["burning paper crane, familiar scrapbook"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject166 || (_templateObject166 = _taggedTemplateLiteral(["acc1"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject167 || (_templateObject167 = _taggedTemplateLiteral(["Kremlin's Greatest Briefcase"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject168 || (_templateObject168 = _taggedTemplateLiteral(["acc2"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject169 || (_templateObject169 = _taggedTemplateLiteral(["codpiece"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject170 || (_templateObject170 = _taggedTemplateLiteral(["acc3"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject171 || (_templateObject171 = _taggedTemplateLiteral(["Brutal brogues"])))]]), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$familiar)(_templateObject172 || (_templateObject172 = _taggedTemplateLiteral(["Disgeist"])))).dress();
+  Outfit.doYourBest(new Map([[(0,dist.$slot)(_templateObject158 || (_templateObject158 = _taggedTemplateLiteral(["hat"]))), (0,dist.$item)(_templateObject159 || (_templateObject159 = _taggedTemplateLiteral(["very pointy crown"])))], [(0,dist.$slot)(_templateObject160 || (_templateObject160 = _taggedTemplateLiteral(["back"]))), (0,dist.$item)(_templateObject161 || (_templateObject161 = _taggedTemplateLiteral(["protonic accelerator pack"])))], [(0,dist.$slot)(_templateObject162 || (_templateObject162 = _taggedTemplateLiteral(["weapon"]))), (0,dist.$item)(_templateObject163 || (_templateObject163 = _taggedTemplateLiteral(["Fourth of May Cosplay Saber"])))], [(0,dist.$slot)(_templateObject164 || (_templateObject164 = _taggedTemplateLiteral(["off-hand"]))), (0,dist.$items)(_templateObject165 || (_templateObject165 = _taggedTemplateLiteral(["burning paper crane, familiar scrapbook"])))], [(0,dist.$slot)(_templateObject166 || (_templateObject166 = _taggedTemplateLiteral(["acc1"]))), (0,dist.$item)(_templateObject167 || (_templateObject167 = _taggedTemplateLiteral(["Kremlin's Greatest Briefcase"])))], [(0,dist.$slot)(_templateObject168 || (_templateObject168 = _taggedTemplateLiteral(["acc2"]))), (0,dist.$item)(_templateObject169 || (_templateObject169 = _taggedTemplateLiteral(["codpiece"])))], [(0,dist.$slot)(_templateObject170 || (_templateObject170 = _taggedTemplateLiteral(["acc3"]))), (0,dist.$item)(_templateObject171 || (_templateObject171 = _taggedTemplateLiteral(["Brutal brogues"])))]]), (0,dist.$familiar)(_templateObject172 || (_templateObject172 = _taggedTemplateLiteral(["Disgeist"])))).dress();
 }
 function famweightOutfit() {
-  var familiarAndEquip = (0,libram__WEBPACK_IMPORTED_MODULE_1__.have)((0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject173 || (_templateObject173 = _taggedTemplateLiteral(["cracker"])))) ? {
-    fam: (0,libram__WEBPACK_IMPORTED_MODULE_1__.$familiar)(_templateObject174 || (_templateObject174 = _taggedTemplateLiteral(["Exotic Parrot"]))),
-    equip: (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject175 || (_templateObject175 = _taggedTemplateLiteral(["cracker"])))
-  } : (0,libram__WEBPACK_IMPORTED_MODULE_1__.have)((0,libram__WEBPACK_IMPORTED_MODULE_1__.$familiar)(_templateObject176 || (_templateObject176 = _taggedTemplateLiteral(["Baby Bugged Bugbear"])))) ? {
-    fam: (0,libram__WEBPACK_IMPORTED_MODULE_1__.$familiar)(_templateObject177 || (_templateObject177 = _taggedTemplateLiteral(["Baby Bugged Bugbear"]))),
-    equip: (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject178 || (_templateObject178 = _taggedTemplateLiteral(["bugged beanie"])))
+  var familiarAndEquip = (0,dist.have)((0,dist.$item)(_templateObject173 || (_templateObject173 = _taggedTemplateLiteral(["cracker"])))) ? {
+    fam: (0,dist.$familiar)(_templateObject174 || (_templateObject174 = _taggedTemplateLiteral(["Exotic Parrot"]))),
+    equip: (0,dist.$item)(_templateObject175 || (_templateObject175 = _taggedTemplateLiteral(["cracker"])))
+  } : (0,dist.have)((0,dist.$familiar)(_templateObject176 || (_templateObject176 = _taggedTemplateLiteral(["Baby Bugged Bugbear"])))) ? {
+    fam: (0,dist.$familiar)(_templateObject177 || (_templateObject177 = _taggedTemplateLiteral(["Baby Bugged Bugbear"]))),
+    equip: (0,dist.$item)(_templateObject178 || (_templateObject178 = _taggedTemplateLiteral(["bugged beanie"])))
   } : {
-    fam: (0,libram__WEBPACK_IMPORTED_MODULE_1__.$familiar)(_templateObject179 || (_templateObject179 = _taggedTemplateLiteral(["Blood-Faced Volleyball"]))),
-    equip: (0,libram__WEBPACK_IMPORTED_MODULE_1__.have)((0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject180 || (_templateObject180 = _taggedTemplateLiteral(["astral pet sweater"])))) ? (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject181 || (_templateObject181 = _taggedTemplateLiteral(["astral pet sweater"]))) : (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject182 || (_templateObject182 = _taggedTemplateLiteral(["none"])))
+    fam: (0,dist.$familiar)(_templateObject179 || (_templateObject179 = _taggedTemplateLiteral(["Blood-Faced Volleyball"]))),
+    equip: (0,dist.have)((0,dist.$item)(_templateObject180 || (_templateObject180 = _taggedTemplateLiteral(["astral pet sweater"])))) ? (0,dist.$item)(_templateObject181 || (_templateObject181 = _taggedTemplateLiteral(["astral pet sweater"]))) : (0,dist.$item)(_templateObject182 || (_templateObject182 = _taggedTemplateLiteral(["none"])))
   };
-  Outfit.doYourBest(new Map([[(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject183 || (_templateObject183 = _taggedTemplateLiteral(["weapon"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject184 || (_templateObject184 = _taggedTemplateLiteral(["Fourth of May Cosplay Saber"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject185 || (_templateObject185 = _taggedTemplateLiteral(["off-hand"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$items)(_templateObject186 || (_templateObject186 = _taggedTemplateLiteral(["burning paper crane, familiar scrapbook"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject187 || (_templateObject187 = _taggedTemplateLiteral(["acc1"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject188 || (_templateObject188 = _taggedTemplateLiteral(["Beach Comb"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject189 || (_templateObject189 = _taggedTemplateLiteral(["acc2"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject190 || (_templateObject190 = _taggedTemplateLiteral(["Brutal brogues"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject191 || (_templateObject191 = _taggedTemplateLiteral(["acc3"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject192 || (_templateObject192 = _taggedTemplateLiteral(["hewn moon-rune spoon"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject193 || (_templateObject193 = _taggedTemplateLiteral(["familiar"]))), familiarAndEquip.equip]]), familiarAndEquip.fam).dress();
+  Outfit.doYourBest(new Map([[(0,dist.$slot)(_templateObject183 || (_templateObject183 = _taggedTemplateLiteral(["weapon"]))), (0,dist.$item)(_templateObject184 || (_templateObject184 = _taggedTemplateLiteral(["Fourth of May Cosplay Saber"])))], [(0,dist.$slot)(_templateObject185 || (_templateObject185 = _taggedTemplateLiteral(["off-hand"]))), (0,dist.$items)(_templateObject186 || (_templateObject186 = _taggedTemplateLiteral(["burning paper crane, familiar scrapbook"])))], [(0,dist.$slot)(_templateObject187 || (_templateObject187 = _taggedTemplateLiteral(["acc1"]))), (0,dist.$item)(_templateObject188 || (_templateObject188 = _taggedTemplateLiteral(["Beach Comb"])))], [(0,dist.$slot)(_templateObject189 || (_templateObject189 = _taggedTemplateLiteral(["acc2"]))), (0,dist.$item)(_templateObject190 || (_templateObject190 = _taggedTemplateLiteral(["Brutal brogues"])))], [(0,dist.$slot)(_templateObject191 || (_templateObject191 = _taggedTemplateLiteral(["acc3"]))), (0,dist.$item)(_templateObject192 || (_templateObject192 = _taggedTemplateLiteral(["hewn moon-rune spoon"])))], [(0,dist.$slot)(_templateObject193 || (_templateObject193 = _taggedTemplateLiteral(["familiar"]))), familiarAndEquip.equip]]), familiarAndEquip.fam).dress();
 }
 function weaponOutfit() {
-  if (!(0,libram__WEBPACK_IMPORTED_MODULE_1__.have)((0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject194 || (_templateObject194 = _taggedTemplateLiteral(["broken champagne bottle"]))))) (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.cliExecute)("fold broken champagne bottle");
-  Outfit.doYourBest(new Map([[(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject195 || (_templateObject195 = _taggedTemplateLiteral(["hat"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$items)(_templateObject196 || (_templateObject196 = _taggedTemplateLiteral(["seal-skull helmet"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject197 || (_templateObject197 = _taggedTemplateLiteral(["weapon"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject198 || (_templateObject198 = _taggedTemplateLiteral(["broken champagne bottle"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject199 || (_templateObject199 = _taggedTemplateLiteral(["off-hand"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject200 || (_templateObject200 = _taggedTemplateLiteral(["dented scepter"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject201 || (_templateObject201 = _taggedTemplateLiteral(["acc1"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject202 || (_templateObject202 = _taggedTemplateLiteral(["Brutal brogues"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject203 || (_templateObject203 = _taggedTemplateLiteral(["acc2"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject204 || (_templateObject204 = _taggedTemplateLiteral(["Kremlin's Greatest Briefcase"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject205 || (_templateObject205 = _taggedTemplateLiteral(["acc3"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject206 || (_templateObject206 = _taggedTemplateLiteral(["Powerful Glove"])))]])).dress();
+  if (!(0,dist.have)((0,dist.$item)(_templateObject194 || (_templateObject194 = _taggedTemplateLiteral(["broken champagne bottle"]))))) (0,external_kolmafia_.cliExecute)("fold broken champagne bottle");
+  Outfit.doYourBest(new Map([[(0,dist.$slot)(_templateObject195 || (_templateObject195 = _taggedTemplateLiteral(["hat"]))), (0,dist.$items)(_templateObject196 || (_templateObject196 = _taggedTemplateLiteral(["seal-skull helmet"])))], [(0,dist.$slot)(_templateObject197 || (_templateObject197 = _taggedTemplateLiteral(["weapon"]))), (0,dist.$item)(_templateObject198 || (_templateObject198 = _taggedTemplateLiteral(["broken champagne bottle"])))], [(0,dist.$slot)(_templateObject199 || (_templateObject199 = _taggedTemplateLiteral(["off-hand"]))), (0,dist.$item)(_templateObject200 || (_templateObject200 = _taggedTemplateLiteral(["dented scepter"])))], [(0,dist.$slot)(_templateObject201 || (_templateObject201 = _taggedTemplateLiteral(["acc1"]))), (0,dist.$item)(_templateObject202 || (_templateObject202 = _taggedTemplateLiteral(["Brutal brogues"])))], [(0,dist.$slot)(_templateObject203 || (_templateObject203 = _taggedTemplateLiteral(["acc2"]))), (0,dist.$item)(_templateObject204 || (_templateObject204 = _taggedTemplateLiteral(["Kremlin's Greatest Briefcase"])))], [(0,dist.$slot)(_templateObject205 || (_templateObject205 = _taggedTemplateLiteral(["acc3"]))), (0,dist.$item)(_templateObject206 || (_templateObject206 = _taggedTemplateLiteral(["Powerful Glove"])))]])).dress();
 }
 function spellOutfit() {
-  Outfit.doYourBest(new Map([[(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject207 || (_templateObject207 = _taggedTemplateLiteral(["hat"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$items)(_templateObject208 || (_templateObject208 = _taggedTemplateLiteral(["sugar chapeau, Hollandaise helmet"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject209 || (_templateObject209 = _taggedTemplateLiteral(["weapon"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject210 || (_templateObject210 = _taggedTemplateLiteral(["weeping willow wand"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject211 || (_templateObject211 = _taggedTemplateLiteral(["off-hand"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject212 || (_templateObject212 = _taggedTemplateLiteral(["Abracandalabra"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject213 || (_templateObject213 = _taggedTemplateLiteral(["familiar"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject214 || (_templateObject214 = _taggedTemplateLiteral(["astral statuette"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject215 || (_templateObject215 = _taggedTemplateLiteral(["pants"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject216 || (_templateObject216 = _taggedTemplateLiteral(["pantogram pants"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject217 || (_templateObject217 = _taggedTemplateLiteral(["acc1"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject218 || (_templateObject218 = _taggedTemplateLiteral(["Kremlin's Greatest Briefcase"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject219 || (_templateObject219 = _taggedTemplateLiteral(["acc2"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject220 || (_templateObject220 = _taggedTemplateLiteral(["codpiece"])))], [(0,libram__WEBPACK_IMPORTED_MODULE_1__.$slot)(_templateObject221 || (_templateObject221 = _taggedTemplateLiteral(["acc3"]))), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$item)(_templateObject222 || (_templateObject222 = _taggedTemplateLiteral(["battle broom"])))]]), (0,libram__WEBPACK_IMPORTED_MODULE_1__.$familiar)(_templateObject223 || (_templateObject223 = _taggedTemplateLiteral(["Left-Hand Man"])))).dress();
+  Outfit.doYourBest(new Map([[(0,dist.$slot)(_templateObject207 || (_templateObject207 = _taggedTemplateLiteral(["hat"]))), (0,dist.$items)(_templateObject208 || (_templateObject208 = _taggedTemplateLiteral(["sugar chapeau, Hollandaise helmet"])))], [(0,dist.$slot)(_templateObject209 || (_templateObject209 = _taggedTemplateLiteral(["weapon"]))), (0,dist.$item)(_templateObject210 || (_templateObject210 = _taggedTemplateLiteral(["weeping willow wand"])))], [(0,dist.$slot)(_templateObject211 || (_templateObject211 = _taggedTemplateLiteral(["off-hand"]))), (0,dist.$item)(_templateObject212 || (_templateObject212 = _taggedTemplateLiteral(["Abracandalabra"])))], [(0,dist.$slot)(_templateObject213 || (_templateObject213 = _taggedTemplateLiteral(["familiar"]))), (0,dist.$item)(_templateObject214 || (_templateObject214 = _taggedTemplateLiteral(["astral statuette"])))], [(0,dist.$slot)(_templateObject215 || (_templateObject215 = _taggedTemplateLiteral(["pants"]))), (0,dist.$item)(_templateObject216 || (_templateObject216 = _taggedTemplateLiteral(["pantogram pants"])))], [(0,dist.$slot)(_templateObject217 || (_templateObject217 = _taggedTemplateLiteral(["acc1"]))), (0,dist.$item)(_templateObject218 || (_templateObject218 = _taggedTemplateLiteral(["Kremlin's Greatest Briefcase"])))], [(0,dist.$slot)(_templateObject219 || (_templateObject219 = _taggedTemplateLiteral(["acc2"]))), (0,dist.$item)(_templateObject220 || (_templateObject220 = _taggedTemplateLiteral(["codpiece"])))], [(0,dist.$slot)(_templateObject221 || (_templateObject221 = _taggedTemplateLiteral(["acc3"]))), (0,dist.$item)(_templateObject222 || (_templateObject222 = _taggedTemplateLiteral(["battle broom"])))]]), (0,dist.$familiar)(_templateObject223 || (_templateObject223 = _taggedTemplateLiteral(["Left-Hand Man"])))).dress();
 }
+;// CONCATENATED MODULE: ./src/phccs-macros.ts
 
-/***/ }),
+var delevel = dist.Macro.skill("curse of weaksauce").skill("micrometeor").tryItem("time-spinner").skill("summon love gnats");
+var candyblast = dist.Macro.while_('!match "Hey, some of it is even intact afterwards!"', dist.Macro.skill("candyblast"));
+var easyFight = dist.Macro.skill("extract").skill("sing along");
+var defaultKill = dist.Macro.step(delevel).step(easyFight).attack().repeat();
+;// CONCATENATED MODULE: ./src/phredhccs-lib.ts
+var phredhccs_lib_templateObject, phredhccs_lib_templateObject2, phredhccs_lib_templateObject3, phredhccs_lib_templateObject4, phredhccs_lib_templateObject5, phredhccs_lib_templateObject6, phredhccs_lib_templateObject7, phredhccs_lib_templateObject8, phredhccs_lib_templateObject9, phredhccs_lib_templateObject10, phredhccs_lib_templateObject11, phredhccs_lib_templateObject12, phredhccs_lib_templateObject13, phredhccs_lib_templateObject14, phredhccs_lib_templateObject15, phredhccs_lib_templateObject16, phredhccs_lib_templateObject17, phredhccs_lib_templateObject18, phredhccs_lib_templateObject19, phredhccs_lib_templateObject20, phredhccs_lib_templateObject21, phredhccs_lib_templateObject22, phredhccs_lib_templateObject23, phredhccs_lib_templateObject24, phredhccs_lib_templateObject25, phredhccs_lib_templateObject26, phredhccs_lib_templateObject27, phredhccs_lib_templateObject28, phredhccs_lib_templateObject29, phredhccs_lib_templateObject30, phredhccs_lib_templateObject31, phredhccs_lib_templateObject32, phredhccs_lib_templateObject33, phredhccs_lib_templateObject34, phredhccs_lib_templateObject35, phredhccs_lib_templateObject36, phredhccs_lib_templateObject37, phredhccs_lib_templateObject38, phredhccs_lib_templateObject39, phredhccs_lib_templateObject40, phredhccs_lib_templateObject41, phredhccs_lib_templateObject42, phredhccs_lib_templateObject43, phredhccs_lib_templateObject44, phredhccs_lib_templateObject45, phredhccs_lib_templateObject46, phredhccs_lib_templateObject47, phredhccs_lib_templateObject48, phredhccs_lib_templateObject49, phredhccs_lib_templateObject50, phredhccs_lib_templateObject51, phredhccs_lib_templateObject52, phredhccs_lib_templateObject53, phredhccs_lib_templateObject54, phredhccs_lib_templateObject55, phredhccs_lib_templateObject56, phredhccs_lib_templateObject57, phredhccs_lib_templateObject58, phredhccs_lib_templateObject59, phredhccs_lib_templateObject60, phredhccs_lib_templateObject61, phredhccs_lib_templateObject62, phredhccs_lib_templateObject63, phredhccs_lib_templateObject64, phredhccs_lib_templateObject65, phredhccs_lib_templateObject66, phredhccs_lib_templateObject67, phredhccs_lib_templateObject68, phredhccs_lib_templateObject69, phredhccs_lib_templateObject70, phredhccs_lib_templateObject71, phredhccs_lib_templateObject72, phredhccs_lib_templateObject73, phredhccs_lib_templateObject74, phredhccs_lib_templateObject75, phredhccs_lib_templateObject76, phredhccs_lib_templateObject77, phredhccs_lib_templateObject78, phredhccs_lib_templateObject79, phredhccs_lib_templateObject80, phredhccs_lib_templateObject81, phredhccs_lib_templateObject82, phredhccs_lib_templateObject83, phredhccs_lib_templateObject84, phredhccs_lib_templateObject85, phredhccs_lib_templateObject86, phredhccs_lib_templateObject87, phredhccs_lib_templateObject88, phredhccs_lib_templateObject89, phredhccs_lib_templateObject90, phredhccs_lib_templateObject91, phredhccs_lib_templateObject92, phredhccs_lib_templateObject93, phredhccs_lib_templateObject94, phredhccs_lib_templateObject95, phredhccs_lib_templateObject96, phredhccs_lib_templateObject97;
 
-/***/ "./src/phccs-macros.ts":
-/*!*****************************!*\
-  !*** ./src/phccs-macros.ts ***!
-  \*****************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+function phredhccs_lib_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "delevel": () => (/* binding */ delevel),
-/* harmony export */   "candyblast": () => (/* binding */ candyblast),
-/* harmony export */   "easyFight": () => (/* binding */ easyFight),
-/* harmony export */   "defaultKill": () => (/* binding */ defaultKill)
-/* harmony export */ });
-/* harmony import */ var libram__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! libram */ "./node_modules/libram/dist/index.js");
-/* harmony import */ var libram__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(libram__WEBPACK_IMPORTED_MODULE_0__);
-
-var delevel = libram__WEBPACK_IMPORTED_MODULE_0__.Macro.skill("curse of weaksauce").skill("micrometeor").tryItem("time-spinner").skill("summon love gnats");
-var candyblast = libram__WEBPACK_IMPORTED_MODULE_0__.Macro.while_('!match "Hey, some of it is even intact afterwards!"', libram__WEBPACK_IMPORTED_MODULE_0__.Macro.skill("candyblast"));
-var easyFight = libram__WEBPACK_IMPORTED_MODULE_0__.Macro.skill("extract").skill("sing along");
-var defaultKill = libram__WEBPACK_IMPORTED_MODULE_0__.Macro.step(delevel).step(easyFight).attack().repeat();
-
-/***/ }),
-
-/***/ "./src/phredhccs-lib.ts":
-/*!******************************!*\
-  !*** ./src/phredhccs-lib.ts ***!
-  \******************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "PropertyManager": () => (/* binding */ PropertyManager),
-/* harmony export */   "fuelUp": () => (/* binding */ fuelUp),
-/* harmony export */   "synthExp": () => (/* binding */ synthExp),
-/* harmony export */   "synthItem": () => (/* binding */ synthItem),
-/* harmony export */   "synthMyst": () => (/* binding */ synthMyst),
-/* harmony export */   "synthHot": () => (/* binding */ synthHot),
-/* harmony export */   "kramcoCheck": () => (/* binding */ kramcoCheck),
-/* harmony export */   "useDefaultFamiliar": () => (/* binding */ useDefaultFamiliar),
-/* harmony export */   "Test": () => (/* binding */ Test),
-/* harmony export */   "testDone": () => (/* binding */ testDone),
-/* harmony export */   "doTest": () => (/* binding */ doTest),
-/* harmony export */   "ensureInnerElf": () => (/* binding */ ensureInnerElf),
-/* harmony export */   "fightSausageIfAble": () => (/* binding */ fightSausageIfAble),
-/* harmony export */   "ensurePotionEffect": () => (/* binding */ ensurePotionEffect),
-/* harmony export */   "ensureEffect": () => (/* binding */ ensureEffect),
-/* harmony export */   "setClan": () => (/* binding */ setClan),
-/* harmony export */   "setChoice": () => (/* binding */ setChoice),
-/* harmony export */   "tryUse": () => (/* binding */ tryUse),
-/* harmony export */   "multiFightAutoAttack": () => (/* binding */ multiFightAutoAttack),
-/* harmony export */   "heal": () => (/* binding */ heal),
-/* harmony export */   "advMacroAA": () => (/* binding */ advMacroAA),
-/* harmony export */   "advMacro": () => (/* binding */ advMacro),
-/* harmony export */   "mapMacro": () => (/* binding */ mapMacro),
-/* harmony export */   "horsery": () => (/* binding */ horsery),
-/* harmony export */   "horse": () => (/* binding */ horse),
-/* harmony export */   "convertMilliseconds": () => (/* binding */ convertMilliseconds),
-/* harmony export */   "fax": () => (/* binding */ fax),
-/* harmony export */   "tests": () => (/* binding */ tests),
-/* harmony export */   "testWrapper": () => (/* binding */ testWrapper),
-/* harmony export */   "questStep": () => (/* binding */ questStep),
-/* harmony export */   "tryHead": () => (/* binding */ tryHead),
-/* harmony export */   "ensureMp": () => (/* binding */ ensureMp),
-/* harmony export */   "maximizeFamiliar": () => (/* binding */ maximizeFamiliar)
-/* harmony export */ });
-/* harmony import */ var kolmafia__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! kolmafia */ "kolmafia");
-/* harmony import */ var kolmafia__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(kolmafia__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var libram__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! libram */ "./node_modules/libram/dist/index.js");
-/* harmony import */ var libram__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(libram__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _outfits__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./outfits */ "./src/outfits.ts");
-var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5, _templateObject6, _templateObject7, _templateObject8, _templateObject9, _templateObject10, _templateObject11, _templateObject12, _templateObject13, _templateObject14, _templateObject15, _templateObject16, _templateObject17, _templateObject18, _templateObject19, _templateObject20, _templateObject21, _templateObject22, _templateObject23, _templateObject24, _templateObject25, _templateObject26, _templateObject27, _templateObject28, _templateObject29, _templateObject30, _templateObject31, _templateObject32, _templateObject33, _templateObject34, _templateObject35, _templateObject36, _templateObject37, _templateObject38, _templateObject39, _templateObject40, _templateObject41, _templateObject42, _templateObject43, _templateObject44, _templateObject45, _templateObject46, _templateObject47, _templateObject48, _templateObject49, _templateObject50, _templateObject51, _templateObject52, _templateObject53, _templateObject54, _templateObject55, _templateObject56, _templateObject57, _templateObject58, _templateObject59, _templateObject60, _templateObject61, _templateObject62, _templateObject63, _templateObject64, _templateObject65, _templateObject66, _templateObject67, _templateObject68, _templateObject69, _templateObject70, _templateObject71, _templateObject72, _templateObject73, _templateObject74, _templateObject75, _templateObject76, _templateObject77, _templateObject78, _templateObject79, _templateObject80, _templateObject81, _templateObject82, _templateObject83, _templateObject84, _templateObject85, _templateObject86, _templateObject87, _templateObject88, _templateObject89, _templateObject90, _templateObject91, _templateObject92, _templateObject93, _templateObject94, _templateObject95, _templateObject96, _templateObject97;
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+function phredhccs_lib_taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 
 
 
-var PropertyManager = new libram__WEBPACK_IMPORTED_MODULE_2__.PropertiesManager();
+var PropertyManager = new dist.PropertiesManager();
 function fuelUp() {
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.buy)(1, (0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject || (_templateObject = _taggedTemplateLiteral(["all-purpose flower"]))));
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.use)(1, (0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["all-purpose flower"]))));
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.buy)((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.availableAmount)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["wad of dough"])))), (0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["soda water"]))));
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.create)((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.availableAmount)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["wad of dough"])))), (0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["loaf of soda bread"]))));
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.cliExecute)("asdonmartin fuel ".concat((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.availableAmount)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject7 || (_templateObject7 = _taggedTemplateLiteral(["loaf of soda bread"])))), " soda bread"));
+  (0,external_kolmafia_.buy)(1, (0,dist.$item)(phredhccs_lib_templateObject || (phredhccs_lib_templateObject = phredhccs_lib_taggedTemplateLiteral(["all-purpose flower"]))));
+  (0,external_kolmafia_.use)(1, (0,dist.$item)(phredhccs_lib_templateObject2 || (phredhccs_lib_templateObject2 = phredhccs_lib_taggedTemplateLiteral(["all-purpose flower"]))));
+  (0,external_kolmafia_.buy)((0,external_kolmafia_.availableAmount)((0,dist.$item)(phredhccs_lib_templateObject3 || (phredhccs_lib_templateObject3 = phredhccs_lib_taggedTemplateLiteral(["wad of dough"])))), (0,dist.$item)(phredhccs_lib_templateObject4 || (phredhccs_lib_templateObject4 = phredhccs_lib_taggedTemplateLiteral(["soda water"]))));
+  (0,external_kolmafia_.create)((0,external_kolmafia_.availableAmount)((0,dist.$item)(phredhccs_lib_templateObject5 || (phredhccs_lib_templateObject5 = phredhccs_lib_taggedTemplateLiteral(["wad of dough"])))), (0,dist.$item)(phredhccs_lib_templateObject6 || (phredhccs_lib_templateObject6 = phredhccs_lib_taggedTemplateLiteral(["loaf of soda bread"]))));
+  (0,external_kolmafia_.cliExecute)("asdonmartin fuel ".concat((0,external_kolmafia_.availableAmount)((0,dist.$item)(phredhccs_lib_templateObject7 || (phredhccs_lib_templateObject7 = phredhccs_lib_taggedTemplateLiteral(["loaf of soda bread"])))), " soda bread"));
 }
 function synthExp() {
-  if ((0,libram__WEBPACK_IMPORTED_MODULE_2__.get)("harvestGardenHardcore") === "none") {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.visitUrl)("campground.php?action=garden");
+  if ((0,dist.get)("harvestGardenHardcore") === "none") {
+    (0,external_kolmafia_.visitUrl)("campground.php?action=garden");
   }
 
-  if ((0,libram__WEBPACK_IMPORTED_MODULE_2__.get)("_candySummons") === 0) {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.useSkill)(1, (0,libram__WEBPACK_IMPORTED_MODULE_2__.$skill)(_templateObject8 || (_templateObject8 = _taggedTemplateLiteral(["Summon Crimbo Candy"]))));
+  if ((0,dist.get)("_candySummons") === 0) {
+    (0,external_kolmafia_.useSkill)(1, (0,dist.$skill)(phredhccs_lib_templateObject8 || (phredhccs_lib_templateObject8 = phredhccs_lib_taggedTemplateLiteral(["Summon Crimbo Candy"]))));
   }
 
-  var fudge = (0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject9 || (_templateObject9 = _taggedTemplateLiteral(["Crimbo fudge"])));
-  var pecan = (0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject10 || (_templateObject10 = _taggedTemplateLiteral(["Crimbo candied pecan"])));
-  var bark = (0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject11 || (_templateObject11 = _taggedTemplateLiteral(["Crimbo peppermint bark"])));
-  var fudges = (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.availableAmount)(fudge);
-  var pecans = (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.availableAmount)(pecan);
-  var barks = (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.availableAmount)(bark);
+  var fudge = (0,dist.$item)(phredhccs_lib_templateObject9 || (phredhccs_lib_templateObject9 = phredhccs_lib_taggedTemplateLiteral(["Crimbo fudge"])));
+  var pecan = (0,dist.$item)(phredhccs_lib_templateObject10 || (phredhccs_lib_templateObject10 = phredhccs_lib_taggedTemplateLiteral(["Crimbo candied pecan"])));
+  var bark = (0,dist.$item)(phredhccs_lib_templateObject11 || (phredhccs_lib_templateObject11 = phredhccs_lib_taggedTemplateLiteral(["Crimbo peppermint bark"])));
+  var fudges = (0,external_kolmafia_.availableAmount)(fudge);
+  var pecans = (0,external_kolmafia_.availableAmount)(pecan);
+  var barks = (0,external_kolmafia_.availableAmount)(bark);
 
   if (fudges >= 2) {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.sweetSynthesis)(fudge, fudge);
+    (0,external_kolmafia_.sweetSynthesis)(fudge, fudge);
   } else if (barks >= 1) {
     if (pecans >= 1) {
-      (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.sweetSynthesis)(pecan, bark);
+      (0,external_kolmafia_.sweetSynthesis)(pecan, bark);
     } else {
-      (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.sweetSynthesis)(bark, (0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject12 || (_templateObject12 = _taggedTemplateLiteral(["peppermint sprout"]))));
+      (0,external_kolmafia_.sweetSynthesis)(bark, (0,dist.$item)(phredhccs_lib_templateObject12 || (phredhccs_lib_templateObject12 = phredhccs_lib_taggedTemplateLiteral(["peppermint sprout"]))));
     }
   } else {
-    if ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.availableAmount)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject13 || (_templateObject13 = _taggedTemplateLiteral(["sugar shotgun"])))) === 0) {
-      (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.create)(1, (0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject14 || (_templateObject14 = _taggedTemplateLiteral(["sugar shotgun"]))));
+    if ((0,external_kolmafia_.availableAmount)((0,dist.$item)(phredhccs_lib_templateObject13 || (phredhccs_lib_templateObject13 = phredhccs_lib_taggedTemplateLiteral(["sugar shotgun"])))) === 0) {
+      (0,external_kolmafia_.create)(1, (0,dist.$item)(phredhccs_lib_templateObject14 || (phredhccs_lib_templateObject14 = phredhccs_lib_taggedTemplateLiteral(["sugar shotgun"]))));
     }
 
     if (pecans >= 1) {
-      (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.sweetSynthesis)(pecan, (0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject15 || (_templateObject15 = _taggedTemplateLiteral(["sugar shotgun"]))));
+      (0,external_kolmafia_.sweetSynthesis)(pecan, (0,dist.$item)(phredhccs_lib_templateObject15 || (phredhccs_lib_templateObject15 = phredhccs_lib_taggedTemplateLiteral(["sugar shotgun"]))));
     } else {
-      (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.sweetSynthesis)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject16 || (_templateObject16 = _taggedTemplateLiteral(["sugar shotgun"]))), (0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject17 || (_templateObject17 = _taggedTemplateLiteral(["peppermint sprout"]))));
+      (0,external_kolmafia_.sweetSynthesis)((0,dist.$item)(phredhccs_lib_templateObject16 || (phredhccs_lib_templateObject16 = phredhccs_lib_taggedTemplateLiteral(["sugar shotgun"]))), (0,dist.$item)(phredhccs_lib_templateObject17 || (phredhccs_lib_templateObject17 = phredhccs_lib_taggedTemplateLiteral(["peppermint sprout"]))));
     }
   }
 
-  if ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.haveEffect)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$effect)(_templateObject18 || (_templateObject18 = _taggedTemplateLiteral(["Synthesis: Learning"])))) === 0) {
+  if ((0,external_kolmafia_.haveEffect)((0,dist.$effect)(phredhccs_lib_templateObject18 || (phredhccs_lib_templateObject18 = phredhccs_lib_taggedTemplateLiteral(["Synthesis: Learning"])))) === 0) {
     throw "I'm very embarrassed, and I'm sorry to admit it, but I failed to synthesize learning. Pwease fix me :c.";
   }
 }
 function synthItem() {
-  if ((0,libram__WEBPACK_IMPORTED_MODULE_2__.get)("harvestGardenHardcore") === "none") {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.visitUrl)("campground.php?action=garden");
+  if ((0,dist.get)("harvestGardenHardcore") === "none") {
+    (0,external_kolmafia_.visitUrl)("campground.php?action=garden");
   }
 
-  if ((0,libram__WEBPACK_IMPORTED_MODULE_2__.get)("_candySummons") === 0) {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.useSkill)(1, (0,libram__WEBPACK_IMPORTED_MODULE_2__.$skill)(_templateObject19 || (_templateObject19 = _taggedTemplateLiteral(["Summon Crimbo Candy"]))));
+  if ((0,dist.get)("_candySummons") === 0) {
+    (0,external_kolmafia_.useSkill)(1, (0,dist.$skill)(phredhccs_lib_templateObject19 || (phredhccs_lib_templateObject19 = phredhccs_lib_taggedTemplateLiteral(["Summon Crimbo Candy"]))));
   } //const fudge = $item`Crimbo fudge`;
 
 
-  var pecan = (0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject20 || (_templateObject20 = _taggedTemplateLiteral(["Crimbo candied pecan"])));
-  var bark = (0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject21 || (_templateObject21 = _taggedTemplateLiteral(["Crimbo peppermint bark"]))); //const fudges = availableAmount(fudge);
+  var pecan = (0,dist.$item)(phredhccs_lib_templateObject20 || (phredhccs_lib_templateObject20 = phredhccs_lib_taggedTemplateLiteral(["Crimbo candied pecan"])));
+  var bark = (0,dist.$item)(phredhccs_lib_templateObject21 || (phredhccs_lib_templateObject21 = phredhccs_lib_taggedTemplateLiteral(["Crimbo peppermint bark"]))); //const fudges = availableAmount(fudge);
 
-  var pecans = (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.availableAmount)(pecan);
-  var barks = (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.availableAmount)(bark);
+  var pecans = (0,external_kolmafia_.availableAmount)(pecan);
+  var barks = (0,external_kolmafia_.availableAmount)(bark);
 
   if (barks >= 2) {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.sweetSynthesis)(bark, bark);
+    (0,external_kolmafia_.sweetSynthesis)(bark, bark);
   } else {
-    if ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.availableAmount)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject22 || (_templateObject22 = _taggedTemplateLiteral(["peppermint twist"])))) === 0) {
-      (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.create)(1, (0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject23 || (_templateObject23 = _taggedTemplateLiteral(["peppermint twist"]))));
+    if ((0,external_kolmafia_.availableAmount)((0,dist.$item)(phredhccs_lib_templateObject22 || (phredhccs_lib_templateObject22 = phredhccs_lib_taggedTemplateLiteral(["peppermint twist"])))) === 0) {
+      (0,external_kolmafia_.create)(1, (0,dist.$item)(phredhccs_lib_templateObject23 || (phredhccs_lib_templateObject23 = phredhccs_lib_taggedTemplateLiteral(["peppermint twist"]))));
     }
 
     if (pecans >= 1) {
-      (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.sweetSynthesis)(pecan, (0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject24 || (_templateObject24 = _taggedTemplateLiteral(["peppermint twist"]))));
+      (0,external_kolmafia_.sweetSynthesis)(pecan, (0,dist.$item)(phredhccs_lib_templateObject24 || (phredhccs_lib_templateObject24 = phredhccs_lib_taggedTemplateLiteral(["peppermint twist"]))));
     } else {
-      (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.sweetSynthesis)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject25 || (_templateObject25 = _taggedTemplateLiteral(["peppermint sprout"]))), (0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject26 || (_templateObject26 = _taggedTemplateLiteral(["peppermint twist"]))));
+      (0,external_kolmafia_.sweetSynthesis)((0,dist.$item)(phredhccs_lib_templateObject25 || (phredhccs_lib_templateObject25 = phredhccs_lib_taggedTemplateLiteral(["peppermint sprout"]))), (0,dist.$item)(phredhccs_lib_templateObject26 || (phredhccs_lib_templateObject26 = phredhccs_lib_taggedTemplateLiteral(["peppermint twist"]))));
     }
   }
 
-  if ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.haveEffect)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$effect)(_templateObject27 || (_templateObject27 = _taggedTemplateLiteral(["Synthesis: Collection"])))) === 0) {
+  if ((0,external_kolmafia_.haveEffect)((0,dist.$effect)(phredhccs_lib_templateObject27 || (phredhccs_lib_templateObject27 = phredhccs_lib_taggedTemplateLiteral(["Synthesis: Collection"])))) === 0) {
     throw "I'm very embarrassed, and I'm sorry to admit it, but I failed to synthesize collection. Pwease fix me :c.";
   }
 }
 function synthMyst() {
-  if ((0,libram__WEBPACK_IMPORTED_MODULE_2__.get)("harvestGardenHardcore") === "none") {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.visitUrl)("campground.php?action=garden");
+  if ((0,dist.get)("harvestGardenHardcore") === "none") {
+    (0,external_kolmafia_.visitUrl)("campground.php?action=garden");
   }
 
-  if ((0,libram__WEBPACK_IMPORTED_MODULE_2__.get)("_candySummons") === 0) {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.useSkill)(1, (0,libram__WEBPACK_IMPORTED_MODULE_2__.$skill)(_templateObject28 || (_templateObject28 = _taggedTemplateLiteral(["Summon Crimbo Candy"]))));
+  if ((0,dist.get)("_candySummons") === 0) {
+    (0,external_kolmafia_.useSkill)(1, (0,dist.$skill)(phredhccs_lib_templateObject28 || (phredhccs_lib_templateObject28 = phredhccs_lib_taggedTemplateLiteral(["Summon Crimbo Candy"]))));
   } //const fudge = $item`Crimbo fudge`;
   //const pecan = $item`Crimbo candied pecan`;
   //const bark = $item`Crimbo peppermint bark`;
@@ -20052,31 +18077,31 @@ function synthMyst() {
   //const barks = availableAmount(bark);
 
 
-  if ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.availableAmount)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject29 || (_templateObject29 = _taggedTemplateLiteral(["bag of many confections"])))) >= 1) {
-    if (!(0,libram__WEBPACK_IMPORTED_MODULE_2__.get)("_chubbyAndPlumpUsed")) {
-      (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.useSkill)(1, (0,libram__WEBPACK_IMPORTED_MODULE_2__.$skill)(_templateObject30 || (_templateObject30 = _taggedTemplateLiteral(["Chubby and Plump"]))));
+  if ((0,external_kolmafia_.availableAmount)((0,dist.$item)(phredhccs_lib_templateObject29 || (phredhccs_lib_templateObject29 = phredhccs_lib_taggedTemplateLiteral(["bag of many confections"])))) >= 1) {
+    if (!(0,dist.get)("_chubbyAndPlumpUsed")) {
+      (0,external_kolmafia_.useSkill)(1, (0,dist.$skill)(phredhccs_lib_templateObject30 || (phredhccs_lib_templateObject30 = phredhccs_lib_taggedTemplateLiteral(["Chubby and Plump"]))));
     }
 
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.sweetSynthesis)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject31 || (_templateObject31 = _taggedTemplateLiteral(["Chubby and Plump bar"]))), (0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject32 || (_templateObject32 = _taggedTemplateLiteral(["bag of many confections"]))));
+    (0,external_kolmafia_.sweetSynthesis)((0,dist.$item)(phredhccs_lib_templateObject31 || (phredhccs_lib_templateObject31 = phredhccs_lib_taggedTemplateLiteral(["Chubby and Plump bar"]))), (0,dist.$item)(phredhccs_lib_templateObject32 || (phredhccs_lib_templateObject32 = phredhccs_lib_taggedTemplateLiteral(["bag of many confections"]))));
   } else {
-    var mint = (0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject33 || (_templateObject33 = _taggedTemplateLiteral(["Senior Mints"])));
-    var mints = (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.availableAmount)(mint);
-    var orangeHeart = (0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject34 || (_templateObject34 = _taggedTemplateLiteral(["orange candy heart"])));
+    var mint = (0,dist.$item)(phredhccs_lib_templateObject33 || (phredhccs_lib_templateObject33 = phredhccs_lib_taggedTemplateLiteral(["Senior Mints"])));
+    var mints = (0,external_kolmafia_.availableAmount)(mint);
+    var orangeHeart = (0,dist.$item)(phredhccs_lib_templateObject34 || (phredhccs_lib_templateObject34 = phredhccs_lib_taggedTemplateLiteral(["orange candy heart"])));
 
     var orangeHearts = function orangeHearts() {
-      return (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.availableAmount)(orangeHeart);
+      return (0,external_kolmafia_.availableAmount)(orangeHeart);
     };
 
-    var pinkHeart = (0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject35 || (_templateObject35 = _taggedTemplateLiteral(["pink candy heart"])));
+    var pinkHeart = (0,dist.$item)(phredhccs_lib_templateObject35 || (phredhccs_lib_templateObject35 = phredhccs_lib_taggedTemplateLiteral(["pink candy heart"])));
 
     var pinkHearts = function pinkHearts() {
-      return (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.availableAmount)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject36 || (_templateObject36 = _taggedTemplateLiteral(["pink candy heart"]))));
+      return (0,external_kolmafia_.availableAmount)((0,dist.$item)(phredhccs_lib_templateObject36 || (phredhccs_lib_templateObject36 = phredhccs_lib_taggedTemplateLiteral(["pink candy heart"]))));
     };
 
     var n = 0;
 
     while (mints + orangeHearts() + pinkHearts() === 0 && n < 11) {
-      (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.useSkill)(1, (0,libram__WEBPACK_IMPORTED_MODULE_2__.$skill)(_templateObject37 || (_templateObject37 = _taggedTemplateLiteral(["Summon Candy Heart"]))));
+      (0,external_kolmafia_.useSkill)(1, (0,dist.$skill)(phredhccs_lib_templateObject37 || (phredhccs_lib_templateObject37 = phredhccs_lib_taggedTemplateLiteral(["Summon Candy Heart"]))));
       n++;
     }
 
@@ -20085,72 +18110,72 @@ function synthMyst() {
     }
 
     if (mints >= 1) {
-      (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.sweetSynthesis)(mint, (0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject38 || (_templateObject38 = _taggedTemplateLiteral(["peppermint sprout"]))));
+      (0,external_kolmafia_.sweetSynthesis)(mint, (0,dist.$item)(phredhccs_lib_templateObject38 || (phredhccs_lib_templateObject38 = phredhccs_lib_taggedTemplateLiteral(["peppermint sprout"]))));
     } else if (orangeHearts() >= 1) {
-      (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.sweetSynthesis)(orangeHeart, (0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject39 || (_templateObject39 = _taggedTemplateLiteral(["peppermint sprout"]))));
+      (0,external_kolmafia_.sweetSynthesis)(orangeHeart, (0,dist.$item)(phredhccs_lib_templateObject39 || (phredhccs_lib_templateObject39 = phredhccs_lib_taggedTemplateLiteral(["peppermint sprout"]))));
     } else if (pinkHearts() >= 1) {
-      if ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.availableAmount)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject40 || (_templateObject40 = _taggedTemplateLiteral(["peppermint twist"])))) === 0) {
-        (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.create)(1, (0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject41 || (_templateObject41 = _taggedTemplateLiteral(["peppermint twist"]))));
+      if ((0,external_kolmafia_.availableAmount)((0,dist.$item)(phredhccs_lib_templateObject40 || (phredhccs_lib_templateObject40 = phredhccs_lib_taggedTemplateLiteral(["peppermint twist"])))) === 0) {
+        (0,external_kolmafia_.create)(1, (0,dist.$item)(phredhccs_lib_templateObject41 || (phredhccs_lib_templateObject41 = phredhccs_lib_taggedTemplateLiteral(["peppermint twist"]))));
       }
 
-      (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.sweetSynthesis)(pinkHeart, (0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject42 || (_templateObject42 = _taggedTemplateLiteral(["peppermint twist"]))));
+      (0,external_kolmafia_.sweetSynthesis)(pinkHeart, (0,dist.$item)(phredhccs_lib_templateObject42 || (phredhccs_lib_templateObject42 = phredhccs_lib_taggedTemplateLiteral(["peppermint twist"]))));
     }
   }
 
-  if ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.haveEffect)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$effect)(_templateObject43 || (_templateObject43 = _taggedTemplateLiteral(["Synthesis: Smart"])))) === 0) {
+  if ((0,external_kolmafia_.haveEffect)((0,dist.$effect)(phredhccs_lib_templateObject43 || (phredhccs_lib_templateObject43 = phredhccs_lib_taggedTemplateLiteral(["Synthesis: Smart"])))) === 0) {
     throw "I'm very embarrassed, and I'm sorry to admit it, but I failed to synthesize smart. Pwease fix me :c.";
   }
 }
 function synthHot() {
   //none of us are free of sin. i know how to write this better now, but i won't <3
-  var wintoMint = (0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject44 || (_templateObject44 = _taggedTemplateLiteral(["Wint-O-Fresh mint"])));
-  var wintoMints = (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.availableAmount)(wintoMint);
-  var whiteHeart = (0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject45 || (_templateObject45 = _taggedTemplateLiteral(["white candy heart"])));
+  var wintoMint = (0,dist.$item)(phredhccs_lib_templateObject44 || (phredhccs_lib_templateObject44 = phredhccs_lib_taggedTemplateLiteral(["Wint-O-Fresh mint"])));
+  var wintoMints = (0,external_kolmafia_.availableAmount)(wintoMint);
+  var whiteHeart = (0,dist.$item)(phredhccs_lib_templateObject45 || (phredhccs_lib_templateObject45 = phredhccs_lib_taggedTemplateLiteral(["white candy heart"])));
 
   var whiteHearts = function whiteHearts() {
-    return (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.availableAmount)(whiteHeart);
+    return (0,external_kolmafia_.availableAmount)(whiteHeart);
   };
 
-  var greenHeart = (0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject46 || (_templateObject46 = _taggedTemplateLiteral(["green candy heart"])));
+  var greenHeart = (0,dist.$item)(phredhccs_lib_templateObject46 || (phredhccs_lib_templateObject46 = phredhccs_lib_taggedTemplateLiteral(["green candy heart"])));
 
   var greenHearts = function greenHearts() {
-    return (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.availableAmount)(greenHeart);
+    return (0,external_kolmafia_.availableAmount)(greenHeart);
   };
 
-  var orangeHeart = (0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject47 || (_templateObject47 = _taggedTemplateLiteral(["orange candy heart"])));
+  var orangeHeart = (0,dist.$item)(phredhccs_lib_templateObject47 || (phredhccs_lib_templateObject47 = phredhccs_lib_taggedTemplateLiteral(["orange candy heart"])));
 
   var orangeHearts = function orangeHearts() {
-    return (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.availableAmount)(orangeHeart);
+    return (0,external_kolmafia_.availableAmount)(orangeHeart);
   };
 
-  var coldHot = (0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject48 || (_templateObject48 = _taggedTemplateLiteral(["Cold Hots candy"])));
-  var coldHots = (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.availableAmount)(coldHot);
-  var daffyTaffy = (0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject49 || (_templateObject49 = _taggedTemplateLiteral(["Daffy Taffy"])));
-  var daffyTaffys = (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.availableAmount)(daffyTaffy);
-  var yellowHeart = (0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject50 || (_templateObject50 = _taggedTemplateLiteral(["yellow candy heart"])));
+  var coldHot = (0,dist.$item)(phredhccs_lib_templateObject48 || (phredhccs_lib_templateObject48 = phredhccs_lib_taggedTemplateLiteral(["Cold Hots candy"])));
+  var coldHots = (0,external_kolmafia_.availableAmount)(coldHot);
+  var daffyTaffy = (0,dist.$item)(phredhccs_lib_templateObject49 || (phredhccs_lib_templateObject49 = phredhccs_lib_taggedTemplateLiteral(["Daffy Taffy"])));
+  var daffyTaffys = (0,external_kolmafia_.availableAmount)(daffyTaffy);
+  var yellowHeart = (0,dist.$item)(phredhccs_lib_templateObject50 || (phredhccs_lib_templateObject50 = phredhccs_lib_taggedTemplateLiteral(["yellow candy heart"])));
 
   var yellowHearts = function yellowHearts() {
-    return (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.availableAmount)(yellowHeart);
+    return (0,external_kolmafia_.availableAmount)(yellowHeart);
   };
 
-  var mrMediocre = (0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject51 || (_templateObject51 = _taggedTemplateLiteral(["Mr. Mediocrebar"])));
-  var mrMediocres = (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.availableAmount)(mrMediocre);
-  var lavenderHeart = (0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject52 || (_templateObject52 = _taggedTemplateLiteral(["lavender candy heart"])));
+  var mrMediocre = (0,dist.$item)(phredhccs_lib_templateObject51 || (phredhccs_lib_templateObject51 = phredhccs_lib_taggedTemplateLiteral(["Mr. Mediocrebar"])));
+  var mrMediocres = (0,external_kolmafia_.availableAmount)(mrMediocre);
+  var lavenderHeart = (0,dist.$item)(phredhccs_lib_templateObject52 || (phredhccs_lib_templateObject52 = phredhccs_lib_taggedTemplateLiteral(["lavender candy heart"])));
 
   var lavenderHearts = function lavenderHearts() {
-    return (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.availableAmount)(lavenderHeart);
+    return (0,external_kolmafia_.availableAmount)(lavenderHeart);
   };
 
-  var pinkHeart = (0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject53 || (_templateObject53 = _taggedTemplateLiteral(["pink candy heart"])));
+  var pinkHeart = (0,dist.$item)(phredhccs_lib_templateObject53 || (phredhccs_lib_templateObject53 = phredhccs_lib_taggedTemplateLiteral(["pink candy heart"])));
 
   var pinkHearts = function pinkHearts() {
-    return (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.availableAmount)(pinkHeart);
+    return (0,external_kolmafia_.availableAmount)(pinkHeart);
   };
 
   var n = 0;
 
   while ((wintoMints + whiteHearts() + greenHearts()) * orangeHearts() === 0 && (coldHots + daffyTaffys + yellowHearts()) * (mrMediocres + lavenderHearts()) === 0 && pinkHearts() !== 2 && n <= 11) {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.useSkill)(1, (0,libram__WEBPACK_IMPORTED_MODULE_2__.$skill)(_templateObject54 || (_templateObject54 = _taggedTemplateLiteral(["Summon Candy Heart"]))));
+    (0,external_kolmafia_.useSkill)(1, (0,dist.$skill)(phredhccs_lib_templateObject54 || (phredhccs_lib_templateObject54 = phredhccs_lib_taggedTemplateLiteral(["Summon Candy Heart"]))));
     n++;
   }
 
@@ -20160,56 +18185,56 @@ function synthHot() {
 
   if ((wintoMints + whiteHearts() + greenHearts()) * orangeHearts() !== 0) {
     if (wintoMints > 0) {
-      (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.sweetSynthesis)(wintoMint, orangeHeart);
+      (0,external_kolmafia_.sweetSynthesis)(wintoMint, orangeHeart);
     } else if (whiteHearts() > 0) {
-      (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.sweetSynthesis)(whiteHeart, orangeHeart);
+      (0,external_kolmafia_.sweetSynthesis)(whiteHeart, orangeHeart);
     } else {
-      (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.sweetSynthesis)(greenHeart, orangeHeart);
+      (0,external_kolmafia_.sweetSynthesis)(greenHeart, orangeHeart);
     }
   } else if ((coldHots + daffyTaffys + yellowHearts()) * (mrMediocres + lavenderHearts()) !== 0) {
     if (mrMediocres >= 1) {
       if (coldHots >= 1) {
-        (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.sweetSynthesis)(mrMediocre, daffyTaffy);
+        (0,external_kolmafia_.sweetSynthesis)(mrMediocre, daffyTaffy);
       } else if (daffyTaffys >= 1) {
-        (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.sweetSynthesis)(mrMediocre, daffyTaffy);
+        (0,external_kolmafia_.sweetSynthesis)(mrMediocre, daffyTaffy);
       } else if (yellowHearts() >= 1) {
-        (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.sweetSynthesis)(mrMediocre, yellowHeart);
+        (0,external_kolmafia_.sweetSynthesis)(mrMediocre, yellowHeart);
       }
     } else {
       if (coldHots >= 1) {
-        (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.sweetSynthesis)(lavenderHeart, daffyTaffy);
+        (0,external_kolmafia_.sweetSynthesis)(lavenderHeart, daffyTaffy);
       } else if (daffyTaffys >= 1) {
-        (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.sweetSynthesis)(lavenderHeart, daffyTaffy);
+        (0,external_kolmafia_.sweetSynthesis)(lavenderHeart, daffyTaffy);
       } else if (yellowHearts() >= 1) {
-        (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.sweetSynthesis)(lavenderHeart, yellowHeart);
+        (0,external_kolmafia_.sweetSynthesis)(lavenderHeart, yellowHeart);
       }
     }
   } else {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.sweetSynthesis)(pinkHeart, pinkHeart);
+    (0,external_kolmafia_.sweetSynthesis)(pinkHeart, pinkHeart);
   }
 
-  if ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.haveEffect)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$effect)(_templateObject55 || (_templateObject55 = _taggedTemplateLiteral(["Synthesis: Hot"])))) === 0) {
+  if ((0,external_kolmafia_.haveEffect)((0,dist.$effect)(phredhccs_lib_templateObject55 || (phredhccs_lib_templateObject55 = phredhccs_lib_taggedTemplateLiteral(["Synthesis: Hot"])))) === 0) {
     throw "I'm very embarrassed, and I'm sorry to admit it, but I failed to synthesize hot. Pwease fix me :c.";
   }
 }
 function kramcoCheck() {
-  var kramcoNumber = 5 + 3 * (0,libram__WEBPACK_IMPORTED_MODULE_2__.get)("_sausageFights") + Math.pow(Math.max(0, (0,libram__WEBPACK_IMPORTED_MODULE_2__.get)("_sausageFights") - 5), 3);
-  return (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.totalTurnsPlayed)() - (0,libram__WEBPACK_IMPORTED_MODULE_2__.get)("_lastSausageMonsterTurn") + 1 >= kramcoNumber;
+  var kramcoNumber = 5 + 3 * (0,dist.get)("_sausageFights") + Math.pow(Math.max(0, (0,dist.get)("_sausageFights") - 5), 3);
+  return (0,external_kolmafia_.totalTurnsPlayed)() - (0,dist.get)("_lastSausageMonsterTurn") + 1 >= kramcoNumber;
 }
 function useDefaultFamiliar() {
   var canAttack = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
 
-  if (!(0,libram__WEBPACK_IMPORTED_MODULE_2__.get)("_bagOfCandy") && canAttack) {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.useFamiliar)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$familiar)(_templateObject56 || (_templateObject56 = _taggedTemplateLiteral(["Stocking Mimic"]))));
-  } else if ((0,libram__WEBPACK_IMPORTED_MODULE_2__.get)("camelSpit") !== 100) {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.useFamiliar)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$familiar)(_templateObject57 || (_templateObject57 = _taggedTemplateLiteral(["Melodramedary"]))));
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.equip)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$slot)(_templateObject58 || (_templateObject58 = _taggedTemplateLiteral(["familiar"]))), (0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject59 || (_templateObject59 = _taggedTemplateLiteral(["dromedary drinking helmet"]))));
-  } else if (canAttack && !(0,libram__WEBPACK_IMPORTED_MODULE_2__.have)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject60 || (_templateObject60 = _taggedTemplateLiteral(["short stack of pancakes"])))) && !(0,libram__WEBPACK_IMPORTED_MODULE_2__.have)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$effect)(_templateObject61 || (_templateObject61 = _taggedTemplateLiteral(["Shortly Stacked"])))) && !(0,libram__WEBPACK_IMPORTED_MODULE_2__.get)("csServicesPerformed").split(",").includes("Breed More Collies")) {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.useFamiliar)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$familiar)(_templateObject62 || (_templateObject62 = _taggedTemplateLiteral(["Shorter-Order Cook"]))));
-  } else if (!(0,libram__WEBPACK_IMPORTED_MODULE_2__.have)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject63 || (_templateObject63 = _taggedTemplateLiteral(["burning newspaper"])))) && !(0,libram__WEBPACK_IMPORTED_MODULE_2__.have)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject64 || (_templateObject64 = _taggedTemplateLiteral(["burning paper crane"]))))) {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.useFamiliar)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$familiar)(_templateObject65 || (_templateObject65 = _taggedTemplateLiteral(["Garbage Fire"]))));
+  if (!(0,dist.get)("_bagOfCandy") && canAttack) {
+    (0,external_kolmafia_.useFamiliar)((0,dist.$familiar)(phredhccs_lib_templateObject56 || (phredhccs_lib_templateObject56 = phredhccs_lib_taggedTemplateLiteral(["Stocking Mimic"]))));
+  } else if ((0,dist.get)("camelSpit") !== 100) {
+    (0,external_kolmafia_.useFamiliar)((0,dist.$familiar)(phredhccs_lib_templateObject57 || (phredhccs_lib_templateObject57 = phredhccs_lib_taggedTemplateLiteral(["Melodramedary"]))));
+    (0,external_kolmafia_.equip)((0,dist.$slot)(phredhccs_lib_templateObject58 || (phredhccs_lib_templateObject58 = phredhccs_lib_taggedTemplateLiteral(["familiar"]))), (0,dist.$item)(phredhccs_lib_templateObject59 || (phredhccs_lib_templateObject59 = phredhccs_lib_taggedTemplateLiteral(["dromedary drinking helmet"]))));
+  } else if (canAttack && !(0,dist.have)((0,dist.$item)(phredhccs_lib_templateObject60 || (phredhccs_lib_templateObject60 = phredhccs_lib_taggedTemplateLiteral(["short stack of pancakes"])))) && !(0,dist.have)((0,dist.$effect)(phredhccs_lib_templateObject61 || (phredhccs_lib_templateObject61 = phredhccs_lib_taggedTemplateLiteral(["Shortly Stacked"])))) && !(0,dist.get)("csServicesPerformed").split(",").includes("Breed More Collies")) {
+    (0,external_kolmafia_.useFamiliar)((0,dist.$familiar)(phredhccs_lib_templateObject62 || (phredhccs_lib_templateObject62 = phredhccs_lib_taggedTemplateLiteral(["Shorter-Order Cook"]))));
+  } else if (!(0,dist.have)((0,dist.$item)(phredhccs_lib_templateObject63 || (phredhccs_lib_templateObject63 = phredhccs_lib_taggedTemplateLiteral(["burning newspaper"])))) && !(0,dist.have)((0,dist.$item)(phredhccs_lib_templateObject64 || (phredhccs_lib_templateObject64 = phredhccs_lib_taggedTemplateLiteral(["burning paper crane"]))))) {
+    (0,external_kolmafia_.useFamiliar)((0,dist.$familiar)(phredhccs_lib_templateObject65 || (phredhccs_lib_templateObject65 = phredhccs_lib_taggedTemplateLiteral(["Garbage Fire"]))));
   } else {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.useFamiliar)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$familiar)(_templateObject66 || (_templateObject66 = _taggedTemplateLiteral(["Puck Man"]))));
+    (0,external_kolmafia_.useFamiliar)((0,dist.$familiar)(phredhccs_lib_templateObject66 || (phredhccs_lib_templateObject66 = phredhccs_lib_taggedTemplateLiteral(["Puck Man"]))));
   }
 }
 var Test;
@@ -20231,83 +18256,83 @@ var Test;
 
 function testDone(testNum) {
   //stolen directly from bean
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.print)("Checking test ".concat(testNum, "..."));
-  var text = (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.visitUrl)("council.php");
-  return !(0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.containsText)(text, "<input type=hidden name=option value=".concat(testNum, ">"));
+  (0,external_kolmafia_.print)("Checking test ".concat(testNum, "..."));
+  var text = (0,external_kolmafia_.visitUrl)("council.php");
+  return !(0,external_kolmafia_.containsText)(text, "<input type=hidden name=option value=".concat(testNum, ">"));
 }
 function doTest(testNum) {
   //stolen directly from bean
   if (!testDone(testNum)) {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.visitUrl)("choice.php?whichchoice=1089&option=".concat(testNum));
+    (0,external_kolmafia_.visitUrl)("choice.php?whichchoice=1089&option=".concat(testNum));
 
     if (!testDone(testNum)) {
       throw 'Failed to do test " + testNum + ". Maybe we are out of turns.';
     }
   } else {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.print)("Test ".concat(testNum, " already completed."));
+    (0,external_kolmafia_.print)("Test ".concat(testNum, " already completed."));
   }
 }
 function ensureInnerElf() {
   //stolen merely mostly from bean
-  if (!(0,libram__WEBPACK_IMPORTED_MODULE_2__.have)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$effect)(_templateObject67 || (_templateObject67 = _taggedTemplateLiteral(["Inner Elf"]))))) {
-    setClan((0,libram__WEBPACK_IMPORTED_MODULE_2__.get)("phccs_elfClan", "Hobopolis Vacation Home"));
+  if (!(0,dist.have)((0,dist.$effect)(phredhccs_lib_templateObject67 || (phredhccs_lib_templateObject67 = phredhccs_lib_taggedTemplateLiteral(["Inner Elf"]))))) {
+    setClan((0,dist.get)("phccs_elfClan", "Hobopolis Vacation Home"));
 
     try {
-      (0,_outfits__WEBPACK_IMPORTED_MODULE_1__.withOutfit)(new _outfits__WEBPACK_IMPORTED_MODULE_1__.Outfit(new Map([[(0,libram__WEBPACK_IMPORTED_MODULE_2__.$slot)(_templateObject68 || (_templateObject68 = _taggedTemplateLiteral(["acc3"]))), (0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject69 || (_templateObject69 = _taggedTemplateLiteral(["Kremlin's Greatest Briefcase"])))]]), (0,libram__WEBPACK_IMPORTED_MODULE_2__.$familiar)(_templateObject70 || (_templateObject70 = _taggedTemplateLiteral(["Machine Elf"])))), function () {
-        ensureEffect((0,libram__WEBPACK_IMPORTED_MODULE_2__.$effect)(_templateObject71 || (_templateObject71 = _taggedTemplateLiteral(["Blood Bubble"]))));
-        advMacro((0,libram__WEBPACK_IMPORTED_MODULE_2__.$location)(_templateObject72 || (_templateObject72 = _taggedTemplateLiteral(["The Slime Tube"]))), libram__WEBPACK_IMPORTED_MODULE_2__.Macro.trySkill((0,libram__WEBPACK_IMPORTED_MODULE_2__.$skill)(_templateObject73 || (_templateObject73 = _taggedTemplateLiteral(["KGB tranquilizer dart"])))).trySkill((0,libram__WEBPACK_IMPORTED_MODULE_2__.$skill)(_templateObject74 || (_templateObject74 = _taggedTemplateLiteral(["Snokebomb"])))));
+      withOutfit(new Outfit(new Map([[(0,dist.$slot)(phredhccs_lib_templateObject68 || (phredhccs_lib_templateObject68 = phredhccs_lib_taggedTemplateLiteral(["acc3"]))), (0,dist.$item)(phredhccs_lib_templateObject69 || (phredhccs_lib_templateObject69 = phredhccs_lib_taggedTemplateLiteral(["Kremlin's Greatest Briefcase"])))]]), (0,dist.$familiar)(phredhccs_lib_templateObject70 || (phredhccs_lib_templateObject70 = phredhccs_lib_taggedTemplateLiteral(["Machine Elf"])))), function () {
+        ensureEffect((0,dist.$effect)(phredhccs_lib_templateObject71 || (phredhccs_lib_templateObject71 = phredhccs_lib_taggedTemplateLiteral(["Blood Bubble"]))));
+        advMacro((0,dist.$location)(phredhccs_lib_templateObject72 || (phredhccs_lib_templateObject72 = phredhccs_lib_taggedTemplateLiteral(["The Slime Tube"]))), dist.Macro.trySkill((0,dist.$skill)(phredhccs_lib_templateObject73 || (phredhccs_lib_templateObject73 = phredhccs_lib_taggedTemplateLiteral(["KGB tranquilizer dart"])))).trySkill((0,dist.$skill)(phredhccs_lib_templateObject74 || (phredhccs_lib_templateObject74 = phredhccs_lib_taggedTemplateLiteral(["Snokebomb"])))));
       });
     } finally {
-      setClan((0,libram__WEBPACK_IMPORTED_MODULE_2__.get)("phccs_mainClan", "Alliance From Heck"));
+      setClan((0,dist.get)("phccs_mainClan", "Alliance From Heck"));
     }
   }
 }
 function fightSausageIfAble(location, macro) {
   if (kramcoCheck()) {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.equip)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$slot)(_templateObject75 || (_templateObject75 = _taggedTemplateLiteral(["off-hand"]))), (0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject76 || (_templateObject76 = _taggedTemplateLiteral(["Kramco Sausage-o-Matic\u2122"]))));
-    var sausages = (0,libram__WEBPACK_IMPORTED_MODULE_2__.get)("_sausageFights");
+    (0,external_kolmafia_.equip)((0,dist.$slot)(phredhccs_lib_templateObject75 || (phredhccs_lib_templateObject75 = phredhccs_lib_taggedTemplateLiteral(["off-hand"]))), (0,dist.$item)(phredhccs_lib_templateObject76 || (phredhccs_lib_templateObject76 = phredhccs_lib_taggedTemplateLiteral(["Kramco Sausage-o-Matic\u2122"]))));
+    var sausages = (0,dist.get)("_sausageFights");
     advMacroAA(location, macro, function () {
-      return sausages === (0,libram__WEBPACK_IMPORTED_MODULE_2__.get)("_sausageFights");
+      return sausages === (0,dist.get)("_sausageFights");
     });
 
-    if ((0,libram__WEBPACK_IMPORTED_MODULE_2__.get)("lastEncounter") !== "sausage goblin") {
+    if ((0,dist.get)("lastEncounter") !== "sausage goblin") {
       throw "Did not fight a sausage, but I thought I would. Uh oh!";
     }
   }
 }
 function ensurePotionEffect(ef, potion) {
   //stolen directly from bean
-  if (!(0,libram__WEBPACK_IMPORTED_MODULE_2__.have)(ef)) {
-    if ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.availableAmount)(potion) === 0) {
-      (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.create)(1, potion);
+  if (!have(ef)) {
+    if (availableAmount(potion) === 0) {
+      create(1, potion);
     }
 
-    if (!(0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.cliExecute)(ef["default"]) || (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.haveEffect)(ef) === 0) {
+    if (!cliExecute(ef["default"]) || haveEffect(ef) === 0) {
       throw "Failed to get effect ".concat(ef.name, ".");
     }
   } else {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.print)("Already have effect ".concat(ef.name, "."));
+    print("Already have effect ".concat(ef.name, "."));
   }
 }
 function ensureEffect(ef) {
   var turns = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
 
   //stolen directly from bean
-  if ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.haveEffect)(ef) < turns) {
-    if (!(0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.cliExecute)(ef["default"]) || (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.haveEffect)(ef) === 0) {
+  if ((0,external_kolmafia_.haveEffect)(ef) < turns) {
+    if (!(0,external_kolmafia_.cliExecute)(ef["default"]) || (0,external_kolmafia_.haveEffect)(ef) === 0) {
       throw "Failed to get effect ".concat(ef.name, ".");
     }
   } else {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.print)("Already have effect ".concat(ef.name, "."));
+    (0,external_kolmafia_.print)("Already have effect ".concat(ef.name, "."));
   }
 }
 function setClan(target) {
   //stolen directly from bean
-  if ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.getClanName)() !== target) {
-    var clanCache = JSON.parse((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.getProperty)("hccs_clanCache") || "{}");
+  if ((0,external_kolmafia_.getClanName)() !== target) {
+    var clanCache = JSON.parse((0,external_kolmafia_.getProperty)("hccs_clanCache") || "{}");
 
     if (clanCache.target === undefined) {
-      var recruiter = (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.visitUrl)("clan_signup.php");
+      var recruiter = (0,external_kolmafia_.visitUrl)("clan_signup.php");
       var clanRe = /<option value=([0-9]+)>([^<]+)<\/option>/g;
       var match;
 
@@ -20316,10 +18341,10 @@ function setClan(target) {
       }
     }
 
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.setProperty)("hccs_clanCache", JSON.stringify(clanCache));
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.visitUrl)("showclan.php?whichclan=".concat(clanCache[target], "&action=joinclan&confirm=on&pwd"));
+    (0,external_kolmafia_.setProperty)("hccs_clanCache", JSON.stringify(clanCache));
+    (0,external_kolmafia_.visitUrl)("showclan.php?whichclan=".concat(clanCache[target], "&action=joinclan&confirm=on&pwd"));
 
-    if ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.getClanName)() !== target) {
+    if ((0,external_kolmafia_.getClanName)() !== target) {
       throw "failed to switch clans to ".concat(target, ". Did you spell it correctly? Are you whitelisted?");
     }
   }
@@ -20327,23 +18352,23 @@ function setClan(target) {
   return true;
 }
 function setChoice(adv, choice) {
-  PropertyManager.setChoices(_defineProperty({}, adv, choice));
+  PropertyManager.setChoices(phredhccs_lib_defineProperty({}, adv, choice));
 }
 function tryUse(quantity, it) {
   //ripped straight from bean
-  if ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.availableAmount)(it) > 0) {
-    return (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.use)(quantity, it);
+  if ((0,external_kolmafia_.availableAmount)(it) > 0) {
+    return (0,external_kolmafia_.use)(quantity, it);
   } else {
     return false;
   }
 }
 function multiFightAutoAttack() {
-  while ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.choiceFollowsFight)() || (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.inMultiFight)()) {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.visitUrl)("choice.php");
+  while ((0,external_kolmafia_.choiceFollowsFight)() || (0,external_kolmafia_.inMultiFight)()) {
+    (0,external_kolmafia_.visitUrl)("choice.php");
   }
 }
 function heal() {
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.restoreHp)((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.myMaxhp)());
+  (0,external_kolmafia_.restoreHp)((0,external_kolmafia_.myMaxhp)());
 }
 function advMacroAA(location, macro) {
   var parameter = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
@@ -20357,8 +18382,8 @@ function advMacroAA(location, macro) {
   macro.setAutoAttack();
 
   while (condition()) {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.adv1)(location, -1, function () {
-      return libram__WEBPACK_IMPORTED_MODULE_2__.Macro.if_("!pastround 2", macro).abort().toString();
+    (0,external_kolmafia_.adv1)(location, -1, function () {
+      return dist.Macro.if_("!pastround 2", macro).abort().toString();
     });
     if (afterCombatAction) afterCombatAction();
     n++;
@@ -20367,7 +18392,7 @@ function advMacroAA(location, macro) {
 function advMacro(location, macro) {
   var parameter = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
   var afterCombatAction = arguments.length > 3 ? arguments[3] : undefined;
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.setAutoAttack)(0);
+  (0,external_kolmafia_.setAutoAttack)(0);
   var n = 0;
 
   var condition = function condition() {
@@ -20375,8 +18400,8 @@ function advMacro(location, macro) {
   };
 
   while (condition()) {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.adv1)(location, -1, function () {
-      return libram__WEBPACK_IMPORTED_MODULE_2__.Macro.if_("!pastround 2", macro).abort().toString();
+    (0,external_kolmafia_.adv1)(location, -1, function () {
+      return dist.Macro.if_("!pastround 2", macro).abort().toString();
     });
     if (afterCombatAction) afterCombatAction();
     n++;
@@ -20384,21 +18409,21 @@ function advMacro(location, macro) {
 }
 function mapMacro(location, monster, macro) {
   macro.setAutoAttack();
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.useSkill)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$skill)(_templateObject77 || (_templateObject77 = _taggedTemplateLiteral(["Map the Monsters"]))));
-  if (!(0,libram__WEBPACK_IMPORTED_MODULE_2__.get)("mappingMonsters")) throw "I am not actually mapping anything. Weird!";else {
-    while ((0,libram__WEBPACK_IMPORTED_MODULE_2__.get)("mappingMonsters")) {
-      (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.visitUrl)((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.toUrl)(location));
-      (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.runChoice)(1, "heyscriptswhatsupwinkwink=".concat(monster.id));
-      (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.runCombat)(macro.toString());
+  (0,external_kolmafia_.useSkill)((0,dist.$skill)(phredhccs_lib_templateObject77 || (phredhccs_lib_templateObject77 = phredhccs_lib_taggedTemplateLiteral(["Map the Monsters"]))));
+  if (!(0,dist.get)("mappingMonsters")) throw "I am not actually mapping anything. Weird!";else {
+    while ((0,dist.get)("mappingMonsters")) {
+      (0,external_kolmafia_.visitUrl)((0,external_kolmafia_.toUrl)(location));
+      (0,external_kolmafia_.runChoice)(1, "heyscriptswhatsupwinkwink=".concat(monster.id));
+      (0,external_kolmafia_.runCombat)(macro.toString());
     }
   }
 }
 function horsery() {
-  return (0,libram__WEBPACK_IMPORTED_MODULE_2__.get)("_horsery");
+  return (0,dist.get)("_horsery");
 }
 function horse(horse) {
   if (!horse.includes("horse")) horse = "".concat(horse, " horse");
-  if (horsery() !== horse) (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.cliExecute)("horsery ".concat(horse));
+  if (horsery() !== horse) (0,external_kolmafia_.cliExecute)("horsery ".concat(horse));
 }
 function convertMilliseconds(milliseconds) {
   var seconds = milliseconds / 1000;
@@ -20410,39 +18435,39 @@ function convertMilliseconds(milliseconds) {
 }
 
 function checkFax(monster) {
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.cliExecute)("fax receive");
-  if (libram__WEBPACK_IMPORTED_MODULE_2__.property.getString("photocopyMonster").toLowerCase() === monster.name.toLowerCase()) return true;
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.cliExecute)("fax send");
+  (0,external_kolmafia_.cliExecute)("fax receive");
+  if (dist.property.getString("photocopyMonster").toLowerCase() === monster.name.toLowerCase()) return true;
+  (0,external_kolmafia_.cliExecute)("fax send");
   return false;
 }
 
 function fax(monster) {
-  if (!(0,libram__WEBPACK_IMPORTED_MODULE_2__.get)("_photocopyUsed")) {
+  if (!(0,dist.get)("_photocopyUsed")) {
     if (checkFax(monster)) return;
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.chatPrivate)("cheesefax", monster.name);
+    (0,external_kolmafia_.chatPrivate)("cheesefax", monster.name);
 
     for (var i = 0; i < 3; i++) {
-      (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.wait)(10);
+      (0,external_kolmafia_.wait)(10);
       if (checkFax(monster)) return;
     }
 
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.abort)("Failed to acquire photocopied ".concat(monster.name, "."));
+    (0,external_kolmafia_.abort)("Failed to acquire photocopied ".concat(monster.name, "."));
   }
 }
 var tests = [];
 function testWrapper(name, test, prepare) {
   if (testDone(test)) return;
-  var startTurns = (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.myTurncount)();
+  var startTurns = (0,external_kolmafia_.myTurncount)();
   var predictedTurns = prepare();
   doTest(test);
   tests.push({
     testName: name,
     turnPrediction: predictedTurns,
-    turnCost: (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.myTurncount)() - startTurns
+    turnCost: (0,external_kolmafia_.myTurncount)() - startTurns
   });
 }
 function questStep(questName) {
-  var stringStep = libram__WEBPACK_IMPORTED_MODULE_2__.property.getString(questName);
+  var stringStep = dist.property.getString(questName);
   if (stringStep === "unstarted" || stringStep === "") return -1;else if (stringStep === "started") return 0;else if (stringStep === "finished") return 999;else {
     if (stringStep.substring(0, 4) !== "step") {
       throw "Quest state parsing error.";
@@ -20451,189 +18476,171 @@ function questStep(questName) {
     return parseInt(stringStep.substring(4), 10);
   }
 }
-var heads = [(0,libram__WEBPACK_IMPORTED_MODULE_2__.$effect)(_templateObject78 || (_templateObject78 = _taggedTemplateLiteral(["Hot-Headed"]))), (0,libram__WEBPACK_IMPORTED_MODULE_2__.$effect)(_templateObject79 || (_templateObject79 = _taggedTemplateLiteral(["Cold as Nice"]))), (0,libram__WEBPACK_IMPORTED_MODULE_2__.$effect)(_templateObject80 || (_templateObject80 = _taggedTemplateLiteral(["A Brush with Grossness"]))), (0,libram__WEBPACK_IMPORTED_MODULE_2__.$effect)(_templateObject81 || (_templateObject81 = _taggedTemplateLiteral(["Does It Have a Skull In There??"]))), (0,libram__WEBPACK_IMPORTED_MODULE_2__.$effect)(_templateObject82 || (_templateObject82 = _taggedTemplateLiteral(["Oiled, Slick"]))), (0,libram__WEBPACK_IMPORTED_MODULE_2__.$effect)(_templateObject83 || (_templateObject83 = _taggedTemplateLiteral(["Lack of Body-Building"]))), (0,libram__WEBPACK_IMPORTED_MODULE_2__.$effect)(_templateObject84 || (_templateObject84 = _taggedTemplateLiteral(["We're All Made of Starfish"]))), (0,libram__WEBPACK_IMPORTED_MODULE_2__.$effect)(_templateObject85 || (_templateObject85 = _taggedTemplateLiteral(["Pomp & Circumsands"]))), (0,libram__WEBPACK_IMPORTED_MODULE_2__.$effect)(_templateObject86 || (_templateObject86 = _taggedTemplateLiteral(["Resting Beach Face"]))), (0,libram__WEBPACK_IMPORTED_MODULE_2__.$effect)(_templateObject87 || (_templateObject87 = _taggedTemplateLiteral(["Do I Know You From Somewhere?"]))), (0,libram__WEBPACK_IMPORTED_MODULE_2__.$effect)(_templateObject88 || (_templateObject88 = _taggedTemplateLiteral(["You Learned Something Maybe!"])))];
+var heads = [(0,dist.$effect)(phredhccs_lib_templateObject78 || (phredhccs_lib_templateObject78 = phredhccs_lib_taggedTemplateLiteral(["Hot-Headed"]))), (0,dist.$effect)(phredhccs_lib_templateObject79 || (phredhccs_lib_templateObject79 = phredhccs_lib_taggedTemplateLiteral(["Cold as Nice"]))), (0,dist.$effect)(phredhccs_lib_templateObject80 || (phredhccs_lib_templateObject80 = phredhccs_lib_taggedTemplateLiteral(["A Brush with Grossness"]))), (0,dist.$effect)(phredhccs_lib_templateObject81 || (phredhccs_lib_templateObject81 = phredhccs_lib_taggedTemplateLiteral(["Does It Have a Skull In There??"]))), (0,dist.$effect)(phredhccs_lib_templateObject82 || (phredhccs_lib_templateObject82 = phredhccs_lib_taggedTemplateLiteral(["Oiled, Slick"]))), (0,dist.$effect)(phredhccs_lib_templateObject83 || (phredhccs_lib_templateObject83 = phredhccs_lib_taggedTemplateLiteral(["Lack of Body-Building"]))), (0,dist.$effect)(phredhccs_lib_templateObject84 || (phredhccs_lib_templateObject84 = phredhccs_lib_taggedTemplateLiteral(["We're All Made of Starfish"]))), (0,dist.$effect)(phredhccs_lib_templateObject85 || (phredhccs_lib_templateObject85 = phredhccs_lib_taggedTemplateLiteral(["Pomp & Circumsands"]))), (0,dist.$effect)(phredhccs_lib_templateObject86 || (phredhccs_lib_templateObject86 = phredhccs_lib_taggedTemplateLiteral(["Resting Beach Face"]))), (0,dist.$effect)(phredhccs_lib_templateObject87 || (phredhccs_lib_templateObject87 = phredhccs_lib_taggedTemplateLiteral(["Do I Know You From Somewhere?"]))), (0,dist.$effect)(phredhccs_lib_templateObject88 || (phredhccs_lib_templateObject88 = phredhccs_lib_taggedTemplateLiteral(["You Learned Something Maybe!"])))];
 function tryHead(effect) {
   if (!heads.includes(effect)) return;
   var headNumber = 1 + heads.indexOf(effect);
-  if (libram__WEBPACK_IMPORTED_MODULE_2__.property.getString("_beachHeadsUsed").split(",").includes(headNumber.toString())) return;
+  if (dist.property.getString("_beachHeadsUsed").split(",").includes(headNumber.toString())) return;
   ensureEffect(effect);
 }
 function ensureMp(mp) {
-  if ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.myMp)() > mp) return;
-  if (mp > (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.myMaxmp)()) throw "Insufficient maximum mp!";
+  if ((0,external_kolmafia_.myMp)() > mp) return;
+  if (mp > (0,external_kolmafia_.myMaxmp)()) throw "Insufficient maximum mp!";
 
-  while ((0,libram__WEBPACK_IMPORTED_MODULE_2__.have)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject89 || (_templateObject89 = _taggedTemplateLiteral(["magical sausage"])))) || (0,libram__WEBPACK_IMPORTED_MODULE_2__.have)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject90 || (_templateObject90 = _taggedTemplateLiteral(["magical sausage casing"])))) && (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.myMp)() < mp && (0,libram__WEBPACK_IMPORTED_MODULE_2__.get)("_sausagesEaten") < 23) {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.retrieveItem)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject91 || (_templateObject91 = _taggedTemplateLiteral(["magical sausage"]))));
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.eat)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject92 || (_templateObject92 = _taggedTemplateLiteral(["magical sausage"]))));
+  while ((0,dist.have)((0,dist.$item)(phredhccs_lib_templateObject89 || (phredhccs_lib_templateObject89 = phredhccs_lib_taggedTemplateLiteral(["magical sausage"])))) || (0,dist.have)((0,dist.$item)(phredhccs_lib_templateObject90 || (phredhccs_lib_templateObject90 = phredhccs_lib_taggedTemplateLiteral(["magical sausage casing"])))) && (0,external_kolmafia_.myMp)() < mp && (0,dist.get)("_sausagesEaten") < 23) {
+    (0,external_kolmafia_.retrieveItem)((0,dist.$item)(phredhccs_lib_templateObject91 || (phredhccs_lib_templateObject91 = phredhccs_lib_taggedTemplateLiteral(["magical sausage"]))));
+    (0,external_kolmafia_.eat)((0,dist.$item)(phredhccs_lib_templateObject92 || (phredhccs_lib_templateObject92 = phredhccs_lib_taggedTemplateLiteral(["magical sausage"]))));
   }
 
-  while ((0,libram__WEBPACK_IMPORTED_MODULE_2__.have)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject93 || (_templateObject93 = _taggedTemplateLiteral(["psychokinetic energy blob"])))) && (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.myMp)() < mp) {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.use)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject94 || (_templateObject94 = _taggedTemplateLiteral(["psychokinetic energy blob"]))));
+  while ((0,dist.have)((0,dist.$item)(phredhccs_lib_templateObject93 || (phredhccs_lib_templateObject93 = phredhccs_lib_taggedTemplateLiteral(["psychokinetic energy blob"])))) && (0,external_kolmafia_.myMp)() < mp) {
+    (0,external_kolmafia_.use)((0,dist.$item)(phredhccs_lib_templateObject94 || (phredhccs_lib_templateObject94 = phredhccs_lib_taggedTemplateLiteral(["psychokinetic energy blob"]))));
   }
 
-  if ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.myMp)() < mp) (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.restoreMp)(mp);
+  if ((0,external_kolmafia_.myMp)() < mp) (0,external_kolmafia_.restoreMp)(mp);
 }
-var maximizeFamiliar = (0,libram__WEBPACK_IMPORTED_MODULE_2__.have)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$familiar)(_templateObject95 || (_templateObject95 = _taggedTemplateLiteral(["Disembodied Hand"])))) ? (0,libram__WEBPACK_IMPORTED_MODULE_2__.$familiar)(_templateObject96 || (_templateObject96 = _taggedTemplateLiteral(["Disembodied Hand"]))) : (0,libram__WEBPACK_IMPORTED_MODULE_2__.$familiar)(_templateObject97 || (_templateObject97 = _taggedTemplateLiteral(["Left-Hand Man"])));
+var maximizeFamiliar = (0,dist.have)((0,dist.$familiar)(phredhccs_lib_templateObject95 || (phredhccs_lib_templateObject95 = phredhccs_lib_taggedTemplateLiteral(["Disembodied Hand"])))) ? (0,dist.$familiar)(phredhccs_lib_templateObject96 || (phredhccs_lib_templateObject96 = phredhccs_lib_taggedTemplateLiteral(["Disembodied Hand"]))) : (0,dist.$familiar)(phredhccs_lib_templateObject97 || (phredhccs_lib_templateObject97 = phredhccs_lib_taggedTemplateLiteral(["Left-Hand Man"])));
+;// CONCATENATED MODULE: ./src/runstart.ts
+var runstart_templateObject, runstart_templateObject2, runstart_templateObject3, runstart_templateObject4, runstart_templateObject5, runstart_templateObject6, runstart_templateObject7, runstart_templateObject8, runstart_templateObject9, runstart_templateObject10, runstart_templateObject11, runstart_templateObject12, runstart_templateObject13, runstart_templateObject14, runstart_templateObject15, runstart_templateObject16, runstart_templateObject17, runstart_templateObject18, runstart_templateObject19, runstart_templateObject20, runstart_templateObject21, runstart_templateObject22, runstart_templateObject23, runstart_templateObject24, runstart_templateObject25, runstart_templateObject26, runstart_templateObject27, runstart_templateObject28, runstart_templateObject29, runstart_templateObject30, runstart_templateObject31, runstart_templateObject32, runstart_templateObject33, runstart_templateObject34, runstart_templateObject35, runstart_templateObject36, runstart_templateObject37, runstart_templateObject38;
 
-/***/ }),
-
-/***/ "./src/runstart.ts":
-/*!*************************!*\
-  !*** ./src/runstart.ts ***!
-  \*************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "runStart": () => (/* binding */ runStart)
-/* harmony export */ });
-/* harmony import */ var kolmafia__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! kolmafia */ "kolmafia");
-/* harmony import */ var kolmafia__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(kolmafia__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var libram__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! libram */ "./node_modules/libram/dist/index.js");
-/* harmony import */ var libram__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(libram__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _phredhccs_lib__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./phredhccs-lib */ "./src/phredhccs-lib.ts");
-var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5, _templateObject6, _templateObject7, _templateObject8, _templateObject9, _templateObject10, _templateObject11, _templateObject12, _templateObject13, _templateObject14, _templateObject15, _templateObject16, _templateObject17, _templateObject18, _templateObject19, _templateObject20, _templateObject21, _templateObject22, _templateObject23, _templateObject24, _templateObject25, _templateObject26, _templateObject27, _templateObject28, _templateObject29, _templateObject30, _templateObject31, _templateObject32, _templateObject33, _templateObject34, _templateObject35, _templateObject36, _templateObject37, _templateObject38;
-
-function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+function runstart_taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 
 
 
 
 function juiceBar() {
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.visitUrl)("place.php?whichplace=chateau&action=chateau_desk2");
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.autosell)(1, (0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject || (_templateObject = _taggedTemplateLiteral(["gremlin juice"]))));
+  (0,external_kolmafia_.visitUrl)("place.php?whichplace=chateau&action=chateau_desk2");
+  (0,external_kolmafia_.autosell)(1, (0,dist.$item)(runstart_templateObject || (runstart_templateObject = runstart_taggedTemplateLiteral(["gremlin juice"]))));
 }
 
 function toot() {
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.visitUrl)("tutorial.php?action=toot");
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_1__.tryUse)(1, (0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["letter from King Ralph XI"]))));
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_1__.tryUse)(1, (0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["pork elf goodies sack"]))));
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.autosell)(5, (0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["baconstone"]))));
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.autosell)(5, (0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["hamethyst"]))));
+  (0,external_kolmafia_.visitUrl)("tutorial.php?action=toot");
+  tryUse(1, (0,dist.$item)(runstart_templateObject2 || (runstart_templateObject2 = runstart_taggedTemplateLiteral(["letter from King Ralph XI"]))));
+  tryUse(1, (0,dist.$item)(runstart_templateObject3 || (runstart_templateObject3 = runstart_taggedTemplateLiteral(["pork elf goodies sack"]))));
+  (0,external_kolmafia_.autosell)(5, (0,dist.$item)(runstart_templateObject4 || (runstart_templateObject4 = runstart_taggedTemplateLiteral(["baconstone"]))));
+  (0,external_kolmafia_.autosell)(5, (0,dist.$item)(runstart_templateObject5 || (runstart_templateObject5 = runstart_taggedTemplateLiteral(["hamethyst"]))));
 
-  if (!(0,libram__WEBPACK_IMPORTED_MODULE_2__.have)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["toy accordion"]))))) {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.buy)(1, (0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject7 || (_templateObject7 = _taggedTemplateLiteral(["toy accordion"]))));
+  if (!(0,dist.have)((0,dist.$item)(runstart_templateObject6 || (runstart_templateObject6 = runstart_taggedTemplateLiteral(["toy accordion"]))))) {
+    (0,external_kolmafia_.buy)(1, (0,dist.$item)(runstart_templateObject7 || (runstart_templateObject7 = runstart_taggedTemplateLiteral(["toy accordion"]))));
   }
 }
 
 function grimoires() {
-  if (!(0,libram__WEBPACK_IMPORTED_MODULE_2__.get)("_grimoireConfiscatorSummons") && (0,libram__WEBPACK_IMPORTED_MODULE_2__.have)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$skill)(_templateObject8 || (_templateObject8 = _taggedTemplateLiteral(["Summon Confiscated Things"]))))) {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.useSkill)(1, (0,libram__WEBPACK_IMPORTED_MODULE_2__.$skill)(_templateObject9 || (_templateObject9 = _taggedTemplateLiteral(["Summon Confiscated Things"]))));
-    (0,libram__WEBPACK_IMPORTED_MODULE_2__.$items)(_templateObject10 || (_templateObject10 = _taggedTemplateLiteral(["glow-in-the-dark necklace, \"KICK ME\" sign, LCD game: Burger Belt, LCD game: Food Eater, LCD game: Garbage River"]))).forEach(function (item) {
-      return (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.autosell)(1, item);
+  if (!(0,dist.get)("_grimoireConfiscatorSummons") && (0,dist.have)((0,dist.$skill)(runstart_templateObject8 || (runstart_templateObject8 = runstart_taggedTemplateLiteral(["Summon Confiscated Things"]))))) {
+    (0,external_kolmafia_.useSkill)(1, (0,dist.$skill)(runstart_templateObject9 || (runstart_templateObject9 = runstart_taggedTemplateLiteral(["Summon Confiscated Things"]))));
+    (0,dist.$items)(runstart_templateObject10 || (runstart_templateObject10 = runstart_taggedTemplateLiteral(["glow-in-the-dark necklace, \"KICK ME\" sign, LCD game: Burger Belt, LCD game: Food Eater, LCD game: Garbage River"]))).forEach(function (item) {
+      return (0,external_kolmafia_.autosell)(1, item);
     });
   }
 
-  if (!(0,libram__WEBPACK_IMPORTED_MODULE_2__.get)("grimoire2Summons") && (0,libram__WEBPACK_IMPORTED_MODULE_2__.have)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$skill)(_templateObject11 || (_templateObject11 = _taggedTemplateLiteral(["Summon Tasteful Items"]))))) {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.useSkill)(1, (0,libram__WEBPACK_IMPORTED_MODULE_2__.$skill)(_templateObject12 || (_templateObject12 = _taggedTemplateLiteral(["Summon Tasteful Items"]))));
-    (0,libram__WEBPACK_IMPORTED_MODULE_2__.$items)(_templateObject13 || (_templateObject13 = _taggedTemplateLiteral(["black-and-blue light, blue plasma ball, cheap studded belt, flavored foot massage oil, foam dart, Loudmouth Larry Lamprey, personal massager, personalized coffee mug, stick-on eyebrow piercing"]))).forEach(function (item) {
-      return (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.autosell)(5, item);
+  if (!(0,dist.get)("grimoire2Summons") && (0,dist.have)((0,dist.$skill)(runstart_templateObject11 || (runstart_templateObject11 = runstart_taggedTemplateLiteral(["Summon Tasteful Items"]))))) {
+    (0,external_kolmafia_.useSkill)(1, (0,dist.$skill)(runstart_templateObject12 || (runstart_templateObject12 = runstart_taggedTemplateLiteral(["Summon Tasteful Items"]))));
+    (0,dist.$items)(runstart_templateObject13 || (runstart_templateObject13 = runstart_taggedTemplateLiteral(["black-and-blue light, blue plasma ball, cheap studded belt, flavored foot massage oil, foam dart, Loudmouth Larry Lamprey, personal massager, personalized coffee mug, stick-on eyebrow piercing"]))).forEach(function (item) {
+      return (0,external_kolmafia_.autosell)(5, item);
     });
   }
 
-  if (!(0,libram__WEBPACK_IMPORTED_MODULE_2__.get)("grimoire3Summons") && (0,libram__WEBPACK_IMPORTED_MODULE_2__.have)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$skill)(_templateObject14 || (_templateObject14 = _taggedTemplateLiteral(["Summon Alice's Army Cards"]))))) {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.useSkill)(1, (0,libram__WEBPACK_IMPORTED_MODULE_2__.$skill)(_templateObject15 || (_templateObject15 = _taggedTemplateLiteral(["Summon Alice's Army Cards"]))));
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.buy)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$coinmaster)(_templateObject16 || (_templateObject16 = _taggedTemplateLiteral(["Game Shoppe Snacks"]))), 1, (0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject17 || (_templateObject17 = _taggedTemplateLiteral(["tobiko marble soda"]))));
+  if (!(0,dist.get)("grimoire3Summons") && (0,dist.have)((0,dist.$skill)(runstart_templateObject14 || (runstart_templateObject14 = runstart_taggedTemplateLiteral(["Summon Alice's Army Cards"]))))) {
+    (0,external_kolmafia_.useSkill)(1, (0,dist.$skill)(runstart_templateObject15 || (runstart_templateObject15 = runstart_taggedTemplateLiteral(["Summon Alice's Army Cards"]))));
+    (0,external_kolmafia_.buy)((0,dist.$coinmaster)(runstart_templateObject16 || (runstart_templateObject16 = runstart_taggedTemplateLiteral(["Game Shoppe Snacks"]))), 1, (0,dist.$item)(runstart_templateObject17 || (runstart_templateObject17 = runstart_taggedTemplateLiteral(["tobiko marble soda"]))));
   }
 }
 
 function setSettings() {
-  libram__WEBPACK_IMPORTED_MODULE_2__.SourceTerminal.educate([(0,libram__WEBPACK_IMPORTED_MODULE_2__.$skill)(_templateObject18 || (_templateObject18 = _taggedTemplateLiteral(["Extract"]))), (0,libram__WEBPACK_IMPORTED_MODULE_2__.$skill)(_templateObject19 || (_templateObject19 = _taggedTemplateLiteral(["Portscan"])))]);
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_1__.setClan)((0,libram__WEBPACK_IMPORTED_MODULE_2__.get)("phccs_mainClan", "Alliance From Heck"));
+  dist.SourceTerminal.educate([(0,dist.$skill)(runstart_templateObject18 || (runstart_templateObject18 = runstart_taggedTemplateLiteral(["Extract"]))), (0,dist.$skill)(runstart_templateObject19 || (runstart_templateObject19 = runstart_taggedTemplateLiteral(["Portscan"])))]);
+  setClan((0,dist.get)("phccs_mainClan", "Alliance From Heck"));
 }
 
 function getTurns() {
-  if ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.myLevel)() === 1 && !(0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.mySpleenUse)()) {
-    while ((0,libram__WEBPACK_IMPORTED_MODULE_2__.get)("_universeCalculated") < (0,libram__WEBPACK_IMPORTED_MODULE_2__.get)("skillLevel144")) {
-      (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.cliExecute)("numberology 69");
+  if ((0,external_kolmafia_.myLevel)() === 1 && !(0,external_kolmafia_.mySpleenUse)()) {
+    while ((0,dist.get)("_universeCalculated") < (0,dist.get)("skillLevel144")) {
+      (0,external_kolmafia_.cliExecute)("numberology 69");
     }
   }
 
-  if (!(0,libram__WEBPACK_IMPORTED_MODULE_2__.get)("_borrowedTimeUsed")) {
-    if (!(0,libram__WEBPACK_IMPORTED_MODULE_2__.have)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject20 || (_templateObject20 = _taggedTemplateLiteral(["borrowed time"]))))) {
-      (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.create)(1, (0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject21 || (_templateObject21 = _taggedTemplateLiteral(["borrowed time"]))));
+  if (!(0,dist.get)("_borrowedTimeUsed")) {
+    if (!(0,dist.have)((0,dist.$item)(runstart_templateObject20 || (runstart_templateObject20 = runstart_taggedTemplateLiteral(["borrowed time"]))))) {
+      (0,external_kolmafia_.create)(1, (0,dist.$item)(runstart_templateObject21 || (runstart_templateObject21 = runstart_taggedTemplateLiteral(["borrowed time"]))));
     }
 
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.use)(1, (0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject22 || (_templateObject22 = _taggedTemplateLiteral(["borrowed time"]))));
+    (0,external_kolmafia_.use)(1, (0,dist.$item)(runstart_templateObject22 || (runstart_templateObject22 = runstart_taggedTemplateLiteral(["borrowed time"]))));
   }
 }
 
 function prepGear() {
-  if (!(0,libram__WEBPACK_IMPORTED_MODULE_2__.have)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject23 || (_templateObject23 = _taggedTemplateLiteral(["dromedary drinking helmet"]))))) {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.useFamiliar)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$familiar)(_templateObject24 || (_templateObject24 = _taggedTemplateLiteral(["Melodramedary"]))));
+  if (!(0,dist.have)((0,dist.$item)(runstart_templateObject23 || (runstart_templateObject23 = runstart_taggedTemplateLiteral(["dromedary drinking helmet"]))))) {
+    (0,external_kolmafia_.useFamiliar)((0,dist.$familiar)(runstart_templateObject24 || (runstart_templateObject24 = runstart_taggedTemplateLiteral(["Melodramedary"]))));
 
-    if (!(0,libram__WEBPACK_IMPORTED_MODULE_2__.have)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject25 || (_templateObject25 = _taggedTemplateLiteral(["box of Familiar Jacks"]))))) {
-      (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.create)(1, (0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject26 || (_templateObject26 = _taggedTemplateLiteral(["box of Familiar Jacks"]))));
+    if (!(0,dist.have)((0,dist.$item)(runstart_templateObject25 || (runstart_templateObject25 = runstart_taggedTemplateLiteral(["box of Familiar Jacks"]))))) {
+      (0,external_kolmafia_.create)(1, (0,dist.$item)(runstart_templateObject26 || (runstart_templateObject26 = runstart_taggedTemplateLiteral(["box of Familiar Jacks"]))));
     }
 
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.use)(1, (0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject27 || (_templateObject27 = _taggedTemplateLiteral(["box of Familiar Jacks"]))));
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.cliExecute)("mummery myst");
+    (0,external_kolmafia_.use)(1, (0,dist.$item)(runstart_templateObject27 || (runstart_templateObject27 = runstart_taggedTemplateLiteral(["box of Familiar Jacks"]))));
+    (0,external_kolmafia_.cliExecute)("mummery myst");
   }
 
-  if (!(0,libram__WEBPACK_IMPORTED_MODULE_2__.have)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject28 || (_templateObject28 = _taggedTemplateLiteral(["your cowboy boots"]))))) {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.visitUrl)("place.php?whichplace=town_right&action=townright_ltt");
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.runChoice)(5);
+  if (!(0,dist.have)((0,dist.$item)(runstart_templateObject28 || (runstart_templateObject28 = runstart_taggedTemplateLiteral(["your cowboy boots"]))))) {
+    (0,external_kolmafia_.visitUrl)("place.php?whichplace=town_right&action=townright_ltt");
+    (0,external_kolmafia_.runChoice)(5);
   }
 
-  if ((0,libram__WEBPACK_IMPORTED_MODULE_2__.have)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject29 || (_templateObject29 = _taggedTemplateLiteral(["Fourth of May Cosplay Saber"])))) && !(0,libram__WEBPACK_IMPORTED_MODULE_2__.get)("_saberMod")) {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.visitUrl)("main.php?action=may4");
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.runChoice)(4);
+  if ((0,dist.have)((0,dist.$item)(runstart_templateObject29 || (runstart_templateObject29 = runstart_taggedTemplateLiteral(["Fourth of May Cosplay Saber"])))) && !(0,dist.get)("_saberMod")) {
+    (0,external_kolmafia_.visitUrl)("main.php?action=may4");
+    (0,external_kolmafia_.runChoice)(4);
   }
 
-  if (!(0,libram__WEBPACK_IMPORTED_MODULE_2__.have)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject30 || (_templateObject30 = _taggedTemplateLiteral(["gold detective badge"]))))) {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.visitUrl)("place.php?whichplace=town_wrong&action=townwrong_precinct");
+  if (!(0,dist.have)((0,dist.$item)(runstart_templateObject30 || (runstart_templateObject30 = runstart_taggedTemplateLiteral(["gold detective badge"]))))) {
+    (0,external_kolmafia_.visitUrl)("place.php?whichplace=town_wrong&action=townwrong_precinct");
   }
 
-  if ((0,libram__WEBPACK_IMPORTED_MODULE_2__.have)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject31 || (_templateObject31 = _taggedTemplateLiteral(["GameInformPowerDailyPro magazine"]))))) {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.visitUrl)("inv_use.php?whichitem=6174&confirm=Yep.");
+  if ((0,dist.have)((0,dist.$item)(runstart_templateObject31 || (runstart_templateObject31 = runstart_taggedTemplateLiteral(["GameInformPowerDailyPro magazine"]))))) {
+    (0,external_kolmafia_.visitUrl)("inv_use.php?whichitem=6174&confirm=Yep.");
   }
 
-  if ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.eudoraItem)() === (0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject32 || (_templateObject32 = _taggedTemplateLiteral(["GameInformPowerDailyPro subscription card"])))) {
-    if (!(0,libram__WEBPACK_IMPORTED_MODULE_2__.have)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject33 || (_templateObject33 = _taggedTemplateLiteral(["scroll of Puddingskin"])))) && !(0,libram__WEBPACK_IMPORTED_MODULE_2__.have)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject34 || (_templateObject34 = _taggedTemplateLiteral(["dungeoneering kit"]))))) {
-      (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.visitUrl)("adventure.php?snarfblat=319");
-      (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.use)(1, (0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject35 || (_templateObject35 = _taggedTemplateLiteral(["dungeoneering kit"]))));
+  if ((0,external_kolmafia_.eudoraItem)() === (0,dist.$item)(runstart_templateObject32 || (runstart_templateObject32 = runstart_taggedTemplateLiteral(["GameInformPowerDailyPro subscription card"])))) {
+    if (!(0,dist.have)((0,dist.$item)(runstart_templateObject33 || (runstart_templateObject33 = runstart_taggedTemplateLiteral(["scroll of Puddingskin"])))) && !(0,dist.have)((0,dist.$item)(runstart_templateObject34 || (runstart_templateObject34 = runstart_taggedTemplateLiteral(["dungeoneering kit"]))))) {
+      (0,external_kolmafia_.visitUrl)("adventure.php?snarfblat=319");
+      (0,external_kolmafia_.use)(1, (0,dist.$item)(runstart_templateObject35 || (runstart_templateObject35 = runstart_taggedTemplateLiteral(["dungeoneering kit"]))));
     }
   }
 
-  if (!(0,libram__WEBPACK_IMPORTED_MODULE_2__.get)("_floundryItemCreated")) {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.cliExecute)("acquire codpiece");
+  if (!(0,dist.get)("_floundryItemCreated")) {
+    (0,external_kolmafia_.cliExecute)("acquire codpiece");
   }
 
-  if (!(0,libram__WEBPACK_IMPORTED_MODULE_2__.have)((0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject36 || (_templateObject36 = _taggedTemplateLiteral(["pantogram pants"]))))) {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.cliExecute)("pantogram mysticality|hot|drops of blood|some self-respect|your dreams|silent");
+  if (!(0,dist.have)((0,dist.$item)(runstart_templateObject36 || (runstart_templateObject36 = runstart_taggedTemplateLiteral(["pantogram pants"]))))) {
+    (0,external_kolmafia_.cliExecute)("pantogram mysticality|hot|drops of blood|some self-respect|your dreams|silent");
   }
 
-  if ((0,libram__WEBPACK_IMPORTED_MODULE_2__.get)("boomBoxSong") !== "Total Eclipse of Your Meat") {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.cliExecute)("boombox meat");
+  if ((0,dist.get)("boomBoxSong") !== "Total Eclipse of Your Meat") {
+    (0,external_kolmafia_.cliExecute)("boombox meat");
   }
 
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.cliExecute)("briefcase enchantment weapon hot -combat");
+  (0,external_kolmafia_.cliExecute)("briefcase enchantment weapon hot -combat");
 }
 
 function vote() {
-  if (!(0,libram__WEBPACK_IMPORTED_MODULE_2__.get)("_voteToday")) {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.visitUrl)("place.php?whichplace=town_right&action=townright_vote");
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.visitUrl)("choice.php?option=1&whichchoice=1331&g=2&local%5B%5D=2&local%5B%5D=3");
+  if (!(0,dist.get)("_voteToday")) {
+    (0,external_kolmafia_.visitUrl)("place.php?whichplace=town_right&action=townright_vote");
+    (0,external_kolmafia_.visitUrl)("choice.php?option=1&whichchoice=1331&g=2&local%5B%5D=2&local%5B%5D=3");
   }
 }
 
 function deck() {
-  if (!(0,libram__WEBPACK_IMPORTED_MODULE_2__.get)("_deckCardsDrawn")) {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.cliExecute)("cheat ancestral; cheat island; cheat 1952");
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.autosell)(1, (0,libram__WEBPACK_IMPORTED_MODULE_2__.$item)(_templateObject37 || (_templateObject37 = _taggedTemplateLiteral(["1952 Mickey Mantle card"]))));
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.useSkill)(2, (0,libram__WEBPACK_IMPORTED_MODULE_2__.$skill)(_templateObject38 || (_templateObject38 = _taggedTemplateLiteral(["Ancestral Recall"]))));
+  if (!(0,dist.get)("_deckCardsDrawn")) {
+    (0,external_kolmafia_.cliExecute)("cheat ancestral; cheat island; cheat 1952");
+    (0,external_kolmafia_.autosell)(1, (0,dist.$item)(runstart_templateObject37 || (runstart_templateObject37 = runstart_taggedTemplateLiteral(["1952 Mickey Mantle card"]))));
+    (0,external_kolmafia_.useSkill)(2, (0,dist.$skill)(runstart_templateObject38 || (runstart_templateObject38 = runstart_taggedTemplateLiteral(["Ancestral Recall"]))));
   }
 }
 
 function scavenge() {
-  if (!(0,libram__WEBPACK_IMPORTED_MODULE_2__.get)("_daycareGymScavenges")) {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.visitUrl)("place.php?whichplace=town_wrong&action=townwrong_boxingdaycare");
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.runChoice)(3);
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.runChoice)(2);
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.runChoice)(5);
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.runChoice)(4);
+  if (!(0,dist.get)("_daycareGymScavenges")) {
+    (0,external_kolmafia_.visitUrl)("place.php?whichplace=town_wrong&action=townwrong_boxingdaycare");
+    (0,external_kolmafia_.runChoice)(3);
+    (0,external_kolmafia_.runChoice)(2);
+    (0,external_kolmafia_.runChoice)(5);
+    (0,external_kolmafia_.runChoice)(4);
   }
 }
 
@@ -20648,29 +18655,143 @@ function runStart() {
   prepGear();
   scavenge();
 }
+;// CONCATENATED MODULE: ./src/coil wire.ts
+var coil_wire_templateObject, coil_wire_templateObject2, coil_wire_templateObject3, coil_wire_templateObject4, coil_wire_templateObject5, coil_wire_templateObject6, coil_wire_templateObject7, coil_wire_templateObject8, coil_wire_templateObject9, coil_wire_templateObject10;
 
-/***/ }),
+function coil_wire_taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-/***/ "./src/spell.ts":
-/*!**********************!*\
-  !*** ./src/spell.ts ***!
-  \**********************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ spellTest)
-/* harmony export */ });
-/* harmony import */ var kolmafia__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! kolmafia */ "kolmafia");
-/* harmony import */ var kolmafia__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(kolmafia__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var libram__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! libram */ "./node_modules/libram/dist/index.js");
-/* harmony import */ var libram__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(libram__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _phredhccs_lib__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./phredhccs-lib */ "./src/phredhccs-lib.ts");
-/* harmony import */ var _outfits__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./outfits */ "./src/outfits.ts");
-var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5, _templateObject6, _templateObject7, _templateObject8, _templateObject9, _templateObject10, _templateObject11, _templateObject12, _templateObject13, _templateObject14, _templateObject15, _templateObject16, _templateObject17, _templateObject18, _templateObject19, _templateObject20, _templateObject21, _templateObject22, _templateObject23, _templateObject24, _templateObject25, _templateObject26;
 
-function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+
+
+
+
+function firstFights() {
+  uniform();
+  (0,external_kolmafia_.equip)((0,dist.$slot)(coil_wire_templateObject || (coil_wire_templateObject = coil_wire_taggedTemplateLiteral(["back"]))), (0,dist.$item)(coil_wire_templateObject2 || (coil_wire_templateObject2 = coil_wire_taggedTemplateLiteral(["protonic accelerator pack"]))));
+  useDefaultFamiliar();
+  fightSausageIfAble((0,dist.$location)(coil_wire_templateObject3 || (coil_wire_templateObject3 = coil_wire_taggedTemplateLiteral(["Noob Cave"]))), dist.Macro.skill((0,dist.$skill)(coil_wire_templateObject4 || (coil_wire_templateObject4 = coil_wire_taggedTemplateLiteral(["Micrometeorite"])))).attack().repeat());
+
+  if ((0,dist.have)((0,dist.$item)(coil_wire_templateObject5 || (coil_wire_templateObject5 = coil_wire_taggedTemplateLiteral(["magical sausage casing"]))))) {
+    (0,external_kolmafia_.create)(1, (0,dist.$item)(coil_wire_templateObject6 || (coil_wire_templateObject6 = coil_wire_taggedTemplateLiteral(["magical sausage"]))));
+  }
+
+  if ((0,dist.have)((0,dist.$item)(coil_wire_templateObject7 || (coil_wire_templateObject7 = coil_wire_taggedTemplateLiteral(["magical sausage"]))))) {
+    (0,external_kolmafia_.eat)(1, (0,dist.$item)(coil_wire_templateObject8 || (coil_wire_templateObject8 = coil_wire_taggedTemplateLiteral(["magical sausage"]))));
+  }
+
+  var ghostLocation = (0,dist.get)("ghostLocation");
+
+  if (ghostLocation) {
+    (0,external_kolmafia_.equip)((0,dist.$slot)(coil_wire_templateObject9 || (coil_wire_templateObject9 = coil_wire_taggedTemplateLiteral(["off-hand"]))), (0,dist.$item)(coil_wire_templateObject10 || (coil_wire_templateObject10 = coil_wire_taggedTemplateLiteral(["latte lovers member's mug"]))));
+    useDefaultFamiliar();
+    advMacro(ghostLocation, dist.Macro.step(delevel).step(easyFight).skill("shoot ghost").skill("shoot ghost").skill("shoot ghost").skill("trap ghost"));
+  }
+}
+
+function coilWire() {
+  runStart();
+  firstFights();
+  wireOutfit();
+  (0,external_kolmafia_.cliExecute)("/cast * candy heart");
+  return 60;
+}
+;// CONCATENATED MODULE: ./src/familiarweight.ts
+var familiarweight_templateObject, familiarweight_templateObject2, familiarweight_templateObject3, familiarweight_templateObject4, familiarweight_templateObject5, familiarweight_templateObject6, familiarweight_templateObject7, familiarweight_templateObject8, familiarweight_templateObject9, familiarweight_templateObject10, familiarweight_templateObject11, familiarweight_templateObject12, familiarweight_templateObject13, familiarweight_templateObject14, familiarweight_templateObject15, familiarweight_templateObject16, familiarweight_templateObject17, familiarweight_templateObject18, familiarweight_templateObject19, familiarweight_templateObject20, familiarweight_templateObject21, familiarweight_templateObject22, familiarweight_templateObject23, familiarweight_templateObject24, familiarweight_templateObject25, familiarweight_templateObject26, familiarweight_templateObject27, familiarweight_templateObject28, familiarweight_templateObject29;
+
+function familiarweight_taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+
+
+
+
+
+function universalWeightBuffs() {
+  ensureEffect((0,dist.$effect)(familiarweight_templateObject || (familiarweight_templateObject = familiarweight_taggedTemplateLiteral(["Empathy"]))));
+  ensureEffect((0,dist.$effect)(familiarweight_templateObject2 || (familiarweight_templateObject2 = familiarweight_taggedTemplateLiteral(["Leash of Linguini"]))));
+  ensureEffect((0,dist.$effect)(familiarweight_templateObject3 || (familiarweight_templateObject3 = familiarweight_taggedTemplateLiteral(["Blood Bond"]))));
+  ensureEffect((0,dist.$effect)(familiarweight_templateObject4 || (familiarweight_templateObject4 = familiarweight_taggedTemplateLiteral(["Billiards Belligerence"]))));
+  if (!(0,dist.get)("_clanFortuneBuffUsed")) (0,external_kolmafia_.cliExecute)("fortune buff familiar");
+
+  if (!(0,dist.get)("_freePillKeeperUsed")) {
+    (0,external_kolmafia_.cliExecute)("pillkeeper familiar");
+  }
+
+  if (!(0,dist.have)((0,dist.$effect)(familiarweight_templateObject5 || (familiarweight_templateObject5 = familiarweight_taggedTemplateLiteral(["Puzzle Champ"]))))) {
+    (0,external_kolmafia_.cliExecute)("witchess");
+  }
+
+  tryHead((0,dist.$effect)(familiarweight_templateObject6 || (familiarweight_templateObject6 = familiarweight_taggedTemplateLiteral(["Do I Know You From Somewhere?"]))));
+  if ((0,dist.have)((0,dist.$item)(familiarweight_templateObject7 || (familiarweight_templateObject7 = familiarweight_taggedTemplateLiteral(["green candy heart"]))))) ensureEffect((0,dist.$effect)(familiarweight_templateObject8 || (familiarweight_templateObject8 = familiarweight_taggedTemplateLiteral(["Heart of Green"]))));
+}
+
+function gearAndUncommonBuffs() {
+  if (!(0,dist.get)("_clanFortuneBuffUsed")) (0,external_kolmafia_.cliExecute)("fortune buff familiar");
+  if ((0,dist.have)((0,dist.$item)(familiarweight_templateObject9 || (familiarweight_templateObject9 = familiarweight_taggedTemplateLiteral(["burning newspaper"]))))) (0,external_kolmafia_.create)(1, (0,dist.$item)(familiarweight_templateObject10 || (familiarweight_templateObject10 = familiarweight_taggedTemplateLiteral(["burning paper crane"]))));
+  if ((0,dist.have)((0,dist.$item)(familiarweight_templateObject11 || (familiarweight_templateObject11 = familiarweight_taggedTemplateLiteral(["short stack of pancakes"]))))) ensureEffect((0,dist.$effect)(familiarweight_templateObject12 || (familiarweight_templateObject12 = familiarweight_taggedTemplateLiteral(["Shortly Stacked"]))));
+
+  if (!(0,dist.have)((0,dist.$item)(familiarweight_templateObject13 || (familiarweight_templateObject13 = familiarweight_taggedTemplateLiteral(["cracker"]))))) {
+    if ((0,dist.get)("tomeSummons") < 3) {
+      (0,external_kolmafia_.useFamiliar)((0,dist.$familiar)(familiarweight_templateObject14 || (familiarweight_templateObject14 = familiarweight_taggedTemplateLiteral(["Exotic Parrot"]))));
+      (0,external_kolmafia_.create)(1, (0,dist.$item)(familiarweight_templateObject15 || (familiarweight_templateObject15 = familiarweight_taggedTemplateLiteral(["box of Familiar Jacks"]))));
+      (0,external_kolmafia_.use)(1, (0,dist.$item)(familiarweight_templateObject16 || (familiarweight_templateObject16 = familiarweight_taggedTemplateLiteral(["box of Familiar Jacks"]))));
+    } else if ((0,dist.have)((0,dist.$familiar)(familiarweight_templateObject17 || (familiarweight_templateObject17 = familiarweight_taggedTemplateLiteral(["Baby Bugged Bugbear"]))))) {
+      (0,external_kolmafia_.useFamiliar)((0,dist.$familiar)(familiarweight_templateObject18 || (familiarweight_templateObject18 = familiarweight_taggedTemplateLiteral(["Baby Bugged Bugbear"]))));
+      (0,external_kolmafia_.visitUrl)("arena.php");
+    }
+  }
+}
+
+function familiarStuff() {
+  while ((0,dist.get)("_shortOrderCookCharge") < 11 && 5 - dist.Witchess.fightsDone() > 11 - (0,dist.get)("_shortOrderCookCharge")) {
+    (0,external_kolmafia_.useFamiliar)((0,dist.$familiar)(familiarweight_templateObject19 || (familiarweight_templateObject19 = familiarweight_taggedTemplateLiteral(["Shorter-Order Cook"]))));
+    uniform();
+    defaultKill.setAutoAttack();
+    dist.Witchess.fightPiece((0,dist.$monster)(familiarweight_templateObject20 || (familiarweight_templateObject20 = familiarweight_taggedTemplateLiteral(["Witchess Bishop"]))));
+  }
+
+  while ((0,dist.get)("garbageFireProgress") < 30 && 5 - dist.Witchess.fightsDone() > 30 - (0,dist.get)("garbageFireProgress")) {
+    (0,external_kolmafia_.useFamiliar)((0,dist.$familiar)(familiarweight_templateObject21 || (familiarweight_templateObject21 = familiarweight_taggedTemplateLiteral(["Garbage Fire"]))));
+    uniform();
+    defaultKill.setAutoAttack();
+    dist.Witchess.fightPiece((0,dist.$monster)(familiarweight_templateObject22 || (familiarweight_templateObject22 = familiarweight_taggedTemplateLiteral(["Witchess Bishop"]))));
+  }
+}
+
+function takeAShower() {
+  (0,external_kolmafia_.useFamiliar)((0,dist.$familiar)(familiarweight_templateObject23 || (familiarweight_templateObject23 = familiarweight_taggedTemplateLiteral(["none"]))));
+  horse("dark");
+  uniform();
+  setChoice(1387, 3);
+
+  if ((0,dist.get)("_meteorShowerUses") < 5 && !(0,dist.have)((0,dist.$effect)(familiarweight_templateObject24 || (familiarweight_templateObject24 = familiarweight_taggedTemplateLiteral(["Meteor Showered"]))))) {
+    advMacroAA((0,dist.$location)(familiarweight_templateObject25 || (familiarweight_templateObject25 = familiarweight_taggedTemplateLiteral(["The Dire Warren"]))), dist.Macro.skill((0,dist.$skill)(familiarweight_templateObject26 || (familiarweight_templateObject26 = familiarweight_taggedTemplateLiteral(["Meteor Shower"])))).skill((0,dist.$skill)(familiarweight_templateObject27 || (familiarweight_templateObject27 = familiarweight_taggedTemplateLiteral(["Use the Force"])))), 1, function () {
+      (0,external_kolmafia_.visitUrl)("choice.php");
+      (0,external_kolmafia_.runChoice)(3);
+    });
+    (0,dist.set)("_meteorShowerUses", 1 + (0,dist.get)("_meteorShowerUses"));
+  }
+}
+
+function testPrep() {
+  famweightOutfit();
+  if ((0,dist.have)((0,dist.$item)(familiarweight_templateObject28 || (familiarweight_templateObject28 = familiarweight_taggedTemplateLiteral(["silver face paint"]))))) ensureEffect((0,dist.$effect)(familiarweight_templateObject29 || (familiarweight_templateObject29 = familiarweight_taggedTemplateLiteral(["Robot Friends"]))));
+}
+
+function familiarTest() {
+  universalWeightBuffs();
+  familiarStuff();
+  gearAndUncommonBuffs();
+  takeAShower();
+  testPrep();
+  return 60 - Math.floor(((0,external_kolmafia_.familiarWeight)((0,external_kolmafia_.myFamiliar)()) + (0,external_kolmafia_.weightAdjustment)()) / 5);
+}
+;// CONCATENATED MODULE: ./src/hotres.ts
+var hotres_templateObject, hotres_templateObject2, hotres_templateObject3, hotres_templateObject4, hotres_templateObject5, hotres_templateObject6, hotres_templateObject7, hotres_templateObject8, hotres_templateObject9, hotres_templateObject10, hotres_templateObject11, hotres_templateObject12, hotres_templateObject13, hotres_templateObject14, hotres_templateObject15, hotres_templateObject16, hotres_templateObject17, hotres_templateObject18, hotres_templateObject19, hotres_templateObject20, hotres_templateObject21, hotres_templateObject22, hotres_templateObject23, hotres_templateObject24, hotres_templateObject25, hotres_templateObject26, hotres_templateObject27, hotres_templateObject28, hotres_templateObject29, hotres_templateObject30, hotres_templateObject31, hotres_templateObject32, hotres_templateObject33, hotres_templateObject34, hotres_templateObject35, hotres_templateObject36, hotres_templateObject37, hotres_templateObject38, hotres_templateObject39, hotres_templateObject40, hotres_templateObject41;
+
+function hotres_taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
 
 
 
@@ -20678,106 +18799,783 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 
 var predictor = function predictor() {
-  return 60 - Math.floor((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.numericModifier)("spell damage") / 50 + 0.001) - Math.floor((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.numericModifier)("spell damage percent") / 50 + 0.001);
+  return 60 - (0,external_kolmafia_.numericModifier)("hot resistance");
 };
 
 function castBuffs() {
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_1__.ensureEffect)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$effect)(_templateObject || (_templateObject = _taggedTemplateLiteral(["Simmering"]))));
-  (0,libram__WEBPACK_IMPORTED_MODULE_3__.$effects)(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["Pisces in the Skyces, Carol of the Hells, Arched Eyebrow of the Archmage, Song of Sauce, We're All Made of Starfish"]))).forEach(function (effect) {
-    return (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_1__.ensureEffect)(effect);
+  universalWeightBuffs();
+  tryHead((0,dist.$effect)(hotres_templateObject || (hotres_templateObject = hotres_taggedTemplateLiteral(["Hot-Headed"]))));
+  if (!(0,dist.have)((0,dist.$effect)(hotres_templateObject2 || (hotres_templateObject2 = hotres_taggedTemplateLiteral(["Synthesis: Hot"]))))) synthHot();
+
+  if (!(0,dist.have)((0,dist.$item)(hotres_templateObject3 || (hotres_templateObject3 = hotres_taggedTemplateLiteral(["tenderizing hammer"]))))) {
+    (0,external_kolmafia_.buy)(1, (0,dist.$item)(hotres_templateObject4 || (hotres_templateObject4 = hotres_taggedTemplateLiteral(["tenderizing hammer"]))));
+  }
+
+  (0,external_kolmafia_.cliExecute)("smash * ratty knitted cap");
+  (0,external_kolmafia_.cliExecute)("smash * red-hot sausage fork");
+  (0,external_kolmafia_.cliExecute)("smash * smoldering bagel punch");
+
+  if (!(0,dist.have)((0,dist.$effect)(hotres_templateObject5 || (hotres_templateObject5 = hotres_taggedTemplateLiteral(["Sleazy Hands"]))))) {
+    if (!(0,dist.have)((0,dist.$item)(hotres_templateObject6 || (hotres_templateObject6 = hotres_taggedTemplateLiteral(["lotion of sleaziness"]))))) (0,external_kolmafia_.create)(1, (0,dist.$item)(hotres_templateObject7 || (hotres_templateObject7 = hotres_taggedTemplateLiteral(["lotion of sleaziness"]))));
+    if ((0,dist.have)((0,dist.$item)(hotres_templateObject8 || (hotres_templateObject8 = hotres_taggedTemplateLiteral(["lotion of sleaziness"]))))) (0,external_kolmafia_.use)(1, (0,dist.$item)(hotres_templateObject9 || (hotres_templateObject9 = hotres_taggedTemplateLiteral(["lotion of sleaziness"]))));
+  }
+
+  if (!(0,dist.have)((0,dist.$effect)(hotres_templateObject10 || (hotres_templateObject10 = hotres_taggedTemplateLiteral(["Flame-Retardant Trousers"])))) && (0,dist.have)((0,dist.$item)(hotres_templateObject11 || (hotres_templateObject11 = hotres_taggedTemplateLiteral(["hot powder"]))))) {
+    (0,external_kolmafia_.use)(1, (0,dist.$item)(hotres_templateObject12 || (hotres_templateObject12 = hotres_taggedTemplateLiteral(["hot powder"]))));
+  }
+
+  ensureEffect((0,dist.$effect)(hotres_templateObject13 || (hotres_templateObject13 = hotres_taggedTemplateLiteral(["Elemental Saucesphere"]))));
+  ensureEffect((0,dist.$effect)(hotres_templateObject14 || (hotres_templateObject14 = hotres_taggedTemplateLiteral(["Astral Shell"]))));
+  ensureEffect((0,dist.$effect)(hotres_templateObject15 || (hotres_templateObject15 = hotres_taggedTemplateLiteral(["Feeling Peaceful"]))));
+
+  if ((0,dist.have)((0,dist.$item)(hotres_templateObject16 || (hotres_templateObject16 = hotres_taggedTemplateLiteral(["scroll of Protection from Bad Stuff"]))))) {
+    ensureEffect((0,dist.$effect)(hotres_templateObject17 || (hotres_templateObject17 = hotres_taggedTemplateLiteral(["Protection from Bad Stuff"]))));
+  }
+
+  if (!(0,dist.have)((0,dist.$item)(hotres_templateObject18 || (hotres_templateObject18 = hotres_taggedTemplateLiteral(["meteorite guard"])))) && (0,dist.have)((0,dist.$item)(hotres_templateObject19 || (hotres_templateObject19 = hotres_taggedTemplateLiteral(["metal meteoroid"]))))) {
+    (0,external_kolmafia_.create)(1, (0,dist.$item)(hotres_templateObject20 || (hotres_templateObject20 = hotres_taggedTemplateLiteral(["meteorite guard"]))));
+  }
+}
+
+function itsHerFactory() {
+  uniform();
+  useDefaultFamiliar(false);
+
+  if ((0,dist.get)("_monstersMapped") < 3 && !(0,dist.have)((0,dist.$item)(hotres_templateObject21 || (hotres_templateObject21 = hotres_taggedTemplateLiteral(["lava-proof pants"]))))) {
+    (0,external_kolmafia_.equip)((0,dist.$slot)(hotres_templateObject22 || (hotres_templateObject22 = hotres_taggedTemplateLiteral(["back"]))), (0,dist.$item)(hotres_templateObject23 || (hotres_templateObject23 = hotres_taggedTemplateLiteral(["vampyric cloake"]))));
+    useDefaultFamiliar(false);
+
+    while ((0,external_kolmafia_.getFuel)() < 137) {
+      fuelUp();
+    }
+
+    mapMacro((0,dist.$location)(hotres_templateObject24 || (hotres_templateObject24 = hotres_taggedTemplateLiteral(["LavaCo\u2122 Lamp Factory"]))), (0,dist.$monster)(hotres_templateObject25 || (hotres_templateObject25 = hotres_taggedTemplateLiteral(["factory worker (female)"]))), dist.Macro.skill((0,dist.$skill)(hotres_templateObject26 || (hotres_templateObject26 = hotres_taggedTemplateLiteral(["Become a Cloud of Mist"])))).skill((0,dist.$skill)(hotres_templateObject27 || (hotres_templateObject27 = hotres_taggedTemplateLiteral(["Asdon Martin: Missile Launcher"])))));
+  }
+}
+
+function deepDarkVisions() {
+  horse("pale");
+  (0,external_kolmafia_.useFamiliar)((0,dist.$familiar)(hotres_templateObject28 || (hotres_templateObject28 = hotres_taggedTemplateLiteral(["Exotic Parrot"]))));
+
+  if (!(0,dist.have)((0,dist.$item)(hotres_templateObject29 || (hotres_templateObject29 = hotres_taggedTemplateLiteral(["astral pet sweater"])))) && (0,dist.get)("tomeSummons") < 3) {
+    (0,external_kolmafia_.create)(1, (0,dist.$item)(hotres_templateObject30 || (hotres_templateObject30 = hotres_taggedTemplateLiteral(["box of Familiar Jacks"]))));
+    (0,external_kolmafia_.use)(1, (0,dist.$item)(hotres_templateObject31 || (hotres_templateObject31 = hotres_taggedTemplateLiteral(["box of Familiar Jacks"]))));
+  }
+
+  (0,external_kolmafia_.maximize)("spooky res", false);
+
+  while ((0,dist.have)((0,dist.$skill)(hotres_templateObject32 || (hotres_templateObject32 = hotres_taggedTemplateLiteral(["Deep Dark Visions"])))) && (0,external_kolmafia_.haveEffect)((0,dist.$effect)(hotres_templateObject33 || (hotres_templateObject33 = hotres_taggedTemplateLiteral(["Visions of the Deep Dark Deeps"])))) < 30) {
+    if ((0,external_kolmafia_.myMp)() < 20) {
+      (0,external_kolmafia_.create)(1, (0,dist.$item)(hotres_templateObject34 || (hotres_templateObject34 = hotres_taggedTemplateLiteral(["magical sausage"]))));
+      (0,external_kolmafia_.eat)(1, (0,dist.$item)(hotres_templateObject35 || (hotres_templateObject35 = hotres_taggedTemplateLiteral(["magical sausage"]))));
+    }
+
+    while ((0,external_kolmafia_.myHp)() < (0,external_kolmafia_.myMaxhp)()) {
+      (0,external_kolmafia_.useSkill)(1, (0,dist.$skill)(hotres_templateObject36 || (hotres_templateObject36 = hotres_taggedTemplateLiteral(["Cannelloni Cocoon"]))));
+    }
+
+    if ((0,external_kolmafia_.myMp)() < 100) {
+      (0,external_kolmafia_.create)(1, (0,dist.$item)(hotres_templateObject37 || (hotres_templateObject37 = hotres_taggedTemplateLiteral(["magical sausage"]))));
+      (0,external_kolmafia_.eat)(1, (0,dist.$item)(hotres_templateObject38 || (hotres_templateObject38 = hotres_taggedTemplateLiteral(["magical sausage"]))));
+    }
+
+    if (Math.round((0,external_kolmafia_.numericModifier)("spooky resistance")) < 10) {
+      ensureEffect((0,dist.$effect)(hotres_templateObject39 || (hotres_templateObject39 = hotres_taggedTemplateLiteral(["Does It Have a Skull In There??"]))));
+
+      if (Math.round((0,external_kolmafia_.numericModifier)("spooky resistance")) < 10) {
+        throw "Not enough spooky res for Deep Dark Visions.";
+      }
+    }
+
+    (0,external_kolmafia_.useSkill)(1, (0,dist.$skill)(hotres_templateObject40 || (hotres_templateObject40 = hotres_taggedTemplateLiteral(["Deep Dark Visions"]))));
+  }
+}
+
+function hotres_testPrep() {
+  hotresOutfit();
+  var improvements = [function () {
+    while ((0,external_kolmafia_.getFuel)() < 37) {
+      fuelUp();
+    }
+
+    (0,external_kolmafia_.cliExecute)("asdonmartin drive safely");
+  }, function () {
+    return ensureEffect((0,dist.$effect)(hotres_templateObject41 || (hotres_templateObject41 = hotres_taggedTemplateLiteral(["Amazing"]))));
+  }];
+
+  for (var _i = 0, _improvements = improvements; _i < _improvements.length; _i++) {
+    var improvement = _improvements[_i];
+    if (predictor() > 1) improvement();
+  }
+}
+
+function hotTest() {
+  castBuffs();
+  itsHerFactory();
+  deepDarkVisions();
+  hotres_testPrep();
+  return predictor();
+}
+;// CONCATENATED MODULE: ./src/item.ts
+var item_templateObject, item_templateObject2, item_templateObject3, item_templateObject4, item_templateObject5, item_templateObject6, item_templateObject7, item_templateObject8, item_templateObject9, item_templateObject10, item_templateObject11, item_templateObject12, item_templateObject13, item_templateObject14, item_templateObject15, item_templateObject16, item_templateObject17, item_templateObject18, item_templateObject19, item_templateObject20, item_templateObject21, item_templateObject22, item_templateObject23, item_templateObject24, item_templateObject25, item_templateObject26, item_templateObject27, item_templateObject28, item_templateObject29, item_templateObject30, item_templateObject31, item_templateObject32, item_templateObject33, item_templateObject34, item_templateObject35, item_templateObject36;
+
+function item_taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+
+
+
+
+
+var item_predictor = function predictor() {
+  return 60 - Math.floor((0,external_kolmafia_.numericModifier)("item drop") / 30 + 0.001) - Math.floor((0,external_kolmafia_.numericModifier)("booze drop") / 15 + 0.001);
+};
+
+function prelude() {
+  horse("dark");
+  if ((0,external_kolmafia_.availableAmount)((0,dist.$item)(item_templateObject || (item_templateObject = item_taggedTemplateLiteral(["astral six-pack"])))) !== 0) (0,external_kolmafia_.use)(1, (0,dist.$item)(item_templateObject2 || (item_templateObject2 = item_taggedTemplateLiteral(["astral six-pack"]))));
+  if ((0,dist.have)((0,dist.$effect)(item_templateObject3 || (item_templateObject3 = item_taggedTemplateLiteral(["The Magical Mojomuscular Melody"]))))) (0,external_kolmafia_.cliExecute)("shrug The Magical Mojomuscular Melody");
+  (0,external_kolmafia_.useSkill)((0,dist.$skill)(item_templateObject4 || (item_templateObject4 = item_taggedTemplateLiteral(["The Ode to Booze"]))));
+
+  while ((0,external_kolmafia_.myInebriety)() < 5) {
+    (0,external_kolmafia_.drink)(1, (0,dist.$item)(item_templateObject5 || (item_templateObject5 = item_taggedTemplateLiteral(["astral pilsner"]))));
+  }
+}
+
+function item_castBuffs() {
+  if (!(0,dist.have)((0,dist.$effect)(item_templateObject6 || (item_templateObject6 = item_taggedTemplateLiteral(["Synthesis: Collection"]))))) synthItem();
+  (0,external_kolmafia_.cliExecute)("shrug ode");
+  ensureEffect((0,dist.$effect)(item_templateObject7 || (item_templateObject7 = item_taggedTemplateLiteral(["Fat Leon's Phat Loot Lyric"]))));
+  ensureEffect((0,dist.$effect)(item_templateObject8 || (item_templateObject8 = item_taggedTemplateLiteral(["The Spirit of Taking"]))));
+  ensureEffect((0,dist.$effect)(item_templateObject9 || (item_templateObject9 = item_taggedTemplateLiteral(["items.enh"]))));
+
+  if ((0,external_kolmafia_.getWorkshed)() === (0,dist.$item)(item_templateObject10 || (item_templateObject10 = item_taggedTemplateLiteral(["Asdon Martin keyfob"]))) && !(0,dist.have)((0,dist.$effect)(item_templateObject11 || (item_templateObject11 = item_taggedTemplateLiteral(["Driving Observantly"]))))) {
+    if ((0,external_kolmafia_.getFuel)() < 37) fuelUp();
+    (0,external_kolmafia_.cliExecute)("asdonmartin drive observantly");
+  }
+
+  if (!(0,dist.have)((0,dist.$effect)(item_templateObject12 || (item_templateObject12 = item_taggedTemplateLiteral(["I See Everything Thrice!"]))))) {
+    if (!(0,dist.have)((0,dist.$item)(item_templateObject13 || (item_templateObject13 = item_taggedTemplateLiteral(["government"]))))) {
+      if (!(0,dist.have)((0,dist.$item)(item_templateObject14 || (item_templateObject14 = item_taggedTemplateLiteral(["anticheese"]))))) {
+        (0,external_kolmafia_.visitUrl)("place.php?whichplace=desertbeach&action=db_nukehouse");
+      }
+
+      if ((0,dist.have)((0,dist.$item)(item_templateObject15 || (item_templateObject15 = item_taggedTemplateLiteral(["government cheese"]))))) {
+        (0,external_kolmafia_.create)(1, (0,dist.$item)(item_templateObject16 || (item_templateObject16 = item_taggedTemplateLiteral(["government"]))));
+      }
+    }
+
+    if ((0,dist.have)((0,dist.$item)(item_templateObject17 || (item_templateObject17 = item_taggedTemplateLiteral(["government"]))))) {
+      (0,external_kolmafia_.use)(1, (0,dist.$item)(item_templateObject18 || (item_templateObject18 = item_taggedTemplateLiteral(["government"]))));
+    }
+  }
+
+  if ((0,external_kolmafia_.myClass)() === (0,dist.$class)(item_templateObject19 || (item_templateObject19 = item_taggedTemplateLiteral(["Pastamancer"]))) && !(0,dist.get)("_barrelPrayer")) {
+    (0,external_kolmafia_.cliExecute)("barrelprayer buff");
+  }
+
+  if ((0,dist.have)((0,dist.$item)(item_templateObject20 || (item_templateObject20 = item_taggedTemplateLiteral(["lavender candy heart"]))))) ensureEffect((0,dist.$effect)(item_templateObject21 || (item_templateObject21 = item_taggedTemplateLiteral(["Heart of Lavender"]))));
+}
+
+function batForm() {
+  if ((0,dist.get)("_latteRefillsUsed") < 3 && (0,external_kolmafia_.numericModifier)((0,dist.$item)(item_templateObject22 || (item_templateObject22 = item_taggedTemplateLiteral(["latte lovers member's mug"]))), "Item Drop") < 20) {
+    var latte = "pumpkin ".concat((0,dist.get)("latteUnlocks").includes("carrot") ? "carrot " : "vanilla ").concat((0,dist.get)("latteUnlocks").includes("butternut") ? "butternut" : "cinnamon");
+
+    if (latte !== "") {
+      (0,external_kolmafia_.cliExecute)("latte refill ".concat(latte));
+    }
+  }
+
+  if (!(0,dist.have)((0,dist.$effect)(item_templateObject23 || (item_templateObject23 = item_taggedTemplateLiteral(["Bat-Adjacent Form"]))))) {
+    var run = dist.Macro.skill((0,dist.$skill)(item_templateObject24 || (item_templateObject24 = item_taggedTemplateLiteral(["Become a Bat"]))));
+
+    if (!(0,dist.get)("_latteBanishUsed")) {
+      useDefaultFamiliar(false);
+      (0,external_kolmafia_.equip)((0,dist.$slot)(item_templateObject25 || (item_templateObject25 = item_taggedTemplateLiteral(["off-hand"]))), (0,dist.$item)(item_templateObject26 || (item_templateObject26 = item_taggedTemplateLiteral(["latte lovers member's mug"]))));
+      (0,external_kolmafia_.equip)((0,dist.$slot)(item_templateObject27 || (item_templateObject27 = item_taggedTemplateLiteral(["back"]))), (0,dist.$item)(item_templateObject28 || (item_templateObject28 = item_taggedTemplateLiteral(["vampyric cloake"]))));
+      run.skill((0,dist.$skill)(item_templateObject29 || (item_templateObject29 = item_taggedTemplateLiteral(["Throw Latte on Opponent"]))));
+    } else {
+      (0,external_kolmafia_.useFamiliar)((0,dist.$familiar)(item_templateObject30 || (item_templateObject30 = item_taggedTemplateLiteral(["Frumious Bandersnatch"]))));
+      ensureEffect((0,dist.$effect)(item_templateObject31 || (item_templateObject31 = item_taggedTemplateLiteral(["Ode to Booze"]))));
+      run.step("runaway");
+    }
+
+    advMacroAA((0,dist.$location)(item_templateObject32 || (item_templateObject32 = item_taggedTemplateLiteral(["The Dire Warren"]))), run);
+  }
+
+  if ((0,dist.get)("_latteRefillsUsed") < 3 && (0,external_kolmafia_.numericModifier)((0,dist.$item)(item_templateObject33 || (item_templateObject33 = item_taggedTemplateLiteral(["latte lovers member's mug"]))), "Item Drop") < 20) {
+    var _latte = "pumpkin ".concat((0,dist.get)("latteUnlocks").includes("carrot") ? "carrot" : "vanilla", " ").concat((0,dist.get)("latteUnlocks").includes("butternut") ? "butternut" : "cinnamon");
+
+    if (_latte !== "") {
+      (0,external_kolmafia_.cliExecute)("latte refill ".concat(_latte));
+    }
+  }
+}
+
+function item_testPrep() {
+  if (!(0,dist.get)("_steelyEyedSquintUsed")) {
+    ensureEffect((0,dist.$effect)(item_templateObject34 || (item_templateObject34 = item_taggedTemplateLiteral(["Steely-Eyed Squint"]))));
+  }
+
+  (0,external_kolmafia_.useFamiliar)((0,dist.$familiar)(item_templateObject35 || (item_templateObject35 = item_taggedTemplateLiteral(["Trick-or-Treating Tot"]))));
+  itemOutfit();
+  if (item_predictor() > 1) ensureEffect((0,dist.$effect)(item_templateObject36 || (item_templateObject36 = item_taggedTemplateLiteral(["Nearly All-Natural"]))));
+}
+
+function itemTest() {
+  prelude();
+  item_castBuffs();
+  batForm();
+  item_testPrep();
+  if (item_predictor() > 1) throw "Failed to cap item";
+  return item_predictor();
+}
+;// CONCATENATED MODULE: ./src/level.ts
+var level_templateObject, level_templateObject2, level_templateObject3, level_templateObject4, level_templateObject5, level_templateObject6, level_templateObject7, level_templateObject8, level_templateObject9, level_templateObject10, level_templateObject11, level_templateObject12, level_templateObject13, level_templateObject14, level_templateObject15, level_templateObject16, level_templateObject17, level_templateObject18, level_templateObject19, level_templateObject20, level_templateObject21, level_templateObject22, level_templateObject23, level_templateObject24, level_templateObject25, level_templateObject26, level_templateObject27, level_templateObject28, level_templateObject29, level_templateObject30, level_templateObject31, level_templateObject32, level_templateObject33, level_templateObject34, level_templateObject35, level_templateObject36, level_templateObject37, level_templateObject38, level_templateObject39, level_templateObject40, level_templateObject41, level_templateObject42, level_templateObject43, level_templateObject44, level_templateObject45, level_templateObject46, level_templateObject47, level_templateObject48, level_templateObject49, level_templateObject50, level_templateObject51, level_templateObject52, level_templateObject53, level_templateObject54, level_templateObject55, level_templateObject56, level_templateObject57, level_templateObject58, level_templateObject59, level_templateObject60, level_templateObject61, level_templateObject62, level_templateObject63, level_templateObject64, level_templateObject65, level_templateObject66, level_templateObject67, level_templateObject68, level_templateObject69, level_templateObject70, level_templateObject71, level_templateObject72, level_templateObject73, level_templateObject74, level_templateObject75, level_templateObject76, level_templateObject77, level_templateObject78, level_templateObject79, level_templateObject80, level_templateObject81, level_templateObject82, level_templateObject83, level_templateObject84, level_templateObject85, level_templateObject86, level_templateObject87, level_templateObject88, level_templateObject89, level_templateObject90, level_templateObject91, level_templateObject92, level_templateObject93, level_templateObject94, level_templateObject95, level_templateObject96, level_templateObject97, level_templateObject98, level_templateObject99, level_templateObject100, level_templateObject101, level_templateObject102, level_templateObject103, level_templateObject104, level_templateObject105, level_templateObject106, level_templateObject107, level_templateObject108, level_templateObject109, level_templateObject110, level_templateObject111, level_templateObject112, level_templateObject113, level_templateObject114, level_templateObject115, level_templateObject116, level_templateObject117, level_templateObject118, level_templateObject119, level_templateObject120, level_templateObject121, level_templateObject122, level_templateObject123, level_templateObject124, level_templateObject125, level_templateObject126, level_templateObject127, level_templateObject128, level_templateObject129, level_templateObject130, level_templateObject131, level_templateObject132, level_templateObject133;
+
+function level_taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+
+
+
+
+
+
+function initialExp() {
+  if (!(0,dist.have)((0,dist.$effect)(level_templateObject || (level_templateObject = level_taggedTemplateLiteral(["That's Just Cloud-Talk, Man"]))))) {
+    (0,external_kolmafia_.visitUrl)("place.php?whichplace=campaway&action=campaway_sky");
+  }
+
+  ensureEffect((0,dist.$effect)(level_templateObject2 || (level_templateObject2 = level_taggedTemplateLiteral(["Inscrutable Gaze"]))));
+  ensureEffect((0,dist.$effect)(level_templateObject3 || (level_templateObject3 = level_taggedTemplateLiteral(["Thaumodynamic"]))));
+  if (!(0,dist.have)((0,dist.$effect)(level_templateObject4 || (level_templateObject4 = level_taggedTemplateLiteral(["Synthesis: Learning"]))))) synthExp();
+  (0,external_kolmafia_.equip)((0,dist.$item)(level_templateObject5 || (level_templateObject5 = level_taggedTemplateLiteral(["familiar scrapbook"]))), (0,dist.$slot)(level_templateObject6 || (level_templateObject6 = level_taggedTemplateLiteral(["off-hand"]))));
+
+  if ((0,external_kolmafia_.availableAmount)((0,dist.$item)(level_templateObject7 || (level_templateObject7 = level_taggedTemplateLiteral(["a ten-percent bonus"]))))) {
+    (0,external_kolmafia_.use)(1, (0,dist.$item)(level_templateObject8 || (level_templateObject8 = level_taggedTemplateLiteral(["a ten-percent bonus"]))));
+  }
+
+  (0,external_kolmafia_.cliExecute)("bastille myst brutalist");
+}
+
+function buffMyst() {
+  var lovePotion = (0,dist.$item)(level_templateObject9 || (level_templateObject9 = level_taggedTemplateLiteral(["Love Potion #0"])));
+  var loveEffect = (0,dist.$effect)(level_templateObject10 || (level_templateObject10 = level_taggedTemplateLiteral(["Tainted Love Potion"])));
+
+  if (!(0,dist.have)(loveEffect)) {
+    if (!(0,dist.have)(lovePotion)) {
+      (0,external_kolmafia_.useSkill)(1, (0,dist.$skill)(level_templateObject11 || (level_templateObject11 = level_taggedTemplateLiteral(["Love Mixology"]))));
+    }
+
+    (0,external_kolmafia_.visitUrl)("desc_effect.php?whicheffect=".concat(loveEffect.descid));
+
+    if ((0,external_kolmafia_.numericModifier)(loveEffect, "mysticality") > 10 && (0,external_kolmafia_.numericModifier)(loveEffect, "muscle") > -30 && (0,external_kolmafia_.numericModifier)(loveEffect, "moxie") > -30 && (0,external_kolmafia_.numericModifier)(loveEffect, "maximum hp percent") > -0.001) {
+      (0,external_kolmafia_.use)(1, lovePotion);
+    }
+  }
+
+  ensureEffect((0,dist.$effect)(level_templateObject12 || (level_templateObject12 = level_taggedTemplateLiteral(["Uncucumbered"]))));
+  if (!(0,dist.have)((0,dist.$effect)(level_templateObject13 || (level_templateObject13 = level_taggedTemplateLiteral(["Synthesis: Smart"]))))) synthMyst();
+  tryHead((0,dist.$effect)(level_templateObject14 || (level_templateObject14 = level_taggedTemplateLiteral(["You Learned Something Maybe!"]))));
+  tryHead((0,dist.$effect)(level_templateObject15 || (level_templateObject15 = level_taggedTemplateLiteral(["We're All Made of Starfish"]))));
+  if (!(0,dist.get)("_lyleFavored")) ensureEffect((0,dist.$effect)(level_templateObject16 || (level_templateObject16 = level_taggedTemplateLiteral(["Favored by Lyle"]))));
+  if (!(0,dist.get)("telescopeLookedHigh")) ensureEffect((0,dist.$effect)(level_templateObject17 || (level_templateObject17 = level_taggedTemplateLiteral(["Starry-Eyed"]))));
+  ensureEffect((0,dist.$effect)(level_templateObject18 || (level_templateObject18 = level_taggedTemplateLiteral(["Glittering Eyelashes"]))));
+
+  if (!(0,dist.get)("_streamsCrossed")) {
+    (0,external_kolmafia_.cliExecute)("crossstreams");
+  }
+
+  (0,external_kolmafia_.equip)((0,dist.$slot)(level_templateObject19 || (level_templateObject19 = level_taggedTemplateLiteral(["acc3"]))), (0,dist.$item)(level_templateObject20 || (level_templateObject20 = level_taggedTemplateLiteral(["Powerful Glove"]))));
+  ensureEffect((0,dist.$effect)(level_templateObject21 || (level_templateObject21 = level_taggedTemplateLiteral(["Triple-Sized"]))));
+  ensureEffect((0,dist.$effect)(level_templateObject22 || (level_templateObject22 = level_taggedTemplateLiteral(["Feeling Excited"])))); // eslint-disable-next-line libram/verify-constants
+
+  if ((0,dist.have)((0,dist.$item)(level_templateObject23 || (level_templateObject23 = level_taggedTemplateLiteral(["votive of confidence"]))))) (0,external_kolmafia_.use)((0,dist.$item)(level_templateObject24 || (level_templateObject24 = level_taggedTemplateLiteral(["votive of confidence"]))));
+}
+
+function level_castBuffs() {
+  (0,external_kolmafia_.useFamiliar)((0,dist.$familiar)(level_templateObject25 || (level_templateObject25 = level_taggedTemplateLiteral(["Left-Hand Man"]))));
+  (0,external_kolmafia_.maximize)("mp", false);
+
+  if ((0,dist.get)("_sausagesEaten") === 0) {
+    (0,external_kolmafia_.cliExecute)("eat 1 magic sausage");
+    (0,external_kolmafia_.useSkill)(1, (0,dist.$skill)(level_templateObject26 || (level_templateObject26 = level_taggedTemplateLiteral(["Advanced Saucecrafting"]))));
+    (0,external_kolmafia_.useSkill)(1, (0,dist.$skill)(level_templateObject27 || (level_templateObject27 = level_taggedTemplateLiteral(["Advanced Cocktailcrafting"]))));
+    (0,external_kolmafia_.useSkill)(1, (0,dist.$skill)(level_templateObject28 || (level_templateObject28 = level_taggedTemplateLiteral(["Acquire Rhinestones"]))));
+    (0,external_kolmafia_.useSkill)(1, (0,dist.$skill)(level_templateObject29 || (level_templateObject29 = level_taggedTemplateLiteral(["Prevent Scurvy and Sobriety"]))));
+  }
+
+  if (!(0,dist.have)((0,dist.$item)(level_templateObject30 || (level_templateObject30 = level_taggedTemplateLiteral(["turtle totem"]))))) (0,external_kolmafia_.cliExecute)("acquire turtle totem");
+  if (!(0,dist.have)((0,dist.$item)(level_templateObject31 || (level_templateObject31 = level_taggedTemplateLiteral(["saucepan"]))))) (0,external_kolmafia_.cliExecute)("acquire saucepan");
+  (0,dist.$skills)(level_templateObject32 || (level_templateObject32 = level_taggedTemplateLiteral(["The Magical Mojomuscular Melody, Stevedave's Shanty of Superiority, Fat Leon's Phat Loot Lyric, The Polka of Plenty, Leash of Linguini, Empathy of the Newt, Blood Bond, Blood Bubble, Song of Bravado, Get Big"]))).forEach(function (buff) {
+    if (!(0,dist.have)((0,external_kolmafia_.toEffect)(buff))) {
+      if ((0,external_kolmafia_.myMp)() < (0,external_kolmafia_.mpCost)(buff)) {
+        if ((0,external_kolmafia_.totalFreeRests)() > (0,dist.get)("timesRested")) {
+          (0,external_kolmafia_.visitUrl)("place.php?whichplace=chateau&action=chateau_restbox");
+        } else if ((0,external_kolmafia_.availableAmount)((0,dist.$item)(level_templateObject33 || (level_templateObject33 = level_taggedTemplateLiteral(["psychokinetic energy blob"])))) >= 1) {
+          (0,external_kolmafia_.use)(2, (0,dist.$item)(level_templateObject34 || (level_templateObject34 = level_taggedTemplateLiteral(["psychokinetic energy blob"]))));
+        } else {
+          (0,external_kolmafia_.eat)(1, (0,dist.$item)(level_templateObject35 || (level_templateObject35 = level_taggedTemplateLiteral(["magical sausage"]))));
+        }
+      }
+
+      (0,external_kolmafia_.useSkill)(1, buff);
+    }
+  });
+}
+
+function getYoked() {
+  uniform();
+  (0,external_kolmafia_.useFamiliar)((0,dist.$familiar)(level_templateObject36 || (level_templateObject36 = level_taggedTemplateLiteral(["Ghost of Crimbo Carols"]))));
+
+  if ((0,dist.get)("snojoSetting") === "NONE") {
+    (0,external_kolmafia_.visitUrl)("place.php?whichplace=snojo&action=snojo_controller");
+    (0,external_kolmafia_.runChoice)(2);
+  }
+
+  heal();
+  advMacroAA((0,dist.$location)(level_templateObject37 || (level_templateObject37 = level_taggedTemplateLiteral(["The X-32-F Combat Training Snowman"]))), dist.Macro.step(delevel).attack().repeat(), function () {
+    return !(0,dist.have)((0,dist.$effect)(level_templateObject38 || (level_templateObject38 = level_taggedTemplateLiteral(["Holiday Yoked"]))));
+  });
+}
+
+function witchGhostAgent() {
+  if (questStep("questM25Armorer") === -1) {
+    (0,external_kolmafia_.visitUrl)("shop.php?whichshop=armory&action=talk");
+    (0,external_kolmafia_.runChoice)(1);
+  }
+
+  uniform();
+  (0,external_kolmafia_.equip)((0,dist.$slot)(level_templateObject39 || (level_templateObject39 = level_taggedTemplateLiteral(["back"]))), (0,dist.$item)(level_templateObject40 || (level_templateObject40 = level_taggedTemplateLiteral(["protonic accelerator pack"]))));
+  (0,external_kolmafia_.cliExecute)("fold makeshift garbage shirt");
+  (0,external_kolmafia_.equip)((0,dist.$slot)(level_templateObject41 || (level_templateObject41 = level_taggedTemplateLiteral(["shirt"]))), (0,dist.$item)(level_templateObject42 || (level_templateObject42 = level_taggedTemplateLiteral(["makeshift garbage shirt"]))));
+  heal();
+  useDefaultFamiliar();
+  ensureMp(100);
+  dist.Macro.skill("curse of weaksauce").skill("micrometeor").attack().repeat().setAutoAttack();
+
+  if (!(0,dist.have)((0,dist.$item)(level_templateObject43 || (level_templateObject43 = level_taggedTemplateLiteral(["battle broom"]))))) {
+    dist.Witchess.fightPiece((0,dist.$monster)(level_templateObject44 || (level_templateObject44 = level_taggedTemplateLiteral(["Witchess Witch"]))));
+  }
+
+  (0,external_kolmafia_.equip)((0,dist.$slot)(level_templateObject45 || (level_templateObject45 = level_taggedTemplateLiteral(["acc3"]))), (0,dist.$item)(level_templateObject46 || (level_templateObject46 = level_taggedTemplateLiteral(["battle broom"]))));
+  var ghostLocation = (0,dist.get)("ghostLocation");
+
+  if (ghostLocation) {
+    (0,external_kolmafia_.equip)((0,dist.$slot)(level_templateObject47 || (level_templateObject47 = level_taggedTemplateLiteral(["off-hand"]))), (0,dist.$item)(level_templateObject48 || (level_templateObject48 = level_taggedTemplateLiteral(["latte lovers member's mug"]))));
+    useDefaultFamiliar();
+    advMacro(ghostLocation, dist.Macro.step(delevel).step(easyFight).skill("portscan").skill("shoot ghost").skill("shoot ghost").skill("shoot ghost").skill("trap ghost"));
+  }
+
+  if (!(0,dist.have)((0,dist.$item)(level_templateObject49 || (level_templateObject49 = level_taggedTemplateLiteral(["government"])))) && !(0,dist.have)((0,dist.$item)(level_templateObject50 || (level_templateObject50 = level_taggedTemplateLiteral(["government cheese"]))))) {
+    (0,external_kolmafia_.equip)((0,dist.$slot)(level_templateObject51 || (level_templateObject51 = level_taggedTemplateLiteral(["back"]))), (0,dist.$item)(level_templateObject52 || (level_templateObject52 = level_taggedTemplateLiteral(["vampyric cloake"]))));
+    useDefaultFamiliar();
+    (0,external_kolmafia_.equip)((0,dist.$slot)(level_templateObject53 || (level_templateObject53 = level_taggedTemplateLiteral(["acc2"]))), (0,dist.$item)(level_templateObject54 || (level_templateObject54 = level_taggedTemplateLiteral(["gold detective badge"]))));
+    (0,external_kolmafia_.equip)((0,dist.$slot)(level_templateObject55 || (level_templateObject55 = level_taggedTemplateLiteral(["acc3"]))), (0,dist.$item)(level_templateObject56 || (level_templateObject56 = level_taggedTemplateLiteral(["Lil' Doctor\u2122 bag"]))));
+    (0,external_kolmafia_.equip)((0,dist.$slot)(level_templateObject57 || (level_templateObject57 = level_taggedTemplateLiteral(["off-hand"]))), (0,dist.$item)(level_templateObject58 || (level_templateObject58 = level_taggedTemplateLiteral(["latte lovers member's mug"]))));
+    advMacroAA((0,dist.$location)(level_templateObject59 || (level_templateObject59 = level_taggedTemplateLiteral(["Noob Cave"]))), dist.Macro.step(delevel).skill("otoscope").skill("become a bat").skill("chest x-ray"), //1
+    function () {
+      return (0,external_kolmafia_.getCounters)("Portscan", 0, 0) !== "";
+    });
+    var desertAccessItem = (0,external_kolmafia_.knollAvailable)() ? (0,dist.$item)(level_templateObject60 || (level_templateObject60 = level_taggedTemplateLiteral(["bitchin' meatcar"]))) : (0,dist.$item)(level_templateObject61 || (level_templateObject61 = level_taggedTemplateLiteral(["Desert Bus pass"])));
+
+    if (!(0,dist.have)(desertAccessItem)) {
+      (0,external_kolmafia_.cliExecute)("acquire ".concat(desertAccessItem.name));
+    }
+
+    (0,external_kolmafia_.visitUrl)("place.php?whichplace=desertbeach&action=db_nukehouse");
+  }
+}
+
+function lov() {
+  uniform();
+  (0,external_kolmafia_.equip)((0,dist.$slot)(level_templateObject62 || (level_templateObject62 = level_taggedTemplateLiteral(["back"]))), (0,dist.$item)(level_templateObject63 || (level_templateObject63 = level_taggedTemplateLiteral(["protonic accelerator pack"]))));
+  (0,external_kolmafia_.cliExecute)("fold makeshift garbage shirt");
+  (0,external_kolmafia_.equip)((0,dist.$slot)(level_templateObject64 || (level_templateObject64 = level_taggedTemplateLiteral(["shirt"]))), (0,dist.$item)(level_templateObject65 || (level_templateObject65 = level_taggedTemplateLiteral(["makeshift garbage shirt"]))));
+  heal();
+  useDefaultFamiliar();
+  dist.Macro.if_("monstername LOV enforcer", dist.Macro.attack().repeat()).if_("monstername LOV Engineer", dist.Macro.step(candyblast).skill("weapon of the pastalord").repeat()).if_("monstername LOV equivocator", dist.Macro.step(delevel).step(easyFight).step(candyblast).attack().repeat()).setAutoAttack();
+
+  if (!(0,dist.get)("_loveTunnelUsed")) {
+    dist.TunnelOfLove.fightAll("LOV Epaulettes", "Open Heart Surgery", "LOV Extraterrestrial Chocolate");
+    (0,external_kolmafia_.use)(1, (0,dist.$item)(level_templateObject66 || (level_templateObject66 = level_taggedTemplateLiteral(["LOV Extraterrestrial Chocolate"]))));
+  }
+
+  (0,external_kolmafia_.cliExecute)("/cast * candy heart");
+}
+
+function tomatoJuiceAndNinjaCostume() {
+  (0,external_kolmafia_.cliExecute)("backupcamera ml");
+
+  if ((0,dist.have)((0,dist.$item)(level_templateObject67 || (level_templateObject67 = level_taggedTemplateLiteral(["magical sausage casing"])))) || (0,dist.have)((0,dist.$item)(level_templateObject68 || (level_templateObject68 = level_taggedTemplateLiteral(["magical sausage"]))))) {
+    (0,external_kolmafia_.cliExecute)("eat magic sausage");
+  }
+
+  uniform();
+
+  if ((0,dist.get)("_monstersMapped") < 2 && (0,external_kolmafia_.availableAmount)((0,dist.$item)(level_templateObject69 || (level_templateObject69 = level_taggedTemplateLiteral(["tomato"])))) + (0,external_kolmafia_.availableAmount)((0,dist.$item)(level_templateObject70 || (level_templateObject70 = level_taggedTemplateLiteral(["tomato juice of powerful power"])))) + (0,external_kolmafia_.haveEffect)((0,dist.$effect)(level_templateObject71 || (level_templateObject71 = level_taggedTemplateLiteral(["Tomato Power"])))) === 0) {
+    (0,external_kolmafia_.equip)((0,dist.$slot)(level_templateObject72 || (level_templateObject72 = level_taggedTemplateLiteral(["acc3"]))), (0,dist.$item)(level_templateObject73 || (level_templateObject73 = level_taggedTemplateLiteral(["Lil' Doctor\u2122 bag"]))));
+    useDefaultFamiliar();
+    mapMacro((0,dist.$location)(level_templateObject74 || (level_templateObject74 = level_taggedTemplateLiteral(["The Haunted Pantry"]))), (0,dist.$monster)(level_templateObject75 || (level_templateObject75 = level_taggedTemplateLiteral(["possessed can of tomatoes"]))), dist.Macro.if_("monsterid ".concat((0,dist.$monster)(level_templateObject76 || (level_templateObject76 = level_taggedTemplateLiteral(["possessed can of tomatoes"]))).id), dist.Macro.skill((0,dist.$skill)(level_templateObject77 || (level_templateObject77 = level_taggedTemplateLiteral(["Reflex Hammer"]))))));
+    useDefaultFamiliar(false);
+    uniform();
+    ensureMp(30);
+    mapMacro((0,dist.$location)(level_templateObject78 || (level_templateObject78 = level_taggedTemplateLiteral(["The Haiku Dungeon"]))), (0,dist.$monster)(level_templateObject79 || (level_templateObject79 = level_taggedTemplateLiteral(["amateur ninja"]))), dist.Macro.if_("monsterid ".concat((0,dist.$monster)(level_templateObject80 || (level_templateObject80 = level_taggedTemplateLiteral(["amateur ninja"]))).id), dist.Macro.skill((0,dist.$skill)(level_templateObject81 || (level_templateObject81 = level_taggedTemplateLiteral(["Feel Nostalgic"])))).skill((0,dist.$skill)(level_templateObject82 || (level_templateObject82 = level_taggedTemplateLiteral(["Gingerbread Mob Hit"]))))).step("abort"));
+  }
+
+  if (!(0,dist.get)("hasRange")) {
+    if (!(0,dist.have)((0,dist.$item)(level_templateObject83 || (level_templateObject83 = level_taggedTemplateLiteral(["Dramatic\u2122 range"]))))) {
+      (0,external_kolmafia_.buy)(1, (0,dist.$item)(level_templateObject84 || (level_templateObject84 = level_taggedTemplateLiteral(["Dramatic\u2122 range"]))));
+    }
+
+    (0,external_kolmafia_.use)(1, (0,dist.$item)(level_templateObject85 || (level_templateObject85 = level_taggedTemplateLiteral(["Dramatic\u2122 range"]))));
+  }
+
+  (0,external_kolmafia_.useSkill)((0,dist.$skill)(level_templateObject86 || (level_templateObject86 = level_taggedTemplateLiteral(["Advanced Saucecrafting"]))));
+  (0,external_kolmafia_.useSkill)((0,dist.$skill)(level_templateObject87 || (level_templateObject87 = level_taggedTemplateLiteral(["Prevent Scurvy and Sobriety"]))));
+
+  if (!(0,dist.have)((0,dist.$effect)(level_templateObject88 || (level_templateObject88 = level_taggedTemplateLiteral(["Tomato Power"]))))) {
+    if (!(0,dist.have)((0,dist.$item)(level_templateObject89 || (level_templateObject89 = level_taggedTemplateLiteral(["tomato juice of powerful power"])))) && (0,dist.have)((0,dist.$item)(level_templateObject90 || (level_templateObject90 = level_taggedTemplateLiteral(["tomato"]))))) {
+      (0,external_kolmafia_.create)(1, (0,dist.$item)(level_templateObject91 || (level_templateObject91 = level_taggedTemplateLiteral(["tomato juice of powerful power"]))));
+    }
+
+    if ((0,dist.have)((0,dist.$item)(level_templateObject92 || (level_templateObject92 = level_taggedTemplateLiteral(["tomato juice of powerful power"]))))) {
+      (0,external_kolmafia_.use)(1, (0,dist.$item)(level_templateObject93 || (level_templateObject93 = level_taggedTemplateLiteral(["tomato juice of powerful power"]))));
+    }
+  }
+
+  if (!(0,dist.have)((0,dist.$effect)(level_templateObject94 || (level_templateObject94 = level_taggedTemplateLiteral(["Mystically Oiled"]))))) {
+    if (!(0,dist.have)((0,dist.$item)(level_templateObject95 || (level_templateObject95 = level_taggedTemplateLiteral(["ointment of the occult"]))))) {
+      (0,external_kolmafia_.create)(1, (0,dist.$item)(level_templateObject96 || (level_templateObject96 = level_taggedTemplateLiteral(["ointment of the occult"]))));
+    }
+
+    if ((0,dist.have)((0,dist.$item)(level_templateObject97 || (level_templateObject97 = level_taggedTemplateLiteral(["ointment of the occult"]))))) {
+      (0,external_kolmafia_.use)(1, (0,dist.$item)(level_templateObject98 || (level_templateObject98 = level_taggedTemplateLiteral(["ointment of the occult"]))));
+    }
+  }
+}
+
+function godLob() {
+  if ((0,dist.get)("_godLobsterFights") === 0) {
+    dist.Macro.step(delevel).step(easyFight).attack().repeat().setAutoAttack();
+    uniform();
+    heal();
+    (0,external_kolmafia_.useFamiliar)((0,dist.$familiar)(level_templateObject99 || (level_templateObject99 = level_taggedTemplateLiteral(["God Lobster"]))));
+    setChoice(1310, 1);
+    (0,external_kolmafia_.visitUrl)("main.php?fightgodlobster=1");
+    (0,external_kolmafia_.runCombat)(dist.Macro.step(delevel).step(easyFight).attack().repeat().toString());
+    multiFightAutoAttack();
+    (0,external_kolmafia_.runChoice)(-1);
+    (0,external_kolmafia_.equip)((0,dist.$slot)(level_templateObject100 || (level_templateObject100 = level_taggedTemplateLiteral(["familiar"]))), (0,dist.$item)(level_templateObject101 || (level_templateObject101 = level_taggedTemplateLiteral(["God Lobster's Scepter"]))));
+    heal();
+    (0,external_kolmafia_.visitUrl)("main.php?fightgodlobster=1");
+    (0,external_kolmafia_.runCombat)();
+    multiFightAutoAttack();
+    (0,external_kolmafia_.runChoice)(-1);
+    (0,external_kolmafia_.equip)((0,dist.$slot)(level_templateObject102 || (level_templateObject102 = level_taggedTemplateLiteral(["familiar"]))), (0,dist.$item)(level_templateObject103 || (level_templateObject103 = level_taggedTemplateLiteral(["God Lobster's Ring"]))));
+  }
+}
+
+function snojo() {
+  uniform();
+  useDefaultFamiliar();
+  advMacroAA((0,dist.$location)(level_templateObject104 || (level_templateObject104 = level_taggedTemplateLiteral(["The X-32-F Combat Training Snowman"]))), dist.Macro.step(delevel).step(easyFight).attack().repeat(), function () {
+    return (0,dist.get)("_snojoFreeFights") < 10;
+  }, function () {
+    heal();
+    useDefaultFamiliar();
+  });
+  (0,external_kolmafia_.cliExecute)("hottub");
+}
+
+function NEP() {
+  if ((0,dist.get)("_questPartyFair") === "unstarted") {
+    setChoice(1322, "");
+    (0,external_kolmafia_.visitUrl)("adventure.php?snarfblat=528");
+
+    if ((0,dist.get)("_questPartyFairQuest") === "food") {
+      (0,external_kolmafia_.runChoice)(1);
+      setChoice(1324, 2);
+      setChoice(1326, 3);
+    } else if ((0,dist.get)("_questPartyFairQuest") === "booze") {
+      (0,external_kolmafia_.runChoice)(1);
+      setChoice(1324, 3);
+      setChoice(1327, 3);
+    } else {
+      (0,external_kolmafia_.runChoice)(2);
+      setChoice(1324, 5);
+    }
+  }
+
+  uniform();
+  (0,external_kolmafia_.equip)((0,dist.$slot)(level_templateObject105 || (level_templateObject105 = level_taggedTemplateLiteral(["shirt"]))), (0,dist.$item)(level_templateObject106 || (level_templateObject106 = level_taggedTemplateLiteral(["makeshift garbage shirt"]))));
+  (0,external_kolmafia_.equip)((0,dist.$slot)(level_templateObject107 || (level_templateObject107 = level_taggedTemplateLiteral(["off-hand"]))), (0,dist.$item)(level_templateObject108 || (level_templateObject108 = level_taggedTemplateLiteral(["Kramco Sausage-o-Matic\u2122"]))));
+  useDefaultFamiliar();
+  advMacroAA((0,dist.$location)(level_templateObject109 || (level_templateObject109 = level_taggedTemplateLiteral(["The Neverending Party"]))), dist.Macro.step(delevel).trySkill("feel pride").step(easyFight).attack().repeat(), function () {
+    return (0,dist.get)("_neverendingPartyFreeTurns") < 10;
+  }, function () {
+    useDefaultFamiliar();
+    heal();
+
+    if ((0,dist.get)("_sausageFights") > 3 && (0,external_kolmafia_.haveEquipped)((0,dist.$item)(level_templateObject110 || (level_templateObject110 = level_taggedTemplateLiteral(["Kramco Sausage-o-Matic\u2122"]))))) {
+      (0,external_kolmafia_.equip)((0,dist.$slot)(level_templateObject111 || (level_templateObject111 = level_taggedTemplateLiteral(["off-hand"]))), (0,dist.$item)(level_templateObject112 || (level_templateObject112 = level_taggedTemplateLiteral(["familiar scrapbook"]))));
+    }
+
+    if ((0,dist.get)("choiceAdventure1324") !== 5 && questStep("_questPartyFair") > 0) {
+      setChoice(1324, 5);
+    }
+
+    if ((0,external_kolmafia_.myLevel)() >= 13 && !(0,dist.have)((0,dist.$effect)(level_templateObject113 || (level_templateObject113 = level_taggedTemplateLiteral(["Inner Elf"]))))) {
+      ensureInnerElf();
+    }
+  });
+  advMacroAA((0,dist.$location)(level_templateObject114 || (level_templateObject114 = level_taggedTemplateLiteral(["The Neverending Party"]))), dist.Macro.if_("!monstername sausage goblin", dist.Macro.trySkill("shattering punch").trySkill("gingerbread mob hit").trySkill("chest x-ray")).if_("monstername sausage goblin", dist.Macro.step(delevel).step(candyblast).attack().repeat()), function () {
+    return (0,dist.get)("_shatteringPunchUsed") < 3 && !(0,dist.get)("_gingerbreadMobHitUsed");
+  }, function () {
+    heal();
+    useDefaultFamiliar();
+
+    if ((0,dist.get)("_sausageFights") > 3 && (0,external_kolmafia_.haveEquipped)((0,dist.$item)(level_templateObject115 || (level_templateObject115 = level_taggedTemplateLiteral(["Kramco Sausage-o-Matic\u2122"]))))) {
+      (0,external_kolmafia_.equip)((0,dist.$slot)(level_templateObject116 || (level_templateObject116 = level_taggedTemplateLiteral(["off-hand"]))), (0,dist.$item)(level_templateObject117 || (level_templateObject117 = level_taggedTemplateLiteral(["familiar scrapbook"]))));
+    }
+
+    if ((0,dist.get)("choiceAdventure1324") !== 5 && questStep("_questPartyFair") > 0) {
+      setChoice(1324, 5);
+    }
+
+    if ((0,external_kolmafia_.myLevel)() >= 13 && !(0,dist.have)((0,dist.$effect)(level_templateObject118 || (level_templateObject118 = level_taggedTemplateLiteral(["Inner Elf"]))))) {
+      ensureInnerElf();
+    }
+  });
+  (0,external_kolmafia_.equip)((0,dist.$slot)(level_templateObject119 || (level_templateObject119 = level_taggedTemplateLiteral(["acc3"]))), (0,dist.$item)(level_templateObject120 || (level_templateObject120 = level_taggedTemplateLiteral(["Lil' Doctor\u2122 bag"]))));
+  advMacroAA((0,dist.$location)(level_templateObject121 || (level_templateObject121 = level_taggedTemplateLiteral(["The Neverending Party"]))), dist.Macro.if_("!monstername sausage goblin", dist.Macro.trySkill("shattering punch").trySkill("gingerbread mob hit").trySkill("chest x-ray")).if_("monstername sausage goblin", dist.Macro.step(delevel).step(candyblast).attack().repeat()), function () {
+    return (0,dist.get)("_chestXRayUsed") < 3;
+  }, function () {
+    heal();
+    useDefaultFamiliar();
+
+    if ((0,dist.get)("_sausageFights") > 3 && (0,external_kolmafia_.haveEquipped)((0,dist.$item)(level_templateObject122 || (level_templateObject122 = level_taggedTemplateLiteral(["Kramco Sausage-o-Matic\u2122"]))))) {
+      (0,external_kolmafia_.equip)((0,dist.$slot)(level_templateObject123 || (level_templateObject123 = level_taggedTemplateLiteral(["off-hand"]))), (0,dist.$item)(level_templateObject124 || (level_templateObject124 = level_taggedTemplateLiteral(["familiar scrapbook"]))));
+    }
+
+    if ((0,dist.get)("choiceAdventure1324") !== 5 && questStep("_questPartyFair") > 0) {
+      setChoice(1324, 5);
+    }
+
+    if ((0,external_kolmafia_.myLevel)() >= 13 && !(0,dist.have)((0,dist.$effect)(level_templateObject125 || (level_templateObject125 = level_taggedTemplateLiteral(["Inner Elf"]))))) {
+      ensureInnerElf();
+    }
+  });
+}
+
+function mElfLeveling() {
+  uniform();
+  (0,external_kolmafia_.cliExecute)("fold garbage shirt");
+  (0,external_kolmafia_.equip)((0,dist.$slot)(level_templateObject126 || (level_templateObject126 = level_taggedTemplateLiteral(["shirt"]))), (0,dist.$item)(level_templateObject127 || (level_templateObject127 = level_taggedTemplateLiteral(["makeshift garbage shirt"]))));
+  (0,external_kolmafia_.useFamiliar)((0,dist.$familiar)(level_templateObject128 || (level_templateObject128 = level_taggedTemplateLiteral(["Machine Elf"]))));
+  advMacroAA((0,dist.$location)(level_templateObject129 || (level_templateObject129 = level_taggedTemplateLiteral(["The Deep Machine Tunnels"]))), defaultKill, function () {
+    return (0,dist.get)("_machineTunnelsAdv") < 5;
+  }, heal);
+}
+
+function royalty() {
+  if (!(0,dist.have)((0,dist.$item)(level_templateObject130 || (level_templateObject130 = level_taggedTemplateLiteral(["very pointy crown"]))))) {
+    dist.Macro.tryItem("jam band flyer").tryItem("gas can").tryItem("time-spinner").attack().repeat().setAutoAttack();
+    uniform();
+    useDefaultFamiliar();
+    heal();
+    dist.Witchess.fightPiece((0,dist.$monster)(level_templateObject131 || (level_templateObject131 = level_taggedTemplateLiteral(["Witchess Queen"]))));
+  }
+
+  if (!(0,dist.have)((0,dist.$item)(level_templateObject132 || (level_templateObject132 = level_taggedTemplateLiteral(["dented scepter"]))))) {
+    dist.Macro.step(delevel).attack().repeat().setAutoAttack();
+    uniform();
+    useDefaultFamiliar();
+    heal();
+    dist.Witchess.fightPiece((0,dist.$monster)(level_templateObject133 || (level_templateObject133 = level_taggedTemplateLiteral(["Witchess King"]))));
+  }
+}
+
+function restAndBuff() {
+  while ((0,dist.get)("timesRested") < (0,external_kolmafia_.totalFreeRests)()) {
+    (0,external_kolmafia_.cliExecute)("/cast * candy heart");
+    (0,external_kolmafia_.visitUrl)("place.php?whichplace=chateau&action=chateau_restbox");
+  }
+}
+
+function levelUp() {
+  initialExp();
+  buffMyst();
+  level_castBuffs();
+  tomatoJuiceAndNinjaCostume();
+  getYoked();
+  witchGhostAgent();
+  lov();
+  godLob();
+  snojo();
+  mElfLeveling();
+  NEP();
+  royalty();
+  restAndBuff();
+}
+;// CONCATENATED MODULE: ./src/noncombat.ts
+var noncombat_templateObject, noncombat_templateObject2, noncombat_templateObject3, noncombat_templateObject4, noncombat_templateObject5, noncombat_templateObject6, noncombat_templateObject7, noncombat_templateObject8, noncombat_templateObject9, noncombat_templateObject10, noncombat_templateObject11, noncombat_templateObject12, noncombat_templateObject13, noncombat_templateObject14, noncombat_templateObject15, noncombat_templateObject16, noncombat_templateObject17, noncombat_templateObject18, noncombat_templateObject19;
+
+function noncombat_taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+
+
+
+
+
+
+
+var noncombat_predictor = function predictor() {
+  return 60 + (20 + (0,external_kolmafia_.numericModifier)("combat rate")) * 3;
+};
+
+function noncombat_castBuffs() {
+  universalWeightBuffs();
+  ensureEffect((0,dist.$effect)(noncombat_templateObject || (noncombat_templateObject = noncombat_taggedTemplateLiteral(["Smooth Movements"]))));
+  ensureEffect((0,dist.$effect)(noncombat_templateObject2 || (noncombat_templateObject2 = noncombat_taggedTemplateLiteral(["Feeling Lonely"]))));
+  (0,external_kolmafia_.equip)((0,dist.$slot)(noncombat_templateObject3 || (noncombat_templateObject3 = noncombat_taggedTemplateLiteral(["acc3"]))), (0,dist.$item)(noncombat_templateObject4 || (noncombat_templateObject4 = noncombat_taggedTemplateLiteral(["Powerful Glove"]))));
+  ensureEffect((0,dist.$effect)(noncombat_templateObject5 || (noncombat_templateObject5 = noncombat_taggedTemplateLiteral(["Invisible Avatar"]))));
+  ensureEffect((0,dist.$effect)(noncombat_templateObject6 || (noncombat_templateObject6 = noncombat_taggedTemplateLiteral(["Blessing of the Bird"]))));
+  if (!(0,dist.get)("_clanFortuneBuffUsed")) (0,external_kolmafia_.cliExecute)("fortune buff familiar");
+  if ((0,external_kolmafia_.haveEffect)((0,dist.$effect)(noncombat_templateObject7 || (noncombat_templateObject7 = noncombat_taggedTemplateLiteral(["Fat Leon's Phat Loot Lyric"]))))) (0,external_kolmafia_.cliExecute)("shrug fat leon's phat loot lyric");
+  ensureEffect((0,dist.$effect)(noncombat_templateObject8 || (noncombat_templateObject8 = noncombat_taggedTemplateLiteral(["The Sonata of Sneakiness"]))));
+  if (!(0,dist.get)("_olympicSwimmingPool")) (0,external_kolmafia_.cliExecute)("swim sprints");
+
+  while ((0,external_kolmafia_.getFuel)() < 37) {
+    fuelUp();
+  }
+
+  if (!(0,dist.have)((0,dist.$effect)(noncombat_templateObject9 || (noncombat_templateObject9 = noncombat_taggedTemplateLiteral(["Driving Stealthily"]))))) (0,external_kolmafia_.cliExecute)("asdonmartin drive stealthily");
+  horse("dark");
+}
+
+function godLobster() {
+  if (!(0,dist.have)((0,dist.$effect)(noncombat_templateObject10 || (noncombat_templateObject10 = noncombat_taggedTemplateLiteral(["Silence of the God Lobster"])))) && (0,dist.get)("_godLobsterFights") < 3 && (0,dist.have)((0,dist.$item)(noncombat_templateObject11 || (noncombat_templateObject11 = noncombat_taggedTemplateLiteral(["God Lobster's Ring"]))))) {
+    (0,external_kolmafia_.useFamiliar)((0,dist.$familiar)(noncombat_templateObject12 || (noncombat_templateObject12 = noncombat_taggedTemplateLiteral(["God Lobster"]))));
+    (0,external_kolmafia_.equip)((0,dist.$slot)(noncombat_templateObject13 || (noncombat_templateObject13 = noncombat_taggedTemplateLiteral(["familiar"]))), (0,dist.$item)(noncombat_templateObject14 || (noncombat_templateObject14 = noncombat_taggedTemplateLiteral(["God Lobster's Ring"]))));
+    uniform();
+    defaultKill.setAutoAttack();
+    heal();
+    setChoice(1310, 2);
+    (0,external_kolmafia_.visitUrl)("main.php?fightgodlobster=1");
+    (0,external_kolmafia_.runCombat)(defaultKill.toString());
+    (0,external_kolmafia_.visitUrl)("choice.php");
+    (0,external_kolmafia_.runChoice)(-1);
+  }
+}
+
+function noncombat_testPrep() {
+  noncombatOutfit();
+
+  if (noncombat_predictor() > 1) {
+    if (!(0,dist.have)((0,dist.$effect)(noncombat_templateObject15 || (noncombat_templateObject15 = noncombat_taggedTemplateLiteral(["Gummed Shoes"]))))) {
+      if ((0,external_kolmafia_.availableAmount)((0,dist.$item)(noncombat_templateObject16 || (noncombat_templateObject16 = noncombat_taggedTemplateLiteral(["cop dollar"])))) < 10) (0,external_kolmafia_.cliExecute)("detective solver.ash");
+      (0,external_kolmafia_.buy)((0,dist.$coinmaster)(noncombat_templateObject17 || (noncombat_templateObject17 = noncombat_taggedTemplateLiteral(["Precinct Materiel Division"]))), 1, (0,dist.$item)(noncombat_templateObject18 || (noncombat_templateObject18 = noncombat_taggedTemplateLiteral(["shoe gum"]))));
+      (0,external_kolmafia_.use)((0,dist.$item)(noncombat_templateObject19 || (noncombat_templateObject19 = noncombat_taggedTemplateLiteral(["shoe gum"]))));
+    }
+  }
+}
+
+function noncombatTest() {
+  noncombat_castBuffs();
+  godLobster();
+  noncombat_testPrep();
+  if (noncombat_predictor() > 1) throw "Failed to cap noncombat";
+  return noncombat_predictor();
+}
+;// CONCATENATED MODULE: ./src/spell.ts
+var spell_templateObject, spell_templateObject2, spell_templateObject3, spell_templateObject4, spell_templateObject5, spell_templateObject6, spell_templateObject7, spell_templateObject8, spell_templateObject9, spell_templateObject10, spell_templateObject11, spell_templateObject12, spell_templateObject13, spell_templateObject14, spell_templateObject15, spell_templateObject16, spell_templateObject17, spell_templateObject18, spell_templateObject19, spell_templateObject20, spell_templateObject21, spell_templateObject22, spell_templateObject23, spell_templateObject24, spell_templateObject25, spell_templateObject26;
+
+function spell_taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+
+
+
+
+
+var spell_predictor = function predictor() {
+  return 60 - Math.floor((0,external_kolmafia_.numericModifier)("spell damage") / 50 + 0.001) - Math.floor((0,external_kolmafia_.numericModifier)("spell damage percent") / 50 + 0.001);
+};
+
+function spell_castBuffs() {
+  ensureEffect((0,dist.$effect)(spell_templateObject || (spell_templateObject = spell_taggedTemplateLiteral(["Simmering"]))));
+  (0,dist.$effects)(spell_templateObject2 || (spell_templateObject2 = spell_taggedTemplateLiteral(["Pisces in the Skyces, Carol of the Hells, Arched Eyebrow of the Archmage, Song of Sauce, We're All Made of Starfish"]))).forEach(function (effect) {
+    return ensureEffect(effect);
   });
 
-  if (!(0,libram__WEBPACK_IMPORTED_MODULE_3__.get)("_cargoPocketEmptied")) {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.cliExecute)("cargo 177");
-    (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_1__.ensureEffect)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$effect)(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["Sigils of Yeg"]))));
+  if (!(0,dist.get)("_cargoPocketEmptied")) {
+    (0,external_kolmafia_.cliExecute)("cargo 177");
+    ensureEffect((0,dist.$effect)(spell_templateObject3 || (spell_templateObject3 = spell_taggedTemplateLiteral(["Sigils of Yeg"]))));
   }
 
-  if ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.availableAmount)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$item)(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["LOV Elixir #6"])))) > 0) (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_1__.ensureEffect)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$effect)(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["The Magic of LOV"]))));
-  if ((0,libram__WEBPACK_IMPORTED_MODULE_3__.get)("tomeSummons") < 3) (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.useSkill)(1, (0,libram__WEBPACK_IMPORTED_MODULE_3__.$skill)(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["Summon Sugar Sheets"]))));
-  if ((0,libram__WEBPACK_IMPORTED_MODULE_3__.have)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$item)(_templateObject7 || (_templateObject7 = _taggedTemplateLiteral(["sugar sheet"]))))) (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.create)(1, (0,libram__WEBPACK_IMPORTED_MODULE_3__.$item)(_templateObject8 || (_templateObject8 = _taggedTemplateLiteral(["sugar chapeau"]))));
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.visitUrl)("shop.php?whichshop=lathe");
+  if ((0,external_kolmafia_.availableAmount)((0,dist.$item)(spell_templateObject4 || (spell_templateObject4 = spell_taggedTemplateLiteral(["LOV Elixir #6"])))) > 0) ensureEffect((0,dist.$effect)(spell_templateObject5 || (spell_templateObject5 = spell_taggedTemplateLiteral(["The Magic of LOV"]))));
+  if ((0,dist.get)("tomeSummons") < 3) (0,external_kolmafia_.useSkill)(1, (0,dist.$skill)(spell_templateObject6 || (spell_templateObject6 = spell_taggedTemplateLiteral(["Summon Sugar Sheets"]))));
+  if ((0,dist.have)((0,dist.$item)(spell_templateObject7 || (spell_templateObject7 = spell_taggedTemplateLiteral(["sugar sheet"]))))) (0,external_kolmafia_.create)(1, (0,dist.$item)(spell_templateObject8 || (spell_templateObject8 = spell_taggedTemplateLiteral(["sugar chapeau"]))));
+  (0,external_kolmafia_.visitUrl)("shop.php?whichshop=lathe");
 
-  if ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.availableAmount)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$item)(_templateObject9 || (_templateObject9 = _taggedTemplateLiteral(["flimsy hardwood scraps"])))) > 0) {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.create)(1, (0,libram__WEBPACK_IMPORTED_MODULE_3__.$item)(_templateObject10 || (_templateObject10 = _taggedTemplateLiteral(["weeping willow wand"]))));
+  if ((0,external_kolmafia_.availableAmount)((0,dist.$item)(spell_templateObject9 || (spell_templateObject9 = spell_taggedTemplateLiteral(["flimsy hardwood scraps"])))) > 0) {
+    (0,external_kolmafia_.create)(1, (0,dist.$item)(spell_templateObject10 || (spell_templateObject10 = spell_taggedTemplateLiteral(["weeping willow wand"]))));
   }
 
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.cliExecute)("briefcase enchantment spell");
+  (0,external_kolmafia_.cliExecute)("briefcase enchantment spell");
 
-  if (!(0,libram__WEBPACK_IMPORTED_MODULE_3__.get)("_madTeaParty")) {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.visitUrl)("clan_viplounge.php?action=lookingglass&whichfloor=2");
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.cliExecute)("acquire mariachi hat");
-    (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_1__.ensureEffect)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$effect)(_templateObject11 || (_templateObject11 = _taggedTemplateLiteral(["Full Bottle in front of Me"]))));
+  if (!(0,dist.get)("_madTeaParty")) {
+    (0,external_kolmafia_.visitUrl)("clan_viplounge.php?action=lookingglass&whichfloor=2");
+    (0,external_kolmafia_.cliExecute)("acquire mariachi hat");
+    ensureEffect((0,dist.$effect)(spell_templateObject11 || (spell_templateObject11 = spell_taggedTemplateLiteral(["Full Bottle in front of Me"]))));
   }
 
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.useSkill)(1, (0,libram__WEBPACK_IMPORTED_MODULE_3__.$skill)(_templateObject12 || (_templateObject12 = _taggedTemplateLiteral(["Spirit of Cayenne"]))));
+  (0,external_kolmafia_.useSkill)(1, (0,dist.$skill)(spell_templateObject12 || (spell_templateObject12 = spell_taggedTemplateLiteral(["Spirit of Cayenne"]))));
 
-  if ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.availableAmount)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$item)(_templateObject13 || (_templateObject13 = _taggedTemplateLiteral(["flask of baconstone juice"])))) > 0) {
-    (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_1__.ensureEffect)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$effect)(_templateObject14 || (_templateObject14 = _taggedTemplateLiteral(["Baconstoned"]))));
+  if ((0,external_kolmafia_.availableAmount)((0,dist.$item)(spell_templateObject13 || (spell_templateObject13 = spell_taggedTemplateLiteral(["flask of baconstone juice"])))) > 0) {
+    ensureEffect((0,dist.$effect)(spell_templateObject14 || (spell_templateObject14 = spell_taggedTemplateLiteral(["Baconstoned"]))));
   }
 }
 
 function fingies() {
-  if (!(0,libram__WEBPACK_IMPORTED_MODULE_3__.have)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$effect)(_templateObject15 || (_templateObject15 = _taggedTemplateLiteral(["Saucefingers"])))) && (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.myClass)() === (0,libram__WEBPACK_IMPORTED_MODULE_3__.$class)(_templateObject16 || (_templateObject16 = _taggedTemplateLiteral(["Pastamancer"]))) && (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.myLevel)() >= 15 && (0,libram__WEBPACK_IMPORTED_MODULE_3__.have)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$familiar)(_templateObject17 || (_templateObject17 = _taggedTemplateLiteral(["Mini-Adventurer"]))))) {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.useFamiliar)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$familiar)(_templateObject18 || (_templateObject18 = _taggedTemplateLiteral(["Mini-Adventurer"]))));
-    (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_1__.horse)("dark");
-    (0,_outfits__WEBPACK_IMPORTED_MODULE_2__.default)();
-    (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_1__.setChoice)(768, 4);
-    (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_1__.advMacroAA)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$location)(_templateObject19 || (_templateObject19 = _taggedTemplateLiteral(["The Dire Warren"]))), libram__WEBPACK_IMPORTED_MODULE_3__.Macro.skill((0,libram__WEBPACK_IMPORTED_MODULE_3__.$skill)(_templateObject20 || (_templateObject20 = _taggedTemplateLiteral(["Feel Hatred"])))), function () {
-      return !(0,libram__WEBPACK_IMPORTED_MODULE_3__.have)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$effect)(_templateObject21 || (_templateObject21 = _taggedTemplateLiteral(["Saucefingers"]))));
+  if (!(0,dist.have)((0,dist.$effect)(spell_templateObject15 || (spell_templateObject15 = spell_taggedTemplateLiteral(["Saucefingers"])))) && (0,external_kolmafia_.myClass)() === (0,dist.$class)(spell_templateObject16 || (spell_templateObject16 = spell_taggedTemplateLiteral(["Pastamancer"]))) && (0,external_kolmafia_.myLevel)() >= 15 && (0,dist.have)((0,dist.$familiar)(spell_templateObject17 || (spell_templateObject17 = spell_taggedTemplateLiteral(["Mini-Adventurer"]))))) {
+    (0,external_kolmafia_.useFamiliar)((0,dist.$familiar)(spell_templateObject18 || (spell_templateObject18 = spell_taggedTemplateLiteral(["Mini-Adventurer"]))));
+    horse("dark");
+    uniform();
+    setChoice(768, 4);
+    advMacroAA((0,dist.$location)(spell_templateObject19 || (spell_templateObject19 = spell_taggedTemplateLiteral(["The Dire Warren"]))), dist.Macro.skill((0,dist.$skill)(spell_templateObject20 || (spell_templateObject20 = spell_taggedTemplateLiteral(["Feel Hatred"])))), function () {
+      return !(0,dist.have)((0,dist.$effect)(spell_templateObject21 || (spell_templateObject21 = spell_taggedTemplateLiteral(["Saucefingers"]))));
     });
   }
 }
 
 function shower() {
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.useFamiliar)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$familiar)(_templateObject22 || (_templateObject22 = _taggedTemplateLiteral(["none"]))));
+  (0,external_kolmafia_.useFamiliar)((0,dist.$familiar)(spell_templateObject22 || (spell_templateObject22 = spell_taggedTemplateLiteral(["none"]))));
 
-  if (!(0,libram__WEBPACK_IMPORTED_MODULE_3__.have)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$effect)(_templateObject23 || (_templateObject23 = _taggedTemplateLiteral(["Meteor Showered"])))) && (0,libram__WEBPACK_IMPORTED_MODULE_3__.get)("_meteorShowerUses") < 5) {
-    (0,_outfits__WEBPACK_IMPORTED_MODULE_2__.default)();
-    (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_1__.setChoice)(1387, 3);
-    (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_1__.advMacroAA)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$location)(_templateObject24 || (_templateObject24 = _taggedTemplateLiteral(["The Dire Warren"]))), libram__WEBPACK_IMPORTED_MODULE_3__.Macro.skill((0,libram__WEBPACK_IMPORTED_MODULE_3__.$skill)(_templateObject25 || (_templateObject25 = _taggedTemplateLiteral(["Meteor Shower"])))).skill((0,libram__WEBPACK_IMPORTED_MODULE_3__.$skill)(_templateObject26 || (_templateObject26 = _taggedTemplateLiteral(["Use the Force"])))));
-    if ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.handlingChoice)()) (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.runChoice)(-1);
-    (0,libram__WEBPACK_IMPORTED_MODULE_3__.set)("_meteorShowerUses", 1 + (0,libram__WEBPACK_IMPORTED_MODULE_3__.get)("_meteorShowerUses"));
+  if (!(0,dist.have)((0,dist.$effect)(spell_templateObject23 || (spell_templateObject23 = spell_taggedTemplateLiteral(["Meteor Showered"])))) && (0,dist.get)("_meteorShowerUses") < 5) {
+    uniform();
+    setChoice(1387, 3);
+    advMacroAA((0,dist.$location)(spell_templateObject24 || (spell_templateObject24 = spell_taggedTemplateLiteral(["The Dire Warren"]))), dist.Macro.skill((0,dist.$skill)(spell_templateObject25 || (spell_templateObject25 = spell_taggedTemplateLiteral(["Meteor Shower"])))).skill((0,dist.$skill)(spell_templateObject26 || (spell_templateObject26 = spell_taggedTemplateLiteral(["Use the Force"])))));
+    if ((0,external_kolmafia_.handlingChoice)()) (0,external_kolmafia_.runChoice)(-1);
+    (0,dist.set)("_meteorShowerUses", 1 + (0,dist.get)("_meteorShowerUses"));
   }
 }
 
-function testPrep() {
-  (0,_outfits__WEBPACK_IMPORTED_MODULE_2__.spellOutfit)();
+function spell_testPrep() {
+  spellOutfit();
 }
 
 function spellTest() {
-  castBuffs();
+  spell_castBuffs();
   fingies();
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_1__.ensureInnerElf)();
+  ensureInnerElf();
   shower();
-  testPrep();
-  return 1 + predictor();
+  spell_testPrep();
+  return 1 + spell_predictor();
 }
+;// CONCATENATED MODULE: ./src/stattests.ts
+var stattests_templateObject, stattests_templateObject2, stattests_templateObject3, stattests_templateObject4, stattests_templateObject5, stattests_templateObject6, stattests_templateObject7, stattests_templateObject8, stattests_templateObject9, stattests_templateObject10, stattests_templateObject11, stattests_templateObject12, stattests_templateObject13, stattests_templateObject14, stattests_templateObject15, stattests_templateObject16, stattests_templateObject17, stattests_templateObject18, stattests_templateObject19, stattests_templateObject20, stattests_templateObject21, stattests_templateObject22, stattests_templateObject23, stattests_templateObject24, stattests_templateObject25, stattests_templateObject26, stattests_templateObject27, stattests_templateObject28, stattests_templateObject29, stattests_templateObject30, stattests_templateObject31, stattests_templateObject32, stattests_templateObject33, stattests_templateObject34, stattests_templateObject35, stattests_templateObject36, stattests_templateObject37, stattests_templateObject38, stattests_templateObject39, stattests_templateObject40, stattests_templateObject41, stattests_templateObject42, stattests_templateObject43, stattests_templateObject44, stattests_templateObject45, stattests_templateObject46, stattests_templateObject47, stattests_templateObject48, stattests_templateObject49, stattests_templateObject50, stattests_templateObject51, stattests_templateObject52, stattests_templateObject53, stattests_templateObject54, stattests_templateObject55, stattests_templateObject56, stattests_templateObject57;
 
-/***/ }),
-
-/***/ "./src/stattests.ts":
-/*!**************************!*\
-  !*** ./src/stattests.ts ***!
-  \**************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "muscleTest": () => (/* binding */ muscleTest),
-/* harmony export */   "mystTest": () => (/* binding */ mystTest),
-/* harmony export */   "moxTest": () => (/* binding */ moxTest),
-/* harmony export */   "HPTest": () => (/* binding */ HPTest)
-/* harmony export */ });
-/* harmony import */ var kolmafia__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! kolmafia */ "kolmafia");
-/* harmony import */ var kolmafia__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(kolmafia__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var libram__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! libram */ "./node_modules/libram/dist/index.js");
-/* harmony import */ var libram__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(libram__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _outfits__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./outfits */ "./src/outfits.ts");
-/* harmony import */ var _phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./phredhccs-lib */ "./src/phredhccs-lib.ts");
-var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5, _templateObject6, _templateObject7, _templateObject8, _templateObject9, _templateObject10, _templateObject11, _templateObject12, _templateObject13, _templateObject14, _templateObject15, _templateObject16, _templateObject17, _templateObject18, _templateObject19, _templateObject20, _templateObject21, _templateObject22, _templateObject23, _templateObject24, _templateObject25, _templateObject26, _templateObject27, _templateObject28, _templateObject29, _templateObject30, _templateObject31, _templateObject32, _templateObject33, _templateObject34, _templateObject35, _templateObject36, _templateObject37, _templateObject38, _templateObject39, _templateObject40, _templateObject41, _templateObject42, _templateObject43, _templateObject44, _templateObject45, _templateObject46, _templateObject47, _templateObject48, _templateObject49, _templateObject50, _templateObject51, _templateObject52, _templateObject53, _templateObject54, _templateObject55, _templateObject56, _templateObject57;
-
-function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+function stattests_taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 
 
@@ -20785,35 +19583,35 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 
 var musclePredictor = function musclePredictor() {
-  return 60 - Math.floor(1 / 30 * ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.myBuffedstat)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$stat)(_templateObject || (_templateObject = _taggedTemplateLiteral(["muscle"])))) - (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.myBasestat)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$stat)(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["mysticality"]))))));
+  return 60 - Math.floor(1 / 30 * ((0,external_kolmafia_.myBuffedstat)((0,dist.$stat)(stattests_templateObject || (stattests_templateObject = stattests_taggedTemplateLiteral(["muscle"])))) - (0,external_kolmafia_.myBasestat)((0,dist.$stat)(stattests_templateObject2 || (stattests_templateObject2 = stattests_taggedTemplateLiteral(["mysticality"]))))));
 };
 
 function musclebuffs() {
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.useSkill)(1, (0,libram__WEBPACK_IMPORTED_MODULE_3__.$skill)(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["Bind Undead Elbow Macaroni"]))));
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.ensureEffect)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$effect)(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["Big"]))));
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.ensureEffect)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$effect)(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["Song of Bravado"]))));
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.ensureEffect)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$effect)(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["Rage of the Reindeer"]))));
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.ensureEffect)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$effect)(_templateObject7 || (_templateObject7 = _taggedTemplateLiteral(["Quiet Determination"]))));
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.ensureEffect)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$effect)(_templateObject8 || (_templateObject8 = _taggedTemplateLiteral(["Disdain of the War Snapper"]))));
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.ensureEffect)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$effect)(_templateObject9 || (_templateObject9 = _taggedTemplateLiteral(["Feeling Excited"]))));
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.ensureEffect)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$effect)(_templateObject10 || (_templateObject10 = _taggedTemplateLiteral(["The Power of LOV"]))));
+  (0,external_kolmafia_.useSkill)(1, (0,dist.$skill)(stattests_templateObject3 || (stattests_templateObject3 = stattests_taggedTemplateLiteral(["Bind Undead Elbow Macaroni"]))));
+  ensureEffect((0,dist.$effect)(stattests_templateObject4 || (stattests_templateObject4 = stattests_taggedTemplateLiteral(["Big"]))));
+  ensureEffect((0,dist.$effect)(stattests_templateObject5 || (stattests_templateObject5 = stattests_taggedTemplateLiteral(["Song of Bravado"]))));
+  ensureEffect((0,dist.$effect)(stattests_templateObject6 || (stattests_templateObject6 = stattests_taggedTemplateLiteral(["Rage of the Reindeer"]))));
+  ensureEffect((0,dist.$effect)(stattests_templateObject7 || (stattests_templateObject7 = stattests_taggedTemplateLiteral(["Quiet Determination"]))));
+  ensureEffect((0,dist.$effect)(stattests_templateObject8 || (stattests_templateObject8 = stattests_taggedTemplateLiteral(["Disdain of the War Snapper"]))));
+  ensureEffect((0,dist.$effect)(stattests_templateObject9 || (stattests_templateObject9 = stattests_taggedTemplateLiteral(["Feeling Excited"]))));
+  ensureEffect((0,dist.$effect)(stattests_templateObject10 || (stattests_templateObject10 = stattests_taggedTemplateLiteral(["The Power of LOV"]))));
 
-  if (!(0,libram__WEBPACK_IMPORTED_MODULE_3__.have)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$effect)(_templateObject11 || (_templateObject11 = _taggedTemplateLiteral(["Go Get 'Em, Tiger!"]))))) {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.retrieveItem)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$item)(_templateObject12 || (_templateObject12 = _taggedTemplateLiteral(["Ben-Gal\u2122 Balm"]))));
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.use)(1, (0,libram__WEBPACK_IMPORTED_MODULE_3__.$item)(_templateObject13 || (_templateObject13 = _taggedTemplateLiteral(["Ben-Gal\u2122 Balm"]))));
+  if (!(0,dist.have)((0,dist.$effect)(stattests_templateObject11 || (stattests_templateObject11 = stattests_taggedTemplateLiteral(["Go Get 'Em, Tiger!"]))))) {
+    (0,external_kolmafia_.retrieveItem)((0,dist.$item)(stattests_templateObject12 || (stattests_templateObject12 = stattests_taggedTemplateLiteral(["Ben-Gal\u2122 Balm"]))));
+    (0,external_kolmafia_.use)(1, (0,dist.$item)(stattests_templateObject13 || (stattests_templateObject13 = stattests_taggedTemplateLiteral(["Ben-Gal\u2122 Balm"]))));
   }
 }
 
 function muscleTestPrep() {
-  (0,_outfits__WEBPACK_IMPORTED_MODULE_1__.muscleOutfit)();
+  muscleOutfit();
 
   for (var _i = 0, _arr = [function () {
-    if (!(0,libram__WEBPACK_IMPORTED_MODULE_3__.get)("")) (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.ensureEffect)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$effect)(_templateObject14 || (_templateObject14 = _taggedTemplateLiteral(["Lack of Body-Building"]))));
+    if (!(0,dist.get)("")) ensureEffect((0,dist.$effect)(stattests_templateObject14 || (stattests_templateObject14 = stattests_taggedTemplateLiteral(["Lack of Body-Building"]))));
   }, // will stay on all the way to weapon damage.
   function () {
-    return (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.ensureEffect)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$effect)(_templateObject15 || (_templateObject15 = _taggedTemplateLiteral(["Ham-Fisted"]))));
+    return ensureEffect((0,dist.$effect)(stattests_templateObject15 || (stattests_templateObject15 = stattests_taggedTemplateLiteral(["Ham-Fisted"]))));
   }, function () {
-    return (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.ensureInnerElf)();
+    return ensureInnerElf();
   }]; _i < _arr.length; _i++) {
     var increaser = _arr[_i];
     if (musclePredictor() > 1) increaser();
@@ -20827,15 +19625,15 @@ function muscleTest() {
 }
 
 var mystPredictor = function mystPredictor() {
-  return 60 - Math.floor(1 / 30 * ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.myBuffedstat)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$stat)(_templateObject16 || (_templateObject16 = _taggedTemplateLiteral(["mysticality"])))) - (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.myBasestat)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$stat)(_templateObject17 || (_templateObject17 = _taggedTemplateLiteral(["mysticality"]))))));
+  return 60 - Math.floor(1 / 30 * ((0,external_kolmafia_.myBuffedstat)((0,dist.$stat)(stattests_templateObject16 || (stattests_templateObject16 = stattests_taggedTemplateLiteral(["mysticality"])))) - (0,external_kolmafia_.myBasestat)((0,dist.$stat)(stattests_templateObject17 || (stattests_templateObject17 = stattests_taggedTemplateLiteral(["mysticality"]))))));
 };
 
 function mystbuffs() {
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.ensureEffect)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$effect)(_templateObject18 || (_templateObject18 = _taggedTemplateLiteral(["Feeling Excited"]))));
+  ensureEffect((0,dist.$effect)(stattests_templateObject18 || (stattests_templateObject18 = stattests_taggedTemplateLiteral(["Feeling Excited"]))));
 }
 
 function mystTestPrep() {
-  (0,_outfits__WEBPACK_IMPORTED_MODULE_1__.mysticalityOutfit)();
+  mysticalityOutfit();
 }
 
 function mystTest() {
@@ -20846,54 +19644,54 @@ function mystTest() {
 }
 
 var moxPredictor = function moxPredictor() {
-  return 60 - Math.floor(1 / 30 * ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.myBuffedstat)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$stat)(_templateObject19 || (_templateObject19 = _taggedTemplateLiteral(["moxie"])))) - (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.myBasestat)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$stat)(_templateObject20 || (_templateObject20 = _taggedTemplateLiteral(["mysticality"]))))));
+  return 60 - Math.floor(1 / 30 * ((0,external_kolmafia_.myBuffedstat)((0,dist.$stat)(stattests_templateObject19 || (stattests_templateObject19 = stattests_taggedTemplateLiteral(["moxie"])))) - (0,external_kolmafia_.myBasestat)((0,dist.$stat)(stattests_templateObject20 || (stattests_templateObject20 = stattests_taggedTemplateLiteral(["mysticality"]))))));
 };
 
 function moxBuffs() {
-  if ((0,libram__WEBPACK_IMPORTED_MODULE_3__.have)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$item)(_templateObject21 || (_templateObject21 = _taggedTemplateLiteral(["magical sausage casing"]))))) {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.create)(1, (0,libram__WEBPACK_IMPORTED_MODULE_3__.$item)(_templateObject22 || (_templateObject22 = _taggedTemplateLiteral(["magical sausage"]))));
+  if ((0,dist.have)((0,dist.$item)(stattests_templateObject21 || (stattests_templateObject21 = stattests_taggedTemplateLiteral(["magical sausage casing"]))))) {
+    (0,external_kolmafia_.create)(1, (0,dist.$item)(stattests_templateObject22 || (stattests_templateObject22 = stattests_taggedTemplateLiteral(["magical sausage"]))));
   }
 
-  if ((0,libram__WEBPACK_IMPORTED_MODULE_3__.have)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$item)(_templateObject23 || (_templateObject23 = _taggedTemplateLiteral(["magical sausage"]))))) {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.eat)(1, (0,libram__WEBPACK_IMPORTED_MODULE_3__.$item)(_templateObject24 || (_templateObject24 = _taggedTemplateLiteral(["magical sausage"]))));
+  if ((0,dist.have)((0,dist.$item)(stattests_templateObject23 || (stattests_templateObject23 = stattests_taggedTemplateLiteral(["magical sausage"]))))) {
+    (0,external_kolmafia_.eat)(1, (0,dist.$item)(stattests_templateObject24 || (stattests_templateObject24 = stattests_taggedTemplateLiteral(["magical sausage"]))));
   }
 
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.ensureEffect)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$effect)(_templateObject25 || (_templateObject25 = _taggedTemplateLiteral(["Feeling Excited"]))));
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.useSkill)(1, (0,libram__WEBPACK_IMPORTED_MODULE_3__.$skill)(_templateObject26 || (_templateObject26 = _taggedTemplateLiteral(["Bind Penne Dreadful"]))));
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.ensureEffect)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$effect)(_templateObject27 || (_templateObject27 = _taggedTemplateLiteral(["Pomp & Circumsands"]))));
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.use)(1, (0,libram__WEBPACK_IMPORTED_MODULE_3__.$item)(_templateObject28 || (_templateObject28 = _taggedTemplateLiteral(["Bird-a-Day calendar"]))));
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.ensureEffect)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$effect)(_templateObject29 || (_templateObject29 = _taggedTemplateLiteral(["Blessing of the Bird"]))));
-  if ((0,libram__WEBPACK_IMPORTED_MODULE_3__.get)("_favoriteBirdVisited")) (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.useSkill)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$skill)(_templateObject30 || (_templateObject30 = _taggedTemplateLiteral(["Visit your Favorite Bird"]))));
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.ensureEffect)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$effect)(_templateObject31 || (_templateObject31 = _taggedTemplateLiteral(["Quiet Desperation"]))));
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.ensureEffect)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$effect)(_templateObject32 || (_templateObject32 = _taggedTemplateLiteral(["Disco Fever"]))));
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.ensureEffect)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$effect)(_templateObject33 || (_templateObject33 = _taggedTemplateLiteral(["Blubbered Up"]))));
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.ensureEffect)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$effect)(_templateObject34 || (_templateObject34 = _taggedTemplateLiteral(["Mariachi Mood"]))));
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.ensureEffect)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$effect)(_templateObject35 || (_templateObject35 = _taggedTemplateLiteral(["Disco State of Mind"]))));
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.ensureEffect)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$effect)(_templateObject36 || (_templateObject36 = _taggedTemplateLiteral(["Disco Smirk"]))));
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.use)((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.availableAmount)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$item)(_templateObject37 || (_templateObject37 = _taggedTemplateLiteral(["rhinestone"])))), (0,libram__WEBPACK_IMPORTED_MODULE_3__.$item)(_templateObject38 || (_templateObject38 = _taggedTemplateLiteral(["rhinestone"]))));
+  ensureEffect((0,dist.$effect)(stattests_templateObject25 || (stattests_templateObject25 = stattests_taggedTemplateLiteral(["Feeling Excited"]))));
+  (0,external_kolmafia_.useSkill)(1, (0,dist.$skill)(stattests_templateObject26 || (stattests_templateObject26 = stattests_taggedTemplateLiteral(["Bind Penne Dreadful"]))));
+  ensureEffect((0,dist.$effect)(stattests_templateObject27 || (stattests_templateObject27 = stattests_taggedTemplateLiteral(["Pomp & Circumsands"]))));
+  (0,external_kolmafia_.use)(1, (0,dist.$item)(stattests_templateObject28 || (stattests_templateObject28 = stattests_taggedTemplateLiteral(["Bird-a-Day calendar"]))));
+  ensureEffect((0,dist.$effect)(stattests_templateObject29 || (stattests_templateObject29 = stattests_taggedTemplateLiteral(["Blessing of the Bird"]))));
+  if ((0,dist.get)("_favoriteBirdVisited")) (0,external_kolmafia_.useSkill)((0,dist.$skill)(stattests_templateObject30 || (stattests_templateObject30 = stattests_taggedTemplateLiteral(["Visit your Favorite Bird"]))));
+  ensureEffect((0,dist.$effect)(stattests_templateObject31 || (stattests_templateObject31 = stattests_taggedTemplateLiteral(["Quiet Desperation"]))));
+  ensureEffect((0,dist.$effect)(stattests_templateObject32 || (stattests_templateObject32 = stattests_taggedTemplateLiteral(["Disco Fever"]))));
+  ensureEffect((0,dist.$effect)(stattests_templateObject33 || (stattests_templateObject33 = stattests_taggedTemplateLiteral(["Blubbered Up"]))));
+  ensureEffect((0,dist.$effect)(stattests_templateObject34 || (stattests_templateObject34 = stattests_taggedTemplateLiteral(["Mariachi Mood"]))));
+  ensureEffect((0,dist.$effect)(stattests_templateObject35 || (stattests_templateObject35 = stattests_taggedTemplateLiteral(["Disco State of Mind"]))));
+  ensureEffect((0,dist.$effect)(stattests_templateObject36 || (stattests_templateObject36 = stattests_taggedTemplateLiteral(["Disco Smirk"]))));
+  (0,external_kolmafia_.use)((0,external_kolmafia_.availableAmount)((0,dist.$item)(stattests_templateObject37 || (stattests_templateObject37 = stattests_taggedTemplateLiteral(["rhinestone"])))), (0,dist.$item)(stattests_templateObject38 || (stattests_templateObject38 = stattests_taggedTemplateLiteral(["rhinestone"]))));
 
-  if ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.availableAmount)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$item)(_templateObject39 || (_templateObject39 = _taggedTemplateLiteral(["dollop of barbecue sauce"])))) > 0) {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.use)(1, (0,libram__WEBPACK_IMPORTED_MODULE_3__.$item)(_templateObject40 || (_templateObject40 = _taggedTemplateLiteral(["dollop of barbecue sauce"]))));
+  if ((0,external_kolmafia_.availableAmount)((0,dist.$item)(stattests_templateObject39 || (stattests_templateObject39 = stattests_taggedTemplateLiteral(["dollop of barbecue sauce"])))) > 0) {
+    (0,external_kolmafia_.use)(1, (0,dist.$item)(stattests_templateObject40 || (stattests_templateObject40 = stattests_taggedTemplateLiteral(["dollop of barbecue sauce"]))));
   }
 
-  if ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.itemAmount)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$item)(_templateObject41 || (_templateObject41 = _taggedTemplateLiteral(["confiscated love note"])))) > 0) {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.use)(1, (0,libram__WEBPACK_IMPORTED_MODULE_3__.$item)(_templateObject42 || (_templateObject42 = _taggedTemplateLiteral(["confiscated love note"]))));
+  if ((0,external_kolmafia_.itemAmount)((0,dist.$item)(stattests_templateObject41 || (stattests_templateObject41 = stattests_taggedTemplateLiteral(["confiscated love note"])))) > 0) {
+    (0,external_kolmafia_.use)(1, (0,dist.$item)(stattests_templateObject42 || (stattests_templateObject42 = stattests_taggedTemplateLiteral(["confiscated love note"]))));
   }
 
-  if (!(0,libram__WEBPACK_IMPORTED_MODULE_3__.have)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$effect)(_templateObject43 || (_templateObject43 = _taggedTemplateLiteral(["Unrunnable Face"]))))) {
-    (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.tryUse)(1, (0,libram__WEBPACK_IMPORTED_MODULE_3__.$item)(_templateObject44 || (_templateObject44 = _taggedTemplateLiteral(["runproof mascara"]))));
+  if (!(0,dist.have)((0,dist.$effect)(stattests_templateObject43 || (stattests_templateObject43 = stattests_taggedTemplateLiteral(["Unrunnable Face"]))))) {
+    tryUse(1, (0,dist.$item)(stattests_templateObject44 || (stattests_templateObject44 = stattests_taggedTemplateLiteral(["runproof mascara"]))));
   }
 }
 
 function moxTestPrep() {
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.useFamiliar)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$familiar)(_templateObject45 || (_templateObject45 = _taggedTemplateLiteral(["Left-Hand Man"]))));
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.maximize)("moxie", false);
+  (0,external_kolmafia_.useFamiliar)((0,dist.$familiar)(stattests_templateObject45 || (stattests_templateObject45 = stattests_taggedTemplateLiteral(["Left-Hand Man"]))));
+  (0,external_kolmafia_.maximize)("moxie", false);
 
   if (moxPredictor() > 1) {
-    (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.ensureInnerElf)();
+    ensureInnerElf();
   }
 
-  (0,_outfits__WEBPACK_IMPORTED_MODULE_1__.moxieOutfit)();
+  moxieOutfit();
 }
 
 function moxTest() {
@@ -20908,27 +19706,27 @@ function moxTest() {
 }
 
 function hpBuffs() {
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.useSkill)(1, (0,libram__WEBPACK_IMPORTED_MODULE_3__.$skill)(_templateObject46 || (_templateObject46 = _taggedTemplateLiteral(["Bind Undead Elbow Macaroni"]))));
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.ensureEffect)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$effect)(_templateObject47 || (_templateObject47 = _taggedTemplateLiteral(["Big"]))));
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.ensureEffect)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$effect)(_templateObject48 || (_templateObject48 = _taggedTemplateLiteral(["Song of Starch"]))));
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.ensureEffect)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$effect)(_templateObject49 || (_templateObject49 = _taggedTemplateLiteral(["Rage of the Reindeer"]))));
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.ensureEffect)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$effect)(_templateObject50 || (_templateObject50 = _taggedTemplateLiteral(["Quiet Determination"]))));
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.ensureEffect)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$effect)(_templateObject51 || (_templateObject51 = _taggedTemplateLiteral(["Disdain of the War Snapper"]))));
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.ensureEffect)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$effect)(_templateObject52 || (_templateObject52 = _taggedTemplateLiteral(["Feeling Excited"]))));
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_2__.ensureEffect)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$effect)(_templateObject53 || (_templateObject53 = _taggedTemplateLiteral(["The Power of LOV"]))));
+  (0,external_kolmafia_.useSkill)(1, (0,dist.$skill)(stattests_templateObject46 || (stattests_templateObject46 = stattests_taggedTemplateLiteral(["Bind Undead Elbow Macaroni"]))));
+  ensureEffect((0,dist.$effect)(stattests_templateObject47 || (stattests_templateObject47 = stattests_taggedTemplateLiteral(["Big"]))));
+  ensureEffect((0,dist.$effect)(stattests_templateObject48 || (stattests_templateObject48 = stattests_taggedTemplateLiteral(["Song of Starch"]))));
+  ensureEffect((0,dist.$effect)(stattests_templateObject49 || (stattests_templateObject49 = stattests_taggedTemplateLiteral(["Rage of the Reindeer"]))));
+  ensureEffect((0,dist.$effect)(stattests_templateObject50 || (stattests_templateObject50 = stattests_taggedTemplateLiteral(["Quiet Determination"]))));
+  ensureEffect((0,dist.$effect)(stattests_templateObject51 || (stattests_templateObject51 = stattests_taggedTemplateLiteral(["Disdain of the War Snapper"]))));
+  ensureEffect((0,dist.$effect)(stattests_templateObject52 || (stattests_templateObject52 = stattests_taggedTemplateLiteral(["Feeling Excited"]))));
+  ensureEffect((0,dist.$effect)(stattests_templateObject53 || (stattests_templateObject53 = stattests_taggedTemplateLiteral(["The Power of LOV"]))));
 
-  if (!(0,libram__WEBPACK_IMPORTED_MODULE_3__.have)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$effect)(_templateObject54 || (_templateObject54 = _taggedTemplateLiteral(["Go Get 'Em, Tiger!"]))))) {
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.retrieveItem)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$item)(_templateObject55 || (_templateObject55 = _taggedTemplateLiteral(["Ben-Gal\u2122 Balm"]))));
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.use)(1, (0,libram__WEBPACK_IMPORTED_MODULE_3__.$item)(_templateObject56 || (_templateObject56 = _taggedTemplateLiteral(["Ben-Gal\u2122 Balm"]))));
+  if (!(0,dist.have)((0,dist.$effect)(stattests_templateObject54 || (stattests_templateObject54 = stattests_taggedTemplateLiteral(["Go Get 'Em, Tiger!"]))))) {
+    (0,external_kolmafia_.retrieveItem)((0,dist.$item)(stattests_templateObject55 || (stattests_templateObject55 = stattests_taggedTemplateLiteral(["Ben-Gal\u2122 Balm"]))));
+    (0,external_kolmafia_.use)(1, (0,dist.$item)(stattests_templateObject56 || (stattests_templateObject56 = stattests_taggedTemplateLiteral(["Ben-Gal\u2122 Balm"]))));
   }
 }
 
 var hpPredictor = function hpPredictor() {
-  return 60 - Math.floor(((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.myMaxhp)() - (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.myBuffedstat)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$stat)(_templateObject57 || (_templateObject57 = _taggedTemplateLiteral(["muscle"])))) - 3) / 30);
+  return 60 - Math.floor(((0,external_kolmafia_.myMaxhp)() - (0,external_kolmafia_.myBuffedstat)((0,dist.$stat)(stattests_templateObject57 || (stattests_templateObject57 = stattests_taggedTemplateLiteral(["muscle"])))) - 3) / 30);
 };
 
 function hpTestPrep() {
-  (0,_outfits__WEBPACK_IMPORTED_MODULE_1__.hpOutfit)();
+  hpOutfit();
 }
 
 function HPTest() {
@@ -20941,123 +19739,140 @@ function HPTest() {
 
   return hpPredictor();
 }
+;// CONCATENATED MODULE: ./src/weapon.ts
+var weapon_templateObject, weapon_templateObject2, weapon_templateObject3, weapon_templateObject4, weapon_templateObject5, weapon_templateObject6, weapon_templateObject7, weapon_templateObject8, weapon_templateObject9, weapon_templateObject10, weapon_templateObject11, weapon_templateObject12, weapon_templateObject13, weapon_templateObject14, weapon_templateObject15, weapon_templateObject16, weapon_templateObject17, weapon_templateObject18, weapon_templateObject19, weapon_templateObject20, weapon_templateObject21, weapon_templateObject22, weapon_templateObject23, weapon_templateObject24, weapon_templateObject25, weapon_templateObject26, weapon_templateObject27, weapon_templateObject28, weapon_templateObject29, weapon_templateObject30, weapon_templateObject31, weapon_templateObject32, weapon_templateObject33, weapon_templateObject34;
 
-/***/ }),
-
-/***/ "./src/weapon.ts":
-/*!***********************!*\
-  !*** ./src/weapon.ts ***!
-  \***********************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ weaponTest)
-/* harmony export */ });
-/* harmony import */ var kolmafia__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! kolmafia */ "kolmafia");
-/* harmony import */ var kolmafia__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(kolmafia__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var libram__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! libram */ "./node_modules/libram/dist/index.js");
-/* harmony import */ var libram__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(libram__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _phredhccs_lib__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./phredhccs-lib */ "./src/phredhccs-lib.ts");
-/* harmony import */ var _outfits__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./outfits */ "./src/outfits.ts");
-var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5, _templateObject6, _templateObject7, _templateObject8, _templateObject9, _templateObject10, _templateObject11, _templateObject12, _templateObject13, _templateObject14, _templateObject15, _templateObject16, _templateObject17, _templateObject18, _templateObject19, _templateObject20, _templateObject21, _templateObject22, _templateObject23, _templateObject24, _templateObject25, _templateObject26, _templateObject27, _templateObject28, _templateObject29, _templateObject30, _templateObject31, _templateObject32, _templateObject33, _templateObject34;
-
-function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+function weapon_taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 
 
 
 
 
-var predictor = function predictor() {
-  return 60 - Math.floor((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.numericModifier)("weapon damage") / 25 + 0.001) - Math.floor((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.numericModifier)("weapon damage percent") / 25 + 0.001);
+var weapon_predictor = function predictor() {
+  return 60 - Math.floor((0,external_kolmafia_.numericModifier)("weapon damage") / 25 + 0.001) - Math.floor((0,external_kolmafia_.numericModifier)("weapon damage percent") / 25 + 0.001);
 };
 
 function getCrushed() {
-  if (!(0,libram__WEBPACK_IMPORTED_MODULE_3__.have)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$effect)(_templateObject || (_templateObject = _taggedTemplateLiteral(["Do You Crush What I Crush?"]))))) {
-    if ((0,libram__WEBPACK_IMPORTED_MODULE_3__.have)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$effect)(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["Holiday Yoked"])))) && (0,libram__WEBPACK_IMPORTED_MODULE_3__.have)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$item)(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["soft green echo eyedrop antidote"]))))) {
-      (0,libram__WEBPACK_IMPORTED_MODULE_3__.uneffect)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$effect)(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["Holiday Yoked"]))));
+  if (!(0,dist.have)((0,dist.$effect)(weapon_templateObject || (weapon_templateObject = weapon_taggedTemplateLiteral(["Do You Crush What I Crush?"]))))) {
+    if ((0,dist.have)((0,dist.$effect)(weapon_templateObject2 || (weapon_templateObject2 = weapon_taggedTemplateLiteral(["Holiday Yoked"])))) && (0,dist.have)((0,dist.$item)(weapon_templateObject3 || (weapon_templateObject3 = weapon_taggedTemplateLiteral(["soft green echo eyedrop antidote"]))))) {
+      (0,dist.uneffect)((0,dist.$effect)(weapon_templateObject4 || (weapon_templateObject4 = weapon_taggedTemplateLiteral(["Holiday Yoked"]))));
     }
 
-    if (!(0,libram__WEBPACK_IMPORTED_MODULE_3__.have)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$effect)(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["Holiday Yoked"]))))) {
-      (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.useFamiliar)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$familiar)(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["Ghost of Crimbo Carols"]))));
-      (0,_outfits__WEBPACK_IMPORTED_MODULE_2__.default)();
+    if (!(0,dist.have)((0,dist.$effect)(weapon_templateObject5 || (weapon_templateObject5 = weapon_taggedTemplateLiteral(["Holiday Yoked"]))))) {
+      (0,external_kolmafia_.useFamiliar)((0,dist.$familiar)(weapon_templateObject6 || (weapon_templateObject6 = weapon_taggedTemplateLiteral(["Ghost of Crimbo Carols"]))));
+      uniform();
 
-      if ((0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_1__.horsery)().includes("pale")) {
-        (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_1__.horse)("dark");
+      if (horsery().includes("pale")) {
+        horse("dark");
       }
 
-      (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_1__.advMacroAA)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$location)(_templateObject7 || (_templateObject7 = _taggedTemplateLiteral(["The Dire Warren"]))), libram__WEBPACK_IMPORTED_MODULE_3__.Macro.skill((0,libram__WEBPACK_IMPORTED_MODULE_3__.$skill)(_templateObject8 || (_templateObject8 = _taggedTemplateLiteral(["Feel Hatred"])))));
+      advMacroAA((0,dist.$location)(weapon_templateObject7 || (weapon_templateObject7 = weapon_taggedTemplateLiteral(["The Dire Warren"]))), dist.Macro.skill((0,dist.$skill)(weapon_templateObject8 || (weapon_templateObject8 = weapon_taggedTemplateLiteral(["Feel Hatred"])))));
     }
   }
 }
 
-function castBuffs() {
-  (0,libram__WEBPACK_IMPORTED_MODULE_3__.$effects)(_templateObject9 || (_templateObject9 = _taggedTemplateLiteral(["Carol of the Bulls, Song of the North, Rage of the Reindeer, Scowl of the Auk, Disdain of the War Snapper, Tenacity of the Snapper, Billiards Belligerence, Blessing of the Bird"]))).forEach(function (effect) {
-    return (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_1__.ensureEffect)(effect);
+function weapon_castBuffs() {
+  (0,dist.$effects)(weapon_templateObject9 || (weapon_templateObject9 = weapon_taggedTemplateLiteral(["Carol of the Bulls, Song of the North, Rage of the Reindeer, Scowl of the Auk, Disdain of the War Snapper, Tenacity of the Snapper, Billiards Belligerence, Blessing of the Bird"]))).forEach(function (effect) {
+    return ensureEffect(effect);
   });
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_1__.ensureEffect)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$effect)(_templateObject10 || (_templateObject10 = _taggedTemplateLiteral(["Frenzied, Bloody"]))));
-  if ((0,libram__WEBPACK_IMPORTED_MODULE_3__.have)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$item)(_templateObject11 || (_templateObject11 = _taggedTemplateLiteral(["LOV Elixir #3"]))))) (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.use)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$item)(_templateObject12 || (_templateObject12 = _taggedTemplateLiteral(["LOV Elixir #3"]))));
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_1__.tryHead)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$effect)(_templateObject13 || (_templateObject13 = _taggedTemplateLiteral(["Lack of Body-Building"]))));
+  ensureEffect((0,dist.$effect)(weapon_templateObject10 || (weapon_templateObject10 = weapon_taggedTemplateLiteral(["Frenzied, Bloody"]))));
+  if ((0,dist.have)((0,dist.$item)(weapon_templateObject11 || (weapon_templateObject11 = weapon_taggedTemplateLiteral(["LOV Elixir #3"]))))) (0,external_kolmafia_.use)((0,dist.$item)(weapon_templateObject12 || (weapon_templateObject12 = weapon_taggedTemplateLiteral(["LOV Elixir #3"]))));
+  tryHead((0,dist.$effect)(weapon_templateObject13 || (weapon_templateObject13 = weapon_taggedTemplateLiteral(["Lack of Body-Building"]))));
 }
 
 function forceSpit() {
-  if (!(0,libram__WEBPACK_IMPORTED_MODULE_3__.get)("_photocopyUsed")) {
-    (0,_outfits__WEBPACK_IMPORTED_MODULE_2__.default)();
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.useFamiliar)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$familiar)(_templateObject14 || (_templateObject14 = _taggedTemplateLiteral(["Melodramedary"]))));
-    (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_1__.setChoice)(1387, 3);
-    libram__WEBPACK_IMPORTED_MODULE_3__.Macro.trySkill((0,libram__WEBPACK_IMPORTED_MODULE_3__.$skill)(_templateObject15 || (_templateObject15 = _taggedTemplateLiteral(["%fn, spit on me!"])))).skill((0,libram__WEBPACK_IMPORTED_MODULE_3__.$skill)(_templateObject16 || (_templateObject16 = _taggedTemplateLiteral(["Use the Force"])))).setAutoAttack();
-    (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_1__.fax)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$monster)(_templateObject17 || (_templateObject17 = _taggedTemplateLiteral(["ungulith"]))));
-    (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.use)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$item)(_templateObject18 || (_templateObject18 = _taggedTemplateLiteral(["photocopied monster"]))));
-    if ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.handlingChoice)()) (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.runChoice)(-1);
+  if (!(0,dist.get)("_photocopyUsed")) {
+    uniform();
+    (0,external_kolmafia_.useFamiliar)((0,dist.$familiar)(weapon_templateObject14 || (weapon_templateObject14 = weapon_taggedTemplateLiteral(["Melodramedary"]))));
+    setChoice(1387, 3);
+    dist.Macro.trySkill((0,dist.$skill)(weapon_templateObject15 || (weapon_templateObject15 = weapon_taggedTemplateLiteral(["%fn, spit on me!"])))).skill((0,dist.$skill)(weapon_templateObject16 || (weapon_templateObject16 = weapon_taggedTemplateLiteral(["Use the Force"])))).setAutoAttack();
+    fax((0,dist.$monster)(weapon_templateObject17 || (weapon_templateObject17 = weapon_taggedTemplateLiteral(["ungulith"]))));
+    (0,external_kolmafia_.use)((0,dist.$item)(weapon_templateObject18 || (weapon_templateObject18 = weapon_taggedTemplateLiteral(["photocopied monster"]))));
+    if ((0,external_kolmafia_.handlingChoice)()) (0,external_kolmafia_.runChoice)(-1);
   }
 }
 
 function kungFuMeteors() {
-  if (!(0,libram__WEBPACK_IMPORTED_MODULE_3__.have)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$effect)(_templateObject19 || (_templateObject19 = _taggedTemplateLiteral(["Meteor Showered"])))) && (0,libram__WEBPACK_IMPORTED_MODULE_3__.get)("_meteorShowerUses") < 5) {
-    (0,_outfits__WEBPACK_IMPORTED_MODULE_2__.default)();
+  if (!(0,dist.have)((0,dist.$effect)(weapon_templateObject19 || (weapon_templateObject19 = weapon_taggedTemplateLiteral(["Meteor Showered"])))) && (0,dist.get)("_meteorShowerUses") < 5) {
+    uniform();
 
-    if ((0,libram__WEBPACK_IMPORTED_MODULE_3__.have)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$familiar)(_templateObject20 || (_templateObject20 = _taggedTemplateLiteral(["Disembodied Hand"]))))) {
-      (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.useFamiliar)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$familiar)(_templateObject21 || (_templateObject21 = _taggedTemplateLiteral(["Disembodied Hand"]))));
-      (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.equip)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$slot)(_templateObject22 || (_templateObject22 = _taggedTemplateLiteral(["weapon"]))), (0,libram__WEBPACK_IMPORTED_MODULE_3__.$item)(_templateObject23 || (_templateObject23 = _taggedTemplateLiteral(["none"]))));
-      (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.equip)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$slot)(_templateObject24 || (_templateObject24 = _taggedTemplateLiteral(["off-hand"]))), (0,libram__WEBPACK_IMPORTED_MODULE_3__.$item)(_templateObject25 || (_templateObject25 = _taggedTemplateLiteral(["none"]))));
-      (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.equip)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$slot)(_templateObject26 || (_templateObject26 = _taggedTemplateLiteral(["familiar"]))), (0,libram__WEBPACK_IMPORTED_MODULE_3__.$item)(_templateObject27 || (_templateObject27 = _taggedTemplateLiteral(["Fourth of May Cosplay Saber"]))));
+    if ((0,dist.have)((0,dist.$familiar)(weapon_templateObject20 || (weapon_templateObject20 = weapon_taggedTemplateLiteral(["Disembodied Hand"]))))) {
+      (0,external_kolmafia_.useFamiliar)((0,dist.$familiar)(weapon_templateObject21 || (weapon_templateObject21 = weapon_taggedTemplateLiteral(["Disembodied Hand"]))));
+      (0,external_kolmafia_.equip)((0,dist.$slot)(weapon_templateObject22 || (weapon_templateObject22 = weapon_taggedTemplateLiteral(["weapon"]))), (0,dist.$item)(weapon_templateObject23 || (weapon_templateObject23 = weapon_taggedTemplateLiteral(["none"]))));
+      (0,external_kolmafia_.equip)((0,dist.$slot)(weapon_templateObject24 || (weapon_templateObject24 = weapon_taggedTemplateLiteral(["off-hand"]))), (0,dist.$item)(weapon_templateObject25 || (weapon_templateObject25 = weapon_taggedTemplateLiteral(["none"]))));
+      (0,external_kolmafia_.equip)((0,dist.$slot)(weapon_templateObject26 || (weapon_templateObject26 = weapon_taggedTemplateLiteral(["familiar"]))), (0,dist.$item)(weapon_templateObject27 || (weapon_templateObject27 = weapon_taggedTemplateLiteral(["Fourth of May Cosplay Saber"]))));
     } else {
-      (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_1__.useDefaultFamiliar)(false);
+      useDefaultFamiliar(false);
     }
 
-    (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_1__.setChoice)(1387, 3);
-    (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_1__.advMacroAA)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$location)(_templateObject28 || (_templateObject28 = _taggedTemplateLiteral(["The Neverending Party"]))), libram__WEBPACK_IMPORTED_MODULE_3__.Macro.skill((0,libram__WEBPACK_IMPORTED_MODULE_3__.$skill)(_templateObject29 || (_templateObject29 = _taggedTemplateLiteral(["Meteor Shower"])))).skill((0,libram__WEBPACK_IMPORTED_MODULE_3__.$skill)(_templateObject30 || (_templateObject30 = _taggedTemplateLiteral(["Use the Force"])))));
-    if ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.handlingChoice)()) (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.runChoice)(-1);
-    (0,libram__WEBPACK_IMPORTED_MODULE_3__.set)("_meteorShowerUses", 1 + (0,libram__WEBPACK_IMPORTED_MODULE_3__.get)("_meteorShowerUses"));
+    setChoice(1387, 3);
+    advMacroAA((0,dist.$location)(weapon_templateObject28 || (weapon_templateObject28 = weapon_taggedTemplateLiteral(["The Neverending Party"]))), dist.Macro.skill((0,dist.$skill)(weapon_templateObject29 || (weapon_templateObject29 = weapon_taggedTemplateLiteral(["Meteor Shower"])))).skill((0,dist.$skill)(weapon_templateObject30 || (weapon_templateObject30 = weapon_taggedTemplateLiteral(["Use the Force"])))));
+    if ((0,external_kolmafia_.handlingChoice)()) (0,external_kolmafia_.runChoice)(-1);
+    (0,dist.set)("_meteorShowerUses", 1 + (0,dist.get)("_meteorShowerUses"));
   }
 }
 
-function testPrep() {
-  if ((0,libram__WEBPACK_IMPORTED_MODULE_3__.have)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$item)(_templateObject31 || (_templateObject31 = _taggedTemplateLiteral(["corrupted marrow"]))))) (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.use)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$item)(_templateObject32 || (_templateObject32 = _taggedTemplateLiteral(["corrupted marrow"]))));
-  if (!(0,libram__WEBPACK_IMPORTED_MODULE_3__.get)("_bowleggedSwaggerUsed")) (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.useSkill)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$skill)(_templateObject33 || (_templateObject33 = _taggedTemplateLiteral(["Bow-Legged Swagger"]))));
-  (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.useFamiliar)((0,libram__WEBPACK_IMPORTED_MODULE_3__.$familiar)(_templateObject34 || (_templateObject34 = _taggedTemplateLiteral(["Disembodied Hand"]))));
-  (0,_outfits__WEBPACK_IMPORTED_MODULE_2__.weaponOutfit)();
+function weapon_testPrep() {
+  if ((0,dist.have)((0,dist.$item)(weapon_templateObject31 || (weapon_templateObject31 = weapon_taggedTemplateLiteral(["corrupted marrow"]))))) (0,external_kolmafia_.use)((0,dist.$item)(weapon_templateObject32 || (weapon_templateObject32 = weapon_taggedTemplateLiteral(["corrupted marrow"]))));
+  if (!(0,dist.get)("_bowleggedSwaggerUsed")) (0,external_kolmafia_.useSkill)((0,dist.$skill)(weapon_templateObject33 || (weapon_templateObject33 = weapon_taggedTemplateLiteral(["Bow-Legged Swagger"]))));
+  (0,external_kolmafia_.useFamiliar)((0,dist.$familiar)(weapon_templateObject34 || (weapon_templateObject34 = weapon_taggedTemplateLiteral(["Disembodied Hand"]))));
+  weaponOutfit();
 }
 
 function weaponTest() {
-  castBuffs();
+  weapon_castBuffs();
   getCrushed();
   forceSpit();
-  (0,_phredhccs_lib__WEBPACK_IMPORTED_MODULE_1__.ensureInnerElf)();
+  ensureInnerElf();
   kungFuMeteors();
-  testPrep();
-  if (predictor() > 1) throw "Failed to cap weapon damage!";
-  return predictor();
+  weapon_testPrep();
+  if (weapon_predictor() > 1) throw "Failed to cap weapon damage!";
+  return weapon_predictor();
+}
+;// CONCATENATED MODULE: ./src/index.ts
+
+
+
+
+
+
+
+
+
+
+ //preamble
+
+if ((0,external_kolmafia_.myPathId)() !== 25) (0,external_kolmafia_.abort)();
+(0,external_kolmafia_.visitUrl)("council.php");
+(0,external_kolmafia_.cliExecute)("ccs twiddle");
+var startTime = (0,external_kolmafia_.gametimeToInt)();
+
+try {
+  testWrapper("wire-coiling", Test.COIL_WIRE, coilWire);
+  if ((0,external_kolmafia_.myLevel)() < 13) levelUp();
+  testWrapper("moxie", Test.MOX, moxTest);
+  testWrapper("HP", Test.HP, HPTest);
+  testWrapper("muscle", Test.MUS, muscleTest);
+  testWrapper("mysticality", Test.MYS, mystTest);
+  testWrapper("item", Test.ITEM, itemTest);
+  testWrapper("hot res", Test.HOT_RES, hotTest);
+  testWrapper("noncombat", Test.NONCOMBAT, noncombatTest);
+  testWrapper("familiar", Test.FAMILIAR, familiarTest);
+  testWrapper("weapon damage", Test.WEAPON, weaponTest);
+  testWrapper("spell damage", Test.SPELL, spellTest);
+} finally {
+  tests.forEach(function (testDuration) {
+    (0,external_kolmafia_.print)("We expected the ".concat(testDuration.testName, " test to take ").concat(testDuration.turnPrediction, " turns, and it cost ").concat(testDuration.turnCost, " turns."), "blue");
+  });
+  (0,external_kolmafia_.print)("This loop took ".concat(convertMilliseconds((0,external_kolmafia_.gametimeToInt)() - startTime), ", assuming it ran contiguously. Otherwise, this run of the program lasted that much time. Hope whatever number you see is good!"), "red");
+  (0,external_kolmafia_.setAutoAttack)(0);
+  PropertyManager.resetAll();
 }
 
 /***/ }),
 
-/***/ "kolmafia":
-/*!***************************!*\
-  !*** external "kolmafia" ***!
-  \***************************/
+/***/ 1664:
 /***/ ((module) => {
 
 "use strict";
@@ -21098,30 +19913,6 @@ module.exports = require("kolmafia");
 /******/ 	__webpack_require__.c = __webpack_module_cache__;
 /******/ 	
 /************************************************************************/
-/******/ 	/* webpack/runtime/compat get default export */
-/******/ 	(() => {
-/******/ 		// getDefaultExport function for compatibility with non-harmony modules
-/******/ 		__webpack_require__.n = (module) => {
-/******/ 			var getter = module && module.__esModule ?
-/******/ 				() => (module['default']) :
-/******/ 				() => (module);
-/******/ 			__webpack_require__.d(getter, { a: getter });
-/******/ 			return getter;
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/define property getters */
-/******/ 	(() => {
-/******/ 		// define getter functions for harmony exports
-/******/ 		__webpack_require__.d = (exports, definition) => {
-/******/ 			for(var key in definition) {
-/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
-/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
-/******/ 				}
-/******/ 			}
-/******/ 		};
-/******/ 	})();
-/******/ 	
 /******/ 	/* webpack/runtime/global */
 /******/ 	(() => {
 /******/ 		__webpack_require__.g = (function() {
@@ -21132,11 +19923,6 @@ module.exports = require("kolmafia");
 /******/ 				if (typeof window === 'object') return window;
 /******/ 			}
 /******/ 		})();
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
-/******/ 	(() => {
-/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/make namespace object */
@@ -21164,7 +19950,7 @@ module.exports = require("kolmafia");
 /******/ 	// module cache are used so entry inlining is disabled
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
-/******/ 	var __webpack_exports__ = __webpack_require__(__webpack_require__.s = "./src/index.ts");
+/******/ 	var __webpack_exports__ = __webpack_require__(__webpack_require__.s = 2817);
 /******/ 	var __webpack_export_target__ = exports;
 /******/ 	for(var i in __webpack_exports__) __webpack_export_target__[i] = __webpack_exports__[i];
 /******/ 	if(__webpack_exports__.__esModule) Object.defineProperty(__webpack_export_target__, "__esModule", { value: true });
