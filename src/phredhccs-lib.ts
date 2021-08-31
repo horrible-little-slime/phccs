@@ -260,7 +260,7 @@ export function useDefaultFamiliar(canAttack = true): void {
         canAttack &&
         !have($item`short stack of pancakes`) &&
         !have($effect`Shortly Stacked`) &&
-        !testDone(Test.FAMILIAR)
+        !get("csServicesPerformed").split(",").includes("Breed More Collies")
     ) {
         useFamiliar($familiar`Shorter-Order Cook`);
     } else if (!have($item`burning newspaper`) && !have($item`burning paper crane`)) {
