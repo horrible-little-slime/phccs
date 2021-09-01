@@ -24,6 +24,12 @@ if (myPathId() !== 25) abort();
 visitUrl("council.php");
 cliExecute("ccs twiddle");
 
+PropertyManager.set({
+    customCombatScript: "twiddle",
+    battleAction: "custom combat script",
+    dontStopForCounters: true,
+    logPreferenceChange: false,
+});
 const startTime = gametimeToInt();
 try {
     testWrapper("wire-coiling", Test.COIL_WIRE, coilWire);
