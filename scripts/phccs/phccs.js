@@ -19565,6 +19565,12 @@ function weaponTest() {
 if ((0,external_kolmafia_.myPathId)() !== 25) (0,external_kolmafia_.abort)();
 (0,external_kolmafia_.visitUrl)("council.php");
 (0,external_kolmafia_.cliExecute)("ccs twiddle");
+PropertyManager.set({
+  customCombatScript: "twiddle",
+  battleAction: "custom combat script",
+  dontStopForCounters: true,
+  logPreferenceChange: false
+});
 var startTime = (0,external_kolmafia_.gametimeToInt)();
 
 try {
