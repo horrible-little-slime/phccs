@@ -89,7 +89,7 @@ function moxBuffs() {
     use(1, $item`Bird-a-Day calendar`);
     ensureEffect($effect`Blessing of the Bird`);
 
-    if (get("_favoriteBirdVisited")) useSkill($skill`Visit your Favorite Bird`);
+    if (!get("_favoriteBirdVisited")) useSkill($skill`Visit your Favorite Bird`);
 
     ensureEffect($effect`Quiet Desperation`);
     ensureEffect($effect`Disco Fever`);
