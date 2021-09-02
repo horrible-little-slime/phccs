@@ -113,7 +113,7 @@ function prepGear() {
         cliExecute("boombox meat");
     }
 
-    cliExecute("briefcase enchantment weapon hot -combat");
+    cliExecute("briefcase enchantment weapon -combat");
 }
 
 function vote() {

@@ -11,28 +11,19 @@ import {
     myMaxhp,
     myMp,
     numericModifier,
+    runChoice,
     use,
     useFamiliar,
     useSkill,
+    visitUrl,
 } from "kolmafia";
-import {
-    $effect,
-    $familiar,
-    $item,
-    $location,
-    $monster,
-    $skill,
-    $slot,
-    get,
-    have,
-    Macro,
-} from "libram";
+import { $effect, $familiar, $item, $location, $skill, $slot, get, have, Macro } from "libram";
 import { universalWeightBuffs } from "./familiarweight";
 import {
+    advMacroAA,
     ensureEffect,
     fuelUp,
     horse,
-    mapMacro,
     synthHot,
     tryHead,
     useDefaultFamiliar,
@@ -72,19 +63,20 @@ function castBuffs() {
     }
 }
 
-function itsHerFactory() {
+function thisFireIsOutOfControl() {
     uniform();
     useDefaultFamiliar(false);
-    if (get("_monstersMapped") < 3 && !have($item`lava-proof pants`)) {
-        equip($slot`back`, $item`vampyric cloake`);
+    if (get("_saberForceUses") < 5 && !have($effect`Fireproof Foam Suit`)) {
+        equip($slot`off-hand`, $item`industrial fire extinguisher`);
         useDefaultFamiliar(false);
-        while (getFuel() < 137) fuelUp();
-        mapMacro(
-            $location`LavaCo™ Lamp Factory`,
-            $monster`factory worker (female)`,
-            Macro.skill($skill`Become a Cloud of Mist`).skill(
-                $skill`Asdon Martin: Missile Launcher`
-            )
+        advMacroAA(
+            $location`noob cave`,
+            Macro.skill($skill`Fire Extinguisher: Foam Yourself`).skill($skill`use the force`),
+            () => !have($effect`Fireproof Foam Suit`),
+            () => {
+                visitUrl("choice.php");
+                runChoice(3);
+            }
         );
     }
 }
@@ -139,7 +131,7 @@ function testPrep() {
 
 export default function hotTest(): number {
     castBuffs();
-    itsHerFactory();
+    thisFireIsOutOfControl();
     deepDarkVisions();
     testPrep();
     return predictor();

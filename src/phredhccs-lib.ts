@@ -64,7 +64,7 @@ export function synthExp(): void {
     if (get("harvestGardenHardcore") === "none") {
         visitUrl("campground.php?action=garden");
     }
-    if (get("_candySummons") === 0) {
+    if (!get("_candySummons")) {
         useSkill(1, $skill`Summon Crimbo Candy`);
     }
     const fudge = $item`Crimbo fudge`;
@@ -82,7 +82,8 @@ export function synthExp(): void {
             sweetSynthesis(bark, $item`peppermint sprout`);
         }
     } else {
-        if (availableAmount($item`sugar shotgun`) === 0) {
+        if (!have($item`sugar shotgun`)) {
+            if (!have($item`sugar sheet`)) create(1, $item`sugar sheet`);
             create(1, $item`sugar shotgun`);
         }
         if (pecans >= 1) {
@@ -91,7 +92,7 @@ export function synthExp(): void {
             sweetSynthesis($item`sugar shotgun`, $item`peppermint sprout`);
         }
     }
-    if (haveEffect($effect`Synthesis: Learning`) === 0) {
+    if (!have($effect`Synthesis: Learning`)) {
         throw "I'm very embarrassed, and I'm sorry to admit it, but I failed to synthesize learning. Pwease fix me :c.";
     }
 }
@@ -100,7 +101,7 @@ export function synthItem(): void {
     if (get("harvestGardenHardcore") === "none") {
         visitUrl("campground.php?action=garden");
     }
-    if (get("_candySummons") === 0) {
+    if (!get("_candySummons")) {
         useSkill(1, $skill`Summon Crimbo Candy`);
     }
     //const fudge = $item`Crimbo fudge`;
@@ -112,7 +113,7 @@ export function synthItem(): void {
     if (barks >= 2) {
         sweetSynthesis(bark, bark);
     } else {
-        if (availableAmount($item`peppermint twist`) === 0) {
+        if (!have($item`peppermint twist`)) {
             create(1, $item`peppermint twist`);
         }
         if (pecans >= 1) {
@@ -121,7 +122,7 @@ export function synthItem(): void {
             sweetSynthesis($item`peppermint sprout`, $item`peppermint twist`);
         }
     }
-    if (haveEffect($effect`Synthesis: Collection`) === 0) {
+    if (!have($effect`Synthesis: Collection`)) {
         throw "I'm very embarrassed, and I'm sorry to admit it, but I failed to synthesize collection. Pwease fix me :c.";
     }
 }
@@ -130,7 +131,7 @@ export function synthMyst(): void {
     if (get("harvestGardenHardcore") === "none") {
         visitUrl("campground.php?action=garden");
     }
-    if (get("_candySummons") === 0) {
+    if (!get("_candySummons")) {
         useSkill(1, $skill`Summon Crimbo Candy`);
     }
     //const fudge = $item`Crimbo fudge`;
@@ -139,7 +140,7 @@ export function synthMyst(): void {
     //const fudges = availableAmount(fudge);
     //const pecans = availableAmount(pecan);
     //const barks = availableAmount(bark);
-    if (availableAmount($item`bag of many confections`) >= 1) {
+    if (have($item`bag of many confections`)) {
         if (!get("_chubbyAndPlumpUsed")) {
             useSkill(1, $skill`Chubby and Plump`);
         }
@@ -164,7 +165,7 @@ export function synthMyst(): void {
         } else if (orangeHearts() >= 1) {
             sweetSynthesis(orangeHeart, $item`peppermint sprout`);
         } else if (pinkHearts() >= 1) {
-            if (availableAmount($item`peppermint twist`) === 0) {
+            if (!have($item`peppermint twist`)) {
                 create(1, $item`peppermint twist`);
             }
             sweetSynthesis(pinkHeart, $item`peppermint twist`);
