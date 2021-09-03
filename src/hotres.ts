@@ -68,7 +68,7 @@ function thisFireIsOutOfControl() {
     if (get("_saberForceUses") < 5 && !have($effect`Fireproof Foam Suit`)) {
         // eslint-disable-next-line libram/verify-constants
         equip($slot`off-hand`, $item`industrial fire extinguisher`);
-        useDefaultFamiliar(false);
+        useFamiliar($familiar`none`);
         advMacroAA(
             $location`Noob Cave`,
             // eslint-disable-next-line libram/verify-constants
