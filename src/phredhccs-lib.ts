@@ -512,3 +512,16 @@ export function ensureMp(mp: number): void {
 export const maximizeFamiliar = have($familiar`Disembodied Hand`)
     ? $familiar`Disembodied Hand`
     : $familiar`Left-Hand Man`;
+
+export function burnLibrams(): void {
+    if (
+        !get("csServicesPerformed").split(",").includes("Breed More Collies") &&
+        !have($item`green candy heart`) &&
+        !have($item`lavender candy heart`) &&
+        have($skill`Summon Candy Heart`)
+    ) {
+        cliExecute("/cast * candy heart");
+    } else {
+        cliExecute("/cast * love song");
+    }
+}

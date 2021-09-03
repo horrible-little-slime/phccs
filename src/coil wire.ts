@@ -1,8 +1,8 @@
-import { cliExecute, create, eat, equip } from "kolmafia";
+import { create, eat, equip } from "kolmafia";
 import { $item, $location, $skill, $slot, get, have, Macro } from "libram";
 import uniform, { wireOutfit } from "./outfits";
 import { delevel, easyFight } from "./phccs-macros";
-import { advMacro, fightSausageIfAble, useDefaultFamiliar } from "./phredhccs-lib";
+import { advMacro, burnLibrams, fightSausageIfAble, useDefaultFamiliar } from "./phredhccs-lib";
 import { runStart } from "./runstart";
 
 function firstFights() {
@@ -43,6 +43,6 @@ export default function coilWire(): number {
     runStart();
     firstFights();
     wireOutfit();
-    cliExecute("/cast * candy heart");
+    burnLibrams();
     return 60;
 }

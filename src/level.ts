@@ -42,6 +42,7 @@ import { candyblast, defaultKill, delevel, easyFight } from "./phccs-macros";
 import {
     advMacro,
     advMacroAA,
+    burnLibrams,
     ensureEffect,
     ensureInnerElf,
     ensureMp,
@@ -247,7 +248,7 @@ function lov() {
         );
         use(1, $item`LOV Extraterrestrial Chocolate`);
     }
-    cliExecute("/cast * candy heart");
+    burnLibrams();
 }
 
 function tomatoJuiceAndNinjaCostume() {
@@ -485,7 +486,7 @@ function royalty() {
 
 function restAndBuff() {
     while (get("timesRested") < totalFreeRests()) {
-        cliExecute("/cast * candy heart");
+        burnLibrams();
         visitUrl("place.php?whichplace=chateau&action=chateau_restbox");
     }
 }
