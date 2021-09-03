@@ -2,9 +2,7 @@ import {
     cliExecute,
     create,
     familiarWeight,
-    itemAmount,
     myFamiliar,
-    numericModifier,
     runChoice,
     use,
     useFamiliar,
@@ -106,14 +104,8 @@ function takeAShower() {
 function testPrep() {
     famweightOutfit();
     if (have($item`silver face paint`)) ensureEffect($effect`Robot Friends`);
-    if (
-        itemAmount($item`love song of icy revenge`) >=
-        5 - (numericModifier("Familiar Weight") % 5)
-    ) {
-        use(5 - (numericModifier("Familiar Weight") % 5), $item`love song of icy revenge`);
-    }
-    while (have($item`love song of icy revenge`, 5) && !have($effect`Cold Hearted`, 6)) {
-        use(5, $item`love song of icy revenge`);
+    while (have($item`love song of icy revenge`) && !have($effect`Cold Hearted`, 20)) {
+        use($item`love song of icy revenge`);
     }
 }
 
