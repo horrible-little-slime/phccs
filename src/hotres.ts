@@ -24,7 +24,6 @@ import {
     ensureEffect,
     fuelUp,
     horse,
-    synthHot,
     tryHead,
     useDefaultFamiliar,
 } from "./phredhccs-lib";
@@ -35,7 +34,6 @@ function castBuffs() {
     universalWeightBuffs();
 
     tryHead($effect`Hot-Headed`);
-    if (!have($effect`Synthesis: Hot`)) synthHot();
 
     if (!have($item`tenderizing hammer`)) {
         buy(1, $item`tenderizing hammer`);
@@ -66,12 +64,16 @@ function castBuffs() {
 function thisFireIsOutOfControl() {
     uniform();
     useDefaultFamiliar(false);
+    // eslint-disable-next-line libram/verify-constants
     if (get("_saberForceUses") < 5 && !have($effect`Fireproof Foam Suit`)) {
+        // eslint-disable-next-line libram/verify-constants
         equip($slot`off-hand`, $item`industrial fire extinguisher`);
         useDefaultFamiliar(false);
         advMacroAA(
-            $location`noob cave`,
-            Macro.skill($skill`Fire Extinguisher: Foam Yourself`).skill($skill`use the force`),
+            $location`Noob Cave`,
+            // eslint-disable-next-line libram/verify-constants
+            Macro.skill($skill`Fire Extinguisher: Foam Yourself`).skill($skill`Use the Force`),
+            // eslint-disable-next-line libram/verify-constants
             () => !have($effect`Fireproof Foam Suit`),
             () => {
                 visitUrl("choice.php");
