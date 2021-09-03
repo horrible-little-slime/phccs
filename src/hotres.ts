@@ -19,14 +19,7 @@ import {
 } from "kolmafia";
 import { $effect, $familiar, $item, $location, $skill, $slot, get, have, Macro } from "libram";
 import { universalWeightBuffs } from "./familiarweight";
-import {
-    advMacroAA,
-    ensureEffect,
-    fuelUp,
-    horse,
-    tryHead,
-    useDefaultFamiliar,
-} from "./phredhccs-lib";
+import { advMacroAA, ensureEffect, fuelUp, horse, tryHead } from "./phredhccs-lib";
 import uniform, { hotresOutfit } from "./outfits";
 const predictor = () => 60 - numericModifier("hot resistance");
 
@@ -62,10 +55,9 @@ function castBuffs() {
 }
 
 function thisFireIsOutOfControl() {
-    uniform();
-    useDefaultFamiliar(false);
     // eslint-disable-next-line libram/verify-constants
     if (get("_saberForceUses") < 5 && !have($effect`Fireproof Foam Suit`)) {
+        uniform();
         // eslint-disable-next-line libram/verify-constants
         equip($slot`off-hand`, $item`industrial fire extinguisher`);
         useFamiliar($familiar`none`);
