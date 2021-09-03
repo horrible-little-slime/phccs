@@ -227,11 +227,12 @@ export function hotresOutfit(): void {
     Outfit.doYourBest(
         new Map<Slot, Item | Item[]>([
             [$slot`back`, $item`unwrapped knock-off retro superhero cape`],
+            [$slot`weapon`, $item`Fourth of May Cosplay Saber`],
             [$slot`off-hand`, $item`meteorite guard`],
-            [$slot`pants`, $item`lava-proof pants`],
+            [$slot`pants`, $item`pantogram pants`],
             [$slot`acc1`, $item`your cowboy boots`],
-            [$slot`acc2`, $item`heat-resistant gloves`],
-            [$slot`acc3`, $item`Kremlin's Greatest Briefcase`],
+            [$slot`acc2`, $item`Brutal brogues`],
+            [$slot`acc3`, $item`Beach Comb`],
             [$slot`familiar`, $items`cracker`],
         ]),
         $familiar`Exotic Parrot`
