@@ -8,7 +8,6 @@ At present, PHCCS requires the following iotms/expensive old items to operate:
  * Peppermint Garden
  * Asdon Martin
  * Chateau (no monster needed, but it should be set to ceiling fan/foreign language tapes/juice bar)
- * Volcano
  * Mumming Trunk
  * Camel
  * Stocking Mimic
@@ -31,7 +30,6 @@ At present, PHCCS requires the following iotms/expensive old items to operate:
  * Garbage Tote
  * Emo Chip
  * LOV
- * Candy Hearts
  * Meteors
  * Candyblast
  * Protonpack
@@ -59,6 +57,8 @@ At present, PHCCS requires the following iotms/expensive old items to operate:
  * Deck
  * Ghosts
  * God Lobster
+ * Love Songs
+ * Fire Extinguisher
  
  It also really appreciates it if you have:
   * Disembodied Hand
