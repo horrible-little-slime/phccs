@@ -64,7 +64,7 @@ function gearAndUncommonBuffs() {
 function familiarStuff() {
     while (
         get("_shortOrderCookCharge") < 11 &&
-        5 - Witchess.fightsDone() > 11 - get("_shortOrderCookCharge")
+        5 - Witchess.fightsDone() >= 11 - get("_shortOrderCookCharge")
     ) {
         useFamiliar($familiar`Shorter-Order Cook`);
         uniform();
@@ -73,7 +73,7 @@ function familiarStuff() {
     }
     while (
         get("garbageFireProgress") < 30 &&
-        5 - Witchess.fightsDone() > 30 - get("garbageFireProgress")
+        5 - Witchess.fightsDone() >= 30 - get("garbageFireProgress")
     ) {
         useFamiliar($familiar`Garbage Fire`);
         uniform();
