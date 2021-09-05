@@ -452,6 +452,7 @@ export function testWrapper(name: string, test: Test, prepare: () => number): vo
     if (testDone(test)) return;
     const startTurns = myTurncount();
     const predictedTurns = prepare();
+    burnLibrams();
     doTest(test);
     tests.push({
         testName: name,

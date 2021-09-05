@@ -129,6 +129,11 @@ function castBuffs() {
         useSkill(1, $skill`Prevent Scurvy and Sobriety`);
     }
 
+    if (!have($effect`Glowing Blue`)) {
+        buy(1, $item`blue rocket`);
+        use(1, $item`blue rocket`);
+    }
+
     if (!have($item`turtle totem`)) cliExecute("acquire turtle totem");
     if (!have($item`saucepan`)) cliExecute("acquire saucepan");
 
