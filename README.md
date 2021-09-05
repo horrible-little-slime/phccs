@@ -57,11 +57,12 @@ At present, PHCCS requires the following iotms/expensive old items to operate:
  * Deck
  * Ghosts
  * God Lobster
- * Love Songs
  * Fire Extinguisher
  
  It also really appreciates it if you have:
   * Disembodied Hand
   * Mini-Adventurer
-  
+  * Love Songs
+  * Candy Hearts
+  * BRICKO
   I'm very interested in moving elements from the former list to the latter list, so if you notice something we use that you think would be easily toggled, let me know and I'll do my best to not require it. Ultimately this is still written for me, however, so I won't be cutting resources that save a lot of turns or are at all involved in routing.
