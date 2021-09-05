@@ -2,6 +2,7 @@ import {
     cliExecute,
     create,
     familiarWeight,
+    itemAmount,
     myFamiliar,
     runChoice,
     use,
@@ -23,7 +24,7 @@ import {
     Witchess,
 } from "libram";
 import { defaultKill } from "./phccs-macros";
-import { advMacroAA, ensureEffect, horse, setChoice, tryHead } from "./phredhccs-lib";
+import { advMacroAA, clamp, ensureEffect, horse, setChoice, tryHead } from "./phredhccs-lib";
 import uniform, { famweightOutfit } from "./outfits";
 
 export function universalWeightBuffs(): void {
@@ -61,24 +62,42 @@ function gearAndUncommonBuffs() {
     }
 }
 
+function countAvailableFights(): number {
+    return (
+        5 -
+        Witchess.fightsDone() +
+        clamp(get("_brickoEyeSummons") - get("_brickoFights"), 0, itemAmount($item`BRICKO brick`))
+    );
+}
+
 function familiarStuff() {
     while (
         get("_shortOrderCookCharge") < 11 &&
-        5 - Witchess.fightsDone() >= 11 - get("_shortOrderCookCharge")
+        countAvailableFights() >= 11 - get("_shortOrderCookCharge")
     ) {
         useFamiliar($familiar`Shorter-Order Cook`);
         uniform();
         defaultKill.setAutoAttack();
-        Witchess.fightPiece($monster`Witchess Bishop`);
+        if (5 - Witchess.fightsDone() > 0) {
+            Witchess.fightPiece($monster`Witchess Bishop`);
+        } else {
+            create(1, $item`BRICKO ooze`);
+            use(1, $item`BRICKO ooze`);
+        }
     }
     while (
         get("garbageFireProgress") < 30 &&
-        5 - Witchess.fightsDone() >= 30 - get("garbageFireProgress")
+        countAvailableFights() >= 30 - get("garbageFireProgress")
     ) {
         useFamiliar($familiar`Garbage Fire`);
         uniform();
         defaultKill.setAutoAttack();
-        Witchess.fightPiece($monster`Witchess Bishop`);
+        if (5 - Witchess.fightsDone() > 0) {
+            Witchess.fightPiece($monster`Witchess Bishop`);
+        } else {
+            create(1, $item`BRICKO ooze`);
+            use(1, $item`BRICKO ooze`);
+        }
     }
 }
 
