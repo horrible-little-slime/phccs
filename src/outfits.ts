@@ -116,7 +116,7 @@ export function wireOutfit(): void {
             [$slot`off-hand`, $item`familiar scrapbook`],
             [$slot`acc1`, $item`Eight Days a Week Pill Keeper`],
             [$slot`acc2`, $item`Powerful Glove`],
-            [$slot`acc3`, $item`Lil' Doctor™ bag`],
+            [$slot`acc3`, $item`Guzzlr tablet`],
         ])
     ).dress();
 }
