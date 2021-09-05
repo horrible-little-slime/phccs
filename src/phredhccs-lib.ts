@@ -522,8 +522,10 @@ function canCastLibrams(): boolean {
 }
 
 export function burnLibrams(): void {
-    if (!$skills`Summon Candy Heart, Summon BRICKOs, Summon Love Song`.some((skill) => have(skill)))
-        return;
+    const summonSkill = $skills`Summon Candy Heart, Summon BRICKOs, Summon Love Song`.find(
+        (skill) => have(skill)
+    );
+    if (!summonSkill) return;
     while (canCastLibrams()) {
         const testsDone = get("csServicesPerformed").split(",");
         if (
@@ -541,10 +543,6 @@ export function burnLibrams(): void {
         } else if (have($skill`Summon BRICKOs`) && get("_brickoEyeSummons") < 3) {
             useSkill($skill`Summon BRICKOs`);
         } else {
-            const summonSkill = $skills`Summon Candy Heart, Summon BRICKOs, Summon Love Song`.find(
-                (skill) => have(skill)
-            );
-            if (!summonSkill) return;
             useSkill(summonSkill);
         }
     }
