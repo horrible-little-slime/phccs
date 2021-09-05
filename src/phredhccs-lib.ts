@@ -529,10 +529,9 @@ export function burnLibrams(): void {
     while (canCastLibrams()) {
         const testsDone = get("csServicesPerformed").split(",");
         if (
-            (!testsDone.includes("Breed More Collies") && !have($item`green candy heart`)) ||
-            (!testsDone.includes("Make Margaritas") &&
-                !have($item`lavender candy heart`) &&
-                have($skill`Summon Candy Heart`))
+            !testsDone.includes("Breed More Collies") &&
+            !have($item`green candy heart`) &&
+            have($skill`Summon Candy Heart`)
         ) {
             useSkill($skill`Summon Candy Heart`);
         } else if (
