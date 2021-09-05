@@ -66,7 +66,11 @@ function countAvailableFights(): number {
     return (
         5 -
         Witchess.fightsDone() +
-        clamp(get("_brickoEyeSummons") - get("_brickoFights"), 0, itemAmount($item`BRICKO brick`))
+        clamp(
+            get("_brickoEyeSummons") - get("_brickoFights"),
+            0,
+            itemAmount($item`BRICKO brick`) / 2
+        )
     );
 }
 
