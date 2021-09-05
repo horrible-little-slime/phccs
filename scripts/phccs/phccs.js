@@ -18444,7 +18444,7 @@ function gearAndUncommonBuffs() {
 }
 
 function countAvailableFights() {
-  return 5 - dist.Witchess.fightsDone() + clamp((0,dist.get)("_brickoEyeSummons") - (0,dist.get)("_brickoFights"), 0, (0,external_kolmafia_.itemAmount)((0,dist.$item)(familiarweight_templateObject19 || (familiarweight_templateObject19 = familiarweight_taggedTemplateLiteral(["BRICKO brick"])))));
+  return 5 - dist.Witchess.fightsDone() + clamp((0,dist.get)("_brickoEyeSummons") - (0,dist.get)("_brickoFights"), 0, (0,external_kolmafia_.itemAmount)((0,dist.$item)(familiarweight_templateObject19 || (familiarweight_templateObject19 = familiarweight_taggedTemplateLiteral(["BRICKO brick"])))) / 2);
 }
 
 function familiarStuff() {
