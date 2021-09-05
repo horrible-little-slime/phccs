@@ -41,6 +41,7 @@ import {
     $item,
     $location,
     $skill,
+    $skills,
     $slot,
     get,
     have,
@@ -513,15 +514,37 @@ export const maximizeFamiliar = have($familiar`Disembodied Hand`)
     ? $familiar`Disembodied Hand`
     : $familiar`Left-Hand Man`;
 
+function canCastLibrams(): boolean {
+    const summonNumber = 1 + get("libramSummons");
+    const cost = 1 + (summonNumber * (summonNumber - 10)) / 2;
+    return myMp() >= cost;
+}
+
 export function burnLibrams(): void {
-    if (
-        !get("csServicesPerformed").split(",").includes("Breed More Collies") &&
-        !have($item`green candy heart`) &&
-        !have($item`lavender candy heart`) &&
-        have($skill`Summon Candy Heart`)
-    ) {
-        cliExecute("/cast * candy heart");
-    } else {
-        cliExecute("/cast * love song");
+    if (!$skills`Summon Candy Heart, Summon BRICKOs, Summon Love Song`.some((skill) => have(skill)))
+        return;
+    while (canCastLibrams()) {
+        const testsDone = get("csServicesPerformed").split(",");
+        if (
+            (!testsDone.includes("Breed More Collies") && !have($item`green candy heart`)) ||
+            (!testsDone.includes("Make Margaritas") &&
+                !have($item`lavender candy heart`) &&
+                have($skill`Summon Candy Heart`))
+        ) {
+            useSkill($skill`Summon Candy Heart`);
+        } else if (
+            !testsDone.includes("Breed More Collies") &&
+            !have($item`love song of icy revenge`, 4)
+        ) {
+            useSkill($skill`Summon Love Song`);
+        } else if (have($skill`Summon BRICKOs`) && get("_brickoEyeSummons") < 3) {
+            useSkill($skill`Summon BRICKOs`);
+        } else {
+            const summonSkill = $skills`Summon Candy Heart, Summon BRICKOs, Summon Love Song`.find(
+                (skill) => have(skill)
+            );
+            if (!summonSkill) return;
+            useSkill(summonSkill);
+        }
     }
 }
