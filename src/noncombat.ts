@@ -52,6 +52,7 @@ function godLobster() {
         uniform();
         defaultKill.setAutoAttack();
         heal();
+        use(3, $item`psychokinetic energy blob`);
         setChoice(1310, 2);
         visitUrl("main.php?fightgodlobster=1");
         runCombat(defaultKill.toString());

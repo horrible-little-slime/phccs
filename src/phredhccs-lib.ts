@@ -84,7 +84,7 @@ export function synthExp(): void {
         }
     } else {
         if (!have($item`sugar shotgun`)) {
-            if (!have($item`sugar sheet`)) create(1, $item`sugar sheet`);
+            if (!have($item`sugar sheet`)) useSkill($skill`Summon Sugar Sheets`);
             create(1, $item`sugar shotgun`);
         }
         if (pecans >= 1) {
