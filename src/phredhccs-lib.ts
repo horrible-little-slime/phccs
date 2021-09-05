@@ -536,10 +536,15 @@ export function burnLibrams(): void {
             useSkill($skill`Summon Candy Heart`);
         } else if (
             !testsDone.includes("Breed More Collies") &&
-            !have($item`love song of icy revenge`, 4)
+            !have($item`love song of icy revenge`, 4) &&
+            have($skill`Summon Love Song`)
         ) {
             useSkill($skill`Summon Love Song`);
-        } else if (have($skill`Summon BRICKOs`) && get("_brickoEyeSummons") < 3) {
+        } else if (
+            have($skill`Summon BRICKOs`) &&
+            get("_brickoEyeSummons") < 3 &&
+            have($skill`Summon BRICKOs`)
+        ) {
             useSkill($skill`Summon BRICKOs`);
         } else {
             useSkill(summonSkill);
