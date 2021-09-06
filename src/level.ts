@@ -129,6 +129,7 @@ function castBuffs() {
     }
 
     if (!have($effect`Glowing Blue`)) {
+        visitUrl("clan_viplounge.php?action=fwshop&whichfloor=2");
         buy(1, $item`blue rocket`);
         use(1, $item`blue rocket`);
     }
