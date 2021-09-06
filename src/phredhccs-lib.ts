@@ -439,7 +439,7 @@ export function fax(monster: Monster): void {
         if (checkFax(monster)) return;
         chatPrivate("cheesefax", monster.name);
         for (let i = 0; i < 3; i++) {
-            wait(10);
+            wait(5 + i);
             if (checkFax(monster)) return;
         }
         abort(`Failed to acquire photocopied ${monster.name}.`);

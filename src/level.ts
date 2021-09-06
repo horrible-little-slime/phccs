@@ -167,7 +167,8 @@ function getYoked() {
         Macro.step(delevel).attack().repeat(),
         () => {
             return !have($effect`Holiday Yoked`);
-        }
+        },
+        () => ensureMp(30)
     );
 }
 
@@ -215,7 +216,8 @@ function witchGhostAgent() {
             Macro.step(delevel).skill("otoscope").skill("become a bat").skill("chest x-ray"), //1
             () => {
                 return getCounters("Portscan", 0, 0) !== "";
-            }
+            },
+            () => () => ensureMp(30)
         );
         const desertAccessItem = knollAvailable()
             ? $item`bitchin' meatcar`
@@ -351,6 +353,7 @@ function snojo() {
         () => {
             heal();
             useDefaultFamiliar();
+            ensureMp(30);
         }
     );
     cliExecute("hottub");
@@ -396,6 +399,7 @@ function NEP() {
             if (myLevel() >= 13 && !have($effect`Inner Elf`)) {
                 ensureInnerElf();
             }
+            ensureMp(30);
         }
     );
     advMacroAA(
@@ -421,6 +425,7 @@ function NEP() {
             if (myLevel() >= 13 && !have($effect`Inner Elf`)) {
                 ensureInnerElf();
             }
+            ensureMp(30);
         }
     );
     equip($slot`acc3`, $item`Lil' Doctor™ bag`);
@@ -447,6 +452,7 @@ function NEP() {
             if (myLevel() >= 13 && !have($effect`Inner Elf`)) {
                 ensureInnerElf();
             }
+            ensureMp(30);
         }
     );
 }
@@ -462,7 +468,10 @@ function mElfLeveling() {
         () => {
             return get("_machineTunnelsAdv") < 5;
         },
-        heal
+        () => {
+            heal();
+            ensureMp(30);
+        }
     );
 }
 
