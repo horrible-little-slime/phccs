@@ -18554,15 +18554,11 @@ function castBuffs() {
 }
 
 function thisFireIsOutOfControl() {
-  // eslint-disable-next-line libram/verify-constants
   if ((0,dist.get)("_saberForceUses") < 5 && !(0,dist.have)((0,dist.$effect)(hotres_templateObject20 || (hotres_templateObject20 = hotres_taggedTemplateLiteral(["Fireproof Foam Suit"]))))) {
-    uniform(); // eslint-disable-next-line libram/verify-constants
-
+    uniform();
     (0,external_kolmafia_.equip)((0,dist.$slot)(hotres_templateObject21 || (hotres_templateObject21 = hotres_taggedTemplateLiteral(["off-hand"]))), (0,dist.$item)(hotres_templateObject22 || (hotres_templateObject22 = hotres_taggedTemplateLiteral(["industrial fire extinguisher"]))));
     (0,external_kolmafia_.useFamiliar)((0,dist.$familiar)(hotres_templateObject23 || (hotres_templateObject23 = hotres_taggedTemplateLiteral(["none"]))));
-    advMacroAA((0,dist.$location)(hotres_templateObject24 || (hotres_templateObject24 = hotres_taggedTemplateLiteral(["Noob Cave"]))), // eslint-disable-next-line libram/verify-constants
-    dist.Macro.skill((0,dist.$skill)(hotres_templateObject25 || (hotres_templateObject25 = hotres_taggedTemplateLiteral(["Fire Extinguisher: Foam Yourself"])))).skill((0,dist.$skill)(hotres_templateObject26 || (hotres_templateObject26 = hotres_taggedTemplateLiteral(["Use the Force"])))), // eslint-disable-next-line libram/verify-constants
-    () => !(0,dist.have)((0,dist.$effect)(hotres_templateObject27 || (hotres_templateObject27 = hotres_taggedTemplateLiteral(["Fireproof Foam Suit"])))), () => {
+    advMacroAA((0,dist.$location)(hotres_templateObject24 || (hotres_templateObject24 = hotres_taggedTemplateLiteral(["Noob Cave"]))), dist.Macro.skill((0,dist.$skill)(hotres_templateObject25 || (hotres_templateObject25 = hotres_taggedTemplateLiteral(["Fire Extinguisher: Foam Yourself"])))).skill((0,dist.$skill)(hotres_templateObject26 || (hotres_templateObject26 = hotres_taggedTemplateLiteral(["Use the Force"])))), () => !(0,dist.have)((0,dist.$effect)(hotres_templateObject27 || (hotres_templateObject27 = hotres_taggedTemplateLiteral(["Fireproof Foam Suit"])))), () => {
       (0,external_kolmafia_.visitUrl)("choice.php");
       (0,external_kolmafia_.runChoice)(3);
     });
@@ -18799,8 +18795,7 @@ function buffMyst() {
 
   (0,external_kolmafia_.equip)((0,dist.$slot)(level_templateObject19 || (level_templateObject19 = level_taggedTemplateLiteral(["acc3"]))), (0,dist.$item)(level_templateObject20 || (level_templateObject20 = level_taggedTemplateLiteral(["Powerful Glove"]))));
   ensureEffect((0,dist.$effect)(level_templateObject21 || (level_templateObject21 = level_taggedTemplateLiteral(["Triple-Sized"]))));
-  ensureEffect((0,dist.$effect)(level_templateObject22 || (level_templateObject22 = level_taggedTemplateLiteral(["Feeling Excited"])))); // eslint-disable-next-line libram/verify-constants
-
+  ensureEffect((0,dist.$effect)(level_templateObject22 || (level_templateObject22 = level_taggedTemplateLiteral(["Feeling Excited"]))));
   if ((0,dist.have)((0,dist.$item)(level_templateObject23 || (level_templateObject23 = level_taggedTemplateLiteral(["votive of confidence"]))))) (0,external_kolmafia_.use)((0,dist.$item)(level_templateObject24 || (level_templateObject24 = level_taggedTemplateLiteral(["votive of confidence"]))));
 }
 
@@ -19545,8 +19540,7 @@ if ((0,external_kolmafia_.myPathId)() !== 25) (0,external_kolmafia_.abort)();
 PropertyManager.set({
   customCombatScript: "twiddle",
   battleAction: "custom combat script",
-  dontStopForCounters: true,
-  logPreferenceChange: false
+  dontStopForCounters: true
 });
 var startTime = (0,external_kolmafia_.gametimeToInt)();
 
