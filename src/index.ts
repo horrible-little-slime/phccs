@@ -28,7 +28,6 @@ PropertyManager.set({
     customCombatScript: "twiddle",
     battleAction: "custom combat script",
     dontStopForCounters: true,
-    logPreferenceChange: false,
 });
 const startTime = gametimeToInt();
 try {
