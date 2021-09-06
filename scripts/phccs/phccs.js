@@ -18103,7 +18103,7 @@ function horse(horse) {
 function convertMilliseconds(milliseconds) {
   var seconds = milliseconds / 1000;
   var minutes = Math.floor(seconds / 60);
-  var secondsLeft = Math.round((seconds - minutes * 60) / 1000) * 1000;
+  var secondsLeft = Math.round((seconds - minutes * 60) * 1000) / 1000;
   var hours = Math.floor(minutes / 60);
   var minutesLeft = Math.round(minutes - hours * 60);
   return (hours !== 0 ? "".concat(hours, " hours, ") : "") + (minutesLeft !== 0 ? "".concat(minutesLeft, " minutes, ") : "") + (secondsLeft !== 0 ? "".concat(secondsLeft, " seconds") : "");
@@ -18122,7 +18122,7 @@ function fax(monster) {
     (0,external_kolmafia_.chatPrivate)("cheesefax", monster.name);
 
     for (var i = 0; i < 3; i++) {
-      (0,external_kolmafia_.wait)(10);
+      (0,external_kolmafia_.wait)(5 + i);
       if (checkFax(monster)) return;
     }
 
@@ -18812,6 +18812,7 @@ function level_castBuffs() {
   }
 
   if (!(0,dist.have)((0,dist.$effect)(level_templateObject30 || (level_templateObject30 = level_taggedTemplateLiteral(["Glowing Blue"]))))) {
+    (0,external_kolmafia_.visitUrl)("clan_viplounge.php?action=fwshop&whichfloor=2");
     (0,external_kolmafia_.buy)(1, (0,dist.$item)(level_templateObject31 || (level_templateObject31 = level_taggedTemplateLiteral(["blue rocket"]))));
     (0,external_kolmafia_.use)(1, (0,dist.$item)(level_templateObject32 || (level_templateObject32 = level_taggedTemplateLiteral(["blue rocket"]))));
   }
@@ -18847,7 +18848,7 @@ function getYoked() {
   heal();
   advMacroAA((0,dist.$location)(level_templateObject40 || (level_templateObject40 = level_taggedTemplateLiteral(["The X-32-F Combat Training Snowman"]))), dist.Macro.step(delevel).attack().repeat(), () => {
     return !(0,dist.have)((0,dist.$effect)(level_templateObject41 || (level_templateObject41 = level_taggedTemplateLiteral(["Holiday Yoked"]))));
-  });
+  }, () => ensureMp(30));
 }
 
 function witchGhostAgent() {
@@ -18887,7 +18888,7 @@ function witchGhostAgent() {
     advMacroAA((0,dist.$location)(level_templateObject62 || (level_templateObject62 = level_taggedTemplateLiteral(["Noob Cave"]))), dist.Macro.step(delevel).skill("otoscope").skill("become a bat").skill("chest x-ray"), //1
     () => {
       return (0,external_kolmafia_.getCounters)("Portscan", 0, 0) !== "";
-    });
+    }, () => () => ensureMp(30));
     var desertAccessItem = (0,external_kolmafia_.knollAvailable)() ? (0,dist.$item)(level_templateObject63 || (level_templateObject63 = level_taggedTemplateLiteral(["bitchin' meatcar"]))) : (0,dist.$item)(level_templateObject64 || (level_templateObject64 = level_taggedTemplateLiteral(["Desert Bus pass"])));
 
     if (!(0,dist.have)(desertAccessItem)) {
@@ -18995,6 +18996,7 @@ function snojo() {
   }, () => {
     heal();
     useDefaultFamiliar();
+    ensureMp(30);
   });
   (0,external_kolmafia_.cliExecute)("hottub");
 }
@@ -19039,6 +19041,8 @@ function NEP() {
     if ((0,external_kolmafia_.myLevel)() >= 13 && !(0,dist.have)((0,dist.$effect)(level_templateObject116 || (level_templateObject116 = level_taggedTemplateLiteral(["Inner Elf"]))))) {
       ensureInnerElf();
     }
+
+    ensureMp(30);
   });
   advMacroAA((0,dist.$location)(level_templateObject117 || (level_templateObject117 = level_taggedTemplateLiteral(["The Neverending Party"]))), dist.Macro.if_("!monstername sausage goblin", dist.Macro.trySkill("shattering punch").trySkill("gingerbread mob hit").trySkill("chest x-ray")).if_("monstername sausage goblin", dist.Macro.step(delevel).step(candyblast).attack().repeat()), () => {
     return (0,dist.get)("_shatteringPunchUsed") < 3 && !(0,dist.get)("_gingerbreadMobHitUsed");
@@ -19057,6 +19061,8 @@ function NEP() {
     if ((0,external_kolmafia_.myLevel)() >= 13 && !(0,dist.have)((0,dist.$effect)(level_templateObject121 || (level_templateObject121 = level_taggedTemplateLiteral(["Inner Elf"]))))) {
       ensureInnerElf();
     }
+
+    ensureMp(30);
   });
   (0,external_kolmafia_.equip)((0,dist.$slot)(level_templateObject122 || (level_templateObject122 = level_taggedTemplateLiteral(["acc3"]))), (0,dist.$item)(level_templateObject123 || (level_templateObject123 = level_taggedTemplateLiteral(["Lil' Doctor\u2122 bag"]))));
   advMacroAA((0,dist.$location)(level_templateObject124 || (level_templateObject124 = level_taggedTemplateLiteral(["The Neverending Party"]))), dist.Macro.if_("!monstername sausage goblin", dist.Macro.trySkill("shattering punch").trySkill("gingerbread mob hit").trySkill("chest x-ray")).if_("monstername sausage goblin", dist.Macro.step(delevel).step(candyblast).attack().repeat()), () => {
@@ -19076,6 +19082,8 @@ function NEP() {
     if ((0,external_kolmafia_.myLevel)() >= 13 && !(0,dist.have)((0,dist.$effect)(level_templateObject128 || (level_templateObject128 = level_taggedTemplateLiteral(["Inner Elf"]))))) {
       ensureInnerElf();
     }
+
+    ensureMp(30);
   });
 }
 
@@ -19086,7 +19094,10 @@ function mElfLeveling() {
   (0,external_kolmafia_.useFamiliar)((0,dist.$familiar)(level_templateObject131 || (level_templateObject131 = level_taggedTemplateLiteral(["Machine Elf"]))));
   advMacroAA((0,dist.$location)(level_templateObject132 || (level_templateObject132 = level_taggedTemplateLiteral(["The Deep Machine Tunnels"]))), defaultKill, () => {
     return (0,dist.get)("_machineTunnelsAdv") < 5;
-  }, heal);
+  }, () => {
+    heal();
+    ensureMp(30);
+  });
 }
 
 function royalty() {
@@ -19540,7 +19551,11 @@ if ((0,external_kolmafia_.myPathId)() !== 25) (0,external_kolmafia_.abort)();
 PropertyManager.set({
   customCombatScript: "twiddle",
   battleAction: "custom combat script",
-  dontStopForCounters: true
+  dontStopForCounters: true,
+  hpAutoRecovery: undefined,
+  hpAutoRecoveryTarget: -0.5,
+  mpAutoRecovery: undefined,
+  mpAutoRecoveryTarget: -0.5
 });
 var startTime = (0,external_kolmafia_.gametimeToInt)();
 
