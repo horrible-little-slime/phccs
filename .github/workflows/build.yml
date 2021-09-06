@@ -57,14 +57,17 @@ jobs:
       - run: |
           git config user.name "O.A.Ph."
           git config user.email "<>"
+      - run: |
+          cp -R mafia mafiafiles
       - run: yarn install --frozen-lockfile
       - run: yarn run build
       - run: |
           git fetch --all
           git switch release
           rm -r scripts/
+          rm -r ccs/
+          mv mafiafiles/ccs ./ccs
           mv KoLmafia/scripts scripts
-
       - run: |
           git add scripts/
           {
