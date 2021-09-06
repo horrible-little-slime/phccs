@@ -113,7 +113,6 @@ function buffMyst() {
     ensureEffect($effect`Triple-Sized`);
     ensureEffect($effect`Feeling Excited`);
 
-    // eslint-disable-next-line libram/verify-constants
     if (have($item`votive of confidence`)) use($item`votive of confidence`);
 }
 

@@ -55,17 +55,16 @@ function castBuffs() {
 }
 
 function thisFireIsOutOfControl() {
-    // eslint-disable-next-line libram/verify-constants
     if (get("_saberForceUses") < 5 && !have($effect`Fireproof Foam Suit`)) {
         uniform();
-        // eslint-disable-next-line libram/verify-constants
+
         equip($slot`off-hand`, $item`industrial fire extinguisher`);
         useFamiliar($familiar`none`);
         advMacroAA(
             $location`Noob Cave`,
-            // eslint-disable-next-line libram/verify-constants
+
             Macro.skill($skill`Fire Extinguisher: Foam Yourself`).skill($skill`Use the Force`),
-            // eslint-disable-next-line libram/verify-constants
+
             () => !have($effect`Fireproof Foam Suit`),
             () => {
                 visitUrl("choice.php");
