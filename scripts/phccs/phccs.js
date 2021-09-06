@@ -18103,9 +18103,9 @@ function horse(horse) {
 function convertMilliseconds(milliseconds) {
   var seconds = milliseconds / 1000;
   var minutes = Math.floor(seconds / 60);
-  var secondsLeft = seconds - minutes * 60;
+  var secondsLeft = Math.round((seconds - minutes * 60) / 1000) * 1000;
   var hours = Math.floor(minutes / 60);
-  var minutesLeft = minutes - hours * 60;
+  var minutesLeft = Math.round(minutes - hours * 60);
   return (hours !== 0 ? "".concat(hours, " hours, ") : "") + (minutesLeft !== 0 ? "".concat(minutesLeft, " minutes, ") : "") + (secondsLeft !== 0 ? "".concat(secondsLeft, " seconds") : "");
 }
 
