@@ -1,5 +1,4 @@
 import {
-    buy,
     cliExecute,
     create,
     eat,
@@ -27,20 +26,6 @@ function castBuffs() {
     universalWeightBuffs();
 
     tryHead($effect`Hot-Headed`);
-
-    if (!have($item`tenderizing hammer`)) {
-        buy(1, $item`tenderizing hammer`);
-    }
-    cliExecute("smash * ratty knitted cap");
-    cliExecute("smash * red-hot sausage fork");
-    cliExecute("smash * smoldering bagel punch");
-    if (!have($effect`Sleazy Hands`)) {
-        if (!have($item`lotion of sleaziness`)) create(1, $item`lotion of sleaziness`);
-        if (have($item`lotion of sleaziness`)) use(1, $item`lotion of sleaziness`);
-    }
-    if (!have($effect`Flame-Retardant Trousers`) && have($item`hot powder`)) {
-        use(1, $item`hot powder`);
-    }
 
     ensureEffect($effect`Elemental Saucesphere`);
     ensureEffect($effect`Astral Shell`);
