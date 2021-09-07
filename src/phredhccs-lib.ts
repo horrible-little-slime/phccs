@@ -517,7 +517,7 @@ export const maximizeFamiliar = have($familiar`Disembodied Hand`)
 
 function canCastLibrams(): boolean {
     const summonNumber = 1 + get("libramSummons");
-    const cost = 1 + (summonNumber * (summonNumber - 10)) / 2;
+    const cost = 1 + (summonNumber * (summonNumber - 1)) / 2;
     return myMp() >= cost;
 }
 
