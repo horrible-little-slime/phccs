@@ -28,10 +28,8 @@ PropertyManager.set({
     customCombatScript: "twiddle",
     battleAction: "custom combat script",
     dontStopForCounters: true,
-    hpAutoRecovery: undefined,
-    hpAutoRecoveryTarget: -0.5,
-    mpAutoRecovery: undefined,
-    mpAutoRecoveryTarget: -0.5,
+    hpAutoRecovery: -0.05,
+    mpAutoRecovery: -0.05,
 });
 const startTime = gametimeToInt();
 try {
