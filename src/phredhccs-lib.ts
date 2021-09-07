@@ -547,7 +547,7 @@ export function burnLibrams(): void {
         ) {
             useSkill($skill`Summon BRICKOs`);
         } else {
-            useSkill(summonSkill);
+            cliExecute(`/cast * ${summonSkill.name}`);
         }
     }
 }
