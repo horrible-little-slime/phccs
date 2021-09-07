@@ -128,10 +128,9 @@ function castBuffs() {
         useSkill(1, $skill`Prevent Scurvy and Sobriety`);
     }
 
-    if (!have($effect`Glowing Blue`)) {
+    if (!have($item`blue rocket`) && !have($effect`Glowing Blue`)) {
         visitUrl("clan_viplounge.php?action=fwshop&whichfloor=2");
         buy(1, $item`blue rocket`);
-        use(1, $item`blue rocket`);
     }
 
     if (!have($item`turtle totem`)) cliExecute("acquire turtle totem");
@@ -165,7 +164,10 @@ function getYoked() {
     heal();
     advMacroAA(
         $location`The X-32-F Combat Training Snowman`,
-        Macro.step(delevel).attack().repeat(),
+        Macro.step(delevel)
+            .tryItem($item`blue rocket`)
+            .attack()
+            .repeat(),
         () => {
             return !have($effect`Holiday Yoked`);
         },
