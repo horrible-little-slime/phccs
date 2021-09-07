@@ -18178,7 +18178,7 @@ var maximizeFamiliar = (0,dist.have)((0,dist.$familiar)(phredhccs_lib_templateOb
 
 function canCastLibrams() {
   var summonNumber = 1 + (0,dist.get)("libramSummons");
-  var cost = 1 + summonNumber * (summonNumber - 10) / 2;
+  var cost = 1 + summonNumber * (summonNumber - 1) / 2;
   return (0,external_kolmafia_.myMp)() >= cost;
 }
 
@@ -18196,7 +18196,7 @@ function burnLibrams() {
     } else if ((0,dist.have)((0,dist.$skill)(phredhccs_lib_templateObject95 || (phredhccs_lib_templateObject95 = phredhccs_lib_taggedTemplateLiteral(["Summon BRICKOs"])))) && (0,dist.get)("_brickoEyeSummons") < 3 && (0,dist.have)((0,dist.$skill)(phredhccs_lib_templateObject96 || (phredhccs_lib_templateObject96 = phredhccs_lib_taggedTemplateLiteral(["Summon BRICKOs"]))))) {
       (0,external_kolmafia_.useSkill)((0,dist.$skill)(phredhccs_lib_templateObject97 || (phredhccs_lib_templateObject97 = phredhccs_lib_taggedTemplateLiteral(["Summon BRICKOs"]))));
     } else {
-      (0,external_kolmafia_.useSkill)(summonSkill);
+      (0,external_kolmafia_.cliExecute)("/cast * ".concat(summonSkill.name));
     }
   }
 }
