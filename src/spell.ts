@@ -52,7 +52,7 @@ function castBuffs() {
         create(1, $item`weeping willow wand`);
     }
 
-    cliExecute("briefcase enchantment spell");
+    cliExecute("Briefcase.ash enchantment spell");
 
     if (!get("_madTeaParty")) {
         visitUrl("clan_viplounge.php?action=lookingglass&whichfloor=2");
