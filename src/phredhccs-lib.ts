@@ -249,6 +249,7 @@ export function ensureInnerElf(): void {
                 ),
                 () => {
                     ensureEffect($effect`Blood Bubble`);
+                    setChoice(326, 1);
                     advMacro(
                         $location`The Slime Tube`,
                         Macro.trySkill($skill`KGB tranquilizer dart`).trySkill($skill`Snokebomb`)
@@ -257,6 +258,9 @@ export function ensureInnerElf(): void {
             );
         } finally {
             setClan(get("phccs_mainClan", "Alliance From Heck"));
+        }
+        if (!have($effect`Inner Elf`)) {
+            throw "Failed to get effect Inner Elf from Mother Slime.";
         }
     }
 }

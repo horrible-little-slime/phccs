@@ -74,9 +74,12 @@ function forceSpit() {
         Macro.trySkill($skill`%fn, spit on me!`)
             .skill($skill`Use the Force`)
             .setAutoAttack();
-        setClan("Beldungeon");
-        fax($monster`ungulith`);
-        setClan(get("phccs_mainClan", "Alliance From Heck"));
+        try {
+            setClan(get("phccs_mainClan", "Beldungeon"));
+            fax($monster`ungulith`);
+        } finally {
+            setClan(get("phccs_mainClan", "Alliance From Heck"));
+        }
         use($item`photocopied monster`);
         if (handlingChoice()) runChoice(-1);
     }
