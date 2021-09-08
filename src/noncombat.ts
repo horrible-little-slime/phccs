@@ -65,7 +65,7 @@ function testPrep() {
     noncombatOutfit();
     if (predictor() > 1) {
         if (!have($effect`Gummed Shoes`)) {
-            if (availableAmount($item`cop dollar`) < 10) cliExecute("detective solver.ash");
+            if (availableAmount($item`cop dollar`) < 10) cliExecute("Detective Solver.ash");
             buy($coinmaster`Precinct Materiel Division`, 1, $item`shoe gum`);
             use($item`shoe gum`);
         }
