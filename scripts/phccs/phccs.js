@@ -18095,8 +18095,11 @@ function advMacroAA(location, macro) {
   macro.setAutoAttack();
 
   while (condition()) {
-    (0,external_kolmafia_.adv1)(location, -1, () => {
-      return dist.Macro.if_("!pastround 2", macro).abort().toString();
+    (0,external_kolmafia_.adv1)(location, -1, (_round, _foe, pageText) => {
+      var _Macro$cachedAutoAtta;
+
+      if (pageText.includes("Macro Aborted")) (0,external_kolmafia_.abort)();
+      return (_Macro$cachedAutoAtta = dist.Macro.cachedAutoAttack) !== null && _Macro$cachedAutoAtta !== void 0 ? _Macro$cachedAutoAtta : dist.Macro.abort().toString();
     });
     if (afterCombatAction) afterCombatAction();
     n++;
