@@ -31,7 +31,6 @@ At present, PHCCS requires the following iotms/expensive old items to operate:
  * Emo Chip
  * LOV
  * Meteors
- * Candyblast
  * Protonpack
  * Tot
  * Docbag
@@ -65,4 +64,8 @@ At present, PHCCS requires the following iotms/expensive old items to operate:
   * Love Songs
   * Candy Hearts
   * BRICKO
+  * Candyblast
+ 
+ You will need at least one of candy hearts or candyblast in order to do item synthesis.
+ 
   I'm very interested in moving elements from the former list to the latter list, so if you notice something we use that you think would be easily toggled, let me know and I'll do my best to not require it. Ultimately this is still written for me, however, so I won't be cutting resources that save a lot of turns or are at all involved in routing.
