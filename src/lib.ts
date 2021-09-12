@@ -360,8 +360,9 @@ export function advMacroAA(
     };
     macro.setAutoAttack();
     while (condition()) {
-        adv1(location, -1, () => {
-            return Macro.if_("!pastround 2", macro).abort().toString();
+        adv1(location, -1, (_round: number, _foe: Monster, pageText: string) => {
+            if (pageText.includes("Macro Aborted")) abort();
+            return Macro.cachedAutoAttack ?? Macro.abort().toString();
         });
         if (afterCombatAction) afterCombatAction();
         n++;
