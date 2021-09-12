@@ -55,7 +55,7 @@ import {
     synthMyst,
     tryHead,
     useDefaultFamiliar,
-} from "./phredhccs-lib";
+} from "./lib";
 import uniform from "./outfits";
 
 function initialExp() {

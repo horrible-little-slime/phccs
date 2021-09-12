@@ -24,7 +24,7 @@ import {
     Macro,
     set,
 } from "libram";
-import { advMacroAA, ensureEffect, ensureInnerElf, horse, setChoice } from "./phredhccs-lib";
+import { advMacroAA, ensureEffect, ensureInnerElf, horse, setChoice } from "./lib";
 import uniform, { spellOutfit } from "./outfits";
 
 const predictor = () =>

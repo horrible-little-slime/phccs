@@ -13,7 +13,7 @@ import {
     visitUrl,
 } from "kolmafia";
 import { $coinmaster, $familiar, $item, $items, $skill, get, have, SourceTerminal } from "libram";
-import { setClan, tryUse } from "./phredhccs-lib";
+import { setClan, tryUse } from "./lib";
 
 function juiceBar() {
     visitUrl("place.php?whichplace=chateau&action=chateau_desk2");

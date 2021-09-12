@@ -18,7 +18,7 @@ import {
 } from "kolmafia";
 import { $effect, $familiar, $item, $location, $skill, $slot, get, have, Macro } from "libram";
 import { universalWeightBuffs } from "./familiarweight";
-import { advMacroAA, ensureEffect, fuelUp, horse, tryHead } from "./phredhccs-lib";
+import { advMacroAA, ensureEffect, fuelUp, horse, tryHead } from "./lib";
 import uniform, { hotresOutfit } from "./outfits";
 const predictor = () => 60 - numericModifier("hot resistance");
 

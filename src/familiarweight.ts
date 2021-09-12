@@ -24,7 +24,7 @@ import {
     Witchess,
 } from "libram";
 import { defaultKill } from "./phccs-macros";
-import { advMacroAA, clamp, ensureEffect, horse, setChoice, tryHead } from "./phredhccs-lib";
+import { advMacroAA, clamp, ensureEffect, horse, setChoice, tryHead } from "./lib";
 import uniform, { famweightOutfit } from "./outfits";
 
 export function universalWeightBuffs(): void {

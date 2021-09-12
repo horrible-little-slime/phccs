@@ -34,7 +34,7 @@ import {
     horse,
     synthItem,
     useDefaultFamiliar,
-} from "./phredhccs-lib";
+} from "./lib";
 
 const predictor = () =>
     60 -

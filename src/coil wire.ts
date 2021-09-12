@@ -2,7 +2,7 @@ import { create, eat, equip } from "kolmafia";
 import { $item, $location, $skill, $slot, get, have, Macro } from "libram";
 import uniform, { wireOutfit } from "./outfits";
 import { delevel, easyFight } from "./phccs-macros";
-import { advMacro, fightSausageIfAble, useDefaultFamiliar } from "./phredhccs-lib";
+import { advMacro, fightSausageIfAble, useDefaultFamiliar } from "./lib";
 import { runStart } from "./runstart";
 
 function firstFights() {

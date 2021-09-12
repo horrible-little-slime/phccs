@@ -15,7 +15,7 @@ import {
 import { $coinmaster, $effect, $familiar, $item, $slot, get, have } from "libram";
 import { universalWeightBuffs } from "./familiarweight";
 import { defaultKill } from "./phccs-macros";
-import { ensureEffect, fuelUp, heal, horse, setChoice } from "./phredhccs-lib";
+import { ensureEffect, fuelUp, heal, horse, setChoice } from "./lib";
 import uniform, { noncombatOutfit } from "./outfits";
 
 const predictor = () => 60 + (20 + numericModifier("combat rate")) * 3;

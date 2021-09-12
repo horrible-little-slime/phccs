@@ -33,7 +33,7 @@ import {
     setClan,
     tryHead,
     useDefaultFamiliar,
-} from "./phredhccs-lib";
+} from "./lib";
 import uniform, { weaponOutfit } from "./outfits";
 
 const predictor = () =>
