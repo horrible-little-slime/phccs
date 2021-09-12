@@ -27,14 +27,7 @@ import {
     Macro,
 } from "libram";
 import { itemOutfit } from "./outfits";
-import {
-    advMacroAA,
-    ensureEffect,
-    fuelUp,
-    horse,
-    synthItem,
-    useDefaultFamiliar,
-} from "./lib";
+import { advMacroAA, ensureEffect, fuelUp, horse, synthItem, useDefaultFamiliar } from "./lib";
 
 const predictor = () =>
     60 -
