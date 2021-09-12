@@ -1,4 +1,4 @@
-import { cliExecute, equip, equippedItem, myFamiliar, useFamiliar } from "kolmafia";
+import { cliExecute, equip, equippedAmount, equippedItem, myFamiliar, useFamiliar } from "kolmafia";
 import { $familiar, $item, $items, $slot, $slots, have } from "libram";
 
 export class Outfit {
@@ -18,7 +18,8 @@ export class Outfit {
     dress(): void {
         if (this.familiar) useFamiliar(this.familiar);
         const targetEquipment = Array.from(this.equips.values());
-        for (const slot of Slot.all()) {
+        const accessorySlots = $slots`acc1, acc2, acc3`;
+        for (const slot of $slots`weapon, off-hand, hat, shirt, pants, familiar, buddy-bjorn, crown-of-thrones, back`) {
             if (
                 targetEquipment.includes(equippedItem(slot)) &&
                 this.equips.get(slot) !== equippedItem(slot)
@@ -26,9 +27,28 @@ export class Outfit {
                 equip(slot, $item`none`);
         }
 
-        for (const slot of $slots`weapon, off-hand, hat, back, shirt, pants, acc1, acc2, acc3, familiar, buddy-bjorn, crown-of-thrones`) {
+        for (const slot of $slots`weapon, off-hand, hat, back, shirt, pants, familiar, buddy-bjorn, crown-of-thrones`) {
             const equipment = this.equips.get(slot);
             if (equipment) equip(slot, equipment);
+        }
+
+        const accessoryEquips = accessorySlots
+            .map((slot) => this.equips.get(slot))
+            .filter((item) => item !== undefined) as Item[];
+        for (const slot of accessorySlots) {
+            const toEquip = accessoryEquips.find(
+                (equip) =>
+                    equippedAmount(equip) <
+                    accessoryEquips.filter((accessory) => accessory === equip).length
+            );
+            if (!toEquip) break;
+            const currentEquip = equippedItem(slot);
+            if (
+                equippedAmount(currentEquip) >
+                accessoryEquips.filter((accessory) => accessory === currentEquip).length
+            ) {
+                equip(slot, toEquip);
+            }
         }
     }
 
