@@ -18548,7 +18548,7 @@ function familiarTest() {
   return 60 - Math.floor(((0,external_kolmafia_.familiarWeight)((0,external_kolmafia_.myFamiliar)()) + (0,external_kolmafia_.weightAdjustment)()) / 5);
 }
 ;// CONCATENATED MODULE: ./src/hotres.ts
-var hotres_templateObject, hotres_templateObject2, hotres_templateObject3, hotres_templateObject4, hotres_templateObject5, hotres_templateObject6, hotres_templateObject7, hotres_templateObject8, hotres_templateObject9, hotres_templateObject10, hotres_templateObject11, hotres_templateObject12, hotres_templateObject13, hotres_templateObject14, hotres_templateObject15, hotres_templateObject16, hotres_templateObject17, hotres_templateObject18, hotres_templateObject19, hotres_templateObject20, hotres_templateObject21, hotres_templateObject22, hotres_templateObject23, hotres_templateObject24, hotres_templateObject25, hotres_templateObject26, hotres_templateObject27, hotres_templateObject28, hotres_templateObject29, hotres_templateObject30, hotres_templateObject31;
+var hotres_templateObject, hotres_templateObject2, hotres_templateObject3, hotres_templateObject4, hotres_templateObject5, hotres_templateObject6, hotres_templateObject7, hotres_templateObject8, hotres_templateObject9, hotres_templateObject10, hotres_templateObject11, hotres_templateObject12, hotres_templateObject13, hotres_templateObject14, hotres_templateObject15, hotres_templateObject16, hotres_templateObject17, hotres_templateObject18, hotres_templateObject19, hotres_templateObject20, hotres_templateObject21, hotres_templateObject22, hotres_templateObject23, hotres_templateObject24, hotres_templateObject25, hotres_templateObject26, hotres_templateObject27, hotres_templateObject28, hotres_templateObject29, hotres_templateObject30, hotres_templateObject31, hotres_templateObject32, hotres_templateObject33, hotres_templateObject34;
 
 function hotres_taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
@@ -18599,30 +18599,30 @@ function deepDarkVisions() {
 
   (0,external_kolmafia_.maximize)("spooky res", false);
 
-  while ((0,dist.have)((0,dist.$skill)(hotres_templateObject22 || (hotres_templateObject22 = hotres_taggedTemplateLiteral(["Deep Dark Visions"])))) && (0,external_kolmafia_.haveEffect)((0,dist.$effect)(hotres_templateObject23 || (hotres_templateObject23 = hotres_taggedTemplateLiteral(["Visions of the Deep Dark Deeps"])))) < 30) {
-    if ((0,external_kolmafia_.myMp)() < 20) {
-      (0,external_kolmafia_.create)(1, (0,dist.$item)(hotres_templateObject24 || (hotres_templateObject24 = hotres_taggedTemplateLiteral(["magical sausage"]))));
-      (0,external_kolmafia_.eat)(1, (0,dist.$item)(hotres_templateObject25 || (hotres_templateObject25 = hotres_taggedTemplateLiteral(["magical sausage"]))));
+  while ((0,dist.have)((0,dist.$skill)(hotres_templateObject22 || (hotres_templateObject22 = hotres_taggedTemplateLiteral(["Deep Dark Visions"])))) && (0,external_kolmafia_.haveEffect)((0,dist.$effect)(hotres_templateObject23 || (hotres_templateObject23 = hotres_taggedTemplateLiteral(["Visions of the Deep Dark Deeps"])))) < 30 && (0,dist.have)((0,dist.$item)(hotres_templateObject24 || (hotres_templateObject24 = hotres_taggedTemplateLiteral(["magical sausage casing"]))))) {
+    if ((0,external_kolmafia_.myMp)() < 20 && (0,dist.have)((0,dist.$item)(hotres_templateObject25 || (hotres_templateObject25 = hotres_taggedTemplateLiteral(["magical sausage casing"]))))) {
+      (0,external_kolmafia_.create)(1, (0,dist.$item)(hotres_templateObject26 || (hotres_templateObject26 = hotres_taggedTemplateLiteral(["magical sausage"]))));
+      (0,external_kolmafia_.eat)(1, (0,dist.$item)(hotres_templateObject27 || (hotres_templateObject27 = hotres_taggedTemplateLiteral(["magical sausage"]))));
     }
 
     while ((0,external_kolmafia_.myHp)() < (0,external_kolmafia_.myMaxhp)()) {
-      (0,external_kolmafia_.useSkill)(1, (0,dist.$skill)(hotres_templateObject26 || (hotres_templateObject26 = hotres_taggedTemplateLiteral(["Cannelloni Cocoon"]))));
+      (0,external_kolmafia_.useSkill)(1, (0,dist.$skill)(hotres_templateObject28 || (hotres_templateObject28 = hotres_taggedTemplateLiteral(["Cannelloni Cocoon"]))));
     }
 
-    if ((0,external_kolmafia_.myMp)() < 100) {
-      (0,external_kolmafia_.create)(1, (0,dist.$item)(hotres_templateObject27 || (hotres_templateObject27 = hotres_taggedTemplateLiteral(["magical sausage"]))));
-      (0,external_kolmafia_.eat)(1, (0,dist.$item)(hotres_templateObject28 || (hotres_templateObject28 = hotres_taggedTemplateLiteral(["magical sausage"]))));
+    if ((0,external_kolmafia_.myMp)() < 100 && (0,dist.have)((0,dist.$item)(hotres_templateObject29 || (hotres_templateObject29 = hotres_taggedTemplateLiteral(["magical sausage casing"]))))) {
+      (0,external_kolmafia_.create)(1, (0,dist.$item)(hotres_templateObject30 || (hotres_templateObject30 = hotres_taggedTemplateLiteral(["magical sausage"]))));
+      (0,external_kolmafia_.eat)(1, (0,dist.$item)(hotres_templateObject31 || (hotres_templateObject31 = hotres_taggedTemplateLiteral(["magical sausage"]))));
     }
 
     if (Math.round((0,external_kolmafia_.numericModifier)("spooky resistance")) < 10) {
-      ensureEffect((0,dist.$effect)(hotres_templateObject29 || (hotres_templateObject29 = hotres_taggedTemplateLiteral(["Does It Have a Skull In There??"]))));
+      ensureEffect((0,dist.$effect)(hotres_templateObject32 || (hotres_templateObject32 = hotres_taggedTemplateLiteral(["Does It Have a Skull In There??"]))));
 
       if (Math.round((0,external_kolmafia_.numericModifier)("spooky resistance")) < 10) {
         throw "Not enough spooky res for Deep Dark Visions.";
       }
     }
 
-    (0,external_kolmafia_.useSkill)(1, (0,dist.$skill)(hotres_templateObject30 || (hotres_templateObject30 = hotres_taggedTemplateLiteral(["Deep Dark Visions"]))));
+    (0,external_kolmafia_.useSkill)(1, (0,dist.$skill)(hotres_templateObject33 || (hotres_templateObject33 = hotres_taggedTemplateLiteral(["Deep Dark Visions"]))));
   }
 }
 
@@ -18634,7 +18634,7 @@ function hotres_testPrep() {
     }
 
     (0,external_kolmafia_.cliExecute)("asdonmartin drive safely");
-  }, () => ensureEffect((0,dist.$effect)(hotres_templateObject31 || (hotres_templateObject31 = hotres_taggedTemplateLiteral(["Amazing"]))))];
+  }, () => ensureEffect((0,dist.$effect)(hotres_templateObject34 || (hotres_templateObject34 = hotres_taggedTemplateLiteral(["Amazing"]))))];
 
   for (var _i = 0, _improvements = improvements; _i < _improvements.length; _i++) {
     var improvement = _improvements[_i];
