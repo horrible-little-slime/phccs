@@ -18581,9 +18581,9 @@ function thisFireIsOutOfControl() {
     uniform();
     (0,external_kolmafia_.equip)((0,dist.$slot)(hotres_templateObject11 || (hotres_templateObject11 = hotres_taggedTemplateLiteral(["off-hand"]))), (0,dist.$item)(hotres_templateObject12 || (hotres_templateObject12 = hotres_taggedTemplateLiteral(["industrial fire extinguisher"]))));
     (0,external_kolmafia_.useFamiliar)((0,dist.$familiar)(hotres_templateObject13 || (hotres_templateObject13 = hotres_taggedTemplateLiteral(["none"]))));
-    advMacroAA((0,dist.$location)(hotres_templateObject14 || (hotres_templateObject14 = hotres_taggedTemplateLiteral(["Noob Cave"]))), dist.Macro.skill((0,dist.$skill)(hotres_templateObject15 || (hotres_templateObject15 = hotres_taggedTemplateLiteral(["Fire Extinguisher: Foam Yourself"])))).skill((0,dist.$skill)(hotres_templateObject16 || (hotres_templateObject16 = hotres_taggedTemplateLiteral(["Use the Force"])))), () => !(0,dist.have)((0,dist.$effect)(hotres_templateObject17 || (hotres_templateObject17 = hotres_taggedTemplateLiteral(["Fireproof Foam Suit"])))), () => {
-      (0,external_kolmafia_.visitUrl)("choice.php");
-      (0,external_kolmafia_.runChoice)(3);
+    setChoice(1387, 3);
+    advMacroAA((0,dist.$location)(hotres_templateObject14 || (hotres_templateObject14 = hotres_taggedTemplateLiteral(["The Dire Warren"]))), dist.Macro.skill((0,dist.$skill)(hotres_templateObject15 || (hotres_templateObject15 = hotres_taggedTemplateLiteral(["Fire Extinguisher: Foam Yourself"])))).skill((0,dist.$skill)(hotres_templateObject16 || (hotres_templateObject16 = hotres_taggedTemplateLiteral(["Use the Force"])))), () => !(0,dist.have)((0,dist.$effect)(hotres_templateObject17 || (hotres_templateObject17 = hotres_taggedTemplateLiteral(["Fireproof Foam Suit"])))), () => {
+      if ((0,external_kolmafia_.handlingChoice)()) (0,external_kolmafia_.runChoice)(-1);
     });
   }
 }
