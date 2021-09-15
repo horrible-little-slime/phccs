@@ -70,16 +70,17 @@ function deepDarkVisions() {
     maximize("spooky res", false);
     while (
         have($skill`Deep Dark Visions`) &&
-        haveEffect($effect`Visions of the Deep Dark Deeps`) < 30
+        haveEffect($effect`Visions of the Deep Dark Deeps`) < 30 &&
+        have($item`magical sausage casing`)
     ) {
-        if (myMp() < 20) {
+        if (myMp() < 20 && have($item`magical sausage casing`)) {
             create(1, $item`magical sausage`);
             eat(1, $item`magical sausage`);
         }
         while (myHp() < myMaxhp()) {
             useSkill(1, $skill`Cannelloni Cocoon`);
         }
-        if (myMp() < 100) {
+        if (myMp() < 100 && have($item`magical sausage casing`)) {
             create(1, $item`magical sausage`);
             eat(1, $item`magical sausage`);
         }
