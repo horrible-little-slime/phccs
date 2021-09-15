@@ -4,6 +4,7 @@ import {
     eat,
     equip,
     getFuel,
+    handlingChoice,
     haveEffect,
     maximize,
     myHp,
@@ -14,11 +15,10 @@ import {
     use,
     useFamiliar,
     useSkill,
-    visitUrl,
 } from "kolmafia";
 import { $effect, $familiar, $item, $location, $skill, $slot, get, have, Macro } from "libram";
 import { universalWeightBuffs } from "./familiarweight";
-import { advMacroAA, ensureEffect, fuelUp, horse, tryHead } from "./lib";
+import { advMacroAA, ensureEffect, fuelUp, horse, setChoice, tryHead } from "./lib";
 import uniform, { hotresOutfit } from "./outfits";
 const predictor = () => 60 - numericModifier("hot resistance");
 
@@ -45,15 +45,15 @@ function thisFireIsOutOfControl() {
 
         equip($slot`off-hand`, $item`industrial fire extinguisher`);
         useFamiliar($familiar`none`);
+        setChoice(1387, 3);
         advMacroAA(
-            $location`Noob Cave`,
+            $location`The Dire Warren`,
 
             Macro.skill($skill`Fire Extinguisher: Foam Yourself`).skill($skill`Use the Force`),
 
             () => !have($effect`Fireproof Foam Suit`),
             () => {
-                visitUrl("choice.php");
-                runChoice(3);
+                if (handlingChoice()) runChoice(-1);
             }
         );
     }
