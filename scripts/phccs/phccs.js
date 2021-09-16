@@ -19413,7 +19413,6 @@ function moxBuffs() {
 
 function moxTestPrep() {
   (0,external_kolmafia_.useFamiliar)((0,dist.$familiar)(stattests_templateObject45 || (stattests_templateObject45 = stattests_taggedTemplateLiteral(["Left-Hand Man"]))));
-  (0,external_kolmafia_.maximize)("moxie", false);
 
   if (moxPredictor() > 1) {
     ensureInnerElf();
