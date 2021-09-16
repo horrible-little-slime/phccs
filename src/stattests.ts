@@ -3,7 +3,6 @@ import {
     create,
     eat,
     itemAmount,
-    maximize,
     myBasestat,
     myBuffedstat,
     myMaxhp,
@@ -113,7 +112,6 @@ function moxBuffs() {
 
 function moxTestPrep() {
     useFamiliar($familiar`Left-Hand Man`);
-    maximize("moxie", false);
     if (moxPredictor() > 1) {
         ensureInnerElf();
     }
