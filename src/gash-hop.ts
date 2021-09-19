@@ -13,7 +13,7 @@ import {
 } from "libram";
 
 const safariTargets = [
-    "Phillammon",
+    "Kenny Kamakazi",
     "Busta_Rhymes",
     "Manendra",
     "Gausie",
