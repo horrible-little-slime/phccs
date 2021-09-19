@@ -19211,7 +19211,7 @@ var spell_predictor = () => 60 - Math.floor((0,external_kolmafia_.numericModifie
 
 function spell_castBuffs() {
   ensureEffect((0,dist.$effect)(spell_templateObject || (spell_templateObject = spell_taggedTemplateLiteral(["Simmering"]))));
-  (0,dist.$effects)(spell_templateObject2 || (spell_templateObject2 = spell_taggedTemplateLiteral(["Pisces in the Skyces, Carol of the Hells, Arched Eyebrow of the Archmage, Song of Sauce, We're All Made of Starfish"]))).forEach(effect => ensureEffect(effect));
+  (0,dist.$effects)(spell_templateObject2 || (spell_templateObject2 = spell_taggedTemplateLiteral(["Pisces in the Skyces, Carol of the Hells, Arched Eyebrow of the Archmage, Song of Sauce, We're All Made of Starfish, Jackasses' Symphony of Destruction"]))).forEach(effect => ensureEffect(effect));
 
   if (!(0,dist.get)("_cargoPocketEmptied")) {
     (0,external_kolmafia_.cliExecute)("cargo 177");

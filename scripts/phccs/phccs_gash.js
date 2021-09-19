@@ -17473,7 +17473,7 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 
 
-var safariTargets = ["Phillammon", "Busta_Rhymes", "Manendra", "Gausie", "Beldur", "worthawholebean", "ReverKiller", "Asmodais", "The Dictator"];
+var safariTargets = ["Kenny Kamakazi", "Busta_Rhymes", "Manendra", "Gausie", "Beldur", "worthawholebean", "ReverKiller", "Asmodais", "The Dictator"];
 
 while ((0,libram__WEBPACK_IMPORTED_MODULE_1__.$skill)(_templateObject || (_templateObject = _taggedTemplateLiteral(["Experience Safari"]))).timescast < (0,libram__WEBPACK_IMPORTED_MODULE_1__.get)("skillLevel180") && safariTargets.length) {
   (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.useSkill)((0,libram__WEBPACK_IMPORTED_MODULE_1__.$skill)(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["Experience Safari"]))), 1, safariTargets[0]);
