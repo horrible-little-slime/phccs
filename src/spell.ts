@@ -34,7 +34,7 @@ const predictor = () =>
 
 function castBuffs() {
     ensureEffect($effect`Simmering`);
-    $effects`Pisces in the Skyces, Carol of the Hells, Arched Eyebrow of the Archmage, Song of Sauce, We're All Made of Starfish`.forEach(
+    $effects`Pisces in the Skyces, Carol of the Hells, Arched Eyebrow of the Archmage, Song of Sauce, We're All Made of Starfish, Jackasses' Symphony of Destruction`.forEach(
         (effect) => ensureEffect(effect)
     );
 
