@@ -47,7 +47,6 @@ At present, PHCCS requires the following iotms/expensive old items to operate:
  * Songboom
  * Source
  * Barrel Shrine
- * Lovebugs
  * Sorcerers of the Shore Grimoire
  * Clip-Art
  * Sugar Sheets
@@ -65,6 +64,7 @@ At present, PHCCS requires the following iotms/expensive old items to operate:
   * Candy Hearts
   * BRICKO
   * Candyblast
+  * Love Bugs
  
  You will need at least one of candy hearts or candyblast in order to do item synthesis.
  
