@@ -187,7 +187,11 @@ function witchGhostAgent() {
     heal();
     useDefaultFamiliar();
     ensureMp(100);
-    Macro.skill("curse of weaksauce").skill("micrometeor").attack().repeat().setAutoAttack();
+    Macro.trySkill($skill`Curse of Weaksauce`)
+        .trySkill($skill`Micrometeorite`)
+        .attack()
+        .repeat()
+        .setAutoAttack();
     if (!have($item`battle broom`)) {
         Witchess.fightPiece($monster`Witchess Witch`);
     }
@@ -201,11 +205,11 @@ function witchGhostAgent() {
             ghostLocation,
             Macro.step(delevel)
                 .step(easyFight)
-                .skill("portscan")
-                .skill("shoot ghost")
-                .skill("shoot ghost")
-                .skill("shoot ghost")
-                .skill("trap ghost")
+                .trySkill($skill`Portscan`)
+                .trySkill($skill`Shoot Ghost`)
+                .trySkill($skill`Shoot Ghost`)
+                .trySkill($skill`Shoot Ghost`)
+                .trySkill($skill`Trap Ghost`)
         );
     }
     if (!have($item`government`) && !have($item`government cheese`)) {
@@ -216,7 +220,10 @@ function witchGhostAgent() {
         equip($slot`off-hand`, $item`latte lovers member's mug`);
         advMacroAA(
             $location`Noob Cave`,
-            Macro.step(delevel).skill("otoscope").skill("become a bat").skill("chest x-ray"), //1
+            Macro.step(delevel)
+                .trySkill($skill`Otoscope`)
+                .trySkill($skill`Become a Bat`)
+                .trySkill($skill`Chest X-Ray`), //1
             () => {
                 return getCounters("Portscan", 0, 0) !== "";
             },
@@ -242,7 +249,9 @@ function lov() {
     Macro.if_("monstername LOV enforcer", Macro.attack().repeat())
         .if_(
             "monstername LOV Engineer",
-            Macro.step(candyblast).skill("weapon of the pastalord").repeat()
+            Macro.step(candyblast)
+                .trySkill($skill`Weapon of the Pastalord`)
+                .repeat()
         )
         .if_(
             "monstername LOV equivocator",
@@ -386,7 +395,11 @@ function NEP() {
     useDefaultFamiliar();
     advMacroAA(
         $location`The Neverending Party`,
-        Macro.step(delevel).trySkill("feel pride").step(easyFight).attack().repeat(),
+        Macro.step(delevel)
+            .trySkill($skill`Feel Pride`)
+            .step(easyFight)
+            .attack()
+            .repeat(),
         () => {
             return get("_neverendingPartyFreeTurns") < 10;
         },
@@ -409,9 +422,9 @@ function NEP() {
         $location`The Neverending Party`,
         Macro.if_(
             "!monstername sausage goblin",
-            Macro.trySkill("shattering punch")
-                .trySkill("gingerbread mob hit")
-                .trySkill("chest x-ray")
+            Macro.trySkill($skill`Shattering Punch`)
+                .trySkill($skill`Gingerbread Mob Hit`)
+                .trySkill($skill`Chest X-Ray`)
         ).if_("monstername sausage goblin", Macro.step(delevel).step(candyblast).attack().repeat()),
         () => {
             return get("_shatteringPunchUsed") < 3 && !get("_gingerbreadMobHitUsed");
@@ -436,9 +449,9 @@ function NEP() {
         $location`The Neverending Party`,
         Macro.if_(
             "!monstername sausage goblin",
-            Macro.trySkill("shattering punch")
-                .trySkill("gingerbread mob hit")
-                .trySkill("chest x-ray")
+            Macro.trySkill($skill`Shattering Punch`)
+                .trySkill($skill`Gingerbread Mob Hit`)
+                .trySkill($skill`Chest X-Ray`)
         ).if_("monstername sausage goblin", Macro.step(delevel).step(candyblast).attack().repeat()),
         () => {
             return get("_chestXRayUsed") < 3;
@@ -480,9 +493,9 @@ function mElfLeveling() {
 
 function royalty() {
     if (!have($item`very pointy crown`)) {
-        Macro.tryItem("jam band flyer")
-            .tryItem("gas can")
-            .tryItem("time-spinner")
+        Macro.tryItem($item`jam band bootleg`)
+            .tryItem($item`gas can`)
+            .tryItem($item`Time-Spinner`)
             .attack()
             .repeat()
             .setAutoAttack();

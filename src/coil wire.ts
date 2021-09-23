@@ -31,10 +31,10 @@ function firstFights() {
             ghostLocation,
             Macro.step(delevel)
                 .step(easyFight)
-                .skill("shoot ghost")
-                .skill("shoot ghost")
-                .skill("shoot ghost")
-                .skill("trap ghost")
+                .trySkill($skill`Shoot Ghost`)
+                .trySkill($skill`Shoot Ghost`)
+                .trySkill($skill`Shoot Ghost`)
+                .trySkill($skill`Trap Ghost`)
         );
     }
 }
