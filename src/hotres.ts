@@ -5,7 +5,6 @@ import {
     getFuel,
     handlingChoice,
     haveEffect,
-    maximize,
     myHp,
     myMaxhp,
     myMp,
@@ -18,7 +17,7 @@ import {
 import { $effect, $familiar, $item, $location, $skill, $slot, get, have, Macro } from "libram";
 import { universalWeightBuffs } from "./familiarweight";
 import { advMacroAA, ensureEffect, fuelUp, horse, setChoice, tryHead } from "./lib";
-import uniform, { hotresOutfit } from "./outfits";
+import uniform, { hotresOutfit, Outfit } from "./outfits";
 const predictor = () => 60 - numericModifier("hot resistance");
 
 function castBuffs() {
@@ -63,8 +62,20 @@ function deepDarkVisions() {
         create(1, $item`box of Familiar Jacks`);
         use(1, $item`box of Familiar Jacks`);
     }
-
-    maximize("spooky res", false);
+    cliExecute("retrocape vampire hold");
+    new Outfit(
+        new Map<Slot, Item>([
+            [$slot`hat`, $item`Iunion Crown`],
+            [$slot`shirt`, $item`denim jacket`],
+            [$slot`back`, $item`unwrapped knock-off retro superhero cape`],
+            [$slot`weapon`, $item`Fourth of May Cosplay Saber`],
+            [$slot`off-hand`, $item`familiar scrapbook`],
+            [$slot`pants`, $item`Cargo Cultist Shorts`],
+            [$slot`familiar`, $item`cracker`],
+            [$slot`acc1`, $item`your cowboy boots`],
+        ]),
+        $familiar`Exotic Parrot`
+    ).dress();
     while (
         have($skill`Deep Dark Visions`) &&
         haveEffect($effect`Visions of the Deep Dark Deeps`) < 30 &&

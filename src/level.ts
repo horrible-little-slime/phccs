@@ -9,7 +9,6 @@ import {
     haveEffect,
     haveEquipped,
     knollAvailable,
-    maximize,
     mpCost,
     myLevel,
     myMp,
@@ -118,9 +117,7 @@ function buffMyst() {
 }
 
 function castBuffs() {
-    useFamiliar($familiar`Left-Hand Man`);
-    maximize("mp", false);
-
+    uniform($item`Abracandalabra`);
     if (get("_sausagesEaten") === 0) {
         cliExecute("eat 1 magic sausage");
         useSkill(1, $skill`Advanced Saucecrafting`);
