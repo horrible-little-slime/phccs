@@ -1,4 +1,12 @@
-import { cliExecute, equip, equippedAmount, equippedItem, myFamiliar, useFamiliar } from "kolmafia";
+import {
+    cliExecute,
+    equip,
+    equippedAmount,
+    equippedItem,
+    myFamiliar,
+    toSlot,
+    useFamiliar,
+} from "kolmafia";
 import { $familiar, $item, $items, $slot, $slots, have } from "libram";
 
 export class Outfit {
@@ -110,20 +118,32 @@ export function withOutfit<T>(outfit: Outfit, callback: () => T): T {
     }
 }
 
-export default function uniform(): void {
-    Outfit.doYourBest(
-        new Map<Slot, Item | Item[]>([
-            [$slot`hat`, $item`Iunion Crown`],
-            [$slot`shirt`, $item`fresh coat of paint`],
-            [$slot`pants`, $items`pantogram pants, old sweatpants`],
-            [$slot`weapon`, $item`Fourth of May Cosplay Saber`],
-            [$slot`off-hand`, $item`familiar scrapbook`],
-            [$slot`acc1`, $item`your cowboy boots`],
-            [$slot`acc2`, $item`codpiece`],
-            [$slot`acc3`, $items`battle broom, Powerful Glove`],
-            [$slot`back`, $items`LOV Epaulettes, vampyric cloake`],
-        ])
-    ).dress();
+export default function uniform(changes?: Item[]): void {
+    const uniformMap = new Map<Slot, Item | Item[]>([
+        [$slot`hat`, $item`Iunion Crown`],
+        [$slot`shirt`, $item`fresh coat of paint`],
+        [$slot`pants`, $items`pantogram pants, old sweatpants`],
+        [$slot`weapon`, $item`Fourth of May Cosplay Saber`],
+        [$slot`off-hand`, $item`familiar scrapbook`],
+        [$slot`acc1`, $item`your cowboy boots`],
+        [$slot`acc2`, $item`codpiece`],
+        [$slot`acc3`, $items`battle broom, Powerful Glove`],
+        [$slot`back`, $items`LOV Epaulettes, vampyric cloake`],
+    ]);
+
+    if (changes) {
+        changes.forEach((equip) => {
+            const slot = toSlot(equip);
+            const currentSlotOccupant = uniformMap.get(slot);
+            const newSlotOccupant = currentSlotOccupant
+                ? Array.isArray(currentSlotOccupant)
+                    ? [equip, ...currentSlotOccupant]
+                    : [equip, currentSlotOccupant]
+                : [equip];
+            uniformMap.set(slot, newSlotOccupant);
+        });
+    }
+    Outfit.doYourBest(uniformMap).dress();
 }
 
 export function wireOutfit(): void {
