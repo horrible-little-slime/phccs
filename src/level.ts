@@ -27,6 +27,7 @@ import {
     $effect,
     $familiar,
     $item,
+    $items,
     $location,
     $monster,
     $skill,
@@ -180,10 +181,8 @@ function witchGhostAgent() {
         visitUrl("shop.php?whichshop=armory&action=talk");
         runChoice(1);
     }
-    uniform();
-    equip($slot`back`, $item`protonic accelerator pack`);
     cliExecute("fold makeshift garbage shirt");
-    equip($slot`shirt`, $item`makeshift garbage shirt`);
+    uniform(...$items`protonic accelerator pack, makeshift garbage shirt`);
     heal();
     useDefaultFamiliar();
     ensureMp(100);
@@ -213,11 +212,13 @@ function witchGhostAgent() {
         );
     }
     if (!have($item`government`) && !have($item`government cheese`)) {
-        equip($slot`back`, $item`vampyric cloake`);
         useDefaultFamiliar();
-        equip($slot`acc2`, $item`gold detective badge`);
-        equip($slot`acc3`, $item`Lil' Doctor™ bag`);
-        equip($slot`off-hand`, $item`latte lovers member's mug`);
+        uniform(
+            $item`vampyric cloake`,
+            $item`latte lovers member's mug`,
+            [$item`gold detective badge`, $slot`acc2`],
+            [$item`Lil' Doctor™ bag`, $slot`acc3`]
+        );
         advMacroAA(
             $location`Noob Cave`,
             Macro.step(delevel)
@@ -389,9 +390,8 @@ function NEP() {
         }
     }
 
-    uniform();
-    equip($slot`shirt`, $item`makeshift garbage shirt`);
-    equip($slot`off-hand`, $item`Kramco Sausage-o-Matic™`);
+    uniform($item`makeshift garbage shirt`, $item`Kramco Sausage-o-Matic™`);
+
     useDefaultFamiliar();
     advMacroAA(
         $location`The Neverending Party`,

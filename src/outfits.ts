@@ -118,7 +118,7 @@ export function withOutfit<T>(outfit: Outfit, callback: () => T): T {
     }
 }
 
-export default function uniform(changes?: Item[]): void {
+export default function uniform(...changes: (Item | [Item, Slot])[]): void {
     const uniformMap = new Map<Slot, Item | Item[]>([
         [$slot`hat`, $item`Iunion Crown`],
         [$slot`shirt`, $item`fresh coat of paint`],
@@ -131,18 +131,18 @@ export default function uniform(changes?: Item[]): void {
         [$slot`back`, $items`LOV Epaulettes, vampyric cloake`],
     ]);
 
-    if (changes) {
-        changes.forEach((equip) => {
-            const slot = toSlot(equip);
-            const currentSlotOccupant = uniformMap.get(slot);
-            const newSlotOccupant = currentSlotOccupant
-                ? Array.isArray(currentSlotOccupant)
-                    ? [equip, ...currentSlotOccupant]
-                    : [equip, currentSlotOccupant]
-                : [equip];
-            uniformMap.set(slot, newSlotOccupant);
-        });
-    }
+    changes.forEach((change) => {
+        const slot = Array.isArray(change) ? change[1] : toSlot(change);
+        const equipment = Array.isArray(change) ? change[0] : change;
+        const currentSlotOccupant = uniformMap.get(slot);
+        const newSlotOccupant = currentSlotOccupant
+            ? Array.isArray(currentSlotOccupant)
+                ? [equipment, ...currentSlotOccupant]
+                : [equipment, currentSlotOccupant]
+            : [equipment];
+        uniformMap.set(slot, newSlotOccupant);
+    });
+
     Outfit.doYourBest(uniformMap).dress();
 }
 

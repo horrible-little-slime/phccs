@@ -2,7 +2,6 @@ import {
     cliExecute,
     create,
     eat,
-    equip,
     getFuel,
     handlingChoice,
     haveEffect,
@@ -41,9 +40,7 @@ function castBuffs() {
 
 function thisFireIsOutOfControl() {
     if (get("_saberForceUses") < 5 && !have($effect`Fireproof Foam Suit`)) {
-        uniform();
-
-        equip($slot`off-hand`, $item`industrial fire extinguisher`);
+        uniform([$item`industrial fire extinguisher`, $slot`off-hand`]);
         useFamiliar($familiar`none`);
         setChoice(1387, 3);
         advMacroAA(

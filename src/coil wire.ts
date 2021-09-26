@@ -6,8 +6,7 @@ import { advMacro, fightSausageIfAble, useDefaultFamiliar } from "./lib";
 import { runStart } from "./runstart";
 
 function firstFights() {
-    uniform();
-    equip($slot`back`, $item`protonic accelerator pack`);
+    uniform($item`protonic accelerator pack`);
     useDefaultFamiliar();
     fightSausageIfAble(
         $location`Noob Cave`,
