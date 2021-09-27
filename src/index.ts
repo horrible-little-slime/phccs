@@ -6,6 +6,7 @@ import {
     myPathId,
     print,
     setAutoAttack,
+    toItem,
     visitUrl,
 } from "kolmafia";
 import coilWire from "./coil wire";
@@ -18,6 +19,7 @@ import { convertMilliseconds, PropertyManager, Test, tests, testWrapper } from "
 import spellTest from "./spell";
 import { HPTest, moxTest, muscleTest, mystTest } from "./stattests";
 import weaponTest from "./weapon";
+import { get } from "libram";
 
 //preamble
 if (myPathId() !== 25) abort();
@@ -58,6 +60,13 @@ try {
         )}, assuming it ran contiguously. Otherwise, this run of the program lasted that much time. Hope whatever number you see is good!`,
         "red"
     );
+    if (["food", "booze"].includes(get("_questPartyFairQuest"))) {
+        const partyFairInfo = get("_questPartyFairProgress").split(" ");
+        print(
+            `Gerald/ine wants ${partyFairInfo[0]} ${toItem(partyFairInfo[1]).plural}, please!`,
+            "red"
+        );
+    }
     setAutoAttack(0);
     PropertyManager.resetAll();
 }
