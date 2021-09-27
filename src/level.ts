@@ -238,10 +238,8 @@ function witchGhostAgent() {
 }
 
 function lov() {
-    uniform();
-    equip($slot`back`, $item`protonic accelerator pack`);
     cliExecute("fold makeshift garbage shirt");
-    equip($slot`shirt`, $item`makeshift garbage shirt`);
+    uniform(...$items`protonic accelerator pack, makeshift garbage shirt`);
     heal();
     useDefaultFamiliar();
     Macro.if_("monstername LOV enforcer", Macro.attack().repeat())

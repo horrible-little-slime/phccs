@@ -52,8 +52,9 @@ export class Outfit {
             if (!toEquip) break;
             const currentEquip = equippedItem(slot);
             if (
+                currentEquip === $item`none` ||
                 equippedAmount(currentEquip) >
-                accessoryEquips.filter((accessory) => accessory === currentEquip).length
+                    accessoryEquips.filter((accessory) => accessory === currentEquip).length
             ) {
                 equip(slot, toEquip);
             }
@@ -139,7 +140,7 @@ export default function uniform(...changes: (Item | [Item, Slot])[]): void {
             ? Array.isArray(currentSlotOccupant)
                 ? [equipment, ...currentSlotOccupant]
                 : [equipment, currentSlotOccupant]
-            : [equipment];
+            : equipment;
         uniformMap.set(slot, newSlotOccupant);
     });
 
