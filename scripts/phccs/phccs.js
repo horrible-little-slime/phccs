@@ -19557,6 +19557,7 @@ function weaponTest() {
 
 
 
+
  //preamble
 
 if ((0,external_kolmafia_.myPathId)() !== 25) (0,external_kolmafia_.abort)();
@@ -19589,6 +19590,12 @@ try {
     (0,external_kolmafia_.print)("We expected the ".concat(testDuration.testName, " test to take ").concat(testDuration.turnPrediction, " turns, and it cost ").concat(testDuration.turnCost, " turns."), "blue");
   });
   (0,external_kolmafia_.print)("This loop took ".concat(convertMilliseconds((0,external_kolmafia_.gametimeToInt)() - startTime), ", assuming it ran contiguously. Otherwise, this run of the program lasted that much time. Hope whatever number you see is good!"), "red");
+
+  if (["food", "booze"].includes((0,dist.get)("_questPartyFairQuest"))) {
+    var partyFairInfo = (0,dist.get)("_questPartyFairProgress").split(" ");
+    (0,external_kolmafia_.print)("Gerald/ine wants ".concat(partyFairInfo[0], " ").concat((0,external_kolmafia_.toItem)(partyFairInfo[1]).plural, ", please!"), "red");
+  }
+
   (0,external_kolmafia_.setAutoAttack)(0);
   PropertyManager.resetAll();
 }
