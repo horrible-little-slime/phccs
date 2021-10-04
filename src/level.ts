@@ -94,6 +94,14 @@ function buffMyst() {
         }
     }
 
+    if (
+        get("yourFavoriteBirdMods")
+            .split(",")
+            .some((mod) => mod.includes("Mysticality Percent: +"))
+    ) {
+        useSkill($skill`Visit your Favorite Bird`);
+    }
+
     ensureEffect($effect`Uncucumbered`);
     if (!have($effect`Synthesis: Smart`)) synthMyst();
 
