@@ -18806,6 +18806,10 @@ function buffMyst() {
     (0,external_kolmafia_.useSkill)((0,dist.$skill)(level_templateObject12 || (level_templateObject12 = level_taggedTemplateLiteral(["Visit your Favorite Bird"]))));
   }
 
+  if ((0,dist.get)("spacegateVaccine2") && (0,dist.get)("spaceGateAlways") && !(0,dist.get)("_spacegateVaccine")) {
+    (0,external_kolmafia_.cliExecute)("spacegate vaccine 2");
+  }
+
   ensureEffect((0,dist.$effect)(level_templateObject13 || (level_templateObject13 = level_taggedTemplateLiteral(["Uncucumbered"]))));
   if (!(0,dist.have)((0,dist.$effect)(level_templateObject14 || (level_templateObject14 = level_taggedTemplateLiteral(["Synthesis: Smart"]))))) synthMyst();
   tryHead((0,dist.$effect)(level_templateObject15 || (level_templateObject15 = level_taggedTemplateLiteral(["You Learned Something Maybe!"]))));
