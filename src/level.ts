@@ -102,6 +102,10 @@ function buffMyst() {
         useSkill($skill`Visit your Favorite Bird`);
     }
 
+    if (get("spacegateVaccine2") && get("spaceGateAlways") && !get("_spacegateVaccine")) {
+        cliExecute("spacegate vaccine 2");
+    }
+
     ensureEffect($effect`Uncucumbered`);
     if (!have($effect`Synthesis: Smart`)) synthMyst();
 
