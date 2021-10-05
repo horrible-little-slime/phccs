@@ -337,7 +337,7 @@ export function spellOutfit(): void {
             [$slot`hat`, $items`sugar chapeau, Hollandaise helmet`],
             [$slot`weapon`, $item`weeping willow wand`],
             [$slot`off-hand`, $item`Abracandalabra`],
-            [$slot`familiar`, $item`astral statuette`],
+            [$slot`familiar`, $items`astral statuette`],
             [$slot`pants`, $item`pantogram pants`],
             [$slot`acc1`, $item`Kremlin's Greatest Briefcase`],
             [$slot`acc2`, $item`codpiece`],
