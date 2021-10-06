@@ -413,7 +413,7 @@ function NEP() {
         () => {
             useDefaultFamiliar();
             heal();
-            if (get("_sausageFights") > 3 && haveEquipped($item`Kramco Sausage-o-Matic™`)) {
+            if (get("_sausageFights") > 4 && haveEquipped($item`Kramco Sausage-o-Matic™`)) {
                 equip($slot`off-hand`, $item`familiar scrapbook`);
             }
             if (get("choiceAdventure1324") !== 5 && questStep("_questPartyFair") > 0) {
@@ -439,7 +439,7 @@ function NEP() {
         () => {
             heal();
             useDefaultFamiliar();
-            if (get("_sausageFights") > 3 && haveEquipped($item`Kramco Sausage-o-Matic™`)) {
+            if (get("_sausageFights") > 4 && haveEquipped($item`Kramco Sausage-o-Matic™`)) {
                 equip($slot`off-hand`, $item`familiar scrapbook`);
             }
             if (get("choiceAdventure1324") !== 5 && questStep("_questPartyFair") > 0) {
@@ -466,7 +466,7 @@ function NEP() {
         () => {
             heal();
             useDefaultFamiliar();
-            if (get("_sausageFights") > 3 && haveEquipped($item`Kramco Sausage-o-Matic™`)) {
+            if (get("_sausageFights") > 4 && haveEquipped($item`Kramco Sausage-o-Matic™`)) {
                 equip($slot`off-hand`, $item`familiar scrapbook`);
             }
             if (get("choiceAdventure1324") !== 5 && questStep("_questPartyFair") > 0) {
