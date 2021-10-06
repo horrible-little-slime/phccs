@@ -379,6 +379,16 @@ function snojo() {
     cliExecute("hottub");
 }
 
+function tentacle(): void {
+    if (!have($skill`Evoke Eldritch Horror`)) return;
+    uniform();
+    useDefaultFamiliar();
+    const macro = Macro.step(delevel).step(candyblast).attack().repeat();
+    macro.setAutoAttack();
+    useSkill($skill`Evoke Eldritch Horror`);
+    runCombat(macro.toString());
+}
+
 function NEP() {
     if (get("_questPartyFair") === "unstarted") {
         setChoice(1322, "");
@@ -537,6 +547,7 @@ export default function levelUp(): void {
     lov();
     godLob();
     snojo();
+    tentacle();
     mElfLeveling();
     NEP();
     royalty();
