@@ -1,17 +1,13 @@
 import {
-    availableAmount,
     cliExecute,
     create,
-    drink,
     equip,
     getFuel,
     getWorkshed,
     myClass,
-    myInebriety,
     numericModifier,
     use,
     useFamiliar,
-    useSkill,
     visitUrl,
 } from "kolmafia";
 import {
@@ -36,13 +32,6 @@ const predictor = () =>
 
 function prelude() {
     horse("dark");
-    if (availableAmount($item`astral six-pack`) !== 0) use(1, $item`astral six-pack`);
-    if (have($effect`The Magical Mojomuscular Melody`))
-        cliExecute("shrug The Magical Mojomuscular Melody");
-    useSkill($skill`The Ode to Booze`);
-    while (myInebriety() < 5) {
-        drink(1, $item`astral pilsner`);
-    }
 }
 
 function castBuffs() {

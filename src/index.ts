@@ -1,12 +1,17 @@
 import {
     abort,
+    availableAmount,
     cliExecute,
+    drink,
     gametimeToInt,
+    myInebriety,
     myLevel,
     myPathId,
     print,
     setAutoAttack,
     toItem,
+    use,
+    useSkill,
     visitUrl,
 } from "kolmafia";
 import coilWire from "./coil wire";
@@ -19,7 +24,7 @@ import { convertMilliseconds, PropertyManager, Test, tests, testWrapper } from "
 import spellTest from "./spell";
 import { HPTest, moxTest, muscleTest, mystTest } from "./stattests";
 import weaponTest from "./weapon";
-import { get } from "libram";
+import { $effect, $item, $skill, get, have } from "libram";
 
 //preamble
 if (myPathId() !== 25) abort();
@@ -41,6 +46,13 @@ try {
     testWrapper("HP", Test.HP, HPTest);
     testWrapper("muscle", Test.MUS, muscleTest);
     testWrapper("mysticality", Test.MYS, mystTest);
+    if (availableAmount($item`astral six-pack`) !== 0) use(1, $item`astral six-pack`);
+    if (have($effect`The Magical Mojomuscular Melody`))
+        cliExecute("shrug The Magical Mojomuscular Melody");
+    useSkill($skill`The Ode to Booze`);
+    while (myInebriety() < 5) {
+        drink(1, $item`astral pilsner`);
+    }
     testWrapper("item", Test.ITEM, itemTest);
     testWrapper("hot res", Test.HOT_RES, hotTest);
     testWrapper("noncombat", Test.NONCOMBAT, noncombatTest);
