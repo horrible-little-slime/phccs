@@ -1,7 +1,6 @@
 import {
     cliExecute,
     create,
-    eat,
     getFuel,
     handlingChoice,
     haveEffect,
@@ -27,7 +26,7 @@ import {
     Macro,
 } from "libram";
 import { universalWeightBuffs } from "./familiarweight";
-import { advMacroAA, ensureEffect, fuelUp, horse, setChoice, tryHead } from "./lib";
+import { advMacroAA, ensureEffect, ensureMp, fuelUp, horse, setChoice, tryHead } from "./lib";
 import uniform, { hotresOutfit, Outfit } from "./outfits";
 const predictor = () => 60 - numericModifier("hot resistance");
 
@@ -90,19 +89,13 @@ function deepDarkVisions() {
     while (
         have($skill`Deep Dark Visions`) &&
         haveEffect($effect`Visions of the Deep Dark Deeps`) < 30 &&
-        have($item`magical sausage casing`)
+        (have($item`magical sausage casing`) || myMp() >= 100)
     ) {
-        if (myMp() < 20 && have($item`magical sausage casing`)) {
-            create(1, $item`magical sausage`);
-            eat(1, $item`magical sausage`);
-        }
         while (myHp() < myMaxhp()) {
+            ensureMp(20);
             useSkill(1, $skill`Cannelloni Cocoon`);
         }
-        if (myMp() < 100 && have($item`magical sausage casing`)) {
-            create(1, $item`magical sausage`);
-            eat(1, $item`magical sausage`);
-        }
+        ensureMp(100);
         if (Math.round(numericModifier("spooky resistance")) < 10) {
             ensureEffect($effect`Does It Have a Skull In There??`);
             if (Math.round(numericModifier("spooky resistance")) < 10) {
@@ -110,6 +103,7 @@ function deepDarkVisions() {
             }
         }
         useSkill(1, $skill`Deep Dark Visions`);
+        ensureMp(100);
     }
 }
 
