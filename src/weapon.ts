@@ -58,7 +58,7 @@ function getCrushed() {
 }
 
 function castBuffs() {
-    $effects`Carol of the Bulls, Song of the North, Rage of the Reindeer, Scowl of the Auk, Disdain of the War Snapper, Tenacity of the Snapper, Billiards Belligerence, Blessing of the Bird`.forEach(
+    $effects`Carol of the Bulls, Song of the North, Rage of the Reindeer, Scowl of the Auk, Disdain of the War Snapper, Tenacity of the Snapper, Billiards Belligerence, Blessing of the Bird, Jackasses' Symphony of Destruction`.forEach(
         (effect) => ensureEffect(effect)
     );
     ensureEffect($effect`Frenzied, Bloody`);
