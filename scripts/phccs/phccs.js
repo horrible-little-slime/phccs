@@ -17537,7 +17537,8 @@ var Outfit = /*#__PURE__*/function () {
         for (_iterator.s(); !(_step = _iterator.n()).done;) {
           var slot = _step.value;
           if (targetEquipment.includes((0,external_kolmafia_.equippedItem)(slot)) && this.equips.get(slot) !== (0,external_kolmafia_.equippedItem)(slot)) (0,external_kolmafia_.equip)(slot, (0,dist.$item)(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["none"]))));
-        }
+        } //Order is anchored here to prevent DFSS shenanigans
+
       } catch (err) {
         _iterator.e(err);
       } finally {
@@ -17552,7 +17553,8 @@ var Outfit = /*#__PURE__*/function () {
           var _slot = _step2.value;
           var equipment = this.equips.get(_slot);
           if (equipment) (0,external_kolmafia_.equip)(_slot, equipment);
-        }
+        } //We don't care what order accessories are equipped in, just that they're equipped
+
       } catch (err) {
         _iterator2.e(err);
       } finally {
@@ -17569,7 +17571,7 @@ var Outfit = /*#__PURE__*/function () {
           var slot = _step3.value;
           var toEquip = accessoryEquips.find(equip => (0,external_kolmafia_.equippedAmount)(equip) < accessoryEquips.filter(accessory => accessory === equip).length);
           if (!toEquip) return "break";
-          var currentEquip = (0,external_kolmafia_.equippedItem)(slot);
+          var currentEquip = (0,external_kolmafia_.equippedItem)(slot); //We never want an empty accessory slot
 
           if (currentEquip === (0,dist.$item)(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["none"]))) || (0,external_kolmafia_.equippedAmount)(currentEquip) > accessoryEquips.filter(accessory => accessory === currentEquip).length) {
             (0,external_kolmafia_.equip)(slot, toEquip);
