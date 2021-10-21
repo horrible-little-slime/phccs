@@ -35,11 +35,13 @@ export class Outfit {
                 equip(slot, $item`none`);
         }
 
+        //Order is anchored here to prevent DFSS shenanigans
         for (const slot of $slots`weapon, off-hand, hat, back, shirt, pants, familiar, buddy-bjorn, crown-of-thrones`) {
             const equipment = this.equips.get(slot);
             if (equipment) equip(slot, equipment);
         }
 
+        //We don't care what order accessories are equipped in, just that they're equipped
         const accessoryEquips = accessorySlots
             .map((slot) => this.equips.get(slot))
             .filter((item) => item !== undefined) as Item[];
@@ -51,6 +53,7 @@ export class Outfit {
             );
             if (!toEquip) break;
             const currentEquip = equippedItem(slot);
+            //We never want an empty accessory slot
             if (
                 currentEquip === $item`none` ||
                 equippedAmount(currentEquip) >
