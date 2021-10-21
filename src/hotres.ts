@@ -21,19 +21,20 @@ import {
     $location,
     $skill,
     $slot,
+    BeachComb,
     get,
     have,
     Macro,
 } from "libram";
 import { universalWeightBuffs } from "./familiarweight";
-import { advMacroAA, ensureEffect, ensureMp, fuelUp, horse, setChoice, tryHead } from "./lib";
+import { advMacroAA, ensureEffect, ensureMp, fuelUp, horse, setChoice } from "./lib";
 import uniform, { hotresOutfit, Outfit } from "./outfits";
 const predictor = () => 60 - numericModifier("hot resistance");
 
 function castBuffs() {
     universalWeightBuffs();
 
-    tryHead($effect`Hot-Headed`);
+    BeachComb.tryHead($effect`Hot-Headed`);
 
     ensureEffect($effect`Elemental Saucesphere`);
     ensureEffect($effect`Astral Shell`);

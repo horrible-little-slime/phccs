@@ -17,6 +17,7 @@ import {
     $location,
     $monster,
     $skill,
+    BeachComb,
     get,
     have,
     Macro,
@@ -24,7 +25,7 @@ import {
     Witchess,
 } from "libram";
 import { defaultKill } from "./phccs-macros";
-import { advMacroAA, clamp, ensureEffect, horse, setChoice, tryHead } from "./lib";
+import { advMacroAA, clamp, ensureEffect, horse, setChoice } from "./lib";
 import uniform, { famweightOutfit } from "./outfits";
 
 export function universalWeightBuffs(): void {
@@ -41,7 +42,7 @@ export function universalWeightBuffs(): void {
         cliExecute("witchess");
     }
 
-    tryHead($effect`Do I Know You From Somewhere?`);
+    BeachComb.tryHead($effect`Do I Know You From Somewhere?`);
 
     if (have($item`green candy heart`)) ensureEffect($effect`Heart of Green`);
 }

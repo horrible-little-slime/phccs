@@ -479,27 +479,6 @@ export function questStep(questName: string): number {
     }
 }
 
-const heads = [
-    $effect`Hot-Headed`,
-    $effect`Cold as Nice`,
-    $effect`A Brush with Grossness`,
-    $effect`Does It Have a Skull In There??`,
-    $effect`Oiled, Slick`,
-    $effect`Lack of Body-Building`,
-    $effect`We're All Made of Starfish`,
-    $effect`Pomp & Circumsands`,
-    $effect`Resting Beach Face`,
-    $effect`Do I Know You From Somewhere?`,
-    $effect`You Learned Something Maybe!`,
-];
-
-export function tryHead(effect: Effect): void {
-    if (!heads.includes(effect)) return;
-    const headNumber = 1 + heads.indexOf(effect);
-    if (property.getString("_beachHeadsUsed").split(",").includes(headNumber.toString())) return;
-    ensureEffect(effect);
-}
-
 export function ensureMp(mp: number): void {
     if (myMp() > mp) return;
     if (mp > myMaxmp()) throw `Insufficient maximum mp!`;

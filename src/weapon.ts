@@ -16,6 +16,7 @@ import {
     $monster,
     $skill,
     $slot,
+    BeachComb,
     get,
     have,
     Macro,
@@ -31,7 +32,6 @@ import {
     horsery,
     setChoice,
     setClan,
-    tryHead,
     useDefaultFamiliar,
 } from "./lib";
 import uniform, { weaponOutfit } from "./outfits";
@@ -63,7 +63,7 @@ function castBuffs() {
     );
     ensureEffect($effect`Frenzied, Bloody`);
     if (have($item`LOV Elixir #3`)) use($item`LOV Elixir #3`);
-    tryHead($effect`Lack of Body-Building`);
+    BeachComb.tryHead($effect`Lack of Body-Building`);
 }
 
 function forceSpit() {

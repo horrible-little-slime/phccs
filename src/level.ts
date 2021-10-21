@@ -32,6 +32,7 @@ import {
     $skill,
     $skills,
     $slot,
+    BeachComb,
     get,
     have,
     Macro,
@@ -53,7 +54,6 @@ import {
     setChoice,
     synthExp,
     synthMyst,
-    tryHead,
     useDefaultFamiliar,
 } from "./lib";
 import uniform from "./outfits";
@@ -109,8 +109,8 @@ function buffMyst() {
     ensureEffect($effect`Uncucumbered`);
     if (!have($effect`Synthesis: Smart`)) synthMyst();
 
-    tryHead($effect`You Learned Something Maybe!`);
-    tryHead($effect`We're All Made of Starfish`);
+    BeachComb.tryHead($effect`You Learned Something Maybe!`);
+    BeachComb.tryHead($effect`We're All Made of Starfish`);
 
     if (!get("_lyleFavored")) ensureEffect($effect`Favored by Lyle`);
     if (!get("telescopeLookedHigh")) ensureEffect($effect`Starry-Eyed`);
