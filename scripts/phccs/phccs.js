@@ -17762,7 +17762,7 @@ var candyblast = dist.Macro.externalIf((0,dist.have)((0,dist.$skill)(phccs_macro
 var easyFight = dist.Macro.trySkill((0,dist.$skill)(phccs_macros_templateObject7 || (phccs_macros_templateObject7 = phccs_macros_taggedTemplateLiteral(["Extract"])))).trySkill((0,dist.$skill)(phccs_macros_templateObject8 || (phccs_macros_templateObject8 = phccs_macros_taggedTemplateLiteral(["Sing Along"]))));
 var defaultKill = dist.Macro.step(delevel).step(easyFight).attack().repeat();
 ;// CONCATENATED MODULE: ./src/lib.ts
-var lib_templateObject, lib_templateObject2, lib_templateObject3, lib_templateObject4, lib_templateObject5, lib_templateObject6, lib_templateObject7, lib_templateObject8, lib_templateObject9, lib_templateObject10, lib_templateObject11, lib_templateObject12, lib_templateObject13, lib_templateObject14, lib_templateObject15, lib_templateObject16, lib_templateObject17, lib_templateObject18, lib_templateObject19, lib_templateObject20, lib_templateObject21, lib_templateObject22, lib_templateObject23, lib_templateObject24, lib_templateObject25, lib_templateObject26, lib_templateObject27, lib_templateObject28, lib_templateObject29, lib_templateObject30, lib_templateObject31, lib_templateObject32, lib_templateObject33, lib_templateObject34, lib_templateObject35, lib_templateObject36, lib_templateObject37, lib_templateObject38, lib_templateObject39, lib_templateObject40, lib_templateObject41, lib_templateObject42, lib_templateObject43, lib_templateObject44, lib_templateObject45, lib_templateObject46, lib_templateObject47, lib_templateObject48, lib_templateObject49, lib_templateObject50, lib_templateObject51, lib_templateObject52, lib_templateObject53, lib_templateObject54, lib_templateObject55, lib_templateObject56, lib_templateObject57, lib_templateObject58, lib_templateObject59, lib_templateObject60, lib_templateObject61, lib_templateObject62, lib_templateObject63, lib_templateObject64, lib_templateObject65, lib_templateObject66, lib_templateObject67, lib_templateObject68, lib_templateObject69, lib_templateObject70, lib_templateObject71, lib_templateObject72, lib_templateObject73, lib_templateObject74, lib_templateObject75, lib_templateObject76, lib_templateObject77, lib_templateObject78, lib_templateObject79, lib_templateObject80, lib_templateObject81, lib_templateObject82, lib_templateObject83, lib_templateObject84, lib_templateObject85, lib_templateObject86, lib_templateObject87, lib_templateObject88, lib_templateObject89, lib_templateObject90, lib_templateObject91, lib_templateObject92, lib_templateObject93, lib_templateObject94, lib_templateObject95, lib_templateObject96, lib_templateObject97, lib_templateObject98;
+var lib_templateObject, lib_templateObject2, lib_templateObject3, lib_templateObject4, lib_templateObject5, lib_templateObject6, lib_templateObject7, lib_templateObject8, lib_templateObject9, lib_templateObject10, lib_templateObject11, lib_templateObject12, lib_templateObject13, lib_templateObject14, lib_templateObject15, lib_templateObject16, lib_templateObject17, lib_templateObject18, lib_templateObject19, lib_templateObject20, lib_templateObject21, lib_templateObject22, lib_templateObject23, lib_templateObject24, lib_templateObject25, lib_templateObject26, lib_templateObject27, lib_templateObject28, lib_templateObject29, lib_templateObject30, lib_templateObject31, lib_templateObject32, lib_templateObject33, lib_templateObject34, lib_templateObject35, lib_templateObject36, lib_templateObject37, lib_templateObject38, lib_templateObject39, lib_templateObject40, lib_templateObject41, lib_templateObject42, lib_templateObject43, lib_templateObject44, lib_templateObject45, lib_templateObject46, lib_templateObject47, lib_templateObject48, lib_templateObject49, lib_templateObject50, lib_templateObject51, lib_templateObject52, lib_templateObject53, lib_templateObject54, lib_templateObject55, lib_templateObject56, lib_templateObject57, lib_templateObject58, lib_templateObject59, lib_templateObject60, lib_templateObject61, lib_templateObject62, lib_templateObject63, lib_templateObject64, lib_templateObject65, lib_templateObject66, lib_templateObject67, lib_templateObject68, lib_templateObject69, lib_templateObject70, lib_templateObject71, lib_templateObject72, lib_templateObject73, lib_templateObject74, lib_templateObject75, lib_templateObject76, lib_templateObject77, lib_templateObject78, lib_templateObject79, lib_templateObject80, lib_templateObject81, lib_templateObject82, lib_templateObject83, lib_templateObject84, lib_templateObject85, lib_templateObject86, lib_templateObject87;
 
 function lib_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -18182,29 +18182,22 @@ function questStep(questName) {
     return parseInt(stringStep.substring(4), 10);
   }
 }
-var heads = [(0,dist.$effect)(lib_templateObject69 || (lib_templateObject69 = lib_taggedTemplateLiteral(["Hot-Headed"]))), (0,dist.$effect)(lib_templateObject70 || (lib_templateObject70 = lib_taggedTemplateLiteral(["Cold as Nice"]))), (0,dist.$effect)(lib_templateObject71 || (lib_templateObject71 = lib_taggedTemplateLiteral(["A Brush with Grossness"]))), (0,dist.$effect)(lib_templateObject72 || (lib_templateObject72 = lib_taggedTemplateLiteral(["Does It Have a Skull In There??"]))), (0,dist.$effect)(lib_templateObject73 || (lib_templateObject73 = lib_taggedTemplateLiteral(["Oiled, Slick"]))), (0,dist.$effect)(lib_templateObject74 || (lib_templateObject74 = lib_taggedTemplateLiteral(["Lack of Body-Building"]))), (0,dist.$effect)(lib_templateObject75 || (lib_templateObject75 = lib_taggedTemplateLiteral(["We're All Made of Starfish"]))), (0,dist.$effect)(lib_templateObject76 || (lib_templateObject76 = lib_taggedTemplateLiteral(["Pomp & Circumsands"]))), (0,dist.$effect)(lib_templateObject77 || (lib_templateObject77 = lib_taggedTemplateLiteral(["Resting Beach Face"]))), (0,dist.$effect)(lib_templateObject78 || (lib_templateObject78 = lib_taggedTemplateLiteral(["Do I Know You From Somewhere?"]))), (0,dist.$effect)(lib_templateObject79 || (lib_templateObject79 = lib_taggedTemplateLiteral(["You Learned Something Maybe!"])))];
-function tryHead(effect) {
-  if (!heads.includes(effect)) return;
-  var headNumber = 1 + heads.indexOf(effect);
-  if (dist.property.getString("_beachHeadsUsed").split(",").includes(headNumber.toString())) return;
-  ensureEffect(effect);
-}
 function ensureMp(mp) {
   if ((0,external_kolmafia_.myMp)() > mp) return;
   if (mp > (0,external_kolmafia_.myMaxmp)()) throw "Insufficient maximum mp!";
 
-  while ((0,dist.have)((0,dist.$item)(lib_templateObject80 || (lib_templateObject80 = lib_taggedTemplateLiteral(["magical sausage"])))) || (0,dist.have)((0,dist.$item)(lib_templateObject81 || (lib_templateObject81 = lib_taggedTemplateLiteral(["magical sausage casing"])))) && (0,external_kolmafia_.myMp)() < mp && (0,dist.get)("_sausagesEaten") < 23) {
-    (0,external_kolmafia_.retrieveItem)((0,dist.$item)(lib_templateObject82 || (lib_templateObject82 = lib_taggedTemplateLiteral(["magical sausage"]))));
-    (0,external_kolmafia_.eat)((0,dist.$item)(lib_templateObject83 || (lib_templateObject83 = lib_taggedTemplateLiteral(["magical sausage"]))));
+  while ((0,dist.have)((0,dist.$item)(lib_templateObject69 || (lib_templateObject69 = lib_taggedTemplateLiteral(["magical sausage"])))) || (0,dist.have)((0,dist.$item)(lib_templateObject70 || (lib_templateObject70 = lib_taggedTemplateLiteral(["magical sausage casing"])))) && (0,external_kolmafia_.myMp)() < mp && (0,dist.get)("_sausagesEaten") < 23) {
+    (0,external_kolmafia_.retrieveItem)((0,dist.$item)(lib_templateObject71 || (lib_templateObject71 = lib_taggedTemplateLiteral(["magical sausage"]))));
+    (0,external_kolmafia_.eat)((0,dist.$item)(lib_templateObject72 || (lib_templateObject72 = lib_taggedTemplateLiteral(["magical sausage"]))));
   }
 
-  while ((0,dist.have)((0,dist.$item)(lib_templateObject84 || (lib_templateObject84 = lib_taggedTemplateLiteral(["psychokinetic energy blob"])))) && (0,external_kolmafia_.myMp)() < mp) {
-    (0,external_kolmafia_.use)((0,dist.$item)(lib_templateObject85 || (lib_templateObject85 = lib_taggedTemplateLiteral(["psychokinetic energy blob"]))));
+  while ((0,dist.have)((0,dist.$item)(lib_templateObject73 || (lib_templateObject73 = lib_taggedTemplateLiteral(["psychokinetic energy blob"])))) && (0,external_kolmafia_.myMp)() < mp) {
+    (0,external_kolmafia_.use)((0,dist.$item)(lib_templateObject74 || (lib_templateObject74 = lib_taggedTemplateLiteral(["psychokinetic energy blob"]))));
   }
 
   if ((0,external_kolmafia_.myMp)() < mp) (0,external_kolmafia_.restoreMp)(mp);
 }
-var maximizeFamiliar = (0,dist.have)((0,dist.$familiar)(lib_templateObject86 || (lib_templateObject86 = lib_taggedTemplateLiteral(["Disembodied Hand"])))) ? (0,dist.$familiar)(lib_templateObject87 || (lib_templateObject87 = lib_taggedTemplateLiteral(["Disembodied Hand"]))) : (0,dist.$familiar)(lib_templateObject88 || (lib_templateObject88 = lib_taggedTemplateLiteral(["Left-Hand Man"])));
+var maximizeFamiliar = (0,dist.have)((0,dist.$familiar)(lib_templateObject75 || (lib_templateObject75 = lib_taggedTemplateLiteral(["Disembodied Hand"])))) ? (0,dist.$familiar)(lib_templateObject76 || (lib_templateObject76 = lib_taggedTemplateLiteral(["Disembodied Hand"]))) : (0,dist.$familiar)(lib_templateObject77 || (lib_templateObject77 = lib_taggedTemplateLiteral(["Left-Hand Man"])));
 
 function canCastLibrams() {
   var summonNumber = 1 + (0,dist.get)("libramSummons");
@@ -18213,18 +18206,18 @@ function canCastLibrams() {
 }
 
 function burnLibrams() {
-  var summonSkill = (0,dist.$skills)(lib_templateObject89 || (lib_templateObject89 = lib_taggedTemplateLiteral(["Summon Candy Heart, Summon BRICKOs, Summon Love Song"]))).find(skill => (0,dist.have)(skill));
+  var summonSkill = (0,dist.$skills)(lib_templateObject78 || (lib_templateObject78 = lib_taggedTemplateLiteral(["Summon Candy Heart, Summon BRICKOs, Summon Love Song"]))).find(skill => (0,dist.have)(skill));
   if (!summonSkill) return;
 
   while (canCastLibrams()) {
     var testsDone = (0,dist.get)("csServicesPerformed").split(",");
 
-    if (!testsDone.includes("Breed More Collies") && !(0,dist.have)((0,dist.$item)(lib_templateObject90 || (lib_templateObject90 = lib_taggedTemplateLiteral(["green candy heart"])))) && (0,dist.have)((0,dist.$skill)(lib_templateObject91 || (lib_templateObject91 = lib_taggedTemplateLiteral(["Summon Candy Heart"]))))) {
-      (0,external_kolmafia_.useSkill)((0,dist.$skill)(lib_templateObject92 || (lib_templateObject92 = lib_taggedTemplateLiteral(["Summon Candy Heart"]))));
-    } else if (!testsDone.includes("Breed More Collies") && !(0,dist.have)((0,dist.$item)(lib_templateObject93 || (lib_templateObject93 = lib_taggedTemplateLiteral(["love song of icy revenge"]))), 4) && (0,dist.have)((0,dist.$skill)(lib_templateObject94 || (lib_templateObject94 = lib_taggedTemplateLiteral(["Summon Love Song"]))))) {
-      (0,external_kolmafia_.useSkill)((0,dist.$skill)(lib_templateObject95 || (lib_templateObject95 = lib_taggedTemplateLiteral(["Summon Love Song"]))));
-    } else if ((0,dist.have)((0,dist.$skill)(lib_templateObject96 || (lib_templateObject96 = lib_taggedTemplateLiteral(["Summon BRICKOs"])))) && (0,dist.get)("_brickoEyeSummons") < 3 && (0,dist.have)((0,dist.$skill)(lib_templateObject97 || (lib_templateObject97 = lib_taggedTemplateLiteral(["Summon BRICKOs"]))))) {
-      (0,external_kolmafia_.useSkill)((0,dist.$skill)(lib_templateObject98 || (lib_templateObject98 = lib_taggedTemplateLiteral(["Summon BRICKOs"]))));
+    if (!testsDone.includes("Breed More Collies") && !(0,dist.have)((0,dist.$item)(lib_templateObject79 || (lib_templateObject79 = lib_taggedTemplateLiteral(["green candy heart"])))) && (0,dist.have)((0,dist.$skill)(lib_templateObject80 || (lib_templateObject80 = lib_taggedTemplateLiteral(["Summon Candy Heart"]))))) {
+      (0,external_kolmafia_.useSkill)((0,dist.$skill)(lib_templateObject81 || (lib_templateObject81 = lib_taggedTemplateLiteral(["Summon Candy Heart"]))));
+    } else if (!testsDone.includes("Breed More Collies") && !(0,dist.have)((0,dist.$item)(lib_templateObject82 || (lib_templateObject82 = lib_taggedTemplateLiteral(["love song of icy revenge"]))), 4) && (0,dist.have)((0,dist.$skill)(lib_templateObject83 || (lib_templateObject83 = lib_taggedTemplateLiteral(["Summon Love Song"]))))) {
+      (0,external_kolmafia_.useSkill)((0,dist.$skill)(lib_templateObject84 || (lib_templateObject84 = lib_taggedTemplateLiteral(["Summon Love Song"]))));
+    } else if ((0,dist.have)((0,dist.$skill)(lib_templateObject85 || (lib_templateObject85 = lib_taggedTemplateLiteral(["Summon BRICKOs"])))) && (0,dist.get)("_brickoEyeSummons") < 3 && (0,dist.have)((0,dist.$skill)(lib_templateObject86 || (lib_templateObject86 = lib_taggedTemplateLiteral(["Summon BRICKOs"]))))) {
+      (0,external_kolmafia_.useSkill)((0,dist.$skill)(lib_templateObject87 || (lib_templateObject87 = lib_taggedTemplateLiteral(["Summon BRICKOs"]))));
     } else {
       (0,external_kolmafia_.cliExecute)("/cast * ".concat(summonSkill.name));
     }
@@ -18450,7 +18443,7 @@ function universalWeightBuffs() {
     (0,external_kolmafia_.cliExecute)("witchess");
   }
 
-  tryHead((0,dist.$effect)(familiarweight_templateObject6 || (familiarweight_templateObject6 = familiarweight_taggedTemplateLiteral(["Do I Know You From Somewhere?"]))));
+  dist.BeachComb.tryHead((0,dist.$effect)(familiarweight_templateObject6 || (familiarweight_templateObject6 = familiarweight_taggedTemplateLiteral(["Do I Know You From Somewhere?"]))));
   if ((0,dist.have)((0,dist.$item)(familiarweight_templateObject7 || (familiarweight_templateObject7 = familiarweight_taggedTemplateLiteral(["green candy heart"]))))) ensureEffect((0,dist.$effect)(familiarweight_templateObject8 || (familiarweight_templateObject8 = familiarweight_taggedTemplateLiteral(["Heart of Green"]))));
 }
 
@@ -18550,7 +18543,7 @@ var predictor = () => 60 - (0,external_kolmafia_.numericModifier)("hot resistanc
 
 function castBuffs() {
   universalWeightBuffs();
-  tryHead((0,dist.$effect)(hotres_templateObject || (hotres_templateObject = hotres_taggedTemplateLiteral(["Hot-Headed"]))));
+  dist.BeachComb.tryHead((0,dist.$effect)(hotres_templateObject || (hotres_templateObject = hotres_taggedTemplateLiteral(["Hot-Headed"]))));
   ensureEffect((0,dist.$effect)(hotres_templateObject2 || (hotres_templateObject2 = hotres_taggedTemplateLiteral(["Elemental Saucesphere"]))));
   ensureEffect((0,dist.$effect)(hotres_templateObject3 || (hotres_templateObject3 = hotres_taggedTemplateLiteral(["Astral Shell"]))));
   ensureEffect((0,dist.$effect)(hotres_templateObject4 || (hotres_templateObject4 = hotres_taggedTemplateLiteral(["Feeling Peaceful"]))));
@@ -18801,8 +18794,8 @@ function buffMyst() {
 
   ensureEffect((0,dist.$effect)(level_templateObject13 || (level_templateObject13 = level_taggedTemplateLiteral(["Uncucumbered"]))));
   if (!(0,dist.have)((0,dist.$effect)(level_templateObject14 || (level_templateObject14 = level_taggedTemplateLiteral(["Synthesis: Smart"]))))) synthMyst();
-  tryHead((0,dist.$effect)(level_templateObject15 || (level_templateObject15 = level_taggedTemplateLiteral(["You Learned Something Maybe!"]))));
-  tryHead((0,dist.$effect)(level_templateObject16 || (level_templateObject16 = level_taggedTemplateLiteral(["We're All Made of Starfish"]))));
+  dist.BeachComb.tryHead((0,dist.$effect)(level_templateObject15 || (level_templateObject15 = level_taggedTemplateLiteral(["You Learned Something Maybe!"]))));
+  dist.BeachComb.tryHead((0,dist.$effect)(level_templateObject16 || (level_templateObject16 = level_taggedTemplateLiteral(["We're All Made of Starfish"]))));
   if (!(0,dist.get)("_lyleFavored")) ensureEffect((0,dist.$effect)(level_templateObject17 || (level_templateObject17 = level_taggedTemplateLiteral(["Favored by Lyle"]))));
   if (!(0,dist.get)("telescopeLookedHigh")) ensureEffect((0,dist.$effect)(level_templateObject18 || (level_templateObject18 = level_taggedTemplateLiteral(["Starry-Eyed"]))));
   ensureEffect((0,dist.$effect)(level_templateObject19 || (level_templateObject19 = level_taggedTemplateLiteral(["Glittering Eyelashes"]))));
@@ -19494,7 +19487,7 @@ function weapon_castBuffs() {
   (0,dist.$effects)(weapon_templateObject9 || (weapon_templateObject9 = weapon_taggedTemplateLiteral(["Carol of the Bulls, Song of the North, Rage of the Reindeer, Scowl of the Auk, Disdain of the War Snapper, Tenacity of the Snapper, Billiards Belligerence, Blessing of the Bird, Jackasses' Symphony of Destruction"]))).forEach(effect => ensureEffect(effect));
   ensureEffect((0,dist.$effect)(weapon_templateObject10 || (weapon_templateObject10 = weapon_taggedTemplateLiteral(["Frenzied, Bloody"]))));
   if ((0,dist.have)((0,dist.$item)(weapon_templateObject11 || (weapon_templateObject11 = weapon_taggedTemplateLiteral(["LOV Elixir #3"]))))) (0,external_kolmafia_.use)((0,dist.$item)(weapon_templateObject12 || (weapon_templateObject12 = weapon_taggedTemplateLiteral(["LOV Elixir #3"]))));
-  tryHead((0,dist.$effect)(weapon_templateObject13 || (weapon_templateObject13 = weapon_taggedTemplateLiteral(["Lack of Body-Building"]))));
+  dist.BeachComb.tryHead((0,dist.$effect)(weapon_templateObject13 || (weapon_templateObject13 = weapon_taggedTemplateLiteral(["Lack of Body-Building"]))));
 }
 
 function forceSpit() {
