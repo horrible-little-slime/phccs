@@ -37,6 +37,7 @@ PropertyManager.set({
     dontStopForCounters: true,
     hpAutoRecovery: -0.05,
     mpAutoRecovery: -0.05,
+    logPreferenceChange: true,
 });
 const startTime = gametimeToInt();
 try {
