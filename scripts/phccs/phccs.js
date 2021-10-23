@@ -19572,7 +19572,8 @@ PropertyManager.set({
   battleAction: "custom combat script",
   dontStopForCounters: true,
   hpAutoRecovery: -0.05,
-  mpAutoRecovery: -0.05
+  mpAutoRecovery: -0.05,
+  logPreferenceChange: true
 });
 var startTime = (0,external_kolmafia_.gametimeToInt)();
 
