@@ -250,7 +250,7 @@ export function ensureInnerElf(): void {
                 () => {
                     ensureEffect($effect`Blood Bubble`);
                     setChoice(326, 1);
-                    ensureMp(50);
+                    if (get("_kgbTranquilizerDartUses") >= 3) ensureMp(50);
                     advMacro(
                         $location`The Slime Tube`,
                         Macro.trySkill($skill`KGB tranquilizer dart`).trySkill($skill`Snokebomb`)
