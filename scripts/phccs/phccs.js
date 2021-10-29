@@ -18934,7 +18934,7 @@ function tomatoJuiceAndNinjaCostume() {
     mapMacro((0,dist.$location)(level_templateObject82 || (level_templateObject82 = level_taggedTemplateLiteral(["The Haunted Pantry"]))), (0,dist.$monster)(level_templateObject83 || (level_templateObject83 = level_taggedTemplateLiteral(["possessed can of tomatoes"]))), dist.Macro.if_("monsterid ".concat((0,dist.$monster)(level_templateObject84 || (level_templateObject84 = level_taggedTemplateLiteral(["possessed can of tomatoes"]))).id), dist.Macro.skill((0,dist.$skill)(level_templateObject85 || (level_templateObject85 = level_taggedTemplateLiteral(["Reflex Hammer"]))))));
     useDefaultFamiliar(false);
     uniform();
-    ensureMp(30);
+    ensureMp(31);
     mapMacro((0,dist.$location)(level_templateObject86 || (level_templateObject86 = level_taggedTemplateLiteral(["The Haiku Dungeon"]))), (0,dist.$monster)(level_templateObject87 || (level_templateObject87 = level_taggedTemplateLiteral(["amateur ninja"]))), dist.Macro.if_("monsterid ".concat((0,dist.$monster)(level_templateObject88 || (level_templateObject88 = level_taggedTemplateLiteral(["amateur ninja"]))).id), dist.Macro.skill((0,dist.$skill)(level_templateObject89 || (level_templateObject89 = level_taggedTemplateLiteral(["Feel Nostalgic"])))).skill((0,dist.$skill)(level_templateObject90 || (level_templateObject90 = level_taggedTemplateLiteral(["Gingerbread Mob Hit"]))))).step("abort"));
   }
 
