@@ -303,7 +303,7 @@ function tomatoJuiceAndNinjaCostume() {
         );
         useDefaultFamiliar(false);
         uniform();
-        ensureMp(30);
+        ensureMp(31);
         mapMacro(
             $location`The Haiku Dungeon`,
             $monster`amateur ninja`,
