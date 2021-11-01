@@ -309,6 +309,8 @@ export function famweightOutfit(): void {
           };
     Outfit.doYourBest(
         new Map<Slot, Item | Item[]>([
+            // eslint-disable-next-line libram/verify-constants
+            [$slot`hat`, $item`Daylight Shavings Helmet`],
             [$slot`weapon`, $item`Fourth of May Cosplay Saber`],
             [$slot`off-hand`, $items`burning paper crane, familiar scrapbook`],
             [$slot`acc1`, $item`Beach Comb`],
