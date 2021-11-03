@@ -387,6 +387,7 @@ function tentacle(): void {
     macro.setAutoAttack();
     useSkill($skill`Evoke Eldritch Horror`);
     runCombat(macro.toString());
+    if (have($effect`Beaten Up`)) cliExecute("hottub");
 }
 
 function NEP() {
