@@ -1,12 +1,13 @@
-import { create, eat, equip } from "kolmafia";
-import { $item, $location, $skill, $slot, get, have, Macro } from "libram";
+import { create, eat } from "kolmafia";
+import { $item, $items, $location, $skill, get, have, Macro } from "libram";
 import uniform, { wireOutfit } from "./outfits";
 import { delevel, easyFight } from "./phccs-macros";
 import { advMacro, fightSausageIfAble, useDefaultFamiliar } from "./lib";
 import { runStart } from "./runstart";
 
 function firstFights() {
-    uniform($item`protonic accelerator pack`);
+    // eslint-disable-next-line libram/verify-constants
+    uniform(...$items`protonic accelerator pack, Daylight Shavings Helmet`);
     useDefaultFamiliar();
     fightSausageIfAble(
         $location`Noob Cave`,
@@ -24,7 +25,7 @@ function firstFights() {
 
     const ghostLocation = get("ghostLocation");
     if (ghostLocation) {
-        equip($slot`off-hand`, $item`latte lovers member's mug`);
+        uniform(...$items`latte lovers member's mug, protonic accelerator pack`);
         useDefaultFamiliar();
         advMacro(
             ghostLocation,
