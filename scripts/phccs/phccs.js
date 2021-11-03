@@ -18381,9 +18381,21 @@ function runStart() {
   scavenge();
 }
 ;// CONCATENATED MODULE: ./src/coil wire.ts
-var coil_wire_templateObject, coil_wire_templateObject2, coil_wire_templateObject3, coil_wire_templateObject4, coil_wire_templateObject5, coil_wire_templateObject6, coil_wire_templateObject7, coil_wire_templateObject8, coil_wire_templateObject9, coil_wire_templateObject10, coil_wire_templateObject11, coil_wire_templateObject12, coil_wire_templateObject13;
+var coil_wire_templateObject, coil_wire_templateObject2, coil_wire_templateObject3, coil_wire_templateObject4, coil_wire_templateObject5, coil_wire_templateObject6, coil_wire_templateObject7, coil_wire_templateObject8, coil_wire_templateObject9, coil_wire_templateObject10, coil_wire_templateObject11, coil_wire_templateObject12;
 
 function coil_wire_taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+function coil_wire_toConsumableArray(arr) { return coil_wire_arrayWithoutHoles(arr) || coil_wire_iterableToArray(arr) || coil_wire_unsupportedIterableToArray(arr) || coil_wire_nonIterableSpread(); }
+
+function coil_wire_nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function coil_wire_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return coil_wire_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return coil_wire_arrayLikeToArray(o, minLen); }
+
+function coil_wire_iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function coil_wire_arrayWithoutHoles(arr) { if (Array.isArray(arr)) return coil_wire_arrayLikeToArray(arr); }
+
+function coil_wire_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
 
 
@@ -18393,7 +18405,8 @@ function coil_wire_taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strin
 
 
 function firstFights() {
-  uniform((0,dist.$item)(coil_wire_templateObject || (coil_wire_templateObject = coil_wire_taggedTemplateLiteral(["protonic accelerator pack"]))));
+  // eslint-disable-next-line libram/verify-constants
+  uniform.apply(void 0, coil_wire_toConsumableArray((0,dist.$items)(coil_wire_templateObject || (coil_wire_templateObject = coil_wire_taggedTemplateLiteral(["protonic accelerator pack, Daylight Shavings Helmet"])))));
   useDefaultFamiliar();
   fightSausageIfAble((0,dist.$location)(coil_wire_templateObject2 || (coil_wire_templateObject2 = coil_wire_taggedTemplateLiteral(["Noob Cave"]))), dist.Macro.skill((0,dist.$skill)(coil_wire_templateObject3 || (coil_wire_templateObject3 = coil_wire_taggedTemplateLiteral(["Micrometeorite"])))).attack().repeat());
 
@@ -18408,9 +18421,9 @@ function firstFights() {
   var ghostLocation = (0,dist.get)("ghostLocation");
 
   if (ghostLocation) {
-    (0,external_kolmafia_.equip)((0,dist.$slot)(coil_wire_templateObject8 || (coil_wire_templateObject8 = coil_wire_taggedTemplateLiteral(["off-hand"]))), (0,dist.$item)(coil_wire_templateObject9 || (coil_wire_templateObject9 = coil_wire_taggedTemplateLiteral(["latte lovers member's mug"]))));
+    uniform.apply(void 0, coil_wire_toConsumableArray((0,dist.$items)(coil_wire_templateObject8 || (coil_wire_templateObject8 = coil_wire_taggedTemplateLiteral(["latte lovers member's mug, protonic accelerator pack"])))));
     useDefaultFamiliar();
-    advMacro(ghostLocation, dist.Macro.step(delevel).step(easyFight).trySkill((0,dist.$skill)(coil_wire_templateObject10 || (coil_wire_templateObject10 = coil_wire_taggedTemplateLiteral(["Shoot Ghost"])))).trySkill((0,dist.$skill)(coil_wire_templateObject11 || (coil_wire_templateObject11 = coil_wire_taggedTemplateLiteral(["Shoot Ghost"])))).trySkill((0,dist.$skill)(coil_wire_templateObject12 || (coil_wire_templateObject12 = coil_wire_taggedTemplateLiteral(["Shoot Ghost"])))).trySkill((0,dist.$skill)(coil_wire_templateObject13 || (coil_wire_templateObject13 = coil_wire_taggedTemplateLiteral(["Trap Ghost"])))));
+    advMacro(ghostLocation, dist.Macro.step(delevel).step(easyFight).trySkill((0,dist.$skill)(coil_wire_templateObject9 || (coil_wire_templateObject9 = coil_wire_taggedTemplateLiteral(["Shoot Ghost"])))).trySkill((0,dist.$skill)(coil_wire_templateObject10 || (coil_wire_templateObject10 = coil_wire_taggedTemplateLiteral(["Shoot Ghost"])))).trySkill((0,dist.$skill)(coil_wire_templateObject11 || (coil_wire_templateObject11 = coil_wire_taggedTemplateLiteral(["Shoot Ghost"])))).trySkill((0,dist.$skill)(coil_wire_templateObject12 || (coil_wire_templateObject12 = coil_wire_taggedTemplateLiteral(["Trap Ghost"])))));
   }
 }
 
