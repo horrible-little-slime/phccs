@@ -3,7 +3,7 @@ import { $item, $items, $location, $skill, get, have, Macro } from "libram";
 import uniform, { wireOutfit } from "./outfits";
 import { delevel, easyFight } from "./phccs-macros";
 import { advMacro, fightSausageIfAble, useDefaultFamiliar } from "./lib";
-import { runStart } from "./runstart";
+import runStart from "./runstart";
 
 function firstFights() {
     // eslint-disable-next-line libram/verify-constants

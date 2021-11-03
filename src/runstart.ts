@@ -141,7 +141,7 @@ function scavenge() {
     }
 }
 
-export function runStart(): void {
+export default function runStart(): void {
     setSettings();
     toot();
     getTurns();
