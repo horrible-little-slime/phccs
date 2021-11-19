@@ -41,6 +41,7 @@ import {
     $item,
     $location,
     $skill,
+    $skills,
     $slot,
     bestLibramToCast,
     get,
@@ -512,19 +513,17 @@ export function burnLibrams(): void {
     if (Array.from(possibleLibramSummons().entries()).length === 0) return;
     const testsDone = get("csServicesPerformed").split(",");
     while (canCastLibrams()) {
-        if (!testsDone.includes("Breed More Collies")) {
+        if (
+            !testsDone.includes("Breed More Collies") &&
+            $skills`Summon BRICKOs, Summon Taffy, Summon Love Song, Summon Candy Heart`.some(
+                (skill) => have(skill)
+            )
+        ) {
             const summons = possibleLibramSummons();
             const brickoExpectation = summons.get($skill`Summon BRICKOs`);
             const taffyExpectation = summons.get($skill`Summon Taffy`);
             const lovesongExpectation = summons.get($skill`Summon Love Song`);
             const candyHeartsExpectation = summons.get($skill`Summon Candy Heart`);
-            if (
-                !brickoExpectation &&
-                !taffyExpectation &&
-                !lovesongExpectation &&
-                !candyHeartsExpectation
-            )
-                return;
             const weightMap = new Map<Skill, number>();
             if (
                 candyHeartsExpectation &&
