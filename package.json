@@ -32,8 +32,8 @@
         "webpack-cli": "^4.2.0"
     },
     "dependencies": {
-        "kolmafia": "^1.3.0",
-        "libram": "^0.4.0"
+        "kolmafia": "^1.4.0",
+        "libram": "^0.4.3"
     },
     "author": "Phreddrickkv2",
     "license": "ISC",
