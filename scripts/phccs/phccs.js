@@ -8559,9 +8559,9 @@ function totalDuration(item) {
   return (0,external_kolmafia_namespaceObject.haveEffect)(effect) + modifier_get("Effect Duration", item) * (0,external_kolmafia_namespaceObject.availableAmount)(item);
 }
 
-var availableFights = () => lib_clamp(5 - fightsDone(), 0, 5) + lib_clamp((0,external_kolmafia_namespaceObject.availableAmount)(template_string_$item(lib_templateObject78 || (lib_templateObject78 = src_lib_taggedTemplateLiteral(["BRICKO eye brick"])))), 0, 10 - property_get("_brickoFights"));
+var availableFights = () => clamp(5 - fightsDone(), 0, 5) + clamp((0,external_kolmafia_namespaceObject.availableAmount)(template_string_$item(lib_templateObject78 || (lib_templateObject78 = src_lib_taggedTemplateLiteral(["BRICKO eye brick"])))), 0, 10 - property_get("_brickoFights"));
 
-var potentialFights = () => lib_clamp(5 - fightsDone(), 0, 5) + lib_clamp((0,external_kolmafia_namespaceObject.availableAmount)(template_string_$item(lib_templateObject79 || (lib_templateObject79 = src_lib_taggedTemplateLiteral(["BRICKO eye brick"])))), 0, 10 - property_get("_brickoFights")) + lib_clamp(3 - property_get("_brickoEyeSummons"), 0, 10 - property_get("_brickoFights"));
+var potentialFights = () => clamp(5 - fightsDone(), 0, 5) + clamp((0,external_kolmafia_namespaceObject.availableAmount)(template_string_$item(lib_templateObject79 || (lib_templateObject79 = src_lib_taggedTemplateLiteral(["BRICKO eye brick"])))), 0, 10 - property_get("_brickoFights")) + clamp(3 - property_get("_brickoEyeSummons"), 0, 10 - property_get("_brickoFights"));
 
 function castPriciestLibram() {
   var choice = bestLibramToCast();
@@ -8598,8 +8598,8 @@ function burnLibrams() {
 
         var _probability2 = (_libramPossibilities$5 = (_libramPossibilities$6 = libramPossibilities.get($skill(lib_templateObject93 || (lib_templateObject93 = src_lib_taggedTemplateLiteral(["Summon Love Song"]))))) === null || _libramPossibilities$6 === void 0 ? void 0 : _libramPossibilities$6.get(template_string_$item(lib_templateObject94 || (lib_templateObject94 = src_lib_taggedTemplateLiteral(["love song of icy revenge"]))))) !== null && _libramPossibilities$5 !== void 0 ? _libramPossibilities$5 : 0;
 
-        var currentWeightValue = lib_clamp(Math.ceil(totalDuration(template_string_$item(lib_templateObject95 || (lib_templateObject95 = src_lib_taggedTemplateLiteral(["love song of icy revenge"]))))), 0, 10);
-        var newWeightValue = lib_clamp(Math.ceil(totalDuration(template_string_$item(lib_templateObject96 || (lib_templateObject96 = src_lib_taggedTemplateLiteral(["love song of icy revenge"])))) + 5), 0, 10);
+        var currentWeightValue = clamp(Math.ceil(totalDuration(template_string_$item(lib_templateObject95 || (lib_templateObject95 = src_lib_taggedTemplateLiteral(["love song of icy revenge"]))))), 0, 10);
+        var newWeightValue = clamp(Math.ceil(totalDuration(template_string_$item(lib_templateObject96 || (lib_templateObject96 = src_lib_taggedTemplateLiteral(["love song of icy revenge"])))) + 5), 0, 10);
         decisionMap.set($skill(lib_templateObject97 || (lib_templateObject97 = src_lib_taggedTemplateLiteral(["Summon Love Song"]))), _probability2 * (newWeightValue - currentWeightValue));
       }
 
@@ -8630,9 +8630,6 @@ function burnLibrams() {
       }
     } else if (!castPriciestLibram()) return;
   }
-}
-function lib_clamp(n, min, max) {
-  return Math.max(min, Math.min(max, n));
 }
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.values.js
 var es_object_values = __webpack_require__(9628);
