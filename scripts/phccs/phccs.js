@@ -8028,42 +8028,8 @@ function bestLibramToCast() {
     }));
   })) !== null && _maxBy !== void 0 ? _maxBy : [null])[0];
 }
-;// CONCATENATED MODULE: ./node_modules/libram/dist/resources/2016/Witchess.js
-var Witchess_templateObject;
-
-function Witchess_taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
-
-
-
-
-
-var item = template_string_$item(Witchess_templateObject || (Witchess_templateObject = Witchess_taggedTemplateLiteral(["Witchess Set"])));
-function Witchess_have() {
-  return haveInCampground(item);
-}
-function fightsDone() {
-  return property_get("_witchessFights");
-}
-var pieces = Monster.get(["Witchess Pawn", "Witchess Knight", "Witchess Bishop", "Witchess Rook", "Witchess Queen", "Witchess King", "Witchess Witch", "Witchess Ox"]);
-function fightPiece(piece) {
-  if (!pieces.includes(piece)) throw new Error("That is not a valid piece.");
-
-  if (!(0,external_kolmafia_namespaceObject.visitUrl)("campground.php?action=witchess").includes("whichchoice value=1181")) {
-    throw new Error("Failed to open Witchess.");
-  }
-
-  if (!(0,external_kolmafia_namespaceObject.runChoice)(1).includes("whichchoice=1182")) {
-    throw new Error("Failed to visit shrink ray.");
-  }
-
-  if (!(0,external_kolmafia_namespaceObject.visitUrl)("choice.php?option=1&pwd=".concat((0,external_kolmafia_namespaceObject.myHash)(), "&whichchoice=1182&piece=").concat((0,external_kolmafia_namespaceObject.toInt)(piece)), false).includes(piece.name)) {
-    throw new Error("Failed to start fight.");
-  }
-
-  return (0,external_kolmafia_namespaceObject.runCombat)();
-}
 ;// CONCATENATED MODULE: ./src/lib.ts
-var src_lib_templateObject, src_lib_templateObject2, lib_templateObject3, lib_templateObject4, lib_templateObject5, lib_templateObject6, lib_templateObject7, lib_templateObject8, lib_templateObject9, lib_templateObject10, lib_templateObject11, lib_templateObject12, lib_templateObject13, lib_templateObject14, lib_templateObject15, lib_templateObject16, lib_templateObject17, lib_templateObject18, lib_templateObject19, lib_templateObject20, lib_templateObject21, lib_templateObject22, lib_templateObject23, lib_templateObject24, lib_templateObject25, lib_templateObject26, lib_templateObject27, lib_templateObject28, lib_templateObject29, lib_templateObject30, lib_templateObject31, lib_templateObject32, lib_templateObject33, lib_templateObject34, lib_templateObject35, lib_templateObject36, lib_templateObject37, lib_templateObject38, lib_templateObject39, lib_templateObject40, lib_templateObject41, lib_templateObject42, lib_templateObject43, lib_templateObject44, lib_templateObject45, lib_templateObject46, lib_templateObject47, lib_templateObject48, lib_templateObject49, lib_templateObject50, lib_templateObject51, lib_templateObject52, lib_templateObject53, lib_templateObject54, lib_templateObject55, lib_templateObject56, lib_templateObject57, lib_templateObject58, lib_templateObject59, lib_templateObject60, lib_templateObject61, lib_templateObject62, lib_templateObject63, lib_templateObject64, lib_templateObject65, lib_templateObject66, lib_templateObject67, lib_templateObject68, lib_templateObject69, lib_templateObject70, lib_templateObject71, lib_templateObject72, lib_templateObject73, lib_templateObject74, lib_templateObject75, lib_templateObject76, lib_templateObject77, lib_templateObject78, lib_templateObject79, lib_templateObject80, lib_templateObject81, lib_templateObject82, lib_templateObject83, lib_templateObject84, lib_templateObject85, lib_templateObject86, lib_templateObject87, lib_templateObject88, lib_templateObject89, lib_templateObject90, lib_templateObject91, lib_templateObject92, lib_templateObject93, lib_templateObject94, lib_templateObject95, lib_templateObject96, lib_templateObject97, lib_templateObject98, lib_templateObject99, lib_templateObject100, lib_templateObject101, lib_templateObject102, lib_templateObject103, lib_templateObject104;
+var src_lib_templateObject, src_lib_templateObject2, lib_templateObject3, lib_templateObject4, lib_templateObject5, lib_templateObject6, lib_templateObject7, lib_templateObject8, lib_templateObject9, lib_templateObject10, lib_templateObject11, lib_templateObject12, lib_templateObject13, lib_templateObject14, lib_templateObject15, lib_templateObject16, lib_templateObject17, lib_templateObject18, lib_templateObject19, lib_templateObject20, lib_templateObject21, lib_templateObject22, lib_templateObject23, lib_templateObject24, lib_templateObject25, lib_templateObject26, lib_templateObject27, lib_templateObject28, lib_templateObject29, lib_templateObject30, lib_templateObject31, lib_templateObject32, lib_templateObject33, lib_templateObject34, lib_templateObject35, lib_templateObject36, lib_templateObject37, lib_templateObject38, lib_templateObject39, lib_templateObject40, lib_templateObject41, lib_templateObject42, lib_templateObject43, lib_templateObject44, lib_templateObject45, lib_templateObject46, lib_templateObject47, lib_templateObject48, lib_templateObject49, lib_templateObject50, lib_templateObject51, lib_templateObject52, lib_templateObject53, lib_templateObject54, lib_templateObject55, lib_templateObject56, lib_templateObject57, lib_templateObject58, lib_templateObject59, lib_templateObject60, lib_templateObject61, lib_templateObject62, lib_templateObject63, lib_templateObject64, lib_templateObject65, lib_templateObject66, lib_templateObject67, lib_templateObject68, lib_templateObject69, lib_templateObject70, lib_templateObject71, lib_templateObject72, lib_templateObject73, lib_templateObject74, lib_templateObject75, lib_templateObject76, lib_templateObject77, lib_templateObject78, lib_templateObject79, lib_templateObject80, lib_templateObject81, lib_templateObject82, lib_templateObject83, lib_templateObject84, lib_templateObject85, lib_templateObject86, lib_templateObject87, lib_templateObject88, lib_templateObject89, lib_templateObject90, lib_templateObject91, lib_templateObject92, lib_templateObject93, lib_templateObject94, lib_templateObject95, lib_templateObject96, lib_templateObject97, lib_templateObject98;
 
 function src_lib_slicedToArray(arr, i) { return src_lib_arrayWithHoles(arr) || src_lib_iterableToArrayLimit(arr, i) || src_lib_unsupportedIterableToArray(arr, i) || src_lib_nonIterableRest(); }
 
@@ -8526,37 +8492,30 @@ function burnLibrams() {
   while (canCastLibrams()) {
     if (!testsDone.includes("Breed More Collies") && $skills(lib_templateObject78 || (lib_templateObject78 = src_lib_taggedTemplateLiteral(["Summon BRICKOs, Summon Taffy, Summon Love Song, Summon Candy Heart"]))).some(skill => lib_have(skill))) {
       var summons = possibleLibramSummons();
-      var brickoExpectation = summons.get($skill(lib_templateObject79 || (lib_templateObject79 = src_lib_taggedTemplateLiteral(["Summon BRICKOs"]))));
-      var taffyExpectation = summons.get($skill(lib_templateObject80 || (lib_templateObject80 = src_lib_taggedTemplateLiteral(["Summon Taffy"]))));
-      var lovesongExpectation = summons.get($skill(lib_templateObject81 || (lib_templateObject81 = src_lib_taggedTemplateLiteral(["Summon Love Song"]))));
-      var candyHeartsExpectation = summons.get($skill(lib_templateObject82 || (lib_templateObject82 = src_lib_taggedTemplateLiteral(["Summon Candy Heart"]))));
+      var taffyExpectation = summons.get($skill(lib_templateObject79 || (lib_templateObject79 = src_lib_taggedTemplateLiteral(["Summon Taffy"]))));
+      var lovesongExpectation = summons.get($skill(lib_templateObject80 || (lib_templateObject80 = src_lib_taggedTemplateLiteral(["Summon Love Song"]))));
+      var candyHeartsExpectation = summons.get($skill(lib_templateObject81 || (lib_templateObject81 = src_lib_taggedTemplateLiteral(["Summon Candy Heart"]))));
       var weightMap = new Map();
 
-      if (candyHeartsExpectation && !lib_have(template_string_$item(lib_templateObject83 || (lib_templateObject83 = src_lib_taggedTemplateLiteral(["green candy heart"])))) && !lib_have($effect(lib_templateObject84 || (lib_templateObject84 = src_lib_taggedTemplateLiteral(["Heart of Green"]))))) {
+      if (candyHeartsExpectation && !lib_have(template_string_$item(lib_templateObject82 || (lib_templateObject82 = src_lib_taggedTemplateLiteral(["green candy heart"])))) && !lib_have($effect(lib_templateObject83 || (lib_templateObject83 = src_lib_taggedTemplateLiteral(["Heart of Green"]))))) {
         var _candyHeartsExpectati;
 
-        weightMap.set($skill(lib_templateObject85 || (lib_templateObject85 = src_lib_taggedTemplateLiteral(["Summon Candy Heart"]))), 3 * ((_candyHeartsExpectati = candyHeartsExpectation.get(template_string_$item(lib_templateObject86 || (lib_templateObject86 = src_lib_taggedTemplateLiteral(["green candy heart"]))))) !== null && _candyHeartsExpectati !== void 0 ? _candyHeartsExpectati : 0));
+        weightMap.set($skill(lib_templateObject84 || (lib_templateObject84 = src_lib_taggedTemplateLiteral(["Summon Candy Heart"]))), 3 * ((_candyHeartsExpectati = candyHeartsExpectation.get(template_string_$item(lib_templateObject85 || (lib_templateObject85 = src_lib_taggedTemplateLiteral(["green candy heart"]))))) !== null && _candyHeartsExpectati !== void 0 ? _candyHeartsExpectati : 0));
       }
 
-      if (taffyExpectation && (0,external_kolmafia_namespaceObject.availableAmount)(template_string_$item(lib_templateObject87 || (lib_templateObject87 = src_lib_taggedTemplateLiteral(["pulled blue taffy"])))) + Math.floor((0,external_kolmafia_namespaceObject.haveEffect)($effect(lib_templateObject88 || (lib_templateObject88 = src_lib_taggedTemplateLiteral(["Blue Swayed"])))) / 10) < 5) {
+      if (taffyExpectation && (0,external_kolmafia_namespaceObject.availableAmount)(template_string_$item(lib_templateObject86 || (lib_templateObject86 = src_lib_taggedTemplateLiteral(["pulled blue taffy"])))) + Math.floor((0,external_kolmafia_namespaceObject.haveEffect)($effect(lib_templateObject87 || (lib_templateObject87 = src_lib_taggedTemplateLiteral(["Blue Swayed"])))) / 10) < 5) {
         var _taffyExpectation$get;
 
-        weightMap.set($skill(lib_templateObject89 || (lib_templateObject89 = src_lib_taggedTemplateLiteral(["Summon Taffy"]))), (_taffyExpectation$get = taffyExpectation.get(template_string_$item(lib_templateObject90 || (lib_templateObject90 = src_lib_taggedTemplateLiteral(["pulled blue taffy"]))))) !== null && _taffyExpectation$get !== void 0 ? _taffyExpectation$get : 0);
+        weightMap.set($skill(lib_templateObject88 || (lib_templateObject88 = src_lib_taggedTemplateLiteral(["Summon Taffy"]))), (_taffyExpectation$get = taffyExpectation.get(template_string_$item(lib_templateObject89 || (lib_templateObject89 = src_lib_taggedTemplateLiteral(["pulled blue taffy"]))))) !== null && _taffyExpectation$get !== void 0 ? _taffyExpectation$get : 0);
       }
 
-      if (lovesongExpectation && 5 * Math.floor(((0,external_kolmafia_namespaceObject.availableAmount)(template_string_$item(lib_templateObject91 || (lib_templateObject91 = src_lib_taggedTemplateLiteral(["love song of icy revenge"])))) + (0,external_kolmafia_namespaceObject.haveEffect)($effect(lib_templateObject92 || (lib_templateObject92 = src_lib_taggedTemplateLiteral(["Cold Hearted"]))))) / 2) < 10) {
+      if (lovesongExpectation && 5 * Math.floor(((0,external_kolmafia_namespaceObject.availableAmount)(template_string_$item(lib_templateObject90 || (lib_templateObject90 = src_lib_taggedTemplateLiteral(["love song of icy revenge"])))) + (0,external_kolmafia_namespaceObject.haveEffect)($effect(lib_templateObject91 || (lib_templateObject91 = src_lib_taggedTemplateLiteral(["Cold Hearted"]))))) / 2) < 10) {
         var _lovesongExpectation$;
 
-        weightMap.set($skill(lib_templateObject93 || (lib_templateObject93 = src_lib_taggedTemplateLiteral(["Summon Love Song"]))), (Math.floor(((0,external_kolmafia_namespaceObject.haveEffect)($effect(lib_templateObject94 || (lib_templateObject94 = src_lib_taggedTemplateLiteral(["Cold Hearted"])))) + 5 * (1 + (0,external_kolmafia_namespaceObject.availableAmount)(template_string_$item(lib_templateObject95 || (lib_templateObject95 = src_lib_taggedTemplateLiteral(["love song of icy revenge"])))))) / 2) - Math.floor(((0,external_kolmafia_namespaceObject.haveEffect)($effect(lib_templateObject96 || (lib_templateObject96 = src_lib_taggedTemplateLiteral(["Cold Hearted"])))) + 5 * (0,external_kolmafia_namespaceObject.availableAmount)(template_string_$item(lib_templateObject97 || (lib_templateObject97 = src_lib_taggedTemplateLiteral(["love song of icy revenge"]))))) / 2)) * ((_lovesongExpectation$ = lovesongExpectation.get(template_string_$item(lib_templateObject98 || (lib_templateObject98 = src_lib_taggedTemplateLiteral(["love song of icy revenge"]))))) !== null && _lovesongExpectation$ !== void 0 ? _lovesongExpectation$ : 0));
+        weightMap.set($skill(lib_templateObject92 || (lib_templateObject92 = src_lib_taggedTemplateLiteral(["Summon Love Song"]))), (Math.floor(((0,external_kolmafia_namespaceObject.haveEffect)($effect(lib_templateObject93 || (lib_templateObject93 = src_lib_taggedTemplateLiteral(["Cold Hearted"])))) + 5 * (1 + (0,external_kolmafia_namespaceObject.availableAmount)(template_string_$item(lib_templateObject94 || (lib_templateObject94 = src_lib_taggedTemplateLiteral(["love song of icy revenge"])))))) / 2) - Math.floor(((0,external_kolmafia_namespaceObject.haveEffect)($effect(lib_templateObject95 || (lib_templateObject95 = src_lib_taggedTemplateLiteral(["Cold Hearted"])))) + 5 * (0,external_kolmafia_namespaceObject.availableAmount)(template_string_$item(lib_templateObject96 || (lib_templateObject96 = src_lib_taggedTemplateLiteral(["love song of icy revenge"]))))) / 2)) * ((_lovesongExpectation$ = lovesongExpectation.get(template_string_$item(lib_templateObject97 || (lib_templateObject97 = src_lib_taggedTemplateLiteral(["love song of icy revenge"]))))) !== null && _lovesongExpectation$ !== void 0 ? _lovesongExpectation$ : 0));
       }
 
-      if (brickoExpectation && property_get("_brickoEyeSummons") < 3 && !lib_have(template_string_$item(lib_templateObject99 || (lib_templateObject99 = src_lib_taggedTemplateLiteral(["short stack of pancakes"])))) && !lib_have($effect(lib_templateObject100 || (lib_templateObject100 = src_lib_taggedTemplateLiteral(["Shortly Stacked"])))) && (0,external_kolmafia_namespaceObject.availableAmount)(template_string_$item(lib_templateObject101 || (lib_templateObject101 = src_lib_taggedTemplateLiteral(["BRICKO eye brick"])))) + 5 - fightsDone() < 11 - property_get("_shortOrderCookCharge") && 3 + 5 - fightsDone() >= 11 - property_get("_shortOrderCookCharge")) {
-        var _brickoExpectation$ge;
-
-        weightMap.set($skill(lib_templateObject102 || (lib_templateObject102 = src_lib_taggedTemplateLiteral(["Summon BRICKOs"]))), 11 * ((_brickoExpectation$ge = brickoExpectation.get(template_string_$item(lib_templateObject103 || (lib_templateObject103 = src_lib_taggedTemplateLiteral(["BRICKO eye brick"]))))) !== null && _brickoExpectation$ge !== void 0 ? _brickoExpectation$ge : 0) / (11 - property_get("_shortOrderCookCharge") - ((0,external_kolmafia_namespaceObject.availableAmount)(template_string_$item(lib_templateObject104 || (lib_templateObject104 = src_lib_taggedTemplateLiteral(["BRICKO eye brick"])))) + 5 - fightsDone())));
-      }
-
-      (0,external_kolmafia_namespaceObject.useSkill)(Array.from(weightMap).sort((_ref, _ref2) => {
+      var skillChoice = Array.from(weightMap).sort((_ref, _ref2) => {
         var _ref3 = src_lib_slicedToArray(_ref, 2),
             a = _ref3[1];
 
@@ -8564,7 +8523,13 @@ function burnLibrams() {
             b = _ref4[1];
 
         return b - a;
-      })[0][0]);
+      });
+
+      if (skillChoice.length === 0) {
+        (0,external_kolmafia_namespaceObject.useSkill)($skill(lib_templateObject98 || (lib_templateObject98 = src_lib_taggedTemplateLiteral(["Summon BRICKOs"]))));
+      } else {
+        (0,external_kolmafia_namespaceObject.useSkill)(skillChoice[0][0]);
+      }
     } else {
       var choice = bestLibramToCast();
       if (!choice) return;
@@ -8611,9 +8576,9 @@ function SourceTerminal_taggedTemplateLiteral(strings, raw) { if (!raw) { raw = 
 
 
 
-var SourceTerminal_item = template_string_$item(SourceTerminal_templateObject || (SourceTerminal_templateObject = SourceTerminal_taggedTemplateLiteral(["Source terminal"])));
+var item = template_string_$item(SourceTerminal_templateObject || (SourceTerminal_templateObject = SourceTerminal_taggedTemplateLiteral(["Source terminal"])));
 function SourceTerminal_have() {
-  return haveInCampground(SourceTerminal_item);
+  return haveInCampground(item);
 }
 /**
  * Buffs that can be acquired from Enhance
@@ -9065,6 +9030,40 @@ function tryHead(effect) {
   if (getString("_beachHeadsUsed").split(",").includes(headNumber.toString())) return false;
   (0,external_kolmafia_namespaceObject.cliExecute)(effect.default);
   return lib_have(effect);
+}
+;// CONCATENATED MODULE: ./node_modules/libram/dist/resources/2016/Witchess.js
+var Witchess_templateObject;
+
+function Witchess_taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+
+
+
+
+var Witchess_item = template_string_$item(Witchess_templateObject || (Witchess_templateObject = Witchess_taggedTemplateLiteral(["Witchess Set"])));
+function Witchess_have() {
+  return haveInCampground(Witchess_item);
+}
+function fightsDone() {
+  return property_get("_witchessFights");
+}
+var pieces = Monster.get(["Witchess Pawn", "Witchess Knight", "Witchess Bishop", "Witchess Rook", "Witchess Queen", "Witchess King", "Witchess Witch", "Witchess Ox"]);
+function fightPiece(piece) {
+  if (!pieces.includes(piece)) throw new Error("That is not a valid piece.");
+
+  if (!(0,external_kolmafia_namespaceObject.visitUrl)("campground.php?action=witchess").includes("whichchoice value=1181")) {
+    throw new Error("Failed to open Witchess.");
+  }
+
+  if (!(0,external_kolmafia_namespaceObject.runChoice)(1).includes("whichchoice=1182")) {
+    throw new Error("Failed to visit shrink ray.");
+  }
+
+  if (!(0,external_kolmafia_namespaceObject.visitUrl)("choice.php?option=1&pwd=".concat((0,external_kolmafia_namespaceObject.myHash)(), "&whichchoice=1182&piece=").concat((0,external_kolmafia_namespaceObject.toInt)(piece)), false).includes(piece.name)) {
+    throw new Error("Failed to start fight.");
+  }
+
+  return (0,external_kolmafia_namespaceObject.runCombat)();
 }
 ;// CONCATENATED MODULE: ./src/familiarweight.ts
 var familiarweight_templateObject, familiarweight_templateObject2, familiarweight_templateObject3, familiarweight_templateObject4, familiarweight_templateObject5, familiarweight_templateObject6, familiarweight_templateObject7, familiarweight_templateObject8, familiarweight_templateObject9, familiarweight_templateObject10, familiarweight_templateObject11, familiarweight_templateObject12, familiarweight_templateObject13, familiarweight_templateObject14, familiarweight_templateObject15, familiarweight_templateObject16, familiarweight_templateObject17, familiarweight_templateObject18, familiarweight_templateObject19, familiarweight_templateObject20, familiarweight_templateObject21, familiarweight_templateObject22, familiarweight_templateObject23, familiarweight_templateObject24, familiarweight_templateObject25, familiarweight_templateObject26, familiarweight_templateObject27, familiarweight_templateObject28, familiarweight_templateObject29, familiarweight_templateObject30, familiarweight_templateObject31, familiarweight_templateObject32, familiarweight_templateObject33, familiarweight_templateObject34, familiarweight_templateObject35, familiarweight_templateObject36, familiarweight_templateObject37;
