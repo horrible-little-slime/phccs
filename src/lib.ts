@@ -583,6 +583,9 @@ export function burnLibrams(): void {
             }
 
             if (have($skill`Summon BRICKOs`) && get("_brickoEyeSummons") < 3) {
+                const probability =
+                    libramPossibilities.get($skill`Summon BRICKOs`)?.get($item`BRICKO eye brick`) ??
+                    0;
                 if (
                     have($familiar`Shorter-Order Cook`) &&
                     totalDuration($item`short stack of pancakes`) === 0 &&
@@ -591,7 +594,7 @@ export function burnLibrams(): void {
                 ) {
                     decisionMap.set(
                         $skill`Summon BRICKOs`,
-                        11 / (11 - get("_shortOrderCookCharge") - availableFights())
+                        (probability * 11) / (11 - get("_shortOrderCookCharge") - availableFights())
                     );
                 }
 
@@ -602,7 +605,8 @@ export function burnLibrams(): void {
                     availableFights() < 30 - get("garbageFireProgress") &&
                     potentialFights() >= 30 - get("garbageFireProgress")
                 ) {
-                    const value = 5 / (30 - get("garbageFireProgress") - availableFights());
+                    const value =
+                        (5 / (30 - get("garbageFireProgress") - availableFights())) * probability;
                     const otherBrickoValue = decisionMap.get($skill`Summon BRICKOs`) ?? 0;
                     if (value > otherBrickoValue) {
                         decisionMap.set($skill`Summon BRICKOs`, value);
