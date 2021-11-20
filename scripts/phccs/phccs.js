@@ -8603,7 +8603,7 @@ function burnLibrams() {
         decisionMap.set($skill(lib_templateObject97 || (lib_templateObject97 = src_lib_taggedTemplateLiteral(["Summon Love Song"]))), _probability2 * (newWeightValue - currentWeightValue));
       }
 
-      if (lib_have($skill(lib_templateObject98 || (lib_templateObject98 = src_lib_taggedTemplateLiteral(["Summon BRICKOs"])))) && property_get("_brickoEyeSummons") < 3) {
+      if (lib_have($skill(lib_templateObject98 || (lib_templateObject98 = src_lib_taggedTemplateLiteral(["Summon BRICKOs"])))) && property_get("_brickoEyeSummons") < 3 && testsDone.includes("Donate Blood")) {
         var _libramPossibilities$7, _libramPossibilities$8;
 
         var _probability3 = (_libramPossibilities$7 = (_libramPossibilities$8 = libramPossibilities.get($skill(lib_templateObject99 || (lib_templateObject99 = src_lib_taggedTemplateLiteral(["Summon BRICKOs"]))))) === null || _libramPossibilities$8 === void 0 ? void 0 : _libramPossibilities$8.get(template_string_$item(lib_templateObject100 || (lib_templateObject100 = src_lib_taggedTemplateLiteral(["BRICKO eye brick"]))))) !== null && _libramPossibilities$7 !== void 0 ? _libramPossibilities$7 : 0;
