@@ -50,7 +50,6 @@ import {
     possibleLibramSummons,
     PropertiesManager,
     property,
-    Witchess,
 } from "libram";
 import { Outfit, withOutfit } from "./outfits";
 
@@ -520,7 +519,6 @@ export function burnLibrams(): void {
             )
         ) {
             const summons = possibleLibramSummons();
-            const brickoExpectation = summons.get($skill`Summon BRICKOs`);
             const taffyExpectation = summons.get($skill`Summon Taffy`);
             const lovesongExpectation = summons.get($skill`Summon Love Song`);
             const candyHeartsExpectation = summons.get($skill`Summon Candy Heart`);
@@ -571,25 +569,12 @@ export function burnLibrams(): void {
                         (lovesongExpectation.get($item`love song of icy revenge`) ?? 0)
                 );
             }
-            if (
-                brickoExpectation &&
-                get("_brickoEyeSummons") < 3 &&
-                !have($item`short stack of pancakes`) &&
-                !have($effect`Shortly Stacked`) &&
-                availableAmount($item`BRICKO eye brick`) + 5 - Witchess.fightsDone() <
-                    11 - get("_shortOrderCookCharge") &&
-                3 + 5 - Witchess.fightsDone() >= 11 - get("_shortOrderCookCharge")
-            ) {
-                weightMap.set(
-                    $skill`Summon BRICKOs`,
-                    (11 * (brickoExpectation.get($item`BRICKO eye brick`) ?? 0)) /
-                        (11 -
-                            get("_shortOrderCookCharge") -
-                            (availableAmount($item`BRICKO eye brick`) + 5 - Witchess.fightsDone()))
-                );
+            const skillChoice = Array.from(weightMap).sort(([, a], [, b]) => b - a);
+            if (skillChoice.length === 0) {
+                useSkill($skill`Summon BRICKOs`);
+            } else {
+                useSkill(skillChoice[0][0]);
             }
-
-            useSkill(Array.from(weightMap).sort(([, a], [, b]) => b - a)[0][0]);
         } else {
             const choice = bestLibramToCast();
             if (!choice) return;
