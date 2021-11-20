@@ -44,6 +44,7 @@ import {
     $skills,
     $slot,
     bestLibramToCast,
+    clamp,
     get,
     getModifier,
     have,
@@ -617,8 +618,4 @@ export function burnLibrams(): void {
             }
         } else if (!castPriciestLibram()) return;
     }
-}
-
-export function clamp(n: number, min: number, max: number): number {
-    return Math.max(min, Math.min(max, n));
 }
