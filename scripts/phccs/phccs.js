@@ -8603,7 +8603,7 @@ function burnLibrams() {
         decisionMap.set($skill(lib_templateObject97 || (lib_templateObject97 = src_lib_taggedTemplateLiteral(["Summon Love Song"]))), _probability2 * (newWeightValue - currentWeightValue));
       }
 
-      if (lib_have($skill(lib_templateObject98 || (lib_templateObject98 = src_lib_taggedTemplateLiteral(["Summon BRICKOs"]))))) {
+      if (lib_have($skill(lib_templateObject98 || (lib_templateObject98 = src_lib_taggedTemplateLiteral(["Summon BRICKOs"])))) && property_get("_brickoEyeSummons") < 3) {
         if (lib_have(template_string_$familiar(lib_templateObject99 || (lib_templateObject99 = src_lib_taggedTemplateLiteral(["Shorter-Order Cook"])))) && totalDuration(template_string_$item(lib_templateObject100 || (lib_templateObject100 = src_lib_taggedTemplateLiteral(["short stack of pancakes"])))) === 0 && availableFights() < 11 - property_get("_shortOrderCookCharge") && potentialFights() >= 11 - property_get("_shortOrderCookCharge")) {
           decisionMap.set($skill(lib_templateObject101 || (lib_templateObject101 = src_lib_taggedTemplateLiteral(["Summon BRICKOs"]))), 11 / (11 - property_get("_shortOrderCookCharge") - availableFights()));
         }
