@@ -560,7 +560,7 @@ export function burnLibrams(): void {
 
             if (
                 have($skill`Summon Love Song`) &&
-                totalDuration($item`love song of icy revenge`) < 10
+                totalDuration($item`love song of icy revenge`) < 20
             ) {
                 const probability =
                     libramPossibilities
