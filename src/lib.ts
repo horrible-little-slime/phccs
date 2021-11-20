@@ -582,7 +582,7 @@ export function burnLibrams(): void {
                 );
             }
 
-            if (have($skill`Summon BRICKOs`)) {
+            if (have($skill`Summon BRICKOs`) && get("_brickoEyeSummons") < 3) {
                 if (
                     have($familiar`Shorter-Order Cook`) &&
                     totalDuration($item`short stack of pancakes`) === 0 &&
