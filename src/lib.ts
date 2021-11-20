@@ -616,13 +616,13 @@ export function burnLibrams(): void {
                         decisionMap.set($skill`Summon BRICKOs`, value);
                     }
                 }
-                const bestLibrams = Array.from(decisionMap).sort((a, b) => b[1] - a[1]);
-                if (bestLibrams.length === 0) {
-                    if (!castPriciestLibram()) return;
-                } else {
-                    const decision = bestLibrams[0][0];
-                    useSkill(1, decision);
-                }
+            }
+            const bestLibrams = Array.from(decisionMap).sort((a, b) => b[1] - a[1]);
+            if (bestLibrams.length === 0) {
+                if (!castPriciestLibram()) return;
+            } else {
+                const decision = bestLibrams[0][0];
+                useSkill(1, decision);
             }
         } else if (!castPriciestLibram()) return;
     }
