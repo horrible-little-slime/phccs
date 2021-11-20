@@ -45,11 +45,13 @@ import {
     $slot,
     bestLibramToCast,
     get,
+    getModifier,
     have,
     Macro,
     possibleLibramSummons,
     PropertiesManager,
     property,
+    Witchess,
 } from "libram";
 import { Outfit, withOutfit } from "./outfits";
 
@@ -508,78 +510,112 @@ function canCastLibrams(): boolean {
     return myMp() >= cost;
 }
 
+function totalDuration(item: Item): number {
+    const effect = getModifier("Effect", item);
+    return haveEffect(effect) + getModifier("Effect Duration", item) * availableAmount(item);
+}
+
+export const availableFights: () => number = () =>
+    clamp(5 - Witchess.fightsDone(), 0, 5) +
+    clamp(availableAmount($item`BRICKO eye brick`), 0, 10 - get("_brickoFights"));
+
+const potentialFights = () =>
+    clamp(5 - Witchess.fightsDone(), 0, 5) +
+    clamp(availableAmount($item`BRICKO eye brick`), 0, 10 - get("_brickoFights")) +
+    clamp(3 - get("_brickoEyeSummons"), 0, 10 - get("_brickoFights"));
+
+function castPriciestLibram(): boolean {
+    const choice = bestLibramToCast();
+    if (!choice) return false;
+    return useSkill(1, choice);
+}
 export function burnLibrams(): void {
-    if (Array.from(possibleLibramSummons().entries()).length === 0) return;
     const testsDone = get("csServicesPerformed").split(",");
+    if (
+        !$skills`Summon BRICKOs, Summon Taffy, Summon Love Song, Summon Candy Heart`.some((skill) =>
+            have(skill)
+        )
+    )
+        return;
     while (canCastLibrams()) {
-        if (
-            !testsDone.includes("Breed More Collies") &&
-            $skills`Summon BRICKOs, Summon Taffy, Summon Love Song, Summon Candy Heart`.some(
-                (skill) => have(skill)
-            )
-        ) {
-            const summons = possibleLibramSummons();
-            const taffyExpectation = summons.get($skill`Summon Taffy`);
-            const lovesongExpectation = summons.get($skill`Summon Love Song`);
-            const candyHeartsExpectation = summons.get($skill`Summon Candy Heart`);
-            const weightMap = new Map<Skill, number>();
-            if (
-                candyHeartsExpectation &&
-                !have($item`green candy heart`) &&
-                !have($effect`Heart of Green`)
-            ) {
-                weightMap.set(
-                    $skill`Summon Candy Heart`,
-                    3 * (candyHeartsExpectation.get($item`green candy heart`) ?? 0)
-                );
+        if (!testsDone.includes("Breed More Collies")) {
+            const libramPossibilities = possibleLibramSummons();
+            const decisionMap = new Map<Skill, number>();
+
+            if (have($skill`Summon Candy Heart`) && totalDuration($item`green candy heart`) <= 0) {
+                const probability =
+                    libramPossibilities
+                        .get($skill`Summon Candy Heart`)
+                        ?.get($item`green candy heart`) ?? 0;
+                decisionMap.set($skill`Summon Candy Heart`, 3 * probability);
             }
-            if (
-                taffyExpectation &&
-                availableAmount($item`pulled blue taffy`) +
-                    Math.floor(haveEffect($effect`Blue Swayed`) / 10) <
-                    5
-            ) {
-                weightMap.set(
-                    $skill`Summon Taffy`,
-                    taffyExpectation.get($item`pulled blue taffy`) ?? 0
-                );
+
+            if (have($skill`Summon Taffy`) && totalDuration($item`pulled blue taffy`) < 50) {
+                const probability =
+                    libramPossibilities.get($skill`Summon Taffy`)?.get($item`pulled blue taffy`) ??
+                    0;
+                decisionMap.set($skill`Summon Taffy`, 1 * probability);
             }
+
             if (
-                lovesongExpectation &&
-                5 *
-                    Math.floor(
-                        (availableAmount($item`love song of icy revenge`) +
-                            haveEffect($effect`Cold Hearted`)) /
-                            2
-                    ) <
+                have($skill`Summon Love Song`) &&
+                totalDuration($item`love song of icy revenge`) < 10
+            ) {
+                const probability =
+                    libramPossibilities
+                        .get($skill`Summon Love Song`)
+                        ?.get($item`love song of icy revenge`) ?? 0;
+                const currentWeightValue = clamp(
+                    Math.ceil(totalDuration($item`love song of icy revenge`)),
+                    0,
                     10
-            ) {
-                weightMap.set(
+                );
+                const newWeightValue = clamp(
+                    Math.ceil(totalDuration($item`love song of icy revenge`) + 5),
+                    0,
+                    10
+                );
+                decisionMap.set(
                     $skill`Summon Love Song`,
-                    (Math.floor(
-                        (haveEffect($effect`Cold Hearted`) +
-                            5 * (1 + availableAmount($item`love song of icy revenge`))) /
-                            2
-                    ) -
-                        Math.floor(
-                            (haveEffect($effect`Cold Hearted`) +
-                                5 * availableAmount($item`love song of icy revenge`)) /
-                                2
-                        )) *
-                        (lovesongExpectation.get($item`love song of icy revenge`) ?? 0)
+                    probability * (newWeightValue - currentWeightValue)
                 );
             }
-            const skillChoice = Array.from(weightMap).sort(([, a], [, b]) => b - a);
-            if (skillChoice.length === 0) {
-                useSkill($skill`Summon BRICKOs`);
-            } else {
-                useSkill(skillChoice[0][0]);
+
+            if (have($skill`Summon BRICKOs`)) {
+                if (
+                    have($familiar`Shorter-Order Cook`) &&
+                    totalDuration($item`short stack of pancakes`) === 0 &&
+                    availableFights() < 11 - get("_shortOrderCookCharge") &&
+                    potentialFights() >= 11 - get("_shortOrderCookCharge")
+                ) {
+                    decisionMap.set(
+                        $skill`Summon BRICKOs`,
+                        11 / (11 - get("_shortOrderCookCharge") - availableFights())
+                    );
+                }
+
+                if (
+                    have($familiar`Garbage Fire`) &&
+                    !have($item`burning paper crane`) &&
+                    !have($item`burning newspaper`) &&
+                    availableFights() < 30 - get("garbageFireProgress") &&
+                    potentialFights() >= 30 - get("garbageFireProgress")
+                ) {
+                    const value = 5 / (30 - get("garbageFireProgress") - availableFights());
+                    const otherBrickoValue = decisionMap.get($skill`Summon BRICKOs`) ?? 0;
+                    if (value > otherBrickoValue) {
+                        decisionMap.set($skill`Summon BRICKOs`, value);
+                    }
+                }
+                const bestLibrams = Array.from(decisionMap).sort((a, b) => b[1] - a[1]);
+                if (bestLibrams.length === 0) {
+                    if (!castPriciestLibram()) return;
+                } else {
+                    const decision = bestLibrams[0][0];
+                    useSkill(1, decision);
+                }
             }
-        } else {
-            const choice = bestLibramToCast();
-            if (!choice) return;
-            useSkill(choice);
-        }
+        } else if (!castPriciestLibram()) return;
     }
 }
 

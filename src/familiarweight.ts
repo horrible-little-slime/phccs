@@ -2,7 +2,6 @@ import {
     cliExecute,
     create,
     familiarWeight,
-    itemAmount,
     myFamiliar,
     runChoice,
     use,
@@ -25,7 +24,7 @@ import {
     Witchess,
 } from "libram";
 import { defaultKill } from "./phccs-macros";
-import { advMacroAA, clamp, ensureEffect, horse, setChoice } from "./lib";
+import { advMacroAA, availableFights, ensureEffect, horse, setChoice } from "./lib";
 import uniform, { famweightOutfit } from "./outfits";
 
 export function universalWeightBuffs(): void {
@@ -63,22 +62,10 @@ function gearAndUncommonBuffs() {
     }
 }
 
-function countAvailableFights(): number {
-    return (
-        5 -
-        Witchess.fightsDone() +
-        clamp(
-            get("_brickoEyeSummons") - get("_brickoFights"),
-            0,
-            itemAmount($item`BRICKO brick`) / 2
-        )
-    );
-}
-
 function familiarStuff() {
     while (
         get("_shortOrderCookCharge") < 11 &&
-        countAvailableFights() >= 11 - get("_shortOrderCookCharge")
+        availableFights() >= 11 - get("_shortOrderCookCharge")
     ) {
         useFamiliar($familiar`Shorter-Order Cook`);
         uniform();
@@ -92,7 +79,7 @@ function familiarStuff() {
     }
     while (
         get("garbageFireProgress") < 30 &&
-        countAvailableFights() >= 30 - get("garbageFireProgress")
+        availableFights() >= 30 - get("garbageFireProgress")
     ) {
         useFamiliar($familiar`Garbage Fire`);
         uniform();
