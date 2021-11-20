@@ -8593,13 +8593,13 @@ function burnLibrams() {
         decisionMap.set($skill(lib_templateObject90 || (lib_templateObject90 = src_lib_taggedTemplateLiteral(["Summon Taffy"]))), 1 * _probability);
       }
 
-      if (lib_have($skill(lib_templateObject91 || (lib_templateObject91 = src_lib_taggedTemplateLiteral(["Summon Love Song"])))) && totalDuration(template_string_$item(lib_templateObject92 || (lib_templateObject92 = src_lib_taggedTemplateLiteral(["love song of icy revenge"])))) < 10) {
+      if (lib_have($skill(lib_templateObject91 || (lib_templateObject91 = src_lib_taggedTemplateLiteral(["Summon Love Song"])))) && totalDuration(template_string_$item(lib_templateObject92 || (lib_templateObject92 = src_lib_taggedTemplateLiteral(["love song of icy revenge"])))) < 20) {
         var _libramPossibilities$5, _libramPossibilities$6;
 
         var _probability2 = (_libramPossibilities$5 = (_libramPossibilities$6 = libramPossibilities.get($skill(lib_templateObject93 || (lib_templateObject93 = src_lib_taggedTemplateLiteral(["Summon Love Song"]))))) === null || _libramPossibilities$6 === void 0 ? void 0 : _libramPossibilities$6.get(template_string_$item(lib_templateObject94 || (lib_templateObject94 = src_lib_taggedTemplateLiteral(["love song of icy revenge"]))))) !== null && _libramPossibilities$5 !== void 0 ? _libramPossibilities$5 : 0;
 
-        var currentWeightValue = clamp(Math.ceil(totalDuration(template_string_$item(lib_templateObject95 || (lib_templateObject95 = src_lib_taggedTemplateLiteral(["love song of icy revenge"]))))), 0, 10);
-        var newWeightValue = clamp(Math.ceil(totalDuration(template_string_$item(lib_templateObject96 || (lib_templateObject96 = src_lib_taggedTemplateLiteral(["love song of icy revenge"])))) + 5), 0, 10);
+        var currentWeightValue = clamp(Math.ceil(totalDuration(template_string_$item(lib_templateObject95 || (lib_templateObject95 = src_lib_taggedTemplateLiteral(["love song of icy revenge"])))) / 2), 0, 10);
+        var newWeightValue = clamp(Math.ceil((totalDuration(template_string_$item(lib_templateObject96 || (lib_templateObject96 = src_lib_taggedTemplateLiteral(["love song of icy revenge"])))) + 5) / 2), 0, 10);
         decisionMap.set($skill(lib_templateObject97 || (lib_templateObject97 = src_lib_taggedTemplateLiteral(["Summon Love Song"]))), _probability2 * (newWeightValue - currentWeightValue));
       }
 
