@@ -567,12 +567,12 @@ export function burnLibrams(): void {
                         .get($skill`Summon Love Song`)
                         ?.get($item`love song of icy revenge`) ?? 0;
                 const currentWeightValue = clamp(
-                    Math.ceil(totalDuration($item`love song of icy revenge`)),
+                    Math.ceil(totalDuration($item`love song of icy revenge`) / 2),
                     0,
                     10
                 );
                 const newWeightValue = clamp(
-                    Math.ceil(totalDuration($item`love song of icy revenge`) + 5),
+                    Math.ceil((totalDuration($item`love song of icy revenge`) + 5) / 2),
                     0,
                     10
                 );
