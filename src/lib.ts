@@ -582,7 +582,11 @@ export function burnLibrams(): void {
                 );
             }
 
-            if (have($skill`Summon BRICKOs`) && get("_brickoEyeSummons") < 3) {
+            if (
+                have($skill`Summon BRICKOs`) &&
+                get("_brickoEyeSummons") < 3 &&
+                testsDone.includes("Donate Blood")
+            ) {
                 const probability =
                     libramPossibilities.get($skill`Summon BRICKOs`)?.get($item`BRICKO eye brick`) ??
                     0;
