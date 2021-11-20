@@ -8623,15 +8623,15 @@ function burnLibrams() {
             decisionMap.set($skill(lib_templateObject108 || (lib_templateObject108 = src_lib_taggedTemplateLiteral(["Summon BRICKOs"]))), value);
           }
         }
+      }
 
-        var bestLibrams = Array.from(decisionMap).sort((a, b) => b[1] - a[1]);
+      var bestLibrams = Array.from(decisionMap).sort((a, b) => b[1] - a[1]);
 
-        if (bestLibrams.length === 0) {
-          if (!castPriciestLibram()) return;
-        } else {
-          var decision = bestLibrams[0][0];
-          (0,external_kolmafia_namespaceObject.useSkill)(1, decision);
-        }
+      if (bestLibrams.length === 0) {
+        if (!castPriciestLibram()) return;
+      } else {
+        var decision = bestLibrams[0][0];
+        (0,external_kolmafia_namespaceObject.useSkill)(1, decision);
       }
     } else if (!castPriciestLibram()) return;
   }
