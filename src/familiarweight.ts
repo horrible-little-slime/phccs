@@ -118,6 +118,9 @@ function testPrep() {
     while (have($item`love song of icy revenge`) && !have($effect`Cold Hearted`, 20)) {
         use($item`love song of icy revenge`);
     }
+    while (have($item`pulled blue taffy`) && !have($effect`Blue Swayed`, 50)) {
+        use($item`pulled blue taffy`);
+    }
 }
 
 export default function familiarTest(): number {
