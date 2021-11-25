@@ -8649,6 +8649,12 @@ function equalizeMuscle() {
         uniform();
         useDefaultFamiliar();
         setChoice(1387, 3);
+
+        if (property_get("questM23Meatsmith") === "unstarted") {
+          (0,external_kolmafia_namespaceObject.visitUrl)("shop.php?whichshop=meatsmith&action=talk");
+          (0,external_kolmafia_namespaceObject.runChoice)(1);
+        }
+
         mapMacro($location(lib_templateObject114 || (lib_templateObject114 = src_lib_taggedTemplateLiteral(["The Skeleton Store"]))), $monster(lib_templateObject115 || (lib_templateObject115 = src_lib_taggedTemplateLiteral(["novelty tropical skeleton"]))), Macro.skill($skill(lib_templateObject116 || (lib_templateObject116 = src_lib_taggedTemplateLiteral(["Use the Force"])))));
       }
 
@@ -8676,6 +8682,12 @@ function equalizeMoxie() {
         uniform();
         useDefaultFamiliar();
         setChoice(1387, 3);
+
+        if (property_get("questM23Meatsmith") === "unstarted") {
+          (0,external_kolmafia_namespaceObject.visitUrl)("shop.php?whichshop=meatsmith&action=talk");
+          (0,external_kolmafia_namespaceObject.runChoice)(1);
+        }
+
         mapMacro($location(lib_templateObject128 || (lib_templateObject128 = src_lib_taggedTemplateLiteral(["The Skeleton Store"]))), $monster(lib_templateObject129 || (lib_templateObject129 = src_lib_taggedTemplateLiteral(["novelty tropical skeleton"]))), Macro.skill($skill(lib_templateObject130 || (lib_templateObject130 = src_lib_taggedTemplateLiteral(["Use the Force"])))));
       }
 
