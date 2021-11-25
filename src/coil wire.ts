@@ -1,9 +1,9 @@
 import { create, eat } from "kolmafia";
-import { $item, $items, $location, $skill, get, have, Macro } from "libram";
+import { $item, $items, $location, $skill, get, have } from "libram";
 import uniform, { wireOutfit } from "./outfits";
-import { delevel, easyFight } from "./combat";
 import { advMacro, fightSausageIfAble, useDefaultFamiliar } from "./lib";
 import runStart from "./runstart";
+import Macro from "./combat";
 
 function firstFights() {
     // eslint-disable-next-line libram/verify-constants
@@ -29,8 +29,8 @@ function firstFights() {
         useDefaultFamiliar();
         advMacro(
             ghostLocation,
-            Macro.step(delevel)
-                .step(easyFight)
+            Macro.delevel()
+                .easyFight()
                 .trySkill($skill`Shoot Ghost`)
                 .trySkill($skill`Shoot Ghost`)
                 .trySkill($skill`Shoot Ghost`)
