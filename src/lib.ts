@@ -640,6 +640,10 @@ export function equalizeMuscle(): boolean {
                 uniform();
                 useDefaultFamiliar();
                 setChoice(1387, 3);
+                if (get("questM23Meatsmith") === "unstarted") {
+                    visitUrl("shop.php?whichshop=meatsmith&action=talk");
+                    runChoice(1);
+                }
                 mapMacro(
                     $location`The Skeleton Store`,
                     $monster`novelty tropical skeleton`,
@@ -668,6 +672,10 @@ export function equalizeMoxie(): boolean {
                 uniform();
                 useDefaultFamiliar();
                 setChoice(1387, 3);
+                if (get("questM23Meatsmith") === "unstarted") {
+                    visitUrl("shop.php?whichshop=meatsmith&action=talk");
+                    runChoice(1);
+                }
                 mapMacro(
                     $location`The Skeleton Store`,
                     $monster`novelty tropical skeleton`,
