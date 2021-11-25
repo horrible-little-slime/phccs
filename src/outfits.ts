@@ -1,4 +1,5 @@
 import {
+    buy,
     cliExecute,
     equip,
     equippedAmount,
@@ -244,7 +245,7 @@ export function mysticalityOutfit(): void {
             [$slot`acc1`, $item`your cowboy boots`],
             [$slot`acc2`, $item`codpiece`],
             [$slot`acc3`, $item`battle broom`],
-            [$slot`familiar`, $item`Abracandalabra`],
+            [$slot`familiar`, $items`Abracandalabra`],
         ]),
         $familiar`Left-Hand Man`
     ).dress();
@@ -255,6 +256,7 @@ export function itemOutfit(): void {
     Outfit.doYourBest(
         new Map<Slot, Item | Item[]>([
             [$slot`hat`, $item`wad of used tape`],
+            [$slot`weapon`, $items`extra-large utility candle`],
             [$slot`off-hand`, $item`Kramco Sausage-o-Matic™`],
             [$slot`back`, $item`protonic accelerator pack`],
             [$slot`acc1`, $item`Guzzlr tablet`],
@@ -337,11 +339,14 @@ export function weaponOutfit(): void {
 }
 
 export function spellOutfit(): void {
+    if (!have($item`Abracandalabra`) && !have($item`obsidian nutcracker`)) {
+        buy($item`obsidian nutcracker`);
+    }
     Outfit.doYourBest(
         new Map<Slot, Item | Item[]>([
             [$slot`hat`, $items`sugar chapeau, Hollandaise helmet`],
             [$slot`weapon`, $item`weeping willow wand`],
-            [$slot`off-hand`, $item`Abracandalabra`],
+            [$slot`off-hand`, $items`Abracandalabra, obsidian nutcracker`],
             [$slot`familiar`, $items`astral statuette`],
             [$slot`pants`, $item`pantogram pants`],
             [$slot`acc1`, $item`Kremlin's Greatest Briefcase`],
