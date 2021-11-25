@@ -126,6 +126,7 @@ function buffMyst() {
     ensureEffect($effect`Feeling Excited`);
 
     if (have($item`votive of confidence`)) use($item`votive of confidence`);
+    if (have($item`natural magick candle`)) use($item`natural magick candle`);
 }
 
 function castBuffs() {

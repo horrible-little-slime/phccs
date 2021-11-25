@@ -63,7 +63,7 @@ function castBuffs() {
     if (myClass() === $class`Pastamancer` && !get("_barrelPrayer")) {
         cliExecute("barrelprayer buff");
     }
-
+    if (have($item`Salsa Caliente™ candle`)) use($item`Salsa Caliente™ candle`);
     if (have($item`lavender candy heart`)) ensureEffect($effect`Heart of Lavender`);
 }
 
