@@ -8,7 +8,6 @@ export default class Macro extends StrictMacro {
             .tryItem($item`Time-Spinner`)
             .trySkill($skill`Summon Love Gnats`);
     }
-
     static delevel(): Macro {
         return new Macro().delevel();
     }
@@ -22,7 +21,6 @@ export default class Macro extends StrictMacro {
             )
         );
     }
-
     static candyblast(): Macro {
         return new Macro().candyblast();
     }
@@ -43,7 +41,6 @@ export default class Macro extends StrictMacro {
                 Macro.attack().repeat()
             );
     }
-
     static defaultKill(): Macro {
         return new Macro().defaultKill();
     }
