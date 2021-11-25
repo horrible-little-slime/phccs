@@ -24,8 +24,8 @@ import {
     BeachComb,
     get,
     have,
-    Macro,
 } from "libram";
+import Macro from "./combat";
 import { universalWeightBuffs } from "./familiarweight";
 import { advMacroAA, ensureEffect, ensureMp, fuelUp, horse, setChoice } from "./lib";
 import uniform, { hotresOutfit, Outfit } from "./outfits";

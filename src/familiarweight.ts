@@ -19,11 +19,10 @@ import {
     BeachComb,
     get,
     have,
-    Macro,
     set,
     Witchess,
 } from "libram";
-import { defaultKill } from "./phccs-macros";
+import Macro from "./combat";
 import { advMacroAA, availableFights, ensureEffect, horse, setChoice } from "./lib";
 import uniform, { famweightOutfit } from "./outfits";
 
@@ -69,7 +68,7 @@ function familiarStuff() {
     ) {
         useFamiliar($familiar`Shorter-Order Cook`);
         uniform();
-        defaultKill.setAutoAttack();
+        Macro.defaultKill().setAutoAttack();
         if (5 - Witchess.fightsDone() > 0) {
             Witchess.fightPiece($monster`Witchess Bishop`);
         } else {
@@ -83,7 +82,7 @@ function familiarStuff() {
     ) {
         useFamiliar($familiar`Garbage Fire`);
         uniform();
-        defaultKill.setAutoAttack();
+        Macro.defaultKill().setAutoAttack();
         if (5 - Witchess.fightsDone() > 0) {
             Witchess.fightPiece($monster`Witchess Bishop`);
         } else {

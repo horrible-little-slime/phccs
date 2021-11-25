@@ -19,7 +19,6 @@ import {
     BeachComb,
     get,
     have,
-    Macro,
     set,
     uneffect,
 } from "libram";
@@ -34,6 +33,7 @@ import {
     setClan,
     useDefaultFamiliar,
 } from "./lib";
+import Macro from "./combat";
 import uniform, { weaponOutfit } from "./outfits";
 
 const predictor = () =>

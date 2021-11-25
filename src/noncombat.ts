@@ -14,7 +14,7 @@ import {
 } from "kolmafia";
 import { $coinmaster, $effect, $familiar, $item, $slot, get, have } from "libram";
 import { universalWeightBuffs } from "./familiarweight";
-import { defaultKill } from "./phccs-macros";
+import { defaultKill } from "./combat";
 import { ensureEffect, fuelUp, heal, horse, setChoice } from "./lib";
 import uniform, { noncombatOutfit } from "./outfits";
 

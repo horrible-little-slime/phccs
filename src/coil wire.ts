@@ -1,7 +1,7 @@
 import { create, eat } from "kolmafia";
 import { $item, $items, $location, $skill, get, have, Macro } from "libram";
 import uniform, { wireOutfit } from "./outfits";
-import { delevel, easyFight } from "./phccs-macros";
+import { delevel, easyFight } from "./combat";
 import { advMacro, fightSausageIfAble, useDefaultFamiliar } from "./lib";
 import runStart from "./runstart";
 

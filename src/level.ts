@@ -35,11 +35,10 @@ import {
     BeachComb,
     get,
     have,
-    Macro,
     TunnelOfLove,
     Witchess,
 } from "libram";
-import { candyblast, defaultKill, delevel, easyFight } from "./phccs-macros";
+import Macro from "./combat";
 import {
     advMacro,
     advMacroAA,
@@ -175,9 +174,9 @@ function getYoked() {
     heal();
     advMacroAA(
         $location`The X-32-F Combat Training Snowman`,
-        Macro.step(delevel)
+        Macro.delevel()
             .tryItem($item`blue rocket`)
-            .attack()
+            .defaultKill()
             .repeat(),
         () => {
             return !have($effect`Holiday Yoked`);
@@ -198,7 +197,7 @@ function witchGhostAgent() {
     ensureMp(100);
     Macro.trySkill($skill`Curse of Weaksauce`)
         .trySkill($skill`Micrometeorite`)
-        .attack()
+        .defaultKill()
         .repeat()
         .setAutoAttack();
     if (!have($item`battle broom`)) {
@@ -212,8 +211,8 @@ function witchGhostAgent() {
         useDefaultFamiliar();
         advMacro(
             ghostLocation,
-            Macro.step(delevel)
-                .step(easyFight)
+            Macro.delevel()
+                .easyFight()
                 .trySkill($skill`Portscan`)
                 .trySkill($skill`Shoot Ghost`)
                 .trySkill($skill`Shoot Ghost`)
@@ -231,7 +230,7 @@ function witchGhostAgent() {
         );
         advMacroAA(
             $location`Noob Cave`,
-            Macro.step(delevel)
+            Macro.delevel()
                 .trySkill($skill`Otoscope`)
                 .trySkill($skill`Become a Bat`)
                 .trySkill($skill`Chest X-Ray`), //1
@@ -258,13 +257,13 @@ function lov() {
     Macro.if_("monstername LOV enforcer", Macro.attack().repeat())
         .if_(
             "monstername LOV Engineer",
-            Macro.step(candyblast)
+            Macro.candyblast()
                 .trySkill($skill`Weapon of the Pastalord`)
                 .repeat()
         )
         .if_(
             "monstername LOV equivocator",
-            Macro.step(delevel).step(easyFight).step(candyblast).attack().repeat()
+            Macro.delevel().easyFight().candyblast().defaultKill().repeat()
         )
         .setAutoAttack();
     if (!get("_loveTunnelUsed")) {
@@ -343,13 +342,13 @@ function tomatoJuiceAndNinjaCostume() {
 
 function godLob() {
     if (get("_godLobsterFights") === 0) {
-        Macro.step(delevel).step(easyFight).attack().repeat().setAutoAttack();
+        Macro.delevel().easyFight().defaultKill().repeat().setAutoAttack();
         uniform();
         heal();
         useFamiliar($familiar`God Lobster`);
         setChoice(1310, 1);
         visitUrl("main.php?fightgodlobster=1");
-        runCombat(Macro.step(delevel).step(easyFight).attack().repeat().toString());
+        runCombat(Macro.delevel().easyFight().defaultKill().repeat().toString());
         multiFightAutoAttack();
         runChoice(-1);
         equip($slot`familiar`, $item`God Lobster's Scepter`);
@@ -367,7 +366,7 @@ function snojo() {
     useDefaultFamiliar();
     advMacroAA(
         $location`The X-32-F Combat Training Snowman`,
-        Macro.step(delevel).step(easyFight).attack().repeat(),
+        Macro.delevel().easyFight().attack().repeat(),
         () => {
             return get("_snojoFreeFights") < 10;
         },
@@ -384,7 +383,7 @@ function tentacle(): void {
     if (!have($skill`Evoke Eldritch Horror`)) return;
     uniform();
     useDefaultFamiliar();
-    const macro = Macro.step(delevel).step(candyblast).attack().repeat();
+    const macro = Macro.delevel().candyblast().defaultKill().repeat();
     macro.setAutoAttack();
     useSkill($skill`Evoke Eldritch Horror`);
     runCombat(macro.toString());
@@ -414,11 +413,9 @@ function NEP() {
     useDefaultFamiliar();
     advMacroAA(
         $location`The Neverending Party`,
-        Macro.step(delevel)
+        Macro.delevel()
             .trySkill($skill`Feel Pride`)
-            .step(easyFight)
-            .attack()
-            .repeat(),
+            .defaultKill(),
         () => {
             return get("_neverendingPartyFreeTurns") < 10;
         },
@@ -444,7 +441,7 @@ function NEP() {
             Macro.trySkill($skill`Shattering Punch`)
                 .trySkill($skill`Gingerbread Mob Hit`)
                 .trySkill($skill`Chest X-Ray`)
-        ).if_("monstername sausage goblin", Macro.step(delevel).step(candyblast).attack().repeat()),
+        ).if_("monstername sausage goblin", Macro.delevel().candyblast().defaultKill().repeat()),
         () => {
             return get("_shatteringPunchUsed") < 3 && !get("_gingerbreadMobHitUsed");
         },
@@ -471,7 +468,7 @@ function NEP() {
             Macro.trySkill($skill`Shattering Punch`)
                 .trySkill($skill`Gingerbread Mob Hit`)
                 .trySkill($skill`Chest X-Ray`)
-        ).if_("monstername sausage goblin", Macro.step(delevel).step(candyblast).attack().repeat()),
+        ).if_("monstername sausage goblin", Macro.delevel().candyblast().defaultKill().repeat()),
         () => {
             return get("_chestXRayUsed") < 3;
         },
@@ -499,7 +496,7 @@ function mElfLeveling() {
     useFamiliar($familiar`Machine Elf`);
     advMacroAA(
         $location`The Deep Machine Tunnels`,
-        defaultKill,
+        Macro.defaultKill(),
         () => {
             return get("_machineTunnelsAdv") < 5;
         },
@@ -524,7 +521,7 @@ function royalty() {
         Witchess.fightPiece($monster`Witchess Queen`);
     }
     if (!have($item`dented scepter`)) {
-        Macro.step(delevel).attack().repeat().setAutoAttack();
+        Macro.delevel().attack().repeat().setAutoAttack();
         uniform();
         useDefaultFamiliar();
         heal();

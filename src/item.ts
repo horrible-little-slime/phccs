@@ -10,19 +10,9 @@ import {
     useFamiliar,
     visitUrl,
 } from "kolmafia";
-import {
-    $class,
-    $effect,
-    $familiar,
-    $item,
-    $location,
-    $skill,
-    $slot,
-    get,
-    have,
-    Macro,
-} from "libram";
+import { $class, $effect, $familiar, $item, $location, $skill, $slot, get, have } from "libram";
 import { itemOutfit } from "./outfits";
+import Macro from "./combat";
 import { advMacroAA, ensureEffect, fuelUp, horse, synthItem, useDefaultFamiliar } from "./lib";
 
 const predictor = () =>

@@ -21,9 +21,9 @@ import {
     $skill,
     get,
     have,
-    Macro,
     set,
 } from "libram";
+import Macro from "./combat";
 import { advMacroAA, ensureEffect, ensureInnerElf, horse, setChoice } from "./lib";
 import uniform, { spellOutfit } from "./outfits";
 

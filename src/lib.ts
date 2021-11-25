@@ -51,12 +51,12 @@ import {
     get,
     getModifier,
     have,
-    Macro,
     possibleLibramSummons,
     PropertiesManager,
     property,
     Witchess,
 } from "libram";
+import Macro from "./combat";
 import uniform, { Outfit, withOutfit } from "./outfits";
 
 export const PropertyManager = new PropertiesManager();
