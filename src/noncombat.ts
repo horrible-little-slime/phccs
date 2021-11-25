@@ -12,9 +12,9 @@ import {
     useFamiliar,
     visitUrl,
 } from "kolmafia";
+import Macro from "./combat";
 import { $coinmaster, $effect, $familiar, $item, $slot, get, have } from "libram";
 import { universalWeightBuffs } from "./familiarweight";
-import { defaultKill } from "./combat";
 import { ensureEffect, fuelUp, heal, horse, setChoice } from "./lib";
 import uniform, { noncombatOutfit } from "./outfits";
 
@@ -50,12 +50,12 @@ function godLobster() {
         useFamiliar($familiar`God Lobster`);
         equip($slot`familiar`, $item`God Lobster's Ring`);
         uniform();
-        defaultKill.setAutoAttack();
+        Macro.defaultKill().setAutoAttack();
         heal();
         use(3, $item`psychokinetic energy blob`);
         setChoice(1310, 2);
         visitUrl("main.php?fightgodlobster=1");
-        runCombat(defaultKill.toString());
+        runCombat(Macro.defaultKill().toString());
         visitUrl("choice.php");
         runChoice(-1);
     }
