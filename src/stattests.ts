@@ -13,13 +13,13 @@ import {
 } from "kolmafia";
 import { $effect, $familiar, $item, $skill, $stat, get, have } from "libram";
 import { hpOutfit, moxieOutfit, muscleOutfit, mysticalityOutfit } from "./outfits";
-import { ensureEffect, ensureInnerElf, tryUse } from "./lib";
+import { ensureEffect, ensureInnerElf, equalizeMoxie, equalizeMuscle, tryUse } from "./lib";
 
 const musclePredictor = () =>
     60 - Math.floor((1 / 30) * (myBuffedstat($stat`muscle`) - myBasestat($stat`mysticality`)));
 
 function musclebuffs() {
-    useSkill(1, $skill`Bind Undead Elbow Macaroni`);
+    equalizeMuscle();
     ensureEffect($effect`Big`);
     ensureEffect($effect`Song of Bravado`);
     ensureEffect($effect`Rage of the Reindeer`);
@@ -82,7 +82,7 @@ function moxBuffs() {
         eat(1, $item`magical sausage`);
     }
     ensureEffect($effect`Feeling Excited`);
-    useSkill(1, $skill`Bind Penne Dreadful`);
+    equalizeMoxie();
     ensureEffect($effect`Pomp & Circumsands`);
 
     use(1, $item`Bird-a-Day calendar`);
@@ -127,7 +127,7 @@ export function moxTest(): number {
 }
 
 function hpBuffs() {
-    useSkill(1, $skill`Bind Undead Elbow Macaroni`);
+    equalizeMuscle();
     ensureEffect($effect`Big`);
     ensureEffect($effect`Song of Starch`);
     ensureEffect($effect`Rage of the Reindeer`);

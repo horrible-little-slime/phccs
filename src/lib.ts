@@ -14,6 +14,7 @@ import {
     getProperty,
     haveEffect,
     inMultiFight,
+    myClass,
     myMaxhp,
     myMaxmp,
     myMp,
@@ -36,10 +37,12 @@ import {
     wait,
 } from "kolmafia";
 import {
+    $class,
     $effect,
     $familiar,
     $item,
     $location,
+    $monster,
     $skill,
     $skills,
     $slot,
@@ -54,7 +57,7 @@ import {
     property,
     Witchess,
 } from "libram";
-import { Outfit, withOutfit } from "./outfits";
+import uniform, { Outfit, withOutfit } from "./outfits";
 
 export const PropertyManager = new PropertiesManager();
 
@@ -625,5 +628,61 @@ export function burnLibrams(): void {
                 useSkill(1, decision);
             }
         } else if (!castPriciestLibram()) return;
+    }
+}
+
+export function equalizeMuscle(): boolean {
+    if (myClass() === $class`Pastamancer`) return useSkill(1, $skill`Bind Undead Elbow Macaroni`);
+    else {
+        if (have($effect`Expert Oiliness`)) return true;
+        if (!have($item`oil of expertise`)) {
+            if (!have($item`cherry`) && get("_monstersMapped") < 2) {
+                uniform();
+                useDefaultFamiliar();
+                setChoice(1387, 3);
+                mapMacro(
+                    $location`The Skeleton Store`,
+                    $monster`novelty tropical skeleton`,
+                    Macro.skill($skill`Use the Force`)
+                );
+            }
+            if (!get("hasRange")) {
+                if (!have($item`Dramatic™ range`)) {
+                    buy(1, $item`Dramatic™ range`);
+                }
+                use(1, $item`Dramatic™ range`);
+            }
+            useSkill($skill`Advanced Saucecrafting`);
+            create($item`oil of expertise`);
+        }
+        return use($item`oil of expertise`);
+    }
+}
+
+export function equalizeMoxie(): boolean {
+    if (myClass() === $class`Pastamancer`) return useSkill(1, $skill`Bind Penne Dreadful`);
+    else {
+        if (have($effect`Expert Oiliness`)) return true;
+        if (!have($item`oil of expertise`)) {
+            if (!have($item`cherry`) && get("_monstersMapped") < 2) {
+                uniform();
+                useDefaultFamiliar();
+                setChoice(1387, 3);
+                mapMacro(
+                    $location`The Skeleton Store`,
+                    $monster`novelty tropical skeleton`,
+                    Macro.skill($skill`Use the Force`)
+                );
+            }
+            if (!get("hasRange")) {
+                if (!have($item`Dramatic™ range`)) {
+                    buy(1, $item`Dramatic™ range`);
+                }
+                use(1, $item`Dramatic™ range`);
+            }
+            useSkill($skill`Advanced Saucecrafting`);
+            create($item`oil of expertise`);
+        }
+        return use($item`oil of expertise`);
     }
 }
