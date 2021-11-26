@@ -17,6 +17,7 @@ import {
     $effects,
     $familiar,
     $item,
+    $items,
     $location,
     $skill,
     get,
@@ -24,7 +25,7 @@ import {
     set,
 } from "libram";
 import Macro from "./combat";
-import { advMacroAA, ensureEffect, ensureInnerElf, horse, setChoice } from "./lib";
+import { advMacroAA, beardBuffs, ensureEffect, ensureInnerElf, horse, setChoice } from "./lib";
 import uniform, { spellOutfit } from "./outfits";
 
 const predictor = () =>
@@ -108,6 +109,12 @@ function testPrep() {
 export default function spellTest(): number {
     castBuffs();
     fingies();
+    uniform(
+        ...(myClass() === $class`Sauceror` && !beardBuffs.some((effect) => have(effect))
+            ? // eslint-disable-next-line libram/verify-constants
+              $items`Daylight Shavings Helmet`
+            : [])
+    );
     ensureInnerElf();
     shower();
     testPrep();

@@ -10,6 +10,7 @@ import {
     haveEquipped,
     knollAvailable,
     mpCost,
+    myClass,
     myLevel,
     myMp,
     numericModifier,
@@ -23,6 +24,7 @@ import {
     visitUrl,
 } from "kolmafia";
 import {
+    $class,
     $effect,
     $familiar,
     $item,
@@ -42,6 +44,7 @@ import Macro from "./combat";
 import {
     advMacro,
     advMacroAA,
+    beardBuffs,
     burnLibrams,
     ensureEffect,
     ensureInnerElf,
@@ -302,7 +305,12 @@ function tomatoJuiceAndNinjaCostume() {
             )
         );
         useDefaultFamiliar(false);
-        uniform();
+        uniform(
+            ...(myClass() === $class`Sauceror` && !beardBuffs.some((effect) => have(effect))
+                // eslint-disable-next-line libram/verify-constants
+                ? $items`Daylight Shavings Helmet`
+                : [])
+        );
         ensureMp(31);
         mapMacro(
             $location`The Haiku Dungeon`,

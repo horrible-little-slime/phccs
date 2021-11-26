@@ -39,6 +39,7 @@ import {
 import {
     $class,
     $effect,
+    $effects,
     $familiar,
     $item,
     $location,
@@ -694,3 +695,6 @@ export function equalizeMoxie(): boolean {
         return use($item`oil of expertise`);
     }
 }
+
+// eslint-disable-next-line libram/verify-constants
+export const beardBuffs = $effects`Barbell Moustache, Cowboy Stache, Friendly Chops, Grizzly Beard, Gull-Wing Moustache, Musician's Musician's Moustache, Pointy Wizard Beard, Space Warlord's Beard, Spectacle Moustache, Surrealist's Moustache, Toiletbrush Moustache`;
