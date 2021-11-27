@@ -392,7 +392,8 @@ export function advMacro(
     };
 
     while (condition()) {
-        adv1(location, -1, () => {
+        adv1(location, -1, (_round: number, _foe: Monster, pageText: string) => {
+            if (pageText.includes("Macro Aborted")) abort();
             return Macro.if_("!pastround 2", macro).abort().toString();
         });
         if (afterCombatAction) afterCombatAction();
