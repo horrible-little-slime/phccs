@@ -9970,13 +9970,15 @@ function snojo() {
 
 function tentacle() {
   if (!lib_have($skill(level_templateObject117 || (level_templateObject117 = level_taggedTemplateLiteral(["Evoke Eldritch Horror"]))))) return;
-  uniform();
-  useDefaultFamiliar();
-  var macro = combat_Macro.delevel().candyblast().defaultKill().repeat();
-  macro.setAutoAttack();
-  (0,external_kolmafia_namespaceObject.useSkill)($skill(level_templateObject118 || (level_templateObject118 = level_taggedTemplateLiteral(["Evoke Eldritch Horror"]))));
-  (0,external_kolmafia_namespaceObject.runCombat)(macro.toString());
-  if (lib_have($effect(level_templateObject119 || (level_templateObject119 = level_taggedTemplateLiteral(["Beaten Up"]))))) (0,external_kolmafia_namespaceObject.cliExecute)("hottub");
+  withProperty("autoAbortThreshold", -0.05, () => {
+    uniform();
+    useDefaultFamiliar();
+    var macro = combat_Macro.delevel().candyblast().defaultKill().repeat();
+    macro.setAutoAttack();
+    (0,external_kolmafia_namespaceObject.useSkill)($skill(level_templateObject118 || (level_templateObject118 = level_taggedTemplateLiteral(["Evoke Eldritch Horror"]))));
+    (0,external_kolmafia_namespaceObject.runCombat)(macro.toString());
+    if (lib_have($effect(level_templateObject119 || (level_templateObject119 = level_taggedTemplateLiteral(["Beaten Up"]))))) (0,external_kolmafia_namespaceObject.cliExecute)("hottub");
+  });
 }
 
 function NEP() {
