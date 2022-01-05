@@ -44,4 +44,10 @@ export default class Macro extends StrictMacro {
     static defaultKill(): Macro {
         return new Macro().defaultKill();
     }
+
+    toString(): string {
+        return `${StrictMacro.ifHolidayWanderer(
+            StrictMacro.skill($skill`Feel Hatred`)
+        ).toString()};${super.toString()}`;
+    }
 }
