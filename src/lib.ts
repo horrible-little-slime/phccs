@@ -372,7 +372,7 @@ export function advMacroAA(
     while (condition()) {
         adv1(location, -1, (_round: number, _foe: Monster, pageText: string) => {
             if (pageText.includes("Macro Aborted")) abort();
-            return Macro.cachedAutoAttack ?? Macro.abort().toString();
+            return Macro.cachedAutoAttacks.get(macro.name) ?? Macro.abort().toString();
         });
         if (afterCombatAction) afterCombatAction();
         n++;
