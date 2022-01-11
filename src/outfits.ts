@@ -257,7 +257,7 @@ export function itemOutfit(): void {
         new Map<Slot, Item | Item[]>([
             [$slot`hat`, $item`wad of used tape`],
             [$slot`weapon`, $items`extra-large utility candle`],
-            [$slot`off-hand`, $item`Kramco Sausage-o-Matic™`],
+            [$slot`off-hand`, $item`cursed magnifying glass`],
             [$slot`back`, $item`protonic accelerator pack`],
             [$slot`acc1`, $item`Guzzlr tablet`],
             [$slot`acc2`, $item`gold detective badge`],
