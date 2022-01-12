@@ -425,7 +425,7 @@ function NEP() {
     advMacroAA(
         $location`The Neverending Party`,
         Macro.delevel()
-            .if_($effect`Inner Elf`, Macro.trySkill($skill`Feel Pride`))
+            .trySkill($skill`Feel Pride`)
             .defaultKill(),
         () => {
             return get("_neverendingPartyFreeTurns") < 10;
