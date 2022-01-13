@@ -4,6 +4,7 @@ import {
     equip,
     equippedAmount,
     equippedItem,
+    inHardcore,
     myFamiliar,
     toSlot,
     useFamiliar,
@@ -130,7 +131,7 @@ export default function uniform(...changes: (Item | [Item, Slot])[]): void {
         [$slot`pants`, $items`pantogram pants, old sweatpants`],
         [$slot`weapon`, $item`Fourth of May Cosplay Saber`],
         [$slot`off-hand`, $item`familiar scrapbook`],
-        [$slot`acc1`, $item`your cowboy boots`],
+        [$slot`acc1`, $items`meteorite necklace, your cowboy boots`],
         [$slot`acc2`, $item`codpiece`],
         [$slot`acc3`, $items`battle broom, Powerful Glove`],
         [$slot`back`, $items`LOV Epaulettes, vampyric cloake`],
@@ -311,10 +312,10 @@ export function famweightOutfit(): void {
           };
     Outfit.doYourBest(
         new Map<Slot, Item | Item[]>([
-            // eslint-disable-next-line libram/verify-constants
             [$slot`hat`, $item`Daylight Shavings Helmet`],
             [$slot`weapon`, $item`Fourth of May Cosplay Saber`],
             [$slot`off-hand`, $items`burning paper crane, familiar scrapbook`],
+            [$slot`pants`, $items`repaid diaper, Great Wolf's beastly trousers, pantogram pants`],
             [$slot`acc1`, $item`Beach Comb`],
             [$slot`acc2`, $item`Brutal brogues`],
             [$slot`acc3`, $item`hewn moon-rune spoon`],
@@ -334,7 +335,9 @@ export function weaponOutfit(): void {
             [$slot`acc1`, $item`Brutal brogues`],
             [$slot`acc2`, $item`Kremlin's Greatest Briefcase`],
             [$slot`acc3`, $item`Powerful Glove`],
-        ])
+            [$slot`familiar`, $items`Stick-Knife of Loathing`],
+        ]),
+        $familiar`Disembodied Hand`
     ).dress();
 }
 
@@ -342,17 +345,24 @@ export function spellOutfit(): void {
     if (!have($item`Abracandalabra`) && !have($item`obsidian nutcracker`)) {
         buy($item`obsidian nutcracker`);
     }
+    const { familiar, famEquip } = inHardcore()
+        ? { familiar: $familiar`Left-Hand Man`, famEquip: $items`astral statuette` }
+        : { familiar: $familiar`Disembodied Hand`, famEquip: $items`Stick-Knife of Loathing` };
+
     Outfit.doYourBest(
         new Map<Slot, Item | Item[]>([
             [$slot`hat`, $items`sugar chapeau, Hollandaise helmet`],
-            [$slot`weapon`, $item`weeping willow wand`],
+            [
+                $slot`weapon`,
+                $items`Staff of the Roaring Hearth, Staff of Kitchen Royalty, Staff of the Deepest Freeze, Staff of Frozen Lard, Staff of the Peppermint Twist, weeping willow wand`,
+            ],
             [$slot`off-hand`, $items`Abracandalabra, obsidian nutcracker`],
-            [$slot`familiar`, $items`astral statuette`],
+            [$slot`familiar`, famEquip],
             [$slot`pants`, $item`pantogram pants`],
-            [$slot`acc1`, $item`Kremlin's Greatest Briefcase`],
+            [$slot`acc1`, $items`meteorite necklace, Kremlin's Greatest Briefcase`],
             [$slot`acc2`, $item`codpiece`],
             [$slot`acc3`, $item`battle broom`],
         ]),
-        $familiar`Left-Hand Man`
+        familiar
     ).dress();
 }

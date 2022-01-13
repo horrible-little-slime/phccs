@@ -4,9 +4,13 @@ import {
     cliExecute,
     create,
     eudoraItem,
+    inHardcore,
+    itemAmount,
     myLevel,
     mySpleenUse,
     runChoice,
+    storageAmount,
+    takeStorage,
     use,
     useFamiliar,
     useSkill,
@@ -53,6 +57,26 @@ function grimoires() {
 function setSettings() {
     SourceTerminal.educate([$skill`Extract`, $skill`Portscan`]);
     setClan(get("phccs_mainClan", "Alliance From Heck"));
+}
+
+function doPulls() {
+    if (inHardcore()) return;
+    const pulls: (Item | Item[])[] = [
+        $items`repaid diaper, Great Wolf's beastly trousers`,
+        $items`meteorite necklace, meteorite fragment, meteorite ring, meteorite earring`,
+        $item`Stick-Knife of Loathing`,
+        $items`Staff of the Roaring Hearth, Staff of Kitchen Royalty, Staff of the Deepest Freeze, Staff of Frozen Lard, Staff of the Peppermint Twist`,
+    ];
+
+    for (const pull of pulls) {
+        if (
+            (Array.isArray(pull) && pull.some((item) => itemAmount(item) > 0)) ||
+            (!Array.isArray(pull) && itemAmount(pull) > 0)
+        )
+            return;
+        const pullItem = Array.isArray(pull) ? pull.find((pull) => storageAmount(pull) > 0) : pull;
+        if (pullItem) takeStorage(pullItem, 1);
+    }
 }
 
 function getTurns() {
@@ -142,6 +166,7 @@ function scavenge() {
 }
 
 export default function runStart(): void {
+    doPulls();
     setSettings();
     toot();
     getTurns();
