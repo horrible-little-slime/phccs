@@ -29,18 +29,16 @@ while ($skill`Experience Safari`.timescast < get("skillLevel180") && safariTarge
     safariTargets.shift();
 }
 
-prepareAscension(
-    {
-        workshed: $item`Asdon Martin keyfob`,
-        garden: $item`Peppermint Pip Packet`,
-        eudora: $item`Our Daily Candles™ order form`,
+prepareAscension({
+    workshed: "Asdon Martin keyfob",
+    garden: "Peppermint Pip Packet",
+    eudora: "Our Daily Candles™ order form",
+    chateau: {
+        desk: "continental juice bar",
+        nightstand: "foreign language tapes",
+        ceiling: "ceiling fan",
     },
-    {
-        desk: $item`continental juice bar`,
-        nightstand: $item`foreign language tapes`,
-        ceiling: $item`ceiling fan`,
-    }
-);
+});
 
 const pet = have($familiar`Baby Bugged Bugbear`)
     ? $item`astral statuette`
