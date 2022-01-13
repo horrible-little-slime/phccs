@@ -7260,6 +7260,8 @@ function spellOutfit() {
 
   Outfit.doYourBest(new Map([[$slot(_templateObject219 || (_templateObject219 = outfits_taggedTemplateLiteral(["hat"]))), template_string_$items(_templateObject220 || (_templateObject220 = outfits_taggedTemplateLiteral(["sugar chapeau, Hollandaise helmet"])))], [$slot(_templateObject221 || (_templateObject221 = outfits_taggedTemplateLiteral(["weapon"]))), template_string_$item(_templateObject222 || (_templateObject222 = outfits_taggedTemplateLiteral(["weeping willow wand"])))], [$slot(_templateObject223 || (_templateObject223 = outfits_taggedTemplateLiteral(["off-hand"]))), template_string_$items(_templateObject224 || (_templateObject224 = outfits_taggedTemplateLiteral(["Abracandalabra, obsidian nutcracker"])))], [$slot(_templateObject225 || (_templateObject225 = outfits_taggedTemplateLiteral(["familiar"]))), template_string_$items(_templateObject226 || (_templateObject226 = outfits_taggedTemplateLiteral(["astral statuette"])))], [$slot(_templateObject227 || (_templateObject227 = outfits_taggedTemplateLiteral(["pants"]))), template_string_$item(_templateObject228 || (_templateObject228 = outfits_taggedTemplateLiteral(["pantogram pants"])))], [$slot(_templateObject229 || (_templateObject229 = outfits_taggedTemplateLiteral(["acc1"]))), template_string_$item(_templateObject230 || (_templateObject230 = outfits_taggedTemplateLiteral(["Kremlin's Greatest Briefcase"])))], [$slot(_templateObject231 || (_templateObject231 = outfits_taggedTemplateLiteral(["acc2"]))), template_string_$item(_templateObject232 || (_templateObject232 = outfits_taggedTemplateLiteral(["codpiece"])))], [$slot(_templateObject233 || (_templateObject233 = outfits_taggedTemplateLiteral(["acc3"]))), template_string_$item(_templateObject234 || (_templateObject234 = outfits_taggedTemplateLiteral(["battle broom"])))]]), template_string_$familiar(_templateObject235 || (_templateObject235 = outfits_taggedTemplateLiteral(["Left-Hand Man"])))).dress();
 }
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.values.js
+var es_object_values = __webpack_require__(9628);
 ;// CONCATENATED MODULE: ./node_modules/libram/dist/utils.js
 function utils_createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = utils_unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e2) { throw _e2; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e3) { didErr = true; err = _e3; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
 
@@ -7423,6 +7425,7 @@ function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (O
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { modifier_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function modifier_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -9415,8 +9418,6 @@ function equalizeMoxie() {
 } // eslint-disable-next-line libram/verify-constants
 
 var beardBuffs = $effects(lib_templateObject137 || (lib_templateObject137 = lib_taggedTemplateLiteral(["Barbell Moustache, Cowboy Stache, Friendly Chops, Grizzly Beard, Gull-Wing Moustache, Musician's Musician's Moustache, Pointy Wizard Beard, Space Warlord's Beard, Spectacle Moustache, Surrealist's Moustache, Toiletbrush Moustache"])));
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.values.js
-var es_object_values = __webpack_require__(9628);
 // EXTERNAL MODULE: ./node_modules/lodash/isEqual.js
 var isEqual = __webpack_require__(7120);
 var isEqual_default = /*#__PURE__*/__webpack_require__.n(isEqual);

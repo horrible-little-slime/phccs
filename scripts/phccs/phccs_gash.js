@@ -2350,11 +2350,6 @@ var PropertiesManager = /*#__PURE__*/(/* unused pure expression or super */ null
   return PropertiesManager;
 }()));
 ;// CONCATENATED MODULE: ./node_modules/libram/dist/resources/2015/ChateauMantegna.js
-var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5, _templateObject6;
-
-function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
-
-
 
 
 function have() {
@@ -2370,35 +2365,241 @@ function fightPainting() {
   visitUrl("place.php?whichplace=chateau&action=chateau_painting", false);
   return runCombat();
 }
-var desks = template_string_$items(_templateObject || (_templateObject = _taggedTemplateLiteral(["fancy stationery set, Swiss piggy bank, continental juice bar"])));
-var ceilings = template_string_$items(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["antler chandelier, ceiling fan, artificial skylight"])));
-var nightstands = template_string_$items(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["foreign language tapes, bowl of potpourri, electric muscle stimulator"])));
+var desks = ["fancy stationery set", "Swiss piggy bank", "continental juice bar"];
+var ceilings = ["antler chandelier", "ceiling fan", "artificial skylight"];
+var nightstands = ["foreign language tapes", "bowl of potpourri", "electric muscle stimulator"];
 function getDesk() {
-  return desks.find(desk => Object.keys((0,external_kolmafia_namespaceObject.getChateau)()).includes(desk.name)) || template_string_$item(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["none"])));
+  var _desks$find;
+
+  return (_desks$find = desks.find(desk => Object.keys((0,external_kolmafia_namespaceObject.getChateau)()).includes(desk))) !== null && _desks$find !== void 0 ? _desks$find : null;
 }
 function getCeiling() {
-  return ceilings.find(ceiling => Object.keys((0,external_kolmafia_namespaceObject.getChateau)()).includes(ceiling.name)) || template_string_$item(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["none"])));
+  var _ceilings$find;
+
+  return (_ceilings$find = ceilings.find(ceiling => Object.keys((0,external_kolmafia_namespaceObject.getChateau)()).includes(ceiling))) !== null && _ceilings$find !== void 0 ? _ceilings$find : null;
 }
 function getNightstand() {
-  return nightstands.find(nightstand => Object.keys((0,external_kolmafia_namespaceObject.getChateau)()).includes(nightstand.name)) || template_string_$item(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["none"])));
+  var _nightstands$find;
+
+  return (_nightstands$find = nightstands.find(nightstand => Object.keys((0,external_kolmafia_namespaceObject.getChateau)()).includes(nightstand))) !== null && _nightstands$find !== void 0 ? _nightstands$find : null;
 }
 function changeDesk(desk) {
   if (getDesk() === desk) return true;
   if (!desks.includes(desk)) return false;
-  (0,external_kolmafia_namespaceObject.buy)(desk);
+  (0,external_kolmafia_namespaceObject.buy)(Item.get(desk));
   return getDesk() === desk;
 }
 function changeCeiling(ceiling) {
   if (getCeiling() === ceiling) return true;
   if (!ceilings.includes(ceiling)) return false;
-  (0,external_kolmafia_namespaceObject.buy)(ceiling);
+  (0,external_kolmafia_namespaceObject.buy)(Item.get(ceiling));
   return getCeiling() === ceiling;
 }
 function changeNightstand(nightstand) {
   if (getNightstand() === nightstand) return true;
   if (!nightstands.includes(nightstand)) return false;
-  (0,external_kolmafia_namespaceObject.buy)(nightstand);
+  (0,external_kolmafia_namespaceObject.buy)(Item.get(nightstand));
   return getNightstand() === nightstand;
+}
+;// CONCATENATED MODULE: ./node_modules/libram/dist/ascend.js
+var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5, _templateObject6;
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+
+
+
+var Lifestyle;
+
+(function (Lifestyle) {
+  Lifestyle[Lifestyle["casual"] = 1] = "casual";
+  Lifestyle[Lifestyle["softcore"] = 2] = "softcore";
+  Lifestyle[Lifestyle["normal"] = 2] = "normal";
+  Lifestyle[Lifestyle["hardcore"] = 3] = "hardcore";
+})(Lifestyle || (Lifestyle = {}));
+
+function toMoonId(moon, playerClass) {
+  if (typeof moon === "number") return moon;
+
+  var offset = () => {
+    switch (playerClass.primestat) {
+      case $stat(_templateObject || (_templateObject = _taggedTemplateLiteral(["Muscle"]))):
+        return 0;
+
+      case $stat(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["Mysticality"]))):
+        return 1;
+
+      case $stat(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["Moxie"]))):
+        return 2;
+
+      default:
+        throw new Error("unknown prime stat for ".concat(playerClass));
+    }
+  };
+
+  switch (moon.toLowerCase()) {
+    case "mongoose":
+      return 1;
+
+    case "wallaby":
+      return 2;
+
+    case "vole":
+      return 3;
+
+    case "platypus":
+      return 4;
+
+    case "opossum":
+      return 5;
+
+    case "marmot":
+      return 6;
+
+    case "wombat":
+      return 7;
+
+    case "blender":
+      return 8;
+
+    case "packrat":
+      return 9;
+
+    case "degrassi":
+    case "degrassi knoll":
+    case "friendly degrassi knoll":
+    case "knoll":
+      return 1 + offset();
+
+    case "canada":
+    case "canadia":
+    case "little canadia":
+      return 4 + offset();
+
+    case "gnomads":
+    case "gnomish":
+    case "gnomish gnomads camp":
+      return 7 + offset();
+
+    default:
+      return -1;
+  }
+}
+/**
+ * Hops the gash, perming no skills
+ * @param path path of choice, as a Path object--these exist as properties of Paths
+ * @param playerClass Your class of choice for this ascension
+ * @param lifestyle 1 for casual, 2 for softcore, 3 for hardcore. Alternately, use the Lifestyle enum
+ * @param moon Your moon sign as a string, or the zone you're looking for as a string
+ * @param consumable From the astral deli. Pick the container item, not the product.
+ * @param pet From the astral pet store.
+ */
+
+
+function ascend(path, playerClass, lifestyle, moon) {
+  var consumable = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : template_string_$item(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["astral six-pack"])));
+  var pet = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : undefined;
+
+  if (!(0,external_kolmafia_namespaceObject.containsText)((0,external_kolmafia_namespaceObject.visitUrl)("charpane.php"), "Astral Spirit")) {
+    (0,external_kolmafia_namespaceObject.visitUrl)("ascend.php?action=ascend&confirm=on&confirm2=on");
+  }
+
+  if (!(0,external_kolmafia_namespaceObject.containsText)((0,external_kolmafia_namespaceObject.visitUrl)("charpane.php"), "Astral Spirit")) {
+    throw new Error("Failed to ascend.");
+  }
+
+  if (!path.classes.includes(playerClass)) {
+    throw new Error("Invalid class ".concat(playerClass, " for this path"));
+  }
+
+  if (path.id < 0) throw new Error("Invalid path ID ".concat(path.id));
+  var moonId = toMoonId(moon, playerClass);
+  if (moonId < 1 || moonId > 9) throw new Error("Invalid moon ".concat(moon));
+
+  if (consumable && !template_string_$items(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["astral six-pack, astral hot dog dinner, [10882]carton of astral energy drinks"]))).includes(consumable)) {
+    throw new Error("Invalid consumable ".concat(consumable));
+  }
+
+  if (pet && !template_string_$items(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["astral bludgeon, astral shield, astral chapeau, astral bracer, astral longbow, astral shorts, astral mace, astral ring, astral statuette, astral pistol, astral mask, astral pet sweater, astral shirt, astral belt"]))).includes(pet)) {
+    throw new Error("Invalid astral item ".concat(pet));
+  }
+
+  (0,external_kolmafia_namespaceObject.visitUrl)("afterlife.php?action=pearlygates");
+
+  if (consumable) {
+    (0,external_kolmafia_namespaceObject.visitUrl)("afterlife.php?action=buydeli&whichitem=".concat((0,external_kolmafia_namespaceObject.toInt)(consumable)));
+  }
+
+  if (pet) (0,external_kolmafia_namespaceObject.visitUrl)("afterlife.php?action=buyarmory&whichitem=".concat((0,external_kolmafia_namespaceObject.toInt)(pet)));
+  (0,external_kolmafia_namespaceObject.visitUrl)("afterlife.php?action=ascend&confirmascend=1&whichsign=".concat(moonId, "&gender=2&whichclass=").concat((0,external_kolmafia_namespaceObject.toInt)(playerClass), "&whichpath=").concat(path.id, "&asctype=").concat(lifestyle, "&nopetok=1&noskillsok=1&lamepathok=1&lamesignok=1&pwd"), true);
+}
+var worksheds = (/* unused pure expression or super */ null && (["warbear LP-ROM burner", "warbear jackhammer drill press", "warbear induction oven", "warbear high-efficiency still", "warbear chemistry lab", "warbear auto-anvil", "spinning wheel", "snow machine", "Little Geneticist DNA-Splicing Lab", "portable Mayo Clinic", "Asdon Martin keyfob", "diabolic pizza cube", "cold medicine cabinet"]));
+var gardens = (/* unused pure expression or super */ null && (["packet of pumpkin seeds", "Peppermint Pip Packet", "packet of dragon's teeth", "packet of beer seeds", "packet of winter seeds", "packet of thanksgarden seeds", "packet of tall grass seeds", "packet of mushroom spores"]));
+var eudorae = ["My Own Pen Pal kit", "GameInformPowerDailyPro subscription card", "Xi Receiver Unit", "New-You Club Membership Form", "Our Daily Candles™ order form"];
+/**
+ * Sets up various iotms you may want to use in the coming ascension
+ * @param ascensionItems.workshed Workshed to switch to.
+ * @param ascensionItems.garden Garden to switch to.
+ * @param ascensionItems An object potentially containing your workshed, garden, and eudora, all as items
+ * @param throwOnFail If true, this will throw an error when it fails to switch something
+ */
+
+function prepareAscension() {
+  var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+      workshed = _ref.workshed,
+      garden = _ref.garden,
+      eudora = _ref.eudora,
+      chateau = _ref.chateau;
+
+  if (workshed && workshed !== (0,external_kolmafia_namespaceObject.getWorkshed)().name) {
+    (0,external_kolmafia_namespaceObject.use)(Item.get(workshed));
+  }
+
+  if (garden && !Object.getOwnPropertyNames((0,external_kolmafia_namespaceObject.getCampground)()).includes(garden)) {
+    (0,external_kolmafia_namespaceObject.use)(Item.get(garden));
+
+    if (!Object.getOwnPropertyNames((0,external_kolmafia_namespaceObject.getCampground)()).includes(garden)) {
+      throw new Error("We really thought we changed your garden to a ".concat(garden, ", but Mafia is saying otherwise."));
+    }
+  }
+
+  if (eudora && (0,external_kolmafia_namespaceObject.eudoraItem)().name !== eudora) {
+    var eudoraNumber = 1 + eudorae.indexOf(eudora);
+
+    if (!(0,external_kolmafia_namespaceObject.xpath)((0,external_kolmafia_namespaceObject.visitUrl)("account.php?tab=correspondence"), "//select[@name=\"whichpenpal\"]/option/@value").includes(eudoraNumber.toString())) {
+      throw new Error("I'm sorry buddy, but you don't seem to be subscribed to ".concat(eudora, ". Which makes it REALLY hard to correspond with them."));
+    } else {
+      (0,external_kolmafia_namespaceObject.visitUrl)("account.php?actions[]=whichpenpal&whichpenpal=".concat(eudoraNumber, "&action=Update"), true);
+    }
+
+    if ((0,external_kolmafia_namespaceObject.eudoraItem)().name !== eudora) {
+      throw new Error("We really thought we chaned your eudora to a ".concat(eudora, ", but Mafia is saying otherwise."));
+    }
+  }
+
+  if (chateau && have()) {
+    var desk = chateau.desk,
+        ceiling = chateau.ceiling,
+        nightstand = chateau.nightstand;
+
+    if (ceiling && getCeiling() !== ceiling) {
+      if (!changeCeiling(ceiling)) {
+        throw new Error("We tried, but were unable to change your chateau ceiling to ".concat(ceiling, ". Probably."));
+      }
+    }
+
+    if (desk && getDesk() !== desk) {
+      if (!changeDesk(desk)) {
+        throw new Error("We tried, but were unable to change your chateau desk to ".concat(desk, ". Probably."));
+      }
+    }
+
+    if (nightstand && getNightstand() !== nightstand) {
+      if (!changeNightstand(nightstand)) {
+        throw new Error("We tried, but were unable to change your chateau nightstand to ".concat(nightstand, ". Probably."));
+      }
+    }
+  }
 }
 // EXTERNAL MODULE: ./node_modules/core-js/features/array/flat.js
 var flat = __webpack_require__(1755);
@@ -3058,173 +3259,6 @@ function getTodaysHolidayWanderers() {
     return (_holidayWanderers$get = holidayWanderers.get(holiday)) !== null && _holidayWanderers$get !== void 0 ? _holidayWanderers$get : [];
   }).flat();
 }
-;// CONCATENATED MODULE: ./node_modules/libram/dist/ascend.js
-var ascend_templateObject, ascend_templateObject2, ascend_templateObject3, ascend_templateObject4, ascend_templateObject5, ascend_templateObject6, ascend_templateObject7, ascend_templateObject8, ascend_templateObject9, ascend_templateObject10, ascend_templateObject11, _templateObject12;
-
-function ascend_taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
-
-
-
-
-
-
-var Lifestyle;
-
-(function (Lifestyle) {
-  Lifestyle[Lifestyle["casual"] = 1] = "casual";
-  Lifestyle[Lifestyle["softcore"] = 2] = "softcore";
-  Lifestyle[Lifestyle["normal"] = 2] = "normal";
-  Lifestyle[Lifestyle["hardcore"] = 3] = "hardcore";
-})(Lifestyle || (Lifestyle = {}));
-
-function toMoonId(moon, playerClass) {
-  if (typeof moon === "number") return moon;
-
-  var offset = () => {
-    switch (playerClass.primestat) {
-      case $stat(ascend_templateObject || (ascend_templateObject = ascend_taggedTemplateLiteral(["Muscle"]))):
-        return 0;
-
-      case $stat(ascend_templateObject2 || (ascend_templateObject2 = ascend_taggedTemplateLiteral(["Mysticality"]))):
-        return 1;
-
-      case $stat(ascend_templateObject3 || (ascend_templateObject3 = ascend_taggedTemplateLiteral(["Moxie"]))):
-        return 2;
-
-      default:
-        throw "unknown prime stat for ".concat(playerClass);
-    }
-  };
-
-  switch (moon.toLowerCase()) {
-    case "mongoose":
-      return 1;
-
-    case "wallaby":
-      return 2;
-
-    case "vole":
-      return 3;
-
-    case "platypus":
-      return 4;
-
-    case "opossum":
-      return 5;
-
-    case "marmot":
-      return 6;
-
-    case "wombat":
-      return 7;
-
-    case "blender":
-      return 8;
-
-    case "packrat":
-      return 9;
-
-    case "degrassi":
-    case "degrassi knoll":
-    case "friendly degrassi knoll":
-    case "knoll":
-      return 1 + offset();
-
-    case "canada":
-    case "canadia":
-    case "little canadia":
-      return 4 + offset();
-
-    case "gnomads":
-    case "gnomish":
-    case "gnomish gnomads camp":
-      return 7 + offset();
-
-    default:
-      return -1;
-  }
-}
-/**
- * Hops the gash, perming no skills
- * @param path path of choice, as a Path object--these exist as properties of Paths
- * @param playerClass Your class of choice for this ascension
- * @param lifestyle 1 for casual, 2 for softcore, 3 for hardcore. Alternately, use the Lifestyle enum
- * @param moon Your moon sign as a string, or the zone you're looking for as a string
- * @param consumable From the astral deli. Pick the container item, not the product.
- * @param pet From the astral pet store.
- */
-
-
-function ascend(path, playerClass, lifestyle, moon) {
-  var consumable = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : template_string_$item(ascend_templateObject4 || (ascend_templateObject4 = ascend_taggedTemplateLiteral(["astral six-pack"])));
-  var pet = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : undefined;
-
-  if (!(0,external_kolmafia_namespaceObject.containsText)((0,external_kolmafia_namespaceObject.visitUrl)("charpane.php"), "Astral Spirit")) {
-    (0,external_kolmafia_namespaceObject.visitUrl)("ascend.php?action=ascend&confirm=on&confirm2=on");
-  }
-
-  if (!(0,external_kolmafia_namespaceObject.containsText)((0,external_kolmafia_namespaceObject.visitUrl)("charpane.php"), "Astral Spirit")) throw "Failed to ascend.";
-  if (!path.classes.includes(playerClass)) throw "Invalid class ".concat(playerClass, " for this path");
-  if (path.id < 0) throw "Invalid path ID ".concat(path.id);
-  var moonId = toMoonId(moon, playerClass);
-  if (moonId < 1 || moonId > 9) throw "Invalid moon ".concat(moon);
-  if (consumable && !template_string_$items(ascend_templateObject5 || (ascend_templateObject5 = ascend_taggedTemplateLiteral(["astral six-pack, astral hot dog dinner"]))).includes(consumable)) throw "Invalid consumable ".concat(consumable);
-  if (pet && !template_string_$items(ascend_templateObject6 || (ascend_templateObject6 = ascend_taggedTemplateLiteral(["astral bludgeon, astral shield, astral chapeau, astral bracer, astral longbow, astral shorts, astral mace, astral ring, astral statuette, astral pistol, astral mask, astral pet sweater, astral shirt, astral belt"]))).includes(pet)) throw "Invalid astral item ".concat(pet);
-  (0,external_kolmafia_namespaceObject.visitUrl)("afterlife.php?action=pearlygates");
-  if (consumable) (0,external_kolmafia_namespaceObject.visitUrl)("afterlife.php?action=buydeli&whichitem=".concat((0,external_kolmafia_namespaceObject.toInt)(consumable)));
-  if (pet) (0,external_kolmafia_namespaceObject.visitUrl)("afterlife.php?action=buyarmory&whichitem=".concat((0,external_kolmafia_namespaceObject.toInt)(pet)));
-  (0,external_kolmafia_namespaceObject.visitUrl)("afterlife.php?action=ascend&confirmascend=1&whichsign=".concat(moonId, "&gender=2&whichclass=").concat((0,external_kolmafia_namespaceObject.toInt)(playerClass), "&whichpath=").concat(path.id, "&asctype=").concat(lifestyle, "&nopetok=1&noskillsok=1&lamepathok=1&pwd"), true);
-}
-var worksheds = template_string_$items(ascend_templateObject7 || (ascend_templateObject7 = ascend_taggedTemplateLiteral(["warbear LP-ROM burner, warbear jackhammer drill press, warbear induction oven, warbear high-efficiency still, warbear chemistry lab, warbear auto-anvil, spinning wheel, snow machine, Little Geneticist DNA-Splicing Lab, portable Mayo Clinic, Asdon Martin keyfob, diabolic pizza cube"])));
-var gardens = template_string_$items(ascend_templateObject8 || (ascend_templateObject8 = ascend_taggedTemplateLiteral(["packet of pumpkin seeds, Peppermint Pip Packet, packet of dragon's teeth, packet of beer seeds, packet of winter seeds, packet of thanksgarden seeds, packet of tall grass seeds, packet of mushroom spores"]))); // eslint-disable-next-line libram/verify-constants
-
-var eudorae = template_string_$items(ascend_templateObject9 || (ascend_templateObject9 = ascend_taggedTemplateLiteral(["My Own Pen Pal kit, GameInformPowerDailyPro subscription card, Xi Receiver Unit, New-You Club Membership Form, Our Daily Candles\u2122 order form"])));
-var ascend_desks = template_string_$items(ascend_templateObject10 || (ascend_templateObject10 = ascend_taggedTemplateLiteral(["fancy stationery set, Swiss piggy bank, continental juice bar"])));
-var ascend_ceilings = template_string_$items(ascend_templateObject11 || (ascend_templateObject11 = ascend_taggedTemplateLiteral(["antler chandelier, ceiling fan, artificial skylight"])));
-var ascend_nightstands = template_string_$items(_templateObject12 || (_templateObject12 = ascend_taggedTemplateLiteral(["foreign language tapes, bowl of potpourri, electric muscle stimulator"])));
-/**
- * Sets up various iotms you may want to use in the coming ascension
- * @param ascensionItems An object potentially containing your workshed, garden, and eudora, all as items
- * @param chateauItems An object potentially containing your chateau desk, ceiling, and nightstand, all as items
- * @param throwOnFail If true, this will throw an error when it fails to switch something
- */
-
-function prepareAscension(ascensionItems, chateauItems) {
-  var throwOnFail = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
-
-  if (ascensionItems) {
-    if (ascensionItems.workshed && (0,external_kolmafia_namespaceObject.getWorkshed)() !== ascensionItems.workshed) {
-      if (!worksheds.includes(ascensionItems.workshed) && throwOnFail) throw "Invalid workshed: ".concat(ascensionItems.workshed, "!");else if (!lib_have(ascensionItems.workshed) && throwOnFail) throw "I'm sorry buddy, but you don't seem to own a ".concat(ascensionItems.workshed, ". Which makes it REALLY hard for us to plop one into your workshed.");else if (property_get("_workshedItemUsed") && throwOnFail) throw "Seems like you've already swapped your workshed, buddy.";else (0,external_kolmafia_namespaceObject.use)(ascensionItems.workshed);
-      if ((0,external_kolmafia_namespaceObject.getWorkshed)() !== ascensionItems.workshed && throwOnFail) throw "We really thought we changed your workshed to a ".concat(ascensionItems.workshed, ", but Mafia is saying otherwise.");
-    }
-
-    if (ascensionItems.garden && !Object.getOwnPropertyNames((0,external_kolmafia_namespaceObject.getCampground)()).includes(ascensionItems.garden.name)) {
-      if (!gardens.includes(ascensionItems.garden) && throwOnFail) throw "Invalid garden: ".concat(ascensionItems.garden, "!");else if (!lib_have(ascensionItems.garden) && throwOnFail) throw "I'm sorry buddy, but you don't seem to own a ".concat(ascensionItems.garden, ". Which makes it REALLY hard for us to plant one into your garden.");else (0,external_kolmafia_namespaceObject.use)(ascensionItems.garden);
-      if (!Object.getOwnPropertyNames((0,external_kolmafia_namespaceObject.getCampground)()).includes(ascensionItems.garden.name) && throwOnFail) throw "We really thought we changed your garden to a ".concat(ascensionItems.garden, ", but Mafia is saying otherwise.");
-    }
-
-    if (ascensionItems.eudora && (0,external_kolmafia_namespaceObject.eudoraItem)() !== ascensionItems.eudora) {
-      if (!eudorae.includes(ascensionItems.eudora) && throwOnFail) throw "Invalid eudora: ".concat(ascensionItems.eudora, "!");
-      var eudoraNumber = 1 + eudorae.indexOf(ascensionItems.eudora);
-      if (!(0,external_kolmafia_namespaceObject.xpath)((0,external_kolmafia_namespaceObject.visitUrl)("account.php?tab=correspondence"), "//select[@name=\"whichpenpal\"]/option/@value").includes(eudoraNumber.toString()) && throwOnFail) throw "I'm sorry buddy, but you don't seem to be subscribed to ".concat(ascensionItems.eudora, ". Which makes it REALLY hard to correspond with them.");else (0,external_kolmafia_namespaceObject.visitUrl)("account.php?actions[]=whichpenpal&whichpenpal=".concat(eudoraNumber, "&action=Update"), true);
-      if ((0,external_kolmafia_namespaceObject.eudoraItem)() !== ascensionItems.eudora && throwOnFail) throw "We really thought we chaned your eudora to a ".concat(ascensionItems.eudora, ", but Mafia is saying otherwise.");
-    }
-  }
-
-  if (chateauItems && have()) {
-    if (chateauItems.ceiling && getCeiling() !== chateauItems.ceiling) {
-      if (!ascend_ceilings.includes(chateauItems.ceiling) && throwOnFail) throw "Invalid chateau ceiling: ".concat(chateauItems.ceiling, "!");else if (!changeCeiling(chateauItems.ceiling) && throwOnFail) throw "We tried, but were unable to change your chateau ceiling to ".concat(chateauItems.ceiling, ". Probably.");
-    }
-
-    if (chateauItems.desk && getDesk() !== chateauItems.desk) {
-      if (!ascend_desks.includes(chateauItems.desk) && throwOnFail) throw "Invalid chateau desk: ".concat(chateauItems.desk, "!");else if (!changeDesk(chateauItems.desk) && throwOnFail) throw "We tried, but were unable to change your chateau desk to ".concat(chateauItems.desk, ". Probably.");
-    }
-
-    if (chateauItems.nightstand && getNightstand() !== chateauItems.nightstand) {
-      if (!ascend_nightstands.includes(chateauItems.nightstand) && throwOnFail) throw "Invalid chateau nightstand: ".concat(chateauItems.nightstand, "!");else if (!changeNightstand(chateauItems.nightstand) && throwOnFail) throw "We tried, but were unable to change your chateau nightstand to ".concat(chateauItems.nightstand, ". Probably.");
-    }
-  }
-}
 ;// CONCATENATED MODULE: ./node_modules/libram/dist/Path.js
 var Path_templateObject, Path_templateObject2, Path_templateObject3, Path_templateObject4, Path_templateObject5, Path_templateObject6, Path_templateObject7, Path_templateObject8, Path_templateObject9, Path_templateObject10;
 
@@ -3333,7 +3367,7 @@ var Paths = {
   Wildfire: new Path("Wildfire", 43)
 };
 ;// CONCATENATED MODULE: ./src/gash-hop.ts
-var gash_hop_templateObject, gash_hop_templateObject2, gash_hop_templateObject3, gash_hop_templateObject4, gash_hop_templateObject5, gash_hop_templateObject6, gash_hop_templateObject7, gash_hop_templateObject8, gash_hop_templateObject9, gash_hop_templateObject10, gash_hop_templateObject11, gash_hop_templateObject12, _templateObject13;
+var gash_hop_templateObject, gash_hop_templateObject2, gash_hop_templateObject3, gash_hop_templateObject4, gash_hop_templateObject5, gash_hop_templateObject6, gash_hop_templateObject7;
 
 function gash_hop_taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
@@ -3347,16 +3381,17 @@ while ($skill(gash_hop_templateObject || (gash_hop_templateObject = gash_hop_tag
 }
 
 prepareAscension({
-  workshed: template_string_$item(gash_hop_templateObject3 || (gash_hop_templateObject3 = gash_hop_taggedTemplateLiteral(["Asdon Martin keyfob"]))),
-  garden: template_string_$item(gash_hop_templateObject4 || (gash_hop_templateObject4 = gash_hop_taggedTemplateLiteral(["Peppermint Pip Packet"]))),
-  eudora: template_string_$item(gash_hop_templateObject5 || (gash_hop_templateObject5 = gash_hop_taggedTemplateLiteral(["Our Daily Candles\u2122 order form"])))
-}, {
-  desk: template_string_$item(gash_hop_templateObject6 || (gash_hop_templateObject6 = gash_hop_taggedTemplateLiteral(["continental juice bar"]))),
-  nightstand: template_string_$item(gash_hop_templateObject7 || (gash_hop_templateObject7 = gash_hop_taggedTemplateLiteral(["foreign language tapes"]))),
-  ceiling: template_string_$item(gash_hop_templateObject8 || (gash_hop_templateObject8 = gash_hop_taggedTemplateLiteral(["ceiling fan"])))
+  workshed: "Asdon Martin keyfob",
+  garden: "Peppermint Pip Packet",
+  eudora: "Our Daily Candles™ order form",
+  chateau: {
+    desk: "continental juice bar",
+    nightstand: "foreign language tapes",
+    ceiling: "ceiling fan"
+  }
 });
-var pet = lib_have(template_string_$familiar(gash_hop_templateObject9 || (gash_hop_templateObject9 = gash_hop_taggedTemplateLiteral(["Baby Bugged Bugbear"])))) ? template_string_$item(gash_hop_templateObject10 || (gash_hop_templateObject10 = gash_hop_taggedTemplateLiteral(["astral statuette"]))) : template_string_$item(gash_hop_templateObject11 || (gash_hop_templateObject11 = gash_hop_taggedTemplateLiteral(["astral pet sweater"])));
-ascend(Paths.CommunityService, template_string_$class(gash_hop_templateObject12 || (gash_hop_templateObject12 = gash_hop_taggedTemplateLiteral(["Pastamancer"]))), Lifestyle.hardcore, "knoll", template_string_$item(_templateObject13 || (_templateObject13 = gash_hop_taggedTemplateLiteral(["astral six-pack"]))), pet);
+var pet = lib_have(template_string_$familiar(gash_hop_templateObject3 || (gash_hop_templateObject3 = gash_hop_taggedTemplateLiteral(["Baby Bugged Bugbear"])))) ? template_string_$item(gash_hop_templateObject4 || (gash_hop_templateObject4 = gash_hop_taggedTemplateLiteral(["astral statuette"]))) : template_string_$item(gash_hop_templateObject5 || (gash_hop_templateObject5 = gash_hop_taggedTemplateLiteral(["astral pet sweater"])));
+ascend(Paths.CommunityService, template_string_$class(gash_hop_templateObject6 || (gash_hop_templateObject6 = gash_hop_taggedTemplateLiteral(["Pastamancer"]))), Lifestyle.hardcore, "knoll", template_string_$item(gash_hop_templateObject7 || (gash_hop_templateObject7 = gash_hop_taggedTemplateLiteral(["astral six-pack"]))), pet);
 })();
 
 var __webpack_export_target__ = exports;
