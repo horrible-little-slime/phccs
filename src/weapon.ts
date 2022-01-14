@@ -71,7 +71,7 @@ function castBuffs() {
 }
 
 function forceSpit() {
-    if (!get("_photocopyUsed")) {
+    if (!get("_photocopyUsed") && inHardcore()) {
         uniform();
         useFamiliar($familiar`Melodramedary`);
         setChoice(1387, 3);
@@ -86,6 +86,19 @@ function forceSpit() {
         }
         use($item`photocopied monster`);
         if (handlingChoice()) runChoice(-1);
+        set("_meteorShowerUses", 1 + get("_meteorShowerUses"));
+    } else {
+        uniform();
+        useFamiliar($familiar`Melodramedary`);
+        setChoice(1387, 3);
+        advMacroAA(
+            $location`The Neverending Party`,
+            Macro.trySkill($skill`%fn, spit on me!`)
+                .trySkill($skill`Meteor Shower`)
+                .skill($skill`Use the Force`)
+        );
+        if (handlingChoice()) runChoice(-1);
+        set("_meteorShowerUses", 1 + get("_meteorShowerUses"));
     }
 }
 
