@@ -2573,7 +2573,7 @@ function prepareAscension() {
       eudora = _ref.eudora,
       chateau = _ref.chateau;
 
-  if (workshed && workshed !== (0,external_kolmafia_namespaceObject.getWorkshed)().name) {
+  if (workshed && (0,external_kolmafia_namespaceObject.getWorkshed)() !== (0,external_kolmafia_namespaceObject.toItem)(workshed)) {
     (0,external_kolmafia_namespaceObject.use)(Item.get(workshed));
   }
 
@@ -2594,8 +2594,8 @@ function prepareAscension() {
       (0,external_kolmafia_namespaceObject.visitUrl)("account.php?actions[]=whichpenpal&whichpenpal=".concat(eudoraNumber, "&action=Update"), true);
     }
 
-    if ((0,external_kolmafia_namespaceObject.eudoraItem)().name !== eudora) {
-      throw new Error("We really thought we chaned your eudora to a ".concat(eudora, ", but Mafia is saying otherwise."));
+    if ((0,external_kolmafia_namespaceObject.eudoraItem)() !== (0,external_kolmafia_namespaceObject.toItem)(eudora)) {
+      throw new Error("We really thought we changed your eudora to a ".concat(eudora, ", but Mafia is saying otherwise."));
     }
   }
 
