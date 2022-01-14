@@ -114,6 +114,11 @@ function takeAShower() {
 }
 
 function testPrep() {
+    if (!inHardcore()) {
+        if (mySign() !== "Platypus" && !get("moonTuned")) {
+            visitUrl("inv_use.php?whichitem=10254&pwd&doit=96&whichsign=4");
+        }
+    }
     famweightOutfit();
     if (have($item`silver face paint`)) ensureEffect($effect`Robot Friends`);
     while (have($item`love song of icy revenge`) && !have($effect`Cold Hearted`, 20)) {
@@ -121,11 +126,6 @@ function testPrep() {
     }
     while (have($item`pulled blue taffy`) && !have($effect`Blue Swayed`, 50)) {
         use($item`pulled blue taffy`);
-    }
-    if (!inHardcore()) {
-        if (mySign() !== "Platypus" && !get("moonTuned")) {
-            visitUrl("inv_use.php?whichitem=10254&pwd&doit=96&whichsign=4");
-        }
     }
 }
 
