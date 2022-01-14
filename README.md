@@ -56,6 +56,8 @@ At present, PHCCS requires the following iotms/expensive old items to operate:
  * Ghosts
  * God Lobster
  * Fire Extinguisher
+ * Daylight Shavings Helmet
+ * Cursed Magnifying Glass
  
  It also really appreciates it if you have:
   * Disembodied Hand
