@@ -3,9 +3,11 @@ import {
     cliExecute,
     create,
     handlingChoice,
+    inHardcore,
     myClass,
     myLevel,
     numericModifier,
+    retrieveItem,
     runChoice,
     useFamiliar,
     useSkill,
@@ -20,12 +22,13 @@ import {
     $items,
     $location,
     $skill,
+    DaylightShavings,
     get,
     have,
     set,
 } from "libram";
 import Macro from "./combat";
-import { advMacroAA, beardBuffs, ensureEffect, ensureInnerElf, horse, setChoice } from "./lib";
+import { advMacroAA, ensureEffect, ensureInnerElf, horse, setChoice } from "./lib";
 import uniform, { spellOutfit } from "./outfits";
 
 const predictor = () =>
@@ -103,6 +106,16 @@ function shower() {
 }
 
 function testPrep() {
+    if (!inHardcore()) {
+        const meteor = $items`meteorite ring, meteorite fragment, meteorite earring`.some((item) =>
+            have(item)
+        );
+        if (meteor) {
+            retrieveItem(1, $item`tenderizing hammer`);
+            cliExecute(`smash ${meteor}`);
+            cliExecute(`make ${$item`meteorite necklace`}`);
+        }
+    }
     spellOutfit();
 }
 
@@ -110,9 +123,8 @@ export default function spellTest(): number {
     castBuffs();
     fingies();
     uniform(
-        ...(myClass() === $class`Sauceror` && !beardBuffs.some((effect) => have(effect))
-            ? // eslint-disable-next-line libram/verify-constants
-              $items`Daylight Shavings Helmet`
+        ...(myClass() === $class`Sauceror` && !DaylightShavings.hasBuff()
+            ? $items`Daylight Shavings Helmet`
             : [])
     );
     ensureInnerElf();

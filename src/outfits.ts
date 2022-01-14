@@ -1,5 +1,6 @@
 import {
     buy,
+    canEquip,
     cliExecute,
     equip,
     equippedAmount,
@@ -83,7 +84,7 @@ export class Outfit {
         const returnValue = new Map<Slot, Item>();
         for (const [slot, itemOrItems] of equips.entries()) {
             const item = Array.isArray(itemOrItems)
-                ? itemOrItems.find((item) => have(item))
+                ? itemOrItems.find((item) => have(item) && canEquip(item))
                 : itemOrItems;
             if (item) returnValue.set(slot, item);
         }
@@ -334,7 +335,7 @@ export function weaponOutfit(): void {
             [$slot`off-hand`, $item`dented scepter`],
             [$slot`acc1`, $item`Brutal brogues`],
             [$slot`acc2`, $item`Kremlin's Greatest Briefcase`],
-            [$slot`acc3`, $item`Powerful Glove`],
+            [$slot`acc3`, $items`meteorite ring, Powerful Glove`],
             [$slot`familiar`, $items`Stick-Knife of Loathing`],
         ]),
         $familiar`Disembodied Hand`

@@ -61,11 +61,13 @@ function setSettings() {
 
 function doPulls() {
     if (inHardcore()) return;
+
     const pulls: (Item | Item[])[] = [
         $items`repaid diaper, Great Wolf's beastly trousers`,
-        $items`meteorite necklace, meteorite fragment, meteorite ring, meteorite earring`,
+        $items`meteorite necklace, meteorite ring, meteorite fragment, meteorite earring`,
         $item`Stick-Knife of Loathing`,
         $items`Staff of the Roaring Hearth, Staff of Kitchen Royalty, Staff of the Deepest Freeze, Staff of Frozen Lard, Staff of the Peppermint Twist`,
+        $item`corrupted marrow`,
     ];
 
     for (const pull of pulls) {

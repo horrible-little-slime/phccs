@@ -1,7 +1,10 @@
 import {
+    cliExecute,
     equip,
     handlingChoice,
+    inHardcore,
     numericModifier,
+    retrieveItem,
     runChoice,
     use,
     useFamiliar,
@@ -12,6 +15,7 @@ import {
     $effects,
     $familiar,
     $item,
+    $items,
     $location,
     $monster,
     $skill,
@@ -110,6 +114,17 @@ function testPrep() {
     if (have($item`corrupted marrow`)) use($item`corrupted marrow`);
     if (!get("_bowleggedSwaggerUsed")) useSkill($skill`Bow-Legged Swagger`);
     useFamiliar($familiar`Disembodied Hand`);
+
+    if (!inHardcore()) {
+        const meteor = $items`meteorite necklace, meteorite fragment, meteorite earring`.some(
+            (item) => have(item)
+        );
+        if (meteor) {
+            retrieveItem(1, $item`tenderizing hammer`);
+            cliExecute(`smash ${meteor}`);
+            cliExecute(`make ${$item`meteorite ring`}`);
+        }
+    }
     weaponOutfit();
 }
 
