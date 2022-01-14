@@ -2,7 +2,9 @@ import {
     cliExecute,
     create,
     familiarWeight,
+    inHardcore,
     myFamiliar,
+    mySign,
     runChoice,
     use,
     useFamiliar,
@@ -119,6 +121,11 @@ function testPrep() {
     }
     while (have($item`pulled blue taffy`) && !have($effect`Blue Swayed`, 50)) {
         use($item`pulled blue taffy`);
+    }
+    if (!inHardcore()) {
+        if (mySign() !== "Platypus" && !get("moonTuned")) {
+            visitUrl("inv_use.php?whichitem=10254&pwd&doit=96&whichsign=4");
+        }
     }
 }
 
