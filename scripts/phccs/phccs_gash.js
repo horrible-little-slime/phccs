@@ -1731,6 +1731,18 @@ $({
 /******/ 	}
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/global */
 /******/ 	(() => {
 /******/ 		__webpack_require__.g = (function() {
@@ -1741,6 +1753,11 @@ $({
 /******/ 				if (typeof window === 'object') return window;
 /******/ 			}
 /******/ 		})();
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/make namespace object */
@@ -1761,6 +1778,11 @@ var __webpack_exports__ = {};
 "use strict";
 // ESM COMPAT FLAG
 __webpack_require__.r(__webpack_exports__);
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, {
+  "main": () => (/* binding */ main)
+});
 
 ;// CONCATENATED MODULE: external "kolmafia"
 const external_kolmafia_namespaceObject = require("kolmafia");
@@ -3374,24 +3396,26 @@ function gash_hop_taggedTemplateLiteral(strings, raw) { if (!raw) { raw = string
 
 
 var safariTargets = ["Kenny Kamakazi", "Busta_Rhymes", "Manendra", "Gausie", "Beldur", "worthawholebean", "ReverKiller", "Asmodais", "The Dictator"];
-
-while ($skill(gash_hop_templateObject || (gash_hop_templateObject = gash_hop_taggedTemplateLiteral(["Experience Safari"]))).timescast < property_get("skillLevel180") && safariTargets.length) {
-  (0,external_kolmafia_namespaceObject.useSkill)($skill(gash_hop_templateObject2 || (gash_hop_templateObject2 = gash_hop_taggedTemplateLiteral(["Experience Safari"]))), 1, safariTargets[0]);
-  safariTargets.shift();
-}
-
-prepareAscension({
-  workshed: "Asdon Martin keyfob",
-  garden: "Peppermint Pip Packet",
-  eudora: "Our Daily Candles™ order form",
-  chateau: {
-    desk: "continental juice bar",
-    nightstand: "foreign language tapes",
-    ceiling: "ceiling fan"
+function main(args) {
+  while ($skill(gash_hop_templateObject || (gash_hop_templateObject = gash_hop_taggedTemplateLiteral(["Experience Safari"]))).timescast < property_get("skillLevel180") && safariTargets.length) {
+    (0,external_kolmafia_namespaceObject.useSkill)($skill(gash_hop_templateObject2 || (gash_hop_templateObject2 = gash_hop_taggedTemplateLiteral(["Experience Safari"]))), 1, safariTargets[0]);
+    safariTargets.shift();
   }
-});
-var pet = lib_have(template_string_$familiar(gash_hop_templateObject3 || (gash_hop_templateObject3 = gash_hop_taggedTemplateLiteral(["Baby Bugged Bugbear"])))) ? template_string_$item(gash_hop_templateObject4 || (gash_hop_templateObject4 = gash_hop_taggedTemplateLiteral(["astral statuette"]))) : template_string_$item(gash_hop_templateObject5 || (gash_hop_templateObject5 = gash_hop_taggedTemplateLiteral(["astral pet sweater"])));
-ascend(Paths.CommunityService, template_string_$class(gash_hop_templateObject6 || (gash_hop_templateObject6 = gash_hop_taggedTemplateLiteral(["Pastamancer"]))), Lifestyle.hardcore, "knoll", template_string_$item(gash_hop_templateObject7 || (gash_hop_templateObject7 = gash_hop_taggedTemplateLiteral(["astral six-pack"]))), pet);
+
+  prepareAscension({
+    workshed: "Asdon Martin keyfob",
+    garden: "Peppermint Pip Packet",
+    eudora: "Our Daily Candles™ order form",
+    chateau: {
+      desk: "continental juice bar",
+      nightstand: "foreign language tapes",
+      ceiling: "ceiling fan"
+    }
+  });
+  var pet = lib_have(template_string_$familiar(gash_hop_templateObject3 || (gash_hop_templateObject3 = gash_hop_taggedTemplateLiteral(["Baby Bugged Bugbear"])))) ? template_string_$item(gash_hop_templateObject4 || (gash_hop_templateObject4 = gash_hop_taggedTemplateLiteral(["astral statuette"]))) : template_string_$item(gash_hop_templateObject5 || (gash_hop_templateObject5 = gash_hop_taggedTemplateLiteral(["astral pet sweater"])));
+  var lifestyle = args.includes("softcore") ? Lifestyle.softcore : Lifestyle.hardcore;
+  ascend(Paths.CommunityService, template_string_$class(gash_hop_templateObject6 || (gash_hop_templateObject6 = gash_hop_taggedTemplateLiteral(["Pastamancer"]))), lifestyle, "knoll", template_string_$item(gash_hop_templateObject7 || (gash_hop_templateObject7 = gash_hop_taggedTemplateLiteral(["astral six-pack"]))), pet);
+}
 })();
 
 var __webpack_export_target__ = exports;
