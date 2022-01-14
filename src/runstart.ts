@@ -66,7 +66,7 @@ function doPulls() {
         $items`repaid diaper, Great Wolf's beastly trousers`,
         $items`meteorite necklace, meteorite ring, meteorite fragment, meteorite earring`,
         $item`Stick-Knife of Loathing`,
-        $items`Staff of the Roaring Hearth, Staff of Kitchen Royalty, Staff of the Deepest Freeze, Staff of Frozen Lard, Staff of the Peppermint Twist`,
+        $items`Staff of Kitchen Royalty, Staff of the Deepest Freeze, Staff of Frozen Lard, Staff of the Peppermint Twist, Staff of the Roaring Hearth`,
         $item`corrupted marrow`,
     ];
 
