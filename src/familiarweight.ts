@@ -25,7 +25,7 @@ import {
     Witchess,
 } from "libram";
 import Macro from "./combat";
-import { advMacroAA, availableFights, ensureEffect, horse, setChoice } from "./lib";
+import { advMacroAA, availableFights, ensureEffect, horse, setChoice, unequip } from "./lib";
 import uniform, { famweightOutfit } from "./outfits";
 
 export function universalWeightBuffs(): void {
@@ -113,12 +113,15 @@ function takeAShower() {
     }
 }
 
-function testPrep() {
-    if (!inHardcore()) {
-        if (mySign() !== "Platypus" && !get("moonTuned")) {
-            visitUrl("inv_use.php?whichitem=10254&pwd&doit=96&whichsign=4");
-        }
+function tuneMoon(): void {
+    if (mySign() !== "Platypus" && !get("moonTuned")) {
+        unequip($item`hewn moon-rune spoon`);
+        visitUrl("inv_use.php?whichitem=10254&pwd&doit=96&whichsign=4");
     }
+}
+
+function testPrep() {
+    if (!inHardcore()) tuneMoon();
     famweightOutfit();
     if (have($item`silver face paint`)) ensureEffect($effect`Robot Friends`);
     while (have($item`love song of icy revenge`) && !have($effect`Cold Hearted`, 20)) {

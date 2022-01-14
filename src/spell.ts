@@ -28,7 +28,7 @@ import {
     set,
 } from "libram";
 import Macro from "./combat";
-import { advMacroAA, ensureEffect, ensureInnerElf, horse, setChoice } from "./lib";
+import { advMacroAA, ensureEffect, ensureInnerElf, horse, setChoice, unequip } from "./lib";
 import uniform, { spellOutfit } from "./outfits";
 
 const predictor = () =>
@@ -114,10 +114,11 @@ function shower() {
 
 function testPrep() {
     if (!inHardcore()) {
-        const meteor = $items`meteorite ring, meteorite fragment, meteorite earring`.some((item) =>
+        const meteor = $items`meteorite ring, meteorite fragment, meteorite earring`.find((item) =>
             have(item)
         );
         if (meteor) {
+            unequip(meteor);
             retrieveItem(1, $item`tenderizing hammer`);
             cliExecute(`smash ${meteor}`);
             cliExecute(`make ${$item`meteorite necklace`}`);

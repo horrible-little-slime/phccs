@@ -10,6 +10,8 @@ import {
     create,
     eat,
     equip,
+    equippedAmount,
+    equippedItem,
     getClanName,
     getProperty,
     haveEffect,
@@ -693,5 +695,13 @@ export function equalizeMoxie(): boolean {
             create($item`oil of expertise`);
         }
         return use($item`oil of expertise`);
+    }
+}
+
+export function unequip(item: Item): void {
+    while (equippedAmount(item) > 0) {
+        const slot = Slot.all().find((equipmentSlot) => equippedItem(equipmentSlot) === item);
+        if (!slot) return;
+        equip(slot, $item`none`);
     }
 }

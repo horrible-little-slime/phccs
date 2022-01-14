@@ -35,6 +35,7 @@ import {
     horsery,
     setChoice,
     setClan,
+    unequip,
     useDefaultFamiliar,
 } from "./lib";
 import Macro from "./combat";
@@ -129,10 +130,11 @@ function testPrep() {
     useFamiliar($familiar`Disembodied Hand`);
 
     if (!inHardcore()) {
-        const meteor = $items`meteorite necklace, meteorite fragment, meteorite earring`.some(
+        const meteor = $items`meteorite necklace, meteorite fragment, meteorite earring`.find(
             (item) => have(item)
         );
         if (meteor) {
+            unequip(meteor);
             retrieveItem(1, $item`tenderizing hammer`);
             cliExecute(`smash ${meteor}`);
             cliExecute(`make ${$item`meteorite ring`}`);
