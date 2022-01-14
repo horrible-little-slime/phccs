@@ -56,7 +56,14 @@ function castBuffs() {
         create(1, $item`weeping willow wand`);
     }
 
-    cliExecute("Briefcase.ash enchantment spell");
+    if (
+        inHardcore() ||
+        $items`meteorite necklace, meteorite ring, meteorite fragment, meteorite earring`.every(
+            (item) => !have(item)
+        )
+    ) {
+        cliExecute("Briefcase.ash enchantment spell");
+    }
 
     if (!get("_madTeaParty")) {
         visitUrl("clan_viplounge.php?action=lookingglass&whichfloor=2");
