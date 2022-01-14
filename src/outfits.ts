@@ -84,7 +84,9 @@ export class Outfit {
         const returnValue = new Map<Slot, Item>();
         for (const [slot, itemOrItems] of equips.entries()) {
             const item = Array.isArray(itemOrItems)
-                ? itemOrItems.find((item) => have(item) && canEquip(item))
+                ? itemOrItems.find(
+                      (item) => have(item) && (slot === $slot`familiar` || canEquip(item))
+                  )
                 : itemOrItems;
             if (item) returnValue.set(slot, item);
         }
