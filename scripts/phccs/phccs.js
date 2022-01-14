@@ -10042,6 +10042,12 @@ function testPrep() {
   while (lib_have(template_string_$item(familiarweight_templateObject37 || (familiarweight_templateObject37 = familiarweight_taggedTemplateLiteral(["pulled blue taffy"])))) && !lib_have($effect(familiarweight_templateObject38 || (familiarweight_templateObject38 = familiarweight_taggedTemplateLiteral(["Blue Swayed"]))), 50)) {
     (0,external_kolmafia_namespaceObject.use)(template_string_$item(familiarweight_templateObject39 || (familiarweight_templateObject39 = familiarweight_taggedTemplateLiteral(["pulled blue taffy"]))));
   }
+
+  if (!(0,external_kolmafia_namespaceObject.inHardcore)()) {
+    if ((0,external_kolmafia_namespaceObject.mySign)() !== "Platypus" && !property_get("moonTuned")) {
+      (0,external_kolmafia_namespaceObject.visitUrl)("inv_use.php?whichitem=10254&pwd&doit=96&whichsign=4");
+    }
+  }
 }
 
 function familiarTest() {
