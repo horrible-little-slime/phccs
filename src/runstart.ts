@@ -74,8 +74,9 @@ function doPulls() {
         if (
             (Array.isArray(pull) && pull.some((item) => itemAmount(item) > 0)) ||
             (!Array.isArray(pull) && itemAmount(pull) > 0)
-        )
+        ) {
             return;
+        }
         const pullItem = Array.isArray(pull) ? pull.find((pull) => storageAmount(pull) > 0) : pull;
         if (pullItem) takeStorage(pullItem, 1);
     }
