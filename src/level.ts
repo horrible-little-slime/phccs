@@ -71,7 +71,7 @@ function initialExp() {
 
     if (!have($effect`Synthesis: Learning`)) synthExp();
 
-    equip($item`familiar scrapbook`, $slot`off-hand`);
+    uniform();
 
     if (availableAmount($item`a ten-percent bonus`)) {
         use(1, $item`a ten-percent bonus`);
