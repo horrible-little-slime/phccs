@@ -9757,7 +9757,11 @@ function doPulls() {
 
   for (var _i = 0, _pulls = pulls; _i < _pulls.length; _i++) {
     var pull = _pulls[_i];
-    if (Array.isArray(pull) && pull.some(item => (0,external_kolmafia_namespaceObject.itemAmount)(item) > 0) || !Array.isArray(pull) && (0,external_kolmafia_namespaceObject.itemAmount)(pull) > 0) return;
+
+    if (Array.isArray(pull) && pull.some(item => (0,external_kolmafia_namespaceObject.itemAmount)(item) > 0) || !Array.isArray(pull) && (0,external_kolmafia_namespaceObject.itemAmount)(pull) > 0) {
+      continue;
+    }
+
     var pullItem = Array.isArray(pull) ? pull.find(pull => (0,external_kolmafia_namespaceObject.storageAmount)(pull) > 0) : pull;
     if (pullItem) (0,external_kolmafia_namespaceObject.takeStorage)(pullItem, 1);
   }
