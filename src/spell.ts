@@ -120,6 +120,7 @@ function testPrep() {
         if (meteor) {
             unequip(meteor);
             retrieveItem(1, $item`tenderizing hammer`);
+            retrieveItem(1, $item`jewelry-making pliers`);
             cliExecute(`smash ${meteor}`);
             cliExecute(`make ${$item`meteorite necklace`}`);
         }
