@@ -43,6 +43,7 @@ import {
     $effect,
     $familiar,
     $item,
+    $items,
     $location,
     $monster,
     $skill,
@@ -705,3 +706,5 @@ export function unequip(item: Item): void {
         equip(slot, $item`none`);
     }
 }
+
+export const chefstaves = $items`Staff of Kitchen Royalty, Staff of the Deepest Freeze, Staff of Frozen Lard, Staff of the Peppermint Twist, Staff of the Roaring Hearth`;

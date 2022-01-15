@@ -11,6 +11,7 @@ import {
     useFamiliar,
 } from "kolmafia";
 import { $familiar, $item, $items, $slot, $slots, have } from "libram";
+import { chefstaves } from "./lib";
 
 export class Outfit {
     equips: Map<Slot, Item>;
@@ -345,7 +346,7 @@ export function weaponOutfit(): void {
 }
 
 export function spellOutfit(): void {
-    if (!have($item`Abracandalabra`) && !have($item`obsidian nutcracker`)) {
+    if (!have($item`Abracandalabra`) && !have($item`obsidian nutcracker`) && inHardcore()) {
         buy($item`obsidian nutcracker`);
     }
     const { familiar, famEquip } = inHardcore()
@@ -355,11 +356,16 @@ export function spellOutfit(): void {
     Outfit.doYourBest(
         new Map<Slot, Item | Item[]>([
             [$slot`hat`, $items`sugar chapeau, Hollandaise helmet`],
+            [$slot`weapon`, inHardcore() ? chefstaves : $item`weeping willow wand`],
             [
-                $slot`weapon`,
-                $items`Staff of the Roaring Hearth, Staff of Kitchen Royalty, Staff of the Deepest Freeze, Staff of Frozen Lard, Staff of the Peppermint Twist, weeping willow wand`,
+                $slot`off-hand`,
+                [
+                    $item`Abracandalabra`,
+                    ...(inHardcore()
+                        ? $items`weeping willow wand, astral statuette`
+                        : $items`obsidian nutcracker`),
+                ],
             ],
-            [$slot`off-hand`, $items`Abracandalabra, obsidian nutcracker`],
             [$slot`familiar`, famEquip],
             [$slot`pants`, $item`pantogram pants`],
             [$slot`acc1`, $items`meteorite necklace, Kremlin's Greatest Briefcase`],
