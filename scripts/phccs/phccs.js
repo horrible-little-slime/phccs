@@ -10736,14 +10736,21 @@ function snojo() {
 
 function tentacle() {
   if (!lib_have($skill(level_templateObject115 || (level_templateObject115 = level_taggedTemplateLiteral(["Evoke Eldritch Horror"]))))) return;
-  withProperty("autoAbortThreshold", -0.05, () => {
+  withProperties({
+    autoAbortThreshold: -0.05,
+    hpAutoRecoveryTarget: -0.05
+  }, () => {
     uniform();
     useDefaultFamiliar();
     var macro = combat_Macro.delevel().candyblast().defaultKill().repeat();
     macro.setAutoAttack();
-    (0,external_kolmafia_namespaceObject.useSkill)($skill(level_templateObject116 || (level_templateObject116 = level_taggedTemplateLiteral(["Evoke Eldritch Horror"]))));
-    (0,external_kolmafia_namespaceObject.runCombat)(macro.toString());
-    if (lib_have($effect(level_templateObject117 || (level_templateObject117 = level_taggedTemplateLiteral(["Beaten Up"]))))) (0,external_kolmafia_namespaceObject.cliExecute)("hottub");
+
+    try {
+      (0,external_kolmafia_namespaceObject.useSkill)($skill(level_templateObject116 || (level_templateObject116 = level_taggedTemplateLiteral(["Evoke Eldritch Horror"]))));
+      (0,external_kolmafia_namespaceObject.runCombat)(macro.toString());
+    } catch (_unused) {
+      if (lib_have($effect(level_templateObject117 || (level_templateObject117 = level_taggedTemplateLiteral(["Beaten Up"]))))) (0,external_kolmafia_namespaceObject.cliExecute)("hottub");
+    }
   });
 }
 
@@ -10955,7 +10962,7 @@ function noncombatTest() {
   return noncombat_predictor();
 }
 ;// CONCATENATED MODULE: ./src/spell.ts
-var spell_templateObject, spell_templateObject2, spell_templateObject3, spell_templateObject4, spell_templateObject5, spell_templateObject6, spell_templateObject7, spell_templateObject8, spell_templateObject9, spell_templateObject10, spell_templateObject11, spell_templateObject12, spell_templateObject13, spell_templateObject14, spell_templateObject15, spell_templateObject16, spell_templateObject17, spell_templateObject18, spell_templateObject19, spell_templateObject20, spell_templateObject21, spell_templateObject22, spell_templateObject23, spell_templateObject24, spell_templateObject25, spell_templateObject26, spell_templateObject27, spell_templateObject28, spell_templateObject29, spell_templateObject30, spell_templateObject31, spell_templateObject32, spell_templateObject33;
+var spell_templateObject, spell_templateObject2, spell_templateObject3, spell_templateObject4, spell_templateObject5, spell_templateObject6, spell_templateObject7, spell_templateObject8, spell_templateObject9, spell_templateObject10, spell_templateObject11, spell_templateObject12, spell_templateObject13, spell_templateObject14, spell_templateObject15, spell_templateObject16, spell_templateObject17, spell_templateObject18, spell_templateObject19, spell_templateObject20, spell_templateObject21, spell_templateObject22, spell_templateObject23, spell_templateObject24, spell_templateObject25, spell_templateObject26, spell_templateObject27, spell_templateObject28, spell_templateObject29, spell_templateObject30, spell_templateObject31, spell_templateObject32, spell_templateObject33, spell_templateObject34;
 
 function spell_toConsumableArray(arr) { return spell_arrayWithoutHoles(arr) || spell_iterableToArray(arr) || spell_unsupportedIterableToArray(arr) || spell_nonIterableSpread(); }
 
@@ -11045,8 +11052,9 @@ function spell_testPrep() {
     if (meteor) {
       unequip(meteor);
       (0,external_kolmafia_namespaceObject.retrieveItem)(1, template_string_$item(spell_templateObject30 || (spell_templateObject30 = spell_taggedTemplateLiteral(["tenderizing hammer"]))));
+      (0,external_kolmafia_namespaceObject.retrieveItem)(1, template_string_$item(spell_templateObject31 || (spell_templateObject31 = spell_taggedTemplateLiteral(["jewelry-making pliers"]))));
       (0,external_kolmafia_namespaceObject.cliExecute)("smash ".concat(meteor));
-      (0,external_kolmafia_namespaceObject.cliExecute)("make ".concat(template_string_$item(spell_templateObject31 || (spell_templateObject31 = spell_taggedTemplateLiteral(["meteorite necklace"])))));
+      (0,external_kolmafia_namespaceObject.cliExecute)("make ".concat(template_string_$item(spell_templateObject32 || (spell_templateObject32 = spell_taggedTemplateLiteral(["meteorite necklace"])))));
     }
   }
 
@@ -11056,7 +11064,7 @@ function spell_testPrep() {
 function spellTest() {
   spell_castBuffs();
   fingies();
-  uniform.apply(void 0, spell_toConsumableArray((0,external_kolmafia_namespaceObject.myClass)() === template_string_$class(spell_templateObject32 || (spell_templateObject32 = spell_taggedTemplateLiteral(["Sauceror"]))) && !hasBuff() ? template_string_$items(spell_templateObject33 || (spell_templateObject33 = spell_taggedTemplateLiteral(["Daylight Shavings Helmet"]))) : []));
+  uniform.apply(void 0, spell_toConsumableArray((0,external_kolmafia_namespaceObject.myClass)() === template_string_$class(spell_templateObject33 || (spell_templateObject33 = spell_taggedTemplateLiteral(["Sauceror"]))) && !hasBuff() ? template_string_$items(spell_templateObject34 || (spell_templateObject34 = spell_taggedTemplateLiteral(["Daylight Shavings Helmet"]))) : []));
   ensureInnerElf();
   shower();
   spell_testPrep();
@@ -11216,7 +11224,7 @@ function HPTest() {
   return hpPredictor();
 }
 ;// CONCATENATED MODULE: ./src/weapon.ts
-var weapon_templateObject, weapon_templateObject2, weapon_templateObject3, weapon_templateObject4, weapon_templateObject5, weapon_templateObject6, weapon_templateObject7, weapon_templateObject8, weapon_templateObject9, weapon_templateObject10, weapon_templateObject11, weapon_templateObject12, weapon_templateObject13, weapon_templateObject14, weapon_templateObject15, weapon_templateObject16, weapon_templateObject17, weapon_templateObject18, weapon_templateObject19, weapon_templateObject20, weapon_templateObject21, weapon_templateObject22, weapon_templateObject23, weapon_templateObject24, weapon_templateObject25, weapon_templateObject26, weapon_templateObject27, weapon_templateObject28, weapon_templateObject29, weapon_templateObject30, weapon_templateObject31, weapon_templateObject32, weapon_templateObject33, weapon_templateObject34, weapon_templateObject35, weapon_templateObject36, weapon_templateObject37, weapon_templateObject38, weapon_templateObject39, weapon_templateObject40, weapon_templateObject41, weapon_templateObject42;
+var weapon_templateObject, weapon_templateObject2, weapon_templateObject3, weapon_templateObject4, weapon_templateObject5, weapon_templateObject6, weapon_templateObject7, weapon_templateObject8, weapon_templateObject9, weapon_templateObject10, weapon_templateObject11, weapon_templateObject12, weapon_templateObject13, weapon_templateObject14, weapon_templateObject15, weapon_templateObject16, weapon_templateObject17, weapon_templateObject18, weapon_templateObject19, weapon_templateObject20, weapon_templateObject21, weapon_templateObject22, weapon_templateObject23, weapon_templateObject24, weapon_templateObject25, weapon_templateObject26, weapon_templateObject27, weapon_templateObject28, weapon_templateObject29, weapon_templateObject30, weapon_templateObject31, weapon_templateObject32, weapon_templateObject33, weapon_templateObject34, weapon_templateObject35, weapon_templateObject36, weapon_templateObject37, weapon_templateObject38, weapon_templateObject39, weapon_templateObject40, weapon_templateObject41, weapon_templateObject42, weapon_templateObject43;
 
 function weapon_taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
@@ -11312,8 +11320,9 @@ function weapon_testPrep() {
     if (meteor) {
       unequip(meteor);
       (0,external_kolmafia_namespaceObject.retrieveItem)(1, template_string_$item(weapon_templateObject41 || (weapon_templateObject41 = weapon_taggedTemplateLiteral(["tenderizing hammer"]))));
+      (0,external_kolmafia_namespaceObject.retrieveItem)(1, template_string_$item(weapon_templateObject42 || (weapon_templateObject42 = weapon_taggedTemplateLiteral(["jewelry-making pliers"]))));
       (0,external_kolmafia_namespaceObject.cliExecute)("smash ".concat(meteor));
-      (0,external_kolmafia_namespaceObject.cliExecute)("make ".concat(template_string_$item(weapon_templateObject42 || (weapon_templateObject42 = weapon_taggedTemplateLiteral(["meteorite ring"])))));
+      (0,external_kolmafia_namespaceObject.cliExecute)("make ".concat(template_string_$item(weapon_templateObject43 || (weapon_templateObject43 = weapon_taggedTemplateLiteral(["meteorite ring"])))));
     }
   }
 
