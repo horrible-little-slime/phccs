@@ -3396,7 +3396,9 @@ function gash_hop_taggedTemplateLiteral(strings, raw) { if (!raw) { raw = string
 
 
 var safariTargets = ["Kenny Kamakazi", "Busta_Rhymes", "Manendra", "Gausie", "Beldur", "worthawholebean", "ReverKiller", "Asmodais", "The Dictator"];
-function main(args) {
+function main() {
+  var args = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
+
   while ($skill(gash_hop_templateObject || (gash_hop_templateObject = gash_hop_taggedTemplateLiteral(["Experience Safari"]))).timescast < property_get("skillLevel180") && safariTargets.length) {
     (0,external_kolmafia_namespaceObject.useSkill)($skill(gash_hop_templateObject2 || (gash_hop_templateObject2 = gash_hop_taggedTemplateLiteral(["Experience Safari"]))), 1, safariTargets[0]);
     safariTargets.shift();
