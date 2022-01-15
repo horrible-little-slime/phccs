@@ -40,7 +40,7 @@ import {
     have,
     TunnelOfLove,
     Witchess,
-    withProperty,
+    withProperties,
 } from "libram";
 import Macro from "./combat";
 import {
@@ -389,14 +389,17 @@ function snojo() {
 
 function tentacle(): void {
     if (!have($skill`Evoke Eldritch Horror`)) return;
-    withProperty("autoAbortThreshold", -0.05, () => {
+    withProperties({ autoAbortThreshold: -0.05, hpAutoRecoveryTarget: -0.05 }, () => {
         uniform();
         useDefaultFamiliar();
         const macro = Macro.delevel().candyblast().defaultKill().repeat();
         macro.setAutoAttack();
-        useSkill($skill`Evoke Eldritch Horror`);
-        runCombat(macro.toString());
-        if (have($effect`Beaten Up`)) cliExecute("hottub");
+        try {
+            useSkill($skill`Evoke Eldritch Horror`);
+            runCombat(macro.toString());
+        } catch {
+            if (have($effect`Beaten Up`)) cliExecute("hottub");
+        }
     });
 }
 
