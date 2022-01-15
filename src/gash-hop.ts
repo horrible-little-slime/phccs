@@ -23,7 +23,7 @@ const safariTargets = [
     "Asmodais",
     "The Dictator",
 ];
-export function main(args: string): void {
+export function main(args = ""): void {
     while ($skill`Experience Safari`.timescast < get("skillLevel180") && safariTargets.length) {
         useSkill($skill`Experience Safari`, 1, safariTargets[0]);
         safariTargets.shift();
