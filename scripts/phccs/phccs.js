@@ -10888,9 +10888,9 @@ function levelUp() {
   restAndBuff(11);
   witchGhostAgent();
   lov();
-  godLob();
   snojo();
   tentacle();
+  godLob();
   restAndBuff();
   mElfLeveling();
   NEP();
