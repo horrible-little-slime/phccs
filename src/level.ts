@@ -427,7 +427,7 @@ function NEP() {
     advMacroAA(
         $location`The Neverending Party`,
         Macro.delevel()
-            .trySkill($skill`Feel Pride`)
+            .if_($effect`Inner Elf`, Macro.trySkill($skill`Feel Pride`))
             .defaultKill(),
         () => {
             return get("_neverendingPartyFreeTurns") < 10;
@@ -451,7 +451,8 @@ function NEP() {
         $location`The Neverending Party`,
         Macro.if_(
             "!monstername sausage goblin",
-            Macro.trySkill($skill`Shattering Punch`)
+            Macro.if_($effect`Inner Elf`, Macro.trySkill($skill`Feel Pride`))
+                .trySkill($skill`Shattering Punch`)
                 .trySkill($skill`Gingerbread Mob Hit`)
                 .trySkill($skill`Chest X-Ray`)
         ).if_("monstername sausage goblin", Macro.delevel().candyblast().defaultKill().repeat()),
@@ -478,7 +479,8 @@ function NEP() {
         $location`The Neverending Party`,
         Macro.if_(
             "!monstername sausage goblin",
-            Macro.trySkill($skill`Shattering Punch`)
+            Macro.if_($effect`Inner Elf`, Macro.trySkill($skill`Feel Pride`))
+                .trySkill($skill`Shattering Punch`)
                 .trySkill($skill`Gingerbread Mob Hit`)
                 .trySkill($skill`Chest X-Ray`)
         ).if_("monstername sausage goblin", Macro.delevel().candyblast().defaultKill().repeat()),
@@ -542,8 +544,9 @@ function royalty() {
     }
 }
 
-function restAndBuff() {
-    while (get("timesRested") < totalFreeRests()) {
+function restAndBuff(restMax = totalFreeRests()) {
+    const cap = Math.min(restMax, totalFreeRests());
+    while (get("timesRested") < cap) {
         burnLibrams();
         visitUrl("place.php?whichplace=chateau&action=chateau_restbox");
     }
@@ -555,13 +558,14 @@ export default function levelUp(): void {
     castBuffs();
     tomatoJuiceAndNinjaCostume();
     getYoked();
+    restAndBuff(11);
     witchGhostAgent();
     lov();
     godLob();
     snojo();
     tentacle();
+    restAndBuff();
     mElfLeveling();
     NEP();
     royalty();
-    restAndBuff();
 }
