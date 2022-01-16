@@ -1,4 +1,4 @@
-import { useSkill } from "kolmafia";
+import { retrieveItem, useSkill } from "kolmafia";
 import {
     $class,
     $familiar,
@@ -45,6 +45,8 @@ export function main(args = ""): void {
         : $item`astral pet sweater`;
 
     const lifestyle = args.includes("softcore") ? Lifestyle.softcore : Lifestyle.hardcore;
+
+    if (lifestyle === Lifestyle.softcore) retrieveItem(1, $item`corrupted marrow`);
 
     ascend(
         Paths.CommunityService,

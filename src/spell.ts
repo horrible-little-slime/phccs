@@ -24,6 +24,7 @@ import {
     $skill,
     DaylightShavings,
     get,
+    getSaleValue,
     have,
     set,
 } from "libram";
@@ -42,7 +43,12 @@ function castBuffs() {
         (effect) => ensureEffect(effect)
     );
 
-    if (!get("_cargoPocketEmptied")) {
+    if (
+        !get("_cargoPocketEmptied") &&
+        !$items`sizzling desk bell, frost-rimed desk bell, uncanny desk bell, nasty desk bell, greasy desk bell`.some(
+            (item) => getSaleValue(item) > 4 * get("valueOfAdventure")
+        )
+    ) {
         cliExecute("cargo 177");
         ensureEffect($effect`Sigils of Yeg`);
     }
