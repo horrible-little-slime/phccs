@@ -11274,7 +11274,7 @@ function forceSpit() {
     combat_Macro.trySkill($skill(weapon_templateObject15 || (weapon_templateObject15 = weapon_taggedTemplateLiteral(["%fn, spit on me!"])))).skill($skill(weapon_templateObject16 || (weapon_templateObject16 = weapon_taggedTemplateLiteral(["Use the Force"])))).setAutoAttack();
 
     try {
-      setClan(property_get("phccs_mainClan", "Beldungeon"));
+      setClan(property_get("phccs_faxClan", "Beldungeon"));
       fax($monster(weapon_templateObject17 || (weapon_templateObject17 = weapon_taggedTemplateLiteral(["ungulith"]))));
     } finally {
       setClan(property_get("phccs_mainClan", "Alliance From Heck"));
