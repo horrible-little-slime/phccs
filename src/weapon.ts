@@ -80,7 +80,7 @@ function forceSpit() {
             .skill($skill`Use the Force`)
             .setAutoAttack();
         try {
-            setClan(get("phccs_mainClan", "Beldungeon"));
+            setClan(get("phccs_faxClan", "Beldungeon"));
             fax($monster`ungulith`);
         } finally {
             setClan(get("phccs_mainClan", "Alliance From Heck"));
