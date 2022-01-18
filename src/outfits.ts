@@ -356,7 +356,7 @@ export function spellOutfit(): void {
     Outfit.doYourBest(
         new Map<Slot, Item | Item[]>([
             [$slot`hat`, $items`sugar chapeau, Hollandaise helmet`],
-            [$slot`weapon`, inHardcore() ? chefstaves : $item`weeping willow wand`],
+            [$slot`weapon`, !inHardcore() ? chefstaves : $item`weeping willow wand`],
             [
                 $slot`off-hand`,
                 [
