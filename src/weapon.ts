@@ -148,7 +148,7 @@ export default function weaponTest(): number {
     castBuffs();
     getCrushed();
     forceSpit();
-    ensureInnerElf();
+    if (inHardcore()) ensureInnerElf();
     kungFuMeteors();
     testPrep();
     if (predictor() > 1) throw "Failed to cap weapon damage!";

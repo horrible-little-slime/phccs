@@ -400,6 +400,7 @@ function tentacle(): void {
         } catch {
             if (have($effect`Beaten Up`)) cliExecute("hottub");
         }
+        if (have($effect`Beaten Up`)) cliExecute("hottub");
     });
 }
 
