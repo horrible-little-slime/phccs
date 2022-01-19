@@ -9766,7 +9766,7 @@ function setSettings() {
 
 function doPulls() {
   if ((0,external_kolmafia_namespaceObject.inHardcore)()) return;
-  var pulls = [template_string_$items(runstart_templateObject20 || (runstart_templateObject20 = runstart_taggedTemplateLiteral(["repaid diaper, Great Wolf's beastly trousers"]))), template_string_$items(runstart_templateObject21 || (runstart_templateObject21 = runstart_taggedTemplateLiteral(["meteorite necklace, meteorite ring, meteorite fragment, meteorite earring"]))), template_string_$item(runstart_templateObject22 || (runstart_templateObject22 = runstart_taggedTemplateLiteral(["Stick-Knife of Loathing"]))), chefstaves, template_string_$item(runstart_templateObject23 || (runstart_templateObject23 = runstart_taggedTemplateLiteral(["corrupted marrow"])))];
+  var pulls = [template_string_$items(runstart_templateObject20 || (runstart_templateObject20 = runstart_taggedTemplateLiteral(["repaid diaper, Great Wolf's beastly trousers"]))), template_string_$items(runstart_templateObject21 || (runstart_templateObject21 = runstart_taggedTemplateLiteral(["meteorite necklace, meteorite ring, meteorite fragment, meteorite earring"]))), template_string_$item(runstart_templateObject22 || (runstart_templateObject22 = runstart_taggedTemplateLiteral(["Stick-Knife of Loathing"]))), template_string_$item(runstart_templateObject23 || (runstart_templateObject23 = runstart_taggedTemplateLiteral(["corrupted marrow"])))];
 
   for (var _i = 0, _pulls = pulls; _i < _pulls.length; _i++) {
     var pull = _pulls[_i];
@@ -10968,7 +10968,7 @@ function noncombatTest() {
   return noncombat_predictor();
 }
 ;// CONCATENATED MODULE: ./src/spell.ts
-var spell_templateObject, spell_templateObject2, spell_templateObject3, spell_templateObject4, spell_templateObject5, spell_templateObject6, spell_templateObject7, spell_templateObject8, spell_templateObject9, spell_templateObject10, spell_templateObject11, spell_templateObject12, spell_templateObject13, spell_templateObject14, spell_templateObject15, spell_templateObject16, spell_templateObject17, spell_templateObject18, spell_templateObject19, spell_templateObject20, spell_templateObject21, spell_templateObject22, spell_templateObject23, spell_templateObject24, spell_templateObject25, spell_templateObject26, spell_templateObject27, spell_templateObject28, spell_templateObject29, spell_templateObject30, spell_templateObject31, spell_templateObject32, spell_templateObject33, spell_templateObject34, spell_templateObject35;
+var spell_templateObject, spell_templateObject2, spell_templateObject3, spell_templateObject4, spell_templateObject5, spell_templateObject6, spell_templateObject7, spell_templateObject8, spell_templateObject9, spell_templateObject10, spell_templateObject11, spell_templateObject12, spell_templateObject13, spell_templateObject14, spell_templateObject15, spell_templateObject16, spell_templateObject17, spell_templateObject18, spell_templateObject19, spell_templateObject20, spell_templateObject21, spell_templateObject22, spell_templateObject23, spell_templateObject24, spell_templateObject25, spell_templateObject26, spell_templateObject27, spell_templateObject28, spell_templateObject29, spell_templateObject30, spell_templateObject31, spell_templateObject32, spell_templateObject33, spell_templateObject34, spell_templateObject35, spell_templateObject36, spell_templateObject37, spell_templateObject38, spell_templateObject39;
 
 function spell_toConsumableArray(arr) { return spell_arrayWithoutHoles(arr) || spell_iterableToArray(arr) || spell_unsupportedIterableToArray(arr) || spell_nonIterableSpread(); }
 
@@ -11062,6 +11062,13 @@ function spell_testPrep() {
       (0,external_kolmafia_namespaceObject.cliExecute)("smash ".concat(meteor));
       (0,external_kolmafia_namespaceObject.cliExecute)("make ".concat(template_string_$item(spell_templateObject33 || (spell_templateObject33 = spell_taggedTemplateLiteral(["meteorite necklace"])))));
     }
+
+    if ((0,external_kolmafia_namespaceObject.canEquip)(template_string_$item(spell_templateObject34 || (spell_templateObject34 = spell_taggedTemplateLiteral(["Staff of the Roaring Hearth"])))) && (0,external_kolmafia_namespaceObject.storageAmount)(template_string_$item(spell_templateObject35 || (spell_templateObject35 = spell_taggedTemplateLiteral(["Staff of the Roaring Hearth"])))) >= 1 && (0,external_kolmafia_namespaceObject.itemAmount)(template_string_$item(spell_templateObject36 || (spell_templateObject36 = spell_taggedTemplateLiteral(["Staff of the Roaring Hearth"])))) === 0) {
+      (0,external_kolmafia_namespaceObject.takeStorage)(template_string_$item(spell_templateObject37 || (spell_templateObject37 = spell_taggedTemplateLiteral(["Staff of the Roaring Hearth"]))), 1);
+    } else if (chefstaves.every(staff => (0,external_kolmafia_namespaceObject.itemAmount)(staff) === 0)) {
+      var staff = chefstaves.find(chefstave => (0,external_kolmafia_namespaceObject.storageAmount)(chefstave) >= 1);
+      if (staff) (0,external_kolmafia_namespaceObject.takeStorage)(staff, 1);
+    }
   }
 
   spellOutfit();
@@ -11070,7 +11077,7 @@ function spell_testPrep() {
 function spellTest() {
   spell_castBuffs();
   fingies();
-  uniform.apply(void 0, spell_toConsumableArray((0,external_kolmafia_namespaceObject.myClass)() === template_string_$class(spell_templateObject34 || (spell_templateObject34 = spell_taggedTemplateLiteral(["Sauceror"]))) && !hasBuff() ? template_string_$items(spell_templateObject35 || (spell_templateObject35 = spell_taggedTemplateLiteral(["Daylight Shavings Helmet"]))) : []));
+  uniform.apply(void 0, spell_toConsumableArray((0,external_kolmafia_namespaceObject.myClass)() === template_string_$class(spell_templateObject38 || (spell_templateObject38 = spell_taggedTemplateLiteral(["Sauceror"]))) && !hasBuff() ? template_string_$items(spell_templateObject39 || (spell_templateObject39 = spell_taggedTemplateLiteral(["Daylight Shavings Helmet"]))) : []));
   ensureInnerElf();
   shower();
   spell_testPrep();
