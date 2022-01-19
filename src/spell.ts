@@ -1,14 +1,18 @@
 import {
     availableAmount,
+    canEquip,
     cliExecute,
     create,
     handlingChoice,
     inHardcore,
+    itemAmount,
     myClass,
     myLevel,
     numericModifier,
     retrieveItem,
     runChoice,
+    storageAmount,
+    takeStorage,
     useFamiliar,
     useSkill,
     visitUrl,
@@ -29,7 +33,15 @@ import {
     set,
 } from "libram";
 import Macro from "./combat";
-import { advMacroAA, ensureEffect, ensureInnerElf, horse, setChoice, unequip } from "./lib";
+import {
+    advMacroAA,
+    chefstaves,
+    ensureEffect,
+    ensureInnerElf,
+    horse,
+    setChoice,
+    unequip,
+} from "./lib";
 import uniform, { spellOutfit } from "./outfits";
 
 const predictor = () =>
@@ -129,6 +141,17 @@ function testPrep() {
             retrieveItem(1, $item`jewelry-making pliers`);
             cliExecute(`smash ${meteor}`);
             cliExecute(`make ${$item`meteorite necklace`}`);
+        }
+
+        if (
+            canEquip($item`Staff of the Roaring Hearth`) &&
+            storageAmount($item`Staff of the Roaring Hearth`) >= 1 &&
+            itemAmount($item`Staff of the Roaring Hearth`) === 0
+        ) {
+            takeStorage($item`Staff of the Roaring Hearth`, 1);
+        } else if (chefstaves.every((staff) => itemAmount(staff) === 0)) {
+            const staff = chefstaves.find((chefstave) => storageAmount(chefstave) >= 1);
+            if (staff) takeStorage(staff, 1);
         }
     }
     spellOutfit();

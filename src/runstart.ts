@@ -17,7 +17,7 @@ import {
     visitUrl,
 } from "kolmafia";
 import { $coinmaster, $familiar, $item, $items, $skill, get, have, SourceTerminal } from "libram";
-import { chefstaves, setClan, tryUse } from "./lib";
+import { setClan, tryUse } from "./lib";
 
 function juiceBar() {
     visitUrl("place.php?whichplace=chateau&action=chateau_desk2");
@@ -66,7 +66,6 @@ function doPulls() {
         $items`repaid diaper, Great Wolf's beastly trousers`,
         $items`meteorite necklace, meteorite ring, meteorite fragment, meteorite earring`,
         $item`Stick-Knife of Loathing`,
-        chefstaves,
         $item`corrupted marrow`,
     ];
 
