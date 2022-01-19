@@ -429,6 +429,7 @@ function NEP() {
         $location`The Neverending Party`,
         Macro.delevel()
             .if_($effect`Inner Elf`, Macro.trySkill($skill`Feel Pride`))
+            .trySkill($skill`Bowl Sideways`)
             .defaultKill(),
         () => {
             return get("_neverendingPartyFreeTurns") < 10;
@@ -453,6 +454,7 @@ function NEP() {
         Macro.if_(
             "!monstername sausage goblin",
             Macro.if_($effect`Inner Elf`, Macro.trySkill($skill`Feel Pride`))
+                .trySkill($skill`Bowl Sideways`)
                 .trySkill($skill`Shattering Punch`)
                 .trySkill($skill`Gingerbread Mob Hit`)
                 .trySkill($skill`Chest X-Ray`)
@@ -481,6 +483,7 @@ function NEP() {
         Macro.if_(
             "!monstername sausage goblin",
             Macro.if_($effect`Inner Elf`, Macro.trySkill($skill`Feel Pride`))
+                .trySkill($skill`Bowl Sideways`)
                 .trySkill($skill`Shattering Punch`)
                 .trySkill($skill`Gingerbread Mob Hit`)
                 .trySkill($skill`Chest X-Ray`)
