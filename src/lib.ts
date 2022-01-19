@@ -12,6 +12,7 @@ import {
     equip,
     equippedAmount,
     equippedItem,
+    getCampground,
     getClanName,
     getProperty,
     haveEffect,
@@ -73,7 +74,7 @@ export function fuelUp(): void {
 }
 
 export function synthExp(): void {
-    if (get("harvestGardenHardcore") === "none") {
+    if (getCampground()["Peppermint Pip Packet"]) {
         visitUrl("campground.php?action=garden");
     }
     if (!get("_candySummons")) {
@@ -110,7 +111,7 @@ export function synthExp(): void {
 }
 
 export function synthItem(): void {
-    if (get("harvestGardenHardcore") === "none") {
+    if (getCampground()["Peppermint Pip Packet"]) {
         visitUrl("campground.php?action=garden");
     }
     if (!get("_candySummons")) {
@@ -140,7 +141,7 @@ export function synthItem(): void {
 }
 
 export function synthMyst(): void {
-    if (get("harvestGardenHardcore") === "none") {
+    if (getCampground()["Peppermint Pip Packet"]) {
         visitUrl("campground.php?action=garden");
     }
     if (!get("_candySummons")) {
