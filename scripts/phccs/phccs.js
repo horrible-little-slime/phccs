@@ -8554,7 +8554,7 @@ function fuelUp() {
   (0,external_kolmafia_namespaceObject.cliExecute)("asdonmartin fuel ".concat((0,external_kolmafia_namespaceObject.availableAmount)(template_string_$item(lib_templateObject7 || (lib_templateObject7 = lib_taggedTemplateLiteral(["loaf of soda bread"])))), " soda bread"));
 }
 function synthExp() {
-  if (property_get("harvestGardenHardcore") === "none") {
+  if ((0,external_kolmafia_namespaceObject.getCampground)()["Peppermint Pip Packet"]) {
     (0,external_kolmafia_namespaceObject.visitUrl)("campground.php?action=garden");
   }
 
@@ -8595,7 +8595,7 @@ function synthExp() {
   }
 }
 function synthItem() {
-  if (property_get("harvestGardenHardcore") === "none") {
+  if ((0,external_kolmafia_namespaceObject.getCampground)()["Peppermint Pip Packet"]) {
     (0,external_kolmafia_namespaceObject.visitUrl)("campground.php?action=garden");
   }
 
@@ -8629,7 +8629,7 @@ function synthItem() {
   }
 }
 function synthMyst() {
-  if (property_get("harvestGardenHardcore") === "none") {
+  if ((0,external_kolmafia_namespaceObject.getCampground)()["Peppermint Pip Packet"]) {
     (0,external_kolmafia_namespaceObject.visitUrl)("campground.php?action=garden");
   }
 
