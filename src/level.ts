@@ -14,7 +14,6 @@ import {
     myLevel,
     myMp,
     numericModifier,
-    print,
     runChoice,
     runCombat,
     toEffect,
@@ -36,7 +35,6 @@ import {
     $skills,
     $slot,
     BeachComb,
-    CommunityService,
     DaylightShavings,
     get,
     have,
@@ -559,10 +557,6 @@ function restAndBuff(restMax = totalFreeRests()) {
 }
 
 export default function levelUp(): void {
-    print(
-        `Right now, we expect HP to take ${CommunityService.HP.prediction} turns. Also, I hunt man for sport.`,
-        "red"
-    );
     initialExp();
     buffMyst();
     castBuffs();
@@ -578,8 +572,4 @@ export default function levelUp(): void {
     mElfLeveling();
     NEP();
     royalty();
-    print(
-        `Right now, we expect HP to take ${CommunityService.HP.prediction} turns. Also, I hunt man for sport.`,
-        "red"
-    );
 }
