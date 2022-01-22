@@ -18,6 +18,7 @@ import {
 } from "kolmafia";
 import { $coinmaster, $familiar, $item, $items, $skill, get, have, SourceTerminal } from "libram";
 import { setClan, tryUse } from "./lib";
+import * as Pantogram from "libram/dist/resources/2017/Pantogram";
 
 function juiceBar() {
     visitUrl("place.php?whichplace=chateau&action=chateau_desk2");
@@ -132,7 +133,13 @@ function prepGear() {
     }
 
     if (!have($item`pantogram pants`)) {
-        cliExecute("pantogram mysticality|hot|drops of blood|some self-respect|your dreams|silent");
+        Pantogram.makePants(
+            "Mysticality",
+            "Hot Resistance: 2",
+            "Maximum HP: 40",
+            "Combat Rate: -5",
+            "Spell Damage Percent: 20"
+        );
     }
 
     if (get("boomBoxSong") !== "Total Eclipse of Your Meat") {
