@@ -33,7 +33,7 @@
     },
     "dependencies": {
         "kolmafia": "^1.4.0",
-        "libram": "^0.5.9"
+        "libram": "^0.6.0"
     },
     "author": "Phreddrickkv2",
     "license": "ISC",
