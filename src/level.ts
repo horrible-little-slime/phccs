@@ -7,7 +7,6 @@ import {
     equip,
     getCounters,
     haveEffect,
-    haveEquipped,
     knollAvailable,
     mpCost,
     myClass,
@@ -437,9 +436,8 @@ function NEP() {
         () => {
             useDefaultFamiliar();
             heal();
-            if (get("_sausageFights") > 4 && haveEquipped($item`Kramco Sausage-o-Matic™`)) {
-                equip($slot`off-hand`, $item`familiar scrapbook`);
-            }
+            const changes = get("_sausageFights") > 4 ? $items`familiar scrapbook` : [];
+            uniform(...changes);
             if (get("choiceAdventure1324") !== 5 && questStep("_questPartyFair") > 0) {
                 setChoice(1324, 5);
             }
@@ -465,9 +463,8 @@ function NEP() {
         () => {
             heal();
             useDefaultFamiliar();
-            if (get("_sausageFights") > 4 && haveEquipped($item`Kramco Sausage-o-Matic™`)) {
-                equip($slot`off-hand`, $item`familiar scrapbook`);
-            }
+            const changes = get("_sausageFights") > 4 ? $items`familiar scrapbook` : [];
+            uniform(...changes);
             if (get("choiceAdventure1324") !== 5 && questStep("_questPartyFair") > 0) {
                 setChoice(1324, 5);
             }
@@ -494,9 +491,8 @@ function NEP() {
         () => {
             heal();
             useDefaultFamiliar();
-            if (get("_sausageFights") > 4 && haveEquipped($item`Kramco Sausage-o-Matic™`)) {
-                equip($slot`off-hand`, $item`familiar scrapbook`);
-            }
+            const changes = get("_sausageFights") > 4 ? $items`familiar scrapbook` : [];
+            uniform(...changes, [$item`Lil' Doctor™ bag`, $slot`acc3`]);
             if (get("choiceAdventure1324") !== 5 && questStep("_questPartyFair") > 0) {
                 setChoice(1324, 5);
             }
