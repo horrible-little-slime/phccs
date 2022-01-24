@@ -16,9 +16,19 @@ import {
     useSkill,
     visitUrl,
 } from "kolmafia";
-import { $coinmaster, $familiar, $item, $items, $skill, get, have, SourceTerminal } from "libram";
+import {
+    $coinmaster,
+    $familiar,
+    $item,
+    $items,
+    $skill,
+    Clan,
+    get,
+    have,
+    Pantogram,
+    SourceTerminal,
+} from "libram";
 import { setClan, tryUse } from "./lib";
-import * as Pantogram from "libram/dist/resources/2017/Pantogram";
 
 function juiceBar() {
     visitUrl("place.php?whichplace=chateau&action=chateau_desk2");
@@ -129,7 +139,7 @@ function prepGear() {
     }
 
     if (!get("_floundryItemCreated")) {
-        cliExecute("acquire codpiece");
+        Clan.with("Bonus Adventures from Hell", () => cliExecute("acquire codpiece"));
     }
 
     if (!have($item`pantogram pants`)) {
