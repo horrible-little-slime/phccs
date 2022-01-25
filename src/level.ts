@@ -480,7 +480,38 @@ function NEP() {
             ensureMp(30);
         }
     );
-    if (get("_shatteringPunchUsed") >= 3) equip($slot`acc3`, $item`Lil' Doctor™ bag`);
+    advMacroAA(
+        $location`The Neverending Party`,
+        Macro.if_(
+            "!monstername sausage goblin",
+            Macro.if_($effect`Inner Elf`, Macro.trySkill($skill`Feel Pride`))
+                .trySkill($skill`Bowl Sideways`)
+                .trySkill($skill`Shattering Punch`)
+                .trySkill($skill`Gingerbread Mob Hit`)
+                .trySkill($skill`Chest X-Ray`)
+        ).if_("monstername sausage goblin", Macro.delevel().candyblast().defaultKill().repeat()),
+        () => {
+            return get("_shatteringPunchUsed") < 3;
+        },
+        () => {
+            heal();
+            useDefaultFamiliar();
+            const changes =
+                get("_sausageFights") > 4
+                    ? $items`makeshift garbage shirt`
+                    : $items`makeshift garbage shirt, Kramco Sausage-o-Matic™`;
+            uniform(...changes);
+            if (get("choiceAdventure1324") !== 5 && questStep("_questPartyFair") > 0) {
+                setChoice(1324, 5);
+            }
+            if (myLevel() >= 13 && !have($effect`Inner Elf`)) {
+                ensureInnerElf();
+            }
+            ensureMp(30);
+        }
+    );
+
+    equip($slot`acc3`, $item`Lil' Doctor™ bag`);
     advMacroAA(
         $location`The Neverending Party`,
         Macro.if_(
