@@ -514,9 +514,8 @@ function NEP() {
 }
 
 function mElfLeveling() {
-    uniform();
     cliExecute("fold garbage shirt");
-    equip($slot`shirt`, $item`makeshift garbage shirt`);
+    uniform($item`makeshift garbage shirt`);
     useFamiliar($familiar`Machine Elf`);
     advMacroAA(
         $location`The Deep Machine Tunnels`,
@@ -546,7 +545,8 @@ function royalty() {
     }
     if (!have($item`dented scepter`)) {
         Macro.delevel().attack().repeat().setAutoAttack();
-        uniform();
+        cliExecute("fold makeshift garbage shirt");
+        uniform($item`makeshift garbage shirt`);
         useDefaultFamiliar();
         heal();
         Witchess.fightPiece($monster`Witchess King`);
