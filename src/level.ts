@@ -421,7 +421,7 @@ function NEP() {
         }
     }
 
-    uniform($item`makeshift garbage shirt`, $item`Kramco Sausage-o-Matic™`);
+    uniform(...$items`makeshift garbage shirt, Kramco Sausage-o-Matic™`);
 
     useDefaultFamiliar();
     advMacroAA(
@@ -436,7 +436,10 @@ function NEP() {
         () => {
             useDefaultFamiliar();
             heal();
-            const changes = get("_sausageFights") > 4 ? $items`makeshift garbage shirt` : $items`makeshift garbage shirt, Kramco Sausage-o-Matic™`;
+            const changes =
+                get("_sausageFights") > 4
+                    ? $items`makeshift garbage shirt`
+                    : $items`makeshift garbage shirt, Kramco Sausage-o-Matic™`;
             uniform(...changes);
             if (get("choiceAdventure1324") !== 5 && questStep("_questPartyFair") > 0) {
                 setChoice(1324, 5);
@@ -463,7 +466,10 @@ function NEP() {
         () => {
             heal();
             useDefaultFamiliar();
-            const changes = get("_sausageFights") > 4 ? $items`makeshift garbage shirt` : $items`makeshift garbage shirt, Kramco Sausage-o-Matic™`;
+            const changes =
+                get("_sausageFights") > 4
+                    ? $items`makeshift garbage shirt`
+                    : $items`makeshift garbage shirt, Kramco Sausage-o-Matic™`;
             uniform(...changes);
             if (get("choiceAdventure1324") !== 5 && questStep("_questPartyFair") > 0) {
                 setChoice(1324, 5);
@@ -474,7 +480,7 @@ function NEP() {
             ensureMp(30);
         }
     );
-    equip($slot`acc3`, $item`Lil' Doctor™ bag`);
+    if (get("_shatteringPunchUsed") >= 3) equip($slot`acc3`, $item`Lil' Doctor™ bag`);
     advMacroAA(
         $location`The Neverending Party`,
         Macro.if_(
@@ -491,7 +497,10 @@ function NEP() {
         () => {
             heal();
             useDefaultFamiliar();
-            const changes = get("_sausageFights") > 4 ? $items`makeshift garbage shirt` : $items`makeshift garbage shirt, Kramco Sausage-o-Matic™`;
+            const changes =
+                get("_sausageFights") > 4
+                    ? $items`makeshift garbage shirt`
+                    : $items`makeshift garbage shirt, Kramco Sausage-o-Matic™`;
             uniform(...changes, [$item`Lil' Doctor™ bag`, $slot`acc3`]);
             if (get("choiceAdventure1324") !== 5 && questStep("_questPartyFair") > 0) {
                 setChoice(1324, 5);
