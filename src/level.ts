@@ -33,6 +33,7 @@ import {
     $skill,
     $skills,
     $slot,
+    $stat,
     BeachComb,
     DaylightShavings,
     get,
@@ -170,7 +171,7 @@ function castBuffs() {
 function getYoked() {
     uniform();
     useFamiliar($familiar`Ghost of Crimbo Carols`);
-    if (get("snojoSetting") === "NONE") {
+    if (get("snojoSetting") === $stat`none`) {
         visitUrl("place.php?whichplace=snojo&action=snojo_controller");
         runChoice(2);
     }
