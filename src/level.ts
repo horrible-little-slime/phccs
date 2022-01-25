@@ -436,7 +436,7 @@ function NEP() {
         () => {
             useDefaultFamiliar();
             heal();
-            const changes = get("_sausageFights") > 4 ? [] : $items`Kramco Sausage-o-Matic™`;
+            const changes = get("_sausageFights") > 4 ? $items`makeshift garbage shirt` : $items`makeshift garbage shirt, Kramco Sausage-o-Matic™`;
             uniform(...changes);
             if (get("choiceAdventure1324") !== 5 && questStep("_questPartyFair") > 0) {
                 setChoice(1324, 5);
@@ -463,7 +463,7 @@ function NEP() {
         () => {
             heal();
             useDefaultFamiliar();
-            const changes = get("_sausageFights") > 4 ? [] : $items`Kramco Sausage-o-Matic™`;
+            const changes = get("_sausageFights") > 4 ? $items`makeshift garbage shirt` : $items`makeshift garbage shirt, Kramco Sausage-o-Matic™`;
             uniform(...changes);
             if (get("choiceAdventure1324") !== 5 && questStep("_questPartyFair") > 0) {
                 setChoice(1324, 5);
@@ -491,7 +491,7 @@ function NEP() {
         () => {
             heal();
             useDefaultFamiliar();
-            const changes = get("_sausageFights") > 4 ? [] : $items`Kramco Sausage-o-Matic™`;
+            const changes = get("_sausageFights") > 4 ? $items`makeshift garbage shirt` : $items`makeshift garbage shirt, Kramco Sausage-o-Matic™`;
             uniform(...changes, [$item`Lil' Doctor™ bag`, $slot`acc3`]);
             if (get("choiceAdventure1324") !== 5 && questStep("_questPartyFair") > 0) {
                 setChoice(1324, 5);
