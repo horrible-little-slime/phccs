@@ -86,8 +86,6 @@ function forceSpit() {
             setClan(get("phccs_mainClan", "Alliance From Heck"));
         }
         use($item`photocopied monster`);
-        if (handlingChoice()) runChoice(-1);
-        set("_meteorShowerUses", 1 + get("_meteorShowerUses"));
     } else {
         uniform();
         useFamiliar($familiar`Melodramedary`);
@@ -98,9 +96,10 @@ function forceSpit() {
                 .trySkill($skill`Meteor Shower`)
                 .skill($skill`Use the Force`)
         );
-        if (handlingChoice()) runChoice(-1);
-        set("_meteorShowerUses", 1 + get("_meteorShowerUses"));
     }
+    if (handlingChoice()) runChoice(-1);
+    if (have($effect`Meteor Showered`)) set("_meteorShowerUses", 1 + get("_meteorShowerUses"));
+    if (have($effect`Spit Upon`)) set("camelSpit", 0);
 }
 
 function kungFuMeteors() {
