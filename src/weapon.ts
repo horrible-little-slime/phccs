@@ -3,7 +3,6 @@ import {
     equip,
     handlingChoice,
     inHardcore,
-    numericModifier,
     retrieveItem,
     runChoice,
     use,
@@ -21,6 +20,7 @@ import {
     $skill,
     $slot,
     BeachComb,
+    CommunityService,
     get,
     have,
     set,
@@ -41,10 +41,7 @@ import {
 import Macro from "./combat";
 import uniform, { weaponOutfit } from "./outfits";
 
-const predictor = () =>
-    60 -
-    Math.floor(numericModifier("weapon damage") / 25 + 0.001) -
-    Math.floor(numericModifier("weapon damage percent") / 25 + 0.001);
+const predictor = () => CommunityService.WeaponDamage.prediction;
 
 function getCrushed() {
     if (!have($effect`Do You Crush What I Crush?`)) {

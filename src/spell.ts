@@ -8,7 +8,6 @@ import {
     itemAmount,
     myClass,
     myLevel,
-    numericModifier,
     retrieveItem,
     runChoice,
     storageAmount,
@@ -26,6 +25,7 @@ import {
     $items,
     $location,
     $skill,
+    CommunityService,
     DaylightShavings,
     get,
     getSaleValue,
@@ -44,10 +44,7 @@ import {
 } from "./lib";
 import uniform, { spellOutfit } from "./outfits";
 
-const predictor = () =>
-    60 -
-    Math.floor(numericModifier("spell damage") / 50 + 0.001) -
-    Math.floor(numericModifier("spell damage percent") / 50 + 0.001);
+const predictor = () => CommunityService.SpellDamage.prediction;
 
 function castBuffs() {
     ensureEffect($effect`Simmering`);

@@ -5,7 +5,6 @@ import {
     equip,
     getFuel,
     haveEffect,
-    numericModifier,
     runChoice,
     runCombat,
     use,
@@ -13,12 +12,12 @@ import {
     visitUrl,
 } from "kolmafia";
 import Macro from "./combat";
-import { $coinmaster, $effect, $familiar, $item, $slot, get, have } from "libram";
+import { $coinmaster, $effect, $familiar, $item, $slot, CommunityService, get, have } from "libram";
 import { universalWeightBuffs } from "./familiarweight";
 import { ensureEffect, fuelUp, heal, horse, setChoice } from "./lib";
 import uniform, { noncombatOutfit } from "./outfits";
 
-const predictor = () => 60 + (20 + numericModifier("combat rate")) * 3;
+const predictor = () => CommunityService.Noncombat.prediction;
 
 function castBuffs() {
     universalWeightBuffs();

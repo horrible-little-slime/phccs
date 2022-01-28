@@ -10,15 +10,23 @@ import {
     useFamiliar,
     visitUrl,
 } from "kolmafia";
-import { $class, $effect, $familiar, $item, $location, $skill, $slot, get, have } from "libram";
+import {
+    $class,
+    $effect,
+    $familiar,
+    $item,
+    $location,
+    $skill,
+    $slot,
+    CommunityService,
+    get,
+    have,
+} from "libram";
 import { itemOutfit } from "./outfits";
 import Macro from "./combat";
 import { advMacroAA, ensureEffect, fuelUp, horse, synthItem, useDefaultFamiliar } from "./lib";
 
-const predictor = () =>
-    60 -
-    Math.floor(numericModifier("item drop") / 30 + 0.001) -
-    Math.floor(numericModifier("booze drop") / 15 + 0.001);
+const predictor = () => CommunityService.BoozeDrop.prediction;
 
 function prelude() {
     horse("dark");

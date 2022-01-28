@@ -22,6 +22,7 @@ import {
     $skill,
     $slot,
     BeachComb,
+    CommunityService,
     get,
     have,
 } from "libram";
@@ -29,7 +30,7 @@ import Macro from "./combat";
 import { universalWeightBuffs } from "./familiarweight";
 import { advMacroAA, ensureEffect, ensureMp, fuelUp, horse, setChoice } from "./lib";
 import uniform, { hotresOutfit, Outfit } from "./outfits";
-const predictor = () => 60 - numericModifier("hot resistance");
+const predictor = () => CommunityService.HotRes.prediction
 
 function castBuffs() {
     universalWeightBuffs();

@@ -3,20 +3,16 @@ import {
     create,
     eat,
     itemAmount,
-    myBasestat,
-    myBuffedstat,
-    myMaxhp,
     retrieveItem,
     use,
     useFamiliar,
     useSkill,
 } from "kolmafia";
-import { $effect, $familiar, $item, $skill, $stat, get, have } from "libram";
+import { $effect, $familiar, $item, $skill, CommunityService, get, have } from "libram";
 import { hpOutfit, moxieOutfit, muscleOutfit, mysticalityOutfit } from "./outfits";
 import { ensureEffect, ensureInnerElf, equalizeMoxie, equalizeMuscle, tryUse } from "./lib";
 
-const musclePredictor = () =>
-    60 - Math.floor((1 / 30) * (myBuffedstat($stat`muscle`) - myBasestat($stat`mysticality`)));
+const musclePredictor = () => CommunityService.Muscle.prediction;
 
 function musclebuffs() {
     equalizeMuscle();
@@ -53,8 +49,7 @@ export function muscleTest(): number {
     return musclePredictor();
 }
 
-const mystPredictor = () =>
-    60 - Math.floor((1 / 30) * (myBuffedstat($stat`mysticality`) - myBasestat($stat`mysticality`)));
+const mystPredictor = () => CommunityService.Mysticality.prediction;
 
 function mystbuffs() {
     ensureEffect($effect`Feeling Excited`);
@@ -71,8 +66,7 @@ export function mystTest(): number {
     return mystPredictor();
 }
 
-const moxPredictor = () =>
-    60 - Math.floor((1 / 30) * (myBuffedstat($stat`moxie`) - myBasestat($stat`mysticality`)));
+const moxPredictor = () => CommunityService.Moxie.prediction;
 
 function moxBuffs() {
     if (have($item`magical sausage casing`)) {
@@ -141,7 +135,7 @@ function hpBuffs() {
     }
 }
 
-const hpPredictor = () => 60 - Math.floor((myMaxhp() - myBuffedstat($stat`muscle`) - 3) / 30);
+const hpPredictor = () => CommunityService.HP.prediction;
 function hpTestPrep() {
     hpOutfit();
 }
