@@ -24,7 +24,15 @@ import {
 } from "libram";
 import { itemOutfit } from "./outfits";
 import Macro from "./combat";
-import { advMacroAA, ensureEffect, fuelUp, horse, synthItem, useDefaultFamiliar } from "./lib";
+import {
+    advMacroAA,
+    burnLibrams,
+    ensureEffect,
+    fuelUp,
+    horse,
+    synthItem,
+    useDefaultFamiliar,
+} from "./lib";
 
 const predictor = () => CommunityService.BoozeDrop.prediction;
 
@@ -113,11 +121,11 @@ function testPrep() {
     if (predictor() > 1) ensureEffect($effect`Nearly All-Natural`);
 }
 
-export default function itemTest(): number {
+export default function itemTest(): void {
     prelude();
     castBuffs();
     batForm();
     testPrep();
     if (predictor() > 1) throw "Failed to cap item";
-    return predictor();
+    burnLibrams();
 }

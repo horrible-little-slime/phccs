@@ -1,15 +1,12 @@
 import {
     cliExecute,
     create,
-    familiarWeight,
     inHardcore,
-    myFamiliar,
     mySign,
     runChoice,
     use,
     useFamiliar,
     visitUrl,
-    weightAdjustment,
 } from "kolmafia";
 import {
     $effect,
@@ -25,7 +22,15 @@ import {
     Witchess,
 } from "libram";
 import Macro from "./combat";
-import { advMacroAA, availableFights, ensureEffect, horse, setChoice, unequip } from "./lib";
+import {
+    advMacroAA,
+    availableFights,
+    burnLibrams,
+    ensureEffect,
+    horse,
+    setChoice,
+    unequip,
+} from "./lib";
 import uniform, { famweightOutfit } from "./outfits";
 
 export function universalWeightBuffs(): void {
@@ -132,11 +137,11 @@ function testPrep() {
     }
 }
 
-export default function familiarTest(): number {
+export default function familiarTest(): void {
     universalWeightBuffs();
     familiarStuff();
     gearAndUncommonBuffs();
     takeAShower();
     testPrep();
-    return 60 - Math.floor((familiarWeight(myFamiliar()) + weightAdjustment()) / 5);
+    burnLibrams();
 }

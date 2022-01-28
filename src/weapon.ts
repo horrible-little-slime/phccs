@@ -28,6 +28,7 @@ import {
 } from "libram";
 import {
     advMacroAA,
+    burnLibrams,
     ensureEffect,
     ensureInnerElf,
     fax,
@@ -140,7 +141,7 @@ function testPrep() {
     weaponOutfit();
 }
 
-export default function weaponTest(): number {
+export default function weaponTest(): void {
     castBuffs();
     getCrushed();
     forceSpit();
@@ -148,5 +149,5 @@ export default function weaponTest(): number {
     kungFuMeteors();
     testPrep();
     if (predictor() > 1) throw "Failed to cap weapon damage!";
-    return predictor();
+    burnLibrams();
 }

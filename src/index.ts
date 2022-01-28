@@ -4,6 +4,7 @@ import {
     cliExecute,
     drink,
     gametimeToInt,
+    isDarkMode,
     myInebriety,
     myLevel,
     myPathId,
@@ -20,11 +21,13 @@ import hotTest from "./hotres";
 import itemTest from "./item";
 import levelUp from "./level";
 import noncombatTest from "./noncombat";
-import { convertMilliseconds, PropertyManager, Test, tests, testWrapper } from "./lib";
+import { convertMilliseconds, logTime, PropertyManager } from "./lib";
 import spellTest from "./spell";
 import { HPTest, moxTest, muscleTest, mystTest } from "./stattests";
 import weaponTest from "./weapon";
-import { $effect, $item, $skill, get, have } from "libram";
+import { $effect, $item, $skill, CommunityService, get, have } from "libram";
+
+const HIGHLIGHT = isDarkMode() ? "yellow" : "blue";
 
 //preamble
 if (myPathId() !== 25) abort();
@@ -41,32 +44,39 @@ PropertyManager.set({
 });
 const startTime = gametimeToInt();
 try {
-    testWrapper("wire-coiling", Test.COIL_WIRE, coilWire);
-    if (myLevel() < 13) levelUp();
-    testWrapper("moxie", Test.MOX, moxTest);
-    testWrapper("HP", Test.HP, HPTest);
-    testWrapper("muscle", Test.MUS, muscleTest);
-    testWrapper("mysticality", Test.MYS, mystTest);
-    if (availableAmount($item`astral six-pack`) !== 0) use(1, $item`astral six-pack`);
-    if (have($effect`The Magical Mojomuscular Melody`))
-        cliExecute("shrug The Magical Mojomuscular Melody");
-    useSkill($skill`The Ode to Booze`);
-    while (myInebriety() < 5) {
-        drink(1, $item`astral pilsner`);
-    }
-    testWrapper("item", Test.ITEM, itemTest);
-    testWrapper("hot res", Test.HOT_RES, hotTest);
-    testWrapper("noncombat", Test.NONCOMBAT, noncombatTest);
-    testWrapper("familiar", Test.FAMILIAR, familiarTest);
-    testWrapper("weapon damage", Test.WEAPON, weaponTest);
-    testWrapper("spell damage", Test.SPELL, spellTest);
-} finally {
-    tests.forEach((testDuration) => {
-        print(
-            `We expected the ${testDuration.testName} test to take ${testDuration.turnPrediction} turns, and it cost ${testDuration.turnCost} turns.`,
-            "blue"
-        );
+    CommunityService.CoilWire.run(coilWire);
+    if (myLevel() < 13) logTime("levelling", levelUp);
+    CommunityService.Moxie.run(moxTest);
+    CommunityService.HP.run(HPTest);
+    CommunityService.Muscle.run(muscleTest);
+    CommunityService.Mysticality.run(mystTest);
+    logTime("getting drunk", () => {
+        if (availableAmount($item`astral six-pack`) !== 0) use(1, $item`astral six-pack`);
+        if (have($effect`The Magical Mojomuscular Melody`))
+            cliExecute("shrug The Magical Mojomuscular Melody");
+        useSkill($skill`The Ode to Booze`);
+        while (myInebriety() < 5) {
+            drink(1, $item`astral pilsner`);
+        }
     });
+    CommunityService.BoozeDrop.run(itemTest);
+    CommunityService.HotRes.run(hotTest);
+    CommunityService.Noncombat.run(noncombatTest);
+    CommunityService.FamiliarWeight.run(familiarTest);
+    CommunityService.WeaponDamage.run(weaponTest);
+    CommunityService.SpellDamage.run(spellTest);
+} finally {
+    for (const [name, { predictedTurns, turnCost, seconds }] of Object.entries(
+        CommunityService.log
+    )) {
+        const truePrediction = name === "Make Sausage" ? predictedTurns + 1 : predictedTurns;
+        print(
+            `It took us ${seconds} seconds ${turnCost && `and ${turnCost} turns `}to do ${name}${
+                truePrediction && `, nd we predicted it would take ${truePrediction}`
+            }.`,
+            HIGHLIGHT
+        );
+    }
     print(
         `This loop took ${convertMilliseconds(
             gametimeToInt() - startTime

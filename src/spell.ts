@@ -25,7 +25,7 @@ import {
     $items,
     $location,
     $skill,
-    CommunityService,
+    // CommunityService,
     DaylightShavings,
     get,
     getSaleValue,
@@ -35,6 +35,7 @@ import {
 import Macro from "./combat";
 import {
     advMacroAA,
+    burnLibrams,
     chefstaves,
     ensureEffect,
     ensureInnerElf,
@@ -44,7 +45,7 @@ import {
 } from "./lib";
 import uniform, { spellOutfit } from "./outfits";
 
-const predictor = () => CommunityService.SpellDamage.prediction;
+// const predictor = () => CommunityService.SpellDamage.prediction;
 
 function castBuffs() {
     ensureEffect($effect`Simmering`);
@@ -154,7 +155,7 @@ function testPrep() {
     spellOutfit();
 }
 
-export default function spellTest(): number {
+export default function spellTest(): void {
     castBuffs();
     fingies();
     uniform(
@@ -165,5 +166,5 @@ export default function spellTest(): number {
     ensureInnerElf();
     shower();
     testPrep();
-    return 1 + predictor();
+    burnLibrams();
 }

@@ -28,9 +28,9 @@ import {
 } from "libram";
 import Macro from "./combat";
 import { universalWeightBuffs } from "./familiarweight";
-import { advMacroAA, ensureEffect, ensureMp, fuelUp, horse, setChoice } from "./lib";
+import { advMacroAA, burnLibrams, ensureEffect, ensureMp, fuelUp, horse, setChoice } from "./lib";
 import uniform, { hotresOutfit, Outfit } from "./outfits";
-const predictor = () => CommunityService.HotRes.prediction
+const predictor = () => CommunityService.HotRes.prediction;
 
 function castBuffs() {
     universalWeightBuffs();
@@ -123,10 +123,10 @@ function testPrep() {
     }
 }
 
-export default function hotTest(): number {
+export default function hotTest(): void {
     castBuffs();
     thisFireIsOutOfControl();
     deepDarkVisions();
     testPrep();
-    return predictor();
+    burnLibrams();
 }

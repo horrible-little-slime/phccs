@@ -1,7 +1,7 @@
 import { create, eat } from "kolmafia";
 import { $item, $items, $location, $skill, get, have } from "libram";
 import uniform, { wireOutfit } from "./outfits";
-import { advMacro, fightSausageIfAble, useDefaultFamiliar } from "./lib";
+import { advMacro, burnLibrams, fightSausageIfAble, useDefaultFamiliar } from "./lib";
 import runStart from "./runstart";
 import Macro from "./combat";
 
@@ -39,9 +39,9 @@ function firstFights() {
     }
 }
 
-export default function coilWire(): number {
+export default function coilWire(): void {
     runStart();
     firstFights();
     wireOutfit();
-    return 60;
+    burnLibrams();
 }

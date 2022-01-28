@@ -14,7 +14,7 @@ import {
 import Macro from "./combat";
 import { $coinmaster, $effect, $familiar, $item, $slot, CommunityService, get, have } from "libram";
 import { universalWeightBuffs } from "./familiarweight";
-import { ensureEffect, fuelUp, heal, horse, setChoice } from "./lib";
+import { burnLibrams, ensureEffect, fuelUp, heal, horse, setChoice } from "./lib";
 import uniform, { noncombatOutfit } from "./outfits";
 
 const predictor = () => CommunityService.Noncombat.prediction;
@@ -71,10 +71,10 @@ function testPrep() {
     }
 }
 
-export default function noncombatTest(): number {
+export default function noncombatTest(): void {
     castBuffs();
     godLobster();
     testPrep();
     if (predictor() > 1) throw "Failed to cap noncombat";
-    return predictor();
+    burnLibrams();
 }

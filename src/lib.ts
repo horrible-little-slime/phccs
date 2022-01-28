@@ -52,6 +52,7 @@ import {
     $slot,
     bestLibramToCast,
     clamp,
+    CommunityService,
     get,
     getModifier,
     have,
@@ -213,21 +214,6 @@ export function useDefaultFamiliar(canAttack = true): void {
     } else {
         useFamiliar($familiar`Puck Man`);
     }
-}
-
-export enum Test {
-    HP = 1,
-    MUS = 2,
-    MYS = 3,
-    MOX = 4,
-    FAMILIAR = 5,
-    WEAPON = 6,
-    SPELL = 7,
-    NONCOMBAT = 8,
-    ITEM = 9,
-    HOT_RES = 10,
-    COIL_WIRE = 11,
-    DONATE = 30,
 }
 
 export function testDone(testNum: number): boolean {
@@ -465,21 +451,6 @@ export function fax(monster: Monster): void {
     }
 }
 
-export const tests: testDuration[] = [];
-
-export function testWrapper(name: string, test: Test, prepare: () => number): void {
-    if (testDone(test)) return;
-    const startTurns = myTurncount();
-    const predictedTurns = prepare();
-    burnLibrams();
-    doTest(test);
-    tests.push({
-        testName: name,
-        turnPrediction: predictedTurns,
-        turnCost: myTurncount() - startTurns,
-    });
-}
-
 export function questStep(questName: string): number {
     const stringStep = property.getString(questName);
     if (stringStep === "unstarted" || stringStep === "") return -1;
@@ -709,3 +680,17 @@ export function unequip(item: Item): void {
 }
 
 export const chefstaves = $items`Staff of Kitchen Royalty, Staff of the Deepest Freeze, Staff of Frozen Lard, Staff of the Peppermint Twist, Staff of the Roaring Hearth`;
+
+export function logTime(name: string, action: () => void): void {
+    const startTime = Date.now();
+    const startTurns = myTurncount();
+    try {
+        action();
+    } finally {
+        CommunityService.log[name] = {
+            predictedTurns: 0,
+            turnCost: myTurncount() - startTurns,
+            seconds: (Date.now() - startTime) / 1000,
+        };
+    }
+}

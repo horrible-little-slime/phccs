@@ -10,7 +10,14 @@ import {
 } from "kolmafia";
 import { $effect, $familiar, $item, $skill, CommunityService, get, have } from "libram";
 import { hpOutfit, moxieOutfit, muscleOutfit, mysticalityOutfit } from "./outfits";
-import { ensureEffect, ensureInnerElf, equalizeMoxie, equalizeMuscle, tryUse } from "./lib";
+import {
+    burnLibrams,
+    ensureEffect,
+    ensureInnerElf,
+    equalizeMoxie,
+    equalizeMuscle,
+    tryUse,
+} from "./lib";
 
 const musclePredictor = () => CommunityService.Muscle.prediction;
 
@@ -43,10 +50,10 @@ function muscleTestPrep() {
     }
 }
 
-export function muscleTest(): number {
+export function muscleTest(): void {
     musclebuffs();
     muscleTestPrep();
-    return musclePredictor();
+    burnLibrams();
 }
 
 const mystPredictor = () => CommunityService.Mysticality.prediction;
@@ -59,11 +66,11 @@ function mystTestPrep() {
     mysticalityOutfit();
 }
 
-export function mystTest(): number {
+export function mystTest(): void {
     mystbuffs();
     mystTestPrep();
     if (mystPredictor() > 1) throw "Not enough mysticality to cap";
-    return mystPredictor();
+    burnLibrams();
 }
 
 const moxPredictor = () => CommunityService.Moxie.prediction;
@@ -111,13 +118,13 @@ function moxTestPrep() {
     moxieOutfit();
 }
 
-export function moxTest(): number {
+export function moxTest(): void {
     moxBuffs();
     moxTestPrep();
     if (moxPredictor() > 1) {
         throw "Not enough moxie to cap.";
     }
-    return moxPredictor();
+    burnLibrams();
 }
 
 function hpBuffs() {
@@ -140,11 +147,11 @@ function hpTestPrep() {
     hpOutfit();
 }
 
-export function HPTest(): number {
+export function HPTest(): void {
     hpBuffs();
     hpTestPrep();
     if (hpPredictor() > 1) {
         throw "Failed to cap HP";
     }
-    return hpPredictor();
+    burnLibrams();
 }
