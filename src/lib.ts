@@ -21,7 +21,6 @@ import {
     myMaxhp,
     myMaxmp,
     myMp,
-    myTurncount,
     print,
     restoreHp,
     restoreMp,
@@ -52,7 +51,6 @@ import {
     $slot,
     bestLibramToCast,
     clamp,
-    CommunityService,
     get,
     getModifier,
     have,
@@ -680,17 +678,3 @@ export function unequip(item: Item): void {
 }
 
 export const chefstaves = $items`Staff of Kitchen Royalty, Staff of the Deepest Freeze, Staff of Frozen Lard, Staff of the Peppermint Twist, Staff of the Roaring Hearth`;
-
-export function logTime(name: string, action: () => void): void {
-    const startTime = Date.now();
-    const startTurns = myTurncount();
-    try {
-        action();
-    } finally {
-        CommunityService.log[name] = {
-            predictedTurns: 0,
-            turnCost: myTurncount() - startTurns,
-            seconds: (Date.now() - startTime) / 1000,
-        };
-    }
-}

@@ -21,7 +21,7 @@ import hotTest from "./hotres";
 import itemTest from "./item";
 import levelUp from "./level";
 import noncombatTest from "./noncombat";
-import { convertMilliseconds, logTime, PropertyManager } from "./lib";
+import { convertMilliseconds, PropertyManager } from "./lib";
 import spellTest from "./spell";
 import { HPTest, moxTest, muscleTest, mystTest } from "./stattests";
 import weaponTest from "./weapon";
@@ -45,20 +45,18 @@ PropertyManager.set({
 const startTime = gametimeToInt();
 try {
     CommunityService.CoilWire.run(coilWire);
-    if (myLevel() < 13) logTime("levelling", levelUp);
+    if (myLevel() < 13) levelUp();
     CommunityService.Moxie.run(moxTest);
     CommunityService.HP.run(HPTest);
     CommunityService.Muscle.run(muscleTest);
     CommunityService.Mysticality.run(mystTest);
-    logTime("getting drunk", () => {
-        if (availableAmount($item`astral six-pack`) !== 0) use(1, $item`astral six-pack`);
-        if (have($effect`The Magical Mojomuscular Melody`))
-            cliExecute("shrug The Magical Mojomuscular Melody");
-        useSkill($skill`The Ode to Booze`);
-        while (myInebriety() < 5) {
-            drink(1, $item`astral pilsner`);
-        }
-    });
+    if (availableAmount($item`astral six-pack`) !== 0) use(1, $item`astral six-pack`);
+    if (have($effect`The Magical Mojomuscular Melody`))
+        cliExecute("shrug The Magical Mojomuscular Melody");
+    useSkill($skill`The Ode to Booze`);
+    while (myInebriety() < 5) {
+        drink(1, $item`astral pilsner`);
+    }
     CommunityService.BoozeDrop.run(itemTest);
     CommunityService.HotRes.run(hotTest);
     CommunityService.Noncombat.run(noncombatTest);
@@ -66,16 +64,12 @@ try {
     CommunityService.WeaponDamage.run(weaponTest);
     CommunityService.SpellDamage.run(spellTest);
 } finally {
-    for (const [name, { predictedTurns, turnCost, seconds }] of Object.entries(
-        CommunityService.log
-    )) {
+    for (const [name, { predictedTurns, turnCost }] of Object.entries(CommunityService.log)) {
         const truePrediction = name === "Make Sausage" ? predictedTurns + 1 : predictedTurns;
         print(
-            `It took us ${seconds} seconds ${
+            `It took us ${
                 turnCost ? `and ${turnCost} turns ` : ""
-            }to do ${name}${
-                truePrediction ? `, nd we predicted it would take ${truePrediction}` : ""
-            }.`,
+            }to do ${name}, and we predicted it would take ${truePrediction} turns.`,
             HIGHLIGHT
         );
     }
