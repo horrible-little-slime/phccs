@@ -5,8 +5,11 @@ import {
     equip,
     equippedAmount,
     equippedItem,
+    Familiar,
     inHardcore,
+    Item,
     myFamiliar,
+    Slot,
     toSlot,
     useFamiliar,
 } from "kolmafia";

@@ -5,6 +5,7 @@ import {
     create,
     eudoraItem,
     inHardcore,
+    Item,
     itemAmount,
     myLevel,
     mySpleenUse,
