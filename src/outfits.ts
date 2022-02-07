@@ -1,4 +1,5 @@
 import {
+    abort,
     buy,
     canEquip,
     cliExecute,
@@ -16,8 +17,26 @@ import {
 import { $familiar, $item, $items, $slot, $slots, have } from "libram";
 import { chefstaves } from "./lib";
 
+const outfitSlots = [
+    "weapon",
+    "offhand",
+    "hat",
+    "back",
+    "shirt",
+    "pants",
+    "acc1",
+    "acc2",
+    "acc3",
+    "familiar",
+] as const;
+
+type OutfitSlots = typeof outfitSlots[number];
+
+type OutfitParts = Partial<{ [slot in OutfitSlots]: Item }>;
+type OutfitAttempt = Partial<{ [slot in OutfitSlots]: Item | Item[] }>;
+
 export class Outfit {
-    equips: Map<Slot, Item>;
+    equips: OutfitParts;
     familiar?: Familiar;
 
     /**
@@ -25,32 +44,37 @@ export class Outfit {
      * @param equips Map of what to equip and where
      * @param familiar Optional familiar to use with outfit
      */
-    constructor(equips: Map<Slot, Item>, familiar?: Familiar) {
+    constructor(equips: OutfitParts, familiar?: Familiar) {
         this.equips = equips;
         this.familiar = familiar;
     }
 
     dress(): void {
         if (this.familiar) useFamiliar(this.familiar);
-        const targetEquipment = Array.from(this.equips.values());
+        const targetEquipment = Object.values(this.equips);
         const accessorySlots = $slots`acc1, acc2, acc3`;
-        for (const slot of $slots`weapon, off-hand, hat, shirt, pants, familiar, buddy-bjorn, crown-of-thrones, back`) {
+        const equipmentMap = new Map<Slot, Item>(
+            Array.from(Object.entries(this.equips)).map(
+                ([slotName, equipmentItem]) => [toSlot(slotName), equipmentItem] as [Slot, Item]
+            )
+        );
+        for (const slot of $slots`weapon, offhand, hat, shirt, pants, familiar, buddy-bjorn, crown-of-thrones, back`) {
             if (
                 targetEquipment.includes(equippedItem(slot)) &&
-                this.equips.get(slot) !== equippedItem(slot)
+                equipmentMap.get(slot) !== equippedItem(slot)
             )
                 equip(slot, $item`none`);
         }
 
         //Order is anchored here to prevent DFSS shenanigans
-        for (const slot of $slots`weapon, off-hand, hat, back, shirt, pants, familiar, buddy-bjorn, crown-of-thrones`) {
-            const equipment = this.equips.get(slot);
+        for (const slot of $slots`weapon, offhand, hat, back, shirt, pants, familiar, buddy-bjorn, crown-of-thrones`) {
+            const equipment = equipmentMap.get(slot);
             if (equipment) equip(slot, equipment);
         }
 
         //We don't care what order accessories are equipped in, just that they're equipped
         const accessoryEquips = accessorySlots
-            .map((slot) => this.equips.get(slot))
+            .map((slot) => equipmentMap.get(slot))
             .filter((item) => item !== undefined) as Item[];
         for (const slot of accessorySlots) {
             const toEquip = accessoryEquips.find(
@@ -84,17 +108,21 @@ export class Outfit {
      * @param equips Map of what to equip and where; will use first item in array that it can, and willl not add things to outfit otherwise
      * @param familiar Optional familiar to use with outfit
      */
-    static doYourBest(equips: Map<Slot, Item | Item[]>, familiar?: Familiar): Outfit {
-        const returnValue = new Map<Slot, Item>();
-        for (const [slot, itemOrItems] of equips.entries()) {
-            const item = Array.isArray(itemOrItems)
+    static doYourBest(equips: OutfitAttempt, familiar?: Familiar): Outfit {
+        const fit: OutfitParts = {};
+        for (const slotName of outfitSlots) {
+            const itemOrItems = equips[slotName];
+            if (!itemOrItems) continue;
+
+            const itemChoice = Array.isArray(itemOrItems)
                 ? itemOrItems.find(
-                      (item) => have(item) && (slot === $slot`familiar` || canEquip(item))
+                      (item) =>
+                          have(item) && (toSlot(slotName) === $slot`familiar` || canEquip(item))
                   )
                 : itemOrItems;
-            if (item) returnValue.set(slot, item);
+            if (itemChoice) fit[slotName] = itemChoice;
         }
-        return new Outfit(returnValue, familiar);
+        return new Outfit(fit, familiar);
     }
 
     /**
@@ -103,14 +131,13 @@ export class Outfit {
      */
     static current(withFamiliar = false): Outfit {
         const familiar = withFamiliar ? myFamiliar() : undefined;
-        const slots = $slots`hat, shirt, back, weapon, off-hand, pants, acc1, acc2, acc3`;
-        if (withFamiliar) slots.push($slot`familiar`);
-        const outfitMap = new Map<Slot, Item>();
-        for (const slot of slots) {
+        const fit: OutfitParts = {};
+        for (const slotName of outfitSlots) {
+            const slot = toSlot(slotName);
             const item = equippedItem(slot);
-            if (item !== $item`none`) outfitMap.set(slot, item);
+            if (item !== $item`none`) fit[slotName] = item;
         }
-        return new Outfit(outfitMap, familiar);
+        return new Outfit(fit, familiar);
     }
 }
 
@@ -132,110 +159,103 @@ export function withOutfit<T>(outfit: Outfit, callback: () => T): T {
 }
 
 export default function uniform(...changes: (Item | [Item, Slot])[]): void {
-    const uniformMap = new Map<Slot, Item | Item[]>([
-        [$slot`hat`, $item`Iunion Crown`],
-        [$slot`shirt`, $item`fresh coat of paint`],
-        [$slot`pants`, $items`pantogram pants, old sweatpants`],
-        [$slot`weapon`, $item`Fourth of May Cosplay Saber`],
-        [$slot`off-hand`, $item`familiar scrapbook`],
-        [$slot`acc1`, $items`meteorite necklace, your cowboy boots`],
-        [$slot`acc2`, $item`codpiece`],
-        [$slot`acc3`, $items`battle broom, Powerful Glove`],
-        [$slot`back`, $items`LOV Epaulettes, vampyric cloake`],
-    ]);
+    const defaultUniform = {
+        hat: $item`Iunion Crown`,
+        shirt: $item`fresh coat of paint`,
+        pants: $items`pantogram pants, old sweatpants`,
+        weapon: $item`Fourth of May Cosplay Saber`,
+        offhand: $item`familiar scrapbook`,
+        acc1: $items`meteorite necklace, your cowboy boots`,
+        acc2: $item`codpiece`,
+        acc3: $items`battle broom, Powerful Glove`,
+        back: $items`LOV Epaulettes, vampyric cloake`,
+        familiar: null,
+    };
 
-    changes.forEach((change) => {
-        const slot = Array.isArray(change) ? change[1] : toSlot(change);
-        const equipment = Array.isArray(change) ? change[0] : change;
-        const currentSlotOccupant = uniformMap.get(slot);
-        const newSlotOccupant = currentSlotOccupant
-            ? Array.isArray(currentSlotOccupant)
-                ? [equipment, ...currentSlotOccupant]
-                : [equipment, currentSlotOccupant]
-            : equipment;
-        uniformMap.set(slot, newSlotOccupant);
-    });
+    const alterations = Object.fromEntries(
+        changes.map((change) => {
+            const slot = Array.isArray(change) ? change[1] : toSlot(change);
+            const slotName =
+                outfitSlots.find((element) => toSlot(element) === slot) ??
+                abort("invalid slot for outfit");
+            const equipment = Array.isArray(change) ? change[0] : change;
+            return [slotName, equipment];
+        })
+    ) as OutfitAttempt;
 
-    Outfit.doYourBest(uniformMap).dress();
+    const chosenOutfit: OutfitAttempt = {};
+    for (const slotName of outfitSlots) {
+        const itemOrItems = alterations[slotName] ?? defaultUniform[slotName];
+        if (itemOrItems) chosenOutfit[slotName] = itemOrItems;
+    }
+    Outfit.doYourBest(chosenOutfit).dress();
 }
 
 export function wireOutfit(): void {
-    new Outfit(
-        new Map<Slot, Item>([
-            [$slot`hat`, $item`Iunion Crown`],
-            [$slot`shirt`, $item`fresh coat of paint`],
-            [$slot`pants`, $item`Cargo Cultist Shorts`],
-            [$slot`weapon`, $item`Fourth of May Cosplay Saber`],
-            [$slot`off-hand`, $item`familiar scrapbook`],
-            [$slot`acc1`, $item`Eight Days a Week Pill Keeper`],
-            [$slot`acc2`, $item`Powerful Glove`],
-            [$slot`acc3`, $item`Guzzlr tablet`],
-        ])
-    ).dress();
+    new Outfit({
+        hat: $item`Iunion Crown`,
+        shirt: $item`fresh coat of paint`,
+        pants: $item`Cargo Cultist Shorts`,
+        weapon: $item`Fourth of May Cosplay Saber`,
+        offhand: $item`familiar scrapbook`,
+        acc1: $item`Eight Days a Week Pill Keeper`,
+        acc2: $item`Powerful Glove`,
+        acc3: $item`Guzzlr tablet`,
+    }).dress();
 }
 
 export function moxieOutfit(): void {
     cliExecute("retrocape robot");
-    Outfit.doYourBest(
-        new Map<Slot, Item | Item[]>([
-            [$slot`hat`, $item`very pointy crown`],
-            [$slot`shirt`, $items`shoe ad T-shirt, fresh coat of paint`],
-            [$slot`back`, $item`unwrapped knock-off retro superhero cape`],
-            [$slot`weapon`, $item`Fourth of May Cosplay Saber`],
-            [$slot`pants`, $item`Cargo Cultist Shorts`],
-            [$slot`acc1`, $item`Beach Comb`],
-            [$slot`acc2`, $item`"I Voted!" sticker`],
-            [$slot`acc3`, $item`Retrospecs`],
-            [$slot`familiar`, $item`miniature crystal ball`],
-        ])
-    ).dress();
+    Outfit.doYourBest({
+        hat: $item`very pointy crown`,
+        shirt: $items`shoe ad T-shirt, fresh coat of paint`,
+        back: $item`unwrapped knock-off retro superhero cape`,
+        weapon: $item`Fourth of May Cosplay Saber`,
+        pants: $item`Cargo Cultist Shorts`,
+        acc1: $item`Beach Comb`,
+        acc2: $item`"I Voted!" sticker`,
+        acc3: $item`Retrospecs`,
+        familiar: $item`miniature crystal ball`,
+    }).dress();
 }
 
 export function hpOutfit(): void {
     cliExecute("retrocape vampire");
     if (!have($item`wad of used tape`)) cliExecute("fold wad of used tape");
-    Outfit.doYourBest(
-        new Map<Slot, Item | Item[]>([
-            [$slot`hat`, $item`wad of used tape`],
-            [$slot`weapon`, $item`dented scepter`],
-            [$slot`off-hand`, $item`Fourth of May Cosplay Saber`],
-            [$slot`shirt`, $items`shoe ad T-shirt, fresh coat of paint`],
-            [$slot`back`, $item`unwrapped knock-off retro superhero cape`],
-            [$slot`pants`, $item`Cargo Cultist Shorts`],
-            [$slot`acc1`, $item`Brutal brogues`],
-            [$slot`acc2`, $item`Retrospecs`],
-            [$slot`acc3`, $item`Kremlin's Greatest Briefcase`],
-            [$slot`familiar`, $item`miniature crystal ball`],
-        ])
-    ).dress();
+    Outfit.doYourBest({
+        hat: $item`wad of used tape`,
+        weapon: $item`dented scepter`,
+        offhand: $item`Fourth of May Cosplay Saber`,
+        shirt: $items`shoe ad T-shirt, fresh coat of paint`,
+        back: $item`unwrapped knock-off retro superhero cape`,
+        pants: $item`Cargo Cultist Shorts`,
+        acc1: $item`Brutal brogues`,
+        acc2: $item`Retrospecs`,
+        acc3: $item`Kremlin's Greatest Briefcase`,
+        familiar: $item`miniature crystal ball`,
+    }).dress();
 }
 
 export function muscleOutfit(): void {
     cliExecute("retrocape vampire");
     if (!have($item`wad of used tape`)) cliExecute("fold wad of used tape");
     Outfit.doYourBest(
-        new Map<Slot, Item | Item[]>([
-            [$slot`hat`, $item`wad of used tape`],
-            [$slot`weapon`, $item`dented scepter`],
-            [
-                $slot`off-hand`,
-                have($familiar`Disembodied Hand`)
-                    ? $items`cosmetic football`
-                    : $item`Fourth of May Cosplay Saber`,
-            ],
-            [$slot`shirt`, $items`shoe ad T-shirt, fresh coat of paint`],
-            [$slot`back`, $item`unwrapped knock-off retro superhero cape`],
-            [$slot`pants`, $item`Cargo Cultist Shorts`],
-            [$slot`acc1`, $item`Brutal brogues`],
-            [$slot`acc2`, $item`Retrospecs`],
-            [$slot`acc3`, $item`Kremlin's Greatest Briefcase`],
-            [
-                $slot`familiar`,
-                have($familiar`Disembodied Hand`)
-                    ? $item`Fourth of May Cosplay Saber`
-                    : $item`miniature crystal ball`,
-            ],
-        ]),
+        {
+            hat: $item`wad of used tape`,
+            weapon: $item`dented scepter`,
+            offhand: have($familiar`Disembodied Hand`)
+                ? $items`cosmetic football`
+                : $item`Fourth of May Cosplay Saber`,
+            shirt: $items`shoe ad T-shirt, fresh coat of paint`,
+            back: $item`unwrapped knock-off retro superhero cape`,
+            pants: $item`Cargo Cultist Shorts`,
+            acc1: $item`Brutal brogues`,
+            acc2: $item`Retrospecs`,
+            acc3: $item`Kremlin's Greatest Briefcase`,
+            familiar: have($familiar`Disembodied Hand`)
+                ? $item`Fourth of May Cosplay Saber`
+                : $item`miniature crystal ball`,
+        },
         have($familiar`Disembodied Hand`) ? $familiar`Disembodied Hand` : undefined
     ).dress();
 }
@@ -243,18 +263,18 @@ export function muscleOutfit(): void {
 export function mysticalityOutfit(): void {
     cliExecute("retrocape heck");
     Outfit.doYourBest(
-        new Map<Slot, Item | Item[]>([
-            [$slot`hat`, $item`wad of used tape`],
-            [$slot`weapon`, $item`Fourth of May Cosplay Saber`],
-            [$slot`off-hand`, $item`astral statuette`],
-            [$slot`back`, $item`unwrapped knock-off retro superhero cape`],
-            [$slot`shirt`, $items`denim jacket, shoe ad T-shirt, fresh coat of paint`],
-            [$slot`pants`, $item`pantogram pants`],
-            [$slot`acc1`, $item`your cowboy boots`],
-            [$slot`acc2`, $item`codpiece`],
-            [$slot`acc3`, $item`battle broom`],
-            [$slot`familiar`, $items`Abracandalabra`],
-        ]),
+        {
+            hat: $item`wad of used tape`,
+            weapon: $item`Fourth of May Cosplay Saber`,
+            offhand: $item`astral statuette`,
+            back: $item`unwrapped knock-off retro superhero cape`,
+            shirt: $items`denim jacket, shoe ad T-shirt, fresh coat of paint`,
+            pants: $item`pantogram pants`,
+            acc1: $item`your cowboy boots`,
+            acc2: $item`codpiece`,
+            acc3: $item`battle broom`,
+            familiar: $items`Abracandalabra`,
+        },
         $familiar`Left-Hand Man`
     ).dress();
 }
@@ -262,16 +282,16 @@ export function mysticalityOutfit(): void {
 export function itemOutfit(): void {
     if (!have($item`wad of used tape`)) cliExecute("fold wad of used tape");
     Outfit.doYourBest(
-        new Map<Slot, Item | Item[]>([
-            [$slot`hat`, $item`wad of used tape`],
-            [$slot`weapon`, $items`extra-large utility candle`],
-            [$slot`off-hand`, $item`cursed magnifying glass`],
-            [$slot`back`, $item`protonic accelerator pack`],
-            [$slot`acc1`, $item`Guzzlr tablet`],
-            [$slot`acc2`, $item`gold detective badge`],
-            [$slot`acc3`, $items`government-issued night-vision goggles`],
-            [$slot`familiar`, $item`li'l ninja costume`],
-        ]),
+        {
+            hat: $item`wad of used tape`,
+            weapon: $items`extra-large utility candle`,
+            offhand: $item`cursed magnifying glass`,
+            back: $item`protonic accelerator pack`,
+            acc1: $item`Guzzlr tablet`,
+            acc2: $item`gold detective badge`,
+            acc3: $items`government-issued night-vision goggles`,
+            familiar: $item`li'l ninja costume`,
+        },
         $familiar`Trick-or-Treating Tot`
     ).dress();
 }
@@ -279,31 +299,31 @@ export function itemOutfit(): void {
 export function hotresOutfit(): void {
     cliExecute("retrocape vampire hold");
     Outfit.doYourBest(
-        new Map<Slot, Item | Item[]>([
-            [$slot`back`, $item`unwrapped knock-off retro superhero cape`],
-            [$slot`weapon`, $item`Fourth of May Cosplay Saber`],
-            [$slot`off-hand`, $item`meteorite guard`],
-            [$slot`pants`, $item`pantogram pants`],
-            [$slot`acc1`, $item`your cowboy boots`],
-            [$slot`acc2`, $item`Brutal brogues`],
-            [$slot`acc3`, $item`Beach Comb`],
-            [$slot`familiar`, $items`cracker`],
-        ]),
+        {
+            back: $item`unwrapped knock-off retro superhero cape`,
+            weapon: $item`Fourth of May Cosplay Saber`,
+            offhand: $item`meteorite guard`,
+            pants: $item`pantogram pants`,
+            acc1: $item`your cowboy boots`,
+            acc2: $item`Brutal brogues`,
+            acc3: $item`Beach Comb`,
+            familiar: $items`cracker`,
+        },
         $familiar`Exotic Parrot`
     ).dress();
 }
 
 export function noncombatOutfit(): void {
     Outfit.doYourBest(
-        new Map<Slot, Item | Item[]>([
-            [$slot`hat`, $item`very pointy crown`],
-            [$slot`back`, $item`protonic accelerator pack`],
-            [$slot`weapon`, $item`Fourth of May Cosplay Saber`],
-            [$slot`off-hand`, $items`burning paper crane, familiar scrapbook`],
-            [$slot`acc1`, $item`Kremlin's Greatest Briefcase`],
-            [$slot`acc2`, $item`codpiece`],
-            [$slot`acc3`, $item`Brutal brogues`],
-        ]),
+        {
+            hat: $item`very pointy crown`,
+            back: $item`protonic accelerator pack`,
+            weapon: $item`Fourth of May Cosplay Saber`,
+            offhand: $items`burning paper crane, familiar scrapbook`,
+            acc1: $item`Kremlin's Greatest Briefcase`,
+            acc2: $item`codpiece`,
+            acc3: $item`Brutal brogues`,
+        },
         $familiar`Disgeist`
     ).dress();
 }
@@ -318,16 +338,16 @@ export function famweightOutfit(): void {
               equip: have($item`astral pet sweater`) ? $item`astral pet sweater` : $item`none`,
           };
     Outfit.doYourBest(
-        new Map<Slot, Item | Item[]>([
-            [$slot`hat`, $item`Daylight Shavings Helmet`],
-            [$slot`weapon`, $item`Fourth of May Cosplay Saber`],
-            [$slot`off-hand`, $items`burning paper crane, familiar scrapbook`],
-            [$slot`pants`, $items`repaid diaper, Great Wolf's beastly trousers, pantogram pants`],
-            [$slot`acc1`, $item`Beach Comb`],
-            [$slot`acc2`, $item`Brutal brogues`],
-            [$slot`acc3`, $item`hewn moon-rune spoon`],
-            [$slot`familiar`, familiarAndEquip.equip],
-        ]),
+        {
+            hat: $item`Daylight Shavings Helmet`,
+            weapon: $item`Fourth of May Cosplay Saber`,
+            offhand: $items`burning paper crane, familiar scrapbook`,
+            pants: $items`repaid diaper, Great Wolf's beastly trousers, pantogram pants`,
+            acc1: $item`Beach Comb`,
+            acc2: $item`Brutal brogues`,
+            acc3: $item`hewn moon-rune spoon`,
+            familiar: familiarAndEquip.equip,
+        },
         familiarAndEquip.fam
     ).dress();
 }
@@ -335,15 +355,15 @@ export function famweightOutfit(): void {
 export function weaponOutfit(): void {
     if (!have($item`broken champagne bottle`)) cliExecute("fold broken champagne bottle");
     Outfit.doYourBest(
-        new Map<Slot, Item | Item[]>([
-            [$slot`hat`, $items`seal-skull helmet`],
-            [$slot`weapon`, $item`broken champagne bottle`],
-            [$slot`off-hand`, $item`dented scepter`],
-            [$slot`acc1`, $item`Brutal brogues`],
-            [$slot`acc2`, $item`Kremlin's Greatest Briefcase`],
-            [$slot`acc3`, $items`meteorite ring, Powerful Glove`],
-            [$slot`familiar`, $items`Stick-Knife of Loathing`],
-        ]),
+        {
+            hat: $items`seal-skull helmet`,
+            weapon: $item`broken champagne bottle`,
+            offhand: $item`dented scepter`,
+            acc1: $item`Brutal brogues`,
+            acc2: $item`Kremlin's Greatest Briefcase`,
+            acc3: $items`meteorite ring, Powerful Glove`,
+            familiar: $items`Stick-Knife of Loathing`,
+        },
         $familiar`Disembodied Hand`
     ).dress();
 }
@@ -357,24 +377,21 @@ export function spellOutfit(): void {
         : { familiar: $familiar`Disembodied Hand`, famEquip: $items`Stick-Knife of Loathing` };
 
     Outfit.doYourBest(
-        new Map<Slot, Item | Item[]>([
-            [$slot`hat`, $items`sugar chapeau, Hollandaise helmet`],
-            [$slot`weapon`, !inHardcore() ? chefstaves : $item`weeping willow wand`],
-            [
-                $slot`off-hand`,
-                [
-                    $item`Abracandalabra`,
-                    ...(inHardcore()
-                        ? $items`weeping willow wand, astral statuette`
-                        : $items`obsidian nutcracker`),
-                ],
+        {
+            hat: $items`sugar chapeau, Hollandaise helmet`,
+            weapon: !inHardcore() ? chefstaves : $item`weeping willow wand`,
+            offhand: [
+                $item`Abracandalabra`,
+                ...(inHardcore()
+                    ? $items`weeping willow wand, astral statuette`
+                    : $items`obsidian nutcracker`),
             ],
-            [$slot`familiar`, famEquip],
-            [$slot`pants`, $item`pantogram pants`],
-            [$slot`acc1`, $items`meteorite necklace, Kremlin's Greatest Briefcase`],
-            [$slot`acc2`, $item`codpiece`],
-            [$slot`acc3`, $item`battle broom`],
-        ]),
+            familiar: famEquip,
+            pants: $item`pantogram pants`,
+            acc1: $items`meteorite necklace, Kremlin's Greatest Briefcase`,
+            acc2: $item`codpiece`,
+            acc3: $item`battle broom`,
+        },
         familiar
     ).dress();
 }
