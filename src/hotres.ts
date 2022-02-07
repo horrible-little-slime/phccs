@@ -4,13 +4,11 @@ import {
     getFuel,
     handlingChoice,
     haveEffect,
-    Item,
     myHp,
     myMaxhp,
     myMp,
     numericModifier,
     runChoice,
-    Slot,
     use,
     useFamiliar,
     useSkill,
@@ -78,16 +76,16 @@ function deepDarkVisions() {
     }
     cliExecute("retrocape vampire hold");
     Outfit.doYourBest(
-        new Map<Slot, Item | Item[]>([
-            [$slot`hat`, $item`Iunion Crown`],
-            [$slot`shirt`, $items`denim jacket`],
-            [$slot`back`, $item`unwrapped knock-off retro superhero cape`],
-            [$slot`weapon`, $item`Fourth of May Cosplay Saber`],
-            [$slot`off-hand`, $item`familiar scrapbook`],
-            [$slot`pants`, $item`Cargo Cultist Shorts`],
-            [$slot`familiar`, $items`cracker`],
-            [$slot`acc1`, $item`your cowboy boots`],
-        ]),
+        {
+            hat: $item`Iunion Crown`,
+            shirt: $items`denim jacket`,
+            back: $item`unwrapped knock-off retro superhero cape`,
+            weapon: $item`Fourth of May Cosplay Saber`,
+            offhand: $item`familiar scrapbook`,
+            pants: $item`Cargo Cultist Shorts`,
+            familiar: $items`cracker`,
+            acc1: $item`your cowboy boots`,
+        },
         $familiar`Exotic Parrot`
     ).dress();
     while (

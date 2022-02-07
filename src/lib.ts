@@ -245,10 +245,7 @@ export function ensureInnerElf(): void {
         setClan(get("phccs_elfClan", "Hobopolis Vacation Home"));
         try {
             withOutfit(
-                new Outfit(
-                    new Map<Slot, Item>([[$slot`acc3`, $item`Kremlin's Greatest Briefcase`]]),
-                    $familiar`Machine Elf`
-                ),
+                new Outfit({ acc3: $item`Kremlin's Greatest Briefcase` }, $familiar`Machine Elf`),
                 () => {
                     ensureEffect($effect`Blood Bubble`);
                     setChoice(326, 1);
