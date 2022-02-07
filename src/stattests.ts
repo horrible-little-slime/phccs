@@ -3,12 +3,27 @@ import {
     create,
     eat,
     itemAmount,
+    myBasestat,
+    myBuffedstat,
+    myThrall,
+    print,
     retrieveItem,
     use,
     useFamiliar,
     useSkill,
 } from "kolmafia";
-import { $effect, $familiar, $item, $skill, CommunityService, get, have } from "libram";
+import {
+    $effect,
+    $familiar,
+    $item,
+    $skill,
+    $stat,
+    $thrall,
+    BeachComb,
+    CommunityService,
+    get,
+    have,
+} from "libram";
 import { hpOutfit, moxieOutfit, muscleOutfit, mysticalityOutfit } from "./outfits";
 import {
     burnLibrams,
@@ -19,7 +34,8 @@ import {
     tryUse,
 } from "./lib";
 
-const musclePredictor = () => CommunityService.Muscle.prediction;
+const musclePredictor = () =>
+    60 - Math.floor((myBuffedstat($stat`muscle`) - myBasestat($stat`mysticality`)) / 30);
 
 function musclebuffs() {
     equalizeMuscle();
@@ -40,9 +56,7 @@ function muscleTestPrep() {
     muscleOutfit();
 
     for (const increaser of [
-        () => {
-            if (!get("")) ensureEffect($effect`Lack of Body-Building`);
-        }, // will stay on all the way to weapon damage.
+        () => BeachComb.tryHead($effect`Lack of Body-Building`), // will stay on all the way to weapon damage.
         () => ensureEffect($effect`Ham-Fisted`),
         () => ensureInnerElf(),
     ]) {
@@ -53,6 +67,19 @@ function muscleTestPrep() {
 export function muscleTest(): void {
     musclebuffs();
     muscleTestPrep();
+    if (musclePredictor() !== CommunityService.Muscle.prediction) {
+        print(
+            `Libram says it'll take us ${
+                CommunityService.Muscle.prediction
+            } turns, but phccs says it'll take us ${musclePredictor()} turns. I don't hunt man for sport, though.`,
+            "blue"
+        );
+        print(
+            `Mafia says my thrall is ${myThrall()}--we expect it to be ${$thrall`Elbow Macaroni`}. Comparing them, mafia says ${
+                myThrall() === $thrall`Elbow Macaroni`
+            }.`
+        );
+    }
     burnLibrams();
 }
 

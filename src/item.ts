@@ -126,6 +126,6 @@ export default function itemTest(): void {
     castBuffs();
     batForm();
     testPrep();
-    if (predictor() > 1) throw "Failed to cap item";
+    // if (predictor() > 1) throw "Failed to cap item";
     burnLibrams();
 }

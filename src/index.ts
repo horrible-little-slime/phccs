@@ -68,7 +68,7 @@ try {
         const truePrediction = name === "Make Sausage" ? predictedTurns + 1 : predictedTurns;
         print(
             `It took us ${
-                turnCost ? `and ${turnCost} turns ` : ""
+                turnCost ? `${turnCost} turns ` : ""
             }to do ${name}, and we predicted it would take ${truePrediction} turns.`,
             HIGHLIGHT
         );
