@@ -3,10 +3,6 @@ import {
     create,
     eat,
     itemAmount,
-    myBasestat,
-    myBuffedstat,
-    myThrall,
-    print,
     retrieveItem,
     use,
     useFamiliar,
@@ -17,8 +13,6 @@ import {
     $familiar,
     $item,
     $skill,
-    $stat,
-    $thrall,
     BeachComb,
     CommunityService,
     get,
@@ -34,8 +28,7 @@ import {
     tryUse,
 } from "./lib";
 
-const musclePredictor = () =>
-    60 - Math.floor((myBuffedstat($stat`muscle`) - myBasestat($stat`mysticality`)) / 30);
+const musclePredictor = () => CommunityService.Muscle.prediction
 
 function musclebuffs() {
     equalizeMuscle();
@@ -67,19 +60,7 @@ function muscleTestPrep() {
 export function muscleTest(): void {
     musclebuffs();
     muscleTestPrep();
-    if (musclePredictor() !== CommunityService.Muscle.prediction) {
-        print(
-            `Libram says it'll take us ${
-                CommunityService.Muscle.prediction
-            } turns, but phccs says it'll take us ${musclePredictor()} turns. I don't hunt man for sport, though.`,
-            "blue"
-        );
-        print(
-            `Mafia says my thrall is ${myThrall()}--we expect it to be ${$thrall`Elbow Macaroni`}. Comparing them, mafia says ${
-                myThrall() === $thrall`Elbow Macaroni`
-            }.`
-        );
-    }
+    if (musclePredictor() > 1) throw "Not enough muscle to cap";
     burnLibrams();
 }
 
