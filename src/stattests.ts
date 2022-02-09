@@ -8,16 +8,7 @@ import {
     useFamiliar,
     useSkill,
 } from "kolmafia";
-import {
-    $effect,
-    $familiar,
-    $item,
-    $skill,
-    BeachComb,
-    CommunityService,
-    get,
-    have,
-} from "libram";
+import { $effect, $familiar, $item, $skill, BeachComb, CommunityService, get, have } from "libram";
 import { hpOutfit, moxieOutfit, muscleOutfit, mysticalityOutfit } from "./outfits";
 import {
     burnLibrams,
@@ -28,7 +19,7 @@ import {
     tryUse,
 } from "./lib";
 
-const musclePredictor = () => CommunityService.Muscle.prediction
+const musclePredictor = () => CommunityService.Muscle.prediction;
 
 function musclebuffs() {
     equalizeMuscle();
