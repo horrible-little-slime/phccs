@@ -606,6 +606,6 @@ export default function levelUp(): void {
     godLob();
     restAndBuff();
     mElfLeveling();
-    NEP();
     royalty();
+    NEP();
 }

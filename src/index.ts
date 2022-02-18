@@ -29,8 +29,8 @@ import { $effect, $item, $skill, CommunityService, get, have } from "libram";
 
 const HIGHLIGHT = isDarkMode() ? "yellow" : "blue";
 
-const assert = (action: boolean, warning: string) => {
-    if (!action) throw new Error(warning);
+const assertCompleted = (action: string, warning: string) => {
+    if (action === "failed") throw new Error(warning);
 };
 
 //preamble
@@ -48,12 +48,18 @@ PropertyManager.set({
 });
 const startTime = gametimeToInt();
 try {
-    assert(CommunityService.CoilWire.run(coilWire, false, 60), "Failed to coil wire!");
+    assertCompleted(CommunityService.CoilWire.run(coilWire, false, 60), "Failed to coil wire!");
     if (myLevel() < 13) levelUp();
-    assert(CommunityService.Moxie.run(moxTest, false, 1), "Failed to cap moxie test!");
-    assert(CommunityService.HP.run(HPTest, false, 1), "Failed to cap HP test!");
-    assert(CommunityService.Muscle.run(muscleTest, false, 1), "Failed to cap Muscle test!");
-    assert(CommunityService.Mysticality.run(mystTest, false, 1), "Failed to cap Mysticality test!");
+    assertCompleted(CommunityService.Moxie.run(moxTest, false, 1), "Failed to cap moxie test!");
+    assertCompleted(CommunityService.HP.run(HPTest, false, 1), "Failed to cap HP test!");
+    assertCompleted(
+        CommunityService.Muscle.run(muscleTest, false, 1),
+        "Failed to cap Muscle test!"
+    );
+    assertCompleted(
+        CommunityService.Mysticality.run(mystTest, false, 1),
+        "Failed to cap Mysticality test!"
+    );
     if (availableAmount($item`astral six-pack`) !== 0) use(1, $item`astral six-pack`);
     if (have($effect`The Magical Mojomuscular Melody`))
         cliExecute("shrug The Magical Mojomuscular Melody");
@@ -61,18 +67,21 @@ try {
     while (myInebriety() < 5) {
         drink(1, $item`astral pilsner`);
     }
-    assert(CommunityService.BoozeDrop.run(itemTest, false, 1), "Failed to cap Item test!");
-    assert(CommunityService.HotRes.run(hotTest, false, 1), "Failed to cap Hot Res test!");
-    assert(CommunityService.Noncombat.run(noncombatTest, false, 1), "Failed to cap NC test!");
-    assert(
+    assertCompleted(CommunityService.BoozeDrop.run(itemTest, false, 1), "Failed to cap Item test!");
+    assertCompleted(CommunityService.HotRes.run(hotTest, false, 1), "Failed to cap Hot Res test!");
+    assertCompleted(
+        CommunityService.Noncombat.run(noncombatTest, false, 1),
+        "Failed to cap NC test!"
+    );
+    assertCompleted(
         CommunityService.FamiliarWeight.run(familiarTest, false, 30),
         "Failed to perform Familiar test!"
     );
-    assert(
+    assertCompleted(
         CommunityService.WeaponDamage.run(weaponTest, false, 1),
         "Failed to cap Weapon Damage test!"
     );
-    assert(
+    assertCompleted(
         CommunityService.SpellDamage.run(spellTest, false, 30),
         "Failed to perform Spell Damage test!"
     );
