@@ -104,7 +104,7 @@ function buffMyst() {
         useSkill($skill`Visit your Favorite Bird`);
     }
 
-    if (get("spacegateVaccine2") && get("spaceGateAlways") && !get("_spacegateVaccine")) {
+    if (get("spacegateVaccine2") && get("spacegateAlways") && !get("_spacegateVaccine")) {
         cliExecute("spacegate vaccine 2");
     }
 
