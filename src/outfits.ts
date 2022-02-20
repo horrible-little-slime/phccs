@@ -266,7 +266,7 @@ export function mysticalityOutfit(): void {
         {
             hat: $item`wad of used tape`,
             weapon: $item`Fourth of May Cosplay Saber`,
-            offhand: $item`astral statuette`,
+            offhand: $items`astral statuette, cosmetic football`,
             back: $item`unwrapped knock-off retro superhero cape`,
             shirt: $items`denim jacket, shoe ad T-shirt, fresh coat of paint`,
             pants: $item`pantogram pants`,
