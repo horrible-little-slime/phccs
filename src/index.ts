@@ -4,6 +4,7 @@ import {
     cliExecute,
     drink,
     gametimeToInt,
+    inHardcore,
     isDarkMode,
     myInebriety,
     myLevel,
@@ -108,6 +109,8 @@ try {
             "red"
         );
     }
+
+    if (!inHardcore()) CommunityService.donate();
     setAutoAttack(0);
     PropertyManager.resetAll();
 }
