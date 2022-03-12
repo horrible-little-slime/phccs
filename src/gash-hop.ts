@@ -40,11 +40,14 @@ export function main(args = ""): void {
         },
     });
 
-    const pet = have($familiar`Baby Bugged Bugbear`)
-        ? $item`astral statuette`
-        : $item`astral pet sweater`;
-
     const lifestyle = args.includes("softcore") ? Lifestyle.softcore : Lifestyle.hardcore;
+
+    const pet =
+        lifestyle === Lifestyle.softcore
+            ? $item`astral chapeau`
+            : have($familiar`Baby Bugged Bugbear`)
+            ? $item`astral statuette`
+            : $item`astral pet sweater`;
 
     if (lifestyle === Lifestyle.softcore) retrieveItem(1, $item`corrupted marrow`);
 

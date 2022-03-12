@@ -160,7 +160,7 @@ export function withOutfit<T>(outfit: Outfit, callback: () => T): T {
 
 export default function uniform(...changes: (Item | [Item, Slot])[]): void {
     const defaultUniform = {
-        hat: $item`Iunion Crown`,
+        hat: $items`astral chapeau, Iunion Crown`,
         shirt: $item`fresh coat of paint`,
         pants: $items`pantogram pants, old sweatpants`,
         weapon: $item`Fourth of May Cosplay Saber`,
@@ -266,7 +266,7 @@ export function mysticalityOutfit(): void {
         {
             hat: $item`wad of used tape`,
             weapon: $item`Fourth of May Cosplay Saber`,
-            offhand: $item`astral statuette`,
+            offhand: $items`astral statuette, cosmetic football`,
             back: $item`unwrapped knock-off retro superhero cape`,
             shirt: $items`denim jacket, shoe ad T-shirt, fresh coat of paint`,
             pants: $item`pantogram pants`,
@@ -378,7 +378,7 @@ export function spellOutfit(): void {
 
     Outfit.doYourBest(
         {
-            hat: $items`sugar chapeau, Hollandaise helmet`,
+            hat: $items`sugar chapeau, astral chapeau, Hollandaise helmet`,
             weapon: !inHardcore() ? chefstaves : $item`weeping willow wand`,
             offhand: [
                 $item`Abracandalabra`,
