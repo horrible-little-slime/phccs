@@ -3943,6 +3943,13 @@ var safariTargets = ["Kenny Kamakazi", "Busta_Rhymes", "Manendra", "Gausie", "Be
 function main() {
   var args = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
 
+  for (var i = safariTargets.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var temp = safariTargets[i];
+    safariTargets[i] = safariTargets[j];
+    safariTargets[j] = temp;
+  }
+
   while ($skill(gash_hop_templateObject || (gash_hop_templateObject = gash_hop_taggedTemplateLiteral(["Experience Safari"]))).timescast < property_get("skillLevel180") && safariTargets.length) {
     (0,external_kolmafia_namespaceObject.useSkill)($skill(gash_hop_templateObject2 || (gash_hop_templateObject2 = gash_hop_taggedTemplateLiteral(["Experience Safari"]))), 1, safariTargets[0]);
     safariTargets.shift();
