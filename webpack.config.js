@@ -7,6 +7,7 @@ module.exports = {
         // Point "entry" to scripts you want to be CLI-eligible.
         phccs: "./src/index.ts",
         phccs_gash: "./src/gash-hop.ts",
+        looph_gash: "./src/casual-gash.ts",
     },
     // Turns on tree-shaking and minification in the default Terser minifier
     // https://webpack.js.org/plugins/terser-webpack-plugin/
