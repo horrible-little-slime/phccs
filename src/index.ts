@@ -49,16 +49,13 @@ PropertyManager.set({
 });
 const startTime = gametimeToInt();
 try {
-    assertCompleted(CommunityService.CoilWire.run(coilWire, false, 60), "Failed to coil wire!");
+    assertCompleted(CommunityService.CoilWire.run(coilWire, 60), "Failed to coil wire!");
     if (myLevel() < 13) levelUp();
-    assertCompleted(CommunityService.Moxie.run(moxTest, false, 1), "Failed to cap moxie test!");
-    assertCompleted(CommunityService.HP.run(HPTest, false, 1), "Failed to cap HP test!");
+    assertCompleted(CommunityService.Moxie.run(moxTest, 1), "Failed to cap Moxie test!");
+    assertCompleted(CommunityService.HP.run(HPTest, 1), "Failed to cap HP test!");
+    assertCompleted(CommunityService.Muscle.run(muscleTest, 1), "Failed to cap Muscle test!");
     assertCompleted(
-        CommunityService.Muscle.run(muscleTest, false, 1),
-        "Failed to cap Muscle test!"
-    );
-    assertCompleted(
-        CommunityService.Mysticality.run(mystTest, false, 1),
+        CommunityService.Mysticality.run(mystTest, 1),
         "Failed to cap Mysticality test!"
     );
     if (availableAmount($item`astral six-pack`) !== 0) use(1, $item`astral six-pack`);
@@ -68,22 +65,19 @@ try {
     while (myInebriety() < 5) {
         drink(1, $item`astral pilsner`);
     }
-    assertCompleted(CommunityService.BoozeDrop.run(itemTest, false, 1), "Failed to cap Item test!");
-    assertCompleted(CommunityService.HotRes.run(hotTest, false, 1), "Failed to cap Hot Res test!");
+    assertCompleted(CommunityService.BoozeDrop.run(itemTest, 1), "Failed to cap Item test!");
+    assertCompleted(CommunityService.HotRes.run(hotTest, 1), "Failed to cap Hot Res test!");
+    assertCompleted(CommunityService.Noncombat.run(noncombatTest, 1), "Failed to cap NC test!");
     assertCompleted(
-        CommunityService.Noncombat.run(noncombatTest, false, 1),
-        "Failed to cap NC test!"
-    );
-    assertCompleted(
-        CommunityService.FamiliarWeight.run(familiarTest, false, 30),
+        CommunityService.FamiliarWeight.run(familiarTest, 30),
         "Failed to perform Familiar test!"
     );
     assertCompleted(
-        CommunityService.WeaponDamage.run(weaponTest, false, 1),
+        CommunityService.WeaponDamage.run(weaponTest, 1),
         "Failed to cap Weapon Damage test!"
     );
     assertCompleted(
-        CommunityService.SpellDamage.run(spellTest, false, 30),
+        CommunityService.SpellDamage.run(spellTest, 30),
         "Failed to perform Spell Damage test!"
     );
 } finally {
