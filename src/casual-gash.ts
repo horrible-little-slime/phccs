@@ -11,8 +11,10 @@ const safariTargets = [
     "ReverKiller",
     "Asmodais",
     "The Dictator",
+    "Malibu Stacey",
+    "DanceCommander6",
 ];
-export function main(): void {
+export function burnSafaris(): void {
     for (let i = safariTargets.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         const temp = safariTargets[i];
@@ -24,7 +26,9 @@ export function main(): void {
         useSkill($skill`Experience Safari`, 1, safariTargets[0]);
         safariTargets.shift();
     }
-
+}
+export function main(): void {
+    burnSafaris();
     prepareAscension({
         workshed: "Asdon Martin keyfob",
         garden: "packet of thanksgarden seeds",
