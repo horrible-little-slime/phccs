@@ -1,14 +1,5 @@
 import { retrieveItem } from "kolmafia";
-import {
-    $class,
-    $familiar,
-    $item,
-    ascend,
-    have,
-    Lifestyle,
-    Paths,
-    prepareAscension,
-} from "libram";
+import { $class, $familiar, $item, ascend, have, Lifestyle, Paths, prepareAscension } from "libram";
 import { burnSafaris } from "./casual-gash";
 
 export function main(args = ""): void {
