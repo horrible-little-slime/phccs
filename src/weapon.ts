@@ -20,6 +20,7 @@ import {
     $skill,
     $slot,
     BeachComb,
+    CombatLoversLocket,
     CommunityService,
     get,
     have,
@@ -31,11 +32,9 @@ import {
     burnLibrams,
     ensureEffect,
     ensureInnerElf,
-    fax,
     horse,
     horsery,
     setChoice,
-    setClan,
     unequip,
     useDefaultFamiliar,
 } from "./lib";
@@ -70,34 +69,26 @@ function castBuffs() {
 }
 
 function forceSpit() {
-    if (!get("_photocopyUsed") && inHardcore()) {
-        uniform();
-        useFamiliar($familiar`Melodramedary`);
-        setChoice(1387, 3);
-        Macro.trySkill($skill`%fn, spit on me!`)
-            .skill($skill`Use the Force`)
-            .setAutoAttack();
-        try {
-            setClan(get("phccs_faxClan", "Beldungeon"));
-            fax($monster`ungulith`);
-        } finally {
-            setClan(get("phccs_mainClan", "Alliance From Heck"));
-        }
-        use($item`photocopied monster`);
-    } else {
-        uniform();
-        useFamiliar($familiar`Melodramedary`);
-        setChoice(1387, 3);
-        advMacroAA(
-            $location`The Neverending Party`,
-            Macro.trySkill($skill`%fn, spit on me!`)
-                .trySkill($skill`Meteor Shower`)
-                .skill($skill`Use the Force`)
-        );
-    }
+    uniform();
+    useFamiliar($familiar`Melodramedary`);
+    setChoice(1387, 3);
+    Macro.trySkill($skill`%fn, spit on me!`)
+        .skill($skill`Use the Force`)
+        .setAutoAttack();
+    CombatLoversLocket.reminisce($monster`ungulith`);
     if (handlingChoice()) runChoice(-1);
     if (have($effect`Meteor Showered`)) set("_meteorShowerUses", 1 + get("_meteorShowerUses"));
     if (have($effect`Spit Upon`)) set("camelSpit", 0);
+
+    const ungId = $monster`ungulith`.id.toFixed(0);
+    const locketIdStrings = get("_locketMonstersFought")
+        .split(",")
+        .map((x) => x.trim())
+        .filter((x) => x.length > 0);
+    if (!locketIdStrings.includes(ungId)) {
+        locketIdStrings.push(ungId);
+        set("_locketMonstersFought", locketIdStrings.join(","));
+    }
 }
 
 function kungFuMeteors() {
