@@ -155,7 +155,7 @@ function testPrep() {
     spellOutfit();
 }
 
-export default function spellTest(): void {
+export default function spellTest(): 1 {
     castBuffs();
     fingies();
     uniform(
@@ -167,4 +167,5 @@ export default function spellTest(): void {
     shower();
     testPrep();
     burnLibrams();
+    return 1;
 }

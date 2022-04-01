@@ -404,32 +404,14 @@ export function mapMacro(location: Location, monster: Monster, macro: Macro): vo
     }
 }
 
-export function horsery(): string {
-    return get("_horsery");
+type Horse = "dark" | "normal" | "crazy" | "pale";
+
+export function horsery(): Horse {
+    return get("_horsery") as Horse;
 }
 
-export function horse(horse: string): void {
-    if (!horse.includes("horse")) horse = `${horse} horse`;
-    if (horsery() !== horse) cliExecute(`horsery ${horse}`);
-}
-
-export interface testDuration {
-    testName: string;
-    turnPrediction: number;
-    turnCost: number;
-}
-
-export function convertMilliseconds(milliseconds: number): string {
-    const seconds = milliseconds / 1000;
-    const minutes = Math.floor(seconds / 60);
-    const secondsLeft = Math.round((seconds - minutes * 60) * 1000) / 1000;
-    const hours = Math.floor(minutes / 60);
-    const minutesLeft = Math.round(minutes - hours * 60);
-    return (
-        (hours !== 0 ? `${hours} hours, ` : "") +
-        (minutesLeft !== 0 ? `${minutesLeft} minutes, ` : "") +
-        (secondsLeft !== 0 ? `${secondsLeft} seconds` : "")
-    );
+export function horse(horse: Horse): void {
+    if (horsery() !== horse) cliExecute(`horsery ${horse} horse`);
 }
 
 function checkFax(monster: Monster): boolean {
