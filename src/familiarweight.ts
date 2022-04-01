@@ -56,15 +56,9 @@ function gearAndUncommonBuffs() {
     if (!get("_clanFortuneBuffUsed")) cliExecute("fortune buff familiar");
     if (have($item`burning newspaper`)) create(1, $item`burning paper crane`);
     if (have($item`short stack of pancakes`)) ensureEffect($effect`Shortly Stacked`);
-    if (!have($item`cracker`)) {
-        if (get("tomeSummons") < 3) {
-            useFamiliar($familiar`Exotic Parrot`);
-            create(1, $item`box of Familiar Jacks`);
-            use(1, $item`box of Familiar Jacks`);
-        } else if (have($familiar`Baby Bugged Bugbear`)) {
-            useFamiliar($familiar`Baby Bugged Bugbear`);
-            visitUrl("arena.php");
-        }
+    if (have($familiar`Baby Bugged Bugbear`)) {
+        useFamiliar($familiar`Baby Bugged Bugbear`);
+        visitUrl("arena.php");
     }
 }
 
@@ -128,6 +122,7 @@ function tuneMoon(): void {
 function testPrep() {
     if (!inHardcore()) tuneMoon();
     famweightOutfit();
+    if (have($item`moveable feast`)) use($item`moveable feast`);
     if (have($item`silver face paint`)) ensureEffect($effect`Robot Friends`);
     while (have($item`love song of icy revenge`) && !have($effect`Cold Hearted`, 20)) {
         use($item`love song of icy revenge`);

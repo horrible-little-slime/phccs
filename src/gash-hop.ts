@@ -1,4 +1,3 @@
-import { retrieveItem } from "kolmafia";
 import { $class, $familiar, $item, ascend, have, Lifestyle, Paths, prepareAscension } from "libram";
 import { burnSafaris } from "./casual-gash";
 
@@ -24,8 +23,6 @@ export function main(args = ""): void {
             : have($familiar`Baby Bugged Bugbear`)
             ? $item`astral statuette`
             : $item`astral pet sweater`;
-
-    if (lifestyle === Lifestyle.softcore) retrieveItem(1, $item`corrupted marrow`);
 
     ascend(
         Paths.CommunityService,

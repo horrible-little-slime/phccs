@@ -65,10 +65,15 @@ function castBuffs() {
 
     if (availableAmount($item`LOV Elixir #6`) > 0) ensureEffect($effect`The Magic of LOV`);
 
-    if (get("tomeSummons") < 3) useSkill(1, $skill`Summon Sugar Sheets`);
-    if (have($item`sugar sheet`)) create(1, $item`sugar chapeau`);
+    if (
+        get("tomeSummons") < 3 &&
+        $items`astral chapeau, sugar chapeau`.every((item) => !have(item))
+    ) {
+        useSkill(1, $skill`Summon Sugar Sheets`);
+        if (have($item`sugar sheet`)) create(1, $item`sugar chapeau`);
+    }
     visitUrl("shop.php?whichshop=lathe");
-    if (availableAmount($item`flimsy hardwood scraps`) > 0) {
+    if (availableAmount($item`flimsy hardwood scraps`) > 0 && inHardcore()) {
         create(1, $item`weeping willow wand`);
     }
 

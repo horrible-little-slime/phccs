@@ -329,7 +329,9 @@ export function noncombatOutfit(): void {
 }
 
 export function famweightOutfit(): void {
-    const familiarAndEquip = have($item`cracker`)
+    const familiarAndEquip = have($item`Snow Suit`)
+        ? { fam: $familiar`Blood-Faced Volleyball`, equip: $item`Snow Suit` }
+        : have($item`cracker`)
         ? { fam: $familiar`Exotic Parrot`, equip: $item`cracker` }
         : have($familiar`Baby Bugged Bugbear`)
         ? { fam: $familiar`Baby Bugged Bugbear`, equip: $item`bugged beanie` }

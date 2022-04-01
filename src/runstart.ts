@@ -78,7 +78,7 @@ function doPulls() {
         $items`repaid diaper, Great Wolf's beastly trousers`,
         $items`meteorite necklace, meteorite ring, meteorite fragment, meteorite earring`,
         $item`Stick-Knife of Loathing`,
-        $item`corrupted marrow`,
+        $items`moveable feast, Snow Suit`,
     ];
 
     for (const pull of pulls) {
