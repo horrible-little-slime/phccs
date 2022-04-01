@@ -1,6 +1,5 @@
 import {
     cliExecute,
-    equip,
     handlingChoice,
     inHardcore,
     retrieveItem,
@@ -18,7 +17,6 @@ import {
     $location,
     $monster,
     $skill,
-    $slot,
     BeachComb,
     CombatLoversLocket,
     CommunityService,
@@ -36,7 +34,6 @@ import {
     horsery,
     setChoice,
     unequip,
-    useDefaultFamiliar,
 } from "./lib";
 import Macro from "./combat";
 import uniform, { weaponOutfit } from "./outfits";
@@ -91,27 +88,6 @@ function forceSpit() {
     }
 }
 
-function kungFuMeteors() {
-    if (!have($effect`Meteor Showered`) && get("_meteorShowerUses") < 5) {
-        uniform();
-        if (have($familiar`Disembodied Hand`)) {
-            useFamiliar($familiar`Disembodied Hand`);
-            equip($slot`weapon`, $item`none`);
-            equip($slot`off-hand`, $item`none`);
-            equip($slot`familiar`, $item`Fourth of May Cosplay Saber`);
-        } else {
-            useDefaultFamiliar(false);
-        }
-        setChoice(1387, 3);
-        advMacroAA(
-            $location`The Neverending Party`,
-            Macro.skill($skill`Meteor Shower`).skill($skill`Use the Force`)
-        );
-        if (handlingChoice()) runChoice(-1);
-        set("_meteorShowerUses", 1 + get("_meteorShowerUses"));
-    }
-}
-
 function testPrep() {
     if (have($item`corrupted marrow`)) use($item`corrupted marrow`);
     if (!get("_bowleggedSwaggerUsed")) useSkill($skill`Bow-Legged Swagger`);
@@ -137,7 +113,6 @@ export default function weaponTest(): void {
     getCrushed();
     forceSpit();
     if (inHardcore()) ensureInnerElf();
-    kungFuMeteors();
     testPrep();
     if (predictor() > 1) throw "Failed to cap weapon damage!";
     burnLibrams();
