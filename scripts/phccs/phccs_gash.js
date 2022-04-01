@@ -4077,10 +4077,9 @@ var Paths = {
 // EXTERNAL MODULE: ./src/casual-gash.ts
 var casual_gash = __webpack_require__(3125);
 ;// CONCATENATED MODULE: ./src/gash-hop.ts
-var gash_hop_templateObject, gash_hop_templateObject2, gash_hop_templateObject3, gash_hop_templateObject4, gash_hop_templateObject5, gash_hop_templateObject6, gash_hop_templateObject7;
+var gash_hop_templateObject, gash_hop_templateObject2, gash_hop_templateObject3, gash_hop_templateObject4, gash_hop_templateObject5, gash_hop_templateObject6;
 
 function gash_hop_taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
-
 
 
 
@@ -4099,8 +4098,7 @@ function main() {
   });
   var lifestyle = args.includes("softcore") ? Lifestyle.softcore : Lifestyle.hardcore;
   var pet = lifestyle === Lifestyle.softcore ? (0,template_string/* $item */.xr)(gash_hop_templateObject || (gash_hop_templateObject = gash_hop_taggedTemplateLiteral(["astral chapeau"]))) : lib_have((0,template_string/* $familiar */.HP)(gash_hop_templateObject2 || (gash_hop_templateObject2 = gash_hop_taggedTemplateLiteral(["Baby Bugged Bugbear"])))) ? (0,template_string/* $item */.xr)(gash_hop_templateObject3 || (gash_hop_templateObject3 = gash_hop_taggedTemplateLiteral(["astral statuette"]))) : (0,template_string/* $item */.xr)(gash_hop_templateObject4 || (gash_hop_templateObject4 = gash_hop_taggedTemplateLiteral(["astral pet sweater"])));
-  if (lifestyle === Lifestyle.softcore) (0,external_kolmafia_.retrieveItem)(1, (0,template_string/* $item */.xr)(gash_hop_templateObject5 || (gash_hop_templateObject5 = gash_hop_taggedTemplateLiteral(["corrupted marrow"]))));
-  ascend(Paths.CommunityService, (0,template_string/* $class */._$)(gash_hop_templateObject6 || (gash_hop_templateObject6 = gash_hop_taggedTemplateLiteral(["Pastamancer"]))), lifestyle, "knoll", (0,template_string/* $item */.xr)(gash_hop_templateObject7 || (gash_hop_templateObject7 = gash_hop_taggedTemplateLiteral(["astral six-pack"]))), pet);
+  ascend(Paths.CommunityService, (0,template_string/* $class */._$)(gash_hop_templateObject5 || (gash_hop_templateObject5 = gash_hop_taggedTemplateLiteral(["Pastamancer"]))), lifestyle, "knoll", (0,template_string/* $item */.xr)(gash_hop_templateObject6 || (gash_hop_templateObject6 = gash_hop_taggedTemplateLiteral(["astral six-pack"]))), pet);
 }
 })();
 
