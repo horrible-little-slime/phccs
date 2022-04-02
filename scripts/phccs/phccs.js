@@ -13692,7 +13692,7 @@ function findMonster(criteria) {
   return (_availableLocketMonst = availableLocketMonsters().filter(criteria).sort((a, b) => value(b) - value(a))[0]) !== null && _availableLocketMonst !== void 0 ? _availableLocketMonst : null;
 }
 ;// CONCATENATED MODULE: ./src/weapon.ts
-var weapon_templateObject, weapon_templateObject2, weapon_templateObject3, weapon_templateObject4, weapon_templateObject5, weapon_templateObject6, weapon_templateObject7, weapon_templateObject8, weapon_templateObject9, weapon_templateObject10, weapon_templateObject11, weapon_templateObject12, weapon_templateObject13, weapon_templateObject14, weapon_templateObject15, weapon_templateObject16, weapon_templateObject17, weapon_templateObject18, weapon_templateObject19, weapon_templateObject20, weapon_templateObject21, weapon_templateObject22, weapon_templateObject23, weapon_templateObject24, weapon_templateObject25, weapon_templateObject26, weapon_templateObject27, weapon_templateObject28;
+var weapon_templateObject, weapon_templateObject2, weapon_templateObject3, weapon_templateObject4, weapon_templateObject5, weapon_templateObject6, weapon_templateObject7, weapon_templateObject8, weapon_templateObject9, weapon_templateObject10, weapon_templateObject11, weapon_templateObject12, weapon_templateObject13, weapon_templateObject14, weapon_templateObject15, weapon_templateObject16, weapon_templateObject17, weapon_templateObject18, weapon_templateObject19, weapon_templateObject20, weapon_templateObject21, weapon_templateObject22, weapon_templateObject23, weapon_templateObject24, weapon_templateObject25, weapon_templateObject26, weapon_templateObject27, weapon_templateObject28, weapon_templateObject29;
 
 function weapon_taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
@@ -13734,12 +13734,12 @@ function forceSpit() {
   uniform();
   (0,external_kolmafia_namespaceObject.useFamiliar)(template_string_$familiar(weapon_templateObject14 || (weapon_templateObject14 = weapon_taggedTemplateLiteral(["Melodramedary"]))));
   setChoice(1387, 3);
-  combat_Macro.trySkill($skill(weapon_templateObject15 || (weapon_templateObject15 = weapon_taggedTemplateLiteral(["%fn, spit on me!"])))).skill($skill(weapon_templateObject16 || (weapon_templateObject16 = weapon_taggedTemplateLiteral(["Use the Force"])))).setAutoAttack();
-  reminisce($monster(weapon_templateObject17 || (weapon_templateObject17 = weapon_taggedTemplateLiteral(["ungulith"]))));
+  combat_Macro.trySkill($skill(weapon_templateObject15 || (weapon_templateObject15 = weapon_taggedTemplateLiteral(["%fn, spit on me!"])))).trySkill($skill(weapon_templateObject16 || (weapon_templateObject16 = weapon_taggedTemplateLiteral(["Meteor Shower"])))).skill($skill(weapon_templateObject17 || (weapon_templateObject17 = weapon_taggedTemplateLiteral(["Use the Force"])))).setAutoAttack();
+  reminisce($monster(weapon_templateObject18 || (weapon_templateObject18 = weapon_taggedTemplateLiteral(["ungulith"]))));
   if ((0,external_kolmafia_namespaceObject.handlingChoice)()) (0,external_kolmafia_namespaceObject.runChoice)(-1);
-  if (lib_have($effect(weapon_templateObject18 || (weapon_templateObject18 = weapon_taggedTemplateLiteral(["Meteor Showered"]))))) _set("_meteorShowerUses", 1 + property_get("_meteorShowerUses"));
-  if (lib_have($effect(weapon_templateObject19 || (weapon_templateObject19 = weapon_taggedTemplateLiteral(["Spit Upon"]))))) _set("camelSpit", 0);
-  var ungId = $monster(weapon_templateObject20 || (weapon_templateObject20 = weapon_taggedTemplateLiteral(["ungulith"]))).id.toFixed(0);
+  if (lib_have($effect(weapon_templateObject19 || (weapon_templateObject19 = weapon_taggedTemplateLiteral(["Meteor Showered"]))))) _set("_meteorShowerUses", 1 + property_get("_meteorShowerUses"));
+  if (lib_have($effect(weapon_templateObject20 || (weapon_templateObject20 = weapon_taggedTemplateLiteral(["Spit Upon"]))))) _set("camelSpit", 0);
+  var ungId = $monster(weapon_templateObject21 || (weapon_templateObject21 = weapon_taggedTemplateLiteral(["ungulith"]))).id.toFixed(0);
   var locketIdStrings = property_get("_locketMonstersFought").split(",").map(x => x.trim()).filter(x => x.length > 0);
 
   if (!locketIdStrings.includes(ungId)) {
@@ -13749,19 +13749,19 @@ function forceSpit() {
 }
 
 function weapon_testPrep() {
-  if (lib_have(template_string_$item(weapon_templateObject21 || (weapon_templateObject21 = weapon_taggedTemplateLiteral(["corrupted marrow"]))))) (0,external_kolmafia_namespaceObject.use)(template_string_$item(weapon_templateObject22 || (weapon_templateObject22 = weapon_taggedTemplateLiteral(["corrupted marrow"]))));
-  if (!property_get("_bowleggedSwaggerUsed")) (0,external_kolmafia_namespaceObject.useSkill)($skill(weapon_templateObject23 || (weapon_templateObject23 = weapon_taggedTemplateLiteral(["Bow-Legged Swagger"]))));
-  (0,external_kolmafia_namespaceObject.useFamiliar)(template_string_$familiar(weapon_templateObject24 || (weapon_templateObject24 = weapon_taggedTemplateLiteral(["Disembodied Hand"]))));
+  if (lib_have(template_string_$item(weapon_templateObject22 || (weapon_templateObject22 = weapon_taggedTemplateLiteral(["corrupted marrow"]))))) (0,external_kolmafia_namespaceObject.use)(template_string_$item(weapon_templateObject23 || (weapon_templateObject23 = weapon_taggedTemplateLiteral(["corrupted marrow"]))));
+  if (!property_get("_bowleggedSwaggerUsed")) (0,external_kolmafia_namespaceObject.useSkill)($skill(weapon_templateObject24 || (weapon_templateObject24 = weapon_taggedTemplateLiteral(["Bow-Legged Swagger"]))));
+  (0,external_kolmafia_namespaceObject.useFamiliar)(template_string_$familiar(weapon_templateObject25 || (weapon_templateObject25 = weapon_taggedTemplateLiteral(["Disembodied Hand"]))));
 
   if (!(0,external_kolmafia_namespaceObject.inHardcore)()) {
-    var meteor = template_string_$items(weapon_templateObject25 || (weapon_templateObject25 = weapon_taggedTemplateLiteral(["meteorite necklace, meteorite fragment, meteorite earring"]))).find(item => lib_have(item));
+    var meteor = template_string_$items(weapon_templateObject26 || (weapon_templateObject26 = weapon_taggedTemplateLiteral(["meteorite necklace, meteorite fragment, meteorite earring"]))).find(item => lib_have(item));
 
     if (meteor) {
       unequip(meteor);
-      (0,external_kolmafia_namespaceObject.retrieveItem)(1, template_string_$item(weapon_templateObject26 || (weapon_templateObject26 = weapon_taggedTemplateLiteral(["tenderizing hammer"]))));
-      (0,external_kolmafia_namespaceObject.retrieveItem)(1, template_string_$item(weapon_templateObject27 || (weapon_templateObject27 = weapon_taggedTemplateLiteral(["jewelry-making pliers"]))));
+      (0,external_kolmafia_namespaceObject.retrieveItem)(1, template_string_$item(weapon_templateObject27 || (weapon_templateObject27 = weapon_taggedTemplateLiteral(["tenderizing hammer"]))));
+      (0,external_kolmafia_namespaceObject.retrieveItem)(1, template_string_$item(weapon_templateObject28 || (weapon_templateObject28 = weapon_taggedTemplateLiteral(["jewelry-making pliers"]))));
       (0,external_kolmafia_namespaceObject.cliExecute)("smash ".concat(meteor));
-      (0,external_kolmafia_namespaceObject.cliExecute)("make ".concat(template_string_$item(weapon_templateObject28 || (weapon_templateObject28 = weapon_taggedTemplateLiteral(["meteorite ring"])))));
+      (0,external_kolmafia_namespaceObject.cliExecute)("make ".concat(template_string_$item(weapon_templateObject29 || (weapon_templateObject29 = weapon_taggedTemplateLiteral(["meteorite ring"])))));
     }
   }
 
