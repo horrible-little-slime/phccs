@@ -70,6 +70,7 @@ function forceSpit() {
     useFamiliar($familiar`Melodramedary`);
     setChoice(1387, 3);
     Macro.trySkill($skill`%fn, spit on me!`)
+        .trySkill($skill`Meteor Shower`)
         .skill($skill`Use the Force`)
         .setAutoAttack();
     CombatLoversLocket.reminisce($monster`ungulith`);
