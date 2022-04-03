@@ -11143,7 +11143,7 @@ function prepGear() {
   }
 
   if (!property_get("_floundryItemCreated")) {
-    Clan.with("Bonus Adventures from Hell", () => (0,external_kolmafia_namespaceObject.cliExecute)("acquire codpiece"));
+    Clan.with("Bonus Adventures From Hell", () => (0,external_kolmafia_namespaceObject.cliExecute)("acquire codpiece"));
   }
 
   if (!lib_have(template_string_$item(runstart_templateObject40 || (runstart_templateObject40 = runstart_taggedTemplateLiteral(["pantogram pants"]))))) {
@@ -11161,6 +11161,7 @@ function vote() {
   if (!property_get("_voteToday")) {
     (0,external_kolmafia_namespaceObject.visitUrl)("place.php?whichplace=town_right&action=townright_vote");
     (0,external_kolmafia_namespaceObject.visitUrl)("choice.php?option=1&whichchoice=1331&g=2&local%5B%5D=2&local%5B%5D=3");
+    (0,external_kolmafia_namespaceObject.visitUrl)("place.php?whichplace=town_right&action=townright_vote");
   }
 }
 
