@@ -126,9 +126,13 @@ function shower() {
         setChoice(1387, 3);
         advMacroAA(
             $location`The Dire Warren`,
-            Macro.skill($skill`Meteor Shower`).skill($skill`Use the Force`)
+            Macro.skill($skill`Meteor Shower`).skill($skill`Use the Force`),
+            () => !have($effect`Meteor Showered`),
+            () => {
+                if (handlingChoice()) runChoice(-1);
+            }
         );
-        if (handlingChoice()) runChoice(-1);
+
         set("_meteorShowerUses", 1 + get("_meteorShowerUses"));
     }
 }
