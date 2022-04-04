@@ -48,7 +48,7 @@ function getCrushed() {
         if (!have($effect`Holiday Yoked`)) {
             useFamiliar($familiar`Ghost of Crimbo Carols`);
             uniform();
-            if (horsery().includes("pale")) {
+            if (horsery() === "pale") {
                 horse("dark");
             }
             advMacroAA($location`The Dire Warren`, Macro.skill($skill`Feel Hatred`));
