@@ -404,10 +404,10 @@ export function mapMacro(location: Location, monster: Monster, macro: Macro): vo
     }
 }
 
-type Horse = "dark" | "normal" | "crazy" | "pale";
+type Horse = "dark" | "normal" | "crazy" | "pale" | null;
 
 export function horsery(): Horse {
-    return get("_horsery") as Horse;
+    return (get("_horsery").split(" ")[0] as Horse) ?? null;
 }
 
 export function horse(horse: Horse): void {
