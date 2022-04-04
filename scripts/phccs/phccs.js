@@ -9421,7 +9421,9 @@ function mapMacro(location, monster, macro) {
   }
 }
 function horsery() {
-  return property_get("_horsery");
+  var _ref;
+
+  return (_ref = property_get("_horsery").split(" ")[0]) !== null && _ref !== void 0 ? _ref : null;
 }
 function horse(horse) {
   if (horsery() !== horse) (0,external_kolmafia_namespaceObject.cliExecute)("horsery ".concat(horse, " horse"));
@@ -13715,7 +13717,7 @@ function getCrushed() {
       (0,external_kolmafia_namespaceObject.useFamiliar)(template_string_$familiar(weapon_templateObject6 || (weapon_templateObject6 = weapon_taggedTemplateLiteral(["Ghost of Crimbo Carols"]))));
       uniform();
 
-      if (horsery().includes("pale")) {
+      if (horsery() === "pale") {
         horse("dark");
       }
 
