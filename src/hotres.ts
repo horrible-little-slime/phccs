@@ -9,7 +9,6 @@ import {
     myMp,
     numericModifier,
     runChoice,
-    use,
     useFamiliar,
     useSkill,
 } from "kolmafia";
@@ -70,10 +69,6 @@ function thisFireIsOutOfControl() {
 function deepDarkVisions() {
     horse("pale");
     useFamiliar($familiar`Exotic Parrot`);
-    if (!have($item`astral pet sweater`) && get("tomeSummons") < 3) {
-        create(1, $item`box of Familiar Jacks`);
-        use(1, $item`box of Familiar Jacks`);
-    }
     cliExecute("retrocape vampire hold");
     Outfit.doYourBest(
         {
