@@ -4,7 +4,6 @@ import {
     cliExecute,
     equip,
     getFuel,
-    haveEffect,
     runChoice,
     runCombat,
     use,
@@ -12,7 +11,17 @@ import {
     visitUrl,
 } from "kolmafia";
 import Macro from "./combat";
-import { $coinmaster, $effect, $familiar, $item, $slot, CommunityService, get, have } from "libram";
+import {
+    $coinmaster,
+    $effect,
+    $familiar,
+    $item,
+    $slot,
+    AsdonMartin,
+    CommunityService,
+    get,
+    have,
+} from "libram";
 import { universalWeightBuffs } from "./familiarweight";
 import { burnLibrams, ensureEffect, fuelUp, heal, horse, setChoice } from "./lib";
 import uniform, { noncombatOutfit } from "./outfits";
@@ -28,14 +37,13 @@ function castBuffs() {
     ensureEffect($effect`Blessing of the Bird`);
     if (!get("_clanFortuneBuffUsed")) cliExecute("fortune buff familiar");
 
-    if (haveEffect($effect`Fat Leon's Phat Loot Lyric`))
-        cliExecute("shrug fat leon's phat loot lyric");
+    if (have($effect`Fat Leon's Phat Loot Lyric`)) cliExecute("shrug fat leon's phat loot lyric");
     ensureEffect($effect`The Sonata of Sneakiness`);
 
     if (!get("_olympicSwimmingPool")) cliExecute("swim sprints");
 
     while (getFuel() < 37) fuelUp();
-    if (!have($effect`Driving Stealthily`)) cliExecute("asdonmartin drive stealthily");
+    AsdonMartin.drive(AsdonMartin.Driving.Stealthily);
 
     horse("dark");
 }

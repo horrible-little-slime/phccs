@@ -70,7 +70,7 @@ function initialExp() {
 
     if (!have($effect`Synthesis: Learning`)) synthExp();
 
-    uniform();
+    uniform($item`familiar scrapbook`);
 
     if (availableAmount($item`a ten-percent bonus`)) {
         use(1, $item`a ten-percent bonus`);
@@ -194,7 +194,7 @@ function witchGhostAgent() {
         runChoice(1);
     }
     cliExecute("fold makeshift garbage shirt");
-    uniform(...$items`protonic accelerator pack, makeshift garbage shirt`);
+    uniform(...$items`protonic accelerator pack, makeshift garbage shirt, familiar scrapbook`);
     heal();
     useDefaultFamiliar();
     ensureMp(100);
@@ -348,23 +348,16 @@ function tomatoJuiceAndNinjaCostume() {
 }
 
 function godLob() {
-    if (get("_godLobsterFights") === 0) {
+    setChoice(1310, 3);
+    while (get("_godLobsterFights") < 3) {
         Macro.delevel().easyFight().defaultKill().repeat().setAutoAttack();
-        uniform();
+        uniform($item`familiar scrapbook`);
         heal();
         useFamiliar($familiar`God Lobster`);
-        setChoice(1310, 1);
         visitUrl("main.php?fightgodlobster=1");
         runCombat(Macro.delevel().easyFight().defaultKill().repeat().toString());
         multiFightAutoAttack();
         runChoice(-1);
-        equip($slot`familiar`, $item`God Lobster's Scepter`);
-        heal();
-        visitUrl("main.php?fightgodlobster=1");
-        runCombat();
-        multiFightAutoAttack();
-        runChoice(-1);
-        equip($slot`familiar`, $item`God Lobster's Ring`);
     }
 }
 
@@ -569,7 +562,8 @@ function royalty() {
             .attack()
             .repeat()
             .setAutoAttack();
-        uniform();
+        cliExecute("fold makeshift garbage shirt");
+        uniform(...$items`makeshift garbage shirt, familiar scrapbook`);
         useDefaultFamiliar();
         heal();
         Witchess.fightPiece($monster`Witchess Queen`);
@@ -577,7 +571,7 @@ function royalty() {
     if (!have($item`dented scepter`)) {
         Macro.delevel().attack().repeat().setAutoAttack();
         cliExecute("fold makeshift garbage shirt");
-        uniform($item`makeshift garbage shirt`);
+        uniform(...$items`makeshift garbage shirt, familiar scrapbook`);
         useDefaultFamiliar();
         heal();
         Witchess.fightPiece($monster`Witchess King`);
@@ -585,6 +579,7 @@ function royalty() {
 }
 
 function restAndBuff(restMax = totalFreeRests()) {
+    uniform($item`familiar scrapbook`);
     const cap = Math.min(restMax, totalFreeRests());
     while (get("timesRested") < cap) {
         burnLibrams();

@@ -68,7 +68,7 @@ function grimoires() {
 
 function setSettings() {
     SourceTerminal.educate([$skill`Extract`, $skill`Portscan`]);
-    setClan(get("phccs_mainClan", "Alliance From Heck"));
+    setClan(get("phccs_mainClan", "Bonus Adventures from Hell"));
 }
 
 function doPulls() {
@@ -153,11 +153,14 @@ function prepGear() {
         );
     }
 
+    visitUrl("inventory.php?action=useumbrella&pwd");
+    runChoice(1);
+
     if (get("boomBoxSong") !== "Total Eclipse of Your Meat") {
         cliExecute("boombox meat");
     }
 
-    cliExecute("Briefcase.ash enchantment weapon -combat");
+    if (inHardcore()) cliExecute("Briefcase.ash enchantment weapon");
 }
 
 function vote() {

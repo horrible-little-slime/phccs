@@ -79,8 +79,8 @@ function castBuffs() {
 
     if (
         inHardcore() ||
-        $items`meteorite necklace, meteorite ring, meteorite fragment, meteorite earring`.every(
-            (item) => !have(item)
+        !$items`meteorite necklace, meteorite ring, meteorite fragment, meteorite earring`.some(
+            (item) => have(item)
         )
     ) {
         cliExecute("Briefcase.ash enchantment spell");

@@ -10,9 +10,11 @@ import {
     inHardcore,
     Item,
     myFamiliar,
+    runChoice,
     Slot,
     toSlot,
     useFamiliar,
+    visitUrl,
 } from "kolmafia";
 import { $familiar, $item, $items, $slot, $slots, have } from "libram";
 import { chefstaves } from "./lib";
@@ -164,7 +166,8 @@ export default function uniform(...changes: (Item | [Item, Slot])[]): void {
         shirt: $item`fresh coat of paint`,
         pants: $items`pantogram pants, old sweatpants`,
         weapon: $item`Fourth of May Cosplay Saber`,
-        offhand: $item`familiar scrapbook`,
+        // eslint-disable-next-line libram/verify-constants
+        offhand: $item`10899`,
         acc1: $items`meteorite necklace, your cowboy boots`,
         acc2: $item`codpiece`,
         acc3: $items`battle broom, Powerful Glove`,
@@ -211,6 +214,8 @@ export function moxieOutfit(): void {
         shirt: $items`shoe ad T-shirt, fresh coat of paint`,
         back: $item`unwrapped knock-off retro superhero cape`,
         weapon: $item`Fourth of May Cosplay Saber`,
+        // eslint-disable-next-line libram/verify-constants
+        offhand: $item`10899`,
         pants: $item`Cargo Cultist Shorts`,
         acc1: $item`Beach Comb`,
         acc2: $item`"I Voted!" sticker`,
@@ -243,20 +248,17 @@ export function muscleOutfit(): void {
         {
             hat: $item`wad of used tape`,
             weapon: $item`dented scepter`,
-            offhand: have($familiar`Disembodied Hand`)
-                ? $items`cosmetic football`
-                : $item`Fourth of May Cosplay Saber`,
+            offhand: $item`Fourth of May Cosplay Saber`,
             shirt: $items`shoe ad T-shirt, fresh coat of paint`,
             back: $item`unwrapped knock-off retro superhero cape`,
             pants: $item`Cargo Cultist Shorts`,
             acc1: $item`Brutal brogues`,
             acc2: $item`Retrospecs`,
             acc3: $item`Kremlin's Greatest Briefcase`,
-            familiar: have($familiar`Disembodied Hand`)
-                ? $item`Fourth of May Cosplay Saber`
-                : $item`miniature crystal ball`,
+            // eslint-disable-next-line libram/verify-constants
+            familiar: $item`10899`,
         },
-        have($familiar`Disembodied Hand`) ? $familiar`Disembodied Hand` : undefined
+        $familiar`Left-Hand Man`
     ).dress();
 }
 
@@ -314,13 +316,16 @@ export function hotresOutfit(): void {
 }
 
 export function noncombatOutfit(): void {
+    visitUrl("inventory.php?action=useumbrella&pwd");
+    runChoice(6);
     Outfit.doYourBest(
         {
             hat: $item`very pointy crown`,
             back: $item`protonic accelerator pack`,
             weapon: $item`Fourth of May Cosplay Saber`,
-            offhand: $items`burning paper crane, familiar scrapbook`,
-            acc1: $item`Kremlin's Greatest Briefcase`,
+            // eslint-disable-next-line libram/verify-constants
+            offhand: $items`10899, burning paper crane, familiar scrapbook`,
+            acc1: $item`hewn moon-rune spoon`,
             acc2: $item`codpiece`,
             acc3: $item`Brutal brogues`,
         },
@@ -362,8 +367,8 @@ export function weaponOutfit(): void {
             weapon: $item`broken champagne bottle`,
             offhand: $item`dented scepter`,
             acc1: $item`Brutal brogues`,
-            acc2: $item`Kremlin's Greatest Briefcase`,
-            acc3: $items`meteorite ring, Powerful Glove`,
+            acc2: $item`Powerful Glove`,
+            acc3: $items`meteorite ring, Kremlin's Greatest Briefcase`,
             familiar: $items`Stick-Knife of Loathing`,
         },
         $familiar`Disembodied Hand`
