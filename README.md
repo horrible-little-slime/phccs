@@ -58,7 +58,9 @@ At present, PHCCS requires the following iotms/expensive old items to operate:
 -   God Lobster
 -   Fire Extinguisher
 -   Daylight Shavings Helmet
--   Cursed Magnifying Glass
+-   Cosmic Bowling Ball
+-   Unbreakable Umbrella
+-   Combat Lover's Locket
 
 It also really appreciates it if you have:
 
