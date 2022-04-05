@@ -22951,10 +22951,9 @@ function drive(style) {
   return (0,external_kolmafia_namespaceObject.haveEffect)(style) >= turns;
 }
 ;// CONCATENATED MODULE: ./src/noncombat.ts
-var noncombat_templateObject, noncombat_templateObject2, noncombat_templateObject3, noncombat_templateObject4, noncombat_templateObject5, noncombat_templateObject6, noncombat_templateObject7, noncombat_templateObject8, noncombat_templateObject9, noncombat_templateObject10, noncombat_templateObject11, noncombat_templateObject12, noncombat_templateObject13, noncombat_templateObject14, noncombat_templateObject15, noncombat_templateObject16, noncombat_templateObject17, noncombat_templateObject18, noncombat_templateObject19;
+var noncombat_templateObject, noncombat_templateObject2, noncombat_templateObject3, noncombat_templateObject4, noncombat_templateObject5, noncombat_templateObject6, noncombat_templateObject7, noncombat_templateObject8, noncombat_templateObject9, noncombat_templateObject10, noncombat_templateObject11, noncombat_templateObject12, noncombat_templateObject13;
 
 function noncombat_taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
-
 
 
 
@@ -22984,37 +22983,20 @@ function noncombat_castBuffs() {
   horse("dark");
 }
 
-function godLobster() {
-  if (!lib_have($effect(noncombat_templateObject9 || (noncombat_templateObject9 = noncombat_taggedTemplateLiteral(["Silence of the God Lobster"])))) && property_get("_godLobsterFights") < 3 && lib_have(template_string_$item(noncombat_templateObject10 || (noncombat_templateObject10 = noncombat_taggedTemplateLiteral(["God Lobster's Ring"]))))) {
-    (0,external_kolmafia_namespaceObject.useFamiliar)(template_string_$familiar(noncombat_templateObject11 || (noncombat_templateObject11 = noncombat_taggedTemplateLiteral(["God Lobster"]))));
-    (0,external_kolmafia_namespaceObject.equip)($slot(noncombat_templateObject12 || (noncombat_templateObject12 = noncombat_taggedTemplateLiteral(["familiar"]))), template_string_$item(noncombat_templateObject13 || (noncombat_templateObject13 = noncombat_taggedTemplateLiteral(["God Lobster's Ring"]))));
-    uniform();
-    combat_Macro.defaultKill().setAutoAttack();
-    heal();
-    (0,external_kolmafia_namespaceObject.use)(3, template_string_$item(noncombat_templateObject14 || (noncombat_templateObject14 = noncombat_taggedTemplateLiteral(["psychokinetic energy blob"]))));
-    setChoice(1310, 2);
-    (0,external_kolmafia_namespaceObject.visitUrl)("main.php?fightgodlobster=1");
-    (0,external_kolmafia_namespaceObject.runCombat)(combat_Macro.defaultKill().toString());
-    (0,external_kolmafia_namespaceObject.visitUrl)("choice.php");
-    (0,external_kolmafia_namespaceObject.runChoice)(-1);
-  }
-}
-
 function noncombat_testPrep() {
   noncombatOutfit();
 
   if (noncombat_predictor() > 1) {
-    if (!lib_have($effect(noncombat_templateObject15 || (noncombat_templateObject15 = noncombat_taggedTemplateLiteral(["Gummed Shoes"]))))) {
-      if ((0,external_kolmafia_namespaceObject.availableAmount)(template_string_$item(noncombat_templateObject16 || (noncombat_templateObject16 = noncombat_taggedTemplateLiteral(["cop dollar"])))) < 10) (0,external_kolmafia_namespaceObject.cliExecute)("Detective Solver.ash");
-      (0,external_kolmafia_namespaceObject.buy)($coinmaster(noncombat_templateObject17 || (noncombat_templateObject17 = noncombat_taggedTemplateLiteral(["Precinct Materiel Division"]))), 1, template_string_$item(noncombat_templateObject18 || (noncombat_templateObject18 = noncombat_taggedTemplateLiteral(["shoe gum"]))));
-      (0,external_kolmafia_namespaceObject.use)(template_string_$item(noncombat_templateObject19 || (noncombat_templateObject19 = noncombat_taggedTemplateLiteral(["shoe gum"]))));
+    if (!lib_have($effect(noncombat_templateObject9 || (noncombat_templateObject9 = noncombat_taggedTemplateLiteral(["Gummed Shoes"]))))) {
+      if ((0,external_kolmafia_namespaceObject.availableAmount)(template_string_$item(noncombat_templateObject10 || (noncombat_templateObject10 = noncombat_taggedTemplateLiteral(["cop dollar"])))) < 10) (0,external_kolmafia_namespaceObject.cliExecute)("Detective Solver.ash");
+      (0,external_kolmafia_namespaceObject.buy)($coinmaster(noncombat_templateObject11 || (noncombat_templateObject11 = noncombat_taggedTemplateLiteral(["Precinct Materiel Division"]))), 1, template_string_$item(noncombat_templateObject12 || (noncombat_templateObject12 = noncombat_taggedTemplateLiteral(["shoe gum"]))));
+      (0,external_kolmafia_namespaceObject.use)(template_string_$item(noncombat_templateObject13 || (noncombat_templateObject13 = noncombat_taggedTemplateLiteral(["shoe gum"]))));
     }
   }
 }
 
 function noncombatTest() {
   noncombat_castBuffs();
-  godLobster();
   noncombat_testPrep();
   if (noncombat_predictor() > 1) throw "Failed to cap noncombat";
   burnLibrams();
