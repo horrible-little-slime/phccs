@@ -112,8 +112,8 @@ function testPrep() {
 export default function weaponTest(): void {
     castBuffs();
     getCrushed();
-    forceSpit();
     if (inHardcore()) ensureInnerElf();
+    forceSpit();
     testPrep();
     if (predictor() > 1) throw "Failed to cap weapon damage!";
     burnLibrams();
