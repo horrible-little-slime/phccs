@@ -23462,8 +23462,8 @@ function weapon_testPrep() {
 function weaponTest() {
   weapon_castBuffs();
   getCrushed();
-  forceSpit();
   if ((0,external_kolmafia_namespaceObject.inHardcore)()) ensureInnerElf();
+  forceSpit();
   weapon_testPrep();
   if (weapon_predictor() > 1) throw "Failed to cap weapon damage!";
   burnLibrams();
