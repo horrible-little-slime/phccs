@@ -1,11 +1,4 @@
-import {
-    availableAmount,
-    buy,
-    cliExecute,
-    equip,
-    getFuel,
-    use,
-} from "kolmafia";
+import { availableAmount, buy, cliExecute, equip, getFuel, use } from "kolmafia";
 import {
     $coinmaster,
     $effect,
