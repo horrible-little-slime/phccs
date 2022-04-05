@@ -342,7 +342,7 @@ export function famweightOutfit(): void {
         ? { fam: $familiar`Baby Bugged Bugbear`, equip: $item`bugged beanie` }
         : {
               fam: $familiar`Blood-Faced Volleyball`,
-              equip: have($item`astral pet sweater`) ? $item`astral pet sweater` : $item`none`,
+              equip: $items`astral pet sweater`,
           };
     Outfit.doYourBest(
         {
