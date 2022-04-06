@@ -22961,7 +22961,7 @@ function noncombat_taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strin
 
 
 
-var noncombat_predictor = () => CommunityService.Noncombat.prediction;
+var noncombat_predictor = () => CommunityService.Noncombat.prediction - 6;
 
 function noncombat_castBuffs() {
   universalWeightBuffs();
