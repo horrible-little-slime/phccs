@@ -13,7 +13,7 @@ import { universalWeightBuffs } from "./familiarweight";
 import { burnLibrams, ensureEffect, fuelUp, horse } from "./lib";
 import { noncombatOutfit } from "./outfits";
 
-const predictor = () => CommunityService.Noncombat.prediction;
+const predictor = () => CommunityService.Noncombat.prediction - 6;
 
 function castBuffs() {
     universalWeightBuffs();
