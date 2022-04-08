@@ -153,9 +153,6 @@ function prepGear() {
         );
     }
 
-    visitUrl("inventory.php?action=useumbrella&pwd");
-    runChoice(1);
-
     if (get("boomBoxSong") !== "Total Eclipse of Your Meat") {
         cliExecute("boombox meat");
     }

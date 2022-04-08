@@ -10,13 +10,11 @@ import {
     inHardcore,
     Item,
     myFamiliar,
-    runChoice,
     Slot,
     toSlot,
     useFamiliar,
-    visitUrl,
 } from "kolmafia";
-import { $familiar, $item, $items, $slot, $slots, have } from "libram";
+import { $familiar, $item, $items, $slot, $slots, get, have } from "libram";
 import { chefstaves } from "./lib";
 
 const outfitSlots = [
@@ -161,13 +159,13 @@ export function withOutfit<T>(outfit: Outfit, callback: () => T): T {
 }
 
 export default function uniform(...changes: (Item | [Item, Slot])[]): void {
+    if (get("umbrellaState", "broken") !== "broken") cliExecute("umbrella ml");
     const defaultUniform = {
         hat: $items`astral chapeau, Iunion Crown`,
         shirt: $item`fresh coat of paint`,
         pants: $items`pantogram pants, old sweatpants`,
         weapon: $item`Fourth of May Cosplay Saber`,
-        // eslint-disable-next-line libram/verify-constants
-        offhand: $item`10899`,
+        offhand: $item`unbreakable umbrella`,
         acc1: $items`meteorite necklace, your cowboy boots`,
         acc2: $item`codpiece`,
         acc3: $items`battle broom, Powerful Glove`,
@@ -214,8 +212,7 @@ export function moxieOutfit(): void {
         shirt: $items`shoe ad T-shirt, fresh coat of paint`,
         back: $item`unwrapped knock-off retro superhero cape`,
         weapon: $item`Fourth of May Cosplay Saber`,
-        // eslint-disable-next-line libram/verify-constants
-        offhand: $item`10899`,
+        offhand: $item`unbreakable umbrella`,
         pants: $item`Cargo Cultist Shorts`,
         acc1: $item`Beach Comb`,
         acc2: $item`"I Voted!" sticker`,
@@ -255,8 +252,7 @@ export function muscleOutfit(): void {
             acc1: $item`Brutal brogues`,
             acc2: $item`Retrospecs`,
             acc3: $item`Kremlin's Greatest Briefcase`,
-            // eslint-disable-next-line libram/verify-constants
-            familiar: $item`10899`,
+            familiar: $item`unbreakable umbrella`,
         },
         $familiar`Left-Hand Man`
     ).dress();
@@ -316,15 +312,13 @@ export function hotresOutfit(): void {
 }
 
 export function noncombatOutfit(): void {
-    visitUrl("inventory.php?action=useumbrella&pwd");
-    runChoice(6);
+    if (get("umbrellaState", "cocoon") !== "cocoon") cliExecute("umbrella nc");
     Outfit.doYourBest(
         {
             hat: $item`very pointy crown`,
             back: $item`protonic accelerator pack`,
             weapon: $item`Fourth of May Cosplay Saber`,
-            // eslint-disable-next-line libram/verify-constants
-            offhand: $items`10899, burning paper crane, familiar scrapbook`,
+            offhand: $items`unbreakable umbrella, burning paper crane, familiar scrapbook`,
             acc1: $item`hewn moon-rune spoon`,
             acc2: $item`codpiece`,
             acc3: $item`Brutal brogues`,
