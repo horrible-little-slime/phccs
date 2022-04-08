@@ -19346,13 +19346,13 @@ function withOutfit(outfit, callback) {
   }
 }
 function uniform() {
+  if (property_get("umbrellaState", "broken") !== "broken") (0,external_kolmafia_namespaceObject.cliExecute)("umbrella ml");
   var defaultUniform = {
     hat: template_string_$items(outfits_templateObject8 || (outfits_templateObject8 = outfits_taggedTemplateLiteral(["astral chapeau, Iunion Crown"]))),
     shirt: template_string_$item(outfits_templateObject9 || (outfits_templateObject9 = outfits_taggedTemplateLiteral(["fresh coat of paint"]))),
     pants: template_string_$items(outfits_templateObject10 || (outfits_templateObject10 = outfits_taggedTemplateLiteral(["pantogram pants, old sweatpants"]))),
     weapon: template_string_$item(outfits_templateObject11 || (outfits_templateObject11 = outfits_taggedTemplateLiteral(["Fourth of May Cosplay Saber"]))),
-    // eslint-disable-next-line libram/verify-constants
-    offhand: template_string_$item(outfits_templateObject12 || (outfits_templateObject12 = outfits_taggedTemplateLiteral(["10899"]))),
+    offhand: template_string_$item(outfits_templateObject12 || (outfits_templateObject12 = outfits_taggedTemplateLiteral(["unbreakable umbrella"]))),
     acc1: template_string_$items(outfits_templateObject13 || (outfits_templateObject13 = outfits_taggedTemplateLiteral(["meteorite necklace, your cowboy boots"]))),
     acc2: template_string_$item(outfits_templateObject14 || (outfits_templateObject14 = outfits_taggedTemplateLiteral(["codpiece"]))),
     acc3: template_string_$items(outfits_templateObject15 || (outfits_templateObject15 = outfits_taggedTemplateLiteral(["battle broom, Powerful Glove"]))),
@@ -19412,8 +19412,7 @@ function moxieOutfit() {
     shirt: template_string_$items(outfits_templateObject26 || (outfits_templateObject26 = outfits_taggedTemplateLiteral(["shoe ad T-shirt, fresh coat of paint"]))),
     back: template_string_$item(outfits_templateObject27 || (outfits_templateObject27 = outfits_taggedTemplateLiteral(["unwrapped knock-off retro superhero cape"]))),
     weapon: template_string_$item(outfits_templateObject28 || (outfits_templateObject28 = outfits_taggedTemplateLiteral(["Fourth of May Cosplay Saber"]))),
-    // eslint-disable-next-line libram/verify-constants
-    offhand: template_string_$item(outfits_templateObject29 || (outfits_templateObject29 = outfits_taggedTemplateLiteral(["10899"]))),
+    offhand: template_string_$item(outfits_templateObject29 || (outfits_templateObject29 = outfits_taggedTemplateLiteral(["unbreakable umbrella"]))),
     pants: template_string_$item(outfits_templateObject30 || (outfits_templateObject30 = outfits_taggedTemplateLiteral(["Cargo Cultist Shorts"]))),
     acc1: template_string_$item(outfits_templateObject31 || (outfits_templateObject31 = outfits_taggedTemplateLiteral(["Beach Comb"]))),
     acc2: template_string_$item(outfits_templateObject32 || (outfits_templateObject32 = outfits_taggedTemplateLiteral(["\"I Voted!\" sticker"]))),
@@ -19450,8 +19449,7 @@ function muscleOutfit() {
     acc1: template_string_$item(outfits_templateObject53 || (outfits_templateObject53 = outfits_taggedTemplateLiteral(["Brutal brogues"]))),
     acc2: template_string_$item(outfits_templateObject54 || (outfits_templateObject54 = outfits_taggedTemplateLiteral(["Retrospecs"]))),
     acc3: template_string_$item(outfits_templateObject55 || (outfits_templateObject55 = outfits_taggedTemplateLiteral(["Kremlin's Greatest Briefcase"]))),
-    // eslint-disable-next-line libram/verify-constants
-    familiar: template_string_$item(outfits_templateObject56 || (outfits_templateObject56 = outfits_taggedTemplateLiteral(["10899"])))
+    familiar: template_string_$item(outfits_templateObject56 || (outfits_templateObject56 = outfits_taggedTemplateLiteral(["unbreakable umbrella"])))
   }, template_string_$familiar(outfits_templateObject57 || (outfits_templateObject57 = outfits_taggedTemplateLiteral(["Left-Hand Man"])))).dress();
 }
 function mysticalityOutfit() {
@@ -19496,14 +19494,12 @@ function hotresOutfit() {
   }, template_string_$familiar(outfits_templateObject87 || (outfits_templateObject87 = outfits_taggedTemplateLiteral(["Exotic Parrot"])))).dress();
 }
 function noncombatOutfit() {
-  (0,external_kolmafia_namespaceObject.visitUrl)("inventory.php?action=useumbrella&pwd");
-  (0,external_kolmafia_namespaceObject.runChoice)(6);
+  if (property_get("umbrellaState", "cocoon") !== "cocoon") (0,external_kolmafia_namespaceObject.cliExecute)("umbrella nc");
   Outfit.doYourBest({
     hat: template_string_$item(outfits_templateObject88 || (outfits_templateObject88 = outfits_taggedTemplateLiteral(["very pointy crown"]))),
     back: template_string_$item(outfits_templateObject89 || (outfits_templateObject89 = outfits_taggedTemplateLiteral(["protonic accelerator pack"]))),
     weapon: template_string_$item(outfits_templateObject90 || (outfits_templateObject90 = outfits_taggedTemplateLiteral(["Fourth of May Cosplay Saber"]))),
-    // eslint-disable-next-line libram/verify-constants
-    offhand: template_string_$items(outfits_templateObject91 || (outfits_templateObject91 = outfits_taggedTemplateLiteral(["10899, burning paper crane, familiar scrapbook"]))),
+    offhand: template_string_$items(outfits_templateObject91 || (outfits_templateObject91 = outfits_taggedTemplateLiteral(["unbreakable umbrella, burning paper crane, familiar scrapbook"]))),
     acc1: template_string_$item(outfits_templateObject92 || (outfits_templateObject92 = outfits_taggedTemplateLiteral(["hewn moon-rune spoon"]))),
     acc2: template_string_$item(outfits_templateObject93 || (outfits_templateObject93 = outfits_taggedTemplateLiteral(["codpiece"]))),
     acc3: template_string_$item(outfits_templateObject94 || (outfits_templateObject94 = outfits_taggedTemplateLiteral(["Brutal brogues"])))
@@ -20638,9 +20634,6 @@ function prepGear() {
   if (!lib_have(template_string_$item(runstart_templateObject40 || (runstart_templateObject40 = runstart_taggedTemplateLiteral(["pantogram pants"]))))) {
     makePants("Mysticality", "Hot Resistance: 2", "Maximum HP: 40", "Combat Rate: -5", "Spell Damage Percent: 20");
   }
-
-  (0,external_kolmafia_namespaceObject.visitUrl)("inventory.php?action=useumbrella&pwd");
-  (0,external_kolmafia_namespaceObject.runChoice)(1);
 
   if (property_get("boomBoxSong") !== "Total Eclipse of Your Meat") {
     (0,external_kolmafia_namespaceObject.cliExecute)("boombox meat");
@@ -22961,7 +22954,7 @@ function noncombat_taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strin
 
 
 
-var noncombat_predictor = () => CommunityService.Noncombat.prediction - 6;
+var noncombat_predictor = () => CommunityService.Noncombat.prediction;
 
 function noncombat_castBuffs() {
   universalWeightBuffs();
