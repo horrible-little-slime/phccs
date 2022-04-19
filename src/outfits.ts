@@ -54,9 +54,10 @@ export class Outfit {
         const targetEquipment = Object.values(this.equips);
         const accessorySlots = $slots`acc1, acc2, acc3`;
         const equipmentMap = new Map(
-            Array.from(Object.entries(this.equips)).map(
-                ([slotName, equipmentItem]) => [toSlot(slotName), equipmentItem]
-            )
+            Array.from(Object.entries(this.equips)).map(([slotName, equipmentItem]) => [
+                toSlot(slotName),
+                equipmentItem,
+            ])
         );
         for (const slot of $slots`weapon, offhand, hat, shirt, pants, familiar, buddy-bjorn, crown-of-thrones, back`) {
             if (
