@@ -179,8 +179,7 @@ function getYoked() {
         $location`The X-32-F Combat Training Snowman`,
         Macro.delevel()
             .tryItem($item`blue rocket`)
-            .defaultKill()
-            .repeat(),
+            .defaultKill(),
         () => {
             return !have($effect`Holiday Yoked`);
         },
@@ -260,14 +259,9 @@ function lov() {
     Macro.if_("monstername LOV enforcer", Macro.attack().repeat())
         .if_(
             "monstername LOV Engineer",
-            Macro.candyblast()
-                .trySkill($skill`Weapon of the Pastalord`)
-                .repeat()
+            Macro.candyblast().trySkillRepeat($skill`Weapon of the Pastalord`)
         )
-        .if_(
-            "monstername LOV equivocator",
-            Macro.delevel().easyFight().candyblast().defaultKill().repeat()
-        )
+        .if_("monstername LOV equivocator", Macro.delevel().easyFight().candyblast().defaultKill())
         .setAutoAttack();
     if (!get("_loveTunnelUsed")) {
         TunnelOfLove.fightAll(
@@ -350,12 +344,12 @@ function tomatoJuiceAndNinjaCostume() {
 function godLob() {
     setChoice(1310, 3);
     while (get("_godLobsterFights") < 3) {
-        Macro.delevel().easyFight().defaultKill().repeat().setAutoAttack();
+        Macro.delevel().easyFight().defaultKill().setAutoAttack();
         uniform($item`familiar scrapbook`);
         heal();
         useFamiliar($familiar`God Lobster`);
         visitUrl("main.php?fightgodlobster=1");
-        runCombat(Macro.delevel().easyFight().defaultKill().repeat().toString());
+        runCombat(Macro.delevel().easyFight().defaultKill().toString());
         multiFightAutoAttack();
         runChoice(-1);
     }
@@ -384,7 +378,7 @@ function tentacle(): void {
     withProperties({ autoAbortThreshold: -0.05, hpAutoRecoveryTarget: -0.05 }, () => {
         uniform();
         useDefaultFamiliar();
-        const macro = Macro.delevel().candyblast().defaultKill().repeat();
+        const macro = Macro.delevel().candyblast().defaultKill();
         macro.setAutoAttack();
         try {
             useSkill($skill`Evoke Eldritch Horror`);
@@ -452,7 +446,7 @@ function NEP() {
                 .trySkill($skill`Shattering Punch`)
                 .trySkill($skill`Gingerbread Mob Hit`)
                 .trySkill($skill`Chest X-Ray`)
-        ).if_("monstername sausage goblin", Macro.delevel().candyblast().defaultKill().repeat()),
+        ).if_("monstername sausage goblin", Macro.delevel().candyblast().defaultKill()),
         () => {
             return get("_shatteringPunchUsed") < 3 && !get("_gingerbreadMobHitUsed");
         },
@@ -482,7 +476,7 @@ function NEP() {
                 .trySkill($skill`Shattering Punch`)
                 .trySkill($skill`Gingerbread Mob Hit`)
                 .trySkill($skill`Chest X-Ray`)
-        ).if_("monstername sausage goblin", Macro.delevel().candyblast().defaultKill().repeat()),
+        ).if_("monstername sausage goblin", Macro.delevel().candyblast().defaultKill()),
         () => {
             return get("_shatteringPunchUsed") < 3;
         },
@@ -514,7 +508,7 @@ function NEP() {
                 .trySkill($skill`Shattering Punch`)
                 .trySkill($skill`Gingerbread Mob Hit`)
                 .trySkill($skill`Chest X-Ray`)
-        ).if_("monstername sausage goblin", Macro.delevel().candyblast().defaultKill().repeat()),
+        ).if_("monstername sausage goblin", Macro.delevel().candyblast().defaultKill()),
         () => {
             return get("_chestXRayUsed") < 3;
         },
