@@ -22411,7 +22411,7 @@ function getYoked() {
   }
 
   heal();
-  advMacroAA($location(level_templateObject42 || (level_templateObject42 = level_taggedTemplateLiteral(["The X-32-F Combat Training Snowman"]))), combat_Macro.delevel().tryItem(template_string_$item(level_templateObject43 || (level_templateObject43 = level_taggedTemplateLiteral(["blue rocket"])))).defaultKill().repeat(), () => {
+  advMacroAA($location(level_templateObject42 || (level_templateObject42 = level_taggedTemplateLiteral(["The X-32-F Combat Training Snowman"]))), combat_Macro.delevel().tryItem(template_string_$item(level_templateObject43 || (level_templateObject43 = level_taggedTemplateLiteral(["blue rocket"])))).defaultKill(), () => {
     return !lib_have($effect(level_templateObject44 || (level_templateObject44 = level_taggedTemplateLiteral(["Holiday Yoked"]))));
   }, () => ensureMp(30));
 }
@@ -22464,7 +22464,7 @@ function lov() {
   uniform.apply(void 0, level_toConsumableArray(template_string_$items(level_templateObject73 || (level_templateObject73 = level_taggedTemplateLiteral(["protonic accelerator pack, makeshift garbage shirt"])))));
   heal();
   useDefaultFamiliar();
-  combat_Macro.if_("monstername LOV enforcer", combat_Macro.attack().repeat()).if_("monstername LOV Engineer", combat_Macro.candyblast().trySkill(template_string_$skill(level_templateObject74 || (level_templateObject74 = level_taggedTemplateLiteral(["Weapon of the Pastalord"])))).repeat()).if_("monstername LOV equivocator", combat_Macro.delevel().easyFight().candyblast().defaultKill().repeat()).setAutoAttack();
+  combat_Macro.if_("monstername LOV enforcer", combat_Macro.attack().repeat()).if_("monstername LOV Engineer", combat_Macro.candyblast().trySkillRepeat(template_string_$skill(level_templateObject74 || (level_templateObject74 = level_taggedTemplateLiteral(["Weapon of the Pastalord"]))))).if_("monstername LOV equivocator", combat_Macro.delevel().easyFight().candyblast().defaultKill()).setAutoAttack();
 
   if (!property_get("_loveTunnelUsed")) {
     fightAll("LOV Epaulettes", "Open Heart Surgery", "LOV Extraterrestrial Chocolate");
@@ -22529,12 +22529,12 @@ function godLob() {
   setChoice(1310, 3);
 
   while (property_get("_godLobsterFights") < 3) {
-    combat_Macro.delevel().easyFight().defaultKill().repeat().setAutoAttack();
+    combat_Macro.delevel().easyFight().defaultKill().setAutoAttack();
     uniform(template_string_$item(level_templateObject110 || (level_templateObject110 = level_taggedTemplateLiteral(["familiar scrapbook"]))));
     heal();
     (0,external_kolmafia_namespaceObject.useFamiliar)(template_string_$familiar(level_templateObject111 || (level_templateObject111 = level_taggedTemplateLiteral(["God Lobster"]))));
     (0,external_kolmafia_namespaceObject.visitUrl)("main.php?fightgodlobster=1");
-    (0,external_kolmafia_namespaceObject.runCombat)(combat_Macro.delevel().easyFight().defaultKill().repeat().toString());
+    (0,external_kolmafia_namespaceObject.runCombat)(combat_Macro.delevel().easyFight().defaultKill().toString());
     multiFightAutoAttack();
     (0,external_kolmafia_namespaceObject.runChoice)(-1);
   }
@@ -22561,7 +22561,7 @@ function tentacle() {
   }, () => {
     uniform();
     useDefaultFamiliar();
-    var macro = combat_Macro.delevel().candyblast().defaultKill().repeat();
+    var macro = combat_Macro.delevel().candyblast().defaultKill();
     macro.setAutoAttack();
 
     try {
@@ -22614,7 +22614,7 @@ function NEP() {
 
     ensureMp(30);
   });
-  advMacroAA($location(level_templateObject125 || (level_templateObject125 = level_taggedTemplateLiteral(["The Neverending Party"]))), combat_Macro.if_("!monstername sausage goblin", combat_Macro.if_($effect(level_templateObject126 || (level_templateObject126 = level_taggedTemplateLiteral(["Inner Elf"]))), combat_Macro.trySkill(template_string_$skill(level_templateObject127 || (level_templateObject127 = level_taggedTemplateLiteral(["Feel Pride"]))))).trySkill(template_string_$skill(level_templateObject128 || (level_templateObject128 = level_taggedTemplateLiteral(["Bowl Sideways"])))).trySkill(template_string_$skill(level_templateObject129 || (level_templateObject129 = level_taggedTemplateLiteral(["Shattering Punch"])))).trySkill(template_string_$skill(level_templateObject130 || (level_templateObject130 = level_taggedTemplateLiteral(["Gingerbread Mob Hit"])))).trySkill(template_string_$skill(level_templateObject131 || (level_templateObject131 = level_taggedTemplateLiteral(["Chest X-Ray"]))))).if_("monstername sausage goblin", combat_Macro.delevel().candyblast().defaultKill().repeat()), () => {
+  advMacroAA($location(level_templateObject125 || (level_templateObject125 = level_taggedTemplateLiteral(["The Neverending Party"]))), combat_Macro.if_("!monstername sausage goblin", combat_Macro.if_($effect(level_templateObject126 || (level_templateObject126 = level_taggedTemplateLiteral(["Inner Elf"]))), combat_Macro.trySkill(template_string_$skill(level_templateObject127 || (level_templateObject127 = level_taggedTemplateLiteral(["Feel Pride"]))))).trySkill(template_string_$skill(level_templateObject128 || (level_templateObject128 = level_taggedTemplateLiteral(["Bowl Sideways"])))).trySkill(template_string_$skill(level_templateObject129 || (level_templateObject129 = level_taggedTemplateLiteral(["Shattering Punch"])))).trySkill(template_string_$skill(level_templateObject130 || (level_templateObject130 = level_taggedTemplateLiteral(["Gingerbread Mob Hit"])))).trySkill(template_string_$skill(level_templateObject131 || (level_templateObject131 = level_taggedTemplateLiteral(["Chest X-Ray"]))))).if_("monstername sausage goblin", combat_Macro.delevel().candyblast().defaultKill()), () => {
     return property_get("_shatteringPunchUsed") < 3 && !property_get("_gingerbreadMobHitUsed");
   }, () => {
     heal();
@@ -22632,7 +22632,7 @@ function NEP() {
 
     ensureMp(30);
   });
-  advMacroAA($location(level_templateObject135 || (level_templateObject135 = level_taggedTemplateLiteral(["The Neverending Party"]))), combat_Macro.if_("!monstername sausage goblin", combat_Macro.if_($effect(level_templateObject136 || (level_templateObject136 = level_taggedTemplateLiteral(["Inner Elf"]))), combat_Macro.trySkill(template_string_$skill(level_templateObject137 || (level_templateObject137 = level_taggedTemplateLiteral(["Feel Pride"]))))).trySkill(template_string_$skill(level_templateObject138 || (level_templateObject138 = level_taggedTemplateLiteral(["Bowl Sideways"])))).trySkill(template_string_$skill(_templateObject139 || (_templateObject139 = level_taggedTemplateLiteral(["Shattering Punch"])))).trySkill(template_string_$skill(_templateObject140 || (_templateObject140 = level_taggedTemplateLiteral(["Gingerbread Mob Hit"])))).trySkill(template_string_$skill(_templateObject141 || (_templateObject141 = level_taggedTemplateLiteral(["Chest X-Ray"]))))).if_("monstername sausage goblin", combat_Macro.delevel().candyblast().defaultKill().repeat()), () => {
+  advMacroAA($location(level_templateObject135 || (level_templateObject135 = level_taggedTemplateLiteral(["The Neverending Party"]))), combat_Macro.if_("!monstername sausage goblin", combat_Macro.if_($effect(level_templateObject136 || (level_templateObject136 = level_taggedTemplateLiteral(["Inner Elf"]))), combat_Macro.trySkill(template_string_$skill(level_templateObject137 || (level_templateObject137 = level_taggedTemplateLiteral(["Feel Pride"]))))).trySkill(template_string_$skill(level_templateObject138 || (level_templateObject138 = level_taggedTemplateLiteral(["Bowl Sideways"])))).trySkill(template_string_$skill(_templateObject139 || (_templateObject139 = level_taggedTemplateLiteral(["Shattering Punch"])))).trySkill(template_string_$skill(_templateObject140 || (_templateObject140 = level_taggedTemplateLiteral(["Gingerbread Mob Hit"])))).trySkill(template_string_$skill(_templateObject141 || (_templateObject141 = level_taggedTemplateLiteral(["Chest X-Ray"]))))).if_("monstername sausage goblin", combat_Macro.delevel().candyblast().defaultKill()), () => {
     return property_get("_shatteringPunchUsed") < 3;
   }, () => {
     heal();
@@ -22651,7 +22651,7 @@ function NEP() {
     ensureMp(30);
   });
   (0,external_kolmafia_namespaceObject.equip)($slot(_templateObject145 || (_templateObject145 = level_taggedTemplateLiteral(["acc3"]))), template_string_$item(_templateObject146 || (_templateObject146 = level_taggedTemplateLiteral(["Lil' Doctor\u2122 bag"]))));
-  advMacroAA($location(_templateObject147 || (_templateObject147 = level_taggedTemplateLiteral(["The Neverending Party"]))), combat_Macro.if_("!monstername sausage goblin", combat_Macro.if_($effect(_templateObject148 || (_templateObject148 = level_taggedTemplateLiteral(["Inner Elf"]))), combat_Macro.trySkill(template_string_$skill(_templateObject149 || (_templateObject149 = level_taggedTemplateLiteral(["Feel Pride"]))))).trySkill(template_string_$skill(_templateObject150 || (_templateObject150 = level_taggedTemplateLiteral(["Bowl Sideways"])))).trySkill(template_string_$skill(_templateObject151 || (_templateObject151 = level_taggedTemplateLiteral(["Shattering Punch"])))).trySkill(template_string_$skill(_templateObject152 || (_templateObject152 = level_taggedTemplateLiteral(["Gingerbread Mob Hit"])))).trySkill(template_string_$skill(_templateObject153 || (_templateObject153 = level_taggedTemplateLiteral(["Chest X-Ray"]))))).if_("monstername sausage goblin", combat_Macro.delevel().candyblast().defaultKill().repeat()), () => {
+  advMacroAA($location(_templateObject147 || (_templateObject147 = level_taggedTemplateLiteral(["The Neverending Party"]))), combat_Macro.if_("!monstername sausage goblin", combat_Macro.if_($effect(_templateObject148 || (_templateObject148 = level_taggedTemplateLiteral(["Inner Elf"]))), combat_Macro.trySkill(template_string_$skill(_templateObject149 || (_templateObject149 = level_taggedTemplateLiteral(["Feel Pride"]))))).trySkill(template_string_$skill(_templateObject150 || (_templateObject150 = level_taggedTemplateLiteral(["Bowl Sideways"])))).trySkill(template_string_$skill(_templateObject151 || (_templateObject151 = level_taggedTemplateLiteral(["Shattering Punch"])))).trySkill(template_string_$skill(_templateObject152 || (_templateObject152 = level_taggedTemplateLiteral(["Gingerbread Mob Hit"])))).trySkill(template_string_$skill(_templateObject153 || (_templateObject153 = level_taggedTemplateLiteral(["Chest X-Ray"]))))).if_("monstername sausage goblin", combat_Macro.delevel().candyblast().defaultKill()), () => {
     return property_get("_chestXRayUsed") < 3;
   }, () => {
     heal();
