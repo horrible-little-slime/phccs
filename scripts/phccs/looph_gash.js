@@ -1885,6 +1885,7 @@ var Paths = {
 /* harmony export */   "zU": () => (/* binding */ ascend),
 /* harmony export */   "lO": () => (/* binding */ prepareAscension)
 /* harmony export */ });
+/* unused harmony export AscendError */
 /* harmony import */ var kolmafia__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1664);
 /* harmony import */ var kolmafia__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(kolmafia__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _resources__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(7975);
@@ -1907,6 +1908,30 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (typeof call === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _wrapNativeSuper(Class) { var _cache = typeof Map === "function" ? new Map() : undefined; _wrapNativeSuper = function _wrapNativeSuper(Class) { if (Class === null || !_isNativeFunction(Class)) return Class; if (typeof Class !== "function") { throw new TypeError("Super expression must either be null or a function"); } if (typeof _cache !== "undefined") { if (_cache.has(Class)) return _cache.get(Class); _cache.set(Class, Wrapper); } function Wrapper() { return _construct(Class, arguments, _getPrototypeOf(this).constructor); } Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } }); return _setPrototypeOf(Wrapper, Class); }; return _wrapNativeSuper(Class); }
+
+function _construct(Parent, args, Class) { if (_isNativeReflectConstruct()) { _construct = Reflect.construct; } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _isNativeFunction(fn) { return Function.toString.call(fn).indexOf("[native code]") !== -1; }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -1918,6 +1943,46 @@ var Lifestyle;
   Lifestyle[Lifestyle["normal"] = 2] = "normal";
   Lifestyle[Lifestyle["hardcore"] = 3] = "hardcore";
 })(Lifestyle || (Lifestyle = {}));
+
+var AscendError = /*#__PURE__*/function (_Error) {
+  _inherits(AscendError, _Error);
+
+  var _super = _createSuper(AscendError);
+
+  function AscendError(cause) {
+    var _this;
+
+    _classCallCheck(this, AscendError);
+
+    if (!cause) {
+      _this = _super.call(this, "Failed to ascend--do you have a pending trade offer?");
+
+      _defineProperty(_assertThisInitialized(_this), "cause", void 0);
+    } else if (cause instanceof kolmafia__WEBPACK_IMPORTED_MODULE_0__.Skill) {
+      var reason = cause.permable ? (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.haveSkill)(cause) ? "invalid for mysterious reasons" : "not a skill you currently know" : "unpermable";
+      _this = _super.call(this, "Skill ".concat(cause, " is ").concat(reason, "!"));
+
+      _defineProperty(_assertThisInitialized(_this), "cause", void 0);
+    } else if (cause instanceof kolmafia__WEBPACK_IMPORTED_MODULE_0__.Item) {
+      _this = _super.call(this, "Invalid astral item: ".concat(cause, "!"));
+
+      _defineProperty(_assertThisInitialized(_this), "cause", void 0);
+    } else if (cause instanceof kolmafia__WEBPACK_IMPORTED_MODULE_0__.Class) {
+      _this = _super.call(this, "Invalid class ".concat(cause, " for this path!"));
+
+      _defineProperty(_assertThisInitialized(_this), "cause", void 0);
+    } else {
+      _this = _super.call(this, "Invalid path ".concat(cause, "!"));
+
+      _defineProperty(_assertThisInitialized(_this), "cause", void 0);
+    }
+
+    _this.cause = cause;
+    return _possibleConstructorReturn(_this);
+  }
+
+  return AscendError;
+}( /*#__PURE__*/_wrapNativeSuper(Error));
 
 function toMoonId(moon, playerClass) {
   if (typeof moon === "number") return moon;
@@ -2003,25 +2068,25 @@ function ascend(path, playerClass, lifestyle, moon) {
   var permSkills = arguments.length > 6 && arguments[6] !== undefined ? arguments[6] : undefined;
 
   if (!path.classes.includes(playerClass)) {
-    throw new Error("Invalid class ".concat(playerClass, " for this path"));
+    throw new AscendError(playerClass);
   }
 
-  if (path.id < 0) throw new Error("Invalid path ID ".concat(path.id));
+  if (path.id < 0) throw new AscendError(path);
   var moonId = toMoonId(moon, playerClass);
   if (moonId < 1 || moonId > 9) throw new Error("Invalid moon ".concat(moon));
 
   if (consumable && !(0,_template_string__WEBPACK_IMPORTED_MODULE_1__/* .$items */ .vS)(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["astral six-pack, astral hot dog dinner, [10882]carton of astral energy drinks"]))).includes(consumable)) {
-    throw new Error("Invalid consumable ".concat(consumable, "!"));
+    throw new AscendError(consumable);
   }
 
   if (pet && !(0,_template_string__WEBPACK_IMPORTED_MODULE_1__/* .$items */ .vS)(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["astral bludgeon, astral shield, astral chapeau, astral bracer, astral longbow, astral shorts, astral mace, astral ring, astral statuette, astral pistol, astral mask, astral pet sweater, astral shirt, astral belt"]))).includes(pet)) {
-    throw new Error("Invalid astral item ".concat(pet, "!"));
+    throw new AscendError(pet);
   }
 
   var illegalSkill = permSkills ? Array.from(permSkills.keys()).find(skill => !skill.permable || !(0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.haveSkill)(skill)) : undefined;
 
   if (illegalSkill) {
-    throw new Error("Invalid skill ".concat(illegalSkill, "!"));
+    throw new AscendError(illegalSkill);
   }
 
   if (!(0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.containsText)((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.visitUrl)("charpane.php"), "Astral Spirit")) {
@@ -2029,7 +2094,7 @@ function ascend(path, playerClass, lifestyle, moon) {
   }
 
   if (!(0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.containsText)((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.visitUrl)("charpane.php"), "Astral Spirit")) {
-    throw new Error("Failed to ascend.");
+    throw new AscendError();
   }
 
   (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.visitUrl)("afterlife.php?action=pearlygates");

@@ -21869,7 +21869,8 @@ CommunityService_defineProperty(CommunityService, "SpellDamage", new CommunitySe
 
 CommunityService_defineProperty(CommunityService, "Noncombat", new CommunityService(8, "Non-Combat", "Be a Living Statue", () => {
   var noncombatRate = -1 * modifier_get("Combat Rate");
-  return 60 - 3 * Math.floor(noncombatRate / 5);
+  var unsoftcappedRate = noncombatRate > 25 ? 25 + (noncombatRate - 25) * 5 : noncombatRate;
+  return 60 - 3 * Math.floor(unsoftcappedRate / 5);
 }, new Requirement(["-combat"], {})));
 
 CommunityService_defineProperty(CommunityService, "BoozeDrop", new CommunityService(9, "Item Drop", "Make Margaritas", () => {

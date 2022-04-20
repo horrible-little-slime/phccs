@@ -3115,6 +3115,30 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (typeof call === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _wrapNativeSuper(Class) { var _cache = typeof Map === "function" ? new Map() : undefined; _wrapNativeSuper = function _wrapNativeSuper(Class) { if (Class === null || !_isNativeFunction(Class)) return Class; if (typeof Class !== "function") { throw new TypeError("Super expression must either be null or a function"); } if (typeof _cache !== "undefined") { if (_cache.has(Class)) return _cache.get(Class); _cache.set(Class, Wrapper); } function Wrapper() { return _construct(Class, arguments, _getPrototypeOf(this).constructor); } Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } }); return _setPrototypeOf(Wrapper, Class); }; return _wrapNativeSuper(Class); }
+
+function _construct(Parent, args, Class) { if (_isNativeReflectConstruct()) { _construct = Reflect.construct; } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _isNativeFunction(fn) { return Function.toString.call(fn).indexOf("[native code]") !== -1; }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -3126,6 +3150,46 @@ var Lifestyle;
   Lifestyle[Lifestyle["normal"] = 2] = "normal";
   Lifestyle[Lifestyle["hardcore"] = 3] = "hardcore";
 })(Lifestyle || (Lifestyle = {}));
+
+var AscendError = /*#__PURE__*/function (_Error) {
+  _inherits(AscendError, _Error);
+
+  var _super = _createSuper(AscendError);
+
+  function AscendError(cause) {
+    var _this;
+
+    _classCallCheck(this, AscendError);
+
+    if (!cause) {
+      _this = _super.call(this, "Failed to ascend--do you have a pending trade offer?");
+
+      _defineProperty(_assertThisInitialized(_this), "cause", void 0);
+    } else if (cause instanceof external_kolmafia_.Skill) {
+      var reason = cause.permable ? (0,external_kolmafia_.haveSkill)(cause) ? "invalid for mysterious reasons" : "not a skill you currently know" : "unpermable";
+      _this = _super.call(this, "Skill ".concat(cause, " is ").concat(reason, "!"));
+
+      _defineProperty(_assertThisInitialized(_this), "cause", void 0);
+    } else if (cause instanceof external_kolmafia_.Item) {
+      _this = _super.call(this, "Invalid astral item: ".concat(cause, "!"));
+
+      _defineProperty(_assertThisInitialized(_this), "cause", void 0);
+    } else if (cause instanceof external_kolmafia_.Class) {
+      _this = _super.call(this, "Invalid class ".concat(cause, " for this path!"));
+
+      _defineProperty(_assertThisInitialized(_this), "cause", void 0);
+    } else {
+      _this = _super.call(this, "Invalid path ".concat(cause, "!"));
+
+      _defineProperty(_assertThisInitialized(_this), "cause", void 0);
+    }
+
+    _this.cause = cause;
+    return _possibleConstructorReturn(_this);
+  }
+
+  return AscendError;
+}( /*#__PURE__*/_wrapNativeSuper(Error));
 
 function toMoonId(moon, playerClass) {
   if (typeof moon === "number") return moon;
@@ -3211,25 +3275,25 @@ function ascend(path, playerClass, lifestyle, moon) {
   var permSkills = arguments.length > 6 && arguments[6] !== undefined ? arguments[6] : undefined;
 
   if (!path.classes.includes(playerClass)) {
-    throw new Error("Invalid class ".concat(playerClass, " for this path"));
+    throw new AscendError(playerClass);
   }
 
-  if (path.id < 0) throw new Error("Invalid path ID ".concat(path.id));
+  if (path.id < 0) throw new AscendError(path);
   var moonId = toMoonId(moon, playerClass);
   if (moonId < 1 || moonId > 9) throw new Error("Invalid moon ".concat(moon));
 
   if (consumable && !(0,template_string/* $items */.vS)(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["astral six-pack, astral hot dog dinner, [10882]carton of astral energy drinks"]))).includes(consumable)) {
-    throw new Error("Invalid consumable ".concat(consumable, "!"));
+    throw new AscendError(consumable);
   }
 
   if (pet && !(0,template_string/* $items */.vS)(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["astral bludgeon, astral shield, astral chapeau, astral bracer, astral longbow, astral shorts, astral mace, astral ring, astral statuette, astral pistol, astral mask, astral pet sweater, astral shirt, astral belt"]))).includes(pet)) {
-    throw new Error("Invalid astral item ".concat(pet, "!"));
+    throw new AscendError(pet);
   }
 
   var illegalSkill = permSkills ? Array.from(permSkills.keys()).find(skill => !skill.permable || !(0,external_kolmafia_.haveSkill)(skill)) : undefined;
 
   if (illegalSkill) {
-    throw new Error("Invalid skill ".concat(illegalSkill, "!"));
+    throw new AscendError(illegalSkill);
   }
 
   if (!(0,external_kolmafia_.containsText)((0,external_kolmafia_.visitUrl)("charpane.php"), "Astral Spirit")) {
@@ -3237,7 +3301,7 @@ function ascend(path, playerClass, lifestyle, moon) {
   }
 
   if (!(0,external_kolmafia_.containsText)((0,external_kolmafia_.visitUrl)("charpane.php"), "Astral Spirit")) {
-    throw new Error("Failed to ascend.");
+    throw new AscendError();
   }
 
   (0,external_kolmafia_.visitUrl)("afterlife.php?action=pearlygates");
@@ -3356,27 +3420,27 @@ var flat = __webpack_require__(1755);
 ;// CONCATENATED MODULE: ./node_modules/libram/dist/lib.js
 var lib_templateObject, lib_templateObject2, lib_templateObject3, lib_templateObject4, lib_templateObject5, lib_templateObject6, _templateObject7, _templateObject8, _templateObject9, _templateObject10, _templateObject11, _templateObject12, _templateObject13;
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function lib_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+function lib_inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) lib_setPrototypeOf(subClass, superClass); }
 
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+function lib_createSuper(Derived) { var hasNativeReflectConstruct = lib_isNativeReflectConstruct(); return function _createSuperInternal() { var Super = lib_getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = lib_getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return lib_possibleConstructorReturn(this, result); }; }
 
-function _possibleConstructorReturn(self, call) { if (call && (typeof call === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+function lib_possibleConstructorReturn(self, call) { if (call && (typeof call === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return lib_assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function lib_assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _wrapNativeSuper(Class) { var _cache = typeof Map === "function" ? new Map() : undefined; _wrapNativeSuper = function _wrapNativeSuper(Class) { if (Class === null || !_isNativeFunction(Class)) return Class; if (typeof Class !== "function") { throw new TypeError("Super expression must either be null or a function"); } if (typeof _cache !== "undefined") { if (_cache.has(Class)) return _cache.get(Class); _cache.set(Class, Wrapper); } function Wrapper() { return _construct(Class, arguments, _getPrototypeOf(this).constructor); } Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } }); return _setPrototypeOf(Wrapper, Class); }; return _wrapNativeSuper(Class); }
+function lib_wrapNativeSuper(Class) { var _cache = typeof Map === "function" ? new Map() : undefined; lib_wrapNativeSuper = function _wrapNativeSuper(Class) { if (Class === null || !lib_isNativeFunction(Class)) return Class; if (typeof Class !== "function") { throw new TypeError("Super expression must either be null or a function"); } if (typeof _cache !== "undefined") { if (_cache.has(Class)) return _cache.get(Class); _cache.set(Class, Wrapper); } function Wrapper() { return lib_construct(Class, arguments, lib_getPrototypeOf(this).constructor); } Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } }); return lib_setPrototypeOf(Wrapper, Class); }; return lib_wrapNativeSuper(Class); }
 
-function _construct(Parent, args, Class) { if (_isNativeReflectConstruct()) { _construct = Reflect.construct; } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
+function lib_construct(Parent, args, Class) { if (lib_isNativeReflectConstruct()) { lib_construct = Reflect.construct; } else { lib_construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) lib_setPrototypeOf(instance, Class.prototype); return instance; }; } return lib_construct.apply(null, arguments); }
 
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function lib_isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
-function _isNativeFunction(fn) { return Function.toString.call(fn).indexOf("[native code]") !== -1; }
+function lib_isNativeFunction(fn) { return Function.toString.call(fn).indexOf("[native code]") !== -1; }
 
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function lib_setPrototypeOf(o, p) { lib_setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return lib_setPrototypeOf(o, p); }
 
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+function lib_getPrototypeOf(o) { lib_getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return lib_getPrototypeOf(o); }
 
 function lib_createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = lib_unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e2) { throw _e2; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e3) { didErr = true; err = _e3; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
 
@@ -3924,14 +3988,14 @@ function questStep(questName) {
   }
 }
 var EnsureError = /*#__PURE__*/function (_Error) {
-  _inherits(EnsureError, _Error);
+  lib_inherits(EnsureError, _Error);
 
-  var _super = _createSuper(EnsureError);
+  var _super = lib_createSuper(EnsureError);
 
   function EnsureError(cause) {
     var _this;
 
-    _classCallCheck(this, EnsureError);
+    lib_classCallCheck(this, EnsureError);
 
     _this = _super.call(this, "Failed to ensure ".concat(cause.name, "!"));
     _this.name = "Ensure Error";
@@ -3939,7 +4003,7 @@ var EnsureError = /*#__PURE__*/function (_Error) {
   }
 
   return EnsureError;
-}( /*#__PURE__*/_wrapNativeSuper(Error));
+}( /*#__PURE__*/lib_wrapNativeSuper(Error));
 /**
  * Tries to get an effect using the default method
  * @param ef effect to try to get
@@ -4026,7 +4090,7 @@ function Path_taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.sl
 
 function Path_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function Path_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
 var Path = //here, we define avatar-ness around being its own class
@@ -4055,23 +4119,23 @@ function Path(name, id) {
 
   Path_classCallCheck(this, Path);
 
-  _defineProperty(this, "name", void 0);
+  Path_defineProperty(this, "name", void 0);
 
-  _defineProperty(this, "id", void 0);
+  Path_defineProperty(this, "id", void 0);
 
-  _defineProperty(this, "hasAllPerms", void 0);
+  Path_defineProperty(this, "hasAllPerms", void 0);
 
-  _defineProperty(this, "hasCampground", void 0);
+  Path_defineProperty(this, "hasCampground", void 0);
 
-  _defineProperty(this, "hasTerrarium", void 0);
+  Path_defineProperty(this, "hasTerrarium", void 0);
 
-  _defineProperty(this, "stomachSize", void 0);
+  Path_defineProperty(this, "stomachSize", void 0);
 
-  _defineProperty(this, "liverSize", void 0);
+  Path_defineProperty(this, "liverSize", void 0);
 
-  _defineProperty(this, "spleenSize", void 0);
+  Path_defineProperty(this, "spleenSize", void 0);
 
-  _defineProperty(this, "classes", void 0);
+  Path_defineProperty(this, "classes", void 0);
 
   this.name = name;
   this.id = id;
