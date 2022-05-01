@@ -16996,6 +16996,124 @@ var PropertiesManager = /*#__PURE__*/function () {
 
   return PropertiesManager;
 }();
+;// CONCATENATED MODULE: ./node_modules/libram/dist/resources/2020/RetroCape.js
+var RetroCape_templateObject, RetroCape_templateObject2, RetroCape_templateObject3, RetroCape_templateObject4, RetroCape_templateObject5, RetroCape_templateObject6, RetroCape_templateObject7, RetroCape_templateObject8, RetroCape_templateObject9, RetroCape_templateObject10, RetroCape_templateObject11, RetroCape_templateObject12, RetroCape_templateObject13;
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || RetroCape_unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function RetroCape_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return RetroCape_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return RetroCape_arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return RetroCape_arrayLikeToArray(arr); }
+
+function RetroCape_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { RetroCape_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function RetroCape_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function RetroCape_taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+
+
+
+
+var item = template_string_$item(RetroCape_templateObject || (RetroCape_templateObject = RetroCape_taggedTemplateLiteral(["unwrapped knock-off retro superhero cape"])));
+/**
+ * Determines whether you have() the Retro Cape.
+ * @returns Whether you have the Retro Cape available.
+ */
+
+function RetroCape_have() {
+  return lib_have(item);
+}
+var Heroes = {
+  vampire: {
+    "Muscle Percent": 30,
+    "Maximum HP": 50
+  },
+  heck: {
+    "Mysticality Percent": 30,
+    "Maximum MP": 50
+  },
+  robot: {
+    "Moxie Percent": 30,
+    "Maximum HP": 25,
+    "Maximum MP": 25
+  }
+};
+var currentHero = () => property_get("retroCapeSuperhero");
+var currentMode = () => property_get("retroCapeWashingInstructions");
+var modeMap = new Map([[["vampire", "hold"], {
+  "Hot Resistance": 3,
+  "Cold Resistance": 3,
+  "Stench Resistance": 3,
+  "Spooky Resistance": 3,
+  "Sleaze Resistance": 3
+}], [["vampire", "thrill"], {
+  "Muscle Experience": 3
+}], [["vampire", "kiss"], {
+  Skill: template_string_$skill(RetroCape_templateObject2 || (RetroCape_templateObject2 = RetroCape_taggedTemplateLiteral(["Smooch of the Daywalker"])))
+}], [["vampire", "kill"], {
+  Skill: template_string_$skill(RetroCape_templateObject3 || (RetroCape_templateObject3 = RetroCape_taggedTemplateLiteral(["Slay the Dead"])))
+}], [["heck", "thrill"], {
+  "Mysticality Experience": 3
+}], [["heck", "kiss"], {
+  Skill: template_string_$skill(RetroCape_templateObject4 || (RetroCape_templateObject4 = RetroCape_taggedTemplateLiteral(["Unleash the Devil's Kiss"])))
+}], [["robot", "hold"], {
+  Skill: template_string_$skill(RetroCape_templateObject5 || (RetroCape_templateObject5 = RetroCape_taggedTemplateLiteral(["Deploy Robo-Handcuffs"])))
+}], [["robot", "thrill"], {
+  "Moxie Experience": 3
+}], [["robot", "kiss"], {
+  Skill: template_string_$skill(RetroCape_templateObject6 || (RetroCape_templateObject6 = RetroCape_taggedTemplateLiteral(["Blow a Robo-Kiss"])))
+}], [["robot", "kill"], {
+  Skill: template_string_$skill(RetroCape_templateObject7 || (RetroCape_templateObject7 = RetroCape_taggedTemplateLiteral(["Precision Shot"])))
+}]]);
+/**
+ * Tunes retro cape to a given setting
+ * @param hero The Superhero to set it to
+ * @param mode The washing instructions to set it to
+ * @returns Whether we successfully tuned the Retro Cape.
+ */
+
+function set(hero, mode) {
+  if (!RetroCape_have()) return false;
+  if (currentHero() === hero && currentMode() === mode) return true;
+  (0,external_kolmafia_namespaceObject.cliExecute)("retrocape ".concat(hero, " ").concat(mode));
+  return currentHero() === hero && currentMode() === mode;
+}
+/**
+ * Returns the expected Modifiers of the Retro Cape for a particular setting
+ * @param hero The Superhero setting
+ * @param mode The washing instructions setting
+ * @returns A Modifiers object describing the Retro Cape were it to be tuned to that setting.
+ */
+
+function getModifier() {
+  var _modeMap$get;
+
+  var hero = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : currentHero();
+  var mode = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : currentMode();
+  return _objectSpread(_objectSpread({}, Heroes[hero]), (_modeMap$get = modeMap.get([hero, mode])) !== null && _modeMap$get !== void 0 ? _modeMap$get : {});
+}
+var skills = new Map([[template_string_$skill(RetroCape_templateObject8 || (RetroCape_templateObject8 = RetroCape_taggedTemplateLiteral(["Smooch of the Daywalker"]))), ["vampire", "kiss"]], [template_string_$skill(RetroCape_templateObject9 || (RetroCape_templateObject9 = RetroCape_taggedTemplateLiteral(["Slay the Dead"]))), ["vampire", "kill"]], [template_string_$skill(RetroCape_templateObject10 || (RetroCape_templateObject10 = RetroCape_taggedTemplateLiteral(["Unleash the Devil's Kiss"]))), ["heck", "kiss"]], [template_string_$skill(RetroCape_templateObject11 || (RetroCape_templateObject11 = RetroCape_taggedTemplateLiteral(["Deploy Robo-Handcuffs"]))), ["robot", "hold"]], [template_string_$skill(RetroCape_templateObject12 || (RetroCape_templateObject12 = RetroCape_taggedTemplateLiteral(["Blow a Robo-Kiss"]))), ["robot", "kiss"]], [template_string_$skill(RetroCape_templateObject13 || (RetroCape_templateObject13 = RetroCape_taggedTemplateLiteral(["Precision Shot"]))), ["robot", "kill"]]]);
+/**
+ * Tunes the Retro Cape to allow it to grant a particular skill.
+ * @param skill The skill to tune the Retro Cape to.
+ * @returns Whether we successfully tuned the cape.
+ */
+
+function tuneToSkill(skill) {
+  var setting = skills.get(skill);
+  if (!setting || !RetroCape_have()) return false;
+  set.apply(void 0, _toConsumableArray(setting));
+  return [currentHero(), currentMode()].every((element, index) => element === setting[index]);
+}
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.values.js
 var es_object_values = __webpack_require__(9628);
 ;// CONCATENATED MODULE: ./node_modules/libram/dist/modifierTypes.js
@@ -17019,15 +17137,15 @@ function utils_iterableToArrayLimit(arr, i) { var _i = arr == null ? null : type
 
 function utils_arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || utils_unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+function utils_toConsumableArray(arr) { return utils_arrayWithoutHoles(arr) || utils_iterableToArray(arr) || utils_unsupportedIterableToArray(arr) || utils_nonIterableSpread(); }
 
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function utils_nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
 function utils_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return utils_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return utils_arrayLikeToArray(o, minLen); }
 
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+function utils_iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
 
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return utils_arrayLikeToArray(arr); }
+function utils_arrayWithoutHoles(arr) { if (Array.isArray(arr)) return utils_arrayLikeToArray(arr); }
 
 function utils_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
@@ -17075,7 +17193,7 @@ function arrayToCountedMap(array) {
 function countedMapToArray(map) {
   var _ref;
 
-  return (_ref = []).concat.apply(_ref, _toConsumableArray(_toConsumableArray(map).map(_ref2 => {
+  return (_ref = []).concat.apply(_ref, utils_toConsumableArray(utils_toConsumableArray(map).map(_ref2 => {
     var _ref3 = utils_slicedToArray(_ref2, 2),
         item = _ref3[0],
         quantity = _ref3[1];
@@ -17084,7 +17202,7 @@ function countedMapToArray(map) {
   })));
 }
 function countedMapToString(map) {
-  return _toConsumableArray(map).map(_ref4 => {
+  return utils_toConsumableArray(map).map(_ref4 => {
     var _ref5 = utils_slicedToArray(_ref4, 2),
         item = _ref5[0],
         quantity = _ref5[1];
@@ -17122,9 +17240,9 @@ function utils_arrayContains(item, array) {
  */
 
 function setEqual(a, b) {
-  var sortedA = _toConsumableArray(a).sort();
+  var sortedA = utils_toConsumableArray(a).sort();
 
-  var sortedB = _toConsumableArray(b).sort();
+  var sortedB = utils_toConsumableArray(b).sort();
 
   return a.length === b.length && sortedA.every((item, index) => item === sortedB[index]);
 }
@@ -17156,9 +17274,9 @@ function invertMap(map) {
   return returnValue;
 }
 ;// CONCATENATED MODULE: ./node_modules/libram/dist/modifier.js
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+function modifier_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { modifier_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+function modifier_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { modifier_ownKeys(Object(source), true).forEach(function (key) { modifier_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { modifier_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function modifier_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -17207,7 +17325,7 @@ function modifier_get(name, subject) {
  */
 
 function pairwiseMerge(modifiers1, modifiers2) {
-  var returnValue = _objectSpread(_objectSpread({}, modifiers1), modifiers2);
+  var returnValue = modifier_objectSpread(modifier_objectSpread({}, modifiers1), modifiers2);
 
   for (var modifier in modifiers1) {
     if (Array.from(Object.values(modifiers2)).includes(modifier)) {
@@ -17250,9 +17368,9 @@ function Witchess_taggedTemplateLiteral(strings, raw) { if (!raw) { raw = string
 
 
 
-var item = template_string_$item(Witchess_templateObject || (Witchess_templateObject = Witchess_taggedTemplateLiteral(["Witchess Set"])));
+var Witchess_item = template_string_$item(Witchess_templateObject || (Witchess_templateObject = Witchess_taggedTemplateLiteral(["Witchess Set"])));
 function Witchess_have() {
-  return haveInCampground(item);
+  return haveInCampground(Witchess_item);
 }
 function fightsDone() {
   return property_get("_witchessFights");
@@ -19369,7 +19487,7 @@ function uniform() {
     acc1: template_string_$items(outfits_templateObject13 || (outfits_templateObject13 = outfits_taggedTemplateLiteral(["meteorite necklace, your cowboy boots"]))),
     acc2: template_string_$item(outfits_templateObject14 || (outfits_templateObject14 = outfits_taggedTemplateLiteral(["codpiece"]))),
     acc3: template_string_$items(outfits_templateObject15 || (outfits_templateObject15 = outfits_taggedTemplateLiteral(["battle broom, Powerful Glove"]))),
-    back: template_string_$items(outfits_templateObject16 || (outfits_templateObject16 = outfits_taggedTemplateLiteral(["LOV Epaulettes, vampyric cloake"]))),
+    back: template_string_$items(outfits_templateObject16 || (outfits_templateObject16 = outfits_taggedTemplateLiteral(["LOV Epaulettes, unwrapped knock-off retro superhero cape"]))),
     familiar: null
   };
 
@@ -19405,6 +19523,7 @@ function uniform() {
   }
 
   Outfit.doYourBest(chosenOutfit).dress();
+  if ((0,external_kolmafia_namespaceObject.haveEquipped)(item)) set("heck", "thrill");
 }
 function wireOutfit() {
   new Outfit({
