@@ -23629,6 +23629,7 @@ PropertyManager.set({
   mpAutoRecovery: -0.05,
   logPreferenceChange: true
 });
+var softcore = !(0,external_kolmafia_namespaceObject.inHardcore)();
 
 try {
   assertCompleted(CommunityService.CoilWire.run(coilWire, 60), "Failed to coil wire!");
@@ -23654,7 +23655,7 @@ try {
   assertCompleted(CommunityService.SpellDamage.run(spellTest, 30), "Failed to perform Spell Damage test!");
 } finally {
   CommunityService.printLog(HIGHLIGHT);
-  if (!(0,external_kolmafia_namespaceObject.inHardcore)()) CommunityService.donate();
+  if (softcore) CommunityService.donate();
   (0,external_kolmafia_namespaceObject.setAutoAttack)(0);
   PropertyManager.resetAll();
 }
