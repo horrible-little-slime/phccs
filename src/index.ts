@@ -45,6 +45,8 @@ PropertyManager.set({
     logPreferenceChange: true,
 });
 
+const softcore = !inHardcore();
+
 try {
     assertCompleted(CommunityService.CoilWire.run(coilWire, 60), "Failed to coil wire!");
     if (myLevel() < 13) CommunityService.logTask("levelling", levelUp);
@@ -81,7 +83,7 @@ try {
     );
 } finally {
     CommunityService.printLog(HIGHLIGHT);
-    if (!inHardcore()) CommunityService.donate();
+    if (softcore) CommunityService.donate();
     setAutoAttack(0);
     PropertyManager.resetAll();
 }
