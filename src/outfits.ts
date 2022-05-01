@@ -7,6 +7,7 @@ import {
     equippedAmount,
     equippedItem,
     Familiar,
+    haveEquipped,
     inHardcore,
     Item,
     myFamiliar,
@@ -14,7 +15,7 @@ import {
     toSlot,
     useFamiliar,
 } from "kolmafia";
-import { $familiar, $item, $items, $slot, $slots, get, have } from "libram";
+import { $familiar, $item, $items, $slot, $slots, get, have, RetroCape } from "libram";
 import { chefstaves } from "./lib";
 
 const outfitSlots = [
@@ -170,7 +171,7 @@ export default function uniform(...changes: (Item | [Item, Slot])[]): void {
         acc1: $items`meteorite necklace, your cowboy boots`,
         acc2: $item`codpiece`,
         acc3: $items`battle broom, Powerful Glove`,
-        back: $items`LOV Epaulettes, vampyric cloake`,
+        back: $items`LOV Epaulettes, unwrapped knock-off retro superhero cape`,
         familiar: null,
     };
 
@@ -191,6 +192,7 @@ export default function uniform(...changes: (Item | [Item, Slot])[]): void {
         if (itemOrItems) chosenOutfit[slotName] = itemOrItems;
     }
     Outfit.doYourBest(chosenOutfit).dress();
+    if (haveEquipped(RetroCape.item)) RetroCape.set("heck", "thrill");
 }
 
 export function wireOutfit(): void {
