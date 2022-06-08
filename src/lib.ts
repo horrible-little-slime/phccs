@@ -687,4 +687,5 @@ export function juneCleave(): void {
             ? $location`The Haunted Kitchen`
             : $location`Noob Cave`;
     advMacroAA(zone, Macro.abort());
+    if (get("lastEncounter") === "Poetic Justice") useSkill($skill`Tongue of the Walrus`);
 }
