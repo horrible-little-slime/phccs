@@ -36,6 +36,7 @@ import {
     Skill,
     Slot,
     sweetSynthesis,
+    toMonster,
     totalTurnsPlayed,
     toUrl,
     use,
@@ -681,11 +682,14 @@ export function useJuneCleaver(): boolean {
 
 export function juneCleave(): void {
     if (juneCleaverFightsLeft() > 0) return;
-    equip($slot`weapon`, $item`June cleaver`);
-    const zone =
-        get("ghostLocation") === $location`The Haunted Kitchen`
-            ? $location`The Haunted Kitchen`
-            : $location`Noob Cave`;
-    advMacroAA(zone, Macro.abort());
-    if (get("lastEncounter") === "Poetic Justice") useSkill($skill`Tongue of the Walrus`);
+    withOutfit(new Outfit({ weapon: $item`June cleaver` }), () => {
+        const zone =
+            get("ghostLocation") === $location`The Haunted Kitchen`
+                ? $location`The Haunted Kitchen`
+                : $location`Noob Cave`;
+        adv1(zone, -1, "");
+        if (get("lastEncounter") === "Poetic Justice") useSkill($skill`Tongue of the Walrus`);
+        if (toMonster(get("lastEncounter")) !== $monster`none`)
+            throw new Error("Failed to cleave June!");
+    });
 }
