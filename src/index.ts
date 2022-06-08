@@ -45,6 +45,18 @@ PropertyManager.set({
     logPreferenceChange: true,
 });
 
+PropertyManager.setChoices({
+    1467: 3,
+    1468: 2,
+    1469: 3,
+    1470: 2,
+    1471: 3,
+    1472: 1,
+    1473: 1,
+    1474: 1,
+    1475: 1,
+});
+
 const softcore = !inHardcore();
 
 try {

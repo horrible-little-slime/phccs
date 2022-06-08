@@ -50,6 +50,7 @@ import {
     ensureInnerElf,
     ensureMp,
     heal,
+    juneCleave,
     mapMacro,
     multiFightAutoAttack,
     questStep,
@@ -193,7 +194,9 @@ function witchGhostAgent() {
         runChoice(1);
     }
     cliExecute("fold makeshift garbage shirt");
-    uniform(...$items`protonic accelerator pack, makeshift garbage shirt, familiar scrapbook`);
+    uniform(
+        ...$items`protonic accelerator pack, makeshift garbage shirt, familiar scrapbook, Fourth of May Cosplay Saber`
+    );
     heal();
     useDefaultFamiliar();
     ensureMp(100);
@@ -249,11 +252,14 @@ function witchGhostAgent() {
         }
         visitUrl("place.php?whichplace=desertbeach&action=db_nukehouse");
     }
+    juneCleave();
 }
 
 function lov() {
     cliExecute("fold makeshift garbage shirt");
-    uniform(...$items`protonic accelerator pack, makeshift garbage shirt`);
+    uniform(
+        ...$items`protonic accelerator pack, makeshift garbage shirt, Fourth of May Cosplay Saber`
+    );
     heal();
     useDefaultFamiliar();
     Macro.if_("monstername LOV enforcer", Macro.attack().repeat())
@@ -368,6 +374,7 @@ function snojo() {
             heal();
             useDefaultFamiliar();
             ensureMp(30);
+            juneCleave();
         }
     );
     cliExecute("hottub");

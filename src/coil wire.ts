@@ -1,12 +1,11 @@
 import { create, eat } from "kolmafia";
 import { $item, $items, $location, $skill, get, have } from "libram";
 import uniform, { wireOutfit } from "./outfits";
-import { advMacro, burnLibrams, fightSausageIfAble, useDefaultFamiliar } from "./lib";
+import { advMacro, burnLibrams, fightSausageIfAble, juneCleave, useDefaultFamiliar } from "./lib";
 import runStart from "./runstart";
 import Macro from "./combat";
 
 function firstFights() {
-    // eslint-disable-next-line libram/verify-constants
     uniform(...$items`protonic accelerator pack, Daylight Shavings Helmet`);
     useDefaultFamiliar();
     fightSausageIfAble(
@@ -15,6 +14,7 @@ function firstFights() {
             .attack()
             .repeat()
     );
+    juneCleave();
 
     if (have($item`magical sausage casing`)) {
         create(1, $item`magical sausage`);
