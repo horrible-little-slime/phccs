@@ -16,7 +16,7 @@ import {
     useFamiliar,
 } from "kolmafia";
 import { $familiar, $item, $items, $slot, $slots, get, have, RetroCape } from "libram";
-import { chefstaves, useJuneCleaver } from "./lib";
+import { chefstaves } from "./lib";
 
 const outfitSlots = [
     "weapon",
@@ -166,7 +166,10 @@ export default function uniform(...changes: (Item | [Item, Slot])[]): void {
         hat: $items`astral chapeau, Iunion Crown`,
         shirt: $item`fresh coat of paint`,
         pants: $items`pantogram pants, old sweatpants`,
-        weapon: useJuneCleaver() ? $item`June cleaver` : $item`Fourth of May Cosplay Saber`,
+        weapon:
+            get("_juneCleaverFightsLeft") > 0 && get("_juneCleaverEncounters") < 2
+                ? $item`June cleaver`
+                : $item`Fourth of May Cosplay Saber`,
         offhand: $item`unbreakable umbrella`,
         acc1: $items`meteorite necklace, your cowboy boots`,
         acc2: $item`codpiece`,

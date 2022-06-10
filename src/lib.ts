@@ -664,29 +664,10 @@ export function unequip(item: Item): void {
 
 export const chefstaves = $items`Staff of Kitchen Royalty, Staff of the Deepest Freeze, Staff of Frozen Lard, Staff of the Peppermint Twist, Staff of the Roaring Hearth`;
 
-export function juneCleaverEncounters(): number {
-    return parseInt(getProperty("_juneCleaverEncounters"));
-}
-
-export function juneCleaverFightsLeft(): number {
-    return (
-        ([1, 6, 10, 12, 15, 20][juneCleaverEncounters()] ?? 30) -
-        parseInt(getProperty("_juneCleaverCharge"))
-    );
-}
-
-export function useJuneCleaver(): boolean {
-    return juneCleaverEncounters() < 2 && juneCleaverFightsLeft() > 0;
-}
-
 export function juneCleave(): void {
-    if (juneCleaverFightsLeft() > 0) return;
+    if (get("_juneCleaverFightsLeft") > 0) return;
     withOutfit(new Outfit({ weapon: $item`June cleaver` }), () => {
-        const zone =
-            get("ghostLocation") === $location`The Haunted Kitchen`
-                ? $location`The Haunted Kitchen`
-                : $location`Noob Cave`;
-        adv1(zone, -1, "");
+        adv1($location`Noob Cave`, -1, "");
         if (get("lastEncounter") === "Poetic Justice") useSkill($skill`Tongue of the Walrus`);
     });
 }
