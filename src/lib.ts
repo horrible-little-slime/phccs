@@ -36,7 +36,6 @@ import {
     Skill,
     Slot,
     sweetSynthesis,
-    toMonster,
     totalTurnsPlayed,
     toUrl,
     use,
@@ -689,7 +688,5 @@ export function juneCleave(): void {
                 : $location`Noob Cave`;
         adv1(zone, -1, "");
         if (get("lastEncounter") === "Poetic Justice") useSkill($skill`Tongue of the Walrus`);
-        if (toMonster(get("lastEncounter")) !== $monster`none`)
-            throw new Error("Failed to cleave June!");
     });
 }
