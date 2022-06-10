@@ -130,6 +130,7 @@ function buffMyst() {
 
     if (have($item`votive of confidence`)) use($item`votive of confidence`);
     if (have($item`natural magick candle`)) use($item`natural magick candle`);
+    if (have($item`MayDay™ supply package`)) use($item`MayDay™ supply package`);
 }
 
 function castBuffs() {
