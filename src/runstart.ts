@@ -26,7 +26,6 @@ import {
     Clan,
     get,
     have,
-    Pantogram,
     SourceTerminal,
 } from "libram";
 import { setClan, tryUse } from "./lib";
@@ -141,16 +140,6 @@ function prepGear() {
 
     if (!get("_floundryItemCreated")) {
         Clan.with("Bonus Adventures From Hell", () => cliExecute("acquire codpiece"));
-    }
-
-    if (!have($item`pantogram pants`)) {
-        Pantogram.makePants(
-            "Mysticality",
-            "Hot Resistance: 2",
-            "Maximum HP: 40",
-            "Combat Rate: -5",
-            "Spell Damage Percent: 20"
-        );
     }
 
     if (get("boomBoxSong") !== "Total Eclipse of Your Meat") {

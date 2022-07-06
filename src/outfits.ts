@@ -165,7 +165,7 @@ export default function uniform(...changes: (Item | [Item, Slot])[]): void {
     const defaultUniform = {
         hat: $items`astral chapeau, Iunion Crown`,
         shirt: $item`fresh coat of paint`,
-        pants: $items`pantogram pants, old sweatpants`,
+        pants: $items`designer sweatpants, old sweatpants`,
         weapon:
             get("_juneCleaverFightsLeft") > 0 && get("_juneCleaverEncounters") < 2
                 ? $item`June cleaver`
@@ -273,7 +273,7 @@ export function mysticalityOutfit(): void {
             offhand: $items`astral statuette, cosmetic football`,
             back: $item`unwrapped knock-off retro superhero cape`,
             shirt: $items`denim jacket, shoe ad T-shirt, fresh coat of paint`,
-            pants: $item`pantogram pants`,
+            pants: $item`designer sweatpants`,
             acc1: $item`your cowboy boots`,
             acc2: $item`codpiece`,
             acc3: $item`battle broom`,
@@ -307,7 +307,7 @@ export function hotresOutfit(): void {
             back: $item`unwrapped knock-off retro superhero cape`,
             weapon: $item`Fourth of May Cosplay Saber`,
             offhand: $item`meteorite guard`,
-            pants: $item`pantogram pants`,
+            pants: $item`designer sweatpants`,
             acc1: $item`your cowboy boots`,
             acc2: $item`Brutal brogues`,
             acc3: $item`Beach Comb`,
@@ -349,7 +349,7 @@ export function famweightOutfit(): void {
             hat: $item`Daylight Shavings Helmet`,
             weapon: $item`Fourth of May Cosplay Saber`,
             offhand: $items`burning paper crane, familiar scrapbook`,
-            pants: $items`repaid diaper, Great Wolf's beastly trousers, pantogram pants`,
+            pants: $items`repaid diaper, Great Wolf's beastly trousers, designer sweatpants`,
             acc1: $item`Beach Comb`,
             acc2: $item`Brutal brogues`,
             acc3: $item`hewn moon-rune spoon`,
@@ -394,7 +394,7 @@ export function spellOutfit(): void {
                     : $items`obsidian nutcracker`),
             ],
             familiar: famEquip,
-            pants: $item`pantogram pants`,
+            pants: $item`designer sweatpants`,
             acc1: $items`meteorite necklace, Kremlin's Greatest Briefcase`,
             acc2: $item`codpiece`,
             acc3: $item`battle broom`,
