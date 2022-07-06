@@ -23,7 +23,7 @@ import { PropertyManager } from "./lib";
 import spellTest from "./spell";
 import { HPTest, moxTest, muscleTest, mystTest } from "./stattests";
 import weaponTest from "./weapon";
-import { $effect, $item, $skill, CommunityService, have } from "libram";
+import { $effect, $item, $skill, CommunityService, have, sinceKolmafiaRevision } from "libram";
 
 const HIGHLIGHT = isDarkMode() ? "yellow" : "blue";
 
@@ -32,6 +32,7 @@ const assertCompleted = (action: string, warning: string) => {
 };
 
 //preamble
+sinceKolmafiaRevision(26538);
 if (myPathId() !== 25) abort();
 visitUrl("council.php");
 cliExecute("ccs twiddle");
