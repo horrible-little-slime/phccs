@@ -355,6 +355,11 @@ function godLob() {
         uniform($item`familiar scrapbook`);
         heal();
         useFamiliar($familiar`God Lobster`);
+        const gear =
+            $items`God Lobster's Crown, God Lobster's Robe, God Lobster's Rod, God Lobster's Ring, God Lobster's Scepter`.find(
+                (it) => have(it)
+            );
+        if (gear) equip(gear);
         visitUrl("main.php?fightgodlobster=1");
         runCombat(Macro.delevel().easyFight().defaultKill().toString());
         multiFightAutoAttack();
