@@ -32,6 +32,22 @@ import {
 import { BooleanModifier, NumericModifier, numericModifiers } from "libram/dist/modifierTypes";
 import { chefstaves } from "./lib";
 
+type Modes = {
+    backupcamera?: "ml" | "meat" | "init";
+    umbrella?: "broken" | "forward" | "bucket" | "pitchfork" | "twirling" | "cocoon";
+    snowsuit?: "eyebrows" | "smirk" | "nose" | "goatee" | "hat";
+    edpiece?: "bear" | "owl" | "puma" | "hyena" | "mouse" | "weasel" | "fish";
+    retrocape?: ["vampire" | "heck" | "robot", "hold" | "thrill" | "kiss" | "kill"];
+};
+
+const modeables = {
+    backupcamera: $item`backup camera`,
+    umbrella: $item`unbreakable umbrella`,
+    snowsuit: $item`Snow Suit`,
+    edpiece: $item`The Crown of Ed the Undying`,
+    retrocape: $item`unwrapped knock-off retro superhero cape`,
+} as const;
+
 const outfitSlots = [
     "weapon",
     "offhand",
@@ -53,15 +69,17 @@ type OutfitAttempt = Partial<{ [slot in OutfitSlots]: Item | Item[] }>;
 export class Outfit {
     equips: OutfitParts;
     familiar?: Familiar;
+    modes?: Modes;
 
     /**
      * Construct an outfit object, for rapid equipping
      * @param equips Map of what to equip and where
      * @param familiar Optional familiar to use with outfit
      */
-    constructor(equips: OutfitParts, familiar?: Familiar) {
+    constructor(equips: OutfitParts, familiar?: Familiar, modes?: Modes) {
         this.equips = equips;
         this.familiar = familiar;
+        this.modes = modes;
     }
 
     dress(): void {
@@ -109,6 +127,14 @@ export class Outfit {
                 equip(slot, toEquip);
             }
         }
+
+        for (const mode in this.modes) {
+            if (haveEquipped(modeables[mode as keyof Modes])) {
+                const cmd = this.modes[mode as keyof Modes];
+                const args = Array.isArray(cmd) ? cmd.join(" ") : cmd;
+                cliExecute(`${mode} ${args}`);
+            }
+        }
     }
 
     modifier(mod: NumericModifier): number;
@@ -149,11 +175,13 @@ export class OutfitPlan {
     outline: OutfitAttempt;
     filler?: Requirement;
     familiar?: Familiar;
+    modes?: Modes;
 
-    constructor(outline: OutfitAttempt, familiar?: Familiar, filler?: Requirement) {
+    constructor(outline: OutfitAttempt, familiar?: Familiar, filler?: Requirement, modes?: Modes) {
         this.outline = outline;
         this.familiar = familiar;
         this.filler = filler;
+        this.modes = modes;
     }
 
     build(): Outfit {
@@ -170,7 +198,7 @@ export class OutfitPlan {
                 : itemOrItems;
             if (itemChoice) fit[slotName] = itemChoice;
         }
-        return new Outfit(fit, this.familiar);
+        return new Outfit(fit, this.familiar, this.modes);
     }
 
     dress(filler?: Requirement): void {
@@ -197,7 +225,12 @@ export class OutfitPlan {
             } else merged[slot] = current ?? alternate;
         }
 
-        return new OutfitPlan(merged);
+        return new OutfitPlan(
+            merged,
+            other.familiar ?? this.familiar,
+            other.filler?.merge(this.filler ?? new Requirement([], {})) ?? this.filler,
+            { ...(other.modes ?? {}), ...(this.modes ?? {}) }
+        );
     }
 
     static merge(...mergees: OutfitPlan[]): OutfitPlan {
