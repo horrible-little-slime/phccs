@@ -7609,18 +7609,272 @@ var PropertiesManager = /*#__PURE__*/function () {
 
   return PropertiesManager;
 }();
-;// CONCATENATED MODULE: ./node_modules/libram/dist/resources/2020/RetroCape.js
-var RetroCape_templateObject, RetroCape_templateObject2, RetroCape_templateObject3, RetroCape_templateObject4, RetroCape_templateObject5, RetroCape_templateObject6, RetroCape_templateObject7, RetroCape_templateObject8, RetroCape_templateObject9, RetroCape_templateObject10, RetroCape_templateObject11, RetroCape_templateObject12, RetroCape_templateObject13;
+;// CONCATENATED MODULE: ./node_modules/libram/dist/utils.js
+function utils_createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = utils_unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e2) { throw _e2; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e3) { didErr = true; err = _e3; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
 
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || RetroCape_unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+function utils_slicedToArray(arr, i) { return utils_arrayWithHoles(arr) || utils_iterableToArrayLimit(arr, i) || utils_unsupportedIterableToArray(arr, i) || utils_nonIterableRest(); }
+
+function utils_nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function utils_iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function utils_arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || utils_unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
-function RetroCape_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return RetroCape_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return RetroCape_arrayLikeToArray(o, minLen); }
+function utils_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return utils_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return utils_arrayLikeToArray(o, minLen); }
 
 function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
 
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return RetroCape_arrayLikeToArray(arr); }
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return utils_arrayLikeToArray(arr); }
+
+function utils_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function notNull(value) {
+  return value !== null;
+}
+function parseNumber(n) {
+  return Number.parseInt(n.replace(/,/g, ""));
+}
+/**
+ * Clamp a number between lower and upper bounds.
+ *
+ * @param n Number to clamp.
+ * @param min Lower bound.
+ * @param max Upper bound.
+ */
+
+function clamp(n, min, max) {
+  return Math.max(min, Math.min(max, n));
+}
+/**
+ * Split an {@param array} into {@param chunkSize} sized chunks
+ *
+ * @param array Array to split
+ * @param chunkSize Size of chunk
+ */
+
+function utils_chunk(array, chunkSize) {
+  var result = [];
+
+  for (var i = 0; i < array.length; i += chunkSize) {
+    result.push(array.slice(i, i + chunkSize));
+  }
+
+  return result;
+}
+function arrayToCountedMap(array) {
+  if (!Array.isArray(array)) return array;
+  var map = new Map();
+  array.forEach(item => {
+    map.set(item, (map.get(item) || 0) + 1);
+  });
+  return map;
+}
+function countedMapToArray(map) {
+  var _ref;
+
+  return (_ref = []).concat.apply(_ref, _toConsumableArray(_toConsumableArray(map).map(_ref2 => {
+    var _ref3 = utils_slicedToArray(_ref2, 2),
+        item = _ref3[0],
+        quantity = _ref3[1];
+
+    return Array(quantity).fill(item);
+  })));
+}
+function countedMapToString(map) {
+  return _toConsumableArray(map).map(_ref4 => {
+    var _ref5 = utils_slicedToArray(_ref4, 2),
+        item = _ref5[0],
+        quantity = _ref5[1];
+
+    return "".concat(quantity, " x ").concat(item);
+  }).join(", ");
+}
+/**
+ * Sum an array of numbers.
+ * @param addends Addends to sum.
+ * @param mappingFunction function to turn elements into numbers
+ */
+
+function sum(addends, mappingFunction) {
+  return addends.reduce((subtotal, element) => subtotal + mappingFunction(element), 0);
+}
+function sumNumbers(addends) {
+  return sum(addends, x => x);
+}
+/**
+ * Checks if a given item is in a readonly array, acting as a typeguard.
+ * @param item Needle
+ * @param array Readonly array haystack
+ * @returns Whether the item is in the array, and narrows the type of the item.
+ */
+
+function utils_arrayContains(item, array) {
+  return array.includes(item);
+}
+/**
+ * Checks if two arrays contain the same elements in the same quantity.
+ * @param a First array for comparison
+ * @param b Second array for comparison
+ * @returns Whether the two arrays are equal, irrespective of order.
+ */
+
+function setEqual(a, b) {
+  var sortedA = _toConsumableArray(a).sort();
+
+  var sortedB = _toConsumableArray(b).sort();
+
+  return a.length === b.length && sortedA.every((item, index) => item === sortedB[index]);
+}
+/**
+ * Reverses keys and values for a given map
+ * @param map Map to invert
+ */
+
+function invertMap(map) {
+  var returnValue = new Map();
+
+  var _iterator = utils_createForOfIteratorHelper(map),
+      _step;
+
+  try {
+    for (_iterator.s(); !(_step = _iterator.n()).done;) {
+      var _step$value = utils_slicedToArray(_step.value, 2),
+          key = _step$value[0],
+          value = _step$value[1];
+
+      returnValue.set(value, key);
+    }
+  } catch (err) {
+    _iterator.e(err);
+  } finally {
+    _iterator.f();
+  }
+
+  return returnValue;
+}
+/**
+ * Creates a Type Guard function for a string union type defined via an array as const.
+ */
+
+function createStringUnionTypeGuardFunction(array) {
+  return function (x) {
+    return array.includes(x);
+  };
+}
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.values.js
+var es_object_values = __webpack_require__(9628);
+;// CONCATENATED MODULE: ./node_modules/libram/dist/modifierTypes.js
+// THIS FILE IS AUTOMATICALLY GENERATED. See tools/parseModifiers.ts for more information
+var modifierTypes_booleanModifiers = ["Softcore Only", "Single Equip", "Never Fumble", "Weakens Monster", "Free Pull", "Variable", "Nonstackable Watch", "Cold Immunity", "Hot Immunity", "Sleaze Immunity", "Spooky Immunity", "Stench Immunity", "Cold Vulnerability", "Hot Vulnerability", "Sleaze Vulnerability", "Spooky Vulnerability", "Stench Vulnerability", "Moxie Controls MP", "Moxie May Control MP", "Four Songs", "Adventure Underwater", "Underwater Familiar", "Generic", "Unarmed", "No Pull", "Lasts Until Rollover", "Attacks Can't Miss", "Pirate", "Breakable", "Drops Items", "Drops Meat"];
+var classModifiers = ["Class"];
+var modifierTypes_numericModifiers = ["Familiar Weight", "Monster Level", "Combat Rate", "Initiative", "Experience", "Item Drop", "Meat Drop", "Damage Absorption", "Damage Reduction", "Cold Resistance", "Hot Resistance", "Sleaze Resistance", "Spooky Resistance", "Stench Resistance", "Mana Cost", "Moxie", "Moxie Percent", "Muscle", "Muscle Percent", "Mysticality", "Mysticality Percent", "Maximum HP", "Maximum HP Percent", "Maximum MP", "Maximum MP Percent", "Weapon Damage", "Ranged Damage", "Spell Damage", "Spell Damage Percent", "Cold Damage", "Hot Damage", "Sleaze Damage", "Spooky Damage", "Stench Damage", "Cold Spell Damage", "Hot Spell Damage", "Sleaze Spell Damage", "Spooky Spell Damage", "Stench Spell Damage", "Underwater Combat Rate", "Fumble", "HP Regen Min", "HP Regen Max", "MP Regen Min", "MP Regen Max", "Adventures", "Familiar Weight Percent", "Weapon Damage Percent", "Ranged Damage Percent", "Stackable Mana Cost", "Hobo Power", "Base Resting HP", "Resting HP Percent", "Bonus Resting HP", "Base Resting MP", "Resting MP Percent", "Bonus Resting MP", "Critical Hit Percent", "PvP Fights", "Volleyball", "Sombrero", "Leprechaun", "Fairy", "Meat Drop Penalty", "Hidden Familiar Weight", "Item Drop Penalty", "Initiative Penalty", "Food Drop", "Booze Drop", "Hat Drop", "Weapon Drop", "Offhand Drop", "Shirt Drop", "Pants Drop", "Accessory Drop", "Volleyball Effectiveness", "Sombrero Effectiveness", "Leprechaun Effectiveness", "Fairy Effectiveness", "Familiar Weight Cap", "Slime Resistance", "Slime Hates It", "Spell Critical Percent", "Muscle Experience", "Mysticality Experience", "Moxie Experience", "Effect Duration", "Candy Drop", "DB Combat Damage", "Sombrero Bonus", "Familiar Experience", "Sporadic Meat Drop", "Sporadic Item Drop", "Meat Bonus", "Pickpocket Chance", "Combat Mana Cost", "Muscle Experience Percent", "Mysticality Experience Percent", "Moxie Experience Percent", "Minstrel Level", "Muscle Limit", "Mysticality Limit", "Moxie Limit", "Song Duration", "Prismatic Damage", "Smithsness", "Supercold Resistance", "Reduce Enemy Defense", "Pool Skill", "Surgeonosity", "Familiar Damage", "Gear Drop", "Maximum Hooch", "Water Level", "Crimbot Outfit Power", "Familiar Tuning Muscle", "Familiar Tuning Mysticality", "Familiar Tuning Moxie", "Random Monster Modifiers", "Luck", "Othello Skill", "Disco Style", "Rollover Effect Duration", "Sixgun Damage", "Fishing Skill", "Additional Song", "Sprinkle Drop", "Absorb Adventures", "Absorb Stats", "Rubee Drop", "Kruegerand Drop", "WarBear Armor Penetration", "Clowniness", "Maximum PP", "Plumber Power", "Drippy Damage", "Drippy Resistance", "Energy", "Scrap", "Familiar Action Bonus", "Water"];
+var effectModifiers = ["Effect", "Rollover Effect"];
+var monsterModifiers = ["Avatar"];
+var skillModifiers = ["Skill"];
+var statModifiers = ["Plumber Stat"];
+var stringModifiers = ["Intrinsic Effect", "Equalize", "Wiki Name", "Modifiers", "Outfit", "Stat Tuning", "Equips On", "Familiar Effect", "Jiggle", "Equalize Muscle", "Equalize Mysticality", "Equalize Moxie", "Floor Buffed Muscle", "Floor Buffed Mysticality", "Floor Buffed Moxie"];
+;// CONCATENATED MODULE: ./node_modules/libram/dist/modifier.js
+function modifier_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function modifier_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { modifier_ownKeys(Object(source), true).forEach(function (key) { modifier_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { modifier_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function modifier_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+
+function modifier_get(name, subject) {
+  if (utils_arrayContains(name, modifierTypes_booleanModifiers)) {
+    return subject === undefined ? (0,external_kolmafia_namespaceObject.booleanModifier)(name) : (0,external_kolmafia_namespaceObject.booleanModifier)(subject, name);
+  }
+
+  if (utils_arrayContains(name, classModifiers)) {
+    return (0,external_kolmafia_namespaceObject.classModifier)(subject, name);
+  }
+
+  if (utils_arrayContains(name, effectModifiers)) {
+    return (0,external_kolmafia_namespaceObject.effectModifier)(subject, name);
+  }
+
+  if (utils_arrayContains(name, monsterModifiers)) {
+    return (0,external_kolmafia_namespaceObject.monsterModifier)(subject, name);
+  }
+
+  if (utils_arrayContains(name, modifierTypes_numericModifiers)) {
+    return subject === undefined ? (0,external_kolmafia_namespaceObject.numericModifier)(name) : (0,external_kolmafia_namespaceObject.numericModifier)(subject, name);
+  }
+
+  if (utils_arrayContains(name, skillModifiers)) {
+    return (0,external_kolmafia_namespaceObject.skillModifier)(subject, name);
+  }
+
+  if (utils_arrayContains(name, stringModifiers)) {
+    return subject === undefined ? (0,external_kolmafia_namespaceObject.stringModifier)(name) : (0,external_kolmafia_namespaceObject.stringModifier)(subject, name);
+  }
+
+  if (utils_arrayContains(name, statModifiers)) {
+    return (0,external_kolmafia_namespaceObject.statModifier)(subject, name);
+  }
+}
+/**
+ * Merge two Modifiers objects into one, summing all numeric modifiers, ||ing all boolean modifiers, and otherwise letting the second object overwrite the first.
+ * @param modifiers1 Modifiers objects to be merged onto.
+ * @param modifiers2 Modifiers object to merge.
+ * @returns A single Modifiers object obtained by merging.
+ */
+
+function pairwiseMerge(modifiers1, modifiers2) {
+  var returnValue = modifier_objectSpread(modifier_objectSpread({}, modifiers1), modifiers2);
+
+  for (var modifier in modifiers1) {
+    if (Array.from(Object.values(modifiers2)).includes(modifier)) {
+      if (arrayContains(modifier, numericModifiers)) {
+        var _modifiers1$modifier, _modifiers2$modifier;
+
+        returnValue[modifier] = ((_modifiers1$modifier = modifiers1[modifier]) !== null && _modifiers1$modifier !== void 0 ? _modifiers1$modifier : 0) + ((_modifiers2$modifier = modifiers2[modifier]) !== null && _modifiers2$modifier !== void 0 ? _modifiers2$modifier : 0);
+      }
+
+      if (arrayContains(modifier, booleanModifiers)) {
+        var _modifiers1$modifier2, _modifiers2$modifier2;
+
+        returnValue[modifier] = ((_modifiers1$modifier2 = modifiers1[modifier]) !== null && _modifiers1$modifier2 !== void 0 ? _modifiers1$modifier2 : false) || ((_modifiers2$modifier2 = modifiers2[modifier]) !== null && _modifiers2$modifier2 !== void 0 ? _modifiers2$modifier2 : false);
+      }
+    }
+  }
+
+  return returnValue;
+}
+/**
+ * Merge arbitrarily many Modifiers objects into one, summing all numeric modifiers, and ||ing all boolean modifiers.
+ * @param modifierss Modifiers objects to be merged together.
+ * @returns A single Modifiers object obtained by merging.
+ */
+
+
+function mergeModifiers() {
+  for (var _len = arguments.length, modifierss = new Array(_len), _key = 0; _key < _len; _key++) {
+    modifierss[_key] = arguments[_key];
+  }
+
+  return modifierss.reduce((a, b) => pairwiseMerge(a, b), {});
+}
+;// CONCATENATED MODULE: ./node_modules/libram/dist/resources/2020/RetroCape.js
+var RetroCape_templateObject, RetroCape_templateObject2, RetroCape_templateObject3, RetroCape_templateObject4, RetroCape_templateObject5, RetroCape_templateObject6, RetroCape_templateObject7, RetroCape_templateObject8, RetroCape_templateObject9, RetroCape_templateObject10, RetroCape_templateObject11, RetroCape_templateObject12, RetroCape_templateObject13;
+
+function RetroCape_toConsumableArray(arr) { return RetroCape_arrayWithoutHoles(arr) || RetroCape_iterableToArray(arr) || RetroCape_unsupportedIterableToArray(arr) || RetroCape_nonIterableSpread(); }
+
+function RetroCape_nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function RetroCape_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return RetroCape_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return RetroCape_arrayLikeToArray(o, minLen); }
+
+function RetroCape_iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function RetroCape_arrayWithoutHoles(arr) { if (Array.isArray(arr)) return RetroCape_arrayLikeToArray(arr); }
 
 function RetroCape_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
@@ -7724,262 +7978,8 @@ var skills = new Map([[template_string_$skill(RetroCape_templateObject8 || (Retr
 function tuneToSkill(skill) {
   var setting = skills.get(skill);
   if (!setting || !RetroCape_have()) return false;
-  set.apply(void 0, _toConsumableArray(setting));
+  set.apply(void 0, RetroCape_toConsumableArray(setting));
   return [currentHero(), currentMode()].every((element, index) => element === setting[index]);
-}
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.values.js
-var es_object_values = __webpack_require__(9628);
-;// CONCATENATED MODULE: ./node_modules/libram/dist/modifierTypes.js
-// THIS FILE IS AUTOMATICALLY GENERATED. See tools/parseModifiers.ts for more information
-var modifierTypes_booleanModifiers = ["Softcore Only", "Single Equip", "Never Fumble", "Weakens Monster", "Free Pull", "Variable", "Nonstackable Watch", "Cold Immunity", "Hot Immunity", "Sleaze Immunity", "Spooky Immunity", "Stench Immunity", "Cold Vulnerability", "Hot Vulnerability", "Sleaze Vulnerability", "Spooky Vulnerability", "Stench Vulnerability", "Moxie Controls MP", "Moxie May Control MP", "Four Songs", "Adventure Underwater", "Underwater Familiar", "Generic", "Unarmed", "No Pull", "Lasts Until Rollover", "Attacks Can't Miss", "Pirate", "Breakable", "Drops Items", "Drops Meat"];
-var classModifiers = ["Class"];
-var modifierTypes_numericModifiers = ["Familiar Weight", "Monster Level", "Combat Rate", "Initiative", "Experience", "Item Drop", "Meat Drop", "Damage Absorption", "Damage Reduction", "Cold Resistance", "Hot Resistance", "Sleaze Resistance", "Spooky Resistance", "Stench Resistance", "Mana Cost", "Moxie", "Moxie Percent", "Muscle", "Muscle Percent", "Mysticality", "Mysticality Percent", "Maximum HP", "Maximum HP Percent", "Maximum MP", "Maximum MP Percent", "Weapon Damage", "Ranged Damage", "Spell Damage", "Spell Damage Percent", "Cold Damage", "Hot Damage", "Sleaze Damage", "Spooky Damage", "Stench Damage", "Cold Spell Damage", "Hot Spell Damage", "Sleaze Spell Damage", "Spooky Spell Damage", "Stench Spell Damage", "Underwater Combat Rate", "Fumble", "HP Regen Min", "HP Regen Max", "MP Regen Min", "MP Regen Max", "Adventures", "Familiar Weight Percent", "Weapon Damage Percent", "Ranged Damage Percent", "Stackable Mana Cost", "Hobo Power", "Base Resting HP", "Resting HP Percent", "Bonus Resting HP", "Base Resting MP", "Resting MP Percent", "Bonus Resting MP", "Critical Hit Percent", "PvP Fights", "Volleyball", "Sombrero", "Leprechaun", "Fairy", "Meat Drop Penalty", "Hidden Familiar Weight", "Item Drop Penalty", "Initiative Penalty", "Food Drop", "Booze Drop", "Hat Drop", "Weapon Drop", "Offhand Drop", "Shirt Drop", "Pants Drop", "Accessory Drop", "Volleyball Effectiveness", "Sombrero Effectiveness", "Leprechaun Effectiveness", "Fairy Effectiveness", "Familiar Weight Cap", "Slime Resistance", "Slime Hates It", "Spell Critical Percent", "Muscle Experience", "Mysticality Experience", "Moxie Experience", "Effect Duration", "Candy Drop", "DB Combat Damage", "Sombrero Bonus", "Familiar Experience", "Sporadic Meat Drop", "Sporadic Item Drop", "Meat Bonus", "Pickpocket Chance", "Combat Mana Cost", "Muscle Experience Percent", "Mysticality Experience Percent", "Moxie Experience Percent", "Minstrel Level", "Muscle Limit", "Mysticality Limit", "Moxie Limit", "Song Duration", "Prismatic Damage", "Smithsness", "Supercold Resistance", "Reduce Enemy Defense", "Pool Skill", "Surgeonosity", "Familiar Damage", "Gear Drop", "Maximum Hooch", "Water Level", "Crimbot Outfit Power", "Familiar Tuning Muscle", "Familiar Tuning Mysticality", "Familiar Tuning Moxie", "Random Monster Modifiers", "Luck", "Othello Skill", "Disco Style", "Rollover Effect Duration", "Sixgun Damage", "Fishing Skill", "Additional Song", "Sprinkle Drop", "Absorb Adventures", "Absorb Stats", "Rubee Drop", "Kruegerand Drop", "WarBear Armor Penetration", "Clowniness", "Maximum PP", "Plumber Power", "Drippy Damage", "Drippy Resistance", "Energy", "Scrap", "Familiar Action Bonus", "Water"];
-var effectModifiers = ["Effect", "Rollover Effect"];
-var monsterModifiers = ["Avatar"];
-var skillModifiers = ["Skill"];
-var statModifiers = ["Plumber Stat"];
-var stringModifiers = ["Intrinsic Effect", "Equalize", "Wiki Name", "Modifiers", "Outfit", "Stat Tuning", "Equips On", "Familiar Effect", "Jiggle", "Equalize Muscle", "Equalize Mysticality", "Equalize Moxie", "Floor Buffed Muscle", "Floor Buffed Mysticality", "Floor Buffed Moxie"];
-;// CONCATENATED MODULE: ./node_modules/libram/dist/utils.js
-function utils_createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = utils_unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e2) { throw _e2; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e3) { didErr = true; err = _e3; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
-
-function utils_slicedToArray(arr, i) { return utils_arrayWithHoles(arr) || utils_iterableToArrayLimit(arr, i) || utils_unsupportedIterableToArray(arr, i) || utils_nonIterableRest(); }
-
-function utils_nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function utils_iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function utils_arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-function utils_toConsumableArray(arr) { return utils_arrayWithoutHoles(arr) || utils_iterableToArray(arr) || utils_unsupportedIterableToArray(arr) || utils_nonIterableSpread(); }
-
-function utils_nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function utils_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return utils_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return utils_arrayLikeToArray(o, minLen); }
-
-function utils_iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
-
-function utils_arrayWithoutHoles(arr) { if (Array.isArray(arr)) return utils_arrayLikeToArray(arr); }
-
-function utils_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function notNull(value) {
-  return value !== null;
-}
-function parseNumber(n) {
-  return Number.parseInt(n.replace(/,/g, ""));
-}
-/**
- * Clamp a number between lower and upper bounds.
- *
- * @param n Number to clamp.
- * @param min Lower bound.
- * @param max Upper bound.
- */
-
-function clamp(n, min, max) {
-  return Math.max(min, Math.min(max, n));
-}
-/**
- * Split an {@param array} into {@param chunkSize} sized chunks
- *
- * @param array Array to split
- * @param chunkSize Size of chunk
- */
-
-function utils_chunk(array, chunkSize) {
-  var result = [];
-
-  for (var i = 0; i < array.length; i += chunkSize) {
-    result.push(array.slice(i, i + chunkSize));
-  }
-
-  return result;
-}
-function arrayToCountedMap(array) {
-  if (!Array.isArray(array)) return array;
-  var map = new Map();
-  array.forEach(item => {
-    map.set(item, (map.get(item) || 0) + 1);
-  });
-  return map;
-}
-function countedMapToArray(map) {
-  var _ref;
-
-  return (_ref = []).concat.apply(_ref, utils_toConsumableArray(utils_toConsumableArray(map).map(_ref2 => {
-    var _ref3 = utils_slicedToArray(_ref2, 2),
-        item = _ref3[0],
-        quantity = _ref3[1];
-
-    return Array(quantity).fill(item);
-  })));
-}
-function countedMapToString(map) {
-  return utils_toConsumableArray(map).map(_ref4 => {
-    var _ref5 = utils_slicedToArray(_ref4, 2),
-        item = _ref5[0],
-        quantity = _ref5[1];
-
-    return "".concat(quantity, " x ").concat(item);
-  }).join(", ");
-}
-/**
- * Sum an array of numbers.
- * @param addends Addends to sum.
- * @param mappingFunction function to turn elements into numbers
- */
-
-function sum(addends, mappingFunction) {
-  return addends.reduce((subtotal, element) => subtotal + mappingFunction(element), 0);
-}
-function sumNumbers(addends) {
-  return sum(addends, x => x);
-}
-/**
- * Checks if a given item is in a readonly array, acting as a typeguard.
- * @param item Needle
- * @param array Readonly array haystack
- * @returns Whether the item is in the array, and narrows the type of the item.
- */
-
-function utils_arrayContains(item, array) {
-  return array.includes(item);
-}
-/**
- * Checks if two arrays contain the same elements in the same quantity.
- * @param a First array for comparison
- * @param b Second array for comparison
- * @returns Whether the two arrays are equal, irrespective of order.
- */
-
-function setEqual(a, b) {
-  var sortedA = utils_toConsumableArray(a).sort();
-
-  var sortedB = utils_toConsumableArray(b).sort();
-
-  return a.length === b.length && sortedA.every((item, index) => item === sortedB[index]);
-}
-/**
- * Reverses keys and values for a given map
- * @param map Map to invert
- */
-
-function invertMap(map) {
-  var returnValue = new Map();
-
-  var _iterator = utils_createForOfIteratorHelper(map),
-      _step;
-
-  try {
-    for (_iterator.s(); !(_step = _iterator.n()).done;) {
-      var _step$value = utils_slicedToArray(_step.value, 2),
-          key = _step$value[0],
-          value = _step$value[1];
-
-      returnValue.set(value, key);
-    }
-  } catch (err) {
-    _iterator.e(err);
-  } finally {
-    _iterator.f();
-  }
-
-  return returnValue;
-}
-/**
- * Creates a Type Guard function for a string union type defined via an array as const.
- */
-
-function createStringUnionTypeGuardFunction(array) {
-  return function (x) {
-    return array.includes(x);
-  };
-}
-;// CONCATENATED MODULE: ./node_modules/libram/dist/modifier.js
-function modifier_ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
-
-function modifier_objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { modifier_ownKeys(Object(source), true).forEach(function (key) { modifier_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { modifier_ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function modifier_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-
-
-
-
-function modifier_get(name, subject) {
-  if (utils_arrayContains(name, modifierTypes_booleanModifiers)) {
-    return subject === undefined ? (0,external_kolmafia_namespaceObject.booleanModifier)(name) : (0,external_kolmafia_namespaceObject.booleanModifier)(subject, name);
-  }
-
-  if (utils_arrayContains(name, classModifiers)) {
-    return (0,external_kolmafia_namespaceObject.classModifier)(subject, name);
-  }
-
-  if (utils_arrayContains(name, effectModifiers)) {
-    return (0,external_kolmafia_namespaceObject.effectModifier)(subject, name);
-  }
-
-  if (utils_arrayContains(name, monsterModifiers)) {
-    return (0,external_kolmafia_namespaceObject.monsterModifier)(subject, name);
-  }
-
-  if (utils_arrayContains(name, modifierTypes_numericModifiers)) {
-    return subject === undefined ? (0,external_kolmafia_namespaceObject.numericModifier)(name) : (0,external_kolmafia_namespaceObject.numericModifier)(subject, name);
-  }
-
-  if (utils_arrayContains(name, skillModifiers)) {
-    return (0,external_kolmafia_namespaceObject.skillModifier)(subject, name);
-  }
-
-  if (utils_arrayContains(name, stringModifiers)) {
-    return subject === undefined ? (0,external_kolmafia_namespaceObject.stringModifier)(name) : (0,external_kolmafia_namespaceObject.stringModifier)(subject, name);
-  }
-
-  if (utils_arrayContains(name, statModifiers)) {
-    return (0,external_kolmafia_namespaceObject.statModifier)(subject, name);
-  }
-}
-/**
- * Merge two Modifiers objects into one, summing all numeric modifiers, ||ing all boolean modifiers, and otherwise letting the second object overwrite the first.
- * @param modifiers1 Modifiers objects to be merged onto.
- * @param modifiers2 Modifiers object to merge.
- * @returns A single Modifiers object obtained by merging.
- */
-
-function pairwiseMerge(modifiers1, modifiers2) {
-  var returnValue = modifier_objectSpread(modifier_objectSpread({}, modifiers1), modifiers2);
-
-  for (var modifier in modifiers1) {
-    if (Array.from(Object.values(modifiers2)).includes(modifier)) {
-      if (arrayContains(modifier, numericModifiers)) {
-        var _modifiers1$modifier, _modifiers2$modifier;
-
-        returnValue[modifier] = ((_modifiers1$modifier = modifiers1[modifier]) !== null && _modifiers1$modifier !== void 0 ? _modifiers1$modifier : 0) + ((_modifiers2$modifier = modifiers2[modifier]) !== null && _modifiers2$modifier !== void 0 ? _modifiers2$modifier : 0);
-      }
-
-      if (arrayContains(modifier, booleanModifiers)) {
-        var _modifiers1$modifier2, _modifiers2$modifier2;
-
-        returnValue[modifier] = ((_modifiers1$modifier2 = modifiers1[modifier]) !== null && _modifiers1$modifier2 !== void 0 ? _modifiers1$modifier2 : false) || ((_modifiers2$modifier2 = modifiers2[modifier]) !== null && _modifiers2$modifier2 !== void 0 ? _modifiers2$modifier2 : false);
-      }
-    }
-  }
-
-  return returnValue;
-}
-/**
- * Merge arbitrarily many Modifiers objects into one, summing all numeric modifiers, and ||ing all boolean modifiers.
- * @param modifierss Modifiers objects to be merged together.
- * @returns A single Modifiers object obtained by merging.
- */
-
-
-function mergeModifiers() {
-  for (var _len = arguments.length, modifierss = new Array(_len), _key = 0; _key < _len; _key++) {
-    modifierss[_key] = arguments[_key];
-  }
-
-  return modifierss.reduce((a, b) => pairwiseMerge(a, b), {});
 }
 ;// CONCATENATED MODULE: ./node_modules/libram/dist/resources/2016/Witchess.js
 var Witchess_templateObject;
@@ -9918,6 +9918,7 @@ function outfits_defineProperty(obj, key, value) { if (key in obj) { Object.defi
 
 
 
+
 var outfitSlots = ["weapon", "offhand", "hat", "back", "shirt", "pants", "acc1", "acc2", "acc3", "familiar"];
 var Outfit = /*#__PURE__*/function () {
   /**
@@ -10007,6 +10008,15 @@ var Outfit = /*#__PURE__*/function () {
         _iterator3.e(err);
       } finally {
         _iterator3.f();
+      }
+    }
+  }, {
+    key: "modifier",
+    value: function modifier(mod) {
+      if (utils_arrayContains(mod, modifierTypes_numericModifiers)) {
+        return sum(Object.values(this.equips), it => modifier_get(mod, it));
+      } else {
+        return Object.values(this.equips).some(it => modifier_get(mod, it));
       }
     }
     /**
