@@ -204,6 +204,13 @@ export class OutfitPlan {
         if (mergees.length === 0) return new OutfitPlan({});
         return mergees.reduce((a, b) => a.merge(b));
     }
+
+    modifier(mod: NumericModifier): number;
+    modifier(mod: BooleanModifier): boolean;
+    modifier(mod: NumericModifier | BooleanModifier): number | boolean {
+        if (arrayContains(mod, numericModifiers)) return this.build().modifier(mod);
+        else return this.build().modifier(mod);
+    }
 }
 
 /**
