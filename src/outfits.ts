@@ -15,7 +15,20 @@ import {
     toSlot,
     useFamiliar,
 } from "kolmafia";
-import { $familiar, $item, $items, $slot, $slots, get, have, RetroCape } from "libram";
+import {
+    $familiar,
+    $item,
+    $items,
+    $slot,
+    $slots,
+    arrayContains,
+    get,
+    getModifier,
+    have,
+    RetroCape,
+    sum,
+} from "libram";
+import { BooleanModifier, NumericModifier, numericModifiers } from "libram/dist/modifierTypes";
 import { chefstaves } from "./lib";
 
 const outfitSlots = [
@@ -94,6 +107,16 @@ export class Outfit {
             ) {
                 equip(slot, toEquip);
             }
+        }
+    }
+
+    modifier(mod: NumericModifier): number;
+    modifier(mod: BooleanModifier): boolean;
+    modifier(mod: NumericModifier | BooleanModifier): number | boolean {
+        if (arrayContains(mod, numericModifiers)) {
+            return sum(Object.values(this.equips), (it: Item) => getModifier(mod, it));
+        } else {
+            return Object.values(this.equips).some((it: Item) => getModifier(mod, it));
         }
     }
 
