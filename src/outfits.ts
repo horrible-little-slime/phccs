@@ -25,6 +25,7 @@ import {
     get,
     getModifier,
     have,
+    Requirement,
     RetroCape,
     sum,
 } from "libram";
@@ -82,7 +83,7 @@ export class Outfit {
         }
 
         //Order is anchored here to prevent DFSS shenanigans
-        for (const slot of $slots`weapon, offhand, hat, back, shirt, pants, familiar, buddy-bjorn, crown-of-thrones`) {
+        for (const slot of $slots`weapon, offhand, hat, back, shirt, pants, familiar`) {
             const equipment = equipmentMap.get(slot);
             if (equipment) equip(slot, equipment);
         }
@@ -129,28 +130,6 @@ export class Outfit {
     }
 
     /**
-     * Makes the best outfit it can with what you've got
-     * @param equips Map of what to equip and where; will use first item in array that it can, and willl not add things to outfit otherwise
-     * @param familiar Optional familiar to use with outfit
-     */
-    static doYourBest(equips: OutfitAttempt, familiar?: Familiar): Outfit {
-        const fit: OutfitParts = {};
-        for (const slotName of outfitSlots) {
-            const itemOrItems = equips[slotName];
-            if (!itemOrItems) continue;
-
-            const itemChoice = Array.isArray(itemOrItems)
-                ? itemOrItems.find(
-                      (item) =>
-                          have(item) && (toSlot(slotName) === $slot`familiar` || canEquip(item))
-                  )
-                : itemOrItems;
-            if (itemChoice) fit[slotName] = itemChoice;
-        }
-        return new Outfit(fit, familiar);
-    }
-
-    /**
      * Saves current outfit as an Outfit
      * @param withFamiliar Option to store current familiar as part of outfit
      */
@@ -163,6 +142,67 @@ export class Outfit {
             if (item !== $item`none`) fit[slotName] = item;
         }
         return new Outfit(fit, familiar);
+    }
+}
+
+export class OutfitPlan {
+    outline: OutfitAttempt;
+    filler?: Requirement;
+    familiar?: Familiar;
+
+    constructor(outline: OutfitAttempt, familiar?: Familiar, filler?: Requirement) {
+        this.outline = outline;
+        this.familiar = familiar;
+        this.filler = filler;
+    }
+
+    build(): Outfit {
+        const fit: OutfitParts = {};
+        for (const slotName of outfitSlots) {
+            const itemOrItems = this.outline[slotName];
+            if (!itemOrItems) continue;
+
+            const itemChoice = Array.isArray(itemOrItems)
+                ? itemOrItems.find(
+                      (item) =>
+                          have(item) && (toSlot(slotName) === $slot`familiar` || canEquip(item))
+                  )
+                : itemOrItems;
+            if (itemChoice) fit[slotName] = itemChoice;
+        }
+        return new Outfit(fit, this.familiar);
+    }
+
+    dress(filler?: Requirement): void {
+        const fit = this.build();
+        fit.dress();
+        if (filler) {
+            new Requirement([], { preventSlot: Object.keys(fit).map((s) => toSlot(s)) })
+                .merge(filler)
+                .maximize();
+        }
+    }
+
+    with<T>(action: () => T): T {
+        return this.build().with(action);
+    }
+
+    merge(other: OutfitPlan): OutfitPlan {
+        const merged: OutfitAttempt = {};
+        for (const slot of outfitSlots) {
+            const current = this.outline[slot];
+            const alternate = other.outline[slot];
+            if (current && alternate) {
+                merged[slot] = [alternate, current].flat();
+            } else merged[slot] = current ?? alternate;
+        }
+
+        return new OutfitPlan(merged);
+    }
+
+    static merge(...mergees: OutfitPlan[]): OutfitPlan {
+        if (mergees.length === 0) return new OutfitPlan({});
+        return mergees.reduce((a, b) => a.merge(b));
     }
 }
 
@@ -217,7 +257,7 @@ export default function uniform(...changes: (Item | [Item, Slot])[]): void {
         const itemOrItems = alterations[slotName] ?? defaultUniform[slotName];
         if (itemOrItems) chosenOutfit[slotName] = itemOrItems;
     }
-    Outfit.doYourBest(chosenOutfit).dress();
+    new OutfitPlan(chosenOutfit).dress();
     if (haveEquipped(RetroCape.item)) RetroCape.set("heck", "thrill");
 }
 
@@ -236,7 +276,7 @@ export function wireOutfit(): void {
 
 export function moxieOutfit(): void {
     cliExecute("retrocape robot");
-    Outfit.doYourBest({
+    new OutfitPlan({
         hat: $item`very pointy crown`,
         shirt: $items`shoe ad T-shirt, fresh coat of paint`,
         back: $item`unwrapped knock-off retro superhero cape`,
@@ -253,7 +293,7 @@ export function moxieOutfit(): void {
 export function hpOutfit(): void {
     cliExecute("retrocape vampire");
     if (!have($item`wad of used tape`)) cliExecute("fold wad of used tape");
-    Outfit.doYourBest({
+    new OutfitPlan({
         hat: $item`wad of used tape`,
         weapon: $item`dented scepter`,
         offhand: $item`Fourth of May Cosplay Saber`,
@@ -270,7 +310,7 @@ export function hpOutfit(): void {
 export function muscleOutfit(): void {
     cliExecute("retrocape vampire");
     if (!have($item`wad of used tape`)) cliExecute("fold wad of used tape");
-    Outfit.doYourBest(
+    new OutfitPlan(
         {
             hat: $item`wad of used tape`,
             weapon: $item`dented scepter`,
@@ -289,7 +329,7 @@ export function muscleOutfit(): void {
 
 export function mysticalityOutfit(): void {
     cliExecute("retrocape heck");
-    Outfit.doYourBest(
+    new OutfitPlan(
         {
             hat: $item`wad of used tape`,
             weapon: $item`Fourth of May Cosplay Saber`,
@@ -308,7 +348,7 @@ export function mysticalityOutfit(): void {
 
 export function itemOutfit(): void {
     if (!have($item`wad of used tape`)) cliExecute("fold wad of used tape");
-    Outfit.doYourBest(
+    new OutfitPlan(
         {
             hat: $item`wad of used tape`,
             weapon: $items`extra-large utility candle`,
@@ -325,7 +365,7 @@ export function itemOutfit(): void {
 
 export function hotresOutfit(): void {
     cliExecute("retrocape vampire hold");
-    Outfit.doYourBest(
+    new OutfitPlan(
         {
             back: $item`unwrapped knock-off retro superhero cape`,
             weapon: $item`Fourth of May Cosplay Saber`,
@@ -342,7 +382,7 @@ export function hotresOutfit(): void {
 
 export function noncombatOutfit(): void {
     if (get("umbrellaState", "cocoon") !== "cocoon") cliExecute("umbrella nc");
-    Outfit.doYourBest(
+    new OutfitPlan(
         {
             hat: $item`very pointy crown`,
             back: $item`protonic accelerator pack`,
@@ -367,7 +407,7 @@ export function famweightOutfit(): void {
               fam: $familiar`Blood-Faced Volleyball`,
               equip: $items`astral pet sweater`,
           };
-    Outfit.doYourBest(
+    new OutfitPlan(
         {
             hat: $item`Daylight Shavings Helmet`,
             weapon: $item`Fourth of May Cosplay Saber`,
@@ -384,7 +424,7 @@ export function famweightOutfit(): void {
 
 export function weaponOutfit(): void {
     if (!have($item`broken champagne bottle`)) cliExecute("fold broken champagne bottle");
-    Outfit.doYourBest(
+    new OutfitPlan(
         {
             hat: $items`seal-skull helmet`,
             weapon: $item`broken champagne bottle`,
@@ -406,7 +446,7 @@ export function spellOutfit(): void {
         ? { familiar: $familiar`Left-Hand Man`, famEquip: $items`astral statuette` }
         : { familiar: $familiar`Disembodied Hand`, famEquip: $items`Stick-Knife of Loathing` };
 
-    Outfit.doYourBest(
+    new OutfitPlan(
         {
             hat: $items`sugar chapeau, astral chapeau, Hollandaise helmet`,
             weapon: !inHardcore() ? chefstaves : $item`weeping willow wand`,
