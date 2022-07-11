@@ -92,7 +92,7 @@ export class Outfit {
                 equipmentItem,
             ])
         );
-        for (const slot of $slots`weapon, offhand, hat, shirt, pants, familiar, buddy-bjorn, crown-of-thrones, back`) {
+        for (const slot of $slots`weapon, offhand, hat, back, shirt, pants, familiar`) {
             if (
                 targetEquipment.includes(equippedItem(slot)) &&
                 equipmentMap.get(slot) !== equippedItem(slot)
