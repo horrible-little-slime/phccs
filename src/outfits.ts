@@ -1,6 +1,5 @@
 import {
     abort,
-    buy,
     canEquip,
     cliExecute,
     equip,
@@ -183,11 +182,14 @@ export class OutfitPlan {
     familiar?: Familiar;
     modes?: Modes;
 
-    constructor(outline: OutfitAttempt, familiar?: Familiar, filler?: Requirement, modes?: Modes) {
+    constructor(
+        outline: OutfitAttempt,
+        options: { familiar?: Familiar; filler?: Requirement; modes?: Modes } = {}
+    ) {
         this.outline = outline;
-        this.familiar = familiar;
-        this.filler = filler;
-        this.modes = modes;
+        this.familiar = options.familiar;
+        this.filler = options.filler;
+        this.modes = options.modes;
     }
 
     build(): Outfit {
@@ -222,22 +224,25 @@ export class OutfitPlan {
         return this.build().with(action);
     }
 
-    merge(other: OutfitPlan): OutfitPlan {
-        const merged: OutfitAttempt = {};
-        for (const slot of outfitSlots) {
-            const current = this.outline[slot];
-            const alternate = other.outline[slot];
-            if (current && alternate) {
-                merged[slot] = [alternate, current].flat();
-            } else merged[slot] = current ?? alternate;
-        }
+    merge(other: OutfitPlan | OutfitAttempt): OutfitPlan {
+        if (other instanceof OutfitPlan) {
+            const merged: OutfitAttempt = {};
+            for (const slot of outfitSlots) {
+                const current = this.outline[slot];
+                const alternate = other.outline[slot];
+                if (current && alternate) {
+                    merged[slot] = [alternate, current].flat();
+                } else merged[slot] = current ?? alternate;
+            }
 
-        return new OutfitPlan(
-            merged,
-            other.familiar ?? this.familiar,
-            other.filler?.merge(this.filler ?? new Requirement([], {})) ?? this.filler,
-            { ...(other.modes ?? {}), ...(this.modes ?? {}) }
-        );
+            return new OutfitPlan(merged, {
+                familiar: other.familiar ?? this.familiar,
+                filler: other.filler?.merge(this.filler ?? new Requirement([], {})) ?? this.filler,
+                modes: { ...(other.modes ?? {}), ...(this.modes ?? {}) },
+            });
+        } else {
+            return this.merge(new OutfitPlan(other));
+        }
     }
 
     static merge(...mergees: OutfitPlan[]): OutfitPlan {
@@ -271,7 +276,6 @@ export function withOutfit<T>(outfit: Outfit, callback: () => T): T {
 }
 
 export default function uniform(...changes: (Item | [Item, Slot])[]): void {
-    if (get("umbrellaState", "broken") !== "broken") cliExecute("umbrella ml");
     const defaultUniform = {
         hat: $items`astral chapeau, Iunion Crown`,
         shirt: $item`fresh coat of paint`,
@@ -285,7 +289,6 @@ export default function uniform(...changes: (Item | [Item, Slot])[]): void {
         acc2: $item`codpiece`,
         acc3: $items`battle broom, Powerful Glove`,
         back: $items`LOV Epaulettes, unwrapped knock-off retro superhero cape`,
-        familiar: null,
     };
 
     const alterations = Object.fromEntries(
@@ -299,31 +302,29 @@ export default function uniform(...changes: (Item | [Item, Slot])[]): void {
         })
     ) as OutfitAttempt;
 
-    const chosenOutfit: OutfitAttempt = {};
-    for (const slotName of outfitSlots) {
-        const itemOrItems = alterations[slotName] ?? defaultUniform[slotName];
-        if (itemOrItems) chosenOutfit[slotName] = itemOrItems;
-    }
-    new OutfitPlan(chosenOutfit).dress();
-    if (haveEquipped(RetroCape.item)) RetroCape.set("heck", "thrill");
+    new OutfitPlan(defaultUniform, {
+        modes: {
+            umbrella: "broken",
+            retrocape: ["heck", "thrill"],
+        },
+    })
+        .merge(alterations)
+        .dress();
 }
 
-export function wireOutfit(): void {
-    new Outfit({
-        hat: $item`Iunion Crown`,
-        shirt: $item`fresh coat of paint`,
-        pants: $item`Cargo Cultist Shorts`,
-        weapon: $item`Fourth of May Cosplay Saber`,
-        offhand: $item`familiar scrapbook`,
-        acc1: $item`Eight Days a Week Pill Keeper`,
-        acc2: $item`Powerful Glove`,
-        acc3: $item`Guzzlr tablet`,
-    }).dress();
-}
+export const wireOutfit = new Outfit({
+    hat: $item`Iunion Crown`,
+    shirt: $item`fresh coat of paint`,
+    pants: $item`Cargo Cultist Shorts`,
+    weapon: $item`Fourth of May Cosplay Saber`,
+    offhand: $item`familiar scrapbook`,
+    acc1: $item`Eight Days a Week Pill Keeper`,
+    acc2: $item`Powerful Glove`,
+    acc3: $item`Guzzlr tablet`,
+});
 
-export function moxieOutfit(): void {
-    cliExecute("retrocape robot");
-    new OutfitPlan({
+export const moxieOutfit = new OutfitPlan(
+    {
         hat: $item`very pointy crown`,
         shirt: $items`shoe ad T-shirt, fresh coat of paint`,
         back: $item`unwrapped knock-off retro superhero cape`,
@@ -334,13 +335,14 @@ export function moxieOutfit(): void {
         acc2: $item`"I Voted!" sticker`,
         acc3: $item`Retrospecs`,
         familiar: $item`miniature crystal ball`,
-    }).dress();
-}
+    },
+    {
+        modes: { retrocape: ["robot", RetroCape.currentMode()] },
+    }
+);
 
-export function hpOutfit(): void {
-    cliExecute("retrocape vampire");
-    if (!have($item`wad of used tape`)) cliExecute("fold wad of used tape");
-    new OutfitPlan({
+export const hpOutfit = new OutfitPlan(
+    {
         hat: $item`wad of used tape`,
         weapon: $item`dented scepter`,
         offhand: $item`Fourth of May Cosplay Saber`,
@@ -351,164 +353,149 @@ export function hpOutfit(): void {
         acc2: $item`Retrospecs`,
         acc3: $item`Kremlin's Greatest Briefcase`,
         familiar: $item`miniature crystal ball`,
-    }).dress();
-}
+    },
+    { modes: { retrocape: ["vampire", RetroCape.currentMode()] } }
+);
 
-export function muscleOutfit(): void {
-    cliExecute("retrocape vampire");
-    if (!have($item`wad of used tape`)) cliExecute("fold wad of used tape");
-    new OutfitPlan(
-        {
-            hat: $item`wad of used tape`,
-            weapon: $item`dented scepter`,
-            offhand: $item`Fourth of May Cosplay Saber`,
-            shirt: $items`shoe ad T-shirt, fresh coat of paint`,
-            back: $item`unwrapped knock-off retro superhero cape`,
-            pants: $item`Cargo Cultist Shorts`,
-            acc1: $item`Brutal brogues`,
-            acc2: $item`Retrospecs`,
-            acc3: $item`Kremlin's Greatest Briefcase`,
-            familiar: $item`unbreakable umbrella`,
-        },
-        $familiar`Left-Hand Man`
-    ).dress();
-}
-
-export function mysticalityOutfit(): void {
-    cliExecute("retrocape heck");
-    new OutfitPlan(
-        {
-            hat: $item`wad of used tape`,
-            weapon: $item`Fourth of May Cosplay Saber`,
-            offhand: $items`astral statuette, cosmetic football`,
-            back: $item`unwrapped knock-off retro superhero cape`,
-            shirt: $items`denim jacket, shoe ad T-shirt, fresh coat of paint`,
-            pants: $item`designer sweatpants`,
-            acc1: $item`your cowboy boots`,
-            acc2: $item`codpiece`,
-            acc3: $item`battle broom`,
-            familiar: $items`Abracandalabra`,
-        },
-        $familiar`Left-Hand Man`
-    ).dress();
-}
-
-export function itemOutfit(): void {
-    if (!have($item`wad of used tape`)) cliExecute("fold wad of used tape");
-    new OutfitPlan(
-        {
-            hat: $item`wad of used tape`,
-            weapon: $items`extra-large utility candle`,
-            offhand: $item`cursed magnifying glass`,
-            back: $item`protonic accelerator pack`,
-            acc1: $item`Guzzlr tablet`,
-            acc2: $item`gold detective badge`,
-            acc3: $items`government-issued night-vision goggles`,
-            familiar: $item`li'l ninja costume`,
-        },
-        $familiar`Trick-or-Treating Tot`
-    ).dress();
-}
-
-export function hotresOutfit(): void {
-    cliExecute("retrocape vampire hold");
-    new OutfitPlan(
-        {
-            back: $item`unwrapped knock-off retro superhero cape`,
-            weapon: $item`Fourth of May Cosplay Saber`,
-            offhand: $item`meteorite guard`,
-            pants: $item`designer sweatpants`,
-            acc1: $item`your cowboy boots`,
-            acc2: $item`Brutal brogues`,
-            acc3: $item`Beach Comb`,
-            familiar: $items`cracker`,
-        },
-        $familiar`Exotic Parrot`
-    ).dress();
-}
-
-export function noncombatOutfit(): void {
-    if (get("umbrellaState", "cocoon") !== "cocoon") cliExecute("umbrella nc");
-    new OutfitPlan(
-        {
-            hat: $item`very pointy crown`,
-            back: $item`protonic accelerator pack`,
-            weapon: $item`Fourth of May Cosplay Saber`,
-            offhand: $items`unbreakable umbrella, burning paper crane, familiar scrapbook`,
-            acc1: $item`hewn moon-rune spoon`,
-            acc2: $item`codpiece`,
-            acc3: $item`Brutal brogues`,
-        },
-        $familiar`Disgeist`
-    ).dress();
-}
-
-export function famweightOutfit(): void {
-    const familiarAndEquip = have($item`Snow Suit`)
-        ? { fam: $familiar`Blood-Faced Volleyball`, equip: $item`Snow Suit` }
-        : have($item`cracker`)
-        ? { fam: $familiar`Exotic Parrot`, equip: $item`cracker` }
-        : have($familiar`Baby Bugged Bugbear`)
-        ? { fam: $familiar`Baby Bugged Bugbear`, equip: $item`bugged beanie` }
-        : {
-              fam: $familiar`Blood-Faced Volleyball`,
-              equip: $items`astral pet sweater`,
-          };
-    new OutfitPlan(
-        {
-            hat: $item`Daylight Shavings Helmet`,
-            weapon: $item`Fourth of May Cosplay Saber`,
-            offhand: $items`burning paper crane, familiar scrapbook`,
-            pants: $items`repaid diaper, Great Wolf's beastly trousers, designer sweatpants`,
-            acc1: $item`Beach Comb`,
-            acc2: $item`Brutal brogues`,
-            acc3: $item`hewn moon-rune spoon`,
-            familiar: familiarAndEquip.equip,
-        },
-        familiarAndEquip.fam
-    ).dress();
-}
-
-export function weaponOutfit(): void {
-    if (!have($item`broken champagne bottle`)) cliExecute("fold broken champagne bottle");
-    new OutfitPlan(
-        {
-            hat: $items`seal-skull helmet`,
-            weapon: $item`broken champagne bottle`,
-            offhand: $item`dented scepter`,
-            acc1: $item`Brutal brogues`,
-            acc2: $item`Powerful Glove`,
-            acc3: $items`meteorite ring, Kremlin's Greatest Briefcase`,
-            familiar: $items`Stick-Knife of Loathing`,
-        },
-        $familiar`Disembodied Hand`
-    ).dress();
-}
-
-export function spellOutfit(): void {
-    if (!have($item`Abracandalabra`) && !have($item`obsidian nutcracker`) && inHardcore()) {
-        buy($item`obsidian nutcracker`);
+export const muscleOutfit = new OutfitPlan(
+    {
+        hat: $item`wad of used tape`,
+        weapon: $item`dented scepter`,
+        offhand: $item`Fourth of May Cosplay Saber`,
+        shirt: $items`shoe ad T-shirt, fresh coat of paint`,
+        back: $item`unwrapped knock-off retro superhero cape`,
+        pants: $item`Cargo Cultist Shorts`,
+        acc1: $item`Brutal brogues`,
+        acc2: $item`Retrospecs`,
+        acc3: $item`Kremlin's Greatest Briefcase`,
+        familiar: $item`unbreakable umbrella`,
+    },
+    {
+        familiar: $familiar`Left-Hand Man`,
+        modes: { retrocape: ["vampire", RetroCape.currentMode()] },
     }
-    const { familiar, famEquip } = inHardcore()
-        ? { familiar: $familiar`Left-Hand Man`, famEquip: $items`astral statuette` }
-        : { familiar: $familiar`Disembodied Hand`, famEquip: $items`Stick-Knife of Loathing` };
+);
 
-    new OutfitPlan(
-        {
-            hat: $items`sugar chapeau, astral chapeau, Hollandaise helmet`,
-            weapon: !inHardcore() ? chefstaves : $item`weeping willow wand`,
-            offhand: [
-                $item`Abracandalabra`,
-                ...(inHardcore()
-                    ? $items`weeping willow wand, astral statuette`
-                    : $items`obsidian nutcracker`),
-            ],
-            familiar: famEquip,
-            pants: $item`designer sweatpants`,
-            acc1: $items`meteorite necklace, Kremlin's Greatest Briefcase`,
-            acc2: $item`codpiece`,
-            acc3: $item`battle broom`,
-        },
-        familiar
-    ).dress();
-}
+export const mysticalityOutfit = new OutfitPlan(
+    {
+        hat: $item`wad of used tape`,
+        weapon: $item`Fourth of May Cosplay Saber`,
+        offhand: $items`astral statuette, cosmetic football`,
+        back: $item`unwrapped knock-off retro superhero cape`,
+        shirt: $items`denim jacket, shoe ad T-shirt, fresh coat of paint`,
+        pants: $item`designer sweatpants`,
+        acc1: $item`your cowboy boots`,
+        acc2: $item`codpiece`,
+        acc3: $item`battle broom`,
+        familiar: $items`Abracandalabra`,
+    },
+    {
+        familiar: $familiar`Left-Hand Man`,
+        modes: { retrocape: ["vampire", RetroCape.currentMode()] },
+    }
+);
+
+export const itemOutfit = new OutfitPlan(
+    {
+        hat: $item`wad of used tape`,
+        weapon: $items`extra-large utility candle`,
+        offhand: $item`cursed magnifying glass`,
+        back: $item`protonic accelerator pack`,
+        acc1: $item`Guzzlr tablet`,
+        acc2: $item`gold detective badge`,
+        acc3: $items`government-issued night-vision goggles`,
+        familiar: $item`li'l ninja costume`,
+    },
+    { familiar: $familiar`Trick-or-Treating Tot` }
+);
+
+export const hotresOutfit = new OutfitPlan(
+    {
+        back: $item`unwrapped knock-off retro superhero cape`,
+        weapon: $item`Fourth of May Cosplay Saber`,
+        offhand: $item`meteorite guard`,
+        pants: $item`designer sweatpants`,
+        acc1: $item`your cowboy boots`,
+        acc2: $item`Brutal brogues`,
+        acc3: $item`Beach Comb`,
+        familiar: $items`cracker`,
+    },
+    { familiar: $familiar`Exotic Parrot`, modes: { retrocape: ["vampire", "hold"] } }
+);
+
+export const noncombatOutfit = new OutfitPlan(
+    {
+        hat: $item`very pointy crown`,
+        back: $item`protonic accelerator pack`,
+        weapon: $item`Fourth of May Cosplay Saber`,
+        offhand: $items`unbreakable umbrella, burning paper crane, familiar scrapbook`,
+        acc1: $item`hewn moon-rune spoon`,
+        acc2: $item`codpiece`,
+        acc3: $item`Brutal brogues`,
+    },
+    { familiar: $familiar`Disgeist`, modes: { umbrella: "cocoon" } }
+);
+
+const familiarAndEquip = have($item`Snow Suit`)
+    ? { fam: $familiar`Blood-Faced Volleyball`, equip: $item`Snow Suit` }
+    : have($item`cracker`)
+    ? { fam: $familiar`Exotic Parrot`, equip: $item`cracker` }
+    : have($familiar`Baby Bugged Bugbear`)
+    ? { fam: $familiar`Baby Bugged Bugbear`, equip: $item`bugged beanie` }
+    : {
+          fam: $familiar`Blood-Faced Volleyball`,
+          equip: $items`astral pet sweater`,
+      };
+
+export const famweightOutfit = new OutfitPlan(
+    {
+        hat: $item`Daylight Shavings Helmet`,
+        weapon: $item`Fourth of May Cosplay Saber`,
+        offhand: $items`burning paper crane, familiar scrapbook`,
+        pants: $items`repaid diaper, Great Wolf's beastly trousers, designer sweatpants`,
+        acc1: $item`Beach Comb`,
+        acc2: $item`Brutal brogues`,
+        acc3: $item`hewn moon-rune spoon`,
+        familiar: familiarAndEquip.equip,
+    },
+    { familiar: familiarAndEquip.fam }
+);
+
+export const weaponOutfit = new OutfitPlan(
+    {
+        hat: $items`seal-skull helmet`,
+        weapon: $item`broken champagne bottle`,
+        offhand: $item`dented scepter`,
+        acc1: $item`Brutal brogues`,
+        acc2: $item`Powerful Glove`,
+        acc3: $items`meteorite ring, Kremlin's Greatest Briefcase`,
+        familiar: $items`Stick-Knife of Loathing`,
+    },
+    { familiar: $familiar`Disembodied Hand` }
+);
+
+const { spellFamiliar, spellFamEquip } = inHardcore()
+    ? { spellFamiliar: $familiar`Left-Hand Man`, spellFamEquip: $items`astral statuette` }
+    : {
+          spellFamiliar: $familiar`Disembodied Hand`,
+          spellFamEquip: $items`Stick-Knife of Loathing`,
+      };
+
+export const spellOutfit = new OutfitPlan(
+    {
+        hat: $items`sugar chapeau, astral chapeau, Hollandaise helmet`,
+        weapon: !inHardcore() ? chefstaves : $item`weeping willow wand`,
+        offhand: [
+            $item`Abracandalabra`,
+            ...(inHardcore()
+                ? $items`weeping willow wand, astral statuette`
+                : $items`obsidian nutcracker`),
+        ],
+        familiar: spellFamEquip,
+        pants: $item`designer sweatpants`,
+        acc1: $items`meteorite necklace, Kremlin's Greatest Briefcase`,
+        acc2: $item`codpiece`,
+        acc3: $item`battle broom`,
+    },
+    { familiar: spellFamiliar }
+);

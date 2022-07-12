@@ -1,5 +1,6 @@
 import {
     availableAmount,
+    buy,
     canEquip,
     cliExecute,
     create,
@@ -161,7 +162,12 @@ function testPrep() {
             if (staff) takeStorage(staff, 1);
         }
     }
-    spellOutfit();
+
+    if (!have($item`Abracandalabra`) && !have($item`obsidian nutcracker`) && inHardcore()) {
+        buy($item`obsidian nutcracker`);
+    }
+
+    spellOutfit.dress();
 }
 
 export default function spellTest(): 1 {

@@ -37,7 +37,7 @@ function musclebuffs() {
 }
 
 function muscleTestPrep() {
-    muscleOutfit();
+    muscleOutfit.dress();
 
     for (const increaser of [
         () => BeachComb.tryHead($effect`Lack of Body-Building`), // will stay on all the way to weapon damage.
@@ -62,7 +62,7 @@ function mystbuffs() {
 }
 
 function mystTestPrep() {
-    mysticalityOutfit();
+    mysticalityOutfit.dress();
 }
 
 export function mystTest(): void {
@@ -114,7 +114,7 @@ function moxTestPrep() {
     if (moxPredictor() > 1) {
         ensureInnerElf();
     }
-    moxieOutfit();
+    moxieOutfit.dress();
 }
 
 export function moxTest(): void {
@@ -143,7 +143,7 @@ function hpBuffs() {
 
 const hpPredictor = () => CommunityService.HP.prediction;
 function hpTestPrep() {
-    hpOutfit();
+    hpOutfit.dress();
 }
 
 export function HPTest(): void {

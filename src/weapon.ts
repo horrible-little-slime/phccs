@@ -106,7 +106,7 @@ function testPrep() {
             cliExecute(`make ${$item`meteorite ring`}`);
         }
     }
-    weaponOutfit();
+    weaponOutfit.dress();
 }
 
 export default function weaponTest(): void {

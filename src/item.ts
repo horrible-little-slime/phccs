@@ -117,7 +117,7 @@ function testPrep() {
         ensureEffect($effect`Steely-Eyed Squint`);
     }
     useFamiliar($familiar`Trick-or-Treating Tot`);
-    itemOutfit();
+    itemOutfit.dress();
     if (predictor() > 1) ensureEffect($effect`Nearly All-Natural`);
 }
 
