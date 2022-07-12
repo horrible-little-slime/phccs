@@ -23,6 +23,7 @@ import {
     $slots,
     arrayContains,
     get,
+    getFoldGroup,
     getModifier,
     have,
     Requirement,
@@ -103,7 +104,12 @@ export class Outfit {
         //Order is anchored here to prevent DFSS shenanigans
         for (const slot of $slots`weapon, offhand, hat, back, shirt, pants, familiar`) {
             const equipment = equipmentMap.get(slot);
-            if (equipment) equip(slot, equipment);
+            if (equipment) {
+                if (!have(equipment) && getFoldGroup(equipment).some((i) => have(i))) {
+                    cliExecute(`fold ${equipment}`);
+                }
+                equip(slot, equipment);
+            }
         }
 
         //We don't care what order accessories are equipped in, just that they're equipped
@@ -193,7 +199,8 @@ export class OutfitPlan {
             const itemChoice = Array.isArray(itemOrItems)
                 ? itemOrItems.find(
                       (item) =>
-                          have(item) && (toSlot(slotName) === $slot`familiar` || canEquip(item))
+                          (have(item) || getFoldGroup(item).some((i) => have(i))) &&
+                          (toSlot(slotName) === $slot`familiar` || canEquip(item))
                   )
                 : itemOrItems;
             if (itemChoice) fit[slotName] = itemChoice;
