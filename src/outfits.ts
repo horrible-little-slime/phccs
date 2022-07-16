@@ -418,7 +418,6 @@ export const hotresOutfit = new OutfitPlan(
         acc1: $item`your cowboy boots`,
         acc2: $item`Brutal brogues`,
         acc3: $item`Beach Comb`,
-        familiar: $items`cracker`,
     },
     { familiar: $familiar`Exotic Parrot`, modes: { retrocape: ["vampire", "hold"] } }
 );
@@ -436,11 +435,7 @@ export const noncombatOutfit = new OutfitPlan(
     { familiar: $familiar`Disgeist`, modes: { umbrella: "cocoon" } }
 );
 
-const familiarAndEquip = have($item`Snow Suit`)
-    ? { fam: $familiar`Blood-Faced Volleyball`, equip: $item`Snow Suit` }
-    : have($item`cracker`)
-    ? { fam: $familiar`Exotic Parrot`, equip: $item`cracker` }
-    : have($familiar`Baby Bugged Bugbear`)
+const familiarAndEquip = have($familiar`Baby Bugged Bugbear`)
     ? { fam: $familiar`Baby Bugged Bugbear`, equip: $item`bugged beanie` }
     : {
           fam: $familiar`Blood-Faced Volleyball`,

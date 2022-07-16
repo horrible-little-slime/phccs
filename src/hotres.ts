@@ -78,7 +78,6 @@ function deepDarkVisions() {
             weapon: $item`Fourth of May Cosplay Saber`,
             offhand: $item`familiar scrapbook`,
             pants: $item`Cargo Cultist Shorts`,
-            familiar: $items`cracker`,
             acc1: $item`your cowboy boots`,
         },
         { familiar: $familiar`Exotic Parrot` }
