@@ -560,6 +560,7 @@ function mElfLeveling() {
         },
         () => {
             heal();
+            ensureInnerElf();
             ensureMp(30);
         }
     );
