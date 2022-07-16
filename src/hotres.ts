@@ -28,7 +28,7 @@ import {
 import Macro from "./combat";
 import { universalWeightBuffs } from "./familiarweight";
 import { advMacroAA, burnLibrams, ensureEffect, ensureMp, fuelUp, horse, setChoice } from "./lib";
-import uniform, { hotresOutfit, Outfit } from "./outfits";
+import uniform, { hotresOutfit, OutfitPlan } from "./outfits";
 const predictor = () => CommunityService.HotRes.prediction;
 
 function castBuffs() {
@@ -70,7 +70,7 @@ function deepDarkVisions() {
     horse("pale");
     useFamiliar($familiar`Exotic Parrot`);
     cliExecute("retrocape vampire hold");
-    Outfit.doYourBest(
+    new OutfitPlan(
         {
             hat: $item`Iunion Crown`,
             shirt: $items`denim jacket`,
@@ -81,7 +81,7 @@ function deepDarkVisions() {
             familiar: $items`cracker`,
             acc1: $item`your cowboy boots`,
         },
-        $familiar`Exotic Parrot`
+        { familiar: $familiar`Exotic Parrot` }
     ).dress();
     while (
         have($skill`Deep Dark Visions`) &&
@@ -105,7 +105,7 @@ function deepDarkVisions() {
 }
 
 function testPrep() {
-    hotresOutfit();
+    hotresOutfit.dress();
     const improvements = [
         () => {
             while (getFuel() < 37) fuelUp();

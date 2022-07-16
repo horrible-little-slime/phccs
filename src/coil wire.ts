@@ -42,6 +42,6 @@ function firstFights() {
 export default function coilWire(): void {
     runStart();
     firstFights();
-    wireOutfit();
+    wireOutfit.dress();
     burnLibrams();
 }

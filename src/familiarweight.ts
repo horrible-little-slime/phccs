@@ -121,7 +121,7 @@ function tuneMoon(): void {
 
 function testPrep() {
     if (!inHardcore()) tuneMoon();
-    famweightOutfit();
+    famweightOutfit.dress();
     if (have($item`moveable feast`)) use($item`moveable feast`);
     if (have($item`silver face paint`)) ensureEffect($effect`Robot Friends`);
     while (have($item`love song of icy revenge`) && !have($effect`Cold Hearted`, 20)) {

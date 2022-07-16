@@ -69,7 +69,7 @@ function godLobster() {
 }
 
 function testPrep() {
-    noncombatOutfit();
+    noncombatOutfit.dress();
     if (predictor() > 1) {
         if (!have($effect`Gummed Shoes`)) {
             if (availableAmount($item`cop dollar`) < 10) cliExecute("Detective Solver.ash");
