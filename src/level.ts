@@ -179,7 +179,11 @@ function getYoked() {
     heal();
     advMacroAA(
         $location`The X-32-F Combat Training Snowman`,
-        Macro.delevel()
+        Macro.externalIf(
+            !have($effect`Cosmic Ball in the Air`),
+            Macro.skill($skill`Bowl Straight Up`)
+        )
+            .delevel()
             .tryItem($item`blue rocket`)
             .defaultKill(),
         () => {
