@@ -22,6 +22,7 @@ import {
     Location,
     Monster,
     myClass,
+    myLevel,
     myMaxhp,
     myMaxmp,
     myMp,
@@ -241,7 +242,7 @@ export function doTest(testNum: number): void {
 
 export function ensureInnerElf(): void {
     //stolen merely mostly from bean
-    if (!have($effect`Inner Elf`)) {
+    if (!have($effect`Inner Elf`) && myLevel() >= 13) {
         setClan(get("phccs_elfClan", "Hobopolis Vacation Home"));
         try {
             withOutfit(

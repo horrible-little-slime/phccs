@@ -10,7 +10,6 @@ import {
     knollAvailable,
     mpCost,
     myClass,
-    myLevel,
     myMp,
     numericModifier,
     runChoice,
@@ -448,9 +447,7 @@ function NEP() {
             if (get("choiceAdventure1324") !== 5 && questStep("_questPartyFair") > 0) {
                 setChoice(1324, 5);
             }
-            if (myLevel() >= 13 && !have($effect`Inner Elf`)) {
-                ensureInnerElf();
-            }
+            ensureInnerElf();
             ensureMp(30);
         }
     );
@@ -478,9 +475,7 @@ function NEP() {
             if (get("choiceAdventure1324") !== 5 && questStep("_questPartyFair") > 0) {
                 setChoice(1324, 5);
             }
-            if (myLevel() >= 13 && !have($effect`Inner Elf`)) {
-                ensureInnerElf();
-            }
+            ensureInnerElf();
             ensureMp(30);
         }
     );
@@ -508,9 +503,7 @@ function NEP() {
             if (get("choiceAdventure1324") !== 5 && questStep("_questPartyFair") > 0) {
                 setChoice(1324, 5);
             }
-            if (myLevel() >= 13 && !have($effect`Inner Elf`)) {
-                ensureInnerElf();
-            }
+            ensureInnerElf();
             ensureMp(30);
         }
     );
@@ -540,9 +533,7 @@ function NEP() {
             if (get("choiceAdventure1324") !== 5 && questStep("_questPartyFair") > 0) {
                 setChoice(1324, 5);
             }
-            if (myLevel() >= 13 && !have($effect`Inner Elf`)) {
-                ensureInnerElf();
-            }
+            ensureInnerElf();
             ensureMp(30);
         }
     );
