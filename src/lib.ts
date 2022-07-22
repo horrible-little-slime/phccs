@@ -65,6 +65,7 @@ import {
     PropertiesManager,
     property,
     Witchess,
+    withProperty,
 } from "libram";
 import Macro from "./combat";
 import uniform, { Outfit, withOutfit } from "./outfits";
@@ -668,7 +669,9 @@ export const chefstaves = $items`Staff of Kitchen Royalty, Staff of the Deepest 
 export function juneCleave(): void {
     if (get("_juneCleaverFightsLeft") > 0) return;
     withOutfit(new Outfit({ weapon: $item`June cleaver` }), () => {
-        adv1($location`Noob Cave`, -1, "");
-        if (get("lastEncounter") === "Poetic Justice") useSkill($skill`Tongue of the Walrus`);
+        withProperty("recoveryScript", "", () => {
+            adv1($location`Noob Cave`, -1, "");
+            if (get("lastEncounter") === "Poetic Justice") useSkill($skill`Tongue of the Walrus`);
+        });
     });
 }
