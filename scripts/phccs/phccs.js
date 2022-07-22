@@ -10636,8 +10636,10 @@ function juneCleave() {
   withOutfit(new Outfit({
     weapon: template_string_$item(_templateObject138 || (_templateObject138 = lib_taggedTemplateLiteral(["June cleaver"])))
   }), () => {
-    (0,external_kolmafia_namespaceObject.adv1)($location(_templateObject139 || (_templateObject139 = lib_taggedTemplateLiteral(["Noob Cave"]))), -1, "");
-    if (property_get("lastEncounter") === "Poetic Justice") (0,external_kolmafia_namespaceObject.useSkill)(template_string_$skill(_templateObject140 || (_templateObject140 = lib_taggedTemplateLiteral(["Tongue of the Walrus"]))));
+    withProperty("recoveryScript", "", () => {
+      (0,external_kolmafia_namespaceObject.adv1)($location(_templateObject139 || (_templateObject139 = lib_taggedTemplateLiteral(["Noob Cave"]))), -1, "");
+      if (property_get("lastEncounter") === "Poetic Justice") (0,external_kolmafia_namespaceObject.useSkill)(template_string_$skill(_templateObject140 || (_templateObject140 = lib_taggedTemplateLiteral(["Tongue of the Walrus"]))));
+    });
   });
 }
 ;// CONCATENATED MODULE: ./src/outfits.ts
