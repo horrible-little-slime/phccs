@@ -1,6 +1,7 @@
 import {
     cliExecute,
     create,
+    handlingChoice,
     inHardcore,
     mySign,
     runChoice,
@@ -104,8 +105,7 @@ function takeAShower() {
             Macro.skill($skill`Meteor Shower`).skill($skill`Use the Force`),
             1,
             () => {
-                visitUrl("choice.php");
-                runChoice(3);
+                if (handlingChoice()) runChoice(-1);
             }
         );
         set("_meteorShowerUses", 1 + get("_meteorShowerUses"));
