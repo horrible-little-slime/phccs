@@ -12241,8 +12241,7 @@ function takeAShower() {
 
   if (property_get("_meteorShowerUses") < 5 && !lib_have($effect(familiarweight_templateObject24 || (familiarweight_templateObject24 = familiarweight_taggedTemplateLiteral(["Meteor Showered"]))))) {
     advMacroAA($location(familiarweight_templateObject25 || (familiarweight_templateObject25 = familiarweight_taggedTemplateLiteral(["The Dire Warren"]))), combat_Macro.skill(template_string_$skill(familiarweight_templateObject26 || (familiarweight_templateObject26 = familiarweight_taggedTemplateLiteral(["Meteor Shower"])))).skill(template_string_$skill(familiarweight_templateObject27 || (familiarweight_templateObject27 = familiarweight_taggedTemplateLiteral(["Use the Force"])))), 1, () => {
-      (0,external_kolmafia_namespaceObject.visitUrl)("choice.php");
-      (0,external_kolmafia_namespaceObject.runChoice)(3);
+      if ((0,external_kolmafia_namespaceObject.handlingChoice)()) (0,external_kolmafia_namespaceObject.runChoice)(-1);
     });
     _set("_meteorShowerUses", 1 + property_get("_meteorShowerUses"));
   }
