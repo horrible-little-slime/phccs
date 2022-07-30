@@ -391,7 +391,7 @@ export const mysticalityOutfit = new OutfitPlan(
     },
     {
         familiar: $familiar`Left-Hand Man`,
-        modes: { retrocape: ["vampire", RetroCape.currentMode()] },
+        modes: { retrocape: ["heck", RetroCape.currentMode()] },
     }
 );
 
