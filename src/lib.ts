@@ -215,10 +215,13 @@ export function useDefaultFamiliar(canAttack = true): void {
         !get("csServicesPerformed").split(",").includes("Breed More Collies")
     ) {
         useFamiliar($familiar`Shorter-Order Cook`);
+        equip($item`tiny stillsuit`);
     } else if (!have($item`burning newspaper`) && !have($item`burning paper crane`)) {
         useFamiliar($familiar`Garbage Fire`);
+        equip($item`tiny stillsuit`);
     } else {
         useFamiliar($familiar`Puck Man`);
+        equip($item`tiny stillsuit`);
     }
 }
 

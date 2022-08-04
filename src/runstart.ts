@@ -3,6 +3,7 @@ import {
     buy,
     cliExecute,
     create,
+    equip,
     eudoraItem,
     inHardcore,
     Item,
@@ -115,6 +116,7 @@ function prepGear() {
         use(1, $item`box of Familiar Jacks`);
         cliExecute("mummery myst");
     }
+    equip($familiar`Shorter-Order Cook`, $item`tiny stillsuit`);
     if (!have($item`your cowboy boots`)) {
         visitUrl("place.php?whichplace=town_right&action=townright_ltt");
         runChoice(5);
