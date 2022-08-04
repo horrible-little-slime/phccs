@@ -25,14 +25,14 @@
         "babel-loader": "^8.2.2",
         "eslint": "^7.32.0",
         "eslint-config-prettier": "^8.3.0",
-        "eslint-plugin-libram": "^0.2.12",
+        "eslint-plugin-libram": "^0.2.14",
         "prettier": "^2.3.1",
         "typescript": "^4.0.3",
         "webpack": "^5.8.0",
         "webpack-cli": "^4.2.0"
     },
     "dependencies": {
-        "kolmafia": "^3.0.2",
+        "kolmafia": "^3.1.1",
         "libram": "^0.6.21"
     },
     "author": "Phreddrickkv2",
