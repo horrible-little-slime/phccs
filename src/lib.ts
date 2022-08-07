@@ -220,7 +220,7 @@ export function useDefaultFamiliar(canAttack = true): void {
         useFamiliar($familiar`Garbage Fire`);
         equip($item`tiny stillsuit`);
     } else {
-        useFamiliar($familiar`Puck Man`);
+        useFamiliar($familiar`Artistic Goth Kid`);
         equip($item`tiny stillsuit`);
     }
 }
