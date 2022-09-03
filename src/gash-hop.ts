@@ -1,4 +1,4 @@
-import { $class, $familiar, $item, ascend, have, Lifestyle, Paths, prepareAscension } from "libram";
+import { $class, $familiar, $item, $path, ascend, have, Lifestyle, prepareAscension } from "libram";
 import { burnSafaris } from "./casual-gash";
 
 export function main(args = ""): void {
@@ -25,7 +25,7 @@ export function main(args = ""): void {
             : $item`astral pet sweater`;
 
     ascend(
-        Paths.CommunityService,
+        $path`Community Service`,
         $class`Pastamancer`,
         lifestyle,
         "knoll",

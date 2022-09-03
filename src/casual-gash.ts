@@ -1,5 +1,14 @@
 import { useSkill } from "kolmafia";
-import { $class, $item, $skill, ascend, get, Lifestyle, Paths, prepareAscension } from "libram";
+import {
+    $class,
+    $item,
+    $path,
+    $skill,
+    ascend,
+    get,
+    Lifestyle,
+    prepareAscension,
+} from "libram";
 
 const safariTargets = [
     "Kenny Kamakazi",
@@ -40,11 +49,5 @@ export function main(): void {
         },
     });
 
-    ascend(
-        Paths.Unrestricted,
-        $class`Seal Clubber`,
-        Lifestyle.casual,
-        "canadia",
-        $item`astral six-pack`
-    );
+    ascend($path.none, $class`Seal Clubber`, Lifestyle.casual, "canadia", $item`astral six-pack`);
 }
