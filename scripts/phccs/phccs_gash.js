@@ -3730,7 +3730,7 @@ function ascend(path, playerClass, lifestyle, moon) {
   var pet = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : undefined;
   var permSkills = arguments.length > 6 && arguments[6] !== undefined ? arguments[6] : undefined;
 
-  if (path === external_kolmafia_.Path.none || playerClass.path !== (path.avatar ? path : external_kolmafia_.Path.none)) {
+  if (playerClass.path !== (path.avatar ? path : external_kolmafia_.Path.none)) {
     throw new AscendError(playerClass);
   }
 
