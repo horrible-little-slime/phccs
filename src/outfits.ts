@@ -308,7 +308,7 @@ export default function uniform(...changes: (Item | [Item, Slot])[]): void {
         modes: {
             umbrella: "broken",
             retrocape: ["heck", "thrill"],
-            parka: "spikolodon"
+            parka: "spikolodon",
         },
     })
         .merge(alterations)
@@ -423,7 +423,10 @@ export const hotresOutfit = new OutfitPlan(
         acc2: $item`Brutal brogues`,
         acc3: $item`Beach Comb`,
     },
-    { familiar: $familiar`Exotic Parrot`, modes: { retrocape: ["vampire", "hold"], parka: "pterodactyl" } }
+    {
+        familiar: $familiar`Exotic Parrot`,
+        modes: { retrocape: ["vampire", "hold"], parka: "pterodactyl" },
+    }
 );
 
 export const noncombatOutfit = new OutfitPlan(

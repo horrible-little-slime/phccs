@@ -1,14 +1,5 @@
 import { useSkill } from "kolmafia";
-import {
-    $class,
-    $item,
-    $path,
-    $skill,
-    ascend,
-    get,
-    Lifestyle,
-    prepareAscension,
-} from "libram";
+import { $class, $item, $path, $skill, ascend, get, Lifestyle, prepareAscension } from "libram";
 
 const safariTargets = [
     "Kenny Kamakazi",

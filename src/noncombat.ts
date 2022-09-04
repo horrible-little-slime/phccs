@@ -4,16 +4,11 @@ import {
     cliExecute,
     equip,
     getFuel,
-    runChoice,
-    runCombat,
     use,
-    useFamiliar,
-    visitUrl,
 } from "kolmafia";
 import {
     $coinmaster,
     $effect,
-    $familiar,
     $item,
     $slot,
     AsdonMartin,
@@ -21,10 +16,9 @@ import {
     get,
     have,
 } from "libram";
-import Macro from "./combat";
 import { universalWeightBuffs } from "./familiarweight";
-import { burnLibrams, ensureEffect, fuelUp, heal, horse, setChoice } from "./lib";
-import uniform, { noncombatOutfit } from "./outfits";
+import { burnLibrams, ensureEffect, fuelUp, horse } from "./lib";
+import { noncombatOutfit } from "./outfits";
 
 const predictor = () => CommunityService.Noncombat.prediction;
 
@@ -48,26 +42,6 @@ function castBuffs() {
     horse("dark");
 }
 
-function godLobster() {
-    if (
-        !have($effect`Silence of the God Lobster`) &&
-        get("_godLobsterFights") < 3 &&
-        have($item`God Lobster's Ring`)
-    ) {
-        useFamiliar($familiar`God Lobster`);
-        equip($slot`familiar`, $item`God Lobster's Ring`);
-        uniform();
-        Macro.defaultKill().setAutoAttack();
-        heal();
-        use(3, $item`psychokinetic energy blob`);
-        setChoice(1310, 2);
-        visitUrl("main.php?fightgodlobster=1");
-        runCombat(Macro.defaultKill().toString());
-        visitUrl("choice.php");
-        runChoice(-1);
-    }
-}
-
 function testPrep() {
     noncombatOutfit.dress();
     if (predictor() > 1) {
@@ -81,7 +55,6 @@ function testPrep() {
 
 export default function noncombatTest(): void {
     castBuffs();
-    godLobster();
     testPrep();
     if (predictor() > 1) throw "Failed to cap noncombat";
     burnLibrams();

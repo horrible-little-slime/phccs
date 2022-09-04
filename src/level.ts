@@ -347,8 +347,8 @@ function tomatoJuiceAndNinjaCostume() {
 }
 
 function godLob() {
-    setChoice(1310, 1);
-    while (get("_godLobsterFights") < 2) {
+    setChoice(1310, 3);
+    while (get("_godLobsterFights") < 3) {
         Macro.delevel().easyFight().defaultKill().setAutoAttack();
         uniform($item`familiar scrapbook`);
         heal();
