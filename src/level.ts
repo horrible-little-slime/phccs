@@ -231,18 +231,13 @@ function witchGhostAgent() {
     }
     if (!have($item`government`) && !have($item`government cheese`)) {
         useDefaultFamiliar();
-        uniform(
-            $item`vampyric cloake`,
-            $item`latte lovers member's mug`,
-            [$item`gold detective badge`, $slot`acc2`],
-            [$item`Lil' Doctor™ bag`, $slot`acc3`]
-        );
+        uniform(...$items`vampyric cloake, latte lovers member's mug`);
+        cliExecute("parka dilophosaur");
         advMacroAA(
             $location`Noob Cave`,
             Macro.delevel()
-                .trySkill($skill`Otoscope`)
                 .trySkill($skill`Become a Bat`)
-                .trySkill($skill`Chest X-Ray`), //1
+                .trySkill($skill`Spit jurassic acid`),
             () => {
                 return getCounters("Portscan", 0, 0) !== "";
             },

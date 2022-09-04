@@ -73,14 +73,14 @@ function deepDarkVisions() {
     new OutfitPlan(
         {
             hat: $item`Iunion Crown`,
-            shirt: $items`denim jacket`,
+            shirt: $items`Jurassic Parka, denim jacket`,
             back: $item`unwrapped knock-off retro superhero cape`,
             weapon: $item`Fourth of May Cosplay Saber`,
             offhand: $item`familiar scrapbook`,
             pants: $item`Cargo Cultist Shorts`,
             acc1: $item`your cowboy boots`,
         },
-        { familiar: $familiar`Exotic Parrot` }
+        { familiar: $familiar`Exotic Parrot`, modes: { parka: "ghostasaurus" } }
     ).dress();
     while (
         have($skill`Deep Dark Visions`) &&

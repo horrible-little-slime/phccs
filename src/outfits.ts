@@ -38,6 +38,7 @@ type Modes = {
     snowsuit?: "eyebrows" | "smirk" | "nose" | "goatee" | "hat";
     edpiece?: "bear" | "owl" | "puma" | "hyena" | "mouse" | "weasel" | "fish";
     retrocape?: ["vampire" | "heck" | "robot", "hold" | "thrill" | "kiss" | "kill"];
+    parka?: "kachungasaur" | "dilophosaur" | "ghostasaurus" | "spikolodon" | "pterodactyl";
 };
 
 const modeables = {
@@ -46,6 +47,7 @@ const modeables = {
     snowsuit: $item`Snow Suit`,
     edpiece: $item`The Crown of Ed the Undying`,
     retrocape: $item`unwrapped knock-off retro superhero cape`,
+    parka: $item`Jurassic Parka`,
 } as const;
 
 const outfitSlots = [
@@ -278,7 +280,7 @@ export function withOutfit<T>(outfit: Outfit, callback: () => T): T {
 export default function uniform(...changes: (Item | [Item, Slot])[]): void {
     const defaultUniform = {
         hat: $items`astral chapeau, Iunion Crown`,
-        shirt: $item`fresh coat of paint`,
+        shirt: $items`Jurassic Parka, fresh coat of paint`,
         pants: $items`designer sweatpants, old sweatpants`,
         weapon:
             get("_juneCleaverFightsLeft") > 0 && get("_juneCleaverEncounters") < 2
@@ -306,6 +308,7 @@ export default function uniform(...changes: (Item | [Item, Slot])[]): void {
         modes: {
             umbrella: "broken",
             retrocape: ["heck", "thrill"],
+            parka: "spikolodon"
         },
     })
         .merge(alterations)
@@ -346,7 +349,7 @@ export const hpOutfit = new OutfitPlan(
         hat: $item`wad of used tape`,
         weapon: $item`dented scepter`,
         offhand: $item`Fourth of May Cosplay Saber`,
-        shirt: $items`shoe ad T-shirt, fresh coat of paint`,
+        shirt: $items`Jurassic Parka, shoe ad T-shirt, fresh coat of paint`,
         back: $item`unwrapped knock-off retro superhero cape`,
         pants: $item`Cargo Cultist Shorts`,
         acc1: $item`Brutal brogues`,
@@ -354,7 +357,7 @@ export const hpOutfit = new OutfitPlan(
         acc3: $item`Kremlin's Greatest Briefcase`,
         familiar: $item`miniature crystal ball`,
     },
-    { modes: { retrocape: ["vampire", RetroCape.currentMode()] } }
+    { modes: { retrocape: ["vampire", RetroCape.currentMode()], parka: "kachungasaur" } }
 );
 
 export const muscleOutfit = new OutfitPlan(
@@ -413,13 +416,14 @@ export const hotresOutfit = new OutfitPlan(
     {
         back: $item`unwrapped knock-off retro superhero cape`,
         weapon: $item`Fourth of May Cosplay Saber`,
+        shirt: $item`Jurassic Parka`,
         offhand: $item`meteorite guard`,
         pants: $item`designer sweatpants`,
         acc1: $item`your cowboy boots`,
         acc2: $item`Brutal brogues`,
         acc3: $item`Beach Comb`,
     },
-    { familiar: $familiar`Exotic Parrot`, modes: { retrocape: ["vampire", "hold"] } }
+    { familiar: $familiar`Exotic Parrot`, modes: { retrocape: ["vampire", "hold"], parka: "pterodactyl" } }
 );
 
 export const noncombatOutfit = new OutfitPlan(
@@ -427,12 +431,13 @@ export const noncombatOutfit = new OutfitPlan(
         hat: $item`very pointy crown`,
         back: $item`protonic accelerator pack`,
         weapon: $item`Fourth of May Cosplay Saber`,
+        shirt: $item`Jurassic Parka`,
         offhand: $items`unbreakable umbrella, burning paper crane, familiar scrapbook`,
         acc1: $item`hewn moon-rune spoon`,
         acc2: $item`codpiece`,
         acc3: $item`Brutal brogues`,
     },
-    { familiar: $familiar`Disgeist`, modes: { umbrella: "cocoon" } }
+    { familiar: $familiar`Disgeist`, modes: { umbrella: "cocoon", parka: "pterodactyl" } }
 );
 
 const familiarAndEquip = have($familiar`Baby Bugged Bugbear`)
