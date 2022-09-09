@@ -144,14 +144,15 @@ export class Outfit {
             }
         }
 
-        for (const [mode, command] of Object.entries(this.modes)) {
-            if (haveEquipped(modeables[mode as keyof Modes])) {
-                const args = typeof command === "string" ? command : command.join(" ");
-                const props = modeableProperties[mode as keyof Modes];
+        for (const [mode, args] of Object.entries(this.modes)) {
+            const cliCommand = mode as keyof Modes;
+            if (haveEquipped(modeables[cliCommand])) {
+                const parsedArguments = typeof args === "string" ? args : args.join(" ");
+                const props = modeableProperties[cliCommand];
                 const currentState =
                     typeof props !== "string" ? props.map((p) => get(p)).join(" ") : get(props);
-                if (currentState === args) continue;
-                cliExecute(`${mode} ${args}`);
+                if (currentState === parsedArguments) continue;
+                cliExecute(`${cliCommand} ${parsedArguments}`);
             }
         }
     }
