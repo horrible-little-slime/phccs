@@ -50,6 +50,15 @@ const modeables = {
     parka: $item`Jurassic Parka`,
 } as const;
 
+const modeableProperties = {
+    backupcamera: "backupCameraMode",
+    umbrella: "umbrellaState",
+    snowsuit: "snowsuit",
+    edpiece: "edPiece",
+    retrocape: ["retroCapeSuperhero", "retroCapeWashingInstructions"],
+    parka: "parkaMode",
+} as const;
+
 const outfitSlots = [
     "weapon",
     "offhand",
@@ -71,7 +80,7 @@ type OutfitAttempt = Partial<{ [slot in OutfitSlots]: Item | Item[] }>;
 export class Outfit {
     equips: OutfitParts;
     familiar?: Familiar;
-    modes?: Modes;
+    modes: Modes;
 
     /**
      * Construct an outfit object, for rapid equipping
@@ -81,7 +90,7 @@ export class Outfit {
     constructor(equips: OutfitParts, familiar?: Familiar, modes?: Modes) {
         this.equips = equips;
         this.familiar = familiar;
-        this.modes = modes;
+        this.modes = modes ?? {};
     }
 
     dress(): void {
@@ -135,10 +144,13 @@ export class Outfit {
             }
         }
 
-        for (const mode in this.modes) {
+        for (const [mode, command] of Object.entries(this.modes)) {
             if (haveEquipped(modeables[mode as keyof Modes])) {
-                const cmd = this.modes[mode as keyof Modes];
-                const args = Array.isArray(cmd) ? cmd.join(" ") : cmd;
+                const args = typeof command === "string" ? command : command.join(" ");
+                const props = modeableProperties[mode as keyof Modes];
+                const currentState =
+                    typeof props !== "string" ? props.map((p) => get(p)).join(" ") : get(props);
+                if (currentState === args) continue;
                 cliExecute(`${mode} ${args}`);
             }
         }
