@@ -10729,6 +10729,14 @@ var modeables = {
   retrocape: template_string_$item(outfits_templateObject5 || (outfits_templateObject5 = outfits_taggedTemplateLiteral(["unwrapped knock-off retro superhero cape"]))),
   parka: template_string_$item(outfits_templateObject6 || (outfits_templateObject6 = outfits_taggedTemplateLiteral(["Jurassic Parka"])))
 };
+var modeableProperties = {
+  backupcamera: "backupCameraMode",
+  umbrella: "umbrellaState",
+  snowsuit: "snowsuit",
+  edpiece: "edPiece",
+  retrocape: ["retroCapeSuperhero", "retroCapeWashingInstructions"],
+  parka: "parkaMode"
+};
 var outfitSlots = ["weapon", "offhand", "hat", "back", "shirt", "pants", "acc1", "acc2", "acc3", "familiar"];
 var Outfit = /*#__PURE__*/function () {
   /**
@@ -10747,7 +10755,7 @@ var Outfit = /*#__PURE__*/function () {
 
     this.equips = equips;
     this.familiar = familiar;
-    this.modes = modes;
+    this.modes = modes !== null && modes !== void 0 ? modes : {};
   }
 
   outfits_createClass(Outfit, [{
@@ -10830,10 +10838,16 @@ var Outfit = /*#__PURE__*/function () {
         _iterator3.f();
       }
 
-      for (var mode in this.modes) {
+      for (var _i2 = 0, _Object$entries = Object.entries(this.modes); _i2 < _Object$entries.length; _i2++) {
+        var _Object$entries$_i = outfits_slicedToArray(_Object$entries[_i2], 2),
+            mode = _Object$entries$_i[0],
+            command = _Object$entries$_i[1];
+
         if ((0,external_kolmafia_namespaceObject.haveEquipped)(modeables[mode])) {
-          var cmd = this.modes[mode];
-          var args = Array.isArray(cmd) ? cmd.join(" ") : cmd;
+          var args = typeof command === "string" ? command : command.join(" ");
+          var props = modeableProperties[mode];
+          var currentState = typeof props !== "string" ? props.map(p => property_get(p)).join(" ") : property_get(props);
+          if (currentState === args) continue;
           (0,external_kolmafia_namespaceObject.cliExecute)("".concat(mode, " ").concat(args));
         }
       }
