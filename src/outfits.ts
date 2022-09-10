@@ -148,10 +148,13 @@ export class Outfit {
             const cliCommand = mode as keyof Modes;
             if (haveEquipped(modeables[cliCommand])) {
                 const parsedArguments = typeof args === "string" ? args : args.join(" ");
+
                 const props = modeableProperties[cliCommand];
                 const currentState =
                     typeof props !== "string" ? props.map((p) => get(p)).join(" ") : get(props);
+
                 if (currentState === parsedArguments) continue;
+
                 cliExecute(`${cliCommand} ${parsedArguments}`);
             }
         }
@@ -456,12 +459,15 @@ export const noncombatOutfit = new OutfitPlan(
     { familiar: $familiar`Disgeist`, modes: { umbrella: "cocoon", parka: "pterodactyl" } }
 );
 
-const familiarAndEquip = have($familiar`Baby Bugged Bugbear`)
-    ? { fam: $familiar`Baby Bugged Bugbear`, equip: $item`bugged beanie` }
-    : {
-          fam: $familiar`Blood-Faced Volleyball`,
-          equip: $items`astral pet sweater`,
-      };
+const { fam, famEquip } =
+    !inHardcore() && have($familiar`Doppelshifter`)
+        ? { fam: $familiar`Doppelshifter`, famEquip: $item`tiny costume wardrobe` }
+        : have($familiar`Baby Bugged Bugbear`)
+        ? { fam: $familiar`Baby Bugged Bugbear`, famEquip: $item`bugged beanie` }
+        : {
+              fam: $familiar`Blood-Faced Volleyball`,
+              famEquip: $items`astral pet sweater`,
+          };
 
 export const famweightOutfit = new OutfitPlan(
     {
@@ -472,9 +478,9 @@ export const famweightOutfit = new OutfitPlan(
         acc1: $item`Beach Comb`,
         acc2: $item`Brutal brogues`,
         acc3: $item`hewn moon-rune spoon`,
-        familiar: familiarAndEquip.equip,
+        familiar: famEquip,
     },
-    { familiar: familiarAndEquip.fam }
+    { familiar: fam }
 );
 
 export const weaponOutfit = new OutfitPlan(

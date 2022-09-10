@@ -78,7 +78,10 @@ function doPulls() {
         $items`repaid diaper, Great Wolf's beastly trousers`,
         $items`meteorite necklace, meteorite ring, meteorite fragment, meteorite earring`,
         $item`Stick-Knife of Loathing`,
-        $items`moveable feast, Snow Suit`,
+        [
+            ...(have($familiar`Doppelshifter`) ? $items`tiny costume wardrobe` : []),
+            ...$items`moveable feast, Snow Suit`,
+        ],
     ];
 
     for (const pull of pulls) {
