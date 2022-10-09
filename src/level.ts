@@ -581,7 +581,7 @@ function restAndBuff(restMax = totalFreeRests()) {
     const cap = Math.min(restMax, totalFreeRests());
     while (get("timesRested") < cap) {
         burnLibrams();
-        visitUrl("place.php?whichplace=chateau&action=chateau_restbox");
+        visitUrl("place.php?whichplace=chateau&action=chateau_restlabelfree");
     }
 }
 
