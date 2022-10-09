@@ -13561,7 +13561,7 @@ function restAndBuff() {
 
   while (property_get("timesRested") < cap) {
     burnLibrams();
-    (0,external_kolmafia_namespaceObject.visitUrl)("place.php?whichplace=chateau&action=chateau_restbox");
+    (0,external_kolmafia_namespaceObject.visitUrl)("place.php?whichplace=chateau&action=chateau_restlabelfree");
   }
 }
 
