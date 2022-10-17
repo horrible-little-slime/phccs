@@ -40,9 +40,6 @@ const runTest = (
             `Libram thinks we successfully completed test ${test.name} but Mafia disagrees.`
         );
 };
-const assertCompleted = (action: string, warning: string) => {
-    if (action === "failed") throw new Error(warning);
-};
 
 //preamble
 sinceKolmafiaRevision(26538);
@@ -79,10 +76,7 @@ try {
     runTest(CommunityService.Moxie, moxTest, 1, "Failed to cap Moxie test!");
     runTest(CommunityService.HP, HPTest, 1, "Failed to cap HP test!");
     runTest(CommunityService.Muscle, muscleTest, 1, "Failed to cap Muscle test!");
-    assertCompleted(
-        CommunityService.Mysticality.run(mystTest, 1),
-        "Failed to cap Mysticality test!"
-    );
+    runTest(CommunityService.Mysticality, mystTest, 1, "Failed to cap Mysticality test!");
     CommunityService.logTask("getting drunk", () => {
         if (availableAmount($item`astral six-pack`) !== 0) use(1, $item`astral six-pack`);
         if (have($effect`The Magical Mojomuscular Melody`))
@@ -95,10 +89,7 @@ try {
     runTest(CommunityService.BoozeDrop, itemTest, 1, "Failed to cap Item test!");
     runTest(CommunityService.HotRes, hotTest, 1, "Failed to cap Hot Res test!");
     runTest(CommunityService.Noncombat, noncombatTest, 1, "Failed to cap NC test!");
-    assertCompleted(
-        CommunityService.FamiliarWeight.run(familiarTest, 30),
-        "Failed to perform Familiar test!"
-    );
+    runTest(CommunityService.FamiliarWeight, familiarTest, 30, "Failed to perform Familiar test!");
     runTest(CommunityService.WeaponDamage, weaponTest, 1, "Failed to cap Weapon Damage test!");
     runTest(CommunityService.SpellDamage, spellTest, 30, "Failed to perform Spell Damage test!");
 } finally {
