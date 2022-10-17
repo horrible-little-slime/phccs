@@ -14500,6 +14500,12 @@ function src_taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.sli
 
 var HIGHLIGHT = (0,external_kolmafia_namespaceObject.isDarkMode)() ? "yellow" : "blue";
 
+var runTest = (test, preparation, cap, warning) => {
+  var status = test.run(preparation, cap);
+  if (status === "failed") throw new Error(warning);
+  if (status === "already completed" && !property_get("csServicesPerformed").includes(test.name)) throw new Error("Libram thinks we successfully completed test ".concat(test.name, " but Mafia disagrees."));
+};
+
 var assertCompleted = (action, warning) => {
   if (action === "failed") throw new Error(warning);
 }; //preamble
@@ -14531,11 +14537,11 @@ PropertyManager.setChoices({
 var softcore = !(0,external_kolmafia_namespaceObject.inHardcore)();
 
 try {
-  assertCompleted(CommunityService.CoilWire.run(coilWire, 60), "Failed to coil wire!");
+  runTest(CommunityService.CoilWire, coilWire, 60, "Failed to coil wire!");
   if ((0,external_kolmafia_namespaceObject.myLevel)() < 13) CommunityService.logTask("levelling", levelUp);
-  assertCompleted(CommunityService.Moxie.run(moxTest, 1), "Failed to cap Moxie test!");
-  assertCompleted(CommunityService.HP.run(HPTest, 1), "Failed to cap HP test!");
-  assertCompleted(CommunityService.Muscle.run(muscleTest, 1), "Failed to cap Muscle test!");
+  runTest(CommunityService.Moxie, moxTest, 1, "Failed to cap Moxie test!");
+  runTest(CommunityService.HP, HPTest, 1, "Failed to cap HP test!");
+  runTest(CommunityService.Muscle, muscleTest, 1, "Failed to cap Muscle test!");
   assertCompleted(CommunityService.Mysticality.run(mystTest, 1), "Failed to cap Mysticality test!");
   CommunityService.logTask("getting drunk", () => {
     if ((0,external_kolmafia_namespaceObject.availableAmount)(template_string_$item(src_templateObject || (src_templateObject = src_taggedTemplateLiteral(["astral six-pack"])))) !== 0) (0,external_kolmafia_namespaceObject.use)(1, template_string_$item(src_templateObject2 || (src_templateObject2 = src_taggedTemplateLiteral(["astral six-pack"]))));
@@ -14546,12 +14552,12 @@ try {
       (0,external_kolmafia_namespaceObject.drink)(1, template_string_$item(src_templateObject5 || (src_templateObject5 = src_taggedTemplateLiteral(["astral pilsner"]))));
     }
   });
-  assertCompleted(CommunityService.BoozeDrop.run(itemTest, 1), "Failed to cap Item test!");
-  assertCompleted(CommunityService.HotRes.run(hotTest, 1), "Failed to cap Hot Res test!");
-  assertCompleted(CommunityService.Noncombat.run(noncombatTest, 1), "Failed to cap NC test!");
+  runTest(CommunityService.BoozeDrop, itemTest, 1, "Failed to cap Item test!");
+  runTest(CommunityService.HotRes, hotTest, 1, "Failed to cap Hot Res test!");
+  runTest(CommunityService.Noncombat, noncombatTest, 1, "Failed to cap NC test!");
   assertCompleted(CommunityService.FamiliarWeight.run(familiarTest, 30), "Failed to perform Familiar test!");
-  assertCompleted(CommunityService.WeaponDamage.run(weaponTest, 1), "Failed to cap Weapon Damage test!");
-  assertCompleted(CommunityService.SpellDamage.run(spellTest, 30), "Failed to perform Spell Damage test!");
+  runTest(CommunityService.WeaponDamage, weaponTest, 1, "Failed to cap Weapon Damage test!");
+  runTest(CommunityService.SpellDamage, spellTest, 30, "Failed to perform Spell Damage test!");
 } finally {
   CommunityService.printLog(HIGHLIGHT);
   if (softcore) CommunityService.donate();
