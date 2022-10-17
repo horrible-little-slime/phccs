@@ -14504,10 +14504,6 @@ var runTest = (test, preparation, cap, warning) => {
   var status = test.run(preparation, cap);
   if (status === "failed") throw new Error(warning);
   if (status === "already completed" && !property_get("csServicesPerformed").includes(test.name)) throw new Error("Libram thinks we successfully completed test ".concat(test.name, " but Mafia disagrees."));
-};
-
-var assertCompleted = (action, warning) => {
-  if (action === "failed") throw new Error(warning);
 }; //preamble
 
 
@@ -14542,7 +14538,7 @@ try {
   runTest(CommunityService.Moxie, moxTest, 1, "Failed to cap Moxie test!");
   runTest(CommunityService.HP, HPTest, 1, "Failed to cap HP test!");
   runTest(CommunityService.Muscle, muscleTest, 1, "Failed to cap Muscle test!");
-  assertCompleted(CommunityService.Mysticality.run(mystTest, 1), "Failed to cap Mysticality test!");
+  runTest(CommunityService.Mysticality, mystTest, 1, "Failed to cap Mysticality test!");
   CommunityService.logTask("getting drunk", () => {
     if ((0,external_kolmafia_namespaceObject.availableAmount)(template_string_$item(src_templateObject || (src_templateObject = src_taggedTemplateLiteral(["astral six-pack"])))) !== 0) (0,external_kolmafia_namespaceObject.use)(1, template_string_$item(src_templateObject2 || (src_templateObject2 = src_taggedTemplateLiteral(["astral six-pack"]))));
     if (lib_have($effect(src_templateObject3 || (src_templateObject3 = src_taggedTemplateLiteral(["The Magical Mojomuscular Melody"]))))) (0,external_kolmafia_namespaceObject.cliExecute)("shrug The Magical Mojomuscular Melody");
@@ -14555,7 +14551,7 @@ try {
   runTest(CommunityService.BoozeDrop, itemTest, 1, "Failed to cap Item test!");
   runTest(CommunityService.HotRes, hotTest, 1, "Failed to cap Hot Res test!");
   runTest(CommunityService.Noncombat, noncombatTest, 1, "Failed to cap NC test!");
-  assertCompleted(CommunityService.FamiliarWeight.run(familiarTest, 30), "Failed to perform Familiar test!");
+  runTest(CommunityService.FamiliarWeight, familiarTest, 30, "Failed to perform Familiar test!");
   runTest(CommunityService.WeaponDamage, weaponTest, 1, "Failed to cap Weapon Damage test!");
   runTest(CommunityService.SpellDamage, spellTest, 30, "Failed to perform Spell Damage test!");
 } finally {
