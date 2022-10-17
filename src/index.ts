@@ -23,10 +23,23 @@ import { PropertyManager } from "./lib";
 import spellTest from "./spell";
 import { HPTest, moxTest, muscleTest, mystTest } from "./stattests";
 import weaponTest from "./weapon";
-import { $effect, $item, $skill, CommunityService, have, sinceKolmafiaRevision } from "libram";
+import { $effect, $item, $skill, CommunityService, get, have, sinceKolmafiaRevision } from "libram";
 
 const HIGHLIGHT = isDarkMode() ? "yellow" : "blue";
 
+const runTest = (
+    test: CommunityService,
+    preparation: (() => void) | (() => number),
+    cap: number,
+    warning: string
+) => {
+    const status = test.run(preparation, cap);
+    if (status === "failed") throw new Error(warning);
+    if (status === "already completed" && !get("csServicesPerformed").includes(test.name))
+        throw new Error(
+            `Libram thinks we successfully completed test ${test.name} but Mafia disagrees.`
+        );
+};
 const assertCompleted = (action: string, warning: string) => {
     if (action === "failed") throw new Error(warning);
 };
@@ -61,11 +74,11 @@ PropertyManager.setChoices({
 const softcore = !inHardcore();
 
 try {
-    assertCompleted(CommunityService.CoilWire.run(coilWire, 60), "Failed to coil wire!");
+    runTest(CommunityService.CoilWire, coilWire, 60, "Failed to coil wire!");
     if (myLevel() < 13) CommunityService.logTask("levelling", levelUp);
-    assertCompleted(CommunityService.Moxie.run(moxTest, 1), "Failed to cap Moxie test!");
-    assertCompleted(CommunityService.HP.run(HPTest, 1), "Failed to cap HP test!");
-    assertCompleted(CommunityService.Muscle.run(muscleTest, 1), "Failed to cap Muscle test!");
+    runTest(CommunityService.Moxie, moxTest, 1, "Failed to cap Moxie test!");
+    runTest(CommunityService.HP, HPTest, 1, "Failed to cap HP test!");
+    runTest(CommunityService.Muscle, muscleTest, 1, "Failed to cap Muscle test!");
     assertCompleted(
         CommunityService.Mysticality.run(mystTest, 1),
         "Failed to cap Mysticality test!"
@@ -79,21 +92,15 @@ try {
             drink(1, $item`astral pilsner`);
         }
     });
-    assertCompleted(CommunityService.BoozeDrop.run(itemTest, 1), "Failed to cap Item test!");
-    assertCompleted(CommunityService.HotRes.run(hotTest, 1), "Failed to cap Hot Res test!");
-    assertCompleted(CommunityService.Noncombat.run(noncombatTest, 1), "Failed to cap NC test!");
+    runTest(CommunityService.BoozeDrop, itemTest, 1, "Failed to cap Item test!");
+    runTest(CommunityService.HotRes, hotTest, 1, "Failed to cap Hot Res test!");
+    runTest(CommunityService.Noncombat, noncombatTest, 1, "Failed to cap NC test!");
     assertCompleted(
         CommunityService.FamiliarWeight.run(familiarTest, 30),
         "Failed to perform Familiar test!"
     );
-    assertCompleted(
-        CommunityService.WeaponDamage.run(weaponTest, 1),
-        "Failed to cap Weapon Damage test!"
-    );
-    assertCompleted(
-        CommunityService.SpellDamage.run(spellTest, 30),
-        "Failed to perform Spell Damage test!"
-    );
+    runTest(CommunityService.WeaponDamage, weaponTest, 1, "Failed to cap Weapon Damage test!");
+    runTest(CommunityService.SpellDamage, spellTest, 30, "Failed to perform Spell Damage test!");
 } finally {
     CommunityService.printLog(HIGHLIGHT);
     if (softcore) CommunityService.donate();
