@@ -12126,7 +12126,7 @@ function prepGear() {
   }
 
   if (!property_get("_floundryItemCreated")) {
-    Clan.with("Bonus Adventures From Hell", () => (0,external_kolmafia_namespaceObject.cliExecute)("acquire codpiece"));
+    Clan.with("Alliance From Hell", () => (0,external_kolmafia_namespaceObject.cliExecute)("acquire codpiece"));
   }
 
   if (property_get("boomBoxSong") !== "Total Eclipse of Your Meat") {
@@ -14482,7 +14482,7 @@ function sinceKolmafiaVersion(majorVersion, minorVersion) {
   }
 }
 ;// CONCATENATED MODULE: ./src/index.ts
-var src_templateObject, src_templateObject2, src_templateObject3, src_templateObject4, src_templateObject5;
+var src_templateObject, src_templateObject2, src_templateObject3, src_templateObject4, src_templateObject5, src_templateObject6;
 
 function src_taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
@@ -14508,7 +14508,7 @@ var runTest = (test, preparation, cap, warning) => {
 
 
 sinceKolmafiaRevision(26538);
-if ((0,external_kolmafia_namespaceObject.myPathId)() !== 25) (0,external_kolmafia_namespaceObject.abort)();
+if ((0,external_kolmafia_namespaceObject.myPath)() !== $path(src_templateObject || (src_templateObject = src_taggedTemplateLiteral(["Community Service"])))) (0,external_kolmafia_namespaceObject.abort)();
 (0,external_kolmafia_namespaceObject.visitUrl)("council.php");
 (0,external_kolmafia_namespaceObject.cliExecute)("ccs twiddle");
 PropertyManager.set({
@@ -14540,12 +14540,12 @@ try {
   runTest(CommunityService.Muscle, muscleTest, 1, "Failed to cap Muscle test!");
   runTest(CommunityService.Mysticality, mystTest, 1, "Failed to cap Mysticality test!");
   CommunityService.logTask("getting drunk", () => {
-    if ((0,external_kolmafia_namespaceObject.availableAmount)(template_string_$item(src_templateObject || (src_templateObject = src_taggedTemplateLiteral(["astral six-pack"])))) !== 0) (0,external_kolmafia_namespaceObject.use)(1, template_string_$item(src_templateObject2 || (src_templateObject2 = src_taggedTemplateLiteral(["astral six-pack"]))));
-    if (lib_have($effect(src_templateObject3 || (src_templateObject3 = src_taggedTemplateLiteral(["The Magical Mojomuscular Melody"]))))) (0,external_kolmafia_namespaceObject.cliExecute)("shrug The Magical Mojomuscular Melody");
-    (0,external_kolmafia_namespaceObject.useSkill)(template_string_$skill(src_templateObject4 || (src_templateObject4 = src_taggedTemplateLiteral(["The Ode to Booze"]))));
+    if ((0,external_kolmafia_namespaceObject.availableAmount)(template_string_$item(src_templateObject2 || (src_templateObject2 = src_taggedTemplateLiteral(["astral six-pack"])))) !== 0) (0,external_kolmafia_namespaceObject.use)(1, template_string_$item(src_templateObject3 || (src_templateObject3 = src_taggedTemplateLiteral(["astral six-pack"]))));
+    if (lib_have($effect(src_templateObject4 || (src_templateObject4 = src_taggedTemplateLiteral(["The Magical Mojomuscular Melody"]))))) (0,external_kolmafia_namespaceObject.cliExecute)("shrug The Magical Mojomuscular Melody");
+    (0,external_kolmafia_namespaceObject.useSkill)(template_string_$skill(src_templateObject5 || (src_templateObject5 = src_taggedTemplateLiteral(["The Ode to Booze"]))));
 
     while ((0,external_kolmafia_namespaceObject.myInebriety)() < 5) {
-      (0,external_kolmafia_namespaceObject.drink)(1, template_string_$item(src_templateObject5 || (src_templateObject5 = src_taggedTemplateLiteral(["astral pilsner"]))));
+      (0,external_kolmafia_namespaceObject.drink)(1, template_string_$item(src_templateObject6 || (src_templateObject6 = src_taggedTemplateLiteral(["astral pilsner"]))));
     }
   });
   runTest(CommunityService.BoozeDrop, itemTest, 1, "Failed to cap Item test!");
