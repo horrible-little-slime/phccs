@@ -7,7 +7,7 @@ import {
     isDarkMode,
     myInebriety,
     myLevel,
-    myPathId,
+    myPath,
     setAutoAttack,
     use,
     useSkill,
@@ -23,7 +23,16 @@ import { PropertyManager } from "./lib";
 import spellTest from "./spell";
 import { HPTest, moxTest, muscleTest, mystTest } from "./stattests";
 import weaponTest from "./weapon";
-import { $effect, $item, $skill, CommunityService, get, have, sinceKolmafiaRevision } from "libram";
+import {
+    $effect,
+    $item,
+    $path,
+    $skill,
+    CommunityService,
+    get,
+    have,
+    sinceKolmafiaRevision,
+} from "libram";
 
 const HIGHLIGHT = isDarkMode() ? "yellow" : "blue";
 
@@ -43,7 +52,7 @@ const runTest = (
 
 //preamble
 sinceKolmafiaRevision(26538);
-if (myPathId() !== 25) abort();
+if (myPath() !== $path`Community Service`) abort();
 visitUrl("council.php");
 cliExecute("ccs twiddle");
 

@@ -144,7 +144,7 @@ function prepGear() {
     }
 
     if (!get("_floundryItemCreated")) {
-        Clan.with("Bonus Adventures From Hell", () => cliExecute("acquire codpiece"));
+        Clan.with("Alliance From Hell", () => cliExecute("acquire codpiece"));
     }
 
     if (get("boomBoxSong") !== "Total Eclipse of Your Meat") {
