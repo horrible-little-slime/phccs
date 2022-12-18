@@ -1,5 +1,15 @@
-import { useSkill } from "kolmafia";
-import { $class, $item, $path, $skill, ascend, get, Lifestyle, prepareAscension } from "libram";
+import { getPermedSkills, Skill, useSkill } from "kolmafia";
+import {
+    $class,
+    $item,
+    $path,
+    $skill,
+    ascend,
+    get,
+    have,
+    Lifestyle,
+    prepareAscension,
+} from "libram";
 
 const safariTargets = [
     "Kenny Kamakazi",
@@ -40,5 +50,20 @@ export function main(): void {
         },
     });
 
-    ascend($path.none, $class`Seal Clubber`, Lifestyle.casual, "canadia", $item`astral six-pack`);
+    const perms = getPermedSkills();
+    const permSkills = new Map(
+        Skill.all()
+            .filter((s) => have(s) && !perms[s.name])
+            .map((s) => [s, Lifestyle.hardcore])
+    );
+
+    ascend(
+        $path.none,
+        $class`Seal Clubber`,
+        Lifestyle.casual,
+        "canadia",
+        $item`astral six-pack`,
+        undefined,
+        { neverAbort: true, permSkills }
+    );
 }

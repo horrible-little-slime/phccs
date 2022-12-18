@@ -1,3 +1,4 @@
+import { getPermedSkills, Skill } from "kolmafia";
 import { $class, $familiar, $item, $path, ascend, have, Lifestyle, prepareAscension } from "libram";
 import { burnSafaris } from "./casual-gash";
 
@@ -24,12 +25,23 @@ export function main(args = ""): void {
             ? $item`astral statuette`
             : $item`astral pet sweater`;
 
+    const perms = getPermedSkills();
+    const permSkills = new Map(
+        Skill.all()
+            .filter((s) => have(s) && !perms[s.name])
+            .map((s) => [s, Lifestyle.hardcore])
+    );
+
     ascend(
         $path`Community Service`,
         $class`Pastamancer`,
         lifestyle,
         "knoll",
         $item`astral six-pack`,
-        pet
+        pet,
+        {
+            neverAbort: true,
+            permSkills,
+        }
     );
 }
