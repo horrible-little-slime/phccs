@@ -53,7 +53,7 @@ export function main(): void {
     const perms = getPermedSkills();
     const permSkills = new Map(
         Skill.all()
-            .filter((s) => have(s) && !perms[s.name])
+            .filter((s) => have(s) && !perms[s.name] && s.permable)
             .map((s) => [s, Lifestyle.hardcore])
     );
 
