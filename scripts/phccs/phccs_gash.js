@@ -3328,7 +3328,7 @@ function main() {
     }
   });
   var perms = getPermedSkills();
-  var permSkills = new Map(Skill.all().filter(s => have(s) && !perms[s.name]).map(s => [s, Lifestyle.hardcore]));
+  var permSkills = new Map(Skill.all().filter(s => have(s) && !perms[s.name] && s.permable).map(s => [s, Lifestyle.hardcore]));
   ascend($path.none, $class(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["Seal Clubber"]))), Lifestyle.casual, "canadia", $item(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["astral six-pack"]))), undefined, {
     neverAbort: true,
     permSkills: permSkills
@@ -4662,7 +4662,7 @@ function main() {
   var lifestyle = args.includes("softcore") ? Lifestyle.softcore : Lifestyle.hardcore;
   var pet = lifestyle === Lifestyle.softcore ? (0,template_string/* $item */.xr)(gash_hop_templateObject || (gash_hop_templateObject = gash_hop_taggedTemplateLiteral(["astral chapeau"]))) : lib_have((0,template_string/* $familiar */.HP)(gash_hop_templateObject2 || (gash_hop_templateObject2 = gash_hop_taggedTemplateLiteral(["Baby Bugged Bugbear"])))) ? (0,template_string/* $item */.xr)(gash_hop_templateObject3 || (gash_hop_templateObject3 = gash_hop_taggedTemplateLiteral(["astral statuette"]))) : (0,template_string/* $item */.xr)(gash_hop_templateObject4 || (gash_hop_templateObject4 = gash_hop_taggedTemplateLiteral(["astral pet sweater"])));
   var perms = (0,external_kolmafia_.getPermedSkills)();
-  var permSkills = new Map(external_kolmafia_.Skill.all().filter(s => lib_have(s) && !perms[s.name]).map(s => [s, Lifestyle.hardcore]));
+  var permSkills = new Map(external_kolmafia_.Skill.all().filter(s => lib_have(s) && !perms[s.name] && s.permable).map(s => [s, Lifestyle.hardcore]));
   ascend((0,template_string/* $path */.l$)(gash_hop_templateObject5 || (gash_hop_templateObject5 = gash_hop_taggedTemplateLiteral(["Community Service"]))), (0,template_string/* $class */._$)(gash_hop_templateObject6 || (gash_hop_templateObject6 = gash_hop_taggedTemplateLiteral(["Pastamancer"]))), lifestyle, "knoll", (0,template_string/* $item */.xr)(gash_hop_templateObject7 || (gash_hop_templateObject7 = gash_hop_taggedTemplateLiteral(["astral six-pack"]))), pet, {
     neverAbort: true,
     permSkills: permSkills

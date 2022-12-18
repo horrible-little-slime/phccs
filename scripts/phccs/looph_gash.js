@@ -4662,7 +4662,7 @@ function main() {
     }
   });
   var perms = (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.getPermedSkills)();
-  var permSkills = new Map(kolmafia__WEBPACK_IMPORTED_MODULE_0__.Skill.all().filter(s => (0,libram__WEBPACK_IMPORTED_MODULE_4__/* .have */ .lf)(s) && !perms[s.name]).map(s => [s, libram__WEBPACK_IMPORTED_MODULE_3__/* .Lifestyle.hardcore */ .VO.hardcore]));
+  var permSkills = new Map(kolmafia__WEBPACK_IMPORTED_MODULE_0__.Skill.all().filter(s => (0,libram__WEBPACK_IMPORTED_MODULE_4__/* .have */ .lf)(s) && !perms[s.name] && s.permable).map(s => [s, libram__WEBPACK_IMPORTED_MODULE_3__/* .Lifestyle.hardcore */ .VO.hardcore]));
   (0,libram__WEBPACK_IMPORTED_MODULE_3__/* .ascend */ .zU)(libram__WEBPACK_IMPORTED_MODULE_1__/* .$path.none */ .l$.none, (0,libram__WEBPACK_IMPORTED_MODULE_1__/* .$class */ ._$)(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["Seal Clubber"]))), libram__WEBPACK_IMPORTED_MODULE_3__/* .Lifestyle.casual */ .VO.casual, "canadia", (0,libram__WEBPACK_IMPORTED_MODULE_1__/* .$item */ .xr)(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["astral six-pack"]))), undefined, {
     neverAbort: true,
     permSkills: permSkills
