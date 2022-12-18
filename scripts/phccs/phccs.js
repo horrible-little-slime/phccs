@@ -12246,7 +12246,7 @@ function prepGear() {
   }
 
   if (!property_get("_floundryItemCreated")) {
-    Clan.with("Alliance From Hell", () => (0,external_kolmafia_namespaceObject.cliExecute)("acquire codpiece"));
+    Clan.with("Alliance From Heck", () => (0,external_kolmafia_namespaceObject.cliExecute)("acquire codpiece"));
   }
 
   if (property_get("boomBoxSong") !== "Total Eclipse of Your Meat") {
