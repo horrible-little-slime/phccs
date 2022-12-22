@@ -1,4 +1,4 @@
-import { getPermedSkills, Skill } from "kolmafia";
+import { getPermedSkills, Skill, use } from "kolmafia";
 import { $class, $familiar, $item, $path, ascend, have, Lifestyle, prepareAscension } from "libram";
 import { burnSafaris } from "./casual-gash";
 
@@ -6,7 +6,6 @@ export function main(args = ""): void {
     burnSafaris();
 
     prepareAscension({
-        workshed: "Asdon Martin keyfob",
         garden: "Peppermint Pip Packet",
         eudora: "Our Daily Candles™ order form",
         chateau: {
@@ -44,4 +43,6 @@ export function main(args = ""): void {
             permSkills,
         }
     );
+
+    use($item`Asdon Martin keyfob`);
 }
