@@ -3318,7 +3318,6 @@ function burnSafaris() {
 function main() {
   burnSafaris();
   prepareAscension({
-    workshed: "Asdon Martin keyfob",
     garden: "packet of thanksgarden seeds",
     eudora: "Our Daily Candles™ order form",
     chateau: {
@@ -4639,7 +4638,7 @@ function telescope() {
 // EXTERNAL MODULE: ./src/casual-gash.ts
 var casual_gash = __webpack_require__(3125);
 ;// CONCATENATED MODULE: ./src/gash-hop.ts
-var gash_hop_templateObject, gash_hop_templateObject2, gash_hop_templateObject3, gash_hop_templateObject4, gash_hop_templateObject5, gash_hop_templateObject6, gash_hop_templateObject7;
+var gash_hop_templateObject, gash_hop_templateObject2, gash_hop_templateObject3, gash_hop_templateObject4, gash_hop_templateObject5, gash_hop_templateObject6, gash_hop_templateObject7, gash_hop_templateObject8;
 
 function gash_hop_taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
@@ -4650,7 +4649,6 @@ function main() {
   var args = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
   (0,casual_gash.burnSafaris)();
   prepareAscension({
-    workshed: "Asdon Martin keyfob",
     garden: "Peppermint Pip Packet",
     eudora: "Our Daily Candles™ order form",
     chateau: {
@@ -4667,6 +4665,7 @@ function main() {
     neverAbort: true,
     permSkills: permSkills
   });
+  (0,external_kolmafia_.use)((0,template_string/* $item */.xr)(gash_hop_templateObject8 || (gash_hop_templateObject8 = gash_hop_taggedTemplateLiteral(["Asdon Martin keyfob"]))));
 }
 })();
 

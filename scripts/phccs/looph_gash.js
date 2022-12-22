@@ -4652,7 +4652,6 @@ function burnSafaris() {
 function main() {
   burnSafaris();
   (0,libram__WEBPACK_IMPORTED_MODULE_3__/* .prepareAscension */ .lO)({
-    workshed: "Asdon Martin keyfob",
     garden: "packet of thanksgarden seeds",
     eudora: "Our Daily Candles™ order form",
     chateau: {
