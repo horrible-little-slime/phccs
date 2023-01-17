@@ -1,4 +1,4 @@
-import { Engine, getTasks, Quest, Task } from "grimoire-kolmafia";
+import { Engine, getTasks, Quest } from "grimoire-kolmafia";
 import {
     abort,
     inHardcore,
@@ -10,12 +10,16 @@ import {
     writeCcs,
 } from "kolmafia";
 import { $path, CommunityService, get, PropertiesManager } from "libram";
+import GLOBAL_QUEST from "./globaltasks";
+import { CSTask } from "./lib";
 
 const HIGHLIGHT = isDarkMode() ? "yellow" : "blue";
 
-export type CSTask = Task & { core?: "hard" | "soft" };
-
-export type CSQuest = Quest<CSTask> & { test: CommunityService | string; maxTurns?: number };
+export type CSQuest = Quest<CSTask> & {
+    test: CommunityService | string;
+    maxTurns?: number;
+    turnsSpent?: number | (() => number);
+};
 export class CSEngine extends Engine<never, CSTask> {
     static propertyManager = new PropertiesManager();
     static core = inHardcore() ? "hard" : "soft";
@@ -23,11 +27,13 @@ export class CSEngine extends Engine<never, CSTask> {
     test: CommunityService | string;
     name: string;
     maxTurns?: number;
+    turnsSpent?: number | (() => number);
 
     constructor(quest: CSQuest) {
-        super(getTasks([quest]));
+        super(getTasks([GLOBAL_QUEST, quest]));
         this.test = quest.test;
         this.maxTurns = quest.maxTurns;
+        this.turnsSpent = quest.turnsSpent;
         this.name = typeof this.test === "string" ? this.test : this.test.statName;
     }
 
@@ -62,6 +68,7 @@ export class CSEngine extends Engine<never, CSTask> {
                 .filter((a) => a)
                 .join(","),
             autoSatisfyWithNPCs: true,
+            autoSatisfyWithStorage: false,
             libramSkillsSoftcore: "none",
         });
 
@@ -82,27 +89,36 @@ export class CSEngine extends Engine<never, CSTask> {
         }
     }
 
+    private get turns(): number {
+        if (!this.turnsSpent) return 0;
+        if (typeof this.turnsSpent === "function") return this.turnsSpent();
+        return this.turnsSpent;
+    }
+
     private runTest(): void {
         const loggingFunction = (action: () => number | void) =>
             typeof this.test === "string"
                 ? CommunityService.logTask(this.test, action)
                 : this.test.run(action, this.maxTurns);
-        const result = loggingFunction(() => {
-            try {
+        try {
+            const result = loggingFunction(() => {
                 this.run();
-            } finally {
-                this.destruct();
-            }
-        });
-        const warning =
-            typeof this.test === "string"
-                ? `Failed to execute ${this.name}!`
-                : `Failed to cap ${this.name}!`;
+                return this.turns;
+            });
+            const warning =
+                typeof this.test === "string"
+                    ? `Failed to execute ${this.name}!`
+                    : `Failed to cap ${this.name}!`;
 
-        if (result === "failed") throw new Error(warning);
+            if (result === "failed") throw new Error(warning);
 
-        if (result === "already completed")
-            throw new Error(`Libram thinks we already completed ${this.name} but we beg to differ`);
+            if (result === "already completed")
+                throw new Error(
+                    `Libram thinks we already completed ${this.name} but we beg to differ`
+                );
+        } finally {
+            this.destruct();
+        }
     }
 
     static runTests(quests: CSQuest[]): void {

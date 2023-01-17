@@ -1,3 +1,4 @@
+import { Task } from "grimoire-kolmafia";
 import {
     abort,
     adv1,
@@ -70,6 +71,7 @@ import {
 import Macro from "./combat";
 import uniform, { Outfit, withOutfit } from "./outfits";
 
+export type CSTask = Task & { core?: "hard" | "soft" };
 export const PropertyManager = new PropertiesManager();
 
 export function fuelUp(): void {
