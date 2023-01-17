@@ -4,12 +4,8 @@ import {
     cliExecute,
     create,
     equip,
-    eudoraItem,
-    inHardcore,
-    Item,
+    getClanName,
     itemAmount,
-    myLevel,
-    mySpleenUse,
     runChoice,
     storageAmount,
     takeStorage,
@@ -24,171 +20,217 @@ import {
     $item,
     $items,
     $skill,
+    $skills,
     Clan,
+    CommunityService,
     get,
     have,
+    MummingTrunk,
+    SongBoom,
     SourceTerminal,
 } from "libram";
+import { CSQuest } from "./engine";
 import { setClan, tryUse } from "./lib";
 
-function juiceBar() {
-    visitUrl("place.php?whichplace=chateau&action=chateau_desk2");
-    autosell(1, $item`gremlin juice`);
-}
+const PULLS = [
+    $items`repaid diaper, Great Wolf's beastly trousers`,
+    $items`meteorite necklace, meteorite ring, meteorite fragment, meteorite earring`,
+    $items`Stick-Knife of Loathing`,
+    $items`moveable feast, Snow Suit`,
+];
 
-function toot() {
-    visitUrl("tutorial.php?action=toot");
-    tryUse(1, $item`letter from King Ralph XI`);
-    tryUse(1, $item`pork elf goodies sack`);
-    autosell(5, $item`baconstone`);
-    autosell(5, $item`hamethyst`);
-    if (!have($item`toy accordion`)) {
-        buy(1, $item`toy accordion`);
-    }
-}
+let codpieceAttempted = false;
 
-function grimoires() {
-    if (!get("_grimoireConfiscatorSummons") && have($skill`Summon Confiscated Things`)) {
-        useSkill(1, $skill`Summon Confiscated Things`);
-        $items`glow-in-the-dark necklace, "KICK ME" sign, LCD game: Burger Belt, LCD game: Food Eater, LCD game: Garbage River`.forEach(
-            (item) => autosell(1, item)
-        );
-    }
-    if (!get("grimoire2Summons") && have($skill`Summon Tasteful Items`)) {
-        useSkill(1, $skill`Summon Tasteful Items`);
-        $items`black-and-blue light, blue plasma ball, cheap studded belt, flavored foot massage oil, foam dart, Loudmouth Larry Lamprey, personal massager, personalized coffee mug, stick-on eyebrow piercing`.forEach(
-            (item) => autosell(5, item)
-        );
-    }
-    if (!get("grimoire3Summons") && have($skill`Summon Alice's Army Cards`)) {
-        useSkill(1, $skill`Summon Alice's Army Cards`);
-        buy($coinmaster`Game Shoppe Snacks`, 1, $item`tobiko marble soda`);
-    }
-}
+const Prologue: CSQuest = {
+    name: "Prologue",
+    test: "Prologue",
+    tasks: [
+        {
+            name: "Non-Staff Pulls",
+            core: "soft",
+            ready: () => PULLS.some((pullSet) => pullSet.every((pull) => !have(pull))),
+            completed: () => get("_roninStoragePulls").split(",").length >= 4,
+            do: (): void => {
+                for (const pullSet of PULLS) {
+                    if (pullSet.some((pull) => have(pull))) continue;
+                    const pull = pullSet.find((p) => storageAmount(p) > 0);
+                    if (pull) takeStorage(pull, 1);
+                    else
+                        throw new Error(
+                            `Failed to pull one of ${pullSet.join(
+                                ", "
+                            )}; are you rich enough to run this in softcore?`
+                        );
+                }
+            },
+        },
+        {
+            name: "Borrow Time",
+            completed: () => get("_borrowedTimeUsed"),
+            do: (): void => {
+                if (!have($item`borrowed time`)) {
+                    create(1, $item`borrowed time`);
+                }
+                use(1, $item`borrowed time`);
+            },
+        },
+        {
+            name: "Cheat At Cards",
+            completed: () => get("_deckCardsDrawn") >= 15,
+            do: (): void => {
+                cliExecute("cheat ancestral; cheat island; cheat 1952");
+                autosell(1, $item`1952 Mickey Mantle card`);
+                useSkill(2, $skill`Ancestral Recall`);
+            },
+        },
+        {
+            name: "Juice Bar",
+            completed: () => get("_chateauDeskHarvested"),
+            do: (): void => {
+                visitUrl("place.php?whichplace=chateau&action=chateau_desk2");
+                autosell(1, $item`gremlin juice`);
+            },
+        },
+        {
+            name: "Vote!",
+            completed: () => get("_voteToday"),
+            do: (): void => {
+                visitUrl("place.php?whichplace=town_right&action=townright_vote");
+                visitUrl("choice.php?option=1&whichchoice=1331&g=2&local%5B%5D=2&local%5B%5D=3");
+                visitUrl("place.php?whichplace=town_right&action=townright_vote");
+            },
+        },
+        {
+            name: "Terminal Skills",
+            completed: () =>
+                SourceTerminal.getSkills().every((skill) =>
+                    $skills`Extract, Portscan`.includes(skill)
+                ),
+            do: () => SourceTerminal.educate([$skill`Extract`, $skill`Portscan`]),
+        },
+        {
+            name: "Change Clan",
+            completed: () => getClanName() === get("phccs_mainClan", "Bonus Adventures from Hell"),
+            do: () => setClan(get("phccs_mainClan", "Bonus Adventures from Hell")),
+        },
+        {
+            name: "Toot",
+            completed: () => have($item`big rock`),
+            do: (): void => {
+                visitUrl("tutorial.php?action=toot");
+                tryUse(1, $item`letter from King Ralph XI`);
+                tryUse(1, $item`pork elf goodies sack`);
+                autosell(5, $item`baconstone`);
+                autosell(5, $item`hamethyst`);
+            },
+        },
+        {
+            name: "Accordion",
+            completed: () => have($item`toy accordion`),
+            do: () => buy(1, $item`toy accordion`),
+        },
+        {
+            name: "Confiscated Items",
+            completed: () => !!get("_grimoireConfiscatorSummons"),
+            ready: () => have($skill`Summon Confiscated Things`),
+            do: (): void => {
+                useSkill(1, $skill`Summon Confiscated Things`);
+                $items`glow-in-the-dark necklace, "KICK ME" sign, LCD game: Burger Belt, LCD game: Food Eater, LCD game: Garbage River`.forEach(
+                    (item) => autosell(itemAmount(item), item)
+                );
+            },
+        },
+        {
+            name: "Tasteful Items",
+            completed: () => !!get("grimoire2Summons"),
+            ready: () => have($skill`Summon Tasteful Items`),
+            do: (): void => {
+                useSkill(1, $skill`Summon Tasteful Items`);
+                $items`black-and-blue light, blue plasma ball, cheap studded belt, flavored foot massage oil, foam dart, Loudmouth Larry Lamprey, personal massager, personalized coffee mug, stick-on eyebrow piercing`.forEach(
+                    (item) => autosell(itemAmount(item), item)
+                );
+            },
+        },
+        {
+            name: "Alice's Army",
+            completed: () => !!get("grimoire3Summons"),
+            ready: () => have($skill`Summon Alice's Army Cards`),
+            do: (): void => {
+                useSkill(1, $skill`Summon Alice's Army Cards`);
+                if (!have($item`tobiko marble soda`) && !CommunityService.SpellDamage.isDone())
+                    buy($coinmaster`Game Shoppe Snacks`, 1, $item`tobiko marble soda`);
+            },
+        },
+        {
+            name: "Drinking Helmet",
+            completed: () => have($item`dromedary drinking helmet`),
+            do: (): void => {
+                useFamiliar($familiar`Melodramedary`);
+                if (!have($item`box of Familiar Jacks`)) {
+                    create(1, $item`box of Familiar Jacks`);
+                }
+                use(1, $item`box of Familiar Jacks`);
+            },
+        },
+        {
+            name: "Mummery",
+            completed: () => MummingTrunk.currentCostumes().has($familiar`Melodramedary`),
+            do: (): void => {
+                useFamiliar($familiar`Melodramedary`);
+                cliExecute("mummery myst");
+            },
+        },
+        {
+            name: "Shortsuit",
+            completed: () => !itemAmount($item`tiny stillsuit`),
+            do: () => equip($familiar`Shorter-Order Cook`, $item`tiny stillsuit`),
+        },
+        {
+            name: "Cowboy Boots",
+            completed: () => have($item`your cowboy boots`),
+            do: (): void => {
+                visitUrl("place.php?whichplace=town_right&action=townright_ltt");
+                runChoice(5);
+            },
+        },
+        {
+            name: "Cosplay Saber",
+            completed: () => !!get("_saberMod"),
+            do: (): void => {
+                visitUrl("main.php?action=may4");
+                runChoice(4);
+            },
+        },
+        {
+            name: "Detective Badge",
+            completed: () => have($item`gold detective badge`),
+            do: () => visitUrl("place.php?whichplace=town_wrong&action=townwrong_precinct"),
+        },
+        {
+            name: "Codpiece",
+            completed: () => have($item`codpiece`) || codpieceAttempted,
+            do: (): void => {
+                Clan.with("Alliance From Heck", () => cliExecute("acquire codpiece"));
+                codpieceAttempted = true;
+            },
+        },
+        {
+            name: "Songboom",
+            completed: () => SongBoom.song() === "Total Eclipse of Your Meat",
+            do: () => SongBoom.setSong("Total Eclipse of Your Meat"),
+        },
+        {
+            name: "Scavenge",
+            completed: () => !!get("_daycareGymScavenges"),
+            do: (): void => {
+                visitUrl("place.php?whichplace=town_wrong&action=townwrong_boxingdaycare");
+                runChoice(3);
+                runChoice(2);
+                runChoice(5);
+                runChoice(4);
+            },
+        },
+    ],
+};
 
-function setSettings() {
-    SourceTerminal.educate([$skill`Extract`, $skill`Portscan`]);
-    setClan(get("phccs_mainClan", "Bonus Adventures from Hell"));
-}
-
-function doPulls() {
-    if (inHardcore()) return;
-
-    const pulls: (Item | Item[])[] = [
-        $items`repaid diaper, Great Wolf's beastly trousers`,
-        $items`meteorite necklace, meteorite ring, meteorite fragment, meteorite earring`,
-        $item`Stick-Knife of Loathing`,
-        [
-            ...(have($familiar`Doppelshifter`) ? $items`tiny costume wardrobe` : []),
-            ...$items`moveable feast, Snow Suit`,
-        ],
-    ];
-
-    for (const pull of pulls) {
-        if (
-            (Array.isArray(pull) && pull.some((item) => itemAmount(item) > 0)) ||
-            (!Array.isArray(pull) && itemAmount(pull) > 0)
-        ) {
-            continue;
-        }
-        const pullItem = Array.isArray(pull) ? pull.find((pull) => storageAmount(pull) > 0) : pull;
-        if (pullItem) takeStorage(pullItem, 1);
-    }
-}
-
-function getTurns() {
-    if (myLevel() === 1 && !mySpleenUse()) {
-        while (get("_universeCalculated") < get("skillLevel144")) {
-            cliExecute("numberology 69");
-        }
-    }
-    if (!get("_borrowedTimeUsed")) {
-        if (!have($item`borrowed time`)) {
-            create(1, $item`borrowed time`);
-        }
-        use(1, $item`borrowed time`);
-    }
-}
-
-function prepGear() {
-    if (!have($item`dromedary drinking helmet`)) {
-        useFamiliar($familiar`Melodramedary`);
-        if (!have($item`box of Familiar Jacks`)) {
-            create(1, $item`box of Familiar Jacks`);
-        }
-        use(1, $item`box of Familiar Jacks`);
-        cliExecute("mummery myst");
-    }
-    equip($familiar`Shorter-Order Cook`, $item`tiny stillsuit`);
-    if (!have($item`your cowboy boots`)) {
-        visitUrl("place.php?whichplace=town_right&action=townright_ltt");
-        runChoice(5);
-    }
-
-    if (have($item`Fourth of May Cosplay Saber`) && !get("_saberMod")) {
-        visitUrl("main.php?action=may4");
-        runChoice(4);
-    }
-
-    if (!have($item`gold detective badge`)) {
-        visitUrl("place.php?whichplace=town_wrong&action=townwrong_precinct");
-    }
-    if (have($item`GameInformPowerDailyPro magazine`)) {
-        visitUrl("inv_use.php?whichitem=6174&confirm=Yep.");
-    }
-    if (eudoraItem() === $item`GameInformPowerDailyPro subscription card`) {
-        if (!have($item`scroll of Puddingskin`) && !have($item`dungeoneering kit`)) {
-            visitUrl("adventure.php?snarfblat=319");
-            use(1, $item`dungeoneering kit`);
-        }
-    }
-
-    if (!get("_floundryItemCreated")) {
-        Clan.with("Alliance From Heck", () => cliExecute("acquire codpiece"));
-    }
-
-    if (get("boomBoxSong") !== "Total Eclipse of Your Meat") {
-        cliExecute("boombox meat");
-    }
-
-    if (inHardcore()) cliExecute("Briefcase.ash enchantment weapon");
-}
-
-function vote() {
-    if (!get("_voteToday")) {
-        visitUrl("place.php?whichplace=town_right&action=townright_vote");
-        visitUrl("choice.php?option=1&whichchoice=1331&g=2&local%5B%5D=2&local%5B%5D=3");
-        visitUrl("place.php?whichplace=town_right&action=townright_vote");
-    }
-}
-
-function deck() {
-    if (!get("_deckCardsDrawn")) {
-        cliExecute("cheat ancestral; cheat island; cheat 1952");
-        autosell(1, $item`1952 Mickey Mantle card`);
-        useSkill(2, $skill`Ancestral Recall`);
-    }
-}
-
-function scavenge() {
-    if (!get("_daycareGymScavenges")) {
-        visitUrl("place.php?whichplace=town_wrong&action=townwrong_boxingdaycare");
-        runChoice(3);
-        runChoice(2);
-        runChoice(5);
-        runChoice(4);
-    }
-}
-
-export default function runStart(): void {
-    doPulls();
-    setSettings();
-    toot();
-    getTurns();
-    deck();
-    juiceBar();
-    vote();
-    grimoires();
-    prepGear();
-    scavenge();
-}
+export default Prologue;
