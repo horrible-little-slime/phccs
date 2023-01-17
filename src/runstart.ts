@@ -42,8 +42,8 @@ const PULLS = [
 let codpieceAttempted = false;
 
 const Prologue: CSQuest = {
+    type: "MISC",
     name: "Prologue",
-    test: "Prologue",
     tasks: [
         {
             name: "Non-Staff Pulls",

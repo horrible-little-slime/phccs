@@ -1,4 +1,4 @@
-import { Engine, getTasks, Quest } from "grimoire-kolmafia";
+import { Engine, getTasks, Outfit, OutfitSpec, Quest } from "grimoire-kolmafia";
 import {
     abort,
     inHardcore,
@@ -11,30 +11,35 @@ import {
 } from "kolmafia";
 import { $path, CommunityService, get, PropertiesManager } from "libram";
 import GLOBAL_QUEST from "./globaltasks";
-import { CSTask } from "./lib";
+import { burnLibrams, CSTask } from "./lib";
 
 const HIGHLIGHT = isDarkMode() ? "yellow" : "blue";
 
-export type CSQuest = Quest<CSTask> & {
-    test: CommunityService | string;
-    maxTurns?: number;
-    turnsSpent?: number | (() => number);
+type Service = {
+    type: "SERVICE";
+    test: CommunityService;
+    maxTurns: number;
+    outfit: () => OutfitSpec;
 };
+type Misc = {
+    type: "MISC";
+    name: string;
+};
+export type CSQuest = Quest<CSTask> & { turnsSpent?: number | (() => number) } & (Service | Misc);
+
 export class CSEngine extends Engine<never, CSTask> {
     static propertyManager = new PropertiesManager();
     static core = inHardcore() ? "hard" : "soft";
     propertyManager = CSEngine.propertyManager;
-    test: CommunityService | string;
     name: string;
-    maxTurns?: number;
+    csOptions: Service | Misc;
     turnsSpent?: number | (() => number);
-
     constructor(quest: CSQuest) {
         super(getTasks([GLOBAL_QUEST, quest]));
-        this.test = quest.test;
-        this.maxTurns = quest.maxTurns;
+        this.csOptions = quest;
         this.turnsSpent = quest.turnsSpent;
-        this.name = typeof this.test === "string" ? this.test : this.test.statName;
+        this.name =
+            this.csOptions.type === "MISC" ? this.csOptions.name : this.csOptions.test.statName;
     }
 
     destruct(): void {
@@ -97,16 +102,25 @@ export class CSEngine extends Engine<never, CSTask> {
 
     private runTest(): void {
         const loggingFunction = (action: () => number | void) =>
-            typeof this.test === "string"
-                ? CommunityService.logTask(this.test, action)
-                : this.test.run(action, this.maxTurns);
+            this.csOptions.type === "MISC"
+                ? CommunityService.logTask(this.name, action)
+                : this.csOptions.test.run(action, this.csOptions.maxTurns);
         try {
             const result = loggingFunction(() => {
                 this.run();
+                if (this.csOptions.type === "SERVICE") {
+                    const outfit = new Outfit();
+                    if (outfit.equip(this.csOptions.outfit())) {
+                        outfit.dress();
+                    } else {
+                        throw new Error(`Failed to equip outfit for ${this.name}`);
+                    }
+                }
+                burnLibrams();
                 return this.turns;
             });
             const warning =
-                typeof this.test === "string"
+                this.csOptions.type === "MISC"
                     ? `Failed to execute ${this.name}!`
                     : `Failed to cap ${this.name}!`;
 
@@ -128,8 +142,8 @@ export class CSEngine extends Engine<never, CSTask> {
 
         try {
             for (const quest of quests) {
-                const { test } = quest;
-                if (typeof test === "string" || test.isDone()) {
+                const { type } = quest;
+                if (type === "MISC" || quest.test.isDone()) {
                     const engine = new CSEngine(quest);
                     engine.runTest();
                 }
