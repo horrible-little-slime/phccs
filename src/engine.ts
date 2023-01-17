@@ -13,12 +13,12 @@ import { $path, CommunityService, get, PropertiesManager } from "libram";
 
 const HIGHLIGHT = isDarkMode() ? "yellow" : "blue";
 
-export type CSTask = Task;
+export type CSTask = Task & { core?: "hard" | "soft" };
 
 export type CSQuest = Quest<CSTask> & { test: CommunityService | string; maxTurns?: number };
 export class CSEngine extends Engine<never, CSTask> {
     static propertyManager = new PropertiesManager();
-    static hardcore = inHardcore();
+    static core = inHardcore() ? "hard" : "soft";
     propertyManager = CSEngine.propertyManager;
     test: CommunityService | string;
     name: string;
@@ -35,9 +35,13 @@ export class CSEngine extends Engine<never, CSTask> {
         setAutoAttack(0);
     }
 
+    available(task: CSTask): boolean {
+        return super.available(task) && (!task.core || task.core === CSEngine.core);
+    }
+
     // eslint-disable-next-line @typescript-eslint/no-empty-function
     initPropertiesManager(): void {}
-    static initiate(): void {
+    private static initiate(): void {
         CSEngine.propertyManager.set({
             customCombatScript: "grimoire_macro",
             battleAction: "custom combat script",
@@ -78,7 +82,7 @@ export class CSEngine extends Engine<never, CSTask> {
         }
     }
 
-    runTest(): void {
+    private runTest(): void {
         const loggingFunction = (action: () => number | void) =>
             typeof this.test === "string"
                 ? CommunityService.logTask(this.test, action)
@@ -104,6 +108,7 @@ export class CSEngine extends Engine<never, CSTask> {
     static runTests(quests: CSQuest[]): void {
         if (myPath() !== $path`Community Service`) abort();
         visitUrl("council.php");
+        CSEngine.initiate();
 
         try {
             for (const quest of quests) {
@@ -114,7 +119,7 @@ export class CSEngine extends Engine<never, CSTask> {
                 }
             }
         } finally {
-            if (!CSEngine.hardcore) CommunityService.donate();
+            if (CSEngine.core === "soft") CommunityService.donate();
             CSEngine.propertyManager.resetAll();
             CommunityService.printLog(HIGHLIGHT);
         }
