@@ -101,14 +101,17 @@ export class CSEngine extends Engine<never, CSTask> {
             throw new Error(`Libram thinks we already completed ${this.name} but we beg to differ`);
     }
 
-    static runTests(tests: CSQuest[]): void {
+    static runTests(quests: CSQuest[]): void {
         if (myPath() !== $path`Community Service`) abort();
         visitUrl("council.php");
 
         try {
-            for (const test of tests) {
-                const engine = new CSEngine(test);
-                engine.runTest();
+            for (const quest of quests) {
+                const { test } = quest;
+                if (typeof test === "string" || test.isDone()) {
+                    const engine = new CSEngine(quest);
+                    engine.runTest();
+                }
             }
         } finally {
             if (!CSEngine.hardcore) CommunityService.donate();
