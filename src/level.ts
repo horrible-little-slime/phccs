@@ -244,6 +244,7 @@ const Level: CSQuest = {
                 )
                     .delevel()
                     .tryItem($item`blue rocket`)
+                    .trySkill($skill`Giant Growth`)
                     .defaultKill()
             ),
         },

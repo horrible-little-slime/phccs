@@ -79,9 +79,9 @@ const Prologue: CSQuest = {
             name: "Cheat At Cards",
             completed: () => get("_deckCardsDrawn") >= 15,
             do: (): void => {
-                cliExecute("cheat ancestral; cheat island; cheat 1952");
+                cliExecute("cheat forest; cheat island; cheat 1952");
                 autosell(1, $item`1952 Mickey Mantle card`);
-                useSkill(2, $skill`Ancestral Recall`);
+                useSkill(1, $skill`Ancestral Recall`);
             },
         },
         {
