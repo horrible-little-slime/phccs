@@ -1,5 +1,16 @@
-import { adv1, Effect, getProperty, myLevel } from "kolmafia";
-import { $effect, $familiar, $item, $location, $skill, BeachComb, Clan, get, have } from "libram";
+import { adv1, Effect, effectModifier, getProperty, Item, myLevel, use } from "kolmafia";
+import {
+    $effect,
+    $familiar,
+    $item,
+    $location,
+    $skill,
+    BeachComb,
+    Clan,
+    CommunityService,
+    get,
+    have,
+} from "libram";
 import { CSStrategy, Macro } from "./combat";
 import { CSTask } from "./lib";
 import { uniform } from "./outfit";
@@ -35,4 +46,21 @@ export function innerElf(): CSTask {
             Macro.trySkill($skill`KGB tranquilizer dart`).trySkill($skill`Snokebomb`)
         ),
     };
+}
+
+export function potionTask(item: Item): CSTask {
+    const effect = effectModifier(item, "Effect");
+    return {
+        name: `${effect}`,
+        completed: () => have(effect),
+        ready: () => have(item),
+        do: () => use(item),
+    };
+}
+
+export function optional(increasers: CSTask[], test: CommunityService): CSTask[] {
+    return increasers.map((task) => ({
+        ...task,
+        completed: () => task.completed() || test.prediction <= 1,
+    }));
 }

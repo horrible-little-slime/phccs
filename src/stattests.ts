@@ -2,7 +2,6 @@ import {
     create,
     eat,
     Effect,
-    effectModifier,
     itemAmount,
     mpCost,
     myMp,
@@ -20,7 +19,7 @@ import {
     have,
     RetroCape,
 } from "libram";
-import { beachTask, innerElf } from "./commons";
+import { beachTask, innerElf, optional, potionTask } from "./commons";
 import { CSQuest } from "./engine";
 import { CSTask } from "./lib";
 
@@ -61,13 +60,6 @@ function skillBuffTasks(key: keyof typeof SKILL_BUFFS): CSTask[] {
         }),
         restore(SKILL_BUFFS[key]),
     ];
-}
-
-function optional(increasers: CSTask[], test: CommunityService) {
-    return increasers.map((task) => ({
-        ...task,
-        completed: () => task.completed() || test.prediction <= 1,
-    }));
 }
 
 const Muscle: CSQuest = {
@@ -152,15 +144,9 @@ const Moxie: CSQuest = {
     maxTurns: 1,
     tasks: [
         ...skillBuffTasks("MOXIE"),
-        ...$items`runproof mascara, confiscated love note, dollop of barbecue sauce`.map((item) => {
-            const effect = effectModifier(item, "Effect");
-            return {
-                name: `${effect}`,
-                completed: () => have(effect),
-                ready: () => have(item),
-                do: () => use(item),
-            };
-        }),
+        ...$items`runproof mascara, confiscated love note, dollop of barbecue sauce`.map(
+            potionTask
+        ),
         {
             name: "Rhinestones",
             completed: () => !have($item`rhinestone`),

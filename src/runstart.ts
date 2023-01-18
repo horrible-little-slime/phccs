@@ -30,7 +30,7 @@ import {
     SourceTerminal,
 } from "libram";
 import { CSQuest } from "./engine";
-import { setClan, tryUse } from "./lib";
+import { horse, horsery, setClan, tryUse } from "./lib";
 
 const PULLS = [
     $items`repaid diaper, Great Wolf's beastly trousers`,
@@ -185,6 +185,11 @@ const Prologue: CSQuest = {
             name: "Shortsuit",
             completed: () => !itemAmount($item`tiny stillsuit`),
             do: () => equip($familiar`Shorter-Order Cook`, $item`tiny stillsuit`),
+        },
+        {
+            name: "Horsery",
+            completed: () => horsery() === "dark",
+            do: () => horse("dark"),
         },
         {
             name: "Cowboy Boots",
