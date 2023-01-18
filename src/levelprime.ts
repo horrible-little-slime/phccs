@@ -44,7 +44,7 @@ import { CSQuest } from "./engine";
 import { burnLibrams, synthExp } from "./lib";
 import { uniform } from "./outfit";
 const levellingComplete = myLevel() >= 13;
-const flags = new Set<string>();
+let lovePotionConsidered = false;
 
 const foldshirt = (): void => {
     if (!have($item`makeshift garbage shirt`)) cliExecute("fold makeshift garbage shirt");
@@ -145,10 +145,10 @@ const Level: CSQuest = {
         },
         {
             name: "Consider Love Potion",
-            completed: () => flags.has("Consider Love Potion"),
+            completed: () => lovePotionConsidered,
             do: (): void => {
                 visitUrl(`desc_effect.php?whicheffect=${loveEffect.descid}`);
-                flags.add("Consider Love Potion");
+                lovePotionConsidered = true;
 
                 if (
                     numericModifier(loveEffect, "mysticality") > 10 &&
