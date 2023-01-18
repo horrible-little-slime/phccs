@@ -26,7 +26,7 @@ import {
 import { CSStrategy, Macro } from "./combat";
 import { potionTask } from "./commons";
 import { CSQuest } from "./engine";
-import { fuelUp, synthItem } from "./lib";
+import { fuelUp } from "./lib";
 import { uniform } from "./outfit";
 
 const BoozeDrop: CSQuest = {
@@ -62,11 +62,6 @@ const BoozeDrop: CSQuest = {
             combat: new CSStrategy(() =>
                 Macro.skill($skill`Become a Bat`).skill($skill`Throw Latte on Opponent`)
             ),
-        },
-        {
-            name: "Synthesis: Collection",
-            completed: () => have($effect`Synthesis: Collection`),
-            do: synthItem,
         },
         {
             name: "Phat Loot",
@@ -125,11 +120,16 @@ const BoozeDrop: CSQuest = {
             completed: () => get("_barrelPrayer"),
             do: () => cliExecute("barrelprayer buff"),
         },
-        ...$items`Salsa Caliente™ candle, lavender candy heart`.map(potionTask),
+        ...$items`Salsa Caliente™ candle, lavender candy heart, bag of grain`.map(potionTask),
         {
             name: "Steely-Eyed Squint",
             completed: () => have($effect`Steely-Eyed Squint`),
             do: () => useSkill($skill`Steely-Eyed Squint`),
+        },
+        {
+            name: "Feel Lost",
+            completed: () => have($effect`Feeling Lost`),
+            do: () => useSkill($skill`Feel Lost`),
         },
     ],
 };

@@ -82,6 +82,14 @@ export function fuelUp(): void {
     cliExecute(`asdonmartin fuel ${availableAmount($item`loaf of soda bread`)} soda bread`);
 }
 
+const SYNTH_PAIRS: [Item, Item][] = [
+    [$item`Crimbo fudge`, $item`bag of many confections`],
+    [$item`Crimbo fudge`, $item`Crimbo fudge`],
+    [$item`Crimbo peppermint bark`, $item`Crimbo candied pecan`],
+    [$item`Crimbo peppermint bark`, $item`peppermint sprout`],
+    [$item`Crimbo candied pecan`, $item`peppermint crook`],
+];
+
 export function synthExp(): void {
     if (getCampground()["Peppermint Pip Packet"]) {
         visitUrl("campground.php?action=garden");
@@ -89,113 +97,13 @@ export function synthExp(): void {
     if (!get("_candySummons")) {
         useSkill(1, $skill`Summon Crimbo Candy`);
     }
-    const fudge = $item`Crimbo fudge`;
-    const pecan = $item`Crimbo candied pecan`;
-    const bark = $item`Crimbo peppermint bark`;
-    const fudges = availableAmount(fudge);
-    const pecans = availableAmount(pecan);
-    const barks = availableAmount(bark);
-    if (fudges >= 2) {
-        sweetSynthesis(fudge, fudge);
-    } else if (barks >= 1) {
-        if (pecans >= 1) {
-            sweetSynthesis(pecan, bark);
-        } else {
-            sweetSynthesis(bark, $item`peppermint sprout`);
-        }
-    } else {
-        if (!have($item`sugar shotgun`)) {
-            if (!have($item`sugar sheet`)) useSkill($skill`Summon Sugar Sheets`);
-            create(1, $item`sugar shotgun`);
-        }
-        if (pecans >= 1) {
-            sweetSynthesis(pecan, $item`sugar shotgun`);
-        } else {
-            sweetSynthesis($item`sugar shotgun`, $item`peppermint sprout`);
+    for (const [candy1, candy2] of SYNTH_PAIRS) {
+        const enough = candy1 === candy2 ? have(candy1, 2) : have(candy1) && have(candy2);
+        if (enough) {
+            if (sweetSynthesis(candy1, candy2)) return;
         }
     }
-    if (!have($effect`Synthesis: Learning`)) {
-        throw "I'm very embarrassed, and I'm sorry to admit it, but I failed to synthesize learning. Pwease fix me :c.";
-    }
-}
-
-export function synthItem(): void {
-    if (getCampground()["Peppermint Pip Packet"]) {
-        visitUrl("campground.php?action=garden");
-    }
-    if (!get("_candySummons")) {
-        useSkill(1, $skill`Summon Crimbo Candy`);
-    }
-    //const fudge = $item`Crimbo fudge`;
-    const pecan = $item`Crimbo candied pecan`;
-    const bark = $item`Crimbo peppermint bark`;
-    //const fudges = availableAmount(fudge);
-    const pecans = availableAmount(pecan);
-    const barks = availableAmount(bark);
-    if (barks >= 2) {
-        sweetSynthesis(bark, bark);
-    } else {
-        if (!have($item`peppermint twist`)) {
-            create(1, $item`peppermint twist`);
-        }
-        if (pecans >= 1) {
-            sweetSynthesis(pecan, $item`peppermint twist`);
-        } else {
-            sweetSynthesis($item`peppermint sprout`, $item`peppermint twist`);
-        }
-    }
-    if (!have($effect`Synthesis: Collection`)) {
-        throw "I'm very embarrassed, and I'm sorry to admit it, but I failed to synthesize collection. Pwease fix me :c.";
-    }
-}
-
-export function synthMyst(): void {
-    if (getCampground()["Peppermint Pip Packet"]) {
-        visitUrl("campground.php?action=garden");
-    }
-    if (!get("_candySummons")) {
-        useSkill(1, $skill`Summon Crimbo Candy`);
-    }
-    //const fudge = $item`Crimbo fudge`;
-    //const pecan = $item`Crimbo candied pecan`;
-    //const bark = $item`Crimbo peppermint bark`;
-    //const fudges = availableAmount(fudge);
-    //const pecans = availableAmount(pecan);
-    //const barks = availableAmount(bark);
-    if (have($item`bag of many confections`)) {
-        if (!get("_chubbyAndPlumpUsed")) {
-            useSkill(1, $skill`Chubby and Plump`);
-        }
-        sweetSynthesis($item`Chubby and Plump bar`, $item`bag of many confections`);
-    } else {
-        const mint = $item`Senior Mints`;
-        const mints = availableAmount(mint);
-        const orangeHeart = $item`orange candy heart`;
-        const orangeHearts = () => availableAmount(orangeHeart);
-        const pinkHeart = $item`pink candy heart`;
-        const pinkHearts = () => availableAmount($item`pink candy heart`);
-        let n = 0;
-        while (mints + orangeHearts() + pinkHearts() === 0 && n < 11) {
-            useSkill(1, $skill`Summon Candy Heart`);
-            n++;
-        }
-        if (mints + orangeHearts() + pinkHearts() === 0) {
-            throw "Failed to summon hearts in a timely manner";
-        }
-        if (mints >= 1) {
-            sweetSynthesis(mint, $item`peppermint sprout`);
-        } else if (orangeHearts() >= 1) {
-            sweetSynthesis(orangeHeart, $item`peppermint sprout`);
-        } else if (pinkHearts() >= 1) {
-            if (!have($item`peppermint twist`)) {
-                create(1, $item`peppermint twist`);
-            }
-            sweetSynthesis(pinkHeart, $item`peppermint twist`);
-        }
-    }
-    if (haveEffect($effect`Synthesis: Smart`) === 0) {
-        throw "I'm very embarrassed, and I'm sorry to admit it, but I failed to synthesize smart. Pwease fix me :c.";
-    }
+    throw new Error("Failed to synthesize!")
 }
 
 export function kramcoCheck(): boolean {
