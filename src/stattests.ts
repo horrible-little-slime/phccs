@@ -1,14 +1,4 @@
-import {
-    create,
-    eat,
-    Effect,
-    itemAmount,
-    mpCost,
-    myMp,
-    toSkill,
-    use,
-    useSkill,
-} from "kolmafia";
+import { itemAmount, use } from "kolmafia";
 import {
     $effect,
     $effects,
@@ -19,7 +9,7 @@ import {
     have,
     RetroCape,
 } from "libram";
-import { beachTask, innerElf, optional, potionTask } from "./commons";
+import { beachTask, innerElf, optional, potionTask, restore, skillTask } from "./commons";
 import { CSQuest } from "./engine";
 import { CSTask } from "./lib";
 
@@ -30,36 +20,8 @@ const SKILL_BUFFS = {
     HP: $effects`Feeling Excited, Big, Song of Starch, Rage of the Reindeer, Quiet Determination, Disdain of the War Snapper, The Power of LOV`,
 };
 
-function restore(effects: Effect[]): CSTask {
-    return {
-        name: "Restore",
-        completed: () => effects.every((e) => have(e)),
-        do: () => {
-            if (!have($item`magical sausage`) && have($item`magical sausage casing`)) {
-                create(1, $item`magical sausage`);
-            }
-            if (have($item`magical sausage`)) {
-                eat(1, $item`magical sausage`);
-            } else {
-                use(1, $item`psychokinetic energy blob`);
-            }
-        },
-    };
-}
-
 function skillBuffTasks(key: keyof typeof SKILL_BUFFS): CSTask[] {
-    return [
-        ...SKILL_BUFFS[key].map((effect) => {
-            const skill = toSkill(effect);
-            return {
-                name: skill.name,
-                completed: () => have(effect),
-                ready: () => myMp() >= mpCost(skill),
-                do: () => useSkill(skill),
-            };
-        }),
-        restore(SKILL_BUFFS[key]),
-    ];
+    return [...SKILL_BUFFS[key].map(skillTask), restore(SKILL_BUFFS[key])];
 }
 
 const Muscle: CSQuest = {

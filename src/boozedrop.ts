@@ -83,10 +83,10 @@ const BoozeDrop: CSQuest = {
         },
         {
             name: "Drive Observantly",
-            completed: () => have($effect`Driving Observantly`),
+            completed: () => have(AsdonMartin.Driving.Observantly),
             do: (): void => {
                 if (getFuel() < 37) fuelUp();
-                AsdonMartin.drive($effect`Driving Observantly`);
+                AsdonMartin.drive(AsdonMartin.Driving.Observantly);
             },
         },
         {

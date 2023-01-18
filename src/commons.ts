@@ -1,4 +1,20 @@
-import { adv1, Effect, effectModifier, getProperty, Item, myLevel, use } from "kolmafia";
+import {
+    adv1,
+    create,
+    eat,
+    Effect,
+    effectModifier,
+    getProperty,
+    Item,
+    mpCost,
+    myLevel,
+    myMp,
+    Skill,
+    toEffect,
+    toSkill,
+    use,
+    useSkill,
+} from "kolmafia";
 import {
     $effect,
     $familiar,
@@ -63,4 +79,34 @@ export function optional(increasers: CSTask[], test: CommunityService): CSTask[]
         ...task,
         completed: () => task.completed() || test.prediction <= 1,
     }));
+}
+
+export function restore(effects: Effect[]): CSTask {
+    return {
+        name: "Restore",
+        completed: () => effects.every((e) => have(e)),
+        do: () => {
+            if (!have($item`magical sausage`) && have($item`magical sausage casing`)) {
+                create(1, $item`magical sausage`);
+            }
+            if (have($item`magical sausage`)) {
+                eat(1, $item`magical sausage`);
+            } else {
+                use(1, $item`psychokinetic energy blob`);
+            }
+        },
+    };
+}
+
+export function skillTask(x: Skill | Effect): CSTask {
+    {
+        const skill = x instanceof Skill ? x : toSkill(x);
+        const effect = x instanceof Effect ? x : toEffect(x);
+        return {
+            name: skill.name,
+            completed: () => have(effect),
+            ready: () => myMp() >= mpCost(skill),
+            do: () => useSkill(skill),
+        };
+    }
 }

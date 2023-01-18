@@ -1,126 +1,121 @@
 import {
-    cliExecute,
-    create,
+    adv1,
     getFuel,
     handlingChoice,
-    haveEffect,
     myHp,
     myMaxhp,
-    myMp,
-    numericModifier,
     runChoice,
-    useFamiliar,
     useSkill,
+    visitUrl,
 } from "kolmafia";
 import {
     $effect,
+    $effects,
     $familiar,
     $item,
     $items,
     $location,
     $skill,
-    $slot,
-    BeachComb,
+    AsdonMartin,
     CommunityService,
     get,
     have,
 } from "libram";
-import Macro from "./combat";
-import { universalWeightBuffs } from "./familiarweight";
-import { advMacroAA, burnLibrams, ensureEffect, ensureMp, fuelUp, horse, setChoice } from "./lib";
-import uniform, { hotresOutfit, OutfitPlan } from "./outfits";
-const predictor = () => CommunityService.HotRes.prediction;
+import { CSStrategy, Macro } from "./combat";
+import { beachTask, potionTask, restore, skillTask } from "./commons";
+import { CSQuest } from "./engine";
+import { ensureMp, fuelUp, horse, horsery } from "./lib";
+import { uniform } from "./outfit";
+const buffs = $effects`Empathy, Leash of Linguini, Blood Bond, Elemental Saucesphere, Astral Shell`;
 
-function castBuffs() {
-    universalWeightBuffs();
-
-    BeachComb.tryHead($effect`Hot-Headed`);
-
-    ensureEffect($effect`Elemental Saucesphere`);
-    ensureEffect($effect`Astral Shell`);
-    ensureEffect($effect`Feeling Peaceful`);
-    if (have($item`scroll of Protection from Bad Stuff`)) {
-        ensureEffect($effect`Protection from Bad Stuff`);
-    }
-
-    if (!have($item`meteorite guard`) && have($item`metal meteoroid`)) {
-        create(1, $item`meteorite guard`);
-    }
-}
-
-function thisFireIsOutOfControl() {
-    if (get("_saberForceUses") < 5 && !have($effect`Fireproof Foam Suit`)) {
-        uniform([$item`industrial fire extinguisher`, $slot`off-hand`]);
-        useFamiliar($familiar`none`);
-        setChoice(1387, 3);
-        advMacroAA(
-            $location`The Dire Warren`,
-
-            Macro.skill($skill`Fire Extinguisher: Foam Yourself`).skill($skill`Use the Force`),
-
-            () => !have($effect`Fireproof Foam Suit`),
-            () => {
-                if (handlingChoice()) runChoice(-1);
-            }
-        );
-    }
-}
-
-function deepDarkVisions() {
-    horse("pale");
-    useFamiliar($familiar`Exotic Parrot`);
-    cliExecute("retrocape vampire hold");
-    new OutfitPlan(
+const HotRes: CSQuest = {
+    name: "Hot Res",
+    type: "SERVICE",
+    test: CommunityService.HotRes,
+    outfit: () => ({
+        back: $item`unwrapped knock-off retro superhero cape`,
+        weapon: $item`Fourth of May Cosplay Saber`,
+        shirt: $item`Jurassic Parka`,
+        offhand: $item`meteorite guard`,
+        pants: $item`designer sweatpants`,
+        acc1: $item`your cowboy boots`,
+        acc2: $item`Brutal brogues`,
+        acc3: $item`Beach Comb`,
+        familiar: $familiar`Exotic Parrot`,
+        modes: { retrocape: ["vampire", "hold"], parka: "pterodactyl" },
+    }),
+    turnsSpent: 0,
+    maxTurns: 1,
+    tasks: [
+        ...$effects`Empathy, Leash of Linguini, Blood Bond, Elemental Saucesphere, Astral Shell`.map(
+            skillTask
+        ),
+        restore(buffs),
+        beachTask($effect`Hot-Headed`),
+        beachTask($effect`Do I Know You From Somewhere?`),
+        potionTask($item`green candy heart`),
+        beachTask($effect`Does It Have a Skull In There??`),
         {
-            hat: $item`Iunion Crown`,
-            shirt: $items`Jurassic Parka, denim jacket`,
-            back: $item`unwrapped knock-off retro superhero cape`,
-            weapon: $item`Fourth of May Cosplay Saber`,
-            offhand: $item`familiar scrapbook`,
-            pants: $item`Cargo Cultist Shorts`,
-            acc1: $item`your cowboy boots`,
+            name: "Drive Safely",
+            completed: () => have(AsdonMartin.Driving.Safely),
+            do: (): void => {
+                if (getFuel() < 37) fuelUp();
+                AsdonMartin.drive(AsdonMartin.Driving.Safely);
+            },
         },
-        { familiar: $familiar`Exotic Parrot`, modes: { parka: "ghostasaurus" } }
-    ).dress();
-    while (
-        have($skill`Deep Dark Visions`) &&
-        haveEffect($effect`Visions of the Deep Dark Deeps`) < 30 &&
-        (have($item`magical sausage casing`) || myMp() >= 100)
-    ) {
-        while (myHp() < myMaxhp()) {
-            ensureMp(20);
-            useSkill(1, $skill`Cannelloni Cocoon`);
-        }
-        ensureMp(100);
-        if (Math.round(numericModifier("spooky resistance")) < 10) {
-            ensureEffect($effect`Does It Have a Skull In There??`);
-            if (Math.round(numericModifier("spooky resistance")) < 10) {
-                throw "Not enough spooky res for Deep Dark Visions.";
-            }
-        }
-        useSkill(1, $skill`Deep Dark Visions`);
-        ensureMp(100);
-    }
-}
-
-function testPrep() {
-    hotresOutfit.dress();
-    const improvements = [
-        () => {
-            while (getFuel() < 37) fuelUp();
-            cliExecute("asdonmartin drive safely");
+        {
+            name: "Extinguisher",
+            completed: () => have($effect`Fireproof Foam Suit`),
+            ready: () => get("_saberForceUses") < 5,
+            do: (): void => {
+                adv1($location`The Dire Warren`, -1, "");
+                if (handlingChoice()) runChoice(-1);
+            },
+            choices: { [1387]: 3 },
+            outfit: () =>
+                uniform({
+                    changes: {
+                        familiar: $familiar.none,
+                        famequip: $item.none,
+                        weapon: $item`Fourth of May Cosplay Saber`,
+                        offhand: $item`industrial fire extinguisher`,
+                    },
+                }),
+            combat: new CSStrategy(() =>
+                Macro.skill($skill`Fire Extinguisher: Foam Yourself`).skill($skill`Use the Force`)
+            ),
+            post: () =>
+                visitUrl(`desc_item.php?whichitem=${$item`industrial fire extinguisher`.descid}`),
         },
-        () => ensureEffect($effect`Amazing`),
-    ];
-    for (const improvement of improvements) {
-        if (predictor() > 1) improvement();
-    }
-}
+        {
+            name: "Pale Horse",
+            completed: () => horsery() === "pale",
+            do: () => horse("pale"),
+        },
+        {
+            name: "Deep Dark Visions",
+            completed: () => have($effect`Visions of the Deep Dark Deeps`, 30),
+            do: (): void => {
+                while (myHp() < myMaxhp()) {
+                    ensureMp(20);
+                    useSkill(1, $skill`Cannelloni Cocoon`);
+                }
+                ensureMp(100);
+                useSkill(1, $skill`Deep Dark Visions`);
+            },
+            outfit: {
+                hat: $item`Iunion Crown`,
+                shirt: $items`Jurassic Parka, denim jacket`,
+                back: $item`unwrapped knock-off retro superhero cape`,
+                weapon: $item`Fourth of May Cosplay Saber`,
+                offhand: $item`familiar scrapbook`,
+                pants: $item`Cargo Cultist Shorts`,
+                acc1: $item`your cowboy boots`,
+                familiar: $familiar`Exotic Parrot`,
+                modes: { parka: "ghostasaurus", retrocape: ["vampire", "hold"] },
+            },
+        },
+    ],
+};
 
-export default function hotTest(): void {
-    castBuffs();
-    thisFireIsOutOfControl();
-    deepDarkVisions();
-    testPrep();
-    burnLibrams();
-}
+export default HotRes;
