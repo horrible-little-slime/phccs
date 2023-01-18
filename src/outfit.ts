@@ -1,9 +1,11 @@
 import { OutfitSpec } from "grimoire-kolmafia";
 import { Familiar, Item, totalTurnsPlayed } from "kolmafia";
-import { $effect, $familiar, $item, $items, get, have } from "libram";
+import { $effect, $familiar, $item, $items, DaylightShavings, get, have } from "libram";
 
-const DEFAULT_UNIFORM = () => ({
-    hat: $items`astral chapeau, Iunion Crown`,
+const DEFAULT_UNIFORM = (): OutfitSpec => ({
+    hat: DaylightShavings.buffAvailable()
+        ? DaylightShavings.helmet
+        : $items`astral chapeau, Iunion Crown`,
     shirt: $items`Jurassic Parka, fresh coat of paint`,
     pants: $items`designer sweatpants, old sweatpants`,
     weapon:
@@ -18,6 +20,9 @@ const DEFAULT_UNIFORM = () => ({
         get("questPAGhost") === "unstarted" && get("nextParanormalActivity") <= totalTurnsPlayed()
             ? $item`protonic accelerator pack`
             : $items`LOV Epaulettes, unwrapped knock-off retro superhero cape`,
+    modes: {
+        retrocape: ["heck", "thrill"]
+    }
 });
 
 const FAMILIAR_PICKS = [
@@ -58,4 +63,3 @@ export function uniform(options: Partial<UniformOptions> = {}): OutfitSpec {
     const { changes, canAttack } = { ...DEFAULT_OPTIONS, ...options };
     return { ...DEFAULT_UNIFORM(), ...chooseFamiliar(canAttack), ...changes };
 }
-

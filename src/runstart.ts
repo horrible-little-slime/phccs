@@ -44,6 +44,7 @@ let codpieceAttempted = false;
 const Prologue: CSQuest = {
     type: "MISC",
     name: "Prologue",
+    completed: () => !!get("csServicesPerformed").split(",").length,
     tasks: [
         {
             name: "Non-Staff Pulls",

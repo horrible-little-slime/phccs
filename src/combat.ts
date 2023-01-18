@@ -3,7 +3,7 @@ import { myClass } from "kolmafia";
 import { $class, $item, $skill, have, StrictMacro } from "libram";
 
 export class CSStrategy extends CombatStrategy {
-    constructor(macro: () => Macro) {
+    constructor(macro: () => Macro = () => Macro.defaultKill()) {
         super();
         this.macro(macro).autoattack(macro);
     }
