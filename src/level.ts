@@ -1,10 +1,8 @@
 import { OutfitSpec } from "grimoire-kolmafia";
 import {
-    adv1,
     buy,
     cliExecute,
     create,
-    getProperty,
     mpCost,
     myLevel,
     myMaxmp,
@@ -29,9 +27,7 @@ import {
     $monster,
     $skill,
     $skills,
-    BeachComb,
     Cartography,
-    Clan,
     Counter,
     get,
     have,
@@ -40,6 +36,7 @@ import {
     withProperties,
 } from "libram";
 import { CSStrategy, Macro } from "./combat";
+import { beachTask, innerElf } from "./commons";
 import { CSQuest } from "./engine";
 import { burnLibrams, synthExp } from "./lib";
 import { uniform } from "./outfit";
@@ -96,26 +93,7 @@ const Level: CSQuest = {
     name: "Level",
     completed: () => levellingComplete,
     tasks: [
-        {
-            name: "Inner Elf",
-            completed: () => have($effect`Inner Elf`),
-            ready: () => myLevel() >= 13,
-            do: () =>
-                Clan.with(get("phccs_elfClan", "Hobopolis Vacation Home"), () => {
-                    adv1($location`The Slime Tube`, -1, "");
-                }),
-            outfit: () =>
-                uniform({
-                    changes: {
-                        acc3: $item`Kremlin's Greatest Briefcase`,
-                        familiar: $familiar`Machine Elf`,
-                    },
-                }),
-            choices: { [326]: 1 },
-            combat: new CSStrategy(() =>
-                Macro.trySkill($skill`KGB tranquilizer dart`).trySkill($skill`Snokebomb`)
-            ),
-        },
+        innerElf(),
         {
             name: "That's Just Cloud Talk, Man",
             completed: () => !!get("_campAwayCloudBuffs"),
@@ -180,18 +158,8 @@ const Level: CSQuest = {
             completed: () => get("_daycareNap"),
             do: () => cliExecute("daycare mysticality"),
         },
-        {
-            name: "Beach Head: You Learned Something Maybe!",
-            completed: () => getProperty("_beachHeadsUsed").split(",").includes("11"),
-            ready: () => get("_freeBeachWalksUsed") < 11,
-            do: () => BeachComb.tryHead($effect`You Learned Something Maybe!`),
-        },
-        {
-            name: "Beach Head: We're All Made of Starfish",
-            completed: () => getProperty("_beachHeadsUsed").split(",").includes("7"),
-            ready: () => get("_freeBeachWalksUsed") < 11,
-            do: () => BeachComb.tryHead($effect`We're All Made of Starfish`),
-        },
+        beachTask($effect`You Learned Something Maybe!`),
+        beachTask($effect`We're All Made of Starfish`),
         {
             name: "Smile of Lyle",
             completed: () => get("_lyleFavored"),
