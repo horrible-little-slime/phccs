@@ -1,15 +1,15 @@
-import { itemAmount, use } from "kolmafia";
+import { itemAmount, myThrall, Thrall, use, useSkill } from "kolmafia";
 import {
-    $effect,
     $effects,
     $familiar,
     $item,
     $items,
+    $thrall,
     CommunityService,
     have,
     RetroCape,
 } from "libram";
-import { beachTask, innerElf, optional, potionTask, restore, skillTask } from "./commons";
+import { potionTask, restore, skillTask } from "./commons";
 import { CSQuest } from "./engine";
 import { CSTask } from "./lib";
 
@@ -22,6 +22,14 @@ const SKILL_BUFFS = {
 
 function skillBuffTasks(key: keyof typeof SKILL_BUFFS): CSTask[] {
     return [...SKILL_BUFFS[key].map(skillTask), restore(SKILL_BUFFS[key])];
+}
+
+function thrallTask(thrall: Thrall): CSTask {
+    return {
+        name: thrall.name,
+        completed: () => myThrall() === thrall,
+        do: () => useSkill(thrall.skill),
+    };
 }
 
 const Muscle: CSQuest = {
@@ -44,22 +52,7 @@ const Muscle: CSQuest = {
     }),
     turnsSpent: 0,
     maxTurns: 1,
-    tasks: [
-        ...skillBuffTasks("MUSCLE"),
-        ...optional(
-            [
-                beachTask($effect`Lack of Body-Building`),
-                {
-                    name: "Ham-Fisted",
-                    completed: () => have($effect`Ham-Fisted`),
-                    ready: () => have($item`vial of hamethyst juice`),
-                    do: () => use(1, $item`vial of hamethyst juice`),
-                },
-                innerElf(),
-            ],
-            CommunityService.Muscle
-        ),
-    ],
+    tasks: [...skillBuffTasks("MUSCLE"), thrallTask($thrall`Elbow Macaroni`)],
 };
 
 const Mysticality: CSQuest = {
@@ -114,6 +107,7 @@ const Moxie: CSQuest = {
             completed: () => !have($item`rhinestone`),
             do: () => use(itemAmount($item`rhinestone`), $item`rhinestone`),
         },
+        thrallTask($thrall`Penne Dreadful`),
     ],
 };
 
@@ -136,7 +130,7 @@ const Hitpoints: CSQuest = {
         famequip: $item`miniature crystal ball`,
         modes: { retrocape: ["vampire", RetroCape.currentMode()], parka: "kachungasaur" },
     }),
-    tasks: [...skillBuffTasks("HP")],
+    tasks: [...skillBuffTasks("HP"), thrallTask($thrall`Elbow Macaroni`)],
 };
 
 export { Muscle, Mysticality, Moxie, Hitpoints };
