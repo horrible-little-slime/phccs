@@ -34,6 +34,7 @@ import {
     CommunityService,
     get,
     have,
+    set,
 } from "libram";
 import { CSStrategy, Macro } from "./combat";
 import { CSTask, horse, horsery } from "./lib";
@@ -80,13 +81,6 @@ export function potionTask(item: Item): CSTask {
         ready: () => have(item),
         do: () => use(item),
     };
-}
-
-export function optional(increasers: CSTask[], test: CommunityService): CSTask[] {
-    return increasers.map((task) => ({
-        ...task,
-        completed: () => task.completed() || test.prediction <= 1,
-    }));
 }
 
 export function restore(effects: Effect[]): CSTask {
@@ -180,7 +174,7 @@ export function asdonTask(style: Effect | keyof typeof AsdonMartin.Driving): CST
         },
     };
 }
-
+let showers = get("_meteorShowerUses");
 export function meteorShower(): CSTask {
     return {
         name: "Meteor Showered",
@@ -199,5 +193,9 @@ export function meteorShower(): CSTask {
         combat: new CSStrategy(() =>
             Macro.skill($skill`Meteor Shower`).skill($skill`Use the Force`)
         ),
+        post: () => {
+            if (have($effect`Meteor Showered`)) showers++;
+            set("_meteorShowerUses", showers);
+        },
     };
 }

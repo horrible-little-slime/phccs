@@ -155,31 +155,6 @@ export function doTest(testNum: number): void {
     }
 }
 
-export function ensureInnerElf(): void {
-    //stolen merely mostly from bean
-    if (!have($effect`Inner Elf`) && myLevel() >= 13) {
-        setClan(get("phccs_elfClan", "Hobopolis Vacation Home"));
-        try {
-            withOutfit(
-                new Outfit({ acc3: $item`Kremlin's Greatest Briefcase` }, $familiar`Machine Elf`),
-                () => {
-                    ensureEffect($effect`Blood Bubble`);
-                    setChoice(326, 1);
-                    if (get("_kgbTranquilizerDartUses") >= 3) ensureMp(50);
-                    advMacro(
-                        $location`The Slime Tube`,
-                        Macro.trySkill($skill`KGB tranquilizer dart`).trySkill($skill`Snokebomb`)
-                    );
-                }
-            );
-        } finally {
-            setClan(get("phccs_mainClan", "Alliance From Heck"));
-        }
-        if (!have($effect`Inner Elf`)) {
-            throw "Failed to get effect Inner Elf from Mother Slime.";
-        }
-    }
-}
 
 export function fightSausageIfAble(location: Location, macro: Macro): void {
     if (kramcoCheck()) {
@@ -506,69 +481,7 @@ export function burnLibrams(): void {
     }
 }
 
-export function equalizeMuscle(): boolean {
-    if (myClass() === $class`Pastamancer`) return useSkill(1, $skill`Bind Undead Elbow Macaroni`);
-    else {
-        if (have($effect`Expert Oiliness`)) return true;
-        if (!have($item`oil of expertise`)) {
-            if (!have($item`cherry`) && get("_monstersMapped") < 2) {
-                uniform();
-                useDefaultFamiliar();
-                setChoice(1387, 3);
-                if (get("questM23Meatsmith") === "unstarted") {
-                    visitUrl("shop.php?whichshop=meatsmith&action=talk");
-                    runChoice(1);
-                }
-                mapMacro(
-                    $location`The Skeleton Store`,
-                    $monster`novelty tropical skeleton`,
-                    Macro.skill($skill`Use the Force`)
-                );
-            }
-            if (!get("hasRange")) {
-                if (!have($item`Dramatic™ range`)) {
-                    buy(1, $item`Dramatic™ range`);
-                }
-                use(1, $item`Dramatic™ range`);
-            }
-            useSkill($skill`Advanced Saucecrafting`);
-            create($item`oil of expertise`);
-        }
-        return use($item`oil of expertise`);
-    }
-}
 
-export function equalizeMoxie(): boolean {
-    if (myClass() === $class`Pastamancer`) return useSkill(1, $skill`Bind Penne Dreadful`);
-    else {
-        if (have($effect`Expert Oiliness`)) return true;
-        if (!have($item`oil of expertise`)) {
-            if (!have($item`cherry`) && get("_monstersMapped") < 2) {
-                uniform();
-                useDefaultFamiliar();
-                setChoice(1387, 3);
-                if (get("questM23Meatsmith") === "unstarted") {
-                    visitUrl("shop.php?whichshop=meatsmith&action=talk");
-                    runChoice(1);
-                }
-                mapMacro(
-                    $location`The Skeleton Store`,
-                    $monster`novelty tropical skeleton`,
-                    Macro.skill($skill`Use the Force`)
-                );
-            }
-            if (!get("hasRange")) {
-                if (!have($item`Dramatic™ range`)) {
-                    buy(1, $item`Dramatic™ range`);
-                }
-                use(1, $item`Dramatic™ range`);
-            }
-            useSkill($skill`Advanced Saucecrafting`);
-            create($item`oil of expertise`);
-        }
-        return use($item`oil of expertise`);
-    }
-}
 
 export function unequip(item: Item): void {
     while (equippedAmount(item) > 0) {
@@ -579,13 +492,3 @@ export function unequip(item: Item): void {
 }
 
 export const chefstaves = $items`Staff of Kitchen Royalty, Staff of the Deepest Freeze, Staff of Frozen Lard, Staff of the Peppermint Twist, Staff of the Roaring Hearth`;
-
-export function juneCleave(): void {
-    if (get("_juneCleaverFightsLeft") > 0) return;
-    withOutfit(new Outfit({ weapon: $item`June cleaver` }), () => {
-        withProperty("recoveryScript", "", () => {
-            adv1($location`Noob Cave`, -1, "");
-            if (get("lastEncounter") === "Poetic Justice") useSkill($skill`Tongue of the Walrus`);
-        });
-    });
-}

@@ -1,13 +1,4 @@
-import {
-    cliExecute,
-    handlingChoice,
-    inHardcore,
-    retrieveItem,
-    runChoice,
-    use,
-    useFamiliar,
-    useSkill,
-} from "kolmafia";
+import { canadiaAvailable, cliExecute, handlingChoice, retrieveItem, runChoice, useSkill } from "kolmafia";
 import {
     $effect,
     $effects,
@@ -17,104 +8,115 @@ import {
     $location,
     $monster,
     $skill,
-    BeachComb,
     CombatLoversLocket,
     CommunityService,
     get,
     have,
     set,
-    uneffect,
 } from "libram";
-import {
-    advMacroAA,
-    burnLibrams,
-    ensureEffect,
-    ensureInnerElf,
-    horse,
-    horsery,
-    setChoice,
-    unequip,
-} from "./lib";
-import Macro from "./combat";
-import uniform, { weaponOutfit } from "./outfits";
+import { CSStrategy, Macro } from "./combat";
+import { beachTask, innerElf, potionTask, restore, skillTask } from "./commons";
+import { CSEngine, CSQuest } from "./engine";
+import { horse, horsery, unequip } from "./lib";
+import { uniform } from "./outfit";
+const buffs = $effects`Carol of the Bulls, Song of the North, Rage of the Reindeer, Scowl of the Auk, Disdain of the War Snapper, Tenacity of the Snapper, Billiards Belligerence, Blessing of the Bird, Jackasses' Symphony of Destruction`;
 
-const predictor = () => CommunityService.WeaponDamage.prediction;
+let meteors: number;
+const Weapon: CSQuest = {
+    name: "Weapon Damage",
+    type: "SERVICE",
+    test: CommunityService.WeaponDamage,
+    outfit: () => ({
+        hat: $items`seal-skull helmet`,
+        weapon: $item`broken champagne bottle`,
+        offhand: $item`dented scepter`,
+        acc1: $item`Brutal brogues`,
+        acc2: $item`Powerful Glove`,
+        acc3: $items`meteorite ring, Kremlin's Greatest Briefcase`,
+        ...(CSEngine.core === "soft"
+            ? { famequip: $item`Stick-Knife of Loathing`, familiar: $familiar`Disembodied Hand` }
+            : {}),
+    }),
+    turnsSpent: 0,
+    maxTurns: 1,
+    tasks: [
+        ...buffs.map(skillTask),
+        restore(buffs),
+        skillTask($effect`Frenzied, Bloody`),
+        potionTask($item`LOV Elixir #3`),
+        potionTask($item`vial of hamethyst juice`),
+        beachTask($effect`Lack of Body-Building`),
+        {
+            name: "Do You Crush What I Crush?",
+            completed: () => have($effect`Do You Crush What I Crush?`),
+            do: $location`The Dire Warren`,
+            outfit: () => uniform({ changes: { familiar: $familiar`Ghost of Crimbo Carols` } }),
+            prepare: () => horsery() === "pale" && horse("dark"),
+        },
+        { ...innerElf(), core: "hard" },
+        {
+            name: "Spit Ungulith",
+            completed: () => have($effect`Spit Upon`),
+            ready: () => get("camelSpit") >= 100,
+            do: (): void => {
+                meteors = get("_meteorShowerUses");
+                CombatLoversLocket.reminisce($monster`ungulith`);
+                if (handlingChoice()) runChoice(-1);
+            },
+            choices: { [1387]: 3 },
+            outfit: () =>
+                uniform({
+                    changes: {
+                        familiar: $familiar`Melodramedary`,
+                        weapon: $item`Fourth of May Cosplay Saber`,
+                    },
+                }),
+            post: (): void => {
+                if (have($effect`Spit Upon`)) set("camelSpit", 0);
+                if (meteors && have($effect`Meteor Showered`))
+                    set("_meteorShowerUses", meteors + 1);
 
-function getCrushed() {
-    if (!have($effect`Do You Crush What I Crush?`)) {
-        if (have($effect`Holiday Yoked`) && have($item`soft green echo eyedrop antidote`)) {
-            uneffect($effect`Holiday Yoked`);
-        }
-        if (!have($effect`Holiday Yoked`)) {
-            useFamiliar($familiar`Ghost of Crimbo Carols`);
-            uniform();
-            if (horsery() === "pale") {
-                horse("dark");
+                const ungId = $monster`ungulith`.id.toFixed(0);
+                const locketIdStrings = get("_locketMonstersFought")
+                    .split(",")
+                    .map((x) => x.trim())
+                    .filter((x) => x.length > 0);
+                if (!locketIdStrings.includes(ungId)) {
+                    locketIdStrings.push(ungId);
+                    set("_locketMonstersFought", locketIdStrings.join(","));
+                }
+            },
+            combat: new CSStrategy(() =>
+                Macro.trySkill($skill`%fn, spit on me!`)
+                    .trySkill($skill`Meteor Shower`)
+                    .skill($skill`Use the Force`)
+            ),
+        },
+        {
+            name: "Meteorite Ring",
+            core: "soft",
+            completed: () => have($item`meteorite ring`),
+            ready: () => canadiaAvailable(),
+            do: (): void => {
+                const meteor = $items`meteorite necklace, meteorite fragment, meteorite earring`.find(
+                    (item) => have(item)
+                );
+                if (meteor) {
+                    unequip(meteor);
+                    retrieveItem(1, $item`tenderizing hammer`);
+                    retrieveItem(1, $item`jewelry-making pliers`);
+                    cliExecute(`smash ${meteor}`);
+                    cliExecute(`make ${$item`meteorite ring`}`);
+                }
             }
-            advMacroAA($location`The Dire Warren`, Macro.skill($skill`Feel Hatred`));
+        },
+        potionTask($item`corrupted marrow`),
+        {
+            name: "Swagger",
+            completed: () => get("_bowleggedSwaggerUsed"),
+            do: () => useSkill($skill`Bow-Legged Swagger`)
         }
-    }
-}
+    ],
+};
 
-function castBuffs() {
-    $effects`Carol of the Bulls, Song of the North, Rage of the Reindeer, Scowl of the Auk, Disdain of the War Snapper, Tenacity of the Snapper, Billiards Belligerence, Blessing of the Bird, Jackasses' Symphony of Destruction`.forEach(
-        (effect) => ensureEffect(effect)
-    );
-    ensureEffect($effect`Frenzied, Bloody`);
-    if (have($item`LOV Elixir #3`)) use($item`LOV Elixir #3`);
-    BeachComb.tryHead($effect`Lack of Body-Building`);
-}
-
-function forceSpit() {
-    uniform();
-    useFamiliar($familiar`Melodramedary`);
-    setChoice(1387, 3);
-    Macro.trySkill($skill`%fn, spit on me!`)
-        .trySkill($skill`Meteor Shower`)
-        .skill($skill`Use the Force`)
-        .setAutoAttack();
-    CombatLoversLocket.reminisce($monster`ungulith`);
-    if (handlingChoice()) runChoice(-1);
-    if (have($effect`Meteor Showered`)) set("_meteorShowerUses", 1 + get("_meteorShowerUses"));
-    if (have($effect`Spit Upon`)) set("camelSpit", 0);
-
-    const ungId = $monster`ungulith`.id.toFixed(0);
-    const locketIdStrings = get("_locketMonstersFought")
-        .split(",")
-        .map((x) => x.trim())
-        .filter((x) => x.length > 0);
-    if (!locketIdStrings.includes(ungId)) {
-        locketIdStrings.push(ungId);
-        set("_locketMonstersFought", locketIdStrings.join(","));
-    }
-}
-
-function testPrep() {
-    if (have($item`corrupted marrow`)) use($item`corrupted marrow`);
-    if (!get("_bowleggedSwaggerUsed")) useSkill($skill`Bow-Legged Swagger`);
-    useFamiliar($familiar`Disembodied Hand`);
-
-    if (!inHardcore()) {
-        const meteor = $items`meteorite necklace, meteorite fragment, meteorite earring`.find(
-            (item) => have(item)
-        );
-        if (meteor) {
-            unequip(meteor);
-            retrieveItem(1, $item`tenderizing hammer`);
-            retrieveItem(1, $item`jewelry-making pliers`);
-            cliExecute(`smash ${meteor}`);
-            cliExecute(`make ${$item`meteorite ring`}`);
-        }
-    }
-    weaponOutfit.dress();
-}
-
-export default function weaponTest(): void {
-    castBuffs();
-    getCrushed();
-    if (inHardcore()) ensureInnerElf();
-    forceSpit();
-    testPrep();
-    if (predictor() > 1) throw "Failed to cap weapon damage!";
-    burnLibrams();
-}
+export default Weapon;
