@@ -107,7 +107,6 @@ export function tryUse(quantity: number, it: Item): boolean {
     }
 }
 
-
 type Horse = "dark" | "normal" | "crazy" | "pale" | null;
 
 export function horsery(): Horse {
