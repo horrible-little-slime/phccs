@@ -31,14 +31,13 @@ import {
     AsdonMartin,
     BeachComb,
     Clan,
-    CommunityService,
     get,
     have,
     set,
 } from "libram";
 import { CSStrategy, Macro } from "./combat";
 import { CSTask, horse, horsery } from "./lib";
-import { uniform } from "./outfit";
+import uniform from "./outfit";
 
 export function beachTask(effect: Effect): CSTask {
     const num = 1 + BeachComb.headBuffs.indexOf(effect);

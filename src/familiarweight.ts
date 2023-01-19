@@ -14,7 +14,7 @@ import { CSStrategy, Macro } from "./combat";
 import { commonFamiliarWeightBuffs, meteorShower, potionTask } from "./commons";
 import { CSQuest } from "./engine";
 import { availableFights, unequip } from "./lib";
-import { uniform } from "./outfit";
+import uniform from "./outfit";
 
 const FamiliarWeight: CSQuest = {
     name: "Familiar Weight",

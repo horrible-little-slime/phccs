@@ -6,7 +6,7 @@ module.exports = {
     entry: {
         // Point "entry" to scripts you want to be CLI-eligible.
         phccs: "./src/index.ts",
-        phccs_gash: "./src/gash-hop.ts",
+        phccs_gash: "./src/cs-gash.ts",
         looph_gash: "./src/casual-gash.ts",
     },
     // Turns on tree-shaking and minification in the default Terser minifier

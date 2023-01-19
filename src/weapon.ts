@@ -1,4 +1,11 @@
-import { canadiaAvailable, cliExecute, handlingChoice, retrieveItem, runChoice, useSkill } from "kolmafia";
+import {
+    canadiaAvailable,
+    cliExecute,
+    handlingChoice,
+    retrieveItem,
+    runChoice,
+    useSkill,
+} from "kolmafia";
 import {
     $effect,
     $effects,
@@ -15,11 +22,11 @@ import {
     set,
 } from "libram";
 import { CSStrategy, Macro } from "./combat";
-import { beachTask, innerElf, potionTask, restore, skillTask } from "./commons";
+import { beachTask, innerElf, potionTask, restore, skillTask, songTask } from "./commons";
 import { CSEngine, CSQuest } from "./engine";
 import { horse, horsery, unequip } from "./lib";
-import { uniform } from "./outfit";
-const buffs = $effects`Carol of the Bulls, Song of the North, Rage of the Reindeer, Scowl of the Auk, Disdain of the War Snapper, Tenacity of the Snapper, Billiards Belligerence, Blessing of the Bird, Jackasses' Symphony of Destruction`;
+import uniform from "./outfit";
+const buffs = $effects`Carol of the Bulls, Song of the North, Rage of the Reindeer, Scowl of the Auk, Disdain of the War Snapper, Tenacity of the Snapper, Blessing of the Bird`;
 
 let meteors: number;
 const Weapon: CSQuest = {
@@ -46,6 +53,12 @@ const Weapon: CSQuest = {
         potionTask($item`LOV Elixir #3`),
         potionTask($item`vial of hamethyst juice`),
         beachTask($effect`Lack of Body-Building`),
+        songTask($effect`Jackasses' Symphony of Destruction`, $effect`The Sonata of Sneakiness`),
+        {
+            name: "Play Pool",
+            completed: () => have($effect`Billiards Belligerence`),
+            do: () => cliExecute("pool 1"),
+        },
         {
             name: "Do You Crush What I Crush?",
             completed: () => have($effect`Do You Crush What I Crush?`),
@@ -98,9 +111,10 @@ const Weapon: CSQuest = {
             completed: () => have($item`meteorite ring`),
             ready: () => canadiaAvailable(),
             do: (): void => {
-                const meteor = $items`meteorite necklace, meteorite fragment, meteorite earring`.find(
-                    (item) => have(item)
-                );
+                const meteor =
+                    $items`meteorite necklace, meteorite fragment, meteorite earring`.find((item) =>
+                        have(item)
+                    );
                 if (meteor) {
                     unequip(meteor);
                     retrieveItem(1, $item`tenderizing hammer`);
@@ -108,14 +122,14 @@ const Weapon: CSQuest = {
                     cliExecute(`smash ${meteor}`);
                     cliExecute(`make ${$item`meteorite ring`}`);
                 }
-            }
+            },
         },
         potionTask($item`corrupted marrow`),
         {
             name: "Swagger",
             completed: () => get("_bowleggedSwaggerUsed"),
-            do: () => useSkill($skill`Bow-Legged Swagger`)
-        }
+            do: () => useSkill($skill`Bow-Legged Swagger`),
+        },
     ],
 };
 

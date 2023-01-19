@@ -8,7 +8,7 @@ import {
     getKramcoWandererChance,
     have,
 } from "libram";
-import { uniform } from "./outfit";
+import uniform from "./outfit";
 import { CSStrategy, Macro } from "./combat";
 import { CSQuest } from "./engine";
 

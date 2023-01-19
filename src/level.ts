@@ -39,7 +39,7 @@ import { CSStrategy, Macro } from "./combat";
 import { beachTask, innerElf } from "./commons";
 import { CSQuest } from "./engine";
 import { burnLibrams, synthExp } from "./lib";
-import { uniform } from "./outfit";
+import uniform from "./outfit";
 const levellingComplete = myLevel() >= 13;
 let lovePotionConsidered = false;
 

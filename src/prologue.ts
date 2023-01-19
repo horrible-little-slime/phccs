@@ -5,6 +5,7 @@ import {
     create,
     equip,
     getClanName,
+    getWorkshed,
     itemAmount,
     runChoice,
     storageAmount,
@@ -26,6 +27,7 @@ import {
     get,
     have,
     MummingTrunk,
+    questStep,
     SongBoom,
     SourceTerminal,
 } from "libram";
@@ -41,11 +43,43 @@ const PULLS = [
 
 let codpieceAttempted = false;
 
+if (questStep("questM23Meatsmith") === -1) {
+    visitUrl("shop.php?whichshop=meatsmith&action=talk");
+    runChoice(1);
+}
+if (questStep("questM24Doc") === -1) {
+    visitUrl("shop.php?whichshop=doc&action=talk");
+    runChoice(1);
+}
+if (questStep("questM25Armorer") === -1) {
+    visitUrl("shop.php?whichshop=armory&action=talk");
+    runChoice(1);
+}
+
+const MARKET_QUESTS = [
+    { pref: "questM23Meatsmith", url: "shop.php?whichshop=meatsmith&action=talk" },
+    { pref: "questM24Doc", url: "shop.php?whichshop=doc&action=talk" },
+    { pref: "questM25Armorer", url: "shop.php?whichshop=armory&action=talk" },
+];
+
 const Prologue: CSQuest = {
     type: "MISC",
     name: "Prologue",
     completed: () => !!get("csServicesPerformed").split(",").length,
     tasks: [
+        {
+            name: "Set Workshed",
+            completed: () => getWorkshed() === $item`Asdon Martin keyfob`,
+            do: () => use($item`Asdon Martin keyfob`),
+        },
+        ...MARKET_QUESTS.map(({ pref, url }) => ({
+            name: `Start Quest: ${pref}`,
+            completed: () => questStep(pref) > -1,
+            do: (): void => {
+                visitUrl(url);
+                runChoice(1);
+            },
+        })),
         {
             name: "Non-Staff Pulls",
             core: "soft",

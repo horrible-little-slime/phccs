@@ -1,16 +1,10 @@
 import { Task } from "grimoire-kolmafia";
 import {
-    abort,
-    adv1,
     availableAmount,
     buy,
-    chatPrivate,
-    choiceFollowsFight,
     cliExecute,
-    containsText,
     create,
     eat,
-    Effect,
     equip,
     equippedAmount,
     equippedItem,
@@ -18,45 +12,24 @@ import {
     getClanName,
     getProperty,
     haveEffect,
-    inMultiFight,
     Item,
-    Location,
-    Monster,
-    myClass,
-    myLevel,
-    myMaxhp,
     myMaxmp,
     myMp,
-    print,
-    restoreHp,
     restoreMp,
     retrieveItem,
-    runChoice,
-    runCombat,
-    setAutoAttack,
     setProperty,
     Skill,
     Slot,
     sweetSynthesis,
-    totalTurnsPlayed,
-    toUrl,
     use,
-    useFamiliar,
     useSkill,
     visitUrl,
-    wait,
 } from "kolmafia";
 import {
-    $class,
-    $effect,
     $familiar,
     $item,
-    $items,
-    $location,
-    $monster,
     $skill,
     $skills,
-    $slot,
     bestLibramToCast,
     clamp,
     get,
@@ -64,12 +37,8 @@ import {
     have,
     possibleLibramSummons,
     PropertiesManager,
-    property,
     Witchess,
-    withProperty,
 } from "libram";
-import Macro from "./combat";
-import uniform, { Outfit, withOutfit } from "./outfits";
 
 export type CSTask = Task & { core?: "hard" | "soft" };
 export const PropertyManager = new PropertiesManager();
@@ -107,93 +76,6 @@ export function synthExp(): void {
     throw new Error("Failed to synthesize!");
 }
 
-export function kramcoCheck(): boolean {
-    const kramcoNumber =
-        5 + 3 * get("_sausageFights") + Math.pow(Math.max(0, get("_sausageFights") - 5), 3);
-    return totalTurnsPlayed() - get("_lastSausageMonsterTurn") + 1 >= kramcoNumber;
-}
-
-export function useDefaultFamiliar(canAttack = true): void {
-    if (!get("_bagOfCandy") && canAttack) {
-        useFamiliar($familiar`Stocking Mimic`);
-    } else if (get("camelSpit") !== 100) {
-        useFamiliar($familiar`Melodramedary`);
-        equip($slot`familiar`, $item`dromedary drinking helmet`);
-    } else if (
-        canAttack &&
-        !have($item`short stack of pancakes`) &&
-        !have($effect`Shortly Stacked`) &&
-        !get("csServicesPerformed").split(",").includes("Breed More Collies")
-    ) {
-        useFamiliar($familiar`Shorter-Order Cook`);
-        equip($item`tiny stillsuit`);
-    } else if (!have($item`burning newspaper`) && !have($item`burning paper crane`)) {
-        useFamiliar($familiar`Garbage Fire`);
-        equip($item`tiny stillsuit`);
-    } else {
-        useFamiliar($familiar`Artistic Goth Kid`);
-        equip($item`tiny stillsuit`);
-    }
-}
-
-export function testDone(testNum: number): boolean {
-    //stolen directly from bean
-    print(`Checking test ${testNum}...`);
-    const text = visitUrl("council.php");
-    return !containsText(text, `<input type=hidden name=option value=${testNum}>`);
-}
-
-export function doTest(testNum: number): void {
-    //stolen directly from bean
-    if (!testDone(testNum)) {
-        visitUrl(`choice.php?whichchoice=1089&option=${testNum}`);
-        if (!testDone(testNum)) {
-            throw 'Failed to do test " + testNum + ". Maybe we are out of turns.';
-        }
-    } else {
-        print(`Test ${testNum} already completed.`);
-    }
-}
-
-
-export function fightSausageIfAble(location: Location, macro: Macro): void {
-    if (kramcoCheck()) {
-        equip($slot`off-hand`, $item`Kramco Sausage-o-Matic™`);
-        const sausages = get("_sausageFights");
-        advMacroAA(location, macro, () => {
-            return sausages === get("_sausageFights");
-        });
-        if (get("lastEncounter") !== "sausage goblin") {
-            throw "Did not fight a sausage, but I thought I would. Uh oh!";
-        }
-    }
-}
-
-export function ensurePotionEffect(ef: Effect, potion: Item): void {
-    //stolen directly from bean
-    if (!have(ef)) {
-        if (availableAmount(potion) === 0) {
-            create(1, potion);
-        }
-        if (!cliExecute(ef.default) || haveEffect(ef) === 0) {
-            throw `Failed to get effect ${ef.name}.`;
-        }
-    } else {
-        print(`Already have effect ${ef.name}.`);
-    }
-}
-
-export function ensureEffect(ef: Effect, turns = 1): void {
-    //stolen directly from bean
-    if (haveEffect(ef) < turns) {
-        if (!cliExecute(ef.default) || haveEffect(ef) === 0) {
-            throw `Failed to get effect ${ef.name}.`;
-        }
-    } else {
-        print(`Already have effect ${ef.name}.`);
-    }
-}
-
 export function setClan(target: string): boolean {
     //stolen directly from bean
     if (getClanName() !== target) {
@@ -216,10 +98,6 @@ export function setClan(target: string): boolean {
     return true;
 }
 
-export function setChoice(adv: number, choice: number | string): void {
-    PropertyManager.setChoices({ [adv]: choice });
-}
-
 export function tryUse(quantity: number, it: Item): boolean {
     //ripped straight from bean
     if (availableAmount(it) > 0) {
@@ -229,71 +107,6 @@ export function tryUse(quantity: number, it: Item): boolean {
     }
 }
 
-export function multiFightAutoAttack(): void {
-    while (choiceFollowsFight() || inMultiFight()) {
-        visitUrl("choice.php");
-    }
-}
-
-export function heal(): void {
-    restoreHp(myMaxhp());
-}
-
-export function advMacroAA(
-    location: Location,
-    macro: Macro,
-    parameter: number | (() => boolean) = 1,
-    afterCombatAction?: () => void
-): void {
-    let n = 0;
-    const condition = () => {
-        return typeof parameter === "number" ? n < parameter : parameter();
-    };
-    macro.setAutoAttack();
-    while (condition()) {
-        adv1(location, -1, (_round: number, _foe: Monster, pageText: string) => {
-            if (pageText.includes("Macro Aborted")) abort();
-            return Macro.cachedAutoAttacks.get(macro.name) ?? Macro.abort().toString();
-        });
-        if (afterCombatAction) afterCombatAction();
-        n++;
-    }
-}
-
-export function advMacro(
-    location: Location,
-    macro: Macro,
-    parameter: number | (() => boolean) = 1,
-    afterCombatAction?: () => void
-): void {
-    setAutoAttack(0);
-    let n = 0;
-    const condition = () => {
-        return typeof parameter === "number" ? n < parameter : parameter();
-    };
-
-    while (condition()) {
-        adv1(location, -1, (_round: number, _foe: Monster, pageText: string) => {
-            if (pageText.includes("Macro Aborted")) abort();
-            return Macro.if_("!pastround 2", macro).abort().toString();
-        });
-        if (afterCombatAction) afterCombatAction();
-        n++;
-    }
-}
-
-export function mapMacro(location: Location, monster: Monster, macro: Macro): void {
-    macro.setAutoAttack();
-    useSkill($skill`Map the Monsters`);
-    if (!get("mappingMonsters")) throw `I am not actually mapping anything. Weird!`;
-    else {
-        while (get("mappingMonsters")) {
-            visitUrl(toUrl(location));
-            runChoice(1, `heyscriptswhatsupwinkwink=${monster.id}`);
-            runCombat(macro.toString());
-        }
-    }
-}
 
 type Horse = "dark" | "normal" | "crazy" | "pale" | null;
 
@@ -303,39 +116,6 @@ export function horsery(): Horse {
 
 export function horse(horse: Horse): void {
     if (horsery() !== horse) cliExecute(`horsery ${horse} horse`);
-}
-
-function checkFax(monster: Monster): boolean {
-    cliExecute("fax receive");
-    if (property.getString("photocopyMonster").toLowerCase() === monster.name.toLowerCase())
-        return true;
-    cliExecute("fax send");
-    return false;
-}
-
-export function fax(monster: Monster): void {
-    if (!get("_photocopyUsed")) {
-        if (checkFax(monster)) return;
-        chatPrivate("cheesefax", monster.name);
-        for (let i = 0; i < 3; i++) {
-            wait(5 + i);
-            if (checkFax(monster)) return;
-        }
-        abort(`Failed to acquire photocopied ${monster.name}.`);
-    }
-}
-
-export function questStep(questName: string): number {
-    const stringStep = property.getString(questName);
-    if (stringStep === "unstarted" || stringStep === "") return -1;
-    else if (stringStep === "started") return 0;
-    else if (stringStep === "finished") return 999;
-    else {
-        if (stringStep.substring(0, 4) !== "step") {
-            throw "Quest state parsing error.";
-        }
-        return parseInt(stringStep.substring(4), 10);
-    }
 }
 
 export function ensureMp(mp: number): void {
@@ -481,8 +261,6 @@ export function burnLibrams(): void {
     }
 }
 
-
-
 export function unequip(item: Item): void {
     while (equippedAmount(item) > 0) {
         const slot = Slot.all().find((equipmentSlot) => equippedItem(equipmentSlot) === item);
@@ -490,5 +268,3 @@ export function unequip(item: Item): void {
         equip(slot, $item`none`);
     }
 }
-
-export const chefstaves = $items`Staff of Kitchen Royalty, Staff of the Deepest Freeze, Staff of Frozen Lard, Staff of the Peppermint Twist, Staff of the Roaring Hearth`;

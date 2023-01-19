@@ -21,8 +21,8 @@ const DEFAULT_UNIFORM = (): OutfitSpec => ({
             ? $item`protonic accelerator pack`
             : $items`LOV Epaulettes, unwrapped knock-off retro superhero cape`,
     modes: {
-        retrocape: ["heck", "thrill"]
-    }
+        retrocape: ["heck", "thrill"],
+    },
 });
 
 const FAMILIAR_PICKS = [
@@ -59,7 +59,7 @@ function chooseFamiliar(canAttack: boolean): { familiar: Familiar; famequip: Ite
 
 type UniformOptions = { changes: OutfitSpec; canAttack: boolean };
 const DEFAULT_OPTIONS = { changes: {}, canAttack: true };
-export function uniform(options: Partial<UniformOptions> = {}): OutfitSpec {
+export default function uniform(options: Partial<UniformOptions> = {}): OutfitSpec {
     const { changes, canAttack } = { ...DEFAULT_OPTIONS, ...options };
     return { ...DEFAULT_UNIFORM(), ...chooseFamiliar(canAttack), ...changes };
 }

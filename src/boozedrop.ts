@@ -24,7 +24,7 @@ import {
 import { CSStrategy, Macro } from "./combat";
 import { asdonTask, potionTask, skillTask, songTask } from "./commons";
 import { CSQuest } from "./engine";
-import { uniform } from "./outfit";
+import uniform from "./outfit";
 
 const BoozeDrop: CSQuest = {
     name: "Booze Drop",

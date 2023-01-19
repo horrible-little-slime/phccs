@@ -135,7 +135,7 @@ export class CSEngine extends Engine<never, CSTask> {
         }
     }
 
-    static runTests(quests: CSQuest[]): void {
+    static runTests(...quests: CSQuest[]): void {
         if (myPath() !== $path`Community Service`) abort();
         visitUrl("council.php");
         CSEngine.initiate();
