@@ -1,142 +1,134 @@
-import {
-    cliExecute,
-    create,
-    handlingChoice,
-    inHardcore,
-    mySign,
-    runChoice,
-    use,
-    useFamiliar,
-    visitUrl,
-} from "kolmafia";
+import { create, mySign, runCombat, use, visitUrl } from "kolmafia";
 import {
     $effect,
     $familiar,
     $item,
-    $location,
+    $items,
     $monster,
-    $skill,
-    BeachComb,
+    CommunityService,
     get,
     have,
-    set,
     Witchess,
 } from "libram";
-import Macro from "./combat";
-import {
-    advMacroAA,
-    availableFights,
-    burnLibrams,
-    ensureEffect,
-    horse,
-    setChoice,
-    unequip,
-} from "./lib";
-import uniform, { famweightOutfit } from "./outfits";
+import { CSStrategy, Macro } from "./combat";
+import { commonFamiliarWeightBuffs, meteorShower, potionTask } from "./commons";
+import { CSQuest } from "./engine";
+import { availableFights, unequip } from "./lib";
+import { uniform } from "./outfit";
 
-export function universalWeightBuffs(): void {
-    ensureEffect($effect`Empathy`);
-    ensureEffect($effect`Leash of Linguini`);
-    ensureEffect($effect`Blood Bond`);
-    ensureEffect($effect`Billiards Belligerence`);
+const FamiliarWeight: CSQuest = {
+    name: "Familiar Weight",
+    type: "SERVICE",
+    test: CommunityService.FamiliarWeight,
+    outfit: () => ({
+        hat: $item`Daylight Shavings Helmet`,
+        weapon: $item`Fourth of May Cosplay Saber`,
+        offhand: $items`burning paper crane, familiar scrapbook`,
+        pants: $items`repaid diaper, Great Wolf's beastly trousers, designer sweatpants`,
+        acc1: $item`Beach Comb`,
+        acc2: $item`Brutal brogues`,
+        acc3: $item`hewn moon-rune spoon`,
+        familiar: $familiar`Mini-Trainbot`,
+        famequip: $item`overloaded Yule battery`,
+    }),
+    turnsSpent: 0,
+    maxTurns: 30,
+    tasks: [
+        ...commonFamiliarWeightBuffs(),
+        {
+            name: "Moveable Feast",
+            core: "soft",
+            completed: () => get("_feastedFamiliars").split(";").includes("Mini-Trainbot"),
+            ready: () => have($item`moveable feast`),
+            do: () => use($item`moveable feast`),
+            outfit: { familiar: $familiar`Mini-Trainbot` },
+        },
+        {
+            name: "Get Yule Battery",
+            completed: () => have($item`overloaded Yule battery`),
+            do: (): void => {
+                if (!have($item`box of Familiar Jacks`)) create($item`box of Familiar Jacks`);
+                use($item`box of Familiar Jacks`);
+            },
+            outfit: { familiar: $familiar`Mini-Trainbot` },
+        },
+        {
+            name: "Paper Crane",
+            completed: () => have($item`burning paper crane`),
+            do: () => create($item`burning paper crane`),
+            ready: () => have($item`burning newspaper`),
+        },
+        {
+            name: "Shorty Fights (Witchess)",
+            completed: () => $familiar`Shorter-Order Cook`.dropsToday > 0,
+            ready: () =>
+                availableFights() >= 11 - get("_shortOrderCookCharge") && 5 > Witchess.fightsDone(),
+            do: () => Witchess.fightPiece($monster`Witchess Bishop`),
+            outfit: () => uniform({ changes: { familiar: $familiar`Shorter-Order Cook` } }),
+            combat: new CSStrategy(() => Macro.defaultKill()),
+        },
+        {
+            name: "Shorty Fights (BRICKO)",
+            completed: () => $familiar`Shorter-Order Cook`.dropsToday > 0,
+            ready: () =>
+                availableFights() >= 11 - get("_shortOrderCookCharge") &&
+                have($item`BRICKO eye brick`),
+            do: (): void => {
+                if (!have($item`BRICKO ooze`)) create($item`BRICKO ooze`);
+                use($item`BRICKO ooze`);
+                runCombat();
+            },
+            outfit: () => uniform({ changes: { familiar: $familiar`Shorter-Order Cook` } }),
+            combat: new CSStrategy(() => Macro.defaultKill()),
+        },
+        {
+            name: "Garbage Fights (Witchess)",
+            completed: () => $familiar`Garbage Fire`.dropsToday > 0,
+            ready: () =>
+                availableFights() >= 30 - get("garbageFireProgress") && 5 > Witchess.fightsDone(),
+            do: () => Witchess.fightPiece($monster`Witchess Bishop`),
+            outfit: () => uniform({ changes: { familiar: $familiar`Garbage Fire` } }),
+            combat: new CSStrategy(() => Macro.defaultKill()),
+        },
+        {
+            name: "Garbage Fights (BRICKO)",
+            completed: () => $familiar`Garbage Fire`.dropsToday > 0,
+            ready: () =>
+                availableFights() >= 30 - get("garbageFireProgress") &&
+                have($item`BRICKO eye brick`),
+            do: (): void => {
+                if (!have($item`BRICKO ooze`)) create($item`BRICKO ooze`);
+                use($item`BRICKO ooze`);
+                runCombat();
+            },
+            outfit: () => uniform({ changes: { familiar: $familiar`Garbage Fire` } }),
+            combat: new CSStrategy(() => Macro.defaultKill()),
+        },
+        {
+            name: "Icy Revenge",
+            ready: () => have($item`love song of icy revenge`),
+            completed: () => have($effect`Cold Hearted`, 20),
+            do: () => use($item`love song of icy revenge`),
+        },
+        {
+            name: "Blue Taffy",
+            ready: () => have($item`pulled blue taffy`),
+            completed: () => have($effect`Blue Swayed`, 50),
+            do: () => use($item`pulled blue taffy`),
+        },
+        potionTask($item`silver face paint`),
+        {
+            name: "Tune Moon",
+            ready: () => mySign() !== "Platypus",
+            completed: () => get("moonTuned"),
+            do: (): void => {
+                unequip($item`hewn moon-rune spoon`);
+                visitUrl("inv_use.php?whichitem=10254&pwd&doit=96&whichsign=4");
+            },
+            core: "soft",
+        },
+        meteorShower(),
+    ],
+};
 
-    if (!get("_clanFortuneBuffUsed")) cliExecute("fortune buff familiar");
-    if (!get("_freePillKeeperUsed")) {
-        cliExecute("pillkeeper familiar");
-    }
-    if (!have($effect`Puzzle Champ`)) {
-        cliExecute("witchess");
-    }
-
-    BeachComb.tryHead($effect`Do I Know You From Somewhere?`);
-
-    if (have($item`green candy heart`)) ensureEffect($effect`Heart of Green`);
-}
-
-function gearAndUncommonBuffs() {
-    if (!get("_clanFortuneBuffUsed")) cliExecute("fortune buff familiar");
-    if (have($item`burning newspaper`)) create(1, $item`burning paper crane`);
-    if (have($item`short stack of pancakes`)) ensureEffect($effect`Shortly Stacked`);
-    if (have($familiar`Baby Bugged Bugbear`)) {
-        useFamiliar($familiar`Baby Bugged Bugbear`);
-        visitUrl("arena.php");
-    }
-}
-
-function familiarStuff() {
-    while (
-        get("_shortOrderCookCharge") < 11 &&
-        availableFights() >= 11 - get("_shortOrderCookCharge")
-    ) {
-        useFamiliar($familiar`Shorter-Order Cook`);
-        uniform();
-        Macro.defaultKill().setAutoAttack();
-        if (5 - Witchess.fightsDone() > 0) {
-            Witchess.fightPiece($monster`Witchess Bishop`);
-        } else {
-            create(1, $item`BRICKO ooze`);
-            use(1, $item`BRICKO ooze`);
-        }
-    }
-    while (
-        get("garbageFireProgress") < 30 &&
-        availableFights() >= 30 - get("garbageFireProgress")
-    ) {
-        useFamiliar($familiar`Garbage Fire`);
-        uniform();
-        Macro.defaultKill().setAutoAttack();
-        if (5 - Witchess.fightsDone() > 0) {
-            Witchess.fightPiece($monster`Witchess Bishop`);
-        } else {
-            create(1, $item`BRICKO ooze`);
-            use(1, $item`BRICKO ooze`);
-        }
-    }
-}
-
-function takeAShower() {
-    useFamiliar($familiar`none`);
-    horse("dark");
-    uniform();
-    setChoice(1387, 3);
-    if (get("_meteorShowerUses") < 5 && !have($effect`Meteor Showered`)) {
-        advMacroAA(
-            $location`The Dire Warren`,
-            Macro.skill($skill`Meteor Shower`).skill($skill`Use the Force`),
-            1,
-            () => {
-                if (handlingChoice()) runChoice(-1);
-            }
-        );
-        set("_meteorShowerUses", 1 + get("_meteorShowerUses"));
-    }
-}
-
-function tuneMoon(): void {
-    if (mySign() !== "Platypus" && !get("moonTuned")) {
-        unequip($item`hewn moon-rune spoon`);
-        visitUrl("inv_use.php?whichitem=10254&pwd&doit=96&whichsign=4");
-    }
-}
-
-function testPrep() {
-    if (!inHardcore()) tuneMoon();
-    famweightOutfit.dress();
-    if (have($item`moveable feast`)) use($item`moveable feast`);
-    if (have($item`silver face paint`)) ensureEffect($effect`Robot Friends`);
-    while (have($item`love song of icy revenge`) && !have($effect`Cold Hearted`, 20)) {
-        use($item`love song of icy revenge`);
-    }
-    while (have($item`pulled blue taffy`) && !have($effect`Blue Swayed`, 50)) {
-        use($item`pulled blue taffy`);
-    }
-}
-
-export default function familiarTest(): void {
-    universalWeightBuffs();
-    familiarStuff();
-    gearAndUncommonBuffs();
-    takeAShower();
-    testPrep();
-    burnLibrams();
-}
+export default FamiliarWeight;

@@ -9,10 +9,12 @@ import {
     effectModifier,
     getFuel,
     getProperty,
+    handlingChoice,
     Item,
     mpCost,
     myLevel,
     myMp,
+    runChoice,
     Skill,
     toEffect,
     toSkill,
@@ -34,7 +36,7 @@ import {
     have,
 } from "libram";
 import { CSStrategy, Macro } from "./combat";
-import { CSTask } from "./lib";
+import { CSTask, horse, horsery } from "./lib";
 import { uniform } from "./outfit";
 
 export function beachTask(effect: Effect): CSTask {
@@ -170,9 +172,32 @@ export function asdonTask(style: Effect | keyof typeof AsdonMartin.Driving): CST
                 use(1, $item`all-purpose flower`);
                 buy(availableAmount($item`wad of dough`), $item`soda water`);
                 create(availableAmount($item`wad of dough`), $item`loaf of soda bread`);
-                cliExecute(`asdonmartin fuel ${availableAmount($item`loaf of soda bread`)} soda bread`);
+                cliExecute(
+                    `asdonmartin fuel ${availableAmount($item`loaf of soda bread`)} soda bread`
+                );
             }
             AsdonMartin.drive(effect);
-        }
-    }
+        },
+    };
+}
+
+export function meteorShower(): CSTask {
+    return {
+        name: "Meteor Showered",
+        ready: () => get("_meteorShowerUses") < 5 && get("_saberForceUses") < 5,
+        completed: () => have($effect`Meteor Showered`),
+        prepare: () => horsery() === "pale" && horse("dark"),
+        do: () => {
+            adv1($location`The Dire Warren`, -1, "");
+            if (handlingChoice()) runChoice(-1);
+        },
+        outfit: () =>
+            uniform({
+                changes: { familiar: $familiar.none, weapon: $item`Fourth of May Cosplay Saber` },
+            }),
+        choices: { [1387]: 3 },
+        combat: new CSStrategy(() =>
+            Macro.skill($skill`Meteor Shower`).skill($skill`Use the Force`)
+        ),
+    };
 }
