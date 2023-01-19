@@ -2,7 +2,6 @@ import {
     canAdventure,
     cliExecute,
     create,
-    getFuel,
     knollAvailable,
     myClass,
     use,
@@ -17,16 +16,14 @@ import {
     $items,
     $location,
     $skill,
-    AsdonMartin,
     CommunityService,
     get,
     have,
     SourceTerminal,
 } from "libram";
 import { CSStrategy, Macro } from "./combat";
-import { potionTask } from "./commons";
+import { asdonTask, potionTask, skillTask, songTask } from "./commons";
 import { CSQuest } from "./engine";
-import { fuelUp } from "./lib";
 import { uniform } from "./outfit";
 
 const BoozeDrop: CSQuest = {
@@ -63,32 +60,14 @@ const BoozeDrop: CSQuest = {
                 Macro.skill($skill`Become a Bat`).skill($skill`Throw Latte on Opponent`)
             ),
         },
-        {
-            name: "Phat Loot",
-            completed: () => have($effect`Fat Leon's Phat Loot Lyric`),
-            do: (): void => {
-                cliExecute("shrug ode");
-                useSkill($skill`Fat Leon's Phat Loot Lyric`);
-            },
-        },
+        songTask($effect`Fat Leon's Phat Loot Lyric`, $effect`Ode to Booze`),
         {
             name: "Items.enh",
             completed: () => have($effect`items.enh`),
             do: () => SourceTerminal.enhance($effect`items.enh`),
         },
-        {
-            name: "The Spirit of Taking",
-            completed: () => have($effect`The Spirit of Taking`),
-            do: () => useSkill($skill`The Spirit of Taking`),
-        },
-        {
-            name: "Drive Observantly",
-            completed: () => have(AsdonMartin.Driving.Observantly),
-            do: (): void => {
-                if (getFuel() < 37) fuelUp();
-                AsdonMartin.drive(AsdonMartin.Driving.Observantly);
-            },
-        },
+        skillTask($skill`The Spirit of Taking`),
+        asdonTask("Observantly"),
         {
             name: "Unlock Beach",
             ready: () => have($item`government cheese`),

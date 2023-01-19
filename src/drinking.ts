@@ -1,5 +1,6 @@
-import { cliExecute, drink, myInebriety, use, useSkill } from "kolmafia";
-import { $effect, $item, $skill, have } from "libram";
+import { drink, myInebriety, use } from "kolmafia";
+import { $effect, $item, have } from "libram";
+import { songTask } from "./commons";
 import { CSQuest } from "./engine";
 
 const Drink: CSQuest = {
@@ -11,15 +12,7 @@ const Drink: CSQuest = {
             completed: () => !have($item`astral six-pack`),
             do: () => use($item`astral six-pack`),
         },
-        {
-            name: "Ensure Ode",
-            completed: () => have($effect`Ode to Booze`),
-            do: (): void => {
-                if (have($effect`The Magical Mojomuscular Melody`))
-                    cliExecute("shrug The Magical Mojomuscular Melody");
-                useSkill($skill`The Ode to Booze`);
-            },
-        },
+        songTask($effect`Ode to Booze`, $effect`The Magical Mojomuscular Melody`),
         {
             name: "Drink Pilsners",
             ready: () => have($item`astral pilsner`),

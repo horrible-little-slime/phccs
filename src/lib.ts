@@ -82,13 +82,14 @@ export function fuelUp(): void {
     cliExecute(`asdonmartin fuel ${availableAmount($item`loaf of soda bread`)} soda bread`);
 }
 
-const SYNTH_PAIRS: [Item, Item][] = [
+//
+const SYNTH_PAIRS = [
     [$item`Crimbo fudge`, $item`bag of many confections`],
     [$item`Crimbo fudge`, $item`Crimbo fudge`],
     [$item`Crimbo peppermint bark`, $item`Crimbo candied pecan`],
     [$item`Crimbo peppermint bark`, $item`peppermint sprout`],
     [$item`Crimbo candied pecan`, $item`peppermint crook`],
-];
+] as const;
 
 export function synthExp(): void {
     if (getCampground()["Peppermint Pip Packet"]) {
@@ -98,12 +99,12 @@ export function synthExp(): void {
         useSkill(1, $skill`Summon Crimbo Candy`);
     }
     for (const [candy1, candy2] of SYNTH_PAIRS) {
-        const enough = candy1 === candy2 ? have(candy1, 2) : have(candy1) && have(candy2);
+        const enough = candy1 === candy2 ? have(candy1, 2) : have(candy1) && retrieveItem(candy2);
         if (enough) {
             if (sweetSynthesis(candy1, candy2)) return;
         }
     }
-    throw new Error("Failed to synthesize!")
+    throw new Error("Failed to synthesize!");
 }
 
 export function kramcoCheck(): boolean {

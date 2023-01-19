@@ -1,9 +1,13 @@
 import {
     adv1,
+    availableAmount,
+    buy,
+    cliExecute,
     create,
     eat,
     Effect,
     effectModifier,
+    getFuel,
     getProperty,
     Item,
     mpCost,
@@ -17,10 +21,12 @@ import {
 } from "kolmafia";
 import {
     $effect,
+    $effects,
     $familiar,
     $item,
     $location,
     $skill,
+    AsdonMartin,
     BeachComb,
     Clan,
     CommunityService,
@@ -108,5 +114,65 @@ export function skillTask(x: Skill | Effect): CSTask {
             ready: () => myMp() >= mpCost(skill),
             do: () => useSkill(skill),
         };
+    }
+}
+
+export function commonFamiliarWeightBuffs(): CSTask[] {
+    const buffs = $effects`Empathy, Leash of Linguini, Blood Bond`;
+    return [
+        potionTask($item`green candy heart`),
+        ...buffs.map(skillTask),
+        restore(buffs),
+        {
+            name: "Witchess",
+            completed: () => get("_witchessBuff"),
+            do: () => cliExecute("witchess"),
+        },
+        {
+            name: "Fixodene",
+            completed: () => get("_freePillKeeperUsed"),
+            do: () => cliExecute("pillkeeper familiar"),
+        },
+        {
+            name: "Suzie's Blessing",
+            completed: () => get("_clanFortuneBuffUsed"),
+            do: () => cliExecute("fortune buff familiar"),
+        },
+        beachTask($effect`Do I Know You From Somewhere?`),
+    ];
+}
+
+export function songTask(song: Effect | Skill, shrugSong: Effect | Skill): CSTask {
+    const { wantedSongSkill, wantedSongEffect } =
+        song instanceof Effect
+            ? { wantedSongSkill: toSkill(song), wantedSongEffect: song }
+            : { wantedSongSkill: song, wantedSongEffect: toEffect(song) };
+    const shrugSongEffect = shrugSong instanceof Effect ? shrugSong : toEffect(shrugSong);
+    return {
+        name: song.name,
+        completed: () => have(wantedSongEffect),
+        ready: () => myMp() >= mpCost(wantedSongSkill),
+        do: (): void => {
+            if (have(shrugSongEffect)) cliExecute(`shrug ${shrugSongEffect}`);
+            useSkill(wantedSongSkill);
+        },
+    };
+}
+
+export function asdonTask(style: Effect | keyof typeof AsdonMartin.Driving): CSTask {
+    const effect = style instanceof Effect ? style : AsdonMartin.Driving[style];
+    return {
+        name: effect.name,
+        completed: () => have(effect),
+        do: () => {
+            if (getFuel() < 37) {
+                buy(1, $item`all-purpose flower`);
+                use(1, $item`all-purpose flower`);
+                buy(availableAmount($item`wad of dough`), $item`soda water`);
+                create(availableAmount($item`wad of dough`), $item`loaf of soda bread`);
+                cliExecute(`asdonmartin fuel ${availableAmount($item`loaf of soda bread`)} soda bread`);
+            }
+            AsdonMartin.drive(effect);
+        }
     }
 }

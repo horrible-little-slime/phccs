@@ -1,13 +1,4 @@
-import {
-    adv1,
-    getFuel,
-    handlingChoice,
-    myHp,
-    myMaxhp,
-    runChoice,
-    useSkill,
-    visitUrl,
-} from "kolmafia";
+import { adv1, handlingChoice, myHp, myMaxhp, runChoice, useSkill, visitUrl } from "kolmafia";
 import {
     $effect,
     $effects,
@@ -16,17 +7,16 @@ import {
     $items,
     $location,
     $skill,
-    AsdonMartin,
     CommunityService,
     get,
     have,
 } from "libram";
 import { CSStrategy, Macro } from "./combat";
-import { beachTask, potionTask, restore, skillTask } from "./commons";
+import { asdonTask, beachTask, commonFamiliarWeightBuffs, restore, skillTask } from "./commons";
 import { CSQuest } from "./engine";
-import { ensureMp, fuelUp, horse, horsery } from "./lib";
+import { ensureMp, horse, horsery } from "./lib";
 import { uniform } from "./outfit";
-const buffs = $effects`Empathy, Leash of Linguini, Blood Bond, Elemental Saucesphere, Astral Shell`;
+const buffs = $effects`Elemental Saucesphere, Astral Shell`;
 
 const HotRes: CSQuest = {
     name: "Hot Res",
@@ -47,22 +37,12 @@ const HotRes: CSQuest = {
     turnsSpent: 0,
     maxTurns: 1,
     tasks: [
-        ...$effects`Empathy, Leash of Linguini, Blood Bond, Elemental Saucesphere, Astral Shell`.map(
-            skillTask
-        ),
+        ...buffs.map(skillTask),
         restore(buffs),
+        ...commonFamiliarWeightBuffs(),
         beachTask($effect`Hot-Headed`),
-        beachTask($effect`Do I Know You From Somewhere?`),
-        potionTask($item`green candy heart`),
         beachTask($effect`Does It Have a Skull In There??`),
-        {
-            name: "Drive Safely",
-            completed: () => have(AsdonMartin.Driving.Safely),
-            do: (): void => {
-                if (getFuel() < 37) fuelUp();
-                AsdonMartin.drive(AsdonMartin.Driving.Safely);
-            },
-        },
+        asdonTask("Safely"),
         {
             name: "Extinguisher",
             completed: () => have($effect`Fireproof Foam Suit`),
