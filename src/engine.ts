@@ -34,6 +34,7 @@ export class CSEngine extends Engine<never, CSTask> {
     name: string;
     csOptions: Service | Misc;
     turnsSpent?: number | (() => number);
+
     constructor(quest: CSQuest) {
         super(getTasks([GLOBAL_QUEST, quest]));
         this.csOptions = quest;
@@ -115,8 +116,9 @@ export class CSEngine extends Engine<never, CSTask> {
                     } else {
                         throw new Error(`Failed to equip outfit for ${this.name}`);
                     }
+                    burnLibrams();
                 }
-                burnLibrams();
+
                 return this.turns;
             });
             const warning =
@@ -143,7 +145,7 @@ export class CSEngine extends Engine<never, CSTask> {
         try {
             for (const quest of quests) {
                 const { type } = quest;
-                if (type === "MISC" || quest.test.isDone()) {
+                if (type === "MISC" || !quest.test.isDone()) {
                     const engine = new CSEngine(quest);
                     engine.runTest();
                 }
