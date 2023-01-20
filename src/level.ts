@@ -215,6 +215,7 @@ const Level: CSQuest = {
             },
         },
         {
+            // not strictly necessary
             name: "Acquire Casting Items",
             completed: () => $items`turtle totem, saucepan`.every((i) => have(i)),
             do: () =>
@@ -229,7 +230,7 @@ const Level: CSQuest = {
             completed: () => !!get("snojoSetting"),
             do: (): void => {
                 visitUrl("place.php?whichplace=snojo&action=snojo_controller");
-                runChoice(2);
+                runChoice(3);
             },
         },
         {
@@ -248,6 +249,8 @@ const Level: CSQuest = {
                     .defaultKill()
             ),
         },
+        // A proton ghost should get fought here
+        // It happens in globaltasks.ts
         {
             name: "Map Tomato",
             completed: () =>
@@ -345,7 +348,6 @@ const Level: CSQuest = {
             },
             combat: new CSStrategy(),
         },
-        // Fight a proton ghost here
         {
             name: "Oliver's Place: Prime Portscan",
             completed: () => get("_speakeasyFreeFights") > 0,
@@ -362,9 +364,7 @@ const Level: CSQuest = {
                 uniform({
                     changes: { back: $item`vampyric cloake`, acc3: $item`Lil' Doctor™ bag` },
                 }),
-            combat: new CSStrategy(() =>
-                Macro.skill($skill`Become a Bat`).skill($skill`Chest X-Ray`)
-            ),
+            combat: new CSStrategy(() => Macro.skill($skill`Become a Bat`).skill($skill`Otoscope`)),
         },
         {
             name: "LOV",
@@ -435,7 +435,7 @@ const Level: CSQuest = {
         },
         {
             name: "God Lobster",
-            completed: () => get("_godLobsterFights") >= 0,
+            completed: () => get("_godLobsterFights") >= 3,
             do: (): void => {
                 visitUrl("main.php?fightgodlobster=1");
                 runCombat();
@@ -450,6 +450,7 @@ const Level: CSQuest = {
                 return uniform({ changes: { familiar: $familiar`God Lobster`, famequip: gear } });
             },
             choices: {
+                // Stats
                 [1310]: 3,
             },
         },
