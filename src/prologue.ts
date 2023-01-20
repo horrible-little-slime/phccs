@@ -43,19 +43,6 @@ const PULLS = [
 
 let codpieceAttempted = false;
 
-if (questStep("questM23Meatsmith") === -1) {
-    visitUrl("shop.php?whichshop=meatsmith&action=talk");
-    runChoice(1);
-}
-if (questStep("questM24Doc") === -1) {
-    visitUrl("shop.php?whichshop=doc&action=talk");
-    runChoice(1);
-}
-if (questStep("questM25Armorer") === -1) {
-    visitUrl("shop.php?whichshop=armory&action=talk");
-    runChoice(1);
-}
-
 const MARKET_QUESTS = [
     { pref: "questM23Meatsmith", url: "shop.php?whichshop=meatsmith&action=talk" },
     { pref: "questM24Doc", url: "shop.php?whichshop=doc&action=talk" },
