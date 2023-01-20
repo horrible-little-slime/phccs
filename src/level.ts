@@ -40,7 +40,7 @@ import { beachTask, innerElf } from "./commons";
 import { CSQuest } from "./engine";
 import { burnLibrams, synthExp } from "./lib";
 import uniform from "./outfit";
-const levellingComplete = myLevel() >= 13;
+const levellingComplete = myLevel() >= 13 && get("_neverendingPartyFreeTurns") >= 10;
 let lovePotionConsidered = false;
 
 const foldshirt = (): void => {
@@ -114,7 +114,7 @@ const Level: CSQuest = {
         {
             name: "Bastille",
             completed: () => get("_bastilleGames") > 0,
-            do: () => cliExecute("bastille myst brytalist"),
+            do: () => cliExecute("bastille myst brutalist"),
         },
         {
             name: "Get Love Potion",
@@ -155,7 +155,7 @@ const Level: CSQuest = {
         },
         {
             name: "Boxing Daybuff",
-            completed: () => get("_daycareNap"),
+            completed: () => get("_daycareSpa"),
             do: () => cliExecute("daycare mysticality"),
         },
         beachTask($effect`You Learned Something Maybe!`),
@@ -208,7 +208,7 @@ const Level: CSQuest = {
         },
         {
             name: "Acquire Blue Rocket",
-            completed: () => have($effect`Glowing Blue`),
+            completed: () => have($effect`Glowing Blue`) || have($item`blue rocket`),
             do: (): void => {
                 visitUrl("clan_viplounge.php?action=fwshop&whichfloor=2");
                 buy(1, $item`blue rocket`);
@@ -237,7 +237,10 @@ const Level: CSQuest = {
             name: "Holiday Yoked",
             completed: () => have($effect`Holiday Yoked`),
             do: $location`The X-32-F Combat Training Snowman`,
-            outfit: () => uniform({ changes: { familiar: $familiar`Ghost of Crimbo Carols` } }),
+            outfit: () =>
+                uniform({
+                    changes: { familiar: $familiar`Ghost of Crimbo Carols`, famequip: $item.none },
+                }),
             combat: new CSStrategy(() =>
                 Macro.externalIf(
                     !have($effect`Cosmic Ball in the Air`),
@@ -333,20 +336,24 @@ const Level: CSQuest = {
             outfit: () => uniform({ changes: { offhand: $item`familiar scrapbook` } }),
         },
         {
-            name: "Witchess Queen",
+            name: "Witchess Witch",
             completed: () => have($item`battle broom`),
-            prepare: foldshirt,
-            outfit: () =>
-                uniform({
+            outfit: (): OutfitSpec => {
+                foldshirt();
+                return uniform({
                     changes: {
+                        weapon: $item`Fourth of May Cosplay Saber`,
                         shirt: $item`makeshift garbage shirt`,
                         offhand: $item`familiar scrapbook`,
                     },
-                }),
-            do: (): void => {
-                Witchess.fightPiece($monster`Witchess Witch`);
+                });
             },
-            combat: new CSStrategy(),
+            prepare: (): void => {
+                useSkill($skill`Cannelloni Cocoon`);
+            },
+            ready: () => Witchess.fightsDone() < 5,
+            do: () => Witchess.fightPiece($monster`Witchess Witch`),
+            combat: new CSStrategy(() => Macro.delevel().attack().repeat()),
         },
         {
             name: "Oliver's Place: Prime Portscan",
@@ -369,15 +376,16 @@ const Level: CSQuest = {
         {
             name: "LOV",
             completed: () => get("_loveTunnelUsed"),
-            outfit: () =>
-                uniform({
+            outfit: (): OutfitSpec => {
+                foldshirt();
+                return uniform({
                     changes: {
                         weapon: $item`Fourth of May Cosplay Saber`,
                         shirt: $item`makeshift garbage shirt`,
                     },
                     canAttack: false,
-                }),
-            prepare: foldshirt,
+                });
+            },
             do: () =>
                 TunnelOfLove.fightAll(
                     "LOV Epaulettes",
@@ -453,6 +461,7 @@ const Level: CSQuest = {
                 // Stats
                 [1310]: 3,
             },
+            combat: new CSStrategy(),
         },
         {
             name: "Rest of the Rests",
@@ -465,27 +474,32 @@ const Level: CSQuest = {
             name: "DMT",
             completed: () => get("_machineTunnelsAdv") >= 5,
             do: $location`The Deep Machine Tunnels`,
-            outfit: () =>
-                uniform({
+            outfit: (): OutfitSpec => {
+                foldshirt();
+                return uniform({
                     changes: {
                         shirt: $item`makeshift garbage shirt`,
                         familiar: $familiar`Machine Elf`,
                     },
-                }),
+                });
+            },
             combat: new CSStrategy(),
         },
         {
             name: "Queen",
             completed: () => have($item`very pointy crown`),
             do: () => Witchess.fightPiece($monster`Witchess Queen`),
-            outfit: () =>
-                uniform({
+            ready: () => Witchess.fightsDone() < 5,
+            outfit: (): OutfitSpec => {
+                foldshirt();
+                return uniform({
                     changes: {
+                        weapon: $item`Fourth of May Cosplay Saber`,
                         shirt: $item`makeshift garbage shirt`,
                         offhand: $item`familiar scrapbook`,
                     },
-                }),
-            prepare: foldshirt,
+                });
+            },
             combat: new CSStrategy(() =>
                 Macro.tryItem($item`jam band bootleg`)
                     .tryItem($item`gas can`)
@@ -493,20 +507,29 @@ const Level: CSQuest = {
                     .attack()
                     .repeat()
             ),
+            prepare: (): void => {
+                useSkill($skill`Cannelloni Cocoon`);
+            },
         },
         {
             name: "King",
             completed: () => have($item`dented scepter`),
             do: () => Witchess.fightPiece($monster`Witchess King`),
-            outfit: () =>
-                uniform({
+            ready: () => Witchess.fightsDone() < 5,
+            outfit: (): OutfitSpec => {
+                foldshirt();
+                return uniform({
                     changes: {
+                        weapon: $item`Fourth of May Cosplay Saber`,
                         shirt: $item`makeshift garbage shirt`,
                         offhand: $item`familiar scrapbook`,
                     },
-                }),
-            prepare: foldshirt,
+                });
+            },
             combat: new CSStrategy(() => Macro.attack().repeat()),
+            prepare: (): void => {
+                useSkill($skill`Cannelloni Cocoon`);
+            },
         },
         {
             name: "NEP Quest",
@@ -521,8 +544,8 @@ const Level: CSQuest = {
             name: "Regular NEP",
             completed: () => get("_neverendingPartyFreeTurns") >= 10,
             do: $location`The Neverending Party`,
-            prepare: foldshirt,
             outfit: (): OutfitSpec => {
+                foldshirt();
                 const enoughSausages = get("_sausageFights") > 4;
                 const changes = {
                     shirt: $items`makeshift garbage shirt`,
@@ -545,8 +568,8 @@ const Level: CSQuest = {
                 have($effect`Everything Looks Yellow`) &&
                 get("_chestXRayUsed") >= 3,
             do: $location`The Neverending Party`,
-            prepare: foldshirt,
             outfit: (): OutfitSpec => {
+                foldshirt();
                 const killSource = !have($effect`Everything Looks Yellow`)
                     ? { shirt: $item`Jurassic Parka`, modes: { parka: "dilophosaur" as const } }
                     : get("_chestXRayUsed") < 3
@@ -560,6 +583,14 @@ const Level: CSQuest = {
                 };
                 return uniform({ changes });
             },
+            combat: new CSStrategy(() =>
+                Macro.if_($monster`sausage goblin`, Macro.defaultKill())
+                    .trySkill($skill`Spit jurassic acid`)
+                    .trySkill($skill`Chest X-Ray`)
+                    .trySkill($skill`Shattering Punch`)
+                    .trySkill($skill`Gingerbread Mob Hit`)
+                    .abort()
+            ),
         },
     ],
 };

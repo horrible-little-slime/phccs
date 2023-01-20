@@ -186,7 +186,11 @@ export function meteorShower(): CSTask {
         },
         outfit: () =>
             uniform({
-                changes: { familiar: $familiar.none, weapon: $item`Fourth of May Cosplay Saber` },
+                changes: {
+                    familiar: $familiar.none,
+                    famequip: $item.none,
+                    weapon: $item`Fourth of May Cosplay Saber`,
+                },
             }),
         choices: { [1387]: 3 },
         combat: new CSStrategy(() =>

@@ -9,7 +9,7 @@ import Level from "./level";
 import Noncombat from "./noncombat";
 import Prologue from "./prologue";
 import Spell from "./spell";
-import { Moxie, Muscle, Mysticality } from "./stattests";
+import { Hitpoints, Moxie, Muscle, Mysticality } from "./stattests";
 import Weapon from "./weapon";
 
 sinceKolmafiaRevision(27102);
@@ -19,6 +19,7 @@ CSEngine.runTests(
     Level,
     Moxie,
     Muscle,
+    Hitpoints,
     Mysticality,
     Drink,
     HotRes,

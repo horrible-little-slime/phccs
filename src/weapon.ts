@@ -33,17 +33,23 @@ const Weapon: CSQuest = {
     name: "Weapon Damage",
     type: "SERVICE",
     test: CommunityService.WeaponDamage,
-    outfit: () => ({
-        hat: $items`seal-skull helmet`,
-        weapon: $item`broken champagne bottle`,
-        offhand: $item`dented scepter`,
-        acc1: $item`Brutal brogues`,
-        acc2: $item`Powerful Glove`,
-        acc3: $items`meteorite ring, Kremlin's Greatest Briefcase`,
-        ...(CSEngine.core === "soft"
-            ? { famequip: $item`Stick-Knife of Loathing`, familiar: $familiar`Disembodied Hand` }
-            : {}),
-    }),
+    outfit: () => {
+        if (!have($item`broken champagne bottle`)) cliExecute("fold broken champagne bottle");
+        return {
+            hat: $items`seal-skull helmet`,
+            weapon: $item`broken champagne bottle`,
+            offhand: $item`dented scepter`,
+            acc1: $item`Brutal brogues`,
+            acc2: $item`Powerful Glove`,
+            acc3: $items`meteorite ring, Kremlin's Greatest Briefcase`,
+            ...(CSEngine.core === "soft"
+                ? {
+                      famequip: $item`Stick-Knife of Loathing`,
+                      familiar: $familiar`Disembodied Hand`,
+                  }
+                : {}),
+        };
+    },
     turnsSpent: 0,
     maxTurns: 1,
     tasks: [
@@ -63,8 +69,16 @@ const Weapon: CSQuest = {
             name: "Do You Crush What I Crush?",
             completed: () => have($effect`Do You Crush What I Crush?`),
             do: $location`The Dire Warren`,
-            outfit: () => uniform({ changes: { familiar: $familiar`Ghost of Crimbo Carols` } }),
+            outfit: () =>
+                uniform({
+                    changes: { familiar: $familiar`Ghost of Crimbo Carols`, famequip: $item.none },
+                }),
             prepare: () => horsery() === "pale" && horse("dark"),
+            combat: new CSStrategy(() =>
+                Macro.trySkill($skill`Asdon Martin: Spring-Loaded Front Bumper`).trySkill(
+                    $skill`Feel Hatred`
+                )
+            ),
         },
         { ...innerElf(), core: "hard" },
         {

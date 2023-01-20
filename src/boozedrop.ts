@@ -1,3 +1,4 @@
+import { OutfitSpec } from "grimoire-kolmafia";
 import {
     canAdventure,
     cliExecute,
@@ -30,17 +31,21 @@ const BoozeDrop: CSQuest = {
     name: "Booze Drop",
     type: "SERVICE",
     test: CommunityService.BoozeDrop,
-    outfit: () => ({
-        hat: $item`wad of used tape`,
-        weapon: $items`extra-large utility candle`,
-        offhand: $item`cursed magnifying glass`,
-        back: $item`protonic accelerator pack`,
-        acc1: $item`Guzzlr tablet`,
-        acc2: $item`gold detective badge`,
-        acc3: $items`government-issued night-vision goggles`,
-        famequip: $item`li'l ninja costume`,
-        familiar: $familiar`Trick-or-Treating Tot`,
-    }),
+    outfit: (): OutfitSpec => {
+        if (!have($item`wad of used tape`)) cliExecute("fold wad of used tape");
+        return {
+            hat: $item`wad of used tape`,
+            weapon: $items`extra-large utility candle, Fourth of May Cosplay Saber`,
+            offhand: $item`unbreakable umbrella`,
+            back: $item`protonic accelerator pack`,
+            acc1: $item`Guzzlr tablet`,
+            acc2: $item`gold detective badge`,
+            acc3: $items`government-issued night-vision goggles, combat lover's locket`,
+            famequip: $item`li'l ninja costume`,
+            familiar: $familiar`Trick-or-Treating Tot`,
+            modes: { umbrella: "bucket style" },
+        };
+    },
     turnsSpent: 0,
     maxTurns: 1,
     tasks: [
@@ -67,6 +72,12 @@ const BoozeDrop: CSQuest = {
             do: () => SourceTerminal.enhance($effect`items.enh`),
         },
         skillTask($skill`The Spirit of Taking`),
+        skillTask($skill`Singer's Faithful Ocelot`),
+        {
+            name: "Play Pool",
+            completed: () => have($effect`Hustlin'`),
+            do: () => cliExecute("pool 3"),
+        },
         asdonTask("Observantly"),
         {
             name: "Unlock Beach",
@@ -99,7 +110,9 @@ const BoozeDrop: CSQuest = {
             completed: () => get("_barrelPrayer"),
             do: () => cliExecute("barrelprayer buff"),
         },
-        ...$items`Salsa Caliente™ candle, lavender candy heart, bag of grain`.map(potionTask),
+        ...$items`Salsa Caliente™ candle, lavender candy heart, bag of grain, emergency glowstick`.map(
+            potionTask
+        ),
         {
             name: "Steely-Eyed Squint",
             completed: () => have($effect`Steely-Eyed Squint`),

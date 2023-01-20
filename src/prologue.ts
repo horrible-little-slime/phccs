@@ -26,7 +26,6 @@ import {
     CommunityService,
     get,
     have,
-    MummingTrunk,
     questStep,
     SongBoom,
     SourceTerminal,
@@ -118,7 +117,7 @@ const Prologue: CSQuest = {
         },
         {
             name: "Vote!",
-            completed: () => get("_voteToday"),
+            completed: () => have($item`"I Voted!" sticker`),
             do: (): void => {
                 visitUrl("place.php?whichplace=town_right&action=townright_vote");
                 visitUrl("choice.php?option=1&whichchoice=1331&g=2&local%5B%5D=2&local%5B%5D=3");
@@ -130,7 +129,7 @@ const Prologue: CSQuest = {
             completed: () =>
                 SourceTerminal.getSkills().every((skill) =>
                     $skills`Extract, Portscan`.includes(skill)
-                ),
+                ) && !!SourceTerminal.getSkills().length,
             do: () => SourceTerminal.educate([$skill`Extract`, $skill`Portscan`]),
         },
         {
@@ -199,7 +198,7 @@ const Prologue: CSQuest = {
         },
         {
             name: "Mummery",
-            completed: () => MummingTrunk.currentCostumes().has($familiar`Melodramedary`),
+            completed: () => get("_mummeryMods").includes("Mysticality"),
             do: (): void => {
                 useFamiliar($familiar`Melodramedary`);
                 cliExecute("mummery myst");
@@ -259,6 +258,11 @@ const Prologue: CSQuest = {
                 runChoice(5);
                 runChoice(4);
             },
+        },
+        {
+            name: "Unlock Bird",
+            completed: () => !!get("_birdOfTheDay"),
+            do: () => use($item`Bird-a-Day calendar`),
         },
     ],
 };

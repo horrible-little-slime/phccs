@@ -22,6 +22,7 @@ const DEFAULT_UNIFORM = (): OutfitSpec => ({
             : $items`LOV Epaulettes, unwrapped knock-off retro superhero cape`,
     modes: {
         retrocape: ["heck", "thrill"],
+        umbrella: "broken",
     },
 });
 
@@ -52,7 +53,7 @@ function chooseFamiliar(canAttack: boolean): { familiar: Familiar; famequip: Ite
             condition() && (canAttack || !(familiar.elementalDamage || familiar.physicalDamage))
     );
     if (pick) {
-        return { famequip: $item`tiny stillsuit`, ...pick };
+        return { famequip: $item`tiny stillsuit`, familiar: pick.familiar };
     }
     return { famequip: $item`tiny stillsuit`, familiar: $familiar`Puck Man` };
 }

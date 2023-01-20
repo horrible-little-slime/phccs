@@ -1,10 +1,16 @@
 import { Quest } from "grimoire-kolmafia";
-import { adv1, cliExecute, reverseNumberology, useSkill } from "kolmafia";
+import { abort, adv1, cliExecute, reverseNumberology, useSkill } from "kolmafia";
 import { $effect, $item, $location, $skill, get, have, withProperty } from "libram";
 import { CSStrategy, Macro } from "./combat";
 import { CSTask } from "./lib";
 
 const GLOBAL_TASKS: CSTask[] = [
+    {
+        name: "Beaten Up!",
+        completed: () => !have($effect`Beaten Up`),
+        ready: () => "Poetic Justice" !== get("lastEncounter"),
+        do: () => abort("Beaten up!"),
+    },
     {
         name: "Numberology",
         ready: () => Object.values(reverseNumberology()).includes(69),

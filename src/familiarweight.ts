@@ -116,7 +116,6 @@ const FamiliarWeight: CSQuest = {
             completed: () => have($effect`Blue Swayed`, 50),
             do: () => use($item`pulled blue taffy`),
         },
-        potionTask($item`silver face paint`),
         {
             name: "Tune Moon",
             ready: () => mySign() !== "Platypus",
@@ -128,6 +127,7 @@ const FamiliarWeight: CSQuest = {
             core: "soft",
         },
         meteorShower(),
+        potionTask($item`silver face paint`),
     ],
 };
 

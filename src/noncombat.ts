@@ -1,5 +1,5 @@
-import { cliExecute } from "kolmafia";
-import { $effect, $effects, $familiar, $item, $items, CommunityService, get } from "libram";
+import { cliExecute, useSkill } from "kolmafia";
+import { $effect, $effects, $familiar, $item, $skill, CommunityService, get, have } from "libram";
 import { asdonTask, commonFamiliarWeightBuffs, restore, skillTask, songTask } from "./commons";
 import { CSQuest } from "./engine";
 import { horse, horsery } from "./lib";
@@ -13,7 +13,7 @@ const Noncombat: CSQuest = {
         back: $item`protonic accelerator pack`,
         weapon: $item`Fourth of May Cosplay Saber`,
         shirt: $item`Jurassic Parka`,
-        offhand: $items`unbreakable umbrella, burning paper crane, familiar scrapbook`,
+        offhand: $item`unbreakable umbrella`,
         acc1: $item`hewn moon-rune spoon`,
         acc2: $item`codpiece`,
         acc3: $item`Brutal brogues`,
@@ -30,6 +30,23 @@ const Noncombat: CSQuest = {
         },
         ...commonFamiliarWeightBuffs(),
         skillTask($effect`Smooth Movements`),
+        skillTask($effect`Feeling Lonely`),
+        {
+            name: "Invisible Avatar",
+            completed: () => have($effect`Invisible Avatar`),
+            do: () => useSkill($skill`CHEAT CODE: Invisible Avatar`),
+            outfit: { acc3: $item`Powerful Glove` },
+        },
+        skillTask($effect`Blessing of the Bird`),
+        {
+            name: "Favourite Bird",
+            completed: () => get("_favoriteBirdVisited"),
+            ready: () =>
+                get("yourFavoriteBirdMods")
+                    .split(",")
+                    .some((mod) => mod.includes("Combat Rate: -")),
+            do: () => useSkill($skill`Visit your Favorite Bird`),
+        },
         songTask($effect`The Sonata of Sneakiness`, $effect`Fat Leon's Phat Loot Lyric`),
         restore($effects`Smooth Movements, The Sonata of Sneakiness`),
         {

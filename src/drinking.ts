@@ -6,6 +6,7 @@ import { CSQuest } from "./engine";
 const Drink: CSQuest = {
     name: "Drink Pilsners",
     type: "MISC",
+    completed: () => myInebriety() >= 5,
     tasks: [
         {
             name: "Open Pilsners",

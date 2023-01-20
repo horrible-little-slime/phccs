@@ -1,4 +1,13 @@
-import { adv1, handlingChoice, myHp, myMaxhp, runChoice, useSkill, visitUrl } from "kolmafia";
+import {
+    adv1,
+    create,
+    handlingChoice,
+    myHp,
+    myMaxhp,
+    runChoice,
+    useSkill,
+    visitUrl,
+} from "kolmafia";
 import {
     $effect,
     $effects,
@@ -23,16 +32,18 @@ const HotRes: CSQuest = {
     type: "SERVICE",
     test: CommunityService.HotRes,
     outfit: () => ({
+        hat: $item`Daylight Shavings Helmet`,
+        shirt: $items`Jurassic Parka, denim jacket`,
         back: $item`unwrapped knock-off retro superhero cape`,
-        weapon: $item`Fourth of May Cosplay Saber`,
-        shirt: $item`Jurassic Parka`,
+        weapon: $item`industrial fire extinguisher`,
         offhand: $item`meteorite guard`,
         pants: $item`designer sweatpants`,
         acc1: $item`your cowboy boots`,
-        acc2: $item`Brutal brogues`,
-        acc3: $item`Beach Comb`,
+        acc2: $item`Beach Comb`,
+        acc3: $item`Brutal brogues`,
         familiar: $familiar`Exotic Parrot`,
-        modes: { retrocape: ["vampire", "hold"], parka: "pterodactyl" },
+        famequip: $item`tiny stillsuit`,
+        modes: { parka: "ghostasaurus", retrocape: ["vampire", "hold"] },
     }),
     turnsSpent: 0,
     maxTurns: 1,
@@ -74,7 +85,7 @@ const HotRes: CSQuest = {
         },
         {
             name: "Deep Dark Visions",
-            completed: () => have($effect`Visions of the Deep Dark Deeps`, 30),
+            completed: () => have($effect`Visions of the Deep Dark Deeps`, 40),
             do: (): void => {
                 while (myHp() < myMaxhp()) {
                     ensureMp(20);
@@ -84,16 +95,25 @@ const HotRes: CSQuest = {
                 useSkill(1, $skill`Deep Dark Visions`);
             },
             outfit: {
-                hat: $item`Iunion Crown`,
+                hat: $item`Daylight Shavings Helmet`,
                 shirt: $items`Jurassic Parka, denim jacket`,
                 back: $item`unwrapped knock-off retro superhero cape`,
-                weapon: $item`Fourth of May Cosplay Saber`,
-                offhand: $item`familiar scrapbook`,
+                weapon: $item`industrial fire extinguisher`,
+                offhand: $item`Fourth of May Cosplay Saber`,
                 pants: $item`Cargo Cultist Shorts`,
                 acc1: $item`your cowboy boots`,
+                acc2: $item`Beach Comb`,
+                acc3: $item`Brutal brogues`,
                 familiar: $familiar`Exotic Parrot`,
+                famequip: $item`tiny stillsuit`,
                 modes: { parka: "ghostasaurus", retrocape: ["vampire", "hold"] },
             },
+        },
+        {
+            name: "Meteorite Guard",
+            completed: () => have($item`meteorite guard`),
+            ready: () => have($item`metal meteoroid`),
+            do: () => create($item`meteorite guard`),
         },
     ],
 };

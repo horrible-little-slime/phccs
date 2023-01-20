@@ -99,23 +99,18 @@ const Spell: CSQuest = {
         skillTask($skill`Spirit of Cayenne`),
         potionTask($item`flask of baconstone juice`),
         {
-            name: "Prep Mini-Adventurer",
+            name: "Saucefingers",
             ready: () => myLevel() >= 15 && have($familiar`Mini-Adventurer`),
-            completed: () => !!get("miniAdvClass"),
-            do: $location`The Dire Warren`,
-            prepare: () => horsery() === "pale" && horse("dark"),
-            outfit: () => uniform({ changes: { familiar: $familiar`Mini-Adventurer` } }),
-            combat: new CSStrategy(() => Macro.abort()),
-            choices: { [768]: 4 },
-        },
-        {
-            name: "Mini-Adventurer",
-            ready: () => !!get("miniAdvClass"),
             completed: () => have($effect`Saucefingers`),
             do: $location`The Dire Warren`,
             prepare: () => horsery() === "pale" && horse("dark"),
             outfit: () => uniform({ changes: { familiar: $familiar`Mini-Adventurer` } }),
-            combat: new CSStrategy(() => Macro.skill($skill`Feel Hatred`)),
+            combat: new CSStrategy(() =>
+                Macro.trySkill($skill`Asdon Martin: Spring-Loaded Front Bumper`).skill(
+                    $skill`Feel Hatred`
+                )
+            ),
+            choices: { [768]: 4 },
         },
         innerElf(),
         meteorShower(),
