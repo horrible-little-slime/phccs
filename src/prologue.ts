@@ -52,7 +52,10 @@ const MARKET_QUESTS = [
 const Prologue: CSQuest = {
     type: "MISC",
     name: "Prologue",
-    completed: () => !!get("csServicesPerformed").split(",").length,
+    completed: () =>
+        !!get("csServicesPerformed")
+            .split(",")
+            .filter((x) => x.trim().length > 0).length,
     tasks: [
         {
             name: "Set Workshed",
