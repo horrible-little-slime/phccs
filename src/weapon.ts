@@ -36,7 +36,7 @@ const Weapon: CSQuest = {
     outfit: () => {
         if (!have($item`broken champagne bottle`)) cliExecute("fold broken champagne bottle");
         return {
-            hat: $items`seal-skull helmet`,
+            hat: $items`seal-skull helmet, Iunion Crown`,
             weapon: $item`broken champagne bottle`,
             offhand: $item`dented scepter`,
             acc1: $item`Brutal brogues`,
