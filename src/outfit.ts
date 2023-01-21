@@ -53,7 +53,7 @@ function chooseFamiliar(canAttack: boolean): { familiar: Familiar; famequip: Ite
             condition() && (canAttack || !(familiar.elementalDamage || familiar.physicalDamage))
     );
     if (pick) {
-        return { famequip: $item`tiny stillsuit`, familiar: pick.familiar };
+        return { famequip: pick.famequip ?? $item`tiny stillsuit`, familiar: pick.familiar };
     }
     return { famequip: $item`tiny stillsuit`, familiar: $familiar`Puck Man` };
 }
@@ -62,5 +62,6 @@ type UniformOptions = { changes: OutfitSpec; canAttack: boolean };
 const DEFAULT_OPTIONS = { changes: {}, canAttack: true };
 export default function uniform(options: Partial<UniformOptions> = {}): OutfitSpec {
     const { changes, canAttack } = { ...DEFAULT_OPTIONS, ...options };
+    if ("familiar" in changes && !("famequip" in changes)) changes.famequip = $item`tiny stillsuit`;
     return { ...DEFAULT_UNIFORM(), ...chooseFamiliar(canAttack), ...changes };
 }
