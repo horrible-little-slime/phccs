@@ -21,7 +21,7 @@ const CoilWire: CSQuest = {
         {
             name: "Sausage",
             ready: () => getKramcoWandererChance() >= 1,
-            completed: () => get("_sausageFights") >= 0,
+            completed: () => get("_sausageFights") > 0,
             do: (): void => {
                 adv1($location`Noob Cave`, -1, "");
                 if (have($item`magical sausage casing`)) {
