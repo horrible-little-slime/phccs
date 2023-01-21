@@ -371,7 +371,12 @@ const Level: CSQuest = {
                 uniform({
                     changes: { back: $item`vampyric cloake`, acc3: $item`Lil' Doctor™ bag` },
                 }),
-            combat: new CSStrategy(() => Macro.skill($skill`Become a Bat`).skill($skill`Otoscope`).attack().repeat()),
+            combat: new CSStrategy(() =>
+                Macro.skill($skill`Become a Bat`)
+                    .skill($skill`Otoscope`)
+                    .attack()
+                    .repeat()
+            ),
         },
         {
             name: "LOV",
