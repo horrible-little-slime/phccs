@@ -9,7 +9,7 @@ import {
     visitUrl,
     writeCcs,
 } from "kolmafia";
-import { $path, CommunityService, get, PropertiesManager } from "libram";
+import { $effect, $path, CommunityService, get, PropertiesManager, uneffect } from "libram";
 import GLOBAL_QUEST from "./globaltasks";
 import { burnLibrams, CSTask } from "./lib";
 
@@ -151,7 +151,10 @@ export class CSEngine extends Engine<never, CSTask> {
                 }
             }
         } finally {
-            if (CSEngine.core === "soft") CommunityService.donate();
+            if (CSEngine.core === "soft") {
+                CommunityService.donate();
+                uneffect($effect`Feeling Lost`);
+            }
             CSEngine.propertyManager.resetAll();
             CommunityService.printLog(HIGHLIGHT);
         }
