@@ -285,13 +285,10 @@ const Level: CSQuest = {
             combat: new CSStrategy(() =>
                 Macro.if_(
                     $monster`amateur ninja`,
-                    Macro.skill($skill`Feel Nostalgic`).skill($skill`Gingerbread Mob Hit`)
+                    Macro.skill($skill`Feel Nostalgic`).skill($skill`Chest X-Ray`)
                 )
             ),
-            outfit: () => uniform({ canAttack: false }),
-            prepare: (): void => {
-                if (myMp() < 30) use($item`psychokinetic energy blob`, 2);
-            },
+            outfit: () => uniform({ canAttack: false, changes: { acc3: $item`Lil' Doctor™ bag` } }),
         },
         {
             name: "Get Range",
