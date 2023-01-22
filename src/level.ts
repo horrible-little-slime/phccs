@@ -289,6 +289,9 @@ const Level: CSQuest = {
                 )
             ),
             outfit: () => uniform({ canAttack: false }),
+            prepare: (): void => {
+                if (myMp() < 30) use($item`psychokinetic energy blob`, 2);
+            },
         },
         {
             name: "Get Range",

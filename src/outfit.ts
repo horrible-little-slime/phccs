@@ -50,7 +50,9 @@ const FAMILIAR_PICKS = [
 function chooseFamiliar(canAttack: boolean): { familiar: Familiar; famequip: Item } {
     const pick = FAMILIAR_PICKS.find(
         ({ condition, familiar }) =>
-            condition() && (canAttack || !(familiar.elementalDamage || familiar.physicalDamage))
+            condition() &&
+            have(familiar) &&
+            (canAttack || !(familiar.elementalDamage || familiar.physicalDamage))
     );
     if (pick) {
         return { famequip: pick.famequip ?? $item`tiny stillsuit`, familiar: pick.familiar };
