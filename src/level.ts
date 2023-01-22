@@ -226,6 +226,29 @@ const Level: CSQuest = {
         ...CastSkills,
         ...Recovery,
         {
+            name: "Get Range",
+            completed: () => get("hasRange"),
+            do: (): void => {
+                if (!have($item`Dramatic™ range`)) {
+                    buy(1, $item`Dramatic™ range`);
+                }
+                use(1, $item`Dramatic™ range`);
+            },
+        },
+        {
+            name: "Make & Use Ointment",
+            completed: () => have($effect`Mystically Oiled`),
+            ready: () => have($item`grapefruit`),
+            do: (): void => {
+                if (!have($item`ointment of the occult`)) {
+                    create(1, $item`ointment of the occult`);
+                }
+                if (have($item`ointment of the occult`)) {
+                    use(1, $item`ointment of the occult`);
+                }
+            },
+        },
+        {
             name: "Set Snojo",
             completed: () => !!get("snojoSetting"),
             do: (): void => {
@@ -255,27 +278,6 @@ const Level: CSQuest = {
         // A proton ghost should get fought here
         // It happens in globaltasks.ts
         {
-            name: "Map Tomato",
-            completed: () =>
-                get("lastCopyableMonster") === $monster`possessed can of tomatoes` ||
-                [...$items`tomato, tomato juice of powerful power`, $effect`Tomato Power`].some(
-                    (x) => have(x)
-                ),
-            do: (): void => {
-                Cartography.mapMonster(
-                    $location`The Haunted Pantry`,
-                    $monster`possessed can of tomatoes`
-                );
-            },
-            combat: new CSStrategy(() =>
-                Macro.if_(
-                    $monster`possessed can of tomatoes`,
-                    Macro.skill($skill`Reflex Hammer`)
-                ).abort()
-            ),
-            outfit: () => uniform({ changes: { acc3: $item`Lil' Doctor™ bag` } }),
-        },
-        {
             name: "Map Ninja",
             completed: () => have($item`li'l ninja costume`),
             do: (): void => {
@@ -283,48 +285,9 @@ const Level: CSQuest = {
             },
             ready: () => get("lastCopyableMonster") === $monster`possessed can of tomatoes`,
             combat: new CSStrategy(() =>
-                Macro.if_(
-                    $monster`amateur ninja`,
-                    Macro.skill($skill`Feel Nostalgic`).skill($skill`Chest X-Ray`)
-                )
+                Macro.if_($monster`amateur ninja`, Macro.skill($skill`Chest X-Ray`)).abort()
             ),
             outfit: () => uniform({ canAttack: false, changes: { acc3: $item`Lil' Doctor™ bag` } }),
-        },
-        {
-            name: "Get Range",
-            completed: () => get("hasRange"),
-            do: (): void => {
-                if (!have($item`Dramatic™ range`)) {
-                    buy(1, $item`Dramatic™ range`);
-                }
-                use(1, $item`Dramatic™ range`);
-            },
-        },
-        {
-            name: "Make & Use Tomato Juice",
-            completed: () => have($effect`Tomato Power`),
-            ready: () => have($item`tomato`),
-            do: (): void => {
-                if (!have($item`tomato juice of powerful power`) && have($item`tomato`)) {
-                    create(1, $item`tomato juice of powerful power`);
-                }
-                if (have($item`tomato juice of powerful power`)) {
-                    use(1, $item`tomato juice of powerful power`);
-                }
-            },
-        },
-        {
-            name: "Make & Use Ointment",
-            completed: () => have($effect`Mystically Oiled`),
-            ready: () => have($item`grapefruit`),
-            do: (): void => {
-                if (!have($item`ointment of the occult`)) {
-                    create(1, $item`ointment of the occult`);
-                }
-                if (have($item`ointment of the occult`)) {
-                    use(1, $item`ointment of the occult`);
-                }
-            },
         },
         {
             name: "Eleven Rests",
