@@ -20,8 +20,10 @@ import {
     $familiar,
     $item,
     $items,
+    $location,
     $skill,
     $skills,
+    AutumnAton,
     Clan,
     CommunityService,
     get,
@@ -87,6 +89,11 @@ const Prologue: CSQuest = {
                         );
                 }
             },
+        },
+        {
+            name: "Fallbot",
+            completed: () => !AutumnAton.available(),
+            do: () => AutumnAton.sendTo($location`The Sleazy Back Alley`),
         },
         {
             name: "Borrow Time",
