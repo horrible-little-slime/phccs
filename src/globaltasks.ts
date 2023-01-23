@@ -53,8 +53,8 @@ const GLOBAL_TASKS: CSTask[] = [
                 .trySkill($skill`Shoot Ghost`)
                 .trySkill($skill`Trap Ghost`)
         ),
-        outfit: () => uniform({ changes: { back: $item`protonic accelerator pack` }})
-    }
+        outfit: () => uniform({ changes: { back: $item`protonic accelerator pack` } }),
+    },
 ];
 
 const GLOBAL_QUEST: Quest<CSTask> = { name: "Global", tasks: GLOBAL_TASKS };
