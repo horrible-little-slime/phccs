@@ -28,12 +28,16 @@ type Misc = {
 export type CSQuest = Quest<CSTask> & { turnsSpent?: number | (() => number) } & (Service | Misc);
 
 export class CSEngine extends Engine<never, CSTask> {
-    static propertyManager = new PropertiesManager();
-    static core = inHardcore() ? "hard" : "soft";
+    private static propertyManager = new PropertiesManager();
+    private static core_ = inHardcore() ? "hard" : "soft";
     propertyManager = CSEngine.propertyManager;
     name: string;
     csOptions: Service | Misc;
     turnsSpent?: number | (() => number);
+
+    static get core(): "hard" | "soft" {
+        return CSEngine.core_ as "hard" | "soft";
+    }
 
     constructor(quest: CSQuest) {
         super(getTasks([GLOBAL_QUEST, quest]));
