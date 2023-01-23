@@ -51,10 +51,9 @@ export function fuelUp(): void {
     cliExecute(`asdonmartin fuel ${availableAmount($item`loaf of soda bread`)} soda bread`);
 }
 
-//
 const SYNTH_PAIRS = [
-    [$item`Crimbo fudge`, $item`bag of many confections`],
     [$item`Crimbo fudge`, $item`Crimbo fudge`],
+    [$item`Crimbo fudge`, $item`bag of many confections`],
     [$item`Crimbo peppermint bark`, $item`Crimbo candied pecan`],
     [$item`Crimbo peppermint bark`, $item`peppermint sprout`],
     [$item`Crimbo candied pecan`, $item`peppermint crook`],
