@@ -39,7 +39,7 @@ const PULLS = [
     $items`repaid diaper, Great Wolf's beastly trousers`,
     $items`meteorite necklace, meteorite ring, meteorite fragment, meteorite earring`,
     $items`Stick-Knife of Loathing`,
-    $items`moveable feast, Snow Suit`,
+    $items`moveable feast`,
 ];
 
 let codpieceAttempted = false;
