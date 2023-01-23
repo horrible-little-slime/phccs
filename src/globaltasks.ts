@@ -3,6 +3,7 @@ import { abort, adv1, cliExecute, reverseNumberology, useSkill } from "kolmafia"
 import { $effect, $item, $location, $skill, get, have, withProperty } from "libram";
 import { CSStrategy, Macro } from "./combat";
 import { CSTask } from "./lib";
+import uniform from "./outfit";
 
 const GLOBAL_TASKS: CSTask[] = [
     {
@@ -52,7 +53,8 @@ const GLOBAL_TASKS: CSTask[] = [
                 .trySkill($skill`Shoot Ghost`)
                 .trySkill($skill`Trap Ghost`)
         ),
-    },
+        outfit: () => uniform({ changes: { back: $item`protonic accelerator pack` }})
+    }
 ];
 
 const GLOBAL_QUEST: Quest<CSTask> = { name: "Global", tasks: GLOBAL_TASKS };
