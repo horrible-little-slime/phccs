@@ -1,7 +1,14 @@
+import { CombatStrategy } from "grimoire-kolmafia";
 import { myClass } from "kolmafia";
 import { $class, $item, $skill, have, StrictMacro } from "libram";
 
-export default class Macro extends StrictMacro {
+export class CSStrategy extends CombatStrategy {
+    constructor(macro: () => Macro = () => Macro.defaultKill()) {
+        super();
+        this.macro(macro).autoattack(macro);
+    }
+}
+export class Macro extends StrictMacro {
     delevel(): Macro {
         return this.trySkill($skill`Curse of Weaksauce`)
             .trySkill($skill`Micrometeorite`)

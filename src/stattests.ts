@@ -1,156 +1,157 @@
+import { cliExecute, itemAmount, myThrall, Thrall, use, useSkill } from "kolmafia";
 import {
-    availableAmount,
-    create,
-    eat,
-    itemAmount,
-    retrieveItem,
-    use,
-    useFamiliar,
-    useSkill,
-} from "kolmafia";
-import { $effect, $familiar, $item, $skill, BeachComb, CommunityService, get, have } from "libram";
-import { hpOutfit, moxieOutfit, muscleOutfit, mysticalityOutfit } from "./outfits";
-import {
-    burnLibrams,
-    ensureEffect,
-    ensureInnerElf,
-    equalizeMoxie,
-    equalizeMuscle,
-    tryUse,
-} from "./lib";
+    $effects,
+    $familiar,
+    $item,
+    $items,
+    $thrall,
+    CommunityService,
+    have,
+    RetroCape,
+} from "libram";
+import { potionTask, restore, skillTask } from "./commons";
+import { CSEngine, CSQuest } from "./engine";
+import { CSTask } from "./lib";
 
-const musclePredictor = () => CommunityService.Muscle.prediction;
+const SKILL_BUFFS = {
+    MUSCLE: $effects`Feeling Excited, Big, Song of Bravado, Rage of the Reindeer, Quiet Determination, Disdain of the War Snapper`,
+    MYSTICALITY: $effects`Feeling Excited, Big, Song of Bravado`,
+    MOXIE: $effects`Feeling Excited, Big, Song of Bravado, Blessing of the Bird, Quiet Desperation, Disco Fever, Blubbered Up, Mariachi Mood, Disco State of Mind`,
+    HP: $effects`Feeling Excited, Big, Song of Starch, Rage of the Reindeer, Quiet Determination, Disdain of the War Snapper`,
+};
 
-function musclebuffs() {
-    equalizeMuscle();
-    ensureEffect($effect`Big`);
-    ensureEffect($effect`Song of Bravado`);
-    ensureEffect($effect`Rage of the Reindeer`);
-    ensureEffect($effect`Quiet Determination`);
-    ensureEffect($effect`Disdain of the War Snapper`);
-    ensureEffect($effect`Feeling Excited`);
-    ensureEffect($effect`The Power of LOV`);
-    if (!have($effect`Go Get 'Em, Tiger!`)) {
-        retrieveItem($item`Ben-Gal™ Balm`);
-        use(1, $item`Ben-Gal™ Balm`);
-    }
+function skillBuffTasks(key: keyof typeof SKILL_BUFFS): CSTask[] {
+    return [...SKILL_BUFFS[key].map(skillTask), restore(SKILL_BUFFS[key])];
 }
 
-function muscleTestPrep() {
-    muscleOutfit.dress();
-
-    for (const increaser of [
-        () => BeachComb.tryHead($effect`Lack of Body-Building`), // will stay on all the way to weapon damage.
-        () => ensureEffect($effect`Ham-Fisted`),
-        () => ensureInnerElf(),
-    ]) {
-        if (musclePredictor() > 1) increaser();
-    }
+function thrallTask(thrall: Thrall): CSTask {
+    return {
+        name: thrall.toString(),
+        completed: () => myThrall() === thrall,
+        do: () => useSkill(thrall.skill),
+    };
 }
 
-export function muscleTest(): void {
-    musclebuffs();
-    muscleTestPrep();
-    if (musclePredictor() > 1) throw "Not enough muscle to cap";
-    burnLibrams();
-}
+const Muscle: CSQuest = {
+    name: "Muscle",
+    type: "SERVICE",
+    test: CommunityService.Muscle,
+    outfit: () => {
+        if (!have($item`wad of used tape`)) cliExecute("fold wad of used tape");
+        return {
+            hat: $item`wad of used tape`,
+            weapon: $item`Fourth of May Cosplay Saber`,
+            offhand: $item`dented scepter`,
+            shirt: $item`Jurassic Parka`,
+            back: $item`unwrapped knock-off retro superhero cape`,
+            pants: $item`designer sweatpants`,
+            acc1: $item`Brutal brogues`,
+            acc2: CSEngine.core === "soft" ? $item`meteorite necklace` : $item`Retrospecs`,
+            acc3: $item`Kremlin's Greatest Briefcase`,
+            familiar: $familiar`Left-Hand Man`,
+            modes: {
+                retrocape: ["vampire", RetroCape.currentMode()],
+                parka: "dilophosaur",
+                umbrella: "broken",
+            },
+            famequip: $item`unbreakable umbrella`,
+        };
+    },
+    turnsSpent: 0,
+    maxTurns: 1,
+    tasks: [
+        ...skillBuffTasks("MUSCLE"),
+        potionTask($item`LOV Elixir #3`),
+        thrallTask($thrall`Elbow Macaroni`),
+    ],
+};
 
-const mystPredictor = () => CommunityService.Mysticality.prediction;
+const Mysticality: CSQuest = {
+    name: "Mysticality",
+    type: "SERVICE",
+    test: CommunityService.Mysticality,
+    outfit: () => {
+        if (!have($item`wad of used tape`)) cliExecute("fold wad of used tape");
+        return {
+            hat: $item`wad of used tape`,
+            weapon: $item`Fourth of May Cosplay Saber`,
+            offhand: $items`astral statuette, industrial fire extinguisher`,
+            back: $item`unwrapped knock-off retro superhero cape`,
+            shirt: $items`denim jacket, shoe ad T-shirt, fresh coat of paint`,
+            pants: $item`designer sweatpants`,
+            acc1: $item`your cowboy boots`,
+            acc2: $item`codpiece`,
+            acc3: $item`battle broom`,
+            famequip: $items`Abracandalabra`,
+            familiar: $familiar`Left-Hand Man`,
+            modes: { retrocape: ["vampire", RetroCape.currentMode()] },
+        };
+    },
+    turnsSpent: 0,
+    maxTurns: 1,
+    tasks: [...skillBuffTasks("MYSTICALITY")],
+};
 
-function mystbuffs() {
-    ensureEffect($effect`Feeling Excited`);
-}
+const Moxie: CSQuest = {
+    name: "Moxie",
+    type: "SERVICE",
+    test: CommunityService.Moxie,
+    outfit: () => ({
+        hat: $item`very pointy crown`,
+        shirt: $item`Jurassic Parka`,
+        back: $item`unwrapped knock-off retro superhero cape`,
+        weapon: $item`Fourth of May Cosplay Saber`,
+        offhand: $item`unbreakable umbrella`,
+        pants: $item`Cargo Cultist Shorts`,
+        acc1: $item`Beach Comb`,
+        acc2: $item`"I Voted!" sticker`,
+        acc3: $item`Retrospecs`,
+        famequip: $item`miniature crystal ball`,
+        modes: { retrocape: ["robot", RetroCape.currentMode()], umbrella: "broken" },
+    }),
+    turnsSpent: 0,
+    maxTurns: 1,
+    tasks: [
+        ...skillBuffTasks("MOXIE"),
+        ...$items`runproof mascara, confiscated love note, dollop of barbecue sauce`.map(
+            potionTask
+        ),
+        {
+            name: "Rhinestones",
+            completed: () => !have($item`rhinestone`),
+            do: () => use(itemAmount($item`rhinestone`), $item`rhinestone`),
+        },
+        thrallTask($thrall`Penne Dreadful`),
+    ],
+};
 
-function mystTestPrep() {
-    mysticalityOutfit.dress();
-}
+const Hitpoints: CSQuest = {
+    name: "Hitpoints",
+    type: "SERVICE",
+    test: CommunityService.HP,
+    turnsSpent: 0,
+    maxTurns: 1,
+    outfit: () => {
+        if (!have($item`wad of used tape`)) cliExecute("fold wad of used tape");
+        return {
+            hat: $item`wad of used tape`,
+            weapon: $item`dented scepter`,
+            offhand: $item`Fourth of May Cosplay Saber`,
+            shirt: $items`Jurassic Parka, shoe ad T-shirt, fresh coat of paint`,
+            back: $item`unwrapped knock-off retro superhero cape`,
+            pants: $item`Cargo Cultist Shorts`,
+            acc1: $item`Brutal brogues`,
+            acc2: $item`Retrospecs`,
+            acc3: $item`Kremlin's Greatest Briefcase`,
+            famequip: $item`miniature crystal ball`,
+            modes: { retrocape: ["vampire", RetroCape.currentMode()], parka: "kachungasaur" },
+        };
+    },
+    tasks: [
+        ...skillBuffTasks("HP"),
+        potionTask($item`LOV Elixir #3`),
+        thrallTask($thrall`Elbow Macaroni`),
+    ],
+};
 
-export function mystTest(): void {
-    mystbuffs();
-    mystTestPrep();
-    if (mystPredictor() > 1) throw "Not enough mysticality to cap";
-    burnLibrams();
-}
-
-const moxPredictor = () => CommunityService.Moxie.prediction;
-
-function moxBuffs() {
-    if (have($item`magical sausage casing`)) {
-        create(1, $item`magical sausage`);
-    }
-    if (have($item`magical sausage`)) {
-        eat(1, $item`magical sausage`);
-    }
-    ensureEffect($effect`Feeling Excited`);
-    equalizeMoxie();
-    ensureEffect($effect`Pomp & Circumsands`);
-
-    use(1, $item`Bird-a-Day calendar`);
-    ensureEffect($effect`Blessing of the Bird`);
-
-    if (!get("_favoriteBirdVisited")) useSkill($skill`Visit your Favorite Bird`);
-
-    ensureEffect($effect`Quiet Desperation`);
-    ensureEffect($effect`Disco Fever`);
-    ensureEffect($effect`Blubbered Up`);
-    ensureEffect($effect`Mariachi Mood`);
-    ensureEffect($effect`Disco State of Mind`);
-    use(availableAmount($item`rhinestone`), $item`rhinestone`);
-
-    if (availableAmount($item`dollop of barbecue sauce`) > 0) {
-        use(1, $item`dollop of barbecue sauce`);
-    }
-    if (itemAmount($item`confiscated love note`) > 0) {
-        use(1, $item`confiscated love note`);
-    }
-
-    if (!have($effect`Unrunnable Face`)) {
-        tryUse(1, $item`runproof mascara`);
-    }
-}
-
-function moxTestPrep() {
-    useFamiliar($familiar`Left-Hand Man`);
-    if (moxPredictor() > 1) {
-        ensureInnerElf();
-    }
-    moxieOutfit.dress();
-}
-
-export function moxTest(): void {
-    moxBuffs();
-    moxTestPrep();
-    if (moxPredictor() > 1) {
-        throw "Not enough moxie to cap.";
-    }
-    burnLibrams();
-}
-
-function hpBuffs() {
-    equalizeMuscle();
-    ensureEffect($effect`Big`);
-    ensureEffect($effect`Song of Starch`);
-    ensureEffect($effect`Rage of the Reindeer`);
-    ensureEffect($effect`Quiet Determination`);
-    ensureEffect($effect`Disdain of the War Snapper`);
-    ensureEffect($effect`Feeling Excited`);
-    ensureEffect($effect`The Power of LOV`);
-    if (!have($effect`Go Get 'Em, Tiger!`)) {
-        retrieveItem($item`Ben-Gal™ Balm`);
-        use(1, $item`Ben-Gal™ Balm`);
-    }
-}
-
-const hpPredictor = () => CommunityService.HP.prediction;
-function hpTestPrep() {
-    hpOutfit.dress();
-}
-
-export function HPTest(): void {
-    hpBuffs();
-    hpTestPrep();
-    if (hpPredictor() > 1) {
-        throw "Failed to cap HP";
-    }
-    burnLibrams();
-}
+export { Muscle, Mysticality, Moxie, Hitpoints };

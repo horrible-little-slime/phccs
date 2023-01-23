@@ -1,6 +1,6 @@
-import { getPermedSkills, Skill, use } from "kolmafia";
+import { getPermedSkills, Skill } from "kolmafia";
 import { $class, $familiar, $item, $path, ascend, have, Lifestyle, prepareAscension } from "libram";
-import { burnSafaris } from "./casual-gash";
+import { burnSafaris } from "./lib";
 
 export function main(args = ""): void {
     burnSafaris();
@@ -43,6 +43,4 @@ export function main(args = ""): void {
             permSkills,
         }
     );
-
-    use($item`Asdon Martin keyfob`);
 }
