@@ -283,7 +283,6 @@ const Level: CSQuest = {
             do: (): void => {
                 Cartography.mapMonster($location`The Haiku Dungeon`, $monster`amateur ninja`);
             },
-            ready: () => get("lastCopyableMonster") === $monster`possessed can of tomatoes`,
             combat: new CSStrategy(() =>
                 Macro.if_($monster`amateur ninja`, Macro.skill($skill`Chest X-Ray`)).abort()
             ),
