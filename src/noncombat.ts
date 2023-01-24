@@ -70,6 +70,7 @@ const Noncombat: CSQuest = {
                         famequip: $item`God Lobster's Ring`,
                     },
                 }),
+            choices: { [1310]: 2 },
             combat: new CSStrategy(),
         },
     ],
