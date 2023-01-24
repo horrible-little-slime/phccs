@@ -426,7 +426,7 @@ const Level: CSQuest = {
             },
             choices: {
                 // Stats
-                [1310]: () => hasNcBird() ? 3 : 1,
+                [1310]: () => (hasNcBird() ? 3 : 1),
             },
             combat: new CSStrategy(),
         },
