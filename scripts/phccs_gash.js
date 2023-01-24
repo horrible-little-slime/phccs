@@ -2125,7 +2125,7 @@ function burnSafaris() {
 }
 
 // src/gash/cs.ts
-var _templateObject8, _templateObject211, _templateObject35, _templateObject42, _templateObject52, _templateObject62, _templateObject72;
+var _templateObject8, _templateObject211, _templateObject35, _templateObject42, _templateObject52;
 function _taggedTemplateLiteral4(strings, raw) {
   return raw || (raw = strings.slice(0)), Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } }));
 }
@@ -2140,12 +2140,12 @@ function main() {
       ceiling: "ceiling fan"
     }
   });
-  var lifestyle = args.includes("softcore") ? Lifestyle.softcore : Lifestyle.hardcore, pet = lifestyle === Lifestyle.softcore ? $item(_templateObject8 || (_templateObject8 = _taggedTemplateLiteral4(["astral chapeau"]))) : have($familiar(_templateObject211 || (_templateObject211 = _taggedTemplateLiteral4(["Baby Bugged Bugbear"])))) ? $item(_templateObject35 || (_templateObject35 = _taggedTemplateLiteral4(["astral statuette"]))) : $item(_templateObject42 || (_templateObject42 = _taggedTemplateLiteral4(["astral pet sweater"]))), perms = (0, import_kolmafia7.getPermedSkills)(), permSkills = new Map(import_kolmafia7.Skill.all().filter(function(s) {
+  var lifestyle = args.includes("softcore") ? Lifestyle.softcore : Lifestyle.hardcore, pet = lifestyle === Lifestyle.softcore ? $item(_templateObject8 || (_templateObject8 = _taggedTemplateLiteral4(["astral chapeau"]))) : $item(_templateObject211 || (_templateObject211 = _taggedTemplateLiteral4(["astral statuette"]))), perms = (0, import_kolmafia7.getPermedSkills)(), permSkills = new Map(import_kolmafia7.Skill.all().filter(function(s) {
     return have(s) && !perms[s.name] && s.permable;
   }).map(function(s) {
     return [s, Lifestyle.hardcore];
   }));
-  ascend($path(_templateObject52 || (_templateObject52 = _taggedTemplateLiteral4(["Community Service"]))), $class(_templateObject62 || (_templateObject62 = _taggedTemplateLiteral4(["Pastamancer"]))), lifestyle, "knoll", $item(_templateObject72 || (_templateObject72 = _taggedTemplateLiteral4(["astral six-pack"]))), pet, {
+  ascend($path(_templateObject35 || (_templateObject35 = _taggedTemplateLiteral4(["Community Service"]))), $class(_templateObject42 || (_templateObject42 = _taggedTemplateLiteral4(["Pastamancer"]))), lifestyle, "knoll", $item(_templateObject52 || (_templateObject52 = _taggedTemplateLiteral4(["astral six-pack"]))), pet, {
     neverAbort: !0,
     permSkills: permSkills
   });
