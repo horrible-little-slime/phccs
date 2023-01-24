@@ -1,5 +1,6 @@
 import { cliExecute, itemAmount, myThrall, Thrall, use, useSkill } from "kolmafia";
 import {
+    $effect,
     $effects,
     $familiar,
     $item,
@@ -9,7 +10,7 @@ import {
     have,
     RetroCape,
 } from "libram";
-import { potionTask, restore, skillTask } from "./commons";
+import { beachTask, innerElf, potionTask, restore, skillTask } from "./commons";
 import { CSEngine, CSQuest } from "./engine";
 import { CSTask } from "./lib";
 
@@ -63,6 +64,9 @@ const Muscle: CSQuest = {
         ...skillBuffTasks("MUSCLE"),
         potionTask($item`LOV Elixir #3`),
         thrallTask($thrall`Elbow Macaroni`),
+        beachTask($effect`Lack of Body-Building`),
+        { ...innerElf(), core: "hard" },
+        { ...potionTask($item`Ben-Gal™ Balm`), core: "hard" },
     ],
 };
 

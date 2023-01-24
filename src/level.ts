@@ -38,7 +38,7 @@ import {
 import { CSStrategy, Macro } from "./combat";
 import { beachTask, innerElf } from "./commons";
 import { CSQuest } from "./engine";
-import { burnLibrams, synthExp } from "./lib";
+import { burnLibrams, hasNcBird, synthExp } from "./lib";
 import uniform from "./outfit";
 const levellingComplete = myLevel() >= 13 && get("_neverendingPartyFreeTurns") >= 10;
 let lovePotionConsidered = false;
@@ -410,7 +410,7 @@ const Level: CSQuest = {
         },
         {
             name: "God Lobster",
-            completed: () => get("_godLobsterFights") >= 3,
+            completed: () => get("_godLobsterFights") >= (hasNcBird() ? 3 : 2),
             do: (): void => {
                 visitUrl("main.php?fightgodlobster=1");
                 runCombat();
@@ -426,7 +426,7 @@ const Level: CSQuest = {
             },
             choices: {
                 // Stats
-                [1310]: 3,
+                [1310]: () => (hasNcBird() ? 3 : 1),
             },
             combat: new CSStrategy(),
         },

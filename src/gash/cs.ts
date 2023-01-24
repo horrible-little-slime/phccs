@@ -1,5 +1,5 @@
 import { getPermedSkills, Skill } from "kolmafia";
-import { $class, $familiar, $item, $path, ascend, have, Lifestyle, prepareAscension } from "libram";
+import { $class, $item, $path, ascend, have, Lifestyle, prepareAscension } from "libram";
 import { burnSafaris } from "./lib";
 
 export function main(args = ""): void {
@@ -17,12 +17,7 @@ export function main(args = ""): void {
 
     const lifestyle = args.includes("softcore") ? Lifestyle.softcore : Lifestyle.hardcore;
 
-    const pet =
-        lifestyle === Lifestyle.softcore
-            ? $item`astral chapeau`
-            : have($familiar`Baby Bugged Bugbear`)
-            ? $item`astral statuette`
-            : $item`astral pet sweater`;
+    const pet = lifestyle === Lifestyle.softcore ? $item`astral chapeau` : $item`astral statuette`;
 
     const perms = getPermedSkills();
     const permSkills = new Map(
