@@ -1,8 +1,10 @@
-import { cliExecute, useSkill } from "kolmafia";
+import { cliExecute, runChoice, runCombat, useSkill, visitUrl } from "kolmafia";
 import { $effect, $effects, $familiar, $item, $skill, CommunityService, get, have } from "libram";
+import { CSStrategy } from "./combat";
 import { asdonTask, commonFamiliarWeightBuffs, restore, skillTask, songTask } from "./commons";
 import { CSQuest } from "./engine";
-import { horse, horsery } from "./lib";
+import { hasNcBird, horse, horsery } from "./lib";
+import uniform from "./outfit";
 
 const Noncombat: CSQuest = {
     name: "Noncombat",
@@ -41,10 +43,7 @@ const Noncombat: CSQuest = {
         {
             name: "Favourite Bird",
             completed: () => get("_favoriteBirdVisited"),
-            ready: () =>
-                get("yourFavoriteBirdMods")
-                    .split(",")
-                    .some((mod) => mod.includes("Combat Rate: -")),
+            ready: hasNcBird,
             do: () => useSkill($skill`Visit your Favorite Bird`),
         },
         songTask($effect`The Sonata of Sneakiness`, $effect`Fat Leon's Phat Loot Lyric`),
@@ -55,6 +54,24 @@ const Noncombat: CSQuest = {
             do: () => cliExecute("swim sprints"),
         },
         asdonTask("Stealthily"),
+        {
+            name: "God Lobster",
+            completed: () => get("_godLobsterFights") >= 3,
+            do: (): void => {
+                visitUrl("main.php?fightgodlobster=1");
+                runCombat();
+                visitUrl("choice.php");
+                runChoice(-1);
+            },
+            outfit: () =>
+                uniform({
+                    changes: {
+                        familiar: $familiar`God Lobster`,
+                        famequip: $item`God Lobster's Ring`,
+                    },
+                }),
+            combat: new CSStrategy(),
+        },
     ],
 };
 

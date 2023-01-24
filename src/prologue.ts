@@ -246,7 +246,9 @@ const Prologue: CSQuest = {
             name: "Codpiece",
             completed: () => have($item`codpiece`) || codpieceAttempted,
             do: (): void => {
-                Clan.with("Alliance From Heck", () => cliExecute("acquire codpiece"));
+                Clan.with(get("phccs_mainClan", "Bonus Adventures From Hell"), () =>
+                    cliExecute("acquire codpiece")
+                );
                 codpieceAttempted = true;
             },
         },

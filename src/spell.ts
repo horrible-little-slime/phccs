@@ -44,7 +44,7 @@ const Spell: CSQuest = {
     type: "SERVICE",
     test: CommunityService.SpellDamage,
     outfit: () => ({
-        hat: $items`astral chapeau, Hollandaise helmet`,
+        hat: $items`astral chapeau, Hollandaise helmet, Iunion Crown`,
         weapon: CSEngine.core === "soft" ? chefstaves : $item`weeping willow wand`,
         offhand: $item`Abracandalabra`,
         pants: $item`designer sweatpants`,
@@ -86,6 +86,12 @@ const Spell: CSQuest = {
             name: "Mariachi Hat",
             completed: () => have($item`mariachi hat`),
             do: () => retrieveItem($item`mariachi hat`),
+        },
+        {
+            name: "Weeping Willow Wand",
+            completed: () => have($item`weeping willow wand`),
+            core: "hard",
+            do: () => retrieveItem($item`weeping willow wand`),
         },
         {
             name: "Tea Party",

@@ -266,3 +266,9 @@ export function unequip(item: Item): void {
         equip(slot, $item`none`);
     }
 }
+
+export function hasNcBird(): boolean {
+    return get("yourFavoriteBirdMods")
+        .split(",")
+        .some((mod) => mod.includes("Combat Rate: -"));
+}
