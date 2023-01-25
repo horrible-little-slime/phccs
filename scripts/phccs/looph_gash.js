@@ -27,10 +27,6 @@ var __export = function(target, all) {
 };
 var __toESM = function(mod, isNodeMode, target) {
   return target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
-    // If the importer is in node compatibility mode or this is not an ESM
-    // file that has been converted to a CommonJS file using a Babel-
-    // compatible transform (i.e. "__esModule" has not been set), then set
-    // "default" to the CommonJS "module.exports" for node compatibility.
     isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: !0 }) : target,
     mod
   );
@@ -55,10 +51,7 @@ var require_global = __commonJS({
     var check = function(it) {
       return it && it.Math == Math && it;
     };
-    module2.exports = // eslint-disable-next-line es-x/no-global-this -- safe
-    check(typeof globalThis == "object" && globalThis) || check(typeof window == "object" && window) || // eslint-disable-next-line no-restricted-globals -- safe
-    check(typeof self == "object" && self) || check(typeof global == "object" && global) || // eslint-disable-next-line no-new-func -- fallback
-    function() {
+    module2.exports = check(typeof globalThis == "object" && globalThis) || check(typeof window == "object" && window) || check(typeof self == "object" && self) || check(typeof global == "object" && global) || function() {
       return this;
     }() || Function("return this")();
   }
@@ -280,8 +273,7 @@ var require_native_symbol = __commonJS({
     var V8_VERSION = require_engine_v8_version(), fails = require_fails();
     module2.exports = !!Object.getOwnPropertySymbols && !fails(function() {
       var symbol = Symbol();
-      return !String(symbol) || !(Object(symbol) instanceof Symbol) || // Chrome 38-40 symbols are not inherited from DOM collections prototypes to instances
-      !Symbol.sham && V8_VERSION && V8_VERSION < 41;
+      return !String(symbol) || !(Object(symbol) instanceof Symbol) || !Symbol.sham && V8_VERSION && V8_VERSION < 41;
     });
   }
 });
@@ -839,11 +831,7 @@ var require_array_includes = __commonJS({
       };
     };
     module2.exports = {
-      // `Array.prototype.includes` method
-      // https://tc39.es/ecma262/#sec-array.prototype.includes
       includes: createMethod(!0),
-      // `Array.prototype.indexOf` method
-      // https://tc39.es/ecma262/#sec-array.prototype.indexof
       indexOf: createMethod(!1)
     };
   }
@@ -975,11 +963,7 @@ var require_object_to_array = __commonJS({
       };
     };
     module2.exports = {
-      // `Object.entries` method
-      // https://tc39.es/ecma262/#sec-object.entries
       entries: createMethod(!0),
-      // `Object.values` method
-      // https://tc39.es/ecma262/#sec-object.values
       values: createMethod(!1)
     };
   }
@@ -1414,7 +1398,10 @@ __export(casual_exports, {
 });
 module.exports = __toCommonJS(casual_exports);
 init_kolmafia_polyfill();
-var import_kolmafia7 = require("kolmafia");
+
+// src/gash/lib.ts
+init_kolmafia_polyfill();
+var import_kolmafia6 = require("kolmafia");
 
 // node_modules/libram/dist/index.js
 init_kolmafia_polyfill();
@@ -1585,7 +1572,7 @@ function _createForOfIteratorHelper(o, allowArrayLike) {
   } };
 }
 function _unsupportedIterableToArray(o, minLen) {
-  if (o) {
+  if (!!o) {
     if (typeof o == "string")
       return _arrayLikeToArray(o, minLen);
     var n = Object.prototype.toString.call(o).slice(8, -1);
@@ -1807,6 +1794,15 @@ function _createForOfIteratorHelper2(o, allowArrayLike) {
 function _taggedTemplateLiteral2(strings, raw) {
   return raw || (raw = strings.slice(0)), Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } }));
 }
+function _defineProperties(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor);
+  }
+}
+function _createClass(Constructor, protoProps, staticProps) {
+  return protoProps && _defineProperties(Constructor.prototype, protoProps), staticProps && _defineProperties(Constructor, staticProps), Object.defineProperty(Constructor, "prototype", { writable: !1 }), Constructor;
+}
 function _classCallCheck(instance, Constructor) {
   if (!(instance instanceof Constructor))
     throw new TypeError("Cannot call a class as a function");
@@ -1814,7 +1810,7 @@ function _classCallCheck(instance, Constructor) {
 function _inherits(subClass, superClass) {
   if (typeof superClass != "function" && superClass !== null)
     throw new TypeError("Super expression must either be null or a function");
-  subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), superClass && _setPrototypeOf(subClass, superClass);
+  subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), Object.defineProperty(subClass, "prototype", { writable: !1 }), superClass && _setPrototypeOf(subClass, superClass);
 }
 function _createSuper(Derived) {
   var hasNativeReflectConstruct = _isNativeReflectConstruct();
@@ -1859,7 +1855,7 @@ function _wrapNativeSuper(Class4) {
   }, _wrapNativeSuper(Class4);
 }
 function _construct(Parent, args, Class4) {
-  return _isNativeReflectConstruct() ? _construct = Reflect.construct : _construct = function(Parent2, args2, Class5) {
+  return _isNativeReflectConstruct() ? _construct = Reflect.construct.bind() : _construct = function(Parent2, args2, Class5) {
     var a = [null];
     a.push.apply(a, args2);
     var Constructor = Function.bind.apply(Parent2, a), instance = new Constructor();
@@ -1882,17 +1878,33 @@ function _isNativeFunction(fn) {
   return Function.toString.call(fn).indexOf("[native code]") !== -1;
 }
 function _setPrototypeOf(o, p) {
-  return _setPrototypeOf = Object.setPrototypeOf || function(o2, p2) {
+  return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function(o2, p2) {
     return o2.__proto__ = p2, o2;
   }, _setPrototypeOf(o, p);
 }
 function _getPrototypeOf(o) {
-  return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function(o2) {
+  return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function(o2) {
     return o2.__proto__ || Object.getPrototypeOf(o2);
   }, _getPrototypeOf(o);
 }
 function _defineProperty(obj, key, value) {
-  return key in obj ? Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+  return key = _toPropertyKey(key), key in obj ? Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+}
+function _toPropertyKey(arg) {
+  var key = _toPrimitive(arg, "string");
+  return typeof key == "symbol" ? key : String(key);
+}
+function _toPrimitive(input, hint) {
+  if (typeof input != "object" || input === null)
+    return input;
+  var prim = input[Symbol.toPrimitive];
+  if (prim !== void 0) {
+    var res = prim.call(input, hint || "default");
+    if (typeof res != "object")
+      return res;
+    throw new TypeError("@@toPrimitive must return a primitive value.");
+  }
+  return (hint === "string" ? String : Number)(input);
 }
 function _slicedToArray(arr, i) {
   return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray2(arr, i) || _nonIterableRest();
@@ -1901,7 +1913,7 @@ function _nonIterableRest() {
   throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
 function _unsupportedIterableToArray2(o, minLen) {
-  if (o) {
+  if (!!o) {
     if (typeof o == "string")
       return _arrayLikeToArray2(o, minLen);
     var n = Object.prototype.toString.call(o).slice(8, -1);
@@ -1920,15 +1932,21 @@ function _arrayLikeToArray2(arr, len) {
 function _iterableToArrayLimit(arr, i) {
   var _i = arr == null ? null : typeof Symbol != "undefined" && arr[Symbol.iterator] || arr["@@iterator"];
   if (_i != null) {
-    var _arr = [], _n = !0, _d = !1, _s, _e;
+    var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1;
     try {
-      for (_i = _i.call(arr); !(_n = (_s = _i.next()).done) && (_arr.push(_s.value), !(i && _arr.length === i)); _n = !0)
-        ;
+      if (_x = (_i = _i.call(arr)).next, i === 0) {
+        if (Object(_i) !== _i)
+          return;
+        _n = !1;
+      } else
+        for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0)
+          ;
     } catch (err) {
       _d = !0, _e = err;
     } finally {
       try {
-        !_n && _i.return != null && _i.return();
+        if (!_n && _i.return != null && (_r = _i.return(), Object(_r) !== _r))
+          return;
       } finally {
         if (_d)
           throw _e;
@@ -1965,7 +1983,7 @@ var AscendError = /* @__PURE__ */ function(_Error) {
       cause instanceof import_kolmafia5.Item ? (_this = _super.call(this, "Invalid astral item: ".concat(cause, "!")), _defineProperty(_assertThisInitialized(_this), "cause", void 0)) : cause instanceof import_kolmafia5.Class ? (_this = _super.call(this, "Invalid class ".concat(cause, " for this path!")), _defineProperty(_assertThisInitialized(_this), "cause", void 0)) : cause instanceof import_kolmafia5.Path ? (_this = _super.call(this, "Invalid path ".concat(cause, "!")), _defineProperty(_assertThisInitialized(_this), "cause", void 0)) : (_this = _super.call(this, cause), _defineProperty(_assertThisInitialized(_this), "cause", void 0));
     return _this.cause = cause, _possibleConstructorReturn(_this);
   }
-  return AscendError2;
+  return _createClass(AscendError2);
 }(/* @__PURE__ */ _wrapNativeSuper(Error)), gardens = ["packet of pumpkin seeds", "Peppermint Pip Packet", "packet of dragon's teeth", "packet of beer seeds", "packet of winter seeds", "packet of thanksgarden seeds", "packet of tall grass seeds", "packet of mushroom spores"], eudorae = ["My Own Pen Pal kit", "GameInformPowerDailyPro subscription card", "Xi Receiver Unit", "New-You Club Membership Form", "Our Daily Candles\u2122 order form"], isGarden = createStringUnionTypeGuardFunction(gardens), isEudora = createStringUnionTypeGuardFunction(eudorae), isDesk = createStringUnionTypeGuardFunction(ChateauMantegna_exports.desks), isNightstand = createStringUnionTypeGuardFunction(ChateauMantegna_exports.nightstands), isCeiling = createStringUnionTypeGuardFunction(ChateauMantegna_exports.ceilings), AscensionPrepError = /* @__PURE__ */ function(_Error2) {
   _inherits(AscensionPrepError2, _Error2);
   var _super2 = _createSuper(AscensionPrepError2);
@@ -1973,7 +1991,7 @@ var AscendError = /* @__PURE__ */ function(_Error) {
     var _this2;
     return _classCallCheck(this, AscensionPrepError2), isGarden(cause) ? (_this2 = _super2.call(this, "Unable to swap garden to ".concat(cause, "; garden is currently ").concat(original, ".")), _defineProperty(_assertThisInitialized(_this2), "cause", void 0)) : isEudora(cause) ? (_this2 = _super2.call(this, "Unable to swap eudora to ".concat(cause, "; eudora is currently ").concat(original, ".")), _defineProperty(_assertThisInitialized(_this2), "cause", void 0)) : isDesk(cause) ? (_this2 = _super2.call(this, "Unable to swap chateau desk to ".concat(cause, "; desk is currently ").concat(original, ".")), _defineProperty(_assertThisInitialized(_this2), "cause", void 0)) : isNightstand(cause) ? (_this2 = _super2.call(this, "Unable to swap chateau nightstand to ".concat(cause, "; nightstand is currently ").concat(original, ".")), _defineProperty(_assertThisInitialized(_this2), "cause", void 0)) : isCeiling(cause) ? (_this2 = _super2.call(this, "Unable to swap chateau ceiling to ".concat(cause, "; ceiling is currently ").concat(original, ".")), _defineProperty(_assertThisInitialized(_this2), "cause", void 0)) : (_this2 = _super2.call(this, cause), _defineProperty(_assertThisInitialized(_this2), "cause", void 0)), _this2.cause = cause, _possibleConstructorReturn(_this2);
   }
-  return AscensionPrepError2;
+  return _createClass(AscensionPrepError2);
 }(/* @__PURE__ */ _wrapNativeSuper(Error));
 function toMoonId(moon, playerClass) {
   if (typeof moon == "number")
@@ -2108,8 +2126,6 @@ function prepareAscension() {
 }
 
 // src/gash/lib.ts
-init_kolmafia_polyfill();
-var import_kolmafia6 = require("kolmafia");
 var _templateObject7, _templateObject210;
 function _taggedTemplateLiteral3(strings, raw) {
   return raw || (raw = strings.slice(0)), Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } }));
@@ -2125,6 +2141,7 @@ function burnSafaris() {
 }
 
 // src/gash/casual.ts
+var import_kolmafia7 = require("kolmafia");
 var _templateObject8, _templateObject211;
 function _taggedTemplateLiteral4(strings, raw) {
   return raw || (raw = strings.slice(0)), Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } }));

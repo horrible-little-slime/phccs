@@ -27,10 +27,6 @@ var __export = function(target, all) {
 };
 var __toESM = function(mod, isNodeMode, target) {
   return target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
-    // If the importer is in node compatibility mode or this is not an ESM
-    // file that has been converted to a CommonJS file using a Babel-
-    // compatible transform (i.e. "__esModule" has not been set), then set
-    // "default" to the CommonJS "module.exports" for node compatibility.
     isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: !0 }) : target,
     mod
   );
@@ -53,10 +49,7 @@ var require_global = __commonJS({
     var check = function(it) {
       return it && it.Math == Math && it;
     };
-    module2.exports = // eslint-disable-next-line es-x/no-global-this -- safe
-    check(typeof globalThis == "object" && globalThis) || check(typeof window == "object" && window) || // eslint-disable-next-line no-restricted-globals -- safe
-    check(typeof self == "object" && self) || check(typeof global == "object" && global) || // eslint-disable-next-line no-new-func -- fallback
-    function() {
+    module2.exports = check(typeof globalThis == "object" && globalThis) || check(typeof window == "object" && window) || check(typeof self == "object" && self) || check(typeof global == "object" && global) || function() {
       return this;
     }() || Function("return this")();
   }
@@ -278,8 +271,7 @@ var require_native_symbol = __commonJS({
     var V8_VERSION = require_engine_v8_version(), fails = require_fails();
     module2.exports = !!Object.getOwnPropertySymbols && !fails(function() {
       var symbol = Symbol();
-      return !String(symbol) || !(Object(symbol) instanceof Symbol) || // Chrome 38-40 symbols are not inherited from DOM collections prototypes to instances
-      !Symbol.sham && V8_VERSION && V8_VERSION < 41;
+      return !String(symbol) || !(Object(symbol) instanceof Symbol) || !Symbol.sham && V8_VERSION && V8_VERSION < 41;
     });
   }
 });
@@ -837,11 +829,7 @@ var require_array_includes = __commonJS({
       };
     };
     module2.exports = {
-      // `Array.prototype.includes` method
-      // https://tc39.es/ecma262/#sec-array.prototype.includes
       includes: createMethod(!0),
-      // `Array.prototype.indexOf` method
-      // https://tc39.es/ecma262/#sec-array.prototype.indexof
       indexOf: createMethod(!1)
     };
   }
@@ -973,11 +961,7 @@ var require_object_to_array = __commonJS({
       };
     };
     module2.exports = {
-      // `Object.entries` method
-      // https://tc39.es/ecma262/#sec-object.entries
       entries: createMethod(!0),
-      // `Object.values` method
-      // https://tc39.es/ecma262/#sec-object.values
       values: createMethod(!1)
     };
   }
@@ -2412,9 +2396,7 @@ var require_arrayLikeKeys = __commonJS({
     function arrayLikeKeys(value, inherited) {
       var isArr = isArray(value), isArg = !isArr && isArguments(value), isBuff = !isArr && !isArg && isBuffer(value), isType = !isArr && !isArg && !isBuff && isTypedArray(value), skipIndexes = isArr || isArg || isBuff || isType, result = skipIndexes ? baseTimes(value.length, String) : [], length = result.length;
       for (var key in value)
-        (inherited || hasOwnProperty.call(value, key)) && !(skipIndexes && // Safari 9 has enumerable `arguments.length` in strict mode.
-        (key == "length" || isBuff && (key == "offset" || key == "parent") || isType && (key == "buffer" || key == "byteLength" || key == "byteOffset") || // Skip index properties.
-        isIndex(key, length))) && result.push(key);
+        (inherited || hasOwnProperty.call(value, key)) && !(skipIndexes && (key == "length" || isBuff && (key == "offset" || key == "parent") || isType && (key == "buffer" || key == "byteLength" || key == "byteOffset") || isIndex(key, length))) && result.push(key);
       return result;
     }
     module2.exports = arrayLikeKeys;
@@ -3093,6 +3075,19 @@ var require_maxBy = __commonJS({
 // src/index.ts
 init_kolmafia_polyfill();
 
+// src/boozedrop.ts
+init_kolmafia_polyfill();
+
+// src/combat.ts
+init_kolmafia_polyfill();
+
+// node_modules/grimoire-kolmafia/dist/index.js
+init_kolmafia_polyfill();
+
+// node_modules/grimoire-kolmafia/dist/args.js
+init_kolmafia_polyfill();
+var import_kolmafia24 = require("kolmafia");
+
 // node_modules/libram/dist/index.js
 init_kolmafia_polyfill();
 
@@ -3207,14 +3202,30 @@ function _classCallCheck(instance, Constructor) {
 function _defineProperties(target, props) {
   for (var i = 0; i < props.length; i++) {
     var descriptor = props[i];
-    descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, descriptor.key, descriptor);
+    descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor);
   }
 }
 function _createClass(Constructor, protoProps, staticProps) {
-  return protoProps && _defineProperties(Constructor.prototype, protoProps), staticProps && _defineProperties(Constructor, staticProps), Constructor;
+  return protoProps && _defineProperties(Constructor.prototype, protoProps), staticProps && _defineProperties(Constructor, staticProps), Object.defineProperty(Constructor, "prototype", { writable: !1 }), Constructor;
 }
 function _defineProperty(obj, key, value) {
-  return key in obj ? Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+  return key = _toPropertyKey(key), key in obj ? Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+}
+function _toPropertyKey(arg) {
+  var key = _toPrimitive(arg, "string");
+  return typeof key == "symbol" ? key : String(key);
+}
+function _toPrimitive(input, hint) {
+  if (typeof input != "object" || input === null)
+    return input;
+  var prim = input[Symbol.toPrimitive];
+  if (prim !== void 0) {
+    var res = prim.call(input, hint || "default");
+    if (typeof res != "object")
+      return res;
+    throw new TypeError("@@toPrimitive must return a primitive value.");
+  }
+  return (hint === "string" ? String : Number)(input);
 }
 function _slicedToArray(arr, i) {
   return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
@@ -3223,7 +3234,7 @@ function _nonIterableRest() {
   throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
 function _unsupportedIterableToArray(o, minLen) {
-  if (o) {
+  if (!!o) {
     if (typeof o == "string")
       return _arrayLikeToArray(o, minLen);
     var n = Object.prototype.toString.call(o).slice(8, -1);
@@ -3242,15 +3253,21 @@ function _arrayLikeToArray(arr, len) {
 function _iterableToArrayLimit(arr, i) {
   var _i = arr == null ? null : typeof Symbol != "undefined" && arr[Symbol.iterator] || arr["@@iterator"];
   if (_i != null) {
-    var _arr = [], _n = !0, _d = !1, _s, _e;
+    var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1;
     try {
-      for (_i = _i.call(arr); !(_n = (_s = _i.next()).done) && (_arr.push(_s.value), !(i && _arr.length === i)); _n = !0)
-        ;
+      if (_x = (_i = _i.call(arr)).next, i === 0) {
+        if (Object(_i) !== _i)
+          return;
+        _n = !1;
+      } else
+        for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0)
+          ;
     } catch (err) {
       _d = !0, _e = err;
     } finally {
       try {
-        !_n && _i.return != null && _i.return();
+        if (!_n && _i.return != null && (_r = _i.return(), Object(_r) !== _r))
+          return;
       } finally {
         if (_d)
           throw _e;
@@ -3344,10 +3361,6 @@ var PropertiesManager = /* @__PURE__ */ function() {
     get: function() {
       return this.properties;
     }
-    /**
-     * Sets a collection of properties to the given values, storing the old values.
-     * @param propertiesToSet A Properties object, keyed by property name.
-     */
   }, {
     key: "set",
     value: function(propertiesToSet) {
@@ -3356,10 +3369,6 @@ var PropertiesManager = /* @__PURE__ */ function() {
         this.properties[propertyName] === void 0 && (this.properties[propertyName] = get(propertyName)), _set(propertyName, propertyValue);
       }
     }
-    /**
-     * Sets a collection of choice adventure properties to the given values, storing the old values.
-     * @param choicesToSet An object keyed by choice adventure number.
-     */
   }, {
     key: "setChoices",
     value: function(choicesToSet) {
@@ -3368,20 +3377,11 @@ var PropertiesManager = /* @__PURE__ */ function() {
         return ["choiceAdventure".concat(choiceNumber), choiceValue];
       })));
     }
-    /**
-     * Sets a single choice adventure property to the given value, storing the old value.
-     * @param choiceToSet The number of the choice adventure to set the property for.
-     * @param value The value to assign to that choice adventure.
-     */
   }, {
     key: "setChoice",
     value: function(choiceToSet, value) {
       this.setChoices(_defineProperty({}, choiceToSet, value));
     }
-    /**
-     * Resets the given properties to their original stored value. Does not delete entries from the manager.
-     * @param properties Collection of properties to reset.
-     */
   }, {
     key: "reset",
     value: function() {
@@ -3392,18 +3392,11 @@ var PropertiesManager = /* @__PURE__ */ function() {
         value && _set(property, value);
       }
     }
-    /**
-     * Iterates over all stored values, setting each property back to its original stored value. Does not delete entries from the manager.
-     */
   }, {
     key: "resetAll",
     value: function() {
       setProperties(this.properties);
     }
-    /**
-     * Stops storing the original values of inputted properties.
-     * @param properties Properties for the manager to forget.
-     */
   }, {
     key: "clear",
     value: function() {
@@ -3414,53 +3407,27 @@ var PropertiesManager = /* @__PURE__ */ function() {
         this.properties[property] && delete this.properties[property];
       }
     }
-    /**
-     * Clears all properties.
-     */
   }, {
     key: "clearAll",
     value: function() {
       this.properties = {};
     }
-    /**
-     * Increases a numeric property to the given value if necessary.
-     * @param property The numeric property we want to potentially raise.
-     * @param value The minimum value we want that property to have.
-     * @returns Whether we needed to change the property.
-     */
   }, {
     key: "setMinimumValue",
     value: function(property, value) {
       return get(property, 0) < value ? (this.set(_defineProperty({}, property, value)), !0) : !1;
     }
-    /**
-     * Decrease a numeric property to the given value if necessary.
-     * @param property The numeric property we want to potentially lower.
-     * @param value The maximum value we want that property to have.
-     * @returns Whether we needed to change the property.
-     */
   }, {
     key: "setMaximumValue",
     value: function(property, value) {
       return get(property, 0) > value ? (this.set(_defineProperty({}, property, value)), !0) : !1;
     }
-    /**
-     * Creates a new PropertiesManager with identical stored values to this one.
-     * @returns A new PropertiesManager, with identical stored values to this one.
-     */
   }, {
     key: "clone",
     value: function() {
       var newGuy = new PropertiesManager2();
       return newGuy.properties = this.storedValues, newGuy;
     }
-    /**
-     * Clamps a numeric property, modulating it up or down to fit within a specified range
-     * @param property The numeric property to clamp
-     * @param min The lower bound for what we want the property to be allowed to be.
-     * @param max The upper bound for what we want the property to be allowed to be.
-     * @returns Whether we ended up changing the property or not.
-     */
   }, {
     key: "clamp",
     value: function(property, min, max) {
@@ -3469,11 +3436,6 @@ var PropertiesManager = /* @__PURE__ */ function() {
       var start = get(property);
       return this.setMinimumValue(property, min), this.setMaximumValue(property, max), start !== get(property);
     }
-    /**
-     * Determines whether this PropertiesManager has identical stored values to another.
-     * @param other The PropertiesManager to compare to this one.
-     * @returns Whether their StoredValues are identical.
-     */
   }, {
     key: "equals",
     value: function(other) {
@@ -3487,22 +3449,12 @@ var PropertiesManager = /* @__PURE__ */ function() {
       }
       return !0;
     }
-    /**
-     * Merges a PropertiesManager onto this one, letting the input win in the event that both PropertiesManagers have a value stored.
-     * @param other The PropertiesManager to be merged onto this one.
-     * @returns A new PropertiesManager with stored values from both its parents.
-     */
   }, {
     key: "merge",
     value: function(other) {
       var newGuy = new PropertiesManager2();
       return newGuy.properties = _objectSpread(_objectSpread({}, this.properties), other.properties), newGuy;
     }
-    /**
-     * Merges an arbitrary collection of PropertiesManagers, letting the rightmost PropertiesManager win in the event of verlap.
-     * @param mergees The PropertiesManagers to merge together.
-     * @returns A PropertiesManager that is just an amalgam of all the constituents.
-     */
   }], [{
     key: "merge",
     value: function() {
@@ -3562,15 +3514,21 @@ function _nonIterableRest2() {
 function _iterableToArrayLimit2(arr, i) {
   var _i = arr == null ? null : typeof Symbol != "undefined" && arr[Symbol.iterator] || arr["@@iterator"];
   if (_i != null) {
-    var _arr = [], _n = !0, _d = !1, _s, _e;
+    var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1;
     try {
-      for (_i = _i.call(arr); !(_n = (_s = _i.next()).done) && (_arr.push(_s.value), !(i && _arr.length === i)); _n = !0)
-        ;
+      if (_x = (_i = _i.call(arr)).next, i === 0) {
+        if (Object(_i) !== _i)
+          return;
+        _n = !1;
+      } else
+        for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0)
+          ;
     } catch (err) {
       _d = !0, _e = err;
     } finally {
       try {
-        !_n && _i.return != null && _i.return();
+        if (!_n && _i.return != null && (_r = _i.return(), Object(_r) !== _r))
+          return;
       } finally {
         if (_d)
           throw _e;
@@ -3590,7 +3548,7 @@ function _nonIterableSpread() {
   throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
 function _unsupportedIterableToArray2(o, minLen) {
-  if (o) {
+  if (!!o) {
     if (typeof o == "string")
       return _arrayLikeToArray2(o, minLen);
     var n = Object.prototype.toString.call(o).slice(8, -1);
@@ -3706,6 +3664,31 @@ var concatTemplateString = function(literals) {
 // node_modules/libram/dist/lib.js
 var _templateObject;
 var _templateObject9, _templateObject10, _templateObject11, _templateObject12, _templateObject13, _templateObject14, _templateObject15, _templateObject16, _templateObject17, _templateObject18, _templateObject19, _templateObject20, _templateObject21, _templateObject22, _templateObject23, _templateObject24, _templateObject25, _templateObject26, _templateObject27, _templateObject28, _templateObject29, _templateObject30, _templateObject31, _templateObject32, _templateObject33, _templateObject34;
+function _defineProperties2(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, _toPropertyKey2(descriptor.key), descriptor);
+  }
+}
+function _createClass2(Constructor, protoProps, staticProps) {
+  return protoProps && _defineProperties2(Constructor.prototype, protoProps), staticProps && _defineProperties2(Constructor, staticProps), Object.defineProperty(Constructor, "prototype", { writable: !1 }), Constructor;
+}
+function _toPropertyKey2(arg) {
+  var key = _toPrimitive2(arg, "string");
+  return typeof key == "symbol" ? key : String(key);
+}
+function _toPrimitive2(input, hint) {
+  if (typeof input != "object" || input === null)
+    return input;
+  var prim = input[Symbol.toPrimitive];
+  if (prim !== void 0) {
+    var res = prim.call(input, hint || "default");
+    if (typeof res != "object")
+      return res;
+    throw new TypeError("@@toPrimitive must return a primitive value.");
+  }
+  return (hint === "string" ? String : Number)(input);
+}
 function _classCallCheck2(instance, Constructor) {
   if (!(instance instanceof Constructor))
     throw new TypeError("Cannot call a class as a function");
@@ -3713,7 +3696,7 @@ function _classCallCheck2(instance, Constructor) {
 function _inherits(subClass, superClass) {
   if (typeof superClass != "function" && superClass !== null)
     throw new TypeError("Super expression must either be null or a function");
-  subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), superClass && _setPrototypeOf(subClass, superClass);
+  subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), Object.defineProperty(subClass, "prototype", { writable: !1 }), superClass && _setPrototypeOf(subClass, superClass);
 }
 function _createSuper(Derived) {
   var hasNativeReflectConstruct = _isNativeReflectConstruct();
@@ -3758,7 +3741,7 @@ function _wrapNativeSuper(Class5) {
   }, _wrapNativeSuper(Class5);
 }
 function _construct(Parent, args, Class5) {
-  return _isNativeReflectConstruct() ? _construct = Reflect.construct : _construct = function(Parent2, args2, Class6) {
+  return _isNativeReflectConstruct() ? _construct = Reflect.construct.bind() : _construct = function(Parent2, args2, Class6) {
     var a = [null];
     a.push.apply(a, args2);
     var Constructor = Function.bind.apply(Parent2, a), instance = new Constructor();
@@ -3781,12 +3764,12 @@ function _isNativeFunction(fn) {
   return Function.toString.call(fn).indexOf("[native code]") !== -1;
 }
 function _setPrototypeOf(o, p) {
-  return _setPrototypeOf = Object.setPrototypeOf || function(o2, p2) {
+  return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function(o2, p2) {
     return o2.__proto__ = p2, o2;
   }, _setPrototypeOf(o, p);
 }
 function _getPrototypeOf(o) {
-  return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function(o2) {
+  return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function(o2) {
     return o2.__proto__ || Object.getPrototypeOf(o2);
   }, _getPrototypeOf(o);
 }
@@ -3797,7 +3780,7 @@ function _nonIterableRest3() {
   throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
 function _unsupportedIterableToArray3(o, minLen) {
-  if (o) {
+  if (!!o) {
     if (typeof o == "string")
       return _arrayLikeToArray3(o, minLen);
     var n = Object.prototype.toString.call(o).slice(8, -1);
@@ -3816,15 +3799,21 @@ function _arrayLikeToArray3(arr, len) {
 function _iterableToArrayLimit3(arr, i) {
   var _i = arr == null ? null : typeof Symbol != "undefined" && arr[Symbol.iterator] || arr["@@iterator"];
   if (_i != null) {
-    var _arr = [], _n = !0, _d = !1, _s, _e;
+    var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1;
     try {
-      for (_i = _i.call(arr); !(_n = (_s = _i.next()).done) && (_arr.push(_s.value), !(i && _arr.length === i)); _n = !0)
-        ;
+      if (_x = (_i = _i.call(arr)).next, i === 0) {
+        if (Object(_i) !== _i)
+          return;
+        _n = !1;
+      } else
+        for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0)
+          ;
     } catch (err) {
       _d = !0, _e = err;
     } finally {
       try {
-        !_n && _i.return != null && _i.return();
+        if (!_n && _i.return != null && (_r = _i.return(), Object(_r) !== _r))
+          return;
       } finally {
         if (_d)
           throw _e;
@@ -3889,7 +3878,7 @@ function getKramcoWandererChance() {
   if (fights < 1)
     return lastFight === totalTurns && (0, import_kolmafia3.myTurncount)() < 1 ? 0.5 : 1;
   var turnsSinceLastFight = totalTurns - lastFight;
-  return Math.min(1, (turnsSinceLastFight + 1) / (5 + fights * 3 + Math.pow(Math.max(0, fights - 5), 3)));
+  return Math.min(1, (turnsSinceLastFight + 1) / (5 + fights * 3 + Math.max(0, fights - 5) ** 3));
 }
 function getFoldGroup(item6) {
   return Object.entries((0, import_kolmafia3.getRelated)(item6, "fold")).sort(function(_ref, _ref2) {
@@ -3932,7 +3921,7 @@ var EnsureError = /* @__PURE__ */ function(_Error) {
     var _this;
     return _classCallCheck2(this, EnsureError2), _this = _super.call(this, "Failed to ensure ".concat(cause.name, "!").concat(reason ? " ".concat(reason) : "")), _this.name = "Ensure Error", _this;
   }
-  return EnsureError2;
+  return _createClass2(EnsureError2);
 }(/* @__PURE__ */ _wrapNativeSuper(Error));
 function ensureEffect(ef) {
   var turns = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : 1;
@@ -3964,14 +3953,14 @@ var telescopeStats = /* @__PURE__ */ new Map([["standing around flexing their mu
 
 // node_modules/libram/dist/combat.js
 var _templateObject2, _templateObject210;
-function _get(target, property, receiver) {
-  return typeof Reflect != "undefined" && Reflect.get ? _get = Reflect.get : _get = function(target2, property2, receiver2) {
-    var base = _superPropBase(target2, property2);
-    if (base) {
-      var desc = Object.getOwnPropertyDescriptor(base, property2);
-      return desc.get ? desc.get.call(receiver2) : desc.value;
+function _get() {
+  return typeof Reflect != "undefined" && Reflect.get ? _get = Reflect.get.bind() : _get = function(target, property, receiver) {
+    var base = _superPropBase(target, property);
+    if (!!base) {
+      var desc = Object.getOwnPropertyDescriptor(base, property);
+      return desc.get ? desc.get.call(arguments.length < 3 ? target : receiver) : desc.value;
     }
-  }, _get(target, property, receiver || target);
+  }, _get.apply(this, arguments);
 }
 function _superPropBase(object, property) {
   for (; !Object.prototype.hasOwnProperty.call(object, property) && (object = _getPrototypeOf2(object), object !== null); )
@@ -4017,7 +4006,7 @@ function _nonIterableSpread2() {
   throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
 function _unsupportedIterableToArray4(o, minLen) {
-  if (o) {
+  if (!!o) {
     if (typeof o == "string")
       return _arrayLikeToArray4(o, minLen);
     var n = Object.prototype.toString.call(o).slice(8, -1);
@@ -4041,17 +4030,33 @@ function _arrayLikeToArray4(arr, len) {
     arr2[i] = arr[i];
   return arr2;
 }
-function _defineProperties2(target, props) {
+function _defineProperty2(obj, key, value) {
+  return key = _toPropertyKey3(key), key in obj ? Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+}
+function _defineProperties3(target, props) {
   for (var i = 0; i < props.length; i++) {
     var descriptor = props[i];
-    descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, descriptor.key, descriptor);
+    descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, _toPropertyKey3(descriptor.key), descriptor);
   }
 }
-function _createClass2(Constructor, protoProps, staticProps) {
-  return protoProps && _defineProperties2(Constructor.prototype, protoProps), staticProps && _defineProperties2(Constructor, staticProps), Constructor;
+function _createClass3(Constructor, protoProps, staticProps) {
+  return protoProps && _defineProperties3(Constructor.prototype, protoProps), staticProps && _defineProperties3(Constructor, staticProps), Object.defineProperty(Constructor, "prototype", { writable: !1 }), Constructor;
 }
-function _defineProperty2(obj, key, value) {
-  return key in obj ? Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+function _toPropertyKey3(arg) {
+  var key = _toPrimitive3(arg, "string");
+  return typeof key == "symbol" ? key : String(key);
+}
+function _toPrimitive3(input, hint) {
+  if (typeof input != "object" || input === null)
+    return input;
+  var prim = input[Symbol.toPrimitive];
+  if (prim !== void 0) {
+    var res = prim.call(input, hint || "default");
+    if (typeof res != "object")
+      return res;
+    throw new TypeError("@@toPrimitive must return a primitive value.");
+  }
+  return (hint === "string" ? String : Number)(input);
 }
 function _classCallCheck3(instance, Constructor) {
   if (!(instance instanceof Constructor))
@@ -4060,7 +4065,7 @@ function _classCallCheck3(instance, Constructor) {
 function _inherits2(subClass, superClass) {
   if (typeof superClass != "function" && superClass !== null)
     throw new TypeError("Super expression must either be null or a function");
-  subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), superClass && _setPrototypeOf2(subClass, superClass);
+  subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), Object.defineProperty(subClass, "prototype", { writable: !1 }), superClass && _setPrototypeOf2(subClass, superClass);
 }
 function _createSuper2(Derived) {
   var hasNativeReflectConstruct = _isNativeReflectConstruct2();
@@ -4105,7 +4110,7 @@ function _wrapNativeSuper2(Class5) {
   }, _wrapNativeSuper2(Class5);
 }
 function _construct2(Parent, args, Class5) {
-  return _isNativeReflectConstruct2() ? _construct2 = Reflect.construct : _construct2 = function(Parent2, args2, Class6) {
+  return _isNativeReflectConstruct2() ? _construct2 = Reflect.construct.bind() : _construct2 = function(Parent2, args2, Class6) {
     var a = [null];
     a.push.apply(a, args2);
     var Constructor = Function.bind.apply(Parent2, a), instance = new Constructor();
@@ -4128,12 +4133,12 @@ function _isNativeFunction2(fn) {
   return Function.toString.call(fn).indexOf("[native code]") !== -1;
 }
 function _setPrototypeOf2(o, p) {
-  return _setPrototypeOf2 = Object.setPrototypeOf || function(o2, p2) {
+  return _setPrototypeOf2 = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function(o2, p2) {
     return o2.__proto__ = p2, o2;
   }, _setPrototypeOf2(o, p);
 }
 function _getPrototypeOf2(o) {
-  return _getPrototypeOf2 = Object.setPrototypeOf ? Object.getPrototypeOf : function(o2) {
+  return _getPrototypeOf2 = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function(o2) {
     return o2.__proto__ || Object.getPrototypeOf(o2);
   }, _getPrototypeOf2(o);
 }
@@ -4176,223 +4181,91 @@ var InvalidMacroError = /* @__PURE__ */ function(_Error) {
   function InvalidMacroError2() {
     return _classCallCheck3(this, InvalidMacroError2), _super.apply(this, arguments);
   }
-  return InvalidMacroError2;
+  return _createClass3(InvalidMacroError2);
 }(/* @__PURE__ */ _wrapNativeSuper2(Error)), Macro = /* @__PURE__ */ function() {
   function Macro3() {
     _classCallCheck3(this, Macro3), _defineProperty2(this, "components", []), _defineProperty2(this, "name", MACRO_NAME);
   }
-  return _createClass2(Macro3, [{
+  return _createClass3(Macro3, [{
     key: "toString",
-    value: (
-      /**
-       * Convert macro to string.
-       */
-      function() {
-        return (this.components.join(";") + ";").replace(/;;+/g, ";");
-      }
-    )
-    /**
-     * Gives your macro a new name to be used when saving an autoattack.
-     * @param name The name to be used when saving as an autoattack.
-     * @returns The previous name assigned to this macro.
-     */
+    value: function() {
+      return (this.components.join(";") + ";").replace(/;;+/g, ";");
+    }
   }, {
     key: "rename",
     value: function(name) {
       var returnValue = this.name;
       return this.name = name, returnValue;
     }
-    /**
-     * Save a macro to a Mafia property for use in a consult script.
-     */
   }, {
     key: "save",
     value: function() {
       _set(Macro3.SAVED_MACRO_PROPERTY, this.toString());
     }
-    /**
-     * Load a saved macro from the Mafia property.
-     */
   }, {
     key: "step",
-    value: (
-      /**
-       * Statefully add one or several steps to a macro.
-       * @param nextSteps The steps to add to the macro.
-       * @returns {Macro} This object itself.
-       */
-      function() {
-        for (var _ref, _this$components, _len = arguments.length, nextSteps = new Array(_len), _key = 0; _key < _len; _key++)
-          nextSteps[_key] = arguments[_key];
-        var nextStepsStrings = (_ref = []).concat.apply(_ref, _toConsumableArray2(nextSteps.map(function(x) {
-          return x instanceof Macro3 ? x.components : [x];
-        })));
-        return (_this$components = this.components).push.apply(_this$components, _toConsumableArray2(nextStepsStrings.filter(function(s) {
-          return s.length > 0;
-        }))), this;
-      }
-    )
-    /**
-     * Statefully add one or several steps to a macro.
-     * @param nextSteps The steps to add to the macro.
-     * @returns {Macro} This object itself.
-     */
+    value: function() {
+      for (var _ref, _this$components, _len = arguments.length, nextSteps = new Array(_len), _key = 0; _key < _len; _key++)
+        nextSteps[_key] = arguments[_key];
+      var nextStepsStrings = (_ref = []).concat.apply(_ref, _toConsumableArray2(nextSteps.map(function(x) {
+        return x instanceof Macro3 ? x.components : [x];
+      })));
+      return (_this$components = this.components).push.apply(_this$components, _toConsumableArray2(nextStepsStrings.filter(function(s) {
+        return s.length > 0;
+      }))), this;
+    }
   }, {
     key: "submit",
-    value: (
-      /**
-       * Submit the built macro to KoL. Only works inside combat.
-       */
-      function() {
-        var final = this.toString();
-        return (0, import_kolmafia4.visitUrl)("fight.php?action=macro&macrotext=".concat((0, import_kolmafia4.urlEncode)(final)), !0, !0);
-      }
-    )
-    /**
-     * Set this macro as a KoL native autoattack.
-     */
+    value: function() {
+      var final = this.toString();
+      return (0, import_kolmafia4.visitUrl)("fight.php?action=macro&macrotext=".concat((0, import_kolmafia4.urlEncode)(final)), !0, !0);
+    }
   }, {
     key: "setAutoAttack",
     value: function() {
       var id = Macro3.cachedMacroIds.get(this.name);
       id === void 0 && (id = getMacroId(this.name), Macro3.cachedMacroIds.set(this.name, id)), !((0, import_kolmafia4.getAutoAttack)() === 99e6 + id && this.toString() === Macro3.cachedAutoAttacks.get(this.name)) && ((0, import_kolmafia4.visitUrl)("account_combatmacros.php?macroid=".concat(id, "&name=").concat((0, import_kolmafia4.urlEncode)(this.name), "&macrotext=").concat((0, import_kolmafia4.urlEncode)(this.toString()), "&action=save"), !0, !0), (0, import_kolmafia4.visitUrl)("account.php?am=1&action=autoattack&value=".concat(99e6 + id, "&ajax=1")), Macro3.cachedAutoAttacks.set(this.name, this.toString()));
     }
-    /**
-     * Renames the macro, then sets it as an autoattack.
-     * @param name The name to save the macro under as an autoattack.
-     */
   }, {
     key: "setAutoAttackAs",
     value: function(name) {
       this.name = name, this.setAutoAttack();
     }
-    /**
-     * Clear all cached autoattacks, and delete all stored macros server-side.
-     */
   }, {
     key: "abort",
-    value: (
-      /**
-       * Add an "abort" step to this macro.
-       * @returns {Macro} This object itself.
-       */
-      function() {
-        return this.step("abort");
-      }
-    )
-    /**
-     * Create a new macro with an "abort" step.
-     * @returns {Macro} This object itself.
-     */
+    value: function() {
+      return this.step("abort");
+    }
   }, {
     key: "runaway",
-    value: (
-      /**
-       * Add a "runaway" step to this macro.
-       * @returns {Macro} This object itself.
-       */
-      function() {
-        return this.step("runaway");
-      }
-    )
-    /**
-     * Create a new macro with an "runaway" step.
-     * @returns {Macro} This object itself.
-     */
+    value: function() {
+      return this.step("runaway");
+    }
   }, {
     key: "if_",
-    value: (
-      /**
-       * Add an "if" statement to this macro.
-       * @param condition The BALLS condition for the if statement.
-       * @param ifTrue Continuation if the condition is true.
-       * @returns {Macro} This object itself.
-       */
-      function(condition, ifTrue) {
-        return this.step("if ".concat(Macro3.makeBALLSPredicate(condition))).step(ifTrue).step("endif");
-      }
-    )
-    /**
-     * Create a new macro with an "if" statement.
-     * @param condition The BALLS condition for the if statement.
-     * @param ifTrue Continuation if the condition is true.
-     * @returns {Macro} This object itself.
-     */
+    value: function(condition, ifTrue) {
+      return this.step("if ".concat(Macro3.makeBALLSPredicate(condition))).step(ifTrue).step("endif");
+    }
   }, {
     key: "ifNot",
-    value: (
-      /**
-       * Add an "if" statement to this macro, inverting the condition.
-       * @param condition The BALLS condition for the if statement.
-       * @param ifTrue Continuation if the condition is true.
-       * @returns {Macro} This object itself.
-       */
-      function(condition, ifTrue) {
-        return this.step("if !(".concat(Macro3.makeBALLSPredicate(condition), ")")).step(ifTrue).step("endif");
-      }
-    )
-    /**
-     * Create a new macro with an "if" statement, inverting the condition.
-     * @param condition The BALLS condition for the if statement.
-     * @param ifTrue Continuation if the condition is true.
-     * @returns {Macro} This object itself.
-     */
+    value: function(condition, ifTrue) {
+      return this.step("if !(".concat(Macro3.makeBALLSPredicate(condition), ")")).step(ifTrue).step("endif");
+    }
   }, {
     key: "while_",
-    value: (
-      /**
-       * Add a "while" statement to this macro.
-       * @param condition The BALLS condition for the if statement.
-       * @param contents Loop to repeat while the condition is true.
-       * @returns {Macro} This object itself.
-       */
-      function(condition, contents) {
-        return this.step("while ".concat(condition)).step(contents).step("endwhile");
-      }
-    )
-    /**
-     * Create a new macro with a "while" statement.
-     * @param condition The BALLS condition for the if statement.
-     * @param contents Loop to repeat while the condition is true.
-     * @returns {Macro} This object itself.
-     */
+    value: function(condition, contents) {
+      return this.step("while ".concat(condition)).step(contents).step("endwhile");
+    }
   }, {
     key: "externalIf",
-    value: (
-      /**
-       * Conditionally add a step to a macro based on a condition evaluated at the time of building the macro.
-       * @param condition The JS condition.
-       * @param ifTrue Continuation to add if the condition is true.
-       * @param ifFalse Optional input to turn this into an if...else statement.
-       * @returns {Macro} This object itself.
-       */
-      function(condition, ifTrue, ifFalse) {
-        return condition ? this.step(ifTrue) : ifFalse ? this.step(ifFalse) : this;
-      }
-    )
-    /**
-     * Create a new macro with a condition evaluated at the time of building the macro.
-     * @param condition The JS condition.
-     * @param ifTrue Continuation to add if the condition is true.
-     * @param ifFalse Optional input to turn this into an if...else statement.
-     * @returns {Macro} This object itself.
-     */
+    value: function(condition, ifTrue, ifFalse) {
+      return condition ? this.step(ifTrue) : ifFalse ? this.step(ifFalse) : this;
+    }
   }, {
     key: "repeat",
-    value: (
-      /**
-       * Add a repeat step to the macro.
-       * @returns {Macro} This object itself.
-       */
-      function() {
-        return this.step("repeat");
-      }
-    )
-    /**
-     * Add one or more skill cast steps to the macro.
-     * @param skills Skills to cast.
-     * @returns {Macro} This object itself.
-     */
+    value: function() {
+      return this.step("repeat");
+    }
   }, {
     key: "skill",
     value: function() {
@@ -4402,155 +4275,69 @@ var InvalidMacroError = /* @__PURE__ */ function(_Error) {
         return "skill ".concat(skillBallsMacroName(skill3));
       })));
     }
-    /**
-     * Create a new macro with one or more skill cast steps.
-     * @param skills Skills to cast.
-     * @returns {Macro} This object itself.
-     */
   }, {
     key: "trySkill",
-    value: (
-      /**
-       * Add one or more skill cast steps to the macro, where each step checks if you have the skill first.
-       * @param skills Skills to try casting.
-       * @returns {Macro} This object itself.
-       */
-      function() {
-        for (var _len3 = arguments.length, skills2 = new Array(_len3), _key3 = 0; _key3 < _len3; _key3++)
-          skills2[_key3] = arguments[_key3];
-        return this.step.apply(this, _toConsumableArray2(skills2.map(function(skill2) {
-          return Macro3.if_("hasskill ".concat(skillBallsMacroName(skill2)), Macro3.skill(skill2));
-        })));
-      }
-    )
-    /**
-     * Create a new macro with one or more skill cast steps, where each step checks if you have the skill first.
-     * @param skills Skills to try casting.
-     * @returns {Macro} This object itself.
-     */
+    value: function() {
+      for (var _len3 = arguments.length, skills2 = new Array(_len3), _key3 = 0; _key3 < _len3; _key3++)
+        skills2[_key3] = arguments[_key3];
+      return this.step.apply(this, _toConsumableArray2(skills2.map(function(skill2) {
+        return Macro3.if_("hasskill ".concat(skillBallsMacroName(skill2)), Macro3.skill(skill2));
+      })));
+    }
   }, {
     key: "trySkillRepeat",
-    value: (
-      /**
-       * Add one or more skill-cast-and-repeat steps to the macro, where each step checks if you have the skill first.
-       * @param skills Skills to try repeatedly casting.
-       * @returns {Macro} This object itself.
-       */
-      function() {
-        for (var _len4 = arguments.length, skills2 = new Array(_len4), _key4 = 0; _key4 < _len4; _key4++)
-          skills2[_key4] = arguments[_key4];
-        return this.step.apply(this, _toConsumableArray2(skills2.map(function(skill2) {
-          return Macro3.if_("hasskill ".concat(skillBallsMacroName(skill2)), Macro3.skill(skill2).repeat());
-        })));
-      }
-    )
-    /**
-     * Create a new macro with one or more skill-cast-and-repeat steps, where each step checks if you have the skill first.
-     * @param skills Skills to try repeatedly casting.
-     * @returns {Macro} This object itself.
-     */
+    value: function() {
+      for (var _len4 = arguments.length, skills2 = new Array(_len4), _key4 = 0; _key4 < _len4; _key4++)
+        skills2[_key4] = arguments[_key4];
+      return this.step.apply(this, _toConsumableArray2(skills2.map(function(skill2) {
+        return Macro3.if_("hasskill ".concat(skillBallsMacroName(skill2)), Macro3.skill(skill2).repeat());
+      })));
+    }
   }, {
     key: "item",
-    value: (
-      /**
-       * Add one or more item steps to the macro.
-       * @param items Items to use. Pass a tuple [item1, item2] to funksling.
-       * @returns {Macro} This object itself.
-       */
-      function() {
-        for (var _len5 = arguments.length, items = new Array(_len5), _key5 = 0; _key5 < _len5; _key5++)
-          items[_key5] = arguments[_key5];
-        return this.step.apply(this, _toConsumableArray2(items.map(function(itemOrItems) {
-          return "use ".concat(itemOrItemsBallsMacroName(itemOrItems));
-        })));
-      }
-    )
-    /**
-     * Create a new macro with one or more item steps.
-     * @param items Items to use. Pass a tuple [item1, item2] to funksling.
-     * @returns {Macro} This object itself.
-     */
+    value: function() {
+      for (var _len5 = arguments.length, items = new Array(_len5), _key5 = 0; _key5 < _len5; _key5++)
+        items[_key5] = arguments[_key5];
+      return this.step.apply(this, _toConsumableArray2(items.map(function(itemOrItems) {
+        return "use ".concat(itemOrItemsBallsMacroName(itemOrItems));
+      })));
+    }
   }, {
     key: "tryItem",
-    value: (
-      /**
-       * Add one or more item steps to the macro, where each step checks to see if you have the item first.
-       * @param items Items to try using. Pass a tuple [item1, item2] to funksling.
-       * @returns {Macro} This object itself.
-       */
-      function() {
-        for (var _len6 = arguments.length, items = new Array(_len6), _key6 = 0; _key6 < _len6; _key6++)
-          items[_key6] = arguments[_key6];
-        return this.step.apply(this, _toConsumableArray2(items.map(function(item6) {
-          return Macro3.if_(itemOrItemsBallsMacroPredicate(item6), "use ".concat(itemOrItemsBallsMacroName(item6)));
-        })));
-      }
-    )
-    /**
-     * Create a new macro with one or more item steps, where each step checks to see if you have the item first.
-     * @param items Items to try using. Pass a tuple [item1, item2] to funksling.
-     * @returns {Macro} This object itself.
-     */
+    value: function() {
+      for (var _len6 = arguments.length, items = new Array(_len6), _key6 = 0; _key6 < _len6; _key6++)
+        items[_key6] = arguments[_key6];
+      return this.step.apply(this, _toConsumableArray2(items.map(function(item6) {
+        return Macro3.if_(itemOrItemsBallsMacroPredicate(item6), "use ".concat(itemOrItemsBallsMacroName(item6)));
+      })));
+    }
   }, {
     key: "attack",
-    value: (
-      /**
-       * Add an attack step to the macro.
-       * @returns {Macro} This object itself.
-       */
-      function() {
-        return this.step("attack");
-      }
-    )
-    /**
-     * Create a new macro with an attack step.
-     * @returns {Macro} This object itself.
-     */
+    value: function() {
+      return this.step("attack");
+    }
   }, {
     key: "ifHolidayWanderer",
-    value: (
-      /**
-       * Create an if_ statement based on what holiday of loathing it currently is. On non-holidays, returns the original macro, unmutated.
-       * @param macro The macro to place in the if_ statement
-       */
-      function(macro) {
-        var todaysWanderers = getTodaysHolidayWanderers();
-        return todaysWanderers.length === 0 ? this : this.if_(todaysWanderers.map(function(monster) {
-          return "monsterid ".concat(monster.id);
-        }).join(" || "), macro);
-      }
-    )
-    /**
-     * Create a new macro starting with an ifHolidayWanderer step.
-     * @param macro The macro to place inside the if_ statement
-     */
+    value: function(macro) {
+      var todaysWanderers = getTodaysHolidayWanderers();
+      return todaysWanderers.length === 0 ? this : this.if_(todaysWanderers.map(function(monster) {
+        return "monsterid ".concat(monster.id);
+      }).join(" || "), macro);
+    }
   }, {
     key: "ifNotHolidayWanderer",
-    value: (
-      /**
-       * Create an if_ statement based on what holiday of loathing it currently is. On non-holidays, returns the original macro, with the input macro appended.
-       * @param macro The macro to place in the if_ statement.
-       */
-      function(macro) {
-        var todaysWanderers = getTodaysHolidayWanderers();
-        return todaysWanderers.length === 0 ? this.step(macro) : this.if_(todaysWanderers.map(function(monster) {
-          return "!monsterid ".concat(monster.id);
-        }).join(" && "), macro);
-      }
-    )
-    /**
-     * Create a new macro starting with an ifNotHolidayWanderer step.
-     * @param macro The macro to place inside the if_ statement
-     */
+    value: function(macro) {
+      var todaysWanderers = getTodaysHolidayWanderers();
+      return todaysWanderers.length === 0 ? this.step(macro) : this.if_(todaysWanderers.map(function(monster) {
+        return "!monsterid ".concat(monster.id);
+      }).join(" && "), macro);
+    }
   }], [{
     key: "load",
     value: function() {
       var _this;
       return (_this = new this()).step.apply(_this, _toConsumableArray2(get(Macro3.SAVED_MACRO_PROPERTY).split(";")));
     }
-    /**
-     * Clear the saved macro in the Mafia property.
-     */
   }, {
     key: "clearSaved",
     value: function() {
@@ -4694,101 +4481,41 @@ var StrictMacro = /* @__PURE__ */ function(_Macro) {
   function StrictMacro2() {
     return _classCallCheck3(this, StrictMacro2), _super2.apply(this, arguments);
   }
-  return _createClass2(StrictMacro2, [{
+  return _createClass3(StrictMacro2, [{
     key: "skill",
-    value: (
-      /**
-       * Add one or more skill cast steps to the macro.
-       * @param skills Skills to cast.
-       * @returns {StrictMacro} This object itself.
-       */
-      function() {
-        for (var _get22, _len7 = arguments.length, skills2 = new Array(_len7), _key7 = 0; _key7 < _len7; _key7++)
-          skills2[_key7] = arguments[_key7];
-        return (_get22 = _get(_getPrototypeOf2(StrictMacro2.prototype), "skill", this)).call.apply(_get22, [this].concat(skills2));
-      }
-    )
-    /**
-     * Create a new macro with one or more skill cast steps.
-     * @param skills Skills to cast.
-     * @returns {StrictMacro} This object itself.
-     */
+    value: function() {
+      for (var _get22, _len7 = arguments.length, skills2 = new Array(_len7), _key7 = 0; _key7 < _len7; _key7++)
+        skills2[_key7] = arguments[_key7];
+      return (_get22 = _get(_getPrototypeOf2(StrictMacro2.prototype), "skill", this)).call.apply(_get22, [this].concat(skills2));
+    }
   }, {
     key: "item",
-    value: (
-      /**
-       * Add one or more item steps to the macro.
-       * @param items Items to use. Pass a tuple [item1, item2] to funksling.
-       * @returns {StrictMacro} This object itself.
-       */
-      function() {
-        for (var _get32, _len8 = arguments.length, items = new Array(_len8), _key8 = 0; _key8 < _len8; _key8++)
-          items[_key8] = arguments[_key8];
-        return (_get32 = _get(_getPrototypeOf2(StrictMacro2.prototype), "item", this)).call.apply(_get32, [this].concat(items));
-      }
-    )
-    /**
-     * Create a new macro with one or more item steps.
-     * @param items Items to use. Pass a tuple [item1, item2] to funksling.
-     * @returns {StrictMacro} This object itself.
-     */
+    value: function() {
+      for (var _get32, _len8 = arguments.length, items = new Array(_len8), _key8 = 0; _key8 < _len8; _key8++)
+        items[_key8] = arguments[_key8];
+      return (_get32 = _get(_getPrototypeOf2(StrictMacro2.prototype), "item", this)).call.apply(_get32, [this].concat(items));
+    }
   }, {
     key: "trySkill",
-    value: (
-      /**
-       * Add one or more skill cast steps to the macro, where each step checks if you have the skill first.
-       * @param skills Skills to try casting.
-       * @returns {StrictMacro} This object itself.
-       */
-      function() {
-        for (var _get4, _len9 = arguments.length, skills2 = new Array(_len9), _key9 = 0; _key9 < _len9; _key9++)
-          skills2[_key9] = arguments[_key9];
-        return (_get4 = _get(_getPrototypeOf2(StrictMacro2.prototype), "trySkill", this)).call.apply(_get4, [this].concat(skills2));
-      }
-    )
-    /**
-     * Create a new macro with one or more skill cast steps, where each step checks if you have the skill first.
-     * @param skills Skills to try casting.
-     * @returns {StrictMacro} This object itself.
-     */
+    value: function() {
+      for (var _get4, _len9 = arguments.length, skills2 = new Array(_len9), _key9 = 0; _key9 < _len9; _key9++)
+        skills2[_key9] = arguments[_key9];
+      return (_get4 = _get(_getPrototypeOf2(StrictMacro2.prototype), "trySkill", this)).call.apply(_get4, [this].concat(skills2));
+    }
   }, {
     key: "tryItem",
-    value: (
-      /**
-       * Add one or more item steps to the macro, where each step checks to see if you have the item first.
-       * @param items Items to try using. Pass a tuple [item1, item2] to funksling.
-       * @returns {StrictMacro} This object itself.
-       */
-      function() {
-        for (var _get5, _len10 = arguments.length, items = new Array(_len10), _key10 = 0; _key10 < _len10; _key10++)
-          items[_key10] = arguments[_key10];
-        return (_get5 = _get(_getPrototypeOf2(StrictMacro2.prototype), "tryItem", this)).call.apply(_get5, [this].concat(items));
-      }
-    )
-    /**
-     * Create a new macro with one or more item steps, where each step checks to see if you have the item first.
-     * @param items Items to try using. Pass a tuple [item1, item2] to funksling.
-     * @returns {StrictMacro} This object itself.
-     */
+    value: function() {
+      for (var _get5, _len10 = arguments.length, items = new Array(_len10), _key10 = 0; _key10 < _len10; _key10++)
+        items[_key10] = arguments[_key10];
+      return (_get5 = _get(_getPrototypeOf2(StrictMacro2.prototype), "tryItem", this)).call.apply(_get5, [this].concat(items));
+    }
   }, {
     key: "trySkillRepeat",
-    value: (
-      /**
-       * Add one or more skill-cast-and-repeat steps to the macro, where each step checks if you have the skill first.
-       * @param skills Skills to try repeatedly casting.
-       * @returns {StrictMacro} This object itself.
-       */
-      function() {
-        for (var _get6, _len11 = arguments.length, skills2 = new Array(_len11), _key11 = 0; _key11 < _len11; _key11++)
-          skills2[_key11] = arguments[_key11];
-        return (_get6 = _get(_getPrototypeOf2(StrictMacro2.prototype), "trySkillRepeat", this)).call.apply(_get6, [this].concat(skills2));
-      }
-    )
-    /**
-     * Create a new macro with one or more skill-cast-and-repeat steps, where each step checks if you have the skill first.
-     * @param skills Skills to try repeatedly casting.
-     * @returns {StrictMacro} This object itself.
-     */
+    value: function() {
+      for (var _get6, _len11 = arguments.length, skills2 = new Array(_len11), _key11 = 0; _key11 < _len11; _key11++)
+        skills2[_key11] = arguments[_key11];
+      return (_get6 = _get(_getPrototypeOf2(StrictMacro2.prototype), "trySkillRepeat", this)).call.apply(_get6, [this].concat(skills2));
+    }
   }], [{
     key: "skill",
     value: function() {
@@ -4833,17 +4560,33 @@ function _classCallCheck4(instance, Constructor) {
   if (!(instance instanceof Constructor))
     throw new TypeError("Cannot call a class as a function");
 }
-function _defineProperties3(target, props) {
+function _defineProperties4(target, props) {
   for (var i = 0; i < props.length; i++) {
     var descriptor = props[i];
-    descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, descriptor.key, descriptor);
+    descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, _toPropertyKey4(descriptor.key), descriptor);
   }
 }
-function _createClass3(Constructor, protoProps, staticProps) {
-  return protoProps && _defineProperties3(Constructor.prototype, protoProps), staticProps && _defineProperties3(Constructor, staticProps), Constructor;
+function _createClass4(Constructor, protoProps, staticProps) {
+  return protoProps && _defineProperties4(Constructor.prototype, protoProps), staticProps && _defineProperties4(Constructor, staticProps), Object.defineProperty(Constructor, "prototype", { writable: !1 }), Constructor;
 }
 function _defineProperty3(obj, key, value) {
-  return key in obj ? Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+  return key = _toPropertyKey4(key), key in obj ? Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+}
+function _toPropertyKey4(arg) {
+  var key = _toPrimitive4(arg, "string");
+  return typeof key == "symbol" ? key : String(key);
+}
+function _toPrimitive4(input, hint) {
+  if (typeof input != "object" || input === null)
+    return input;
+  var prim = input[Symbol.toPrimitive];
+  if (prim !== void 0) {
+    var res = prim.call(input, hint || "default");
+    if (typeof res != "object")
+      return res;
+    throw new TypeError("@@toPrimitive must return a primitive value.");
+  }
+  return (hint === "string" ? String : Number)(input);
 }
 var defaultHandlers = {
   info: function(message) {
@@ -4859,15 +4602,11 @@ var defaultHandlers = {
   function Logger2() {
     _classCallCheck4(this, Logger2), _defineProperty3(this, "handlers", defaultHandlers);
   }
-  return _createClass3(Logger2, [{
+  return _createClass4(Logger2, [{
     key: "setHandler",
-    value: (
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      function(level, callback) {
-        this.handlers[level] = callback;
-      }
-    )
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    value: function(level, callback) {
+      this.handlers[level] = callback;
+    }
   }, {
     key: "log",
     value: function(level, message) {
@@ -4902,15 +4641,21 @@ function _nonIterableRest4() {
 function _iterableToArrayLimit4(arr, i) {
   var _i = arr == null ? null : typeof Symbol != "undefined" && arr[Symbol.iterator] || arr["@@iterator"];
   if (_i != null) {
-    var _arr = [], _n = !0, _d = !1, _s, _e;
+    var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1;
     try {
-      for (_i = _i.call(arr); !(_n = (_s = _i.next()).done) && (_arr.push(_s.value), !(i && _arr.length === i)); _n = !0)
-        ;
+      if (_x = (_i = _i.call(arr)).next, i === 0) {
+        if (Object(_i) !== _i)
+          return;
+        _n = !1;
+      } else
+        for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0)
+          ;
     } catch (err) {
       _d = !0, _e = err;
     } finally {
       try {
-        !_n && _i.return != null && _i.return();
+        if (!_n && _i.return != null && (_r = _i.return(), Object(_r) !== _r))
+          return;
       } finally {
         if (_d)
           throw _e;
@@ -4923,14 +4668,12 @@ function _arrayWithHoles4(arr) {
   if (Array.isArray(arr))
     return arr;
 }
-function _defineProperties4(target, props) {
-  for (var i = 0; i < props.length; i++) {
-    var descriptor = props[i];
-    descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, descriptor.key, descriptor);
-  }
+function _classPrivateFieldInitSpec(obj, privateMap, value) {
+  _checkPrivateRedeclaration(obj, privateMap), privateMap.set(obj, value);
 }
-function _createClass4(Constructor, protoProps, staticProps) {
-  return protoProps && _defineProperties4(Constructor.prototype, protoProps), staticProps && _defineProperties4(Constructor, staticProps), Constructor;
+function _checkPrivateRedeclaration(obj, privateCollection) {
+  if (privateCollection.has(obj))
+    throw new TypeError("Cannot initialize the same private elements twice on an object");
 }
 function _classPrivateFieldGet(receiver, privateMap) {
   var descriptor = _classExtractFieldDescriptor(receiver, privateMap, "get");
@@ -4956,6 +4699,15 @@ function _classApplyDescriptorSet(receiver, descriptor, value) {
       throw new TypeError("attempted to set read only private field");
     descriptor.value = value;
   }
+}
+function _defineProperties5(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, _toPropertyKey5(descriptor.key), descriptor);
+  }
+}
+function _createClass5(Constructor, protoProps, staticProps) {
+  return protoProps && _defineProperties5(Constructor.prototype, protoProps), staticProps && _defineProperties5(Constructor, staticProps), Object.defineProperty(Constructor, "prototype", { writable: !1 }), Constructor;
 }
 function _classCallCheck5(instance, Constructor) {
   if (!(instance instanceof Constructor))
@@ -5018,7 +4770,23 @@ function _objectSpread2(target) {
   return target;
 }
 function _defineProperty4(obj, key, value) {
-  return key in obj ? Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+  return key = _toPropertyKey5(key), key in obj ? Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+}
+function _toPropertyKey5(arg) {
+  var key = _toPrimitive5(arg, "string");
+  return typeof key == "symbol" ? key : String(key);
+}
+function _toPrimitive5(input, hint) {
+  if (typeof input != "object" || input === null)
+    return input;
+  var prim = input[Symbol.toPrimitive];
+  if (prim !== void 0) {
+    var res = prim.call(input, hint || "default");
+    if (typeof res != "object")
+      return res;
+    throw new TypeError("@@toPrimitive must return a primitive value.");
+  }
+  return (hint === "string" ? String : Number)(input);
 }
 function _toConsumableArray3(arr) {
   return _arrayWithoutHoles3(arr) || _iterableToArray3(arr) || _unsupportedIterableToArray5(arr) || _nonIterableSpread3();
@@ -5027,7 +4795,7 @@ function _nonIterableSpread3() {
   throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
 function _unsupportedIterableToArray5(o, minLen) {
-  if (o) {
+  if (!!o) {
     if (typeof o == "string")
       return _arrayLikeToArray5(o, minLen);
     var n = Object.prototype.toString.call(o).slice(8, -1);
@@ -5135,22 +4903,22 @@ function applyModes(modes) {
     _iterator2.f();
   }
 }
-var cachedSlots = $slots(_templateObject7 || (_templateObject7 = _taggedTemplateLiteral3(["hat, weapon, off-hand, back, shirt, pants, acc1, acc2, acc3, familiar"]))), CacheEntry = function CacheEntry2(equipment, rider, familiar, canEquipItemCount2, modes) {
+var cachedSlots = $slots(_templateObject7 || (_templateObject7 = _taggedTemplateLiteral3(["hat, weapon, off-hand, back, shirt, pants, acc1, acc2, acc3, familiar"]))), CacheEntry = /* @__PURE__ */ _createClass5(function CacheEntry2(equipment, rider, familiar, canEquipItemCount2, modes) {
   _classCallCheck5(this, CacheEntry2), _defineProperty4(this, "equipment", void 0), _defineProperty4(this, "rider", void 0), _defineProperty4(this, "familiar", void 0), _defineProperty4(this, "canEquipItemCount", void 0), _defineProperty4(this, "modes", void 0), this.equipment = equipment, this.rider = rider, this.familiar = familiar, this.canEquipItemCount = canEquipItemCount2, this.modes = modes;
-}, _outfitSlots = /* @__PURE__ */ new WeakMap(), _useHistory = /* @__PURE__ */ new WeakMap(), _maxSize = /* @__PURE__ */ new WeakMap(), OutfitLRUCache = /* @__PURE__ */ function() {
+}), _outfitSlots = /* @__PURE__ */ new WeakMap(), _useHistory = /* @__PURE__ */ new WeakMap(), _maxSize = /* @__PURE__ */ new WeakMap(), OutfitLRUCache = /* @__PURE__ */ function() {
   function OutfitLRUCache2(maxSize) {
-    _classCallCheck5(this, OutfitLRUCache2), _outfitSlots.set(this, {
+    _classCallCheck5(this, OutfitLRUCache2), _classPrivateFieldInitSpec(this, _outfitSlots, {
       writable: !0,
       value: []
-    }), _useHistory.set(this, {
+    }), _classPrivateFieldInitSpec(this, _useHistory, {
       writable: !0,
       value: []
-    }), _maxSize.set(this, {
+    }), _classPrivateFieldInitSpec(this, _maxSize, {
       writable: !0,
       value: void 0
     }), _classPrivateFieldSet(this, _maxSize, maxSize);
   }
-  return _createClass4(OutfitLRUCache2, [{
+  return _createClass5(OutfitLRUCache2, [{
     key: "checkConsistent",
     value: function() {
       if (_classPrivateFieldGet(this, _useHistory).length !== _classPrivateFieldGet(this, _outfitSlots).length || !_toConsumableArray3(_classPrivateFieldGet(this, _useHistory)).sort().every(function(value, index) {
@@ -5341,15 +5109,15 @@ function maximizeCached(objectives) {
 }
 var _maximizeParameters = /* @__PURE__ */ new WeakMap(), _maximizeOptions = /* @__PURE__ */ new WeakMap(), Requirement = /* @__PURE__ */ function() {
   function Requirement2(maximizeParameters, maximizeOptions) {
-    _classCallCheck5(this, Requirement2), _maximizeParameters.set(this, {
+    _classCallCheck5(this, Requirement2), _classPrivateFieldInitSpec(this, _maximizeParameters, {
       writable: !0,
       value: void 0
-    }), _maximizeOptions.set(this, {
+    }), _classPrivateFieldInitSpec(this, _maximizeOptions, {
       writable: !0,
       value: void 0
     }), _classPrivateFieldSet(this, _maximizeParameters, maximizeParameters), _classPrivateFieldSet(this, _maximizeOptions, maximizeOptions);
   }
-  return _createClass4(Requirement2, [{
+  return _createClass5(Requirement2, [{
     key: "maximizeParameters",
     get: function() {
       return _classPrivateFieldGet(this, _maximizeParameters);
@@ -5359,10 +5127,6 @@ var _maximizeParameters = /* @__PURE__ */ new WeakMap(), _maximizeOptions = /* @
     get: function() {
       return _classPrivateFieldGet(this, _maximizeOptions);
     }
-    /**
-     * Merges two requirements, concanating relevant arrays. Typically used in static form.
-     * @param other Requirement to merge with.
-     */
   }, {
     key: "merge",
     value: function(other) {
@@ -5384,25 +5148,11 @@ var _maximizeParameters = /* @__PURE__ */ new WeakMap(), _maximizeOptions = /* @
         forceUpdate: optionsA.forceUpdate || optionsB.forceUpdate
       });
     }
-    /**
-     * Merges a set of requirements together, starting with an empty requirement.
-     * @param allRequirements Requirements to merge
-     */
   }, {
     key: "maximize",
-    value: (
-      /**
-       * Runs maximizeCached, using the maximizeParameters and maximizeOptions contained by this requirement.
-       * @returns Whether the maximize call succeeded.
-       */
-      function() {
-        return maximizeCached(this.maximizeParameters, this.maximizeOptions);
-      }
-    )
-    /**
-     * Merges requirements, and then runs maximizeCached on the combined requirement.
-     * @param requirements Requirements to maximize on
-     */
+    value: function() {
+      return maximizeCached(this.maximizeParameters, this.maximizeOptions);
+    }
   }], [{
     key: "merge",
     value: function(allRequirements) {
@@ -5469,7 +5219,7 @@ function _nonIterableRest5() {
   throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
 function _unsupportedIterableToArray6(o, minLen) {
-  if (o) {
+  if (!!o) {
     if (typeof o == "string")
       return _arrayLikeToArray6(o, minLen);
     var n = Object.prototype.toString.call(o).slice(8, -1);
@@ -5488,15 +5238,21 @@ function _arrayLikeToArray6(arr, len) {
 function _iterableToArrayLimit5(arr, i) {
   var _i = arr == null ? null : typeof Symbol != "undefined" && arr[Symbol.iterator] || arr["@@iterator"];
   if (_i != null) {
-    var _arr = [], _n = !0, _d = !1, _s, _e;
+    var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1;
     try {
-      for (_i = _i.call(arr); !(_n = (_s = _i.next()).done) && (_arr.push(_s.value), !(i && _arr.length === i)); _n = !0)
-        ;
+      if (_x = (_i = _i.call(arr)).next, i === 0) {
+        if (Object(_i) !== _i)
+          return;
+        _n = !1;
+      } else
+        for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0)
+          ;
     } catch (err) {
       _d = !0, _e = err;
     } finally {
       try {
-        !_n && _i.return != null && _i.return();
+        if (!_n && _i.return != null && (_r = _i.return(), Object(_r) !== _r))
+          return;
       } finally {
         if (_d)
           throw _e;
@@ -5659,16 +5415,41 @@ init_kolmafia_polyfill();
 
 // node_modules/libram/dist/Copier.js
 init_kolmafia_polyfill();
+function _defineProperties6(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, _toPropertyKey6(descriptor.key), descriptor);
+  }
+}
+function _createClass6(Constructor, protoProps, staticProps) {
+  return protoProps && _defineProperties6(Constructor.prototype, protoProps), staticProps && _defineProperties6(Constructor, staticProps), Object.defineProperty(Constructor, "prototype", { writable: !1 }), Constructor;
+}
 function _classCallCheck6(instance, Constructor) {
   if (!(instance instanceof Constructor))
     throw new TypeError("Cannot call a class as a function");
 }
 function _defineProperty5(obj, key, value) {
-  return key in obj ? Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+  return key = _toPropertyKey6(key), key in obj ? Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
 }
-var Copier = function Copier2(couldCopy, prepare, canCopy, copiedMonster, fightCopy) {
+function _toPropertyKey6(arg) {
+  var key = _toPrimitive6(arg, "string");
+  return typeof key == "symbol" ? key : String(key);
+}
+function _toPrimitive6(input, hint) {
+  if (typeof input != "object" || input === null)
+    return input;
+  var prim = input[Symbol.toPrimitive];
+  if (prim !== void 0) {
+    var res = prim.call(input, hint || "default");
+    if (typeof res != "object")
+      return res;
+    throw new TypeError("@@toPrimitive must return a primitive value.");
+  }
+  return (hint === "string" ? String : Number)(input);
+}
+var Copier = /* @__PURE__ */ _createClass6(function Copier2(couldCopy, prepare, canCopy, copiedMonster, fightCopy) {
   _classCallCheck6(this, Copier2), _defineProperty5(this, "couldCopy", void 0), _defineProperty5(this, "prepare", void 0), _defineProperty5(this, "canCopy", void 0), _defineProperty5(this, "copiedMonster", void 0), _defineProperty5(this, "fightCopy", null), this.couldCopy = couldCopy, this.prepare = prepare, this.canCopy = canCopy, this.copiedMonster = copiedMonster, fightCopy && (this.fightCopy = fightCopy);
-};
+});
 
 // node_modules/libram/dist/modifier.js
 init_kolmafia_polyfill();
@@ -5831,7 +5612,7 @@ function _createForOfIteratorHelper4(o, allowArrayLike) {
   } };
 }
 function _unsupportedIterableToArray7(o, minLen) {
-  if (o) {
+  if (!!o) {
     if (typeof o == "string")
       return _arrayLikeToArray7(o, minLen);
     var n = Object.prototype.toString.call(o).slice(8, -1);
@@ -5866,30 +5647,20 @@ function enhance(buff) {
   return Object.values(Buffs).includes(buff) ? (0, import_kolmafia9.cliExecute)("terminal enhance ".concat(buff.name)) : !1;
 }
 var RolloverBuffs = {
-  /** +5 Familiar Weight */
   Familiar: $effect(_templateObject83 || (_templateObject83 = _taggedTemplateLiteral5(["familiar.enq"]))),
-  /** +25 ML */
   Monsters: $effect(_templateObject94 || (_templateObject94 = _taggedTemplateLiteral5(["monsters.enq"]))),
-  /** +5 Prismatic Resistance */
   Protect: $effect(_templateObject104 || (_templateObject104 = _taggedTemplateLiteral5(["protect.enq"]))),
-  /** +100% Muscle, +100% Mysticality, +100% Moxie */
   Stats: $effect(_templateObject114 || (_templateObject114 = _taggedTemplateLiteral5(["stats.enq"])))
 };
 function enquiry(rolloverBuff) {
   return Object.values(RolloverBuffs).includes(rolloverBuff) ? (0, import_kolmafia9.cliExecute)("terminal enquiry ".concat(rolloverBuff.name)) : !1;
 }
 var Skills = {
-  /** Collect Source essence from enemies once per combat */
   Extract: $skill(_templateObject124 || (_templateObject124 = _taggedTemplateLiteral5(["Extract"]))),
-  /** Stagger and create a wandering monster 1-3 times per day */
   Digitize: $skill(_templateObject134 || (_templateObject134 = _taggedTemplateLiteral5(["Digitize"]))),
-  /** Stagger and deal 25% of enemy HP in damage once per combat */
   Compress: $skill(_templateObject143 || (_templateObject143 = _taggedTemplateLiteral5(["Compress"]))),
-  /** Double monster's HP, attack, defence, attacks per round and item drops once per fight and once per day (five in The Source) */
   Duplicate: $skill(_templateObject153 || (_templateObject153 = _taggedTemplateLiteral5(["Duplicate"]))),
-  /** Causes government agent/Source Agent wanderer next turn once per combat and three times per day */
   Portscan: $skill(_templateObject163 || (_templateObject163 = _taggedTemplateLiteral5(["Portscan"]))),
-  /** Increase Max MP by 100% and recover 1000 MP once per combat with a 30 turn cooldown */
   Turbo: $skill(_templateObject173 || (_templateObject173 = _taggedTemplateLiteral5(["Turbo"])))
 };
 function educate(skills2) {
@@ -6085,7 +5856,7 @@ function _createForOfIteratorHelper5(o, allowArrayLike) {
   } };
 }
 function _unsupportedIterableToArray8(o, minLen) {
-  if (o) {
+  if (!!o) {
     if (typeof o == "string")
       return _arrayLikeToArray8(o, minLen);
     var n = Object.prototype.toString.call(o).slice(8, -1);
@@ -6380,7 +6151,7 @@ function _nonIterableSpread4() {
   throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
 function _unsupportedIterableToArray9(o, minLen) {
-  if (o) {
+  if (!!o) {
     if (typeof o == "string")
       return _arrayLikeToArray9(o, minLen);
     var n = Object.prototype.toString.call(o).slice(8, -1);
@@ -6426,7 +6197,23 @@ function _objectSpread3(target) {
   return target;
 }
 function _defineProperty6(obj, key, value) {
-  return key in obj ? Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+  return key = _toPropertyKey7(key), key in obj ? Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+}
+function _toPropertyKey7(arg) {
+  var key = _toPrimitive7(arg, "string");
+  return typeof key == "symbol" ? key : String(key);
+}
+function _toPrimitive7(input, hint) {
+  if (typeof input != "object" || input === null)
+    return input;
+  var prim = input[Symbol.toPrimitive];
+  if (prim !== void 0) {
+    var res = prim.call(input, hint || "default");
+    if (typeof res != "object")
+      return res;
+    throw new TypeError("@@toPrimitive must return a primitive value.");
+  }
+  return (hint === "string" ? String : Number)(input);
 }
 function _taggedTemplateLiteral11(strings, raw) {
   return raw || (raw = strings.slice(0)), Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } }));
@@ -6784,7 +6571,7 @@ function _nonIterableRest6() {
   throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
 function _unsupportedIterableToArray10(o, minLen) {
-  if (o) {
+  if (!!o) {
     if (typeof o == "string")
       return _arrayLikeToArray10(o, minLen);
     var n = Object.prototype.toString.call(o).slice(8, -1);
@@ -6803,15 +6590,21 @@ function _arrayLikeToArray10(arr, len) {
 function _iterableToArrayLimit6(arr, i) {
   var _i = arr == null ? null : typeof Symbol != "undefined" && arr[Symbol.iterator] || arr["@@iterator"];
   if (_i != null) {
-    var _arr = [], _n = !0, _d = !1, _s, _e;
+    var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1;
     try {
-      for (_i = _i.call(arr); !(_n = (_s = _i.next()).done) && (_arr.push(_s.value), !(i && _arr.length === i)); _n = !0)
-        ;
+      if (_x = (_i = _i.call(arr)).next, i === 0) {
+        if (Object(_i) !== _i)
+          return;
+        _n = !1;
+      } else
+        for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0)
+          ;
     } catch (err) {
       _d = !0, _e = err;
     } finally {
       try {
-        !_n && _i.return != null && _i.return();
+        if (!_n && _i.return != null && (_r = _i.return(), Object(_r) !== _r))
+          return;
       } finally {
         if (_d)
           throw _e;
@@ -6903,7 +6696,7 @@ function have13() {
   return have(summonSkill2);
 }
 function expected2() {
-  var rareSummons = get("_favorRareSummons"), totalRareChance = 1 / Math.pow(2, rareSummons + 1), commonChance2 = (1 - totalRareChance) / 3, rareChance2 = totalRareChance / 3;
+  var rareSummons = get("_favorRareSummons"), totalRareChance = 1 / 2 ** (rareSummons + 1), commonChance2 = (1 - totalRareChance) / 3, rareChance2 = totalRareChance / 3;
   return /* @__PURE__ */ new Map([[$item(_templateObject225 || (_templateObject225 = _taggedTemplateLiteral16(["divine blowout"]))), commonChance2], [$item(_templateObject318 || (_templateObject318 = _taggedTemplateLiteral16(["divine can of silly string"]))), commonChance2], [$item(_templateObject416 || (_templateObject416 = _taggedTemplateLiteral16(["divine noisemaker"]))), commonChance2], [$item(_templateObject513 || (_templateObject513 = _taggedTemplateLiteral16(["divine champagne flute"]))), rareChance2], [$item(_templateObject610 || (_templateObject610 = _taggedTemplateLiteral16(["divine champagne popper"]))), rareChance2], [$item(_templateObject78 || (_templateObject78 = _taggedTemplateLiteral16(["divine cracker"]))), rareChance2]]);
 }
 
@@ -6975,7 +6768,7 @@ function have18() {
   return have(summonSkill7);
 }
 function expected7() {
-  var rareSummons = get("_taffyRareSummons"), yellowSummons = get("_taffyYellowSummons"), onlyYellow = yellowSummons === 0 && rareSummons === 3, totalRareChance = rareSummons < 4 ? 1 / Math.pow(2, rareSummons + 1) : 0, commonChance2 = (1 - totalRareChance) / 4, rareChance2 = onlyYellow ? 0 : totalRareChance / (3 - get("_taffyYellowSummons")), yellowChance = yellowSummons === 1 ? 0 : onlyYellow ? totalRareChance : rareChance2;
+  var rareSummons = get("_taffyRareSummons"), yellowSummons = get("_taffyYellowSummons"), onlyYellow = yellowSummons === 0 && rareSummons === 3, totalRareChance = rareSummons < 4 ? 1 / 2 ** (rareSummons + 1) : 0, commonChance2 = (1 - totalRareChance) / 4, rareChance2 = onlyYellow ? 0 : totalRareChance / (3 - get("_taffyYellowSummons")), yellowChance = yellowSummons === 1 ? 0 : onlyYellow ? totalRareChance : rareChance2;
   return /* @__PURE__ */ new Map([[$item(_templateObject230 || (_templateObject230 = _taggedTemplateLiteral21(["pulled blue taffy"]))), commonChance2], [$item(_templateObject324 || (_templateObject324 = _taggedTemplateLiteral21(["pulled orange taffy"]))), commonChance2], [$item(_templateObject420 || (_templateObject420 = _taggedTemplateLiteral21(["pulled violet taffy"]))), commonChance2], [$item(_templateObject517 || (_templateObject517 = _taggedTemplateLiteral21(["pulled red taffy"]))), commonChance2], [$item(_templateObject614 || (_templateObject614 = _taggedTemplateLiteral21(["pulled indigo taffy"]))), rareChance2], [$item(_templateObject712 || (_templateObject712 = _taggedTemplateLiteral21(["pulled green taffy"]))), rareChance2], [$item(_templateObject810 || (_templateObject810 = _taggedTemplateLiteral21(["pulled yellow taffy"]))), yellowChance]]);
 }
 
@@ -6987,7 +6780,7 @@ function _nonIterableRest7() {
   throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
 function _unsupportedIterableToArray11(o, minLen) {
-  if (o) {
+  if (!!o) {
     if (typeof o == "string")
       return _arrayLikeToArray11(o, minLen);
     var n = Object.prototype.toString.call(o).slice(8, -1);
@@ -7006,15 +6799,21 @@ function _arrayLikeToArray11(arr, len) {
 function _iterableToArrayLimit7(arr, i) {
   var _i = arr == null ? null : typeof Symbol != "undefined" && arr[Symbol.iterator] || arr["@@iterator"];
   if (_i != null) {
-    var _arr = [], _n = !0, _d = !1, _s, _e;
+    var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1;
     try {
-      for (_i = _i.call(arr); !(_n = (_s = _i.next()).done) && (_arr.push(_s.value), !(i && _arr.length === i)); _n = !0)
-        ;
+      if (_x = (_i = _i.call(arr)).next, i === 0) {
+        if (Object(_i) !== _i)
+          return;
+        _n = !1;
+      } else
+        for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0)
+          ;
     } catch (err) {
       _d = !0, _e = err;
     } finally {
       try {
-        !_n && _i.return != null && _i.return();
+        if (!_n && _i.return != null && (_r = _i.return(), Object(_r) !== _r))
+          return;
       } finally {
         if (_d)
           throw _e;
@@ -7098,7 +6897,7 @@ function _nonIterableRest8() {
   throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
 function _unsupportedIterableToArray12(o, minLen) {
-  if (o) {
+  if (!!o) {
     if (typeof o == "string")
       return _arrayLikeToArray12(o, minLen);
     var n = Object.prototype.toString.call(o).slice(8, -1);
@@ -7117,15 +6916,21 @@ function _arrayLikeToArray12(arr, len) {
 function _iterableToArrayLimit8(arr, i) {
   var _i = arr == null ? null : typeof Symbol != "undefined" && arr[Symbol.iterator] || arr["@@iterator"];
   if (_i != null) {
-    var _arr = [], _n = !0, _d = !1, _s, _e;
+    var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1;
     try {
-      for (_i = _i.call(arr); !(_n = (_s = _i.next()).done) && (_arr.push(_s.value), !(i && _arr.length === i)); _n = !0)
-        ;
+      if (_x = (_i = _i.call(arr)).next, i === 0) {
+        if (Object(_i) !== _i)
+          return;
+        _n = !1;
+      } else
+        for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0)
+          ;
     } catch (err) {
       _d = !0, _e = err;
     } finally {
       try {
-        !_n && _i.return != null && _i.return();
+        if (!_n && _i.return != null && (_r = _i.return(), Object(_r) !== _r))
+          return;
       } finally {
         if (_d)
           throw _e;
@@ -7142,17 +6947,33 @@ function _classCallCheck7(instance, Constructor) {
   if (!(instance instanceof Constructor))
     throw new TypeError("Cannot call a class as a function");
 }
-function _defineProperties5(target, props) {
+function _defineProperties7(target, props) {
   for (var i = 0; i < props.length; i++) {
     var descriptor = props[i];
-    descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, descriptor.key, descriptor);
+    descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, _toPropertyKey8(descriptor.key), descriptor);
   }
 }
-function _createClass5(Constructor, protoProps, staticProps) {
-  return protoProps && _defineProperties5(Constructor.prototype, protoProps), staticProps && _defineProperties5(Constructor, staticProps), Constructor;
+function _createClass7(Constructor, protoProps, staticProps) {
+  return protoProps && _defineProperties7(Constructor.prototype, protoProps), staticProps && _defineProperties7(Constructor, staticProps), Object.defineProperty(Constructor, "prototype", { writable: !1 }), Constructor;
 }
 function _defineProperty7(obj, key, value) {
-  return key in obj ? Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+  return key = _toPropertyKey8(key), key in obj ? Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+}
+function _toPropertyKey8(arg) {
+  var key = _toPrimitive8(arg, "string");
+  return typeof key == "symbol" ? key : String(key);
+}
+function _toPrimitive8(input, hint) {
+  if (typeof input != "object" || input === null)
+    return input;
+  var prim = input[Symbol.toPrimitive];
+  if (prim !== void 0) {
+    var res = prim.call(input, hint || "default");
+    if (typeof res != "object")
+      return res;
+    throw new TypeError("@@toPrimitive must return a primitive value.");
+  }
+  return (hint === "string" ? String : Number)(input);
 }
 function _wrapRegExp() {
   _wrapRegExp = function(re, groups) {
@@ -7163,62 +6984,73 @@ function _wrapRegExp() {
     var _this = new RegExp(re, flags);
     return _groups.set(_this, groups || _groups.get(re)), _setPrototypeOf3(_this, BabelRegExp.prototype);
   }
-  _inherits3(BabelRegExp, RegExp), BabelRegExp.prototype.exec = function(str) {
+  function buildGroups(result, re) {
+    var g = _groups.get(re);
+    return Object.keys(g).reduce(function(groups, name) {
+      var i = g[name];
+      if (typeof i == "number")
+        groups[name] = result[i];
+      else {
+        for (var k = 0; result[i[k]] === void 0 && k + 1 < i.length; )
+          k++;
+        groups[name] = result[i[k]];
+      }
+      return groups;
+    }, /* @__PURE__ */ Object.create(null));
+  }
+  return _inherits3(BabelRegExp, RegExp), BabelRegExp.prototype.exec = function(str) {
     var result = _super.exec.call(this, str);
-    return result && (result.groups = buildGroups(result, this)), result;
+    if (result) {
+      result.groups = buildGroups(result, this);
+      var indices = result.indices;
+      indices && (indices.groups = buildGroups(indices, this));
+    }
+    return result;
   }, BabelRegExp.prototype[Symbol.replace] = function(str, substitution) {
     if (typeof substitution == "string") {
       var groups = _groups.get(this);
       return _super[Symbol.replace].call(this, str, substitution.replace(/\$<([^>]+)>/g, function(_, name) {
-        return "$" + groups[name];
+        var group = groups[name];
+        return "$" + (Array.isArray(group) ? group.join("$") : group);
       }));
-    } else if (typeof substitution == "function") {
+    }
+    if (typeof substitution == "function") {
       var _this = this;
       return _super[Symbol.replace].call(this, str, function() {
         var args = arguments;
-        return typeof args[args.length - 1] != "object" && (args = [].slice.call(args), args.push(buildGroups(args, _this))), substitution.apply(this, args);
+        return typeof args[args.length - 1] != "object" && (args = [].slice.call(args)).push(buildGroups(args, _this)), substitution.apply(this, args);
       });
-    } else
-      return _super[Symbol.replace].call(this, str, substitution);
-  };
-  function buildGroups(result, re) {
-    var g = _groups.get(re);
-    return Object.keys(g).reduce(function(groups, name) {
-      return groups[name] = result[g[name]], groups;
-    }, /* @__PURE__ */ Object.create(null));
-  }
-  return _wrapRegExp.apply(this, arguments);
+    }
+    return _super[Symbol.replace].call(this, str, substitution);
+  }, _wrapRegExp.apply(this, arguments);
 }
 function _inherits3(subClass, superClass) {
   if (typeof superClass != "function" && superClass !== null)
     throw new TypeError("Super expression must either be null or a function");
-  subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), superClass && _setPrototypeOf3(subClass, superClass);
+  subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), Object.defineProperty(subClass, "prototype", { writable: !1 }), superClass && _setPrototypeOf3(subClass, superClass);
 }
 function _setPrototypeOf3(o, p) {
-  return _setPrototypeOf3 = Object.setPrototypeOf || function(o2, p2) {
+  return _setPrototypeOf3 = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function(o2, p2) {
     return o2.__proto__ = p2, o2;
   }, _setPrototypeOf3(o, p);
 }
 var clanIdCache = {}, toPlayerId = function(player) {
   return typeof player == "string" ? (0, import_kolmafia20.getPlayerId)(player) : player;
-}, LOG_FAX_PATTERN = /* @__PURE__ */ _wrapRegExp(/([0-9]{2}\/[0-9]{2}\/[0-9]{2}, [0-9]{2}:[0-9]{2}(?:AM|PM): )<a (?:(?!>)[\s\S])+>((?:(?!<)[\s\S])+)<\/a>(?: faxed in a (.*?))<br>/, {
+}, LOG_FAX_PATTERN = /* @__PURE__ */ _wrapRegExp(/(\d{2}\/\d{2}\/\d{2}, \d{2}:\d{2}(?:AM|PM): )<a [^>]+>([^<]+)<\/a>(?: faxed in a (.*?))<br>/, {
   monster: 3
-}), WHITELIST_DEGREE_PATTERN = /* @__PURE__ */ _wrapRegExp(/(.*?) \(\xB0([0-9]+)\)/, {
+}), WHITELIST_DEGREE_PATTERN = /* @__PURE__ */ _wrapRegExp(/(.*?) \(\xB0(\d+)\)/, {
   name: 1,
   degree: 2
 }), Clan = /* @__PURE__ */ function() {
   function Clan2(id, name) {
     _classCallCheck7(this, Clan2), _defineProperty7(this, "id", void 0), _defineProperty7(this, "name", void 0), this.id = id, this.name = name;
   }
-  return _createClass5(Clan2, [{
+  return _createClass7(Clan2, [{
     key: "_check",
     value: function() {
       if (this.id !== (0, import_kolmafia20.getClanId)())
         throw new Error("You are no longer a member of this clan");
     }
-    /**
-     * Join clan
-     */
   }, {
     key: "join",
     value: function() {
@@ -7229,9 +7061,6 @@ var clanIdCache = {}, toPlayerId = function(player) {
     value: function() {
       return (0, import_kolmafia20.visitUrl)("clan_hall.php").includes("<b>".concat(this.name, "</b>"));
     }
-    /**
-     * Return the monster that is currently in the current clan's fax machine if any
-     */
   }, {
     key: "getCurrentFax",
     value: function() {
@@ -7242,9 +7071,6 @@ var clanIdCache = {}, toPlayerId = function(player) {
       var _lastFax = _slicedToArray8(lastFax, 4), monsterName = _lastFax[3];
       return monsterName ? import_kolmafia20.Monster.get(monsterName) : null;
     }
-    /**
-     * List available ranks (name, degree and id) from the current clan
-     */
   }, {
     key: "getRanks",
     value: function() {
@@ -7262,13 +7088,6 @@ var clanIdCache = {}, toPlayerId = function(player) {
         };
       }).filter(notNull);
     }
-    /**
-     * Add a player to the current clan's whitelist.
-     * If the player is already in the whitelist this will change their rank or title.
-     * @param player Player id or name
-     * @param rankName Rank to give the player. If not provided they will be given the lowest rank
-     * @param title Title to give the player. If not provided, will be blank
-     */
   }, {
     key: "addPlayerToWhitelist",
     value: function(player, rankName) {
@@ -7284,10 +7103,6 @@ var clanIdCache = {}, toPlayerId = function(player) {
       var result = (0, import_kolmafia20.visitUrl)("clan_whitelist.php?action=add&pwd&addwho=".concat(playerId, "&level=").concat(rank.id, "&title=").concat(title));
       return result.includes("added to whitelist.") || result.includes("That player is already on the whitelist");
     }
-    /**
-     * Remove a player from the current clan's whitelist
-     * @param player Player id or name
-     */
   }, {
     key: "removePlayerFromWhitelist",
     value: function(player) {
@@ -7295,9 +7110,6 @@ var clanIdCache = {}, toPlayerId = function(player) {
       var playerId = toPlayerId(player), result = (0, import_kolmafia20.visitUrl)("clan_whitelist.php?action=updatewl&pwd&who=".concat(playerId, "&remove=Remove"));
       return result.includes("Whitelist updated.");
     }
-    /**
-     * Return the amount of meat in the current clan's coffer.
-     */
   }, {
     key: "getMeatInCoffer",
     value: function() {
@@ -7305,10 +7117,6 @@ var clanIdCache = {}, toPlayerId = function(player) {
       var page = (0, import_kolmafia20.visitUrl)("clan_stash.php"), _ref = page.match(/Your <b>Clan Coffer<\/b> contains ([\d,]+) Meat./) || ["0", "0"], _ref2 = _slicedToArray8(_ref, 2), meat = _ref2[1];
       return parseNumber(meat);
     }
-    /**
-     * Add the given amount of meat to the current clan's coffer.
-     * @param amount Amount of meat to put in coffer
-     */
   }, {
     key: "putMeatInCoffer",
     value: function(amount) {
@@ -7401,10 +7209,6 @@ var clanIdCache = {}, toPlayerId = function(player) {
         }
       }
     }
-    /**
-     * Join a clan and return its instance
-     * @param clanIdOrName Clan id or name
-     */
   }, {
     key: "join",
     value: function(clanIdOrName) {
@@ -7426,11 +7230,6 @@ var clanIdCache = {}, toPlayerId = function(player) {
         return Clan2.get();
       return Clan2._join(clanId);
     }
-    /**
-     * Execute callback as a member of a clan
-     * and then restore prior membership
-     * @param clanIdOrName Clan id or name
-     */
   }, {
     key: "with",
     value: function(clanIdOrName, callback) {
@@ -7454,17 +7253,11 @@ var clanIdCache = {}, toPlayerId = function(player) {
         });
       }, callback);
     }
-    /**
-     * Return player's current Clan
-     */
   }, {
     key: "get",
     value: function() {
       return new Clan2((0, import_kolmafia20.getClanId)(), (0, import_kolmafia20.getClanName)());
     }
-    /**
-     * Get list of clans to which the player is whitelisted
-     */
   }, {
     key: "getWhitelisted",
     value: function() {
@@ -7491,7 +7284,7 @@ function _nonIterableRest9() {
   throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
 function _unsupportedIterableToArray13(o, minLen) {
-  if (o) {
+  if (!!o) {
     if (typeof o == "string")
       return _arrayLikeToArray13(o, minLen);
     var n = Object.prototype.toString.call(o).slice(8, -1);
@@ -7510,15 +7303,21 @@ function _arrayLikeToArray13(arr, len) {
 function _iterableToArrayLimit9(arr, i) {
   var _i = arr == null ? null : typeof Symbol != "undefined" && arr[Symbol.iterator] || arr["@@iterator"];
   if (_i != null) {
-    var _arr = [], _n = !0, _d = !1, _s, _e;
+    var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1;
     try {
-      for (_i = _i.call(arr); !(_n = (_s = _i.next()).done) && (_arr.push(_s.value), !(i && _arr.length === i)); _n = !0)
-        ;
+      if (_x = (_i = _i.call(arr)).next, i === 0) {
+        if (Object(_i) !== _i)
+          return;
+        _n = !1;
+      } else
+        for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0)
+          ;
     } catch (err) {
       _d = !0, _e = err;
     } finally {
       try {
-        !_n && _i.return != null && _i.return();
+        if (!_n && _i.return != null && (_r = _i.return(), Object(_r) !== _r))
+          return;
       } finally {
         if (_d)
           throw _e;
@@ -7535,17 +7334,33 @@ function _classCallCheck8(instance, Constructor) {
   if (!(instance instanceof Constructor))
     throw new TypeError("Cannot call a class as a function");
 }
-function _defineProperties6(target, props) {
+function _defineProperties8(target, props) {
   for (var i = 0; i < props.length; i++) {
     var descriptor = props[i];
-    descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, descriptor.key, descriptor);
+    descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, _toPropertyKey9(descriptor.key), descriptor);
   }
 }
-function _createClass6(Constructor, protoProps, staticProps) {
-  return protoProps && _defineProperties6(Constructor.prototype, protoProps), staticProps && _defineProperties6(Constructor, staticProps), Constructor;
+function _createClass8(Constructor, protoProps, staticProps) {
+  return protoProps && _defineProperties8(Constructor.prototype, protoProps), staticProps && _defineProperties8(Constructor, staticProps), Object.defineProperty(Constructor, "prototype", { writable: !1 }), Constructor;
 }
 function _defineProperty8(obj, key, value) {
-  return key in obj ? Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+  return key = _toPropertyKey9(key), key in obj ? Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+}
+function _toPropertyKey9(arg) {
+  var key = _toPrimitive9(arg, "string");
+  return typeof key == "symbol" ? key : String(key);
+}
+function _toPrimitive9(input, hint) {
+  if (typeof input != "object" || input === null)
+    return input;
+  var prim = input[Symbol.toPrimitive];
+  if (prim !== void 0) {
+    var res = prim.call(input, hint || "default");
+    if (typeof res != "object")
+      return res;
+    throw new TypeError("@@toPrimitive must return a primitive value.");
+  }
+  return (hint === "string" ? String : Number)(input);
 }
 function _taggedTemplateLiteral22(strings, raw) {
   return raw || (raw = strings.slice(0)), Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } }));
@@ -7560,38 +7375,26 @@ var thralls = /* @__PURE__ */ new Map([[$stat(_templateObject90 || (_templateObj
   function CommunityService2(id, stat, property, predictor, maximizeRequirements) {
     _classCallCheck8(this, CommunityService2), _defineProperty8(this, "choice", void 0), _defineProperty8(this, "stat", void 0), _defineProperty8(this, "property", void 0), _defineProperty8(this, "predictor", void 0), _defineProperty8(this, "maximizeRequirements", void 0), this.choice = id, this.stat = stat, this.property = property, this.predictor = predictor, this.maximizeRequirements = maximizeRequirements;
   }
-  return _createClass6(CommunityService2, [{
+  return _createClass8(CommunityService2, [{
     key: "id",
     get: function() {
       return this.choice;
     }
-    /**
-     * @returns The primary stat the test measures, used primarily as memorable shorthand in place of test names.
-     */
   }, {
     key: "statName",
     get: function() {
       return this.stat;
     }
-    /**
-     * @returns The name of the test, used primarily as part of the string property "csServicesPerformed"
-     */
   }, {
     key: "name",
     get: function() {
       return this.property;
     }
-    /**
-     *  @returns The predicted number of turns this test will take given your character's current state.
-     */
   }, {
     key: "prediction",
     get: function() {
       return this.predictor();
     }
-    /**
-     * @returns A Requirement object, if applicable, that aligns with the things needed to maximize for this particular test.
-     */
   }, {
     key: "requirement",
     get: function() {
@@ -7599,27 +7402,14 @@ var thralls = /* @__PURE__ */ new Map([[$stat(_templateObject90 || (_templateObj
     }
   }, {
     key: "isDone",
-    value: (
-      /**
-       * Checks the "csServicesPerformed" property to see whether mafia currently believes this test is complete.
-       * @returns Whether mafia currently believes this test is complete.
-       */
-      function() {
-        return get("csServicesPerformed").includes(this.property);
-      }
-    )
-    /**
-     * Maximizes based on the Requirement associated with this particular test.
-     */
+    value: function() {
+      return get("csServicesPerformed").includes(this.property);
+    }
   }, {
     key: "maximize",
     value: function() {
       this.maximizeRequirements && this.maximizeRequirements.maximize();
     }
-    /**
-     * Attempts to turn in the test to the Council of Loathing.
-     * @returns Whether mafia believes the test is complete at the end of this function.
-     */
   }, {
     key: "do",
     value: function() {
@@ -7627,12 +7417,6 @@ var thralls = /* @__PURE__ */ new Map([[$stat(_templateObject90 || (_templateObj
       var councilText = (0, import_kolmafia21.runChoice)(this.choice);
       return this._verifyIsDone(councilText);
     }
-    /**
-     * Wrapper function that prepares for a test and then completes it, adding time and turn details to the log.
-     * @param prepare A function that does all necessary preparations for this CS test, including choosing your outfit. Optionally returns the number of turns you expect to spend preparing for the test.
-     * @param maxTurns We will run the test iff the predicted/actual turns is less than or equal to this parameter.
-     * @returns "completed", "failed", or "already completed".
-     */
   }, {
     key: "run",
     value: function(prepare) {
@@ -7659,10 +7443,6 @@ var thralls = /* @__PURE__ */ new Map([[$stat(_templateObject90 || (_templateObj
     value: function(councilText) {
       return !councilText.includes("<input type=hidden name=option value=".concat(this.choice, ">"));
     }
-    /**
-     * Checks council.php to verify that a test is complete; more reliable than isDone, but requires an additional pagehit.
-     * @returns Whether council.php suggests that the test is complete.
-     */
   }, {
     key: "verifyIsDone",
     value: function() {
@@ -7674,18 +7454,11 @@ var thralls = /* @__PURE__ */ new Map([[$stat(_templateObject90 || (_templateObj
       var match = councilText.match("<input type=hidden name=option value=".concat(this.id, ">.*?Perform Service \\((\\d+) Adventures\\)"));
       return match ? parseInt(match[1]) : 0;
     }
-    /**
-     * Checks council.php for the number of turns this test will take; more reliable than prediction, but requires an additional pagehit.
-     * @returns The number of turns to complete this test according to council.php.
-     */
   }, {
     key: "actualCost",
     value: function() {
       return this._actualCost(visitCouncil());
     }
-    /**
-     * A log of the predicted turns, actual turns, and duration of each CS test performed.
-     */
   }], [{
     key: "logTask",
     value: function(name, action) {
@@ -7699,24 +7472,17 @@ var thralls = /* @__PURE__ */ new Map([[$stat(_templateObject90 || (_templateObj
     }
   }, {
     key: "printLog",
-    value: (
-      /**
-       * Prints turncount and time details of the test in question.
-       * @param colour The colour (or color) you'd like the log to be printed in.
-       */
-      function() {
-        for (var colour = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : "blue", logEntries = Object.entries(CommunityService2.log), _i = 0, _logEntries = logEntries; _i < _logEntries.length; _i++) {
-          var _logEntries$_i = _slicedToArray9(_logEntries[_i], 2), testName = _logEntries$_i[0], testEntry = _logEntries$_i[1], type = testEntry.type, predictedTurns = testEntry.predictedTurns, turnCost = testEntry.turnCost, seconds = testEntry.seconds;
-          type === "test" ? ((0, import_kolmafia21.print)("We predicted the ".concat(testName, " test would take ").concat(predictedTurns, " turns, ").concat(predictedTurns === turnCost ? "and" : "but", " it took ").concat(turnCost, " turns."), colour), (0, import_kolmafia21.print)("".concat(testName, " took ").concat(seconds.toFixed(1), " seconds."), colour)) : (predictedTurns === 0 && turnCost === 0 || (0, import_kolmafia21.print)("We predicted the task ".concat(testName, " would take ").concat(predictedTurns, " turns, ").concat(predictedTurns === turnCost ? "and" : "but", " it took ").concat(turnCost, " turns."), colour), (0, import_kolmafia21.print)("The task ".concat(testName, " took ").concat(seconds.toFixed(1), " seconds."), colour));
-        }
-        var totalTime = sum(logEntries, function(_ref) {
-          var _ref2 = _slicedToArray9(_ref, 2), testEntry2 = _ref2[1];
-          return testEntry2.seconds;
-        });
-        (0, import_kolmafia21.print)("All together, you have spent ".concat(totalTime.toFixed(1), " seconds during this Community Service run"), colour);
+    value: function() {
+      for (var colour = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : "blue", logEntries = Object.entries(CommunityService2.log), _i = 0, _logEntries = logEntries; _i < _logEntries.length; _i++) {
+        var _logEntries$_i = _slicedToArray9(_logEntries[_i], 2), testName = _logEntries$_i[0], testEntry = _logEntries$_i[1], type = testEntry.type, predictedTurns = testEntry.predictedTurns, turnCost = testEntry.turnCost, seconds = testEntry.seconds;
+        type === "test" ? ((0, import_kolmafia21.print)("We predicted the ".concat(testName, " test would take ").concat(predictedTurns, " turns, ").concat(predictedTurns === turnCost ? "and" : "but", " it took ").concat(turnCost, " turns."), colour), (0, import_kolmafia21.print)("".concat(testName, " took ").concat(seconds.toFixed(1), " seconds."), colour)) : (predictedTurns === 0 && turnCost === 0 || (0, import_kolmafia21.print)("We predicted the task ".concat(testName, " would take ").concat(predictedTurns, " turns, ").concat(predictedTurns === turnCost ? "and" : "but", " it took ").concat(turnCost, " turns."), colour), (0, import_kolmafia21.print)("The task ".concat(testName, " took ").concat(seconds.toFixed(1), " seconds."), colour));
       }
-    )
-    // Below, we have the tests themselves.
+      var totalTime = sum(logEntries, function(_ref) {
+        var _ref2 = _slicedToArray9(_ref, 2), testEntry2 = _ref2[1];
+        return testEntry2.seconds;
+      });
+      (0, import_kolmafia21.print)("All together, you have spent ".concat(totalTime.toFixed(1), " seconds during this Community Service run"), colour);
+    }
   }]), CommunityService2;
 }();
 _defineProperty8(CommunityService, "log", {});
@@ -7786,6 +7552,31 @@ function set2(counter, duration) {
 // node_modules/libram/dist/since.js
 init_kolmafia_polyfill();
 var import_kolmafia23 = require("kolmafia");
+function _defineProperties9(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, _toPropertyKey10(descriptor.key), descriptor);
+  }
+}
+function _createClass9(Constructor, protoProps, staticProps) {
+  return protoProps && _defineProperties9(Constructor.prototype, protoProps), staticProps && _defineProperties9(Constructor, staticProps), Object.defineProperty(Constructor, "prototype", { writable: !1 }), Constructor;
+}
+function _toPropertyKey10(arg) {
+  var key = _toPrimitive10(arg, "string");
+  return typeof key == "symbol" ? key : String(key);
+}
+function _toPrimitive10(input, hint) {
+  if (typeof input != "object" || input === null)
+    return input;
+  var prim = input[Symbol.toPrimitive];
+  if (prim !== void 0) {
+    var res = prim.call(input, hint || "default");
+    if (typeof res != "object")
+      return res;
+    throw new TypeError("@@toPrimitive must return a primitive value.");
+  }
+  return (hint === "string" ? String : Number)(input);
+}
 function _classCallCheck9(instance, Constructor) {
   if (!(instance instanceof Constructor))
     throw new TypeError("Cannot call a class as a function");
@@ -7793,7 +7584,7 @@ function _classCallCheck9(instance, Constructor) {
 function _inherits4(subClass, superClass) {
   if (typeof superClass != "function" && superClass !== null)
     throw new TypeError("Super expression must either be null or a function");
-  subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), superClass && _setPrototypeOf4(subClass, superClass);
+  subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), Object.defineProperty(subClass, "prototype", { writable: !1 }), superClass && _setPrototypeOf4(subClass, superClass);
 }
 function _createSuper3(Derived) {
   var hasNativeReflectConstruct = _isNativeReflectConstruct3();
@@ -7838,7 +7629,7 @@ function _wrapNativeSuper3(Class5) {
   }, _wrapNativeSuper3(Class5);
 }
 function _construct3(Parent, args, Class5) {
-  return _isNativeReflectConstruct3() ? _construct3 = Reflect.construct : _construct3 = function(Parent2, args2, Class6) {
+  return _isNativeReflectConstruct3() ? _construct3 = Reflect.construct.bind() : _construct3 = function(Parent2, args2, Class6) {
     var a = [null];
     a.push.apply(a, args2);
     var Constructor = Function.bind.apply(Parent2, a), instance = new Constructor();
@@ -7861,12 +7652,12 @@ function _isNativeFunction3(fn) {
   return Function.toString.call(fn).indexOf("[native code]") !== -1;
 }
 function _setPrototypeOf4(o, p) {
-  return _setPrototypeOf4 = Object.setPrototypeOf || function(o2, p2) {
+  return _setPrototypeOf4 = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function(o2, p2) {
     return o2.__proto__ = p2, o2;
   }, _setPrototypeOf4(o, p);
 }
 function _getPrototypeOf3(o) {
-  return _getPrototypeOf3 = Object.setPrototypeOf ? Object.getPrototypeOf : function(o2) {
+  return _getPrototypeOf3 = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function(o2) {
     return o2.__proto__ || Object.getPrototypeOf(o2);
   }, _getPrototypeOf3(o);
 }
@@ -7877,7 +7668,7 @@ var KolmafiaVersionError = /* @__PURE__ */ function(_Error) {
     var _this;
     return _classCallCheck9(this, KolmafiaVersionError2), _this = _super.call(this, message), Object.setPrototypeOf(_assertThisInitialized3(_this), KolmafiaVersionError2.prototype), _this;
   }
-  return KolmafiaVersionError2;
+  return _createClass9(KolmafiaVersionError2);
 }(/* @__PURE__ */ _wrapNativeSuper3(Error));
 KolmafiaVersionError.prototype.name = "KolmafiaVersionError";
 function getScriptName() {
@@ -7892,19 +7683,7 @@ function sinceKolmafiaRevision(revision) {
     throw new KolmafiaVersionError("".concat(getScriptName(), " requires revision r").concat(revision, " of kolmafia or higher (current: ").concat((0, import_kolmafia23.getRevision)(), "). Up-to-date builds can be found at https://ci.kolmafia.us/."));
 }
 
-// src/boozedrop.ts
-init_kolmafia_polyfill();
-var import_kolmafia32 = require("kolmafia");
-
-// src/combat.ts
-init_kolmafia_polyfill();
-
-// node_modules/grimoire-kolmafia/dist/index.js
-init_kolmafia_polyfill();
-
 // node_modules/grimoire-kolmafia/dist/args.js
-init_kolmafia_polyfill();
-var import_kolmafia24 = require("kolmafia");
 var specSymbol = Symbol("spec"), scriptSymbol = Symbol("script"), scriptHelpSymbol = Symbol("scriptHelp"), optionsSymbol = Symbol("options");
 
 // node_modules/grimoire-kolmafia/dist/combat.js
@@ -7913,10 +7692,10 @@ var import_kolmafia25 = require("kolmafia");
 function _inherits5(subClass, superClass) {
   if (typeof superClass != "function" && superClass !== null)
     throw new TypeError("Super expression must either be null or a function");
-  subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), superClass && _setPrototypeOf5(subClass, superClass);
+  subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), Object.defineProperty(subClass, "prototype", { writable: !1 }), superClass && _setPrototypeOf5(subClass, superClass);
 }
 function _setPrototypeOf5(o, p) {
-  return _setPrototypeOf5 = Object.setPrototypeOf || function(o2, p2) {
+  return _setPrototypeOf5 = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function(o2, p2) {
     return o2.__proto__ = p2, o2;
   }, _setPrototypeOf5(o, p);
 }
@@ -7957,7 +7736,7 @@ function _isNativeReflectConstruct4() {
   }
 }
 function _getPrototypeOf4(o) {
-  return _getPrototypeOf4 = Object.setPrototypeOf ? Object.getPrototypeOf : function(o2) {
+  return _getPrototypeOf4 = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function(o2) {
     return o2.__proto__ || Object.getPrototypeOf(o2);
   }, _getPrototypeOf4(o);
 }
@@ -8008,7 +7787,7 @@ function _createForOfIteratorHelper7(o, allowArrayLike) {
   } };
 }
 function _unsupportedIterableToArray14(o, minLen) {
-  if (o) {
+  if (!!o) {
     if (typeof o == "string")
       return _arrayLikeToArray14(o, minLen);
     var n = Object.prototype.toString.call(o).slice(8, -1);
@@ -8028,14 +7807,30 @@ function _classCallCheck10(instance, Constructor) {
   if (!(instance instanceof Constructor))
     throw new TypeError("Cannot call a class as a function");
 }
-function _defineProperties7(target, props) {
+function _defineProperties10(target, props) {
   for (var i = 0; i < props.length; i++) {
     var descriptor = props[i];
-    descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, descriptor.key, descriptor);
+    descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, _toPropertyKey11(descriptor.key), descriptor);
   }
 }
-function _createClass7(Constructor, protoProps, staticProps) {
-  return protoProps && _defineProperties7(Constructor.prototype, protoProps), staticProps && _defineProperties7(Constructor, staticProps), Constructor;
+function _createClass10(Constructor, protoProps, staticProps) {
+  return protoProps && _defineProperties10(Constructor.prototype, protoProps), staticProps && _defineProperties10(Constructor, staticProps), Object.defineProperty(Constructor, "prototype", { writable: !1 }), Constructor;
+}
+function _toPropertyKey11(arg) {
+  var key = _toPrimitive11(arg, "string");
+  return typeof key == "symbol" ? key : String(key);
+}
+function _toPrimitive11(input, hint) {
+  if (typeof input != "object" || input === null)
+    return input;
+  var prim = input[Symbol.toPrimitive];
+  if (prim !== void 0) {
+    var res = prim.call(input, hint || "default");
+    if (typeof res != "object")
+      return res;
+    throw new TypeError("@@toPrimitive must return a primitive value.");
+  }
+  return (hint === "string" ? String : Number)(input);
 }
 function undelay(macro) {
   return macro instanceof Macro ? macro : macro();
@@ -8044,7 +7839,7 @@ var CombatStrategy = /* @__PURE__ */ function() {
   function CombatStrategy2() {
     _classCallCheck10(this, CombatStrategy2), this.macros = /* @__PURE__ */ new Map(), this.autoattacks = /* @__PURE__ */ new Map(), this.actions = /* @__PURE__ */ new Map(), this.ccs_entries = /* @__PURE__ */ new Map();
   }
-  return _createClass7(CombatStrategy2, [{
+  return _createClass10(CombatStrategy2, [{
     key: "macro",
     value: function(_macro, monsters, prepend) {
       var _a, _b;
@@ -8066,17 +7861,6 @@ var CombatStrategy = /* @__PURE__ */ function() {
       }
       return this;
     }
-    /**
-     * Add a macro to perform as an autoattack for this monster. If multiple
-     * macros are given for the same monster, they are concatinated.
-     *
-     * @param macro The macro to perform as autoattack.
-     * @param monsters Which monsters to use the macro on. If not given, add the
-     *  macro as a general macro.
-     * @param prepend If true, add the macro before all previous autoattack
-     *    macros for the same monster. If false, add after all previous macros.
-     * @returns this
-     */
   }, {
     key: "autoattack",
     value: function(macro, monsters, prepend) {
@@ -8099,27 +7883,11 @@ var CombatStrategy = /* @__PURE__ */ function() {
       }
       return this;
     }
-    /**
-     * Add a macro to perform at the start of combat.
-     * @param macro The macro to perform.
-     * @param prepend If true, add the macro before all previous starting
-     *    macros. If false, add after all previous starting macros.
-     * @returns this
-     */
   }, {
     key: "startingMacro",
     value: function(macro, prepend) {
       return this.starting_macro === void 0 && (this.starting_macro = []), prepend ? this.starting_macro.unshift(macro) : this.starting_macro.push(macro), this;
     }
-    /**
-     * Add an action to perform for this monster. Only one action can be set for
-     * each monster; any previous actions are overwritten.
-     *
-     * @param action The action to perform.
-     * @param monsters Which monsters to use the action on. If not given, set the
-     *  action as the general action for all monsters.
-     * @returns this
-     */
   }, {
     key: "action",
     value: function(_action, monsters) {
@@ -8142,19 +7910,6 @@ var CombatStrategy = /* @__PURE__ */ function() {
       }
       return this;
     }
-    /**
-     * Add a separate entry in the grimoire-generated CCS file for the specified
-     * monster. If multiple entries are given for the same monster, they are
-     * concatinated.
-     *
-     * This should typically be only used rarely, on monsters for which KoL does
-     * not support macros in combat (e.g. rampaging adding machine).
-     *
-     * @param entry The entry to add for the given monster.
-     * @param monsters Which monsters to add the entry to.
-     * @param prepend If true, add the entry before all previous entries. If
-     *   false, add after all previous entries.
-     */
   }, {
     key: "ccs",
     value: function(entry, monsters, prepend) {
@@ -8173,26 +7928,16 @@ var CombatStrategy = /* @__PURE__ */ function() {
       }
       return this;
     }
-    /**
-     * Check if the provided action was requested for any monsters, or for the
-     * general action.
-     */
   }, {
     key: "can",
     value: function(action) {
       return action === this.default_action ? !0 : Array.from(this.actions.values()).includes(action);
     }
-    /**
-     * Return the general action (if it exists).
-     */
   }, {
     key: "getDefaultAction",
     value: function() {
       return this.default_action;
     }
-    /**
-     * Return all monsters where the provided action was requested.
-     */
   }, {
     key: "where",
     value: function(action) {
@@ -8201,18 +7946,12 @@ var CombatStrategy = /* @__PURE__ */ function() {
         return _this.actions.get(key) === action;
       });
     }
-    /**
-     * Return the requested action (if it exists) for the provided monster.
-     */
   }, {
     key: "currentStrategy",
     value: function(monster) {
       var _a;
       return (_a = this.actions.get(monster)) !== null && _a !== void 0 ? _a : this.default_action;
     }
-    /**
-     * Perform a deep copy of this combat strategy.
-     */
   }, {
     key: "clone",
     value: function() {
@@ -8266,14 +8005,6 @@ var CombatStrategy = /* @__PURE__ */ function() {
       }
       return result;
     }
-    /**
-     * Compile this combat strategy into a complete macro.
-     *
-     * @param resources The resources to use to fulfil actions.
-     * @param defaults Macros to perform for each action without a resource.
-     * @param location The adventuring location, if known.
-     * @returns The compiled macro.
-     */
   }, {
     key: "compile",
     value: function(resources, defaults, location) {
@@ -8294,11 +8025,6 @@ var CombatStrategy = /* @__PURE__ */ function() {
       }
       return result;
     }
-    /**
-     * Compile the autoattack of this combat strategy into a complete macro.
-     *
-     * @returns The compiled autoattack macro.
-     */
   }, {
     key: "compileAutoattack",
     value: function() {
@@ -8308,11 +8034,6 @@ var CombatStrategy = /* @__PURE__ */ function() {
         monster_macros.add(key, (_Macro2 = new Macro()).step.apply(_Macro2, _toConsumableArray6(value.map(undelay))));
       }), result.step(monster_macros.compile()), this.default_autoattack && result.step.apply(result, _toConsumableArray6(this.default_autoattack.map(undelay))), result;
     }
-    /**
-     * Compile the CCS entries of this combat strategy into a single array.
-     *
-     * @returns The lines of a CCS file, not including the [default] macro.
-     */
   }, {
     key: "compileCcs",
     value: function() {
@@ -8329,20 +8050,6 @@ var CombatStrategy = /* @__PURE__ */ function() {
       }
       return result;
     }
-    /**
-     * For advanced users, this method will generate a fluent API for requesting
-     * actions. That is, it allows you to do
-     *   combat.banish(monster1).kill(monster2)
-     * instead of
-     *   combat.action("banish", monster1).action("kill", monster2)
-     *
-     * Example usage:
-     *   const myActions = ["kill", "banish"] as const;
-     *   class MyCombatStrategy extends CombatStrategy.withActions(myActions) {}
-     *
-     *   const foo: MyCombatStrategy = new MyCombatStrategy();
-     *   const bar: MyCombatStrategy = foo.banish($monster`crate`).kill($monster`tumbleweed`);
-     */
   }], [{
     key: "withActions",
     value: function(actions) {
@@ -8352,7 +8059,7 @@ var CombatStrategy = /* @__PURE__ */ function() {
         function CombatStrategyWithActions2() {
           return _classCallCheck10(this, CombatStrategyWithActions2), _super.apply(this, arguments);
         }
-        return CombatStrategyWithActions2;
+        return _createClass10(CombatStrategyWithActions2);
       }(this), proto = CombatStrategyWithActions.prototype, _iterator10 = _createForOfIteratorHelper7(actions), _step10;
       try {
         var _loop = function() {
@@ -8375,15 +8082,12 @@ var CombatStrategy = /* @__PURE__ */ function() {
   function CompressedMacro2() {
     _classCallCheck10(this, CompressedMacro2), this.components = /* @__PURE__ */ new Map();
   }
-  return _createClass7(CompressedMacro2, [{
+  return _createClass10(CompressedMacro2, [{
     key: "add",
     value: function(monster, macro) {
       var _a, macro_text = macro.toString();
       macro_text.length !== 0 && (this.components.has(macro_text) ? (_a = this.components.get(macro_text)) === null || _a === void 0 || _a.push(monster) : this.components.set(macro_text, [monster]));
     }
-    /**
-     * Compile the compressed form of the macro.
-     */
   }, {
     key: "compile",
     value: function() {
@@ -8400,31 +8104,21 @@ var CombatStrategy = /* @__PURE__ */ function() {
   function CombatResources2() {
     _classCallCheck10(this, CombatResources2), this.resources = /* @__PURE__ */ new Map();
   }
-  return _createClass7(CombatResources2, [{
+  return _createClass10(CombatResources2, [{
     key: "provide",
     value: function(action, resource) {
       resource !== void 0 && this.resources.set(action, resource);
     }
-    /**
-     * Return true if the provided action has a resource provided.
-     */
   }, {
     key: "has",
     value: function(action) {
       return this.resources.has(action);
     }
-    /**
-     * Return all provided combat resources.
-     */
   }, {
     key: "all",
     value: function() {
       return Array.from(this.resources.values());
     }
-    /**
-     * Get the macro provided by the resource for this action, or undefined if
-     * no resource was provided.
-     */
   }, {
     key: "getMacro",
     value: function(action) {
@@ -8465,7 +8159,7 @@ function _objectSpread4(target) {
   return target;
 }
 function _defineProperty9(obj, key, value) {
-  return key in obj ? Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+  return key = _toPropertyKey12(key), key in obj ? Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
 }
 function _createForOfIteratorHelper8(o, allowArrayLike) {
   var it = typeof Symbol != "undefined" && o[Symbol.iterator] || o["@@iterator"];
@@ -8509,7 +8203,7 @@ function _nonIterableSpread7() {
   throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
 function _unsupportedIterableToArray15(o, minLen) {
-  if (o) {
+  if (!!o) {
     if (typeof o == "string")
       return _arrayLikeToArray15(o, minLen);
     var n = Object.prototype.toString.call(o).slice(8, -1);
@@ -8537,14 +8231,30 @@ function _classCallCheck11(instance, Constructor) {
   if (!(instance instanceof Constructor))
     throw new TypeError("Cannot call a class as a function");
 }
-function _defineProperties8(target, props) {
+function _defineProperties11(target, props) {
   for (var i = 0; i < props.length; i++) {
     var descriptor = props[i];
-    descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, descriptor.key, descriptor);
+    descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, _toPropertyKey12(descriptor.key), descriptor);
   }
 }
-function _createClass8(Constructor, protoProps, staticProps) {
-  return protoProps && _defineProperties8(Constructor.prototype, protoProps), staticProps && _defineProperties8(Constructor, staticProps), Constructor;
+function _createClass11(Constructor, protoProps, staticProps) {
+  return protoProps && _defineProperties11(Constructor.prototype, protoProps), staticProps && _defineProperties11(Constructor, staticProps), Object.defineProperty(Constructor, "prototype", { writable: !1 }), Constructor;
+}
+function _toPropertyKey12(arg) {
+  var key = _toPrimitive12(arg, "string");
+  return typeof key == "symbol" ? key : String(key);
+}
+function _toPrimitive12(input, hint) {
+  if (typeof input != "object" || input === null)
+    return input;
+  var prim = input[Symbol.toPrimitive];
+  if (prim !== void 0) {
+    var res = prim.call(input, hint || "default");
+    if (typeof res != "object")
+      return res;
+    throw new TypeError("@@toPrimitive must return a primitive value.");
+  }
+  return (hint === "string" ? String : Number)(input);
 }
 var outfitSlots = ["hat", "back", "weapon", "offhand", "shirt", "pants", "acc1", "acc2", "acc3", "famequip"], weaponHands = function(i) {
   return i ? (0, import_kolmafia26.weaponHands)(i) : 0;
@@ -8552,7 +8262,7 @@ var outfitSlots = ["hat", "back", "weapon", "offhand", "shirt", "pants", "acc1",
   function Outfit2() {
     _classCallCheck11(this, Outfit2), this.equips = /* @__PURE__ */ new Map(), this.modes = {}, this.skipDefaults = !1, this.modifier = "", this.avoid = [];
   }
-  return _createClass8(Outfit2, [{
+  return _createClass11(Outfit2, [{
     key: "equippedAmount",
     value: function(item6) {
       return _toConsumableArray7(this.equips.values()).filter(function(i) {
@@ -8565,9 +8275,6 @@ var outfitSlots = ["hat", "back", "weapon", "offhand", "shirt", "pants", "acc1",
       var _a;
       return !(!((_a = this.avoid) === null || _a === void 0) && _a.includes(item6) || !have(item6, this.equippedAmount(item6) + 1) || (0, import_kolmafia26.booleanModifier)(item6, "Single Equip") && this.equippedAmount(item6) > 0);
     }
-    /**
-     * Check whether an item is equipped on the outfit, optionally in a specific slot.
-     */
   }, {
     key: "haveEquipped",
     value: function(item6, slot) {
@@ -8657,37 +8364,23 @@ var outfitSlots = ["hat", "back", "weapon", "offhand", "shirt", "pants", "acc1",
   }, {
     key: "equipSpec",
     value: function(spec) {
-      var _this$avoid, _a, _b, _c, _d, succeeded = !0, _iterator = _createForOfIteratorHelper8(outfitSlots), _step;
+      for (var _this$avoid, _a, _b, _c, _d, succeeded = !0, _i = 0, _outfitSlots2 = outfitSlots; _i < _outfitSlots2.length; _i++) {
+        var slotName = _outfitSlots2[_i], slot = (_a = (/* @__PURE__ */ new Map([["famequip", $slot(_templateObject255 || (_templateObject255 = _taggedTemplateLiteral23(["familiar"])))], ["offhand", $slot(_templateObject265 || (_templateObject265 = _taggedTemplateLiteral23(["off-hand"])))]])).get(slotName)) !== null && _a !== void 0 ? _a : (0, import_kolmafia26.toSlot)(slotName), itemOrItems = spec[slotName];
+        itemOrItems !== void 0 && !this.equip(itemOrItems, slot) && (succeeded = !1);
+      }
+      var _iterator = _createForOfIteratorHelper8((_b = spec == null ? void 0 : spec.equip) !== null && _b !== void 0 ? _b : []), _step;
       try {
         for (_iterator.s(); !(_step = _iterator.n()).done; ) {
-          var slotName = _step.value, slot = (_a = (/* @__PURE__ */ new Map([["famequip", $slot(_templateObject255 || (_templateObject255 = _taggedTemplateLiteral23(["familiar"])))], ["offhand", $slot(_templateObject265 || (_templateObject265 = _taggedTemplateLiteral23(["off-hand"])))]])).get(slotName)) !== null && _a !== void 0 ? _a : (0, import_kolmafia26.toSlot)(slotName), itemOrItems = spec[slotName];
-          itemOrItems !== void 0 && !this.equip(itemOrItems, slot) && (succeeded = !1);
+          var item6 = _step.value;
+          this.equip(item6) || (succeeded = !1);
         }
       } catch (err) {
         _iterator.e(err);
       } finally {
         _iterator.f();
       }
-      var _iterator2 = _createForOfIteratorHelper8((_b = spec == null ? void 0 : spec.equip) !== null && _b !== void 0 ? _b : []), _step2;
-      try {
-        for (_iterator2.s(); !(_step2 = _iterator2.n()).done; ) {
-          var item6 = _step2.value;
-          this.equip(item6) || (succeeded = !1);
-        }
-      } catch (err) {
-        _iterator2.e(err);
-      } finally {
-        _iterator2.f();
-      }
       return (spec == null ? void 0 : spec.familiar) !== void 0 && (this.equip(spec.familiar) || (succeeded = !1)), (_this$avoid = this.avoid).push.apply(_this$avoid, _toConsumableArray7((_c = spec == null ? void 0 : spec.avoid) !== null && _c !== void 0 ? _c : [])), this.skipDefaults = this.skipDefaults || ((_d = spec.skipDefaults) !== null && _d !== void 0 ? _d : !1), spec.modifier && (this.modifier = this.modifier + (this.modifier ? ", " : "") + spec.modifier), spec.modes && (this.setModes(spec.modes) || (succeeded = !1)), succeeded;
     }
-    /**
-     * Equip the first thing that can be equipped to the outfit.
-     *
-     * @param things The things to equip.
-     * @param slot The slot to equip them.
-     * @returns True if one of the things is equipped, and false otherwise.
-     */
   }, {
     key: "equipFirst",
     value: function(things, slot) {
@@ -8696,25 +8389,6 @@ var outfitSlots = ["hat", "back", "weapon", "offhand", "shirt", "pants", "acc1",
         return _this.equip(val, slot);
       });
     }
-    /**
-     * Equip a thing to the outfit.
-     *
-     * If no slot is given, then the thing will be equipped wherever possible
-     * (possibly using dual-wielding, any of the accessory slots, or as
-     * familiar equipment). If it is impossible to add this thing anywhere to
-     * the outfit, this function will return false.
-     *
-     * If a slot is given, the item will be equipped only in that slot. If the
-     * slot is filled with a different item, this function will return false.
-     *
-     * If the thing is already equipped in the provided slot, or if no slot is
-     * given and the thing is already equipped in any slot, this function will
-     * return true and not change the outfit.
-     *
-     * @param thing The thing or things to equip.
-     * @param slot The slot to equip them.
-     * @returns True if the thing was sucessfully equipped, and false otherwise.
-     */
   }, {
     key: "equip",
     value: function(thing, slot) {
@@ -8723,105 +8397,69 @@ var outfitSlots = ["hat", "back", "weapon", "offhand", "shirt", "pants", "acc1",
         return _this.equip(val);
       }) : thing instanceof import_kolmafia26.Item ? this.equipItem(thing, slot) : thing instanceof import_kolmafia26.Familiar ? this.equipFamiliar(thing) : thing instanceof Outfit2 ? this.equipSpec(thing.spec()) : this.equipSpec(thing);
     }
-    /**
-     * Set the provided modes for items that may be equipped in the outfit.
-     *
-     * This function does *not* equip items for the set modes; they must be
-     * equipped separately.
-     *
-     * If a mode is already set for an item that is different from the provided
-     * mode, this function will return false and not change the mode for that
-     * item. (But other modes might still be changed if they are compatible.)
-     *
-     * Note that the superhero and instuctions of a retrocape can be set
-     * independently (`undefined` is treated as "don't care").
-     *
-     * @param modes Modes to set in this outfit.
-     * @returns True if all modes were sucessfully set, and false otherwise.
-     */
   }, {
     key: "setModes",
     value: function(modes) {
-      var _a, _b, compatible = !0, _iterator3 = _createForOfIteratorHelper8(modeableCommands2), _step3;
-      try {
-        for (_iterator3.s(); !(_step3 = _iterator3.n()).done; ) {
-          var mode = _step3.value;
-          mode !== "retrocape" && this.modes[mode] && modes[mode] && this.modes[mode] !== modes[mode] && (compatible = !1);
-        }
-      } catch (err) {
-        _iterator3.e(err);
-      } finally {
-        _iterator3.f();
+      for (var _a, _b, compatible = !0, _i2 = 0, _modeableCommands = modeableCommands2; _i2 < _modeableCommands.length; _i2++) {
+        var mode = _modeableCommands[_i2];
+        mode !== "retrocape" && this.modes[mode] && modes[mode] && this.modes[mode] !== modes[mode] && (compatible = !1);
       }
       return this.modes.retrocape && modes.retrocape && (this.modes.retrocape[0] && modes.retrocape[0] && this.modes.retrocape[0] !== modes.retrocape[0] && (compatible = !1), this.modes.retrocape[1] && modes.retrocape[1] && this.modes.retrocape[1] !== modes.retrocape[1] && (compatible = !1), this.modes.retrocape[0] = (_a = this.modes.retrocape[0]) !== null && _a !== void 0 ? _a : modes.retrocape[0], this.modes.retrocape[1] = (_b = this.modes.retrocape[1]) !== null && _b !== void 0 ? _b : modes.retrocape[1]), this.modes = _objectSpread4(_objectSpread4({}, modes), this.modes), compatible;
     }
-    /**
-     * Check if it is possible to equip a thing to this outfit using .equip().
-     *
-     * This does not change the current outfit.
-     *
-     * @param thing The thing to equip.
-     * @param slot The slot to equip them.
-     * @returns True if this thing can be equipped.
-     */
   }, {
     key: "canEquip",
     value: function(thing, slot) {
       var outfit2 = this.clone();
       return outfit2.equip(thing, slot);
     }
-    /**
-     * Equip this outfit.
-     * @param extraOptions Passed to any maximizer calls made.
-     */
   }, {
     key: "dress",
     value: function(extraOptions) {
       var _this = this;
       this.familiar && (0, import_kolmafia26.useFamiliar)(this.familiar);
-      var targetEquipment = Array.from(this.equips.values()), usedSlots = /* @__PURE__ */ new Set(), nonaccessorySlots = $slots(_templateObject275 || (_templateObject275 = _taggedTemplateLiteral23(["weapon, off-hand, hat, back, shirt, pants, familiar, buddy-bjorn, crown-of-thrones"]))), _iterator4 = _createForOfIteratorHelper8(nonaccessorySlots), _step4;
+      var targetEquipment = Array.from(this.equips.values()), usedSlots = /* @__PURE__ */ new Set(), nonaccessorySlots = $slots(_templateObject275 || (_templateObject275 = _taggedTemplateLiteral23(["weapon, off-hand, hat, back, shirt, pants, familiar, buddy-bjorn, crown-of-thrones"]))), _iterator2 = _createForOfIteratorHelper8(nonaccessorySlots), _step2;
       try {
-        for (_iterator4.s(); !(_step4 = _iterator4.n()).done; ) {
-          var slot = _step4.value;
+        for (_iterator2.s(); !(_step2 = _iterator2.n()).done; ) {
+          var slot = _step2.value;
           (targetEquipment.includes((0, import_kolmafia26.equippedItem)(slot)) && this.equips.get(slot) !== (0, import_kolmafia26.equippedItem)(slot) || this.avoid.includes((0, import_kolmafia26.equippedItem)(slot))) && (0, import_kolmafia26.equip)(slot, $item.none);
         }
       } catch (err) {
-        _iterator4.e(err);
+        _iterator2.e(err);
       } finally {
-        _iterator4.f();
+        _iterator2.f();
       }
-      var _iterator5 = _createForOfIteratorHelper8(nonaccessorySlots), _step5;
+      var _iterator3 = _createForOfIteratorHelper8(nonaccessorySlots), _step3;
       try {
-        for (_iterator5.s(); !(_step5 = _iterator5.n()).done; ) {
-          var _slot = _step5.value, equipment = this.equips.get(_slot);
+        for (_iterator3.s(); !(_step3 = _iterator3.n()).done; ) {
+          var _slot = _step3.value, equipment = this.equips.get(_slot);
           equipment && ((0, import_kolmafia26.equip)(_slot, equipment), usedSlots.add(_slot));
         }
       } catch (err) {
-        _iterator5.e(err);
+        _iterator3.e(err);
       } finally {
-        _iterator5.f();
+        _iterator3.f();
       }
       var accessorySlots = $slots(_templateObject283 || (_templateObject283 = _taggedTemplateLiteral23(["acc1, acc2, acc3"]))), accessoryEquips = accessorySlots.map(function(slot2) {
         return _this.equips.get(slot2);
       }).filter(function(item6) {
         return item6 !== void 0;
-      }), missingAccessories = [], _iterator6 = _createForOfIteratorHelper8(accessoryEquips), _step6;
+      }), missingAccessories = [], _iterator4 = _createForOfIteratorHelper8(accessoryEquips), _step4;
       try {
         var _loop = function() {
-          var accessory2 = _step6.value, alreadyEquipped = accessorySlots.find(function(slot2) {
+          var accessory2 = _step4.value, alreadyEquipped = accessorySlots.find(function(slot2) {
             return !usedSlots.has(slot2) && (0, import_kolmafia26.equippedItem)(slot2) === accessory2;
           });
           alreadyEquipped ? usedSlots.add(alreadyEquipped) : missingAccessories.push(accessory2);
         };
-        for (_iterator6.s(); !(_step6 = _iterator6.n()).done; )
+        for (_iterator4.s(); !(_step4 = _iterator4.n()).done; )
           _loop();
       } catch (err) {
-        _iterator6.e(err);
+        _iterator4.e(err);
       } finally {
-        _iterator6.f();
+        _iterator4.f();
       }
-      for (var _i = 0, _missingAccessories = missingAccessories; _i < _missingAccessories.length; _i++) {
-        var accessory = _missingAccessories[_i], unusedSlot = accessorySlots.find(function(slot2) {
+      for (var _i3 = 0, _missingAccessories = missingAccessories; _i3 < _missingAccessories.length; _i3++) {
+        var accessory = _missingAccessories[_i3], unusedSlot = accessorySlots.find(function(slot2) {
           return !usedSlots.has(slot2);
         });
         if (unusedSlot === void 0)
@@ -8841,66 +8479,53 @@ var outfitSlots = ["hat", "back", "weapon", "offhand", "shirt", "pants", "acc1",
       }
       if (applyModes(modes), this.familiar !== void 0 && (0, import_kolmafia26.myFamiliar)() !== this.familiar)
         throw "Failed to fully dress (expected: familiar ".concat(this.familiar, ")");
-      var _iterator7 = _createForOfIteratorHelper8(nonaccessorySlots), _step7;
+      var _iterator5 = _createForOfIteratorHelper8(nonaccessorySlots), _step5;
       try {
-        for (_iterator7.s(); !(_step7 = _iterator7.n()).done; ) {
-          var _slot2 = _step7.value;
+        for (_iterator5.s(); !(_step5 = _iterator5.n()).done; ) {
+          var _slot2 = _step5.value;
           if (this.equips.has(_slot2) && (0, import_kolmafia26.equippedItem)(_slot2) !== this.equips.get(_slot2))
             throw "Failed to fully dress (expected: ".concat(_slot2, " ").concat(this.equips.get(_slot2), ")");
         }
       } catch (err) {
-        _iterator7.e(err);
+        _iterator5.e(err);
       } finally {
-        _iterator7.f();
+        _iterator5.f();
       }
-      var _iterator8 = _createForOfIteratorHelper8(accessoryEquips), _step8;
+      var _iterator6 = _createForOfIteratorHelper8(accessoryEquips), _step6;
       try {
         var _loop2 = function() {
-          var accessory2 = _step8.value;
+          var accessory2 = _step6.value;
           if ((0, import_kolmafia26.equippedAmount)(accessory2) < accessoryEquips.filter(function(acc) {
             return acc === accessory2;
           }).length)
             throw "Failed to fully dress (expected: acc ".concat(accessory2, ")");
         };
-        for (_iterator8.s(); !(_step8 = _iterator8.n()).done; )
+        for (_iterator6.s(); !(_step6 = _iterator6.n()).done; )
           _loop2();
       } catch (err) {
-        _iterator8.e(err);
+        _iterator6.e(err);
       } finally {
-        _iterator8.f();
+        _iterator6.f();
       }
     }
-    /**
-     * Build an Outfit identical to this outfit.
-     */
   }, {
     key: "clone",
     value: function() {
       var result = new Outfit2();
       return result.equips = new Map(this.equips), result.skipDefaults = this.skipDefaults, result.familiar = this.familiar, result.modifier = this.modifier, result.avoid = _toConsumableArray7(this.avoid), result.modes = _objectSpread4({}, this.modes), result;
     }
-    /**
-     * Build an OutfitSpec identical to this outfit.
-     */
   }, {
     key: "spec",
     value: function() {
-      var _a, result = {
+      for (var _a, result = {
         modifier: this.modifier,
         familiar: this.familiar,
         avoid: _toConsumableArray7(this.avoid),
         skipDefaults: this.skipDefaults,
         modes: _objectSpread4({}, this.modes)
-      }, _iterator9 = _createForOfIteratorHelper8(outfitSlots), _step9;
-      try {
-        for (_iterator9.s(); !(_step9 = _iterator9.n()).done; ) {
-          var slotName = _step9.value;
-          result[slotName] = this.equips.get((_a = (/* @__PURE__ */ new Map([["famequip", $slot(_templateObject293 || (_templateObject293 = _taggedTemplateLiteral23(["familiar"])))], ["offhand", $slot(_templateObject303 || (_templateObject303 = _taggedTemplateLiteral23(["off-hand"])))]])).get(slotName)) !== null && _a !== void 0 ? _a : (0, import_kolmafia26.toSlot)(slotName));
-        }
-      } catch (err) {
-        _iterator9.e(err);
-      } finally {
-        _iterator9.f();
+      }, _i4 = 0, _outfitSlots2 = outfitSlots; _i4 < _outfitSlots2.length; _i4++) {
+        var slotName = _outfitSlots2[_i4];
+        result[slotName] = this.equips.get((_a = (/* @__PURE__ */ new Map([["famequip", $slot(_templateObject293 || (_templateObject293 = _taggedTemplateLiteral23(["familiar"])))], ["offhand", $slot(_templateObject303 || (_templateObject303 = _taggedTemplateLiteral23(["off-hand"])))]])).get(slotName)) !== null && _a !== void 0 ? _a : (0, import_kolmafia26.toSlot)(slotName));
       }
       return result;
     }
@@ -8972,7 +8597,7 @@ function _createForOfIteratorHelper9(o, allowArrayLike) {
   } };
 }
 function _unsupportedIterableToArray16(o, minLen) {
-  if (o) {
+  if (!!o) {
     if (typeof o == "string")
       return _arrayLikeToArray16(o, minLen);
     var n = Object.prototype.toString.call(o).slice(8, -1);
@@ -8988,14 +8613,30 @@ function _arrayLikeToArray16(arr, len) {
     arr2[i] = arr[i];
   return arr2;
 }
-function _defineProperties9(target, props) {
+function _defineProperties12(target, props) {
   for (var i = 0; i < props.length; i++) {
     var descriptor = props[i];
-    descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, descriptor.key, descriptor);
+    descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, _toPropertyKey13(descriptor.key), descriptor);
   }
 }
-function _createClass9(Constructor, protoProps, staticProps) {
-  return protoProps && _defineProperties9(Constructor.prototype, protoProps), staticProps && _defineProperties9(Constructor, staticProps), Constructor;
+function _createClass12(Constructor, protoProps, staticProps) {
+  return protoProps && _defineProperties12(Constructor.prototype, protoProps), staticProps && _defineProperties12(Constructor, staticProps), Object.defineProperty(Constructor, "prototype", { writable: !1 }), Constructor;
+}
+function _toPropertyKey13(arg) {
+  var key = _toPrimitive13(arg, "string");
+  return typeof key == "symbol" ? key : String(key);
+}
+function _toPrimitive13(input, hint) {
+  if (typeof input != "object" || input === null)
+    return input;
+  var prim = input[Symbol.toPrimitive];
+  if (prim !== void 0) {
+    var res = prim.call(input, hint || "default");
+    if (typeof res != "object")
+      return res;
+    throw new TypeError("@@toPrimitive must return a primitive value.");
+  }
+  return (hint === "string" ? String : Number)(input);
 }
 function _classCallCheck12(instance, Constructor) {
   if (!(instance instanceof Constructor))
@@ -9017,7 +8658,7 @@ var grimoireCCS = "grimoire_macro", Engine = /* @__PURE__ */ function() {
     }
     this.initPropertiesManager(this.propertyManager);
   }
-  return _createClass9(Engine2, [{
+  return _createClass12(Engine2, [{
     key: "getNextTask",
     value: function() {
       var _this = this;
@@ -9025,10 +8666,6 @@ var grimoireCCS = "grimoire_macro", Engine = /* @__PURE__ */ function() {
         return _this.available(task);
       });
     }
-    /**
-     * Continually get the next task and execute it.
-     * @param actions If given, only perform up to this many tasks.
-     */
   }, {
     key: "run",
     value: function(actions) {
@@ -9039,22 +8676,11 @@ var grimoireCCS = "grimoire_macro", Engine = /* @__PURE__ */ function() {
         this.execute(task);
       }
     }
-    /**
-     * Close the engine and reset all properties.
-     * After this has been called, this object should not be used.
-     */
   }, {
     key: "destruct",
     value: function() {
       this.propertyManager.resetAll(), (0, import_kolmafia27.setAutoAttack)(0);
     }
-    /**
-     * Check if the given task is available at this moment.
-     * @returns true if all dependencies are complete and the task is ready.
-     *  Note that dependencies are not checked transitively. That is, if
-     *  A depends on B which depends on C, then A is ready if B is complete
-     *  (regardless of if C is complete or not).
-     */
   }, {
     key: "available",
     value: function(task) {
@@ -9074,11 +8700,6 @@ var grimoireCCS = "grimoire_macro", Engine = /* @__PURE__ */ function() {
       }
       return !(task.ready && !task.ready() || task.completed());
     }
-    /**
-     * Perform all steps to execute the provided task.
-     * This is the main entry point for the Engine.
-     * @param task The current executing task.
-     */
   }, {
     key: "execute",
     value: function(task) {
@@ -9103,10 +8724,6 @@ var grimoireCCS = "grimoire_macro", Engine = /* @__PURE__ */ function() {
         _set("lastEncounter", ""), this.do(task);
       this.post(task), this.markAttempt(task), this.checkLimits(task, postcondition);
     }
-    /**
-     * Acquire all items for the task.
-     * @param task The current executing task.
-     */
   }, {
     key: "acquireItems",
     value: function(task) {
@@ -9123,10 +8740,6 @@ var grimoireCCS = "grimoire_macro", Engine = /* @__PURE__ */ function() {
         _iterator4.f();
       }
     }
-    /**
-     * Acquire all effects for the task.
-     * @param task The current executing task.
-     */
   }, {
     key: "acquireEffects",
     value: function(task) {
@@ -9157,10 +8770,6 @@ var grimoireCCS = "grimoire_macro", Engine = /* @__PURE__ */ function() {
         _iterator5.f();
       }
     }
-    /**
-     * Create an outfit for the task with all required equipment.
-     * @param task The current executing task.
-     */
   }, {
     key: "createOutfit",
     value: function(task) {
@@ -9172,39 +8781,15 @@ var grimoireCCS = "grimoire_macro", Engine = /* @__PURE__ */ function() {
         throw "Unable to equip all items for ".concat(task.name);
       return outfit2;
     }
-    /**
-     * Equip the outfit for the task.
-     * @param task The current executing task.
-     * @param outfit The outfit for the task, possibly augmented by the engine.
-     */
   }, {
     key: "dress",
     value: function(task, outfit2) {
       task.do instanceof import_kolmafia27.Location && (0, import_kolmafia27.setLocation)(task.do), outfit2.dress();
     }
-    /* eslint-disable @typescript-eslint/no-unused-vars */
-    /**
-     * Perform any engine-specific customization for the outfit and combat plan.
-     *
-     * This is a natural method to override in order to:
-     *   * Enable the use of any resources in the outfit or combat (e.g., allocate banishers).
-     *   * Equip a default outfit.
-     *   * Determine additional monster macros at a global level (e.g., use flyers).
-     * @param task The current executing task.
-     * @param outfit The outfit for the task.
-     * @param combat The combat strategy so far for the task.
-     * @param resources The combat resources assigned so far for the task.
-     */
   }, {
     key: "customize",
     value: function(task, outfit2, combat, resources) {
     }
-    /* eslint-enable @typescript-eslint/no-unused-vars */
-    /**
-     * Set the choice settings for the task.
-     * @param task The current executing task.
-     * @param manager The property manager to use.
-     */
   }, {
     key: "setChoices",
     value: function(task, manager) {
@@ -9215,12 +8800,6 @@ var grimoireCCS = "grimoire_macro", Engine = /* @__PURE__ */ function() {
       }
       manager.setChoices(choices);
     }
-    /**
-     * Save the combat macro for this task.
-     * @param task The current executing task.
-     * @param task_combat The completed combat strategy far for the task.
-     * @param task_resources The combat resources assigned for the task.
-     */
   }, {
     key: "setCombat",
     value: function(task, task_combat, task_resources) {
@@ -9232,20 +8811,12 @@ var grimoireCCS = "grimoire_macro", Engine = /* @__PURE__ */ function() {
       var autoattack = task_combat.compileAutoattack();
       autoattack.toString().length > 1 ? ((0, import_kolmafia27.logprint)("Autoattack macro: ".concat(autoattack.toString())), autoattack.setAutoAttack()) : (0, import_kolmafia27.setAutoAttack)(0);
     }
-    /**
-     * Do any task-specific preparation.
-     * @param task The current executing task.
-     */
   }, {
     key: "prepare",
     value: function(task) {
       var _a;
       (_a = task.prepare) === null || _a === void 0 || _a.call(task);
     }
-    /**
-     * Actually perform the task.
-     * @param task The current executing task.
-     */
   }, {
     key: "do",
     value: function(task) {
@@ -9253,50 +8824,27 @@ var grimoireCCS = "grimoire_macro", Engine = /* @__PURE__ */ function() {
         (0, import_kolmafia27.runCombat)();
       (0, import_kolmafia27.choiceFollowsFight)() && (0, import_kolmafia27.runChoice)(-1);
     }
-    /**
-     * Check if the task.do should be immediately repeated without any prep.
-     *
-     * By default, this is only used to repeat a task if we hit one of:
-     *   1. Halloweener dog noncombats,
-     *   2. June cleaver noncombats, or
-     *   3. Lil' Doctor™ bag noncombt.
-     * @param task The current executing task.
-     * @returns True if the task should be immediately repeated.
-     */
   }, {
     key: "shouldRepeatAdv",
     value: function(task) {
       return task.do instanceof import_kolmafia27.Location && lastEncounterWasWanderingNC();
     }
-    /**
-     * Do any task-specific wrapup activities.
-     * @param task The current executing task.
-     */
   }, {
     key: "post",
     value: function(task) {
       var _a;
       (_a = task.post) === null || _a === void 0 || _a.call(task);
     }
-    /**
-     * Mark that an attempt was made on the current task.
-     * @param task The current executing task.
-     */
   }, {
     key: "markAttempt",
     value: function(task) {
       task.name in this.attempts || (this.attempts[task.name] = 0), this.attempts[task.name]++;
     }
-    /**
-     * Check if the task has passed any of its internal limits.
-     * @param task The task to check.
-     * @throws An error if any of the internal limits have been passed.
-     */
   }, {
     key: "checkLimits",
     value: function(task, postcondition) {
       var _a;
-      if (task.limit) {
+      if (!!task.limit) {
         var failureMessage = task.limit.message ? " ".concat(task.limit.message) : "";
         if (!task.completed()) {
           if (task.limit.tries && this.attempts[task.name] >= task.limit.tries)
@@ -9305,17 +8853,13 @@ var grimoireCCS = "grimoire_macro", Engine = /* @__PURE__ */ function() {
             throw "Task ".concat(task.name, " did not complete within ").concat(task.limit.soft, " attempts. Please check what went wrong (you may just be unlucky).").concat(failureMessage);
           if (task.limit.turns && task.do instanceof import_kolmafia27.Location && task.do.turnsSpent >= task.limit.turns)
             throw "Task ".concat(task.name, " did not complete within ").concat(task.limit.turns, " turns. Please check what went wrong.").concat(failureMessage);
-          if (task.limit.unready && (!((_a = task.ready) === null || _a === void 0) && _a.call(task)))
+          if (task.limit.unready && ((_a = task.ready) === null || _a === void 0 ? void 0 : _a.call(task)))
             throw "Task ".concat(task.name, " is still ready, but it should not be. Please check what went wrong.").concat(failureMessage);
         }
         if (postcondition && !postcondition())
           throw "Task ".concat(task.name, " failed its guard. Please check what went wrong.").concat(failureMessage);
       }
     }
-    /**
-     * Initialize properties for the script.
-     * @param manager The properties manager to use.
-     */
   }, {
     key: "initPropertiesManager",
     value: function(manager) {
@@ -9385,7 +8929,23 @@ function _objectSpread5(target) {
   return target;
 }
 function _defineProperty10(obj, key, value) {
-  return key in obj ? Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+  return key = _toPropertyKey14(key), key in obj ? Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+}
+function _toPropertyKey14(arg) {
+  var key = _toPrimitive14(arg, "string");
+  return typeof key == "symbol" ? key : String(key);
+}
+function _toPrimitive14(input, hint) {
+  if (typeof input != "object" || input === null)
+    return input;
+  var prim = input[Symbol.toPrimitive];
+  if (prim !== void 0) {
+    var res = prim.call(input, hint || "default");
+    if (typeof res != "object")
+      return res;
+    throw new TypeError("@@toPrimitive must return a primitive value.");
+  }
+  return (hint === "string" ? String : Number)(input);
 }
 function _createForOfIteratorHelper10(o, allowArrayLike) {
   var it = typeof Symbol != "undefined" && o[Symbol.iterator] || o["@@iterator"];
@@ -9420,7 +8980,7 @@ function _createForOfIteratorHelper10(o, allowArrayLike) {
   } };
 }
 function _unsupportedIterableToArray17(o, minLen) {
-  if (o) {
+  if (!!o) {
     if (typeof o == "string")
       return _arrayLikeToArray17(o, minLen);
     var n = Object.prototype.toString.call(o).slice(8, -1);
@@ -9442,17 +9002,20 @@ function getTasks(quests) {
     var _loop = function() {
       var quest = _step.value, questCompleted = quest.completed, _iterator3 = _createForOfIteratorHelper10(quest.tasks), _step3;
       try {
-        for (_iterator3.s(); !(_step3 = _iterator3.n()).done; ) {
-          var _task2 = _step3.value, renamedTask = _objectSpread5({}, _task2);
-          renamedTask.name = "".concat(quest.name, "/").concat(_task2.name), renamedTask.after = (_a = _task2.after) === null || _a === void 0 ? void 0 : _a.map(function(after2) {
+        var _loop22 = function() {
+          var task2 = _step3.value, renamedTask = _objectSpread5({}, task2);
+          if (renamedTask.name = "".concat(quest.name, "/").concat(task2.name), renamedTask.after = (_a = task2.after) === null || _a === void 0 ? void 0 : _a.map(function(after2) {
             return after2.includes("/") ? after2 : "".concat(quest.name, "/").concat(after2);
-          }), implicitAfter && _task2.after === void 0 && result.length > 0 && (renamedTask.after = [result[result.length - 1].name]), questCompleted !== void 0 && function() {
-            var taskCompleted = _task2.completed;
+          }), implicitAfter && task2.after === void 0 && result.length > 0 && (renamedTask.after = [result[result.length - 1].name]), questCompleted !== void 0) {
+            var taskCompleted = task2.completed;
             renamedTask.completed = function() {
               return questCompleted() || taskCompleted();
             };
-          }(), result.push(renamedTask);
-        }
+          }
+          result.push(renamedTask);
+        };
+        for (_iterator3.s(); !(_step3 = _iterator3.n()).done; )
+          _loop22();
       } catch (err) {
         _iterator3.e(err);
       } finally {
@@ -9499,28 +9062,44 @@ var _templateObject101, _templateObject237, _templateObject327, _templateObject4
 function _taggedTemplateLiteral25(strings, raw) {
   return raw || (raw = strings.slice(0)), Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } }));
 }
-function _defineProperties10(target, props) {
-  for (var i = 0; i < props.length; i++) {
-    var descriptor = props[i];
-    descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, descriptor.key, descriptor);
-  }
-}
-function _createClass10(Constructor, protoProps, staticProps) {
-  return protoProps && _defineProperties10(Constructor.prototype, protoProps), staticProps && _defineProperties10(Constructor, staticProps), Constructor;
-}
-function _get2(target, property, receiver) {
-  return typeof Reflect != "undefined" && Reflect.get ? _get2 = Reflect.get : _get2 = function(target2, property2, receiver2) {
-    var base = _superPropBase2(target2, property2);
-    if (base) {
-      var desc = Object.getOwnPropertyDescriptor(base, property2);
-      return desc.get ? desc.get.call(receiver2) : desc.value;
+function _get2() {
+  return typeof Reflect != "undefined" && Reflect.get ? _get2 = Reflect.get.bind() : _get2 = function(target, property, receiver) {
+    var base = _superPropBase2(target, property);
+    if (!!base) {
+      var desc = Object.getOwnPropertyDescriptor(base, property);
+      return desc.get ? desc.get.call(arguments.length < 3 ? target : receiver) : desc.value;
     }
-  }, _get2(target, property, receiver || target);
+  }, _get2.apply(this, arguments);
 }
 function _superPropBase2(object, property) {
   for (; !Object.prototype.hasOwnProperty.call(object, property) && (object = _getPrototypeOf5(object), object !== null); )
     ;
   return object;
+}
+function _defineProperties13(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, _toPropertyKey15(descriptor.key), descriptor);
+  }
+}
+function _createClass13(Constructor, protoProps, staticProps) {
+  return protoProps && _defineProperties13(Constructor.prototype, protoProps), staticProps && _defineProperties13(Constructor, staticProps), Object.defineProperty(Constructor, "prototype", { writable: !1 }), Constructor;
+}
+function _toPropertyKey15(arg) {
+  var key = _toPrimitive15(arg, "string");
+  return typeof key == "symbol" ? key : String(key);
+}
+function _toPrimitive15(input, hint) {
+  if (typeof input != "object" || input === null)
+    return input;
+  var prim = input[Symbol.toPrimitive];
+  if (prim !== void 0) {
+    var res = prim.call(input, hint || "default");
+    if (typeof res != "object")
+      return res;
+    throw new TypeError("@@toPrimitive must return a primitive value.");
+  }
+  return (hint === "string" ? String : Number)(input);
 }
 function _classCallCheck13(instance, Constructor) {
   if (!(instance instanceof Constructor))
@@ -9529,10 +9108,10 @@ function _classCallCheck13(instance, Constructor) {
 function _inherits6(subClass, superClass) {
   if (typeof superClass != "function" && superClass !== null)
     throw new TypeError("Super expression must either be null or a function");
-  subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), superClass && _setPrototypeOf6(subClass, superClass);
+  subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), Object.defineProperty(subClass, "prototype", { writable: !1 }), superClass && _setPrototypeOf6(subClass, superClass);
 }
 function _setPrototypeOf6(o, p) {
-  return _setPrototypeOf6 = Object.setPrototypeOf || function(o2, p2) {
+  return _setPrototypeOf6 = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function(o2, p2) {
     return o2.__proto__ = p2, o2;
   }, _setPrototypeOf6(o, p);
 }
@@ -9573,7 +9152,7 @@ function _isNativeReflectConstruct5() {
   }
 }
 function _getPrototypeOf5(o) {
-  return _getPrototypeOf5 = Object.setPrototypeOf ? Object.getPrototypeOf : function(o2) {
+  return _getPrototypeOf5 = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function(o2) {
     return o2.__proto__ || Object.getPrototypeOf(o2);
   }, _getPrototypeOf5(o);
 }
@@ -9586,14 +9165,14 @@ var CSStrategy = /* @__PURE__ */ function(_CombatStrategy) {
     };
     return _classCallCheck13(this, CSStrategy2), _this = _super.call(this), _this.macro(macro).autoattack(macro), _this;
   }
-  return CSStrategy2;
+  return _createClass13(CSStrategy2);
 }(CombatStrategy), Macro2 = /* @__PURE__ */ function(_StrictMacro) {
   _inherits6(Macro3, _StrictMacro);
   var _super2 = _createSuper5(Macro3);
   function Macro3() {
     return _classCallCheck13(this, Macro3), _super2.apply(this, arguments);
   }
-  return _createClass10(Macro3, [{
+  return _createClass13(Macro3, [{
     key: "delevel",
     value: function() {
       return this.trySkill($skill(_templateObject101 || (_templateObject101 = _taggedTemplateLiteral25(["Curse of Weaksauce"])))).trySkill($skill(_templateObject237 || (_templateObject237 = _taggedTemplateLiteral25(["Micrometeorite"])))).tryItem($item(_templateObject327 || (_templateObject327 = _taggedTemplateLiteral25(["Time-Spinner"])))).trySkill($skill(_templateObject423 || (_templateObject423 = _taggedTemplateLiteral25(["Summon Love Gnats"]))));
@@ -9643,7 +9222,6 @@ var CSStrategy = /* @__PURE__ */ function(_CombatStrategy) {
 
 // src/commons.ts
 init_kolmafia_polyfill();
-var import_kolmafia31 = require("kolmafia");
 
 // src/lib.ts
 init_kolmafia_polyfill();
@@ -9658,15 +9236,21 @@ function _nonIterableRest10() {
 function _iterableToArrayLimit10(arr, i) {
   var _i = arr == null ? null : typeof Symbol != "undefined" && arr[Symbol.iterator] || arr["@@iterator"];
   if (_i != null) {
-    var _arr = [], _n = !0, _d = !1, _s, _e;
+    var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1;
     try {
-      for (_i = _i.call(arr); !(_n = (_s = _i.next()).done) && (_arr.push(_s.value), !(i && _arr.length === i)); _n = !0)
-        ;
+      if (_x = (_i = _i.call(arr)).next, i === 0) {
+        if (Object(_i) !== _i)
+          return;
+        _n = !1;
+      } else
+        for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0)
+          ;
     } catch (err) {
       _d = !0, _e = err;
     } finally {
       try {
-        !_n && _i.return != null && _i.return();
+        if (!_n && _i.return != null && (_r = _i.return(), Object(_r) !== _r))
+          return;
       } finally {
         if (_d)
           throw _e;
@@ -9712,7 +9296,7 @@ function _createForOfIteratorHelper11(o, allowArrayLike) {
   } };
 }
 function _unsupportedIterableToArray18(o, minLen) {
-  if (o) {
+  if (!!o) {
     if (typeof o == "string")
       return _arrayLikeToArray18(o, minLen);
     var n = Object.prototype.toString.call(o).slice(8, -1);
@@ -9801,7 +9385,7 @@ function castPriciestLibram() {
 }
 function burnLibrams() {
   var testsDone = get("csServicesPerformed").split(",");
-  if ($skills(_templateObject304 || (_templateObject304 = _taggedTemplateLiteral26(["Summon BRICKOs, Summon Taffy, Summon Love Song, Summon Candy Heart"]))).some(function(skill2) {
+  if (!!$skills(_templateObject304 || (_templateObject304 = _taggedTemplateLiteral26(["Summon BRICKOs, Summon Taffy, Summon Love Song, Summon Candy Heart"]))).some(function(skill2) {
     return have(skill2);
   }))
     for (; canCastLibrams(); )
@@ -9883,7 +9467,23 @@ function _objectSpread6(target) {
   return target;
 }
 function _defineProperty11(obj, key, value) {
-  return key in obj ? Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+  return key = _toPropertyKey16(key), key in obj ? Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+}
+function _toPropertyKey16(arg) {
+  var key = _toPrimitive16(arg, "string");
+  return typeof key == "symbol" ? key : String(key);
+}
+function _toPrimitive16(input, hint) {
+  if (typeof input != "object" || input === null)
+    return input;
+  var prim = input[Symbol.toPrimitive];
+  if (prim !== void 0) {
+    var res = prim.call(input, hint || "default");
+    if (typeof res != "object")
+      return res;
+    throw new TypeError("@@toPrimitive must return a primitive value.");
+  }
+  return (hint === "string" ? String : Number)(input);
 }
 function _taggedTemplateLiteral27(strings, raw) {
   return raw || (raw = strings.slice(0)), Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } }));
@@ -9954,6 +9554,7 @@ function uniform() {
 }
 
 // src/commons.ts
+var import_kolmafia31 = require("kolmafia");
 var _templateObject111, _templateObject240, _templateObject330, _templateObject426, _templateObject523, _templateObject619, _templateObject717, _templateObject816, _templateObject914, _templateObject1013, _templateObject1112, _templateObject1210, _templateObject1310, _templateObject148, _templateObject158, _templateObject168, _templateObject178, _templateObject188, _templateObject198, _templateObject208, _templateObject2114, _templateObject2214, _templateObject2311, _templateObject247, _templateObject257, _templateObject267, _templateObject277, _templateObject285;
 function _toConsumableArray9(arr) {
   return _arrayWithoutHoles9(arr) || _iterableToArray9(arr) || _unsupportedIterableToArray19(arr) || _nonIterableSpread9();
@@ -9962,7 +9563,7 @@ function _nonIterableSpread9() {
   throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
 function _unsupportedIterableToArray19(o, minLen) {
-  if (o) {
+  if (!!o) {
     if (typeof o == "string")
       return _arrayLikeToArray19(o, minLen);
     var n = Object.prototype.toString.call(o).slice(8, -1);
@@ -9987,7 +9588,23 @@ function _arrayLikeToArray19(arr, len) {
   return arr2;
 }
 function _defineProperty12(obj, key, value) {
-  return key in obj ? Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+  return key = _toPropertyKey17(key), key in obj ? Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+}
+function _toPropertyKey17(arg) {
+  var key = _toPrimitive17(arg, "string");
+  return typeof key == "symbol" ? key : String(key);
+}
+function _toPrimitive17(input, hint) {
+  if (typeof input != "object" || input === null)
+    return input;
+  var prim = input[Symbol.toPrimitive];
+  if (prim !== void 0) {
+    var res = prim.call(input, hint || "default");
+    if (typeof res != "object")
+      return res;
+    throw new TypeError("@@toPrimitive must return a primitive value.");
+  }
+  return (hint === "string" ? String : Number)(input);
 }
 function _taggedTemplateLiteral28(strings, raw) {
   return raw || (raw = strings.slice(0)), Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } }));
@@ -10177,6 +9794,7 @@ function meteorShower() {
 }
 
 // src/boozedrop.ts
+var import_kolmafia32 = require("kolmafia");
 var _templateObject120, _templateObject241, _templateObject331, _templateObject427, _templateObject524, _templateObject620, _templateObject718, _templateObject817, _templateObject915, _templateObject1014, _templateObject1113, _templateObject1211, _templateObject1311, _templateObject149, _templateObject159, _templateObject169, _templateObject179, _templateObject189, _templateObject199, _templateObject209, _templateObject2115, _templateObject2215, _templateObject2312, _templateObject248, _templateObject258, _templateObject268, _templateObject278, _templateObject286, _templateObject295, _templateObject305, _templateObject3111, _templateObject3210, _templateObject334, _templateObject344, _templateObject354, _templateObject363, _templateObject373, _templateObject383, _templateObject393;
 function _toConsumableArray10(arr) {
   return _arrayWithoutHoles10(arr) || _iterableToArray10(arr) || _unsupportedIterableToArray20(arr) || _nonIterableSpread10();
@@ -10185,7 +9803,7 @@ function _nonIterableSpread10() {
   throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
 function _unsupportedIterableToArray20(o, minLen) {
-  if (o) {
+  if (!!o) {
     if (typeof o == "string")
       return _arrayLikeToArray20(o, minLen);
     var n = Object.prototype.toString.call(o).slice(8, -1);
@@ -10417,7 +10035,6 @@ var Drink = {
 
 // src/engine.ts
 init_kolmafia_polyfill();
-var import_kolmafia36 = require("kolmafia");
 
 // src/globaltasks.ts
 init_kolmafia_polyfill();
@@ -10492,6 +10109,7 @@ var GLOBAL_TASKS = [{
 }, globaltasks_default = GLOBAL_QUEST;
 
 // src/engine.ts
+var import_kolmafia36 = require("kolmafia");
 var _templateObject140, _templateObject259;
 function _taggedTemplateLiteral33(strings, raw) {
   return raw || (raw = strings.slice(0)), Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } }));
@@ -10503,7 +10121,7 @@ function _nonIterableSpread11() {
   throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
 function _unsupportedIterableToArray21(o, minLen) {
-  if (o) {
+  if (!!o) {
     if (typeof o == "string")
       return _arrayLikeToArray21(o, minLen);
     var n = Object.prototype.toString.call(o).slice(8, -1);
@@ -10531,23 +10149,23 @@ function _classCallCheck14(instance, Constructor) {
   if (!(instance instanceof Constructor))
     throw new TypeError("Cannot call a class as a function");
 }
-function _defineProperties11(target, props) {
+function _defineProperties14(target, props) {
   for (var i = 0; i < props.length; i++) {
     var descriptor = props[i];
-    descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, descriptor.key, descriptor);
+    descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, _toPropertyKey18(descriptor.key), descriptor);
   }
 }
-function _createClass11(Constructor, protoProps, staticProps) {
-  return protoProps && _defineProperties11(Constructor.prototype, protoProps), staticProps && _defineProperties11(Constructor, staticProps), Constructor;
+function _createClass14(Constructor, protoProps, staticProps) {
+  return protoProps && _defineProperties14(Constructor.prototype, protoProps), staticProps && _defineProperties14(Constructor, staticProps), Object.defineProperty(Constructor, "prototype", { writable: !1 }), Constructor;
 }
-function _get3(target, property, receiver) {
-  return typeof Reflect != "undefined" && Reflect.get ? _get3 = Reflect.get : _get3 = function(target2, property2, receiver2) {
-    var base = _superPropBase3(target2, property2);
-    if (base) {
-      var desc = Object.getOwnPropertyDescriptor(base, property2);
-      return desc.get ? desc.get.call(receiver2) : desc.value;
+function _get3() {
+  return typeof Reflect != "undefined" && Reflect.get ? _get3 = Reflect.get.bind() : _get3 = function(target, property, receiver) {
+    var base = _superPropBase3(target, property);
+    if (!!base) {
+      var desc = Object.getOwnPropertyDescriptor(base, property);
+      return desc.get ? desc.get.call(arguments.length < 3 ? target : receiver) : desc.value;
     }
-  }, _get3(target, property, receiver || target);
+  }, _get3.apply(this, arguments);
 }
 function _superPropBase3(object, property) {
   for (; !Object.prototype.hasOwnProperty.call(object, property) && (object = _getPrototypeOf6(object), object !== null); )
@@ -10557,10 +10175,10 @@ function _superPropBase3(object, property) {
 function _inherits7(subClass, superClass) {
   if (typeof superClass != "function" && superClass !== null)
     throw new TypeError("Super expression must either be null or a function");
-  subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), superClass && _setPrototypeOf7(subClass, superClass);
+  subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), Object.defineProperty(subClass, "prototype", { writable: !1 }), superClass && _setPrototypeOf7(subClass, superClass);
 }
 function _setPrototypeOf7(o, p) {
-  return _setPrototypeOf7 = Object.setPrototypeOf || function(o2, p2) {
+  return _setPrototypeOf7 = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function(o2, p2) {
     return o2.__proto__ = p2, o2;
   }, _setPrototypeOf7(o, p);
 }
@@ -10601,12 +10219,28 @@ function _isNativeReflectConstruct6() {
   }
 }
 function _getPrototypeOf6(o) {
-  return _getPrototypeOf6 = Object.setPrototypeOf ? Object.getPrototypeOf : function(o2) {
+  return _getPrototypeOf6 = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function(o2) {
     return o2.__proto__ || Object.getPrototypeOf(o2);
   }, _getPrototypeOf6(o);
 }
 function _defineProperty13(obj, key, value) {
-  return key in obj ? Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+  return key = _toPropertyKey18(key), key in obj ? Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+}
+function _toPropertyKey18(arg) {
+  var key = _toPrimitive18(arg, "string");
+  return typeof key == "symbol" ? key : String(key);
+}
+function _toPrimitive18(input, hint) {
+  if (typeof input != "object" || input === null)
+    return input;
+  var prim = input[Symbol.toPrimitive];
+  if (prim !== void 0) {
+    var res = prim.call(input, hint || "default");
+    if (typeof res != "object")
+      return res;
+    throw new TypeError("@@toPrimitive must return a primitive value.");
+  }
+  return (hint === "string" ? String : Number)(input);
 }
 var HIGHLIGHT = (0, import_kolmafia36.isDarkMode)() ? "yellow" : "blue", CSEngine = /* @__PURE__ */ function(_Engine) {
   _inherits7(CSEngine2, _Engine);
@@ -10615,7 +10249,7 @@ var HIGHLIGHT = (0, import_kolmafia36.isDarkMode)() ? "yellow" : "blue", CSEngin
     var _this;
     return _classCallCheck14(this, CSEngine2), _this = _super.call(this, getTasks([globaltasks_default, quest])), _defineProperty13(_assertThisInitialized6(_this), "propertyManager", CSEngine2.propertyManager), _defineProperty13(_assertThisInitialized6(_this), "name", void 0), _defineProperty13(_assertThisInitialized6(_this), "csOptions", void 0), _defineProperty13(_assertThisInitialized6(_this), "turnsSpent", void 0), _this.csOptions = quest, _this.turnsSpent = quest.turnsSpent, _this.name = _this.csOptions.type === "MISC" ? _this.csOptions.name : _this.csOptions.test.statName, _this;
   }
-  return _createClass11(CSEngine2, [{
+  return _createClass14(CSEngine2, [{
     key: "destruct",
     value: function() {
       (0, import_kolmafia36.setAutoAttack)(0);
@@ -10625,7 +10259,6 @@ var HIGHLIGHT = (0, import_kolmafia36.isDarkMode)() ? "yellow" : "blue", CSEngin
     value: function(task) {
       return _get3(_getPrototypeOf6(CSEngine2.prototype), "available", this).call(this, task) && (!task.core || task.core === CSEngine2.core);
     }
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
   }, {
     key: "initPropertiesManager",
     value: function() {
@@ -10729,7 +10362,7 @@ function _nonIterableSpread12() {
   throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
 function _unsupportedIterableToArray22(o, minLen) {
-  if (o) {
+  if (!!o) {
     if (typeof o == "string")
       return _arrayLikeToArray22(o, minLen);
     var n = Object.prototype.toString.call(o).slice(8, -1);
@@ -10938,7 +10571,23 @@ init_kolmafia_polyfill();
 var import_kolmafia38 = require("kolmafia");
 var _templateObject150, _templateObject261, _templateObject340, _templateObject434, _templateObject529, _templateObject625, _templateObject722, _templateObject821, _templateObject919, _templateObject1018, _templateObject1117, _templateObject1214, _templateObject1314, _templateObject1412, _templateObject1511, _templateObject1611, _templateObject1711, _templateObject1811, _templateObject1911, _templateObject2011, _templateObject2117, _templateObject2217, _templateObject2314, _templateObject2411, _templateObject2511, _templateObject2610, _templateObject2710, _templateObject288, _templateObject297, _templateObject307, _templateObject3113, _templateObject3212, _templateObject3310, _templateObject346, _templateObject356, _templateObject365, _templateObject375, _templateObject385;
 function _defineProperty14(obj, key, value) {
-  return key in obj ? Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+  return key = _toPropertyKey19(key), key in obj ? Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+}
+function _toPropertyKey19(arg) {
+  var key = _toPrimitive19(arg, "string");
+  return typeof key == "symbol" ? key : String(key);
+}
+function _toPrimitive19(input, hint) {
+  if (typeof input != "object" || input === null)
+    return input;
+  var prim = input[Symbol.toPrimitive];
+  if (prim !== void 0) {
+    var res = prim.call(input, hint || "default");
+    if (typeof res != "object")
+      return res;
+    throw new TypeError("@@toPrimitive must return a primitive value.");
+  }
+  return (hint === "string" ? String : Number)(input);
 }
 function _toConsumableArray13(arr) {
   return _arrayWithoutHoles13(arr) || _iterableToArray13(arr) || _unsupportedIterableToArray23(arr) || _nonIterableSpread13();
@@ -10947,7 +10596,7 @@ function _nonIterableSpread13() {
   throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
 function _unsupportedIterableToArray23(o, minLen) {
-  if (o) {
+  if (!!o) {
     if (typeof o == "string")
       return _arrayLikeToArray23(o, minLen);
     var n = Object.prototype.toString.call(o).slice(8, -1);
@@ -11087,7 +10736,7 @@ function _nonIterableSpread14() {
   throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
 function _unsupportedIterableToArray24(o, minLen) {
-  if (o) {
+  if (!!o) {
     if (typeof o == "string")
       return _arrayLikeToArray24(o, minLen);
     var n = Object.prototype.toString.call(o).slice(8, -1);
@@ -11133,7 +10782,23 @@ function _objectSpread7(target) {
   return target;
 }
 function _defineProperty15(obj, key, value) {
-  return key in obj ? Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+  return key = _toPropertyKey20(key), key in obj ? Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+}
+function _toPropertyKey20(arg) {
+  var key = _toPrimitive20(arg, "string");
+  return typeof key == "symbol" ? key : String(key);
+}
+function _toPrimitive20(input, hint) {
+  if (typeof input != "object" || input === null)
+    return input;
+  var prim = input[Symbol.toPrimitive];
+  if (prim !== void 0) {
+    var res = prim.call(input, hint || "default");
+    if (typeof res != "object")
+      return res;
+    throw new TypeError("@@toPrimitive must return a primitive value.");
+  }
+  return (hint === "string" ? String : Number)(input);
 }
 function _taggedTemplateLiteral36(strings, raw) {
   return raw || (raw = strings.slice(0)), Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } }));
@@ -11365,7 +11030,6 @@ var levellingComplete = (0, import_kolmafia39.myLevel)() >= 13 && get("_neverend
       (0, import_kolmafia39.visitUrl)("clan_viplounge.php?action=fwshop&whichfloor=2"), (0, import_kolmafia39.buy)(1, $item(_templateObject298 || (_templateObject298 = _taggedTemplateLiteral36(["blue rocket"]))));
     }
   }, {
-    // not strictly necessary
     name: "Acquire Casting Items",
     completed: function() {
       return $items(_templateObject308 || (_templateObject308 = _taggedTemplateLiteral36(["turtle totem, saucepan"]))).every(function(i) {
@@ -11426,8 +11090,6 @@ var levellingComplete = (0, import_kolmafia39.myLevel)() >= 13 && get("_neverend
         return Macro2.externalIf(!have($effect(_templateObject444 || (_templateObject444 = _taggedTemplateLiteral36(["Cosmic Ball in the Air"])))), Macro2.skill($skill(_templateObject454 || (_templateObject454 = _taggedTemplateLiteral36(["Bowl Straight Up"]))))).delevel().tryItem($item(_templateObject464 || (_templateObject464 = _taggedTemplateLiteral36(["blue rocket"])))).trySkill($skill(_templateObject473 || (_templateObject473 = _taggedTemplateLiteral36(["Giant Growth"])))).defaultKill();
       })
     },
-    // A proton ghost should get fought here
-    // It happens in globaltasks.ts
     {
       name: "Map Ninja",
       completed: function() {
@@ -11777,7 +11439,23 @@ init_kolmafia_polyfill();
 var import_kolmafia40 = require("kolmafia");
 var _templateObject160, _templateObject271, _templateObject348, _templateObject437, _templateObject531, _templateObject628, _templateObject725, _templateObject824, _templateObject921, _templateObject1020, _templateObject1120, _templateObject1216, _templateObject1316, _templateObject1414, _templateObject1513, _templateObject1613, _templateObject1713, _templateObject1813, _templateObject1913, _templateObject2013, _templateObject2119;
 function _defineProperty16(obj, key, value) {
-  return key in obj ? Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+  return key = _toPropertyKey21(key), key in obj ? Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+}
+function _toPropertyKey21(arg) {
+  var key = _toPrimitive21(arg, "string");
+  return typeof key == "symbol" ? key : String(key);
+}
+function _toPrimitive21(input, hint) {
+  if (typeof input != "object" || input === null)
+    return input;
+  var prim = input[Symbol.toPrimitive];
+  if (prim !== void 0) {
+    var res = prim.call(input, hint || "default");
+    if (typeof res != "object")
+      return res;
+    throw new TypeError("@@toPrimitive must return a primitive value.");
+  }
+  return (hint === "string" ? String : Number)(input);
 }
 function _toConsumableArray15(arr) {
   return _arrayWithoutHoles15(arr) || _iterableToArray15(arr) || _unsupportedIterableToArray25(arr) || _nonIterableSpread15();
@@ -11786,7 +11464,7 @@ function _nonIterableSpread15() {
   throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
 function _unsupportedIterableToArray25(o, minLen) {
-  if (o) {
+  if (!!o) {
     if (typeof o == "string")
       return _arrayLikeToArray25(o, minLen);
     var n = Object.prototype.toString.call(o).slice(8, -1);
@@ -11897,38 +11575,6 @@ var Noncombat = {
 init_kolmafia_polyfill();
 var import_kolmafia41 = require("kolmafia");
 var _templateObject161, _templateObject280, _templateObject349, _templateObject438, _templateObject534, _templateObject629, _templateObject726, _templateObject825, _templateObject923, _templateObject1021, _templateObject1121, _templateObject1217, _templateObject1317, _templateObject1415, _templateObject1514, _templateObject1614, _templateObject1714, _templateObject1814, _templateObject1914, _templateObject2014, _templateObject2120, _templateObject2219, _templateObject2316, _templateObject2413, _templateObject2513, _templateObject2612, _templateObject2712, _templateObject2810, _templateObject299, _templateObject309, _templateObject3115, _templateObject3214, _templateObject3312, _templateObject3410, _templateObject358, _templateObject367, _templateObject377, _templateObject387, _templateObject396, _templateObject405, _templateObject4113, _templateObject4212, _templateObject439, _templateObject445, _templateObject455, _templateObject465, _templateObject474, _templateObject484;
-function _createForOfIteratorHelper12(o, allowArrayLike) {
-  var it = typeof Symbol != "undefined" && o[Symbol.iterator] || o["@@iterator"];
-  if (!it) {
-    if (Array.isArray(o) || (it = _unsupportedIterableToArray26(o)) || allowArrayLike && o && typeof o.length == "number") {
-      it && (o = it);
-      var i = 0, F = function() {
-      };
-      return { s: F, n: function() {
-        return i >= o.length ? { done: !0 } : { done: !1, value: o[i++] };
-      }, e: function(_e) {
-        throw _e;
-      }, f: F };
-    }
-    throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-  }
-  var normalCompletion = !0, didErr = !1, err;
-  return { s: function() {
-    it = it.call(o);
-  }, n: function() {
-    var step = it.next();
-    return normalCompletion = step.done, step;
-  }, e: function(_e2) {
-    didErr = !0, err = _e2;
-  }, f: function() {
-    try {
-      !normalCompletion && it.return != null && it.return();
-    } finally {
-      if (didErr)
-        throw err;
-    }
-  } };
-}
 function _toConsumableArray16(arr) {
   return _arrayWithoutHoles16(arr) || _iterableToArray16(arr) || _unsupportedIterableToArray26(arr) || _nonIterableSpread16();
 }
@@ -11936,7 +11582,7 @@ function _nonIterableSpread16() {
   throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
 function _unsupportedIterableToArray26(o, minLen) {
-  if (o) {
+  if (!!o) {
     if (typeof o == "string")
       return _arrayLikeToArray26(o, minLen);
     var n = Object.prototype.toString.call(o).slice(8, -1);
@@ -12013,26 +11659,19 @@ var PULLS = [$items(_templateObject161 || (_templateObject161 = _taggedTemplateL
       return get("_roninStoragePulls").split(",").length >= 4;
     },
     do: function() {
-      var _iterator = _createForOfIteratorHelper12(PULLS), _step;
-      try {
-        for (_iterator.s(); !(_step = _iterator.n()).done; ) {
-          var pullSet = _step.value;
-          if (!pullSet.some(function(pull2) {
-            return have(pull2);
-          })) {
-            var pull = pullSet.find(function(p) {
-              return (0, import_kolmafia41.storageAmount)(p) > 0;
-            });
-            if (pull)
-              (0, import_kolmafia41.takeStorage)(pull, 1);
-            else
-              throw new Error("Failed to pull one of ".concat(pullSet.join(", "), "; are you rich enough to run this in softcore?"));
-          }
+      for (var _i = 0, _PULLS = PULLS; _i < _PULLS.length; _i++) {
+        var pullSet = _PULLS[_i];
+        if (!pullSet.some(function(pull2) {
+          return have(pull2);
+        })) {
+          var pull = pullSet.find(function(p) {
+            return (0, import_kolmafia41.storageAmount)(p) > 0;
+          });
+          if (pull)
+            (0, import_kolmafia41.takeStorage)(pull, 1);
+          else
+            throw new Error("Failed to pull one of ".concat(pullSet.join(", "), "; are you rich enough to run this in softcore?"));
         }
-      } catch (err) {
-        _iterator.e(err);
-      } finally {
-        _iterator.f();
       }
     }
   }, {
@@ -12250,7 +11889,7 @@ function _nonIterableSpread17() {
   throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
 function _unsupportedIterableToArray27(o, minLen) {
-  if (o) {
+  if (!!o) {
     if (typeof o == "string")
       return _arrayLikeToArray27(o, minLen);
     var n = Object.prototype.toString.call(o).slice(8, -1);
@@ -12296,7 +11935,23 @@ function _objectSpread8(target) {
   return target;
 }
 function _defineProperty17(obj, key, value) {
-  return key in obj ? Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+  return key = _toPropertyKey22(key), key in obj ? Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+}
+function _toPropertyKey22(arg) {
+  var key = _toPrimitive22(arg, "string");
+  return typeof key == "symbol" ? key : String(key);
+}
+function _toPrimitive22(input, hint) {
+  if (typeof input != "object" || input === null)
+    return input;
+  var prim = input[Symbol.toPrimitive];
+  if (prim !== void 0) {
+    var res = prim.call(input, hint || "default");
+    if (typeof res != "object")
+      return res;
+    throw new TypeError("@@toPrimitive must return a primitive value.");
+  }
+  return (hint === "string" ? String : Number)(input);
 }
 function _taggedTemplateLiteral39(strings, raw) {
   return raw || (raw = strings.slice(0)), Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } }));
@@ -12455,7 +12110,23 @@ function _objectSpread9(target) {
   return target;
 }
 function _defineProperty18(obj, key, value) {
-  return key in obj ? Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+  return key = _toPropertyKey23(key), key in obj ? Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+}
+function _toPropertyKey23(arg) {
+  var key = _toPrimitive23(arg, "string");
+  return typeof key == "symbol" ? key : String(key);
+}
+function _toPrimitive23(input, hint) {
+  if (typeof input != "object" || input === null)
+    return input;
+  var prim = input[Symbol.toPrimitive];
+  if (prim !== void 0) {
+    var res = prim.call(input, hint || "default");
+    if (typeof res != "object")
+      return res;
+    throw new TypeError("@@toPrimitive must return a primitive value.");
+  }
+  return (hint === "string" ? String : Number)(input);
 }
 function _toConsumableArray18(arr) {
   return _arrayWithoutHoles18(arr) || _iterableToArray18(arr) || _unsupportedIterableToArray28(arr) || _nonIterableSpread18();
@@ -12464,7 +12135,7 @@ function _nonIterableSpread18() {
   throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
 function _unsupportedIterableToArray28(o, minLen) {
-  if (o) {
+  if (!!o) {
     if (typeof o == "string")
       return _arrayLikeToArray28(o, minLen);
     var n = Object.prototype.toString.call(o).slice(8, -1);
@@ -12638,7 +12309,7 @@ function _nonIterableSpread19() {
   throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
 function _unsupportedIterableToArray29(o, minLen) {
-  if (o) {
+  if (!!o) {
     if (typeof o == "string")
       return _arrayLikeToArray29(o, minLen);
     var n = Object.prototype.toString.call(o).slice(8, -1);
@@ -12684,7 +12355,23 @@ function _objectSpread10(target) {
   return target;
 }
 function _defineProperty19(obj, key, value) {
-  return key in obj ? Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+  return key = _toPropertyKey24(key), key in obj ? Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+}
+function _toPropertyKey24(arg) {
+  var key = _toPrimitive24(arg, "string");
+  return typeof key == "symbol" ? key : String(key);
+}
+function _toPrimitive24(input, hint) {
+  if (typeof input != "object" || input === null)
+    return input;
+  var prim = input[Symbol.toPrimitive];
+  if (prim !== void 0) {
+    var res = prim.call(input, hint || "default");
+    if (typeof res != "object")
+      return res;
+    throw new TypeError("@@toPrimitive must return a primitive value.");
+  }
+  return (hint === "string" ? String : Number)(input);
 }
 function _taggedTemplateLiteral41(strings, raw) {
   return raw || (raw = strings.slice(0)), Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } }));
