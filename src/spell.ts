@@ -1,3 +1,16 @@
+import { CSStrategy, Macro } from "./combat";
+import {
+    beachTask,
+    innerElf,
+    meteorShower,
+    potionTask,
+    restore,
+    skillTask,
+    songTask,
+} from "./commons";
+import { CSEngine, CSQuest } from "./engine";
+import { horse, horsery, unequip } from "./lib";
+import uniform from "./outfit";
 import {
     canadiaAvailable,
     canEquip,
@@ -23,19 +36,7 @@ import {
     getSaleValue,
     have,
 } from "libram";
-import { CSStrategy, Macro } from "./combat";
-import {
-    beachTask,
-    innerElf,
-    meteorShower,
-    potionTask,
-    restore,
-    skillTask,
-    songTask,
-} from "./commons";
-import { CSEngine, CSQuest } from "./engine";
-import { horse, horsery, unequip } from "./lib";
-import uniform from "./outfit";
+
 const buffs = $effects`Carol of the Hells, Arched Eyebrow of the Archmage, Song of Sauce`;
 const chefstaves = $items`Staff of the Roaring Hearth, Staff of Kitchen Royalty, Staff of the Deepest Freeze, Staff of Frozen Lard, Staff of the Peppermint Twist, Staff of the Roaring Hearth`;
 

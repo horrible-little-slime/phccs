@@ -1,3 +1,5 @@
+import GLOBAL_QUEST from "./globaltasks";
+import { burnLibrams, CSTask } from "./lib";
 import { Engine, getTasks, Outfit, OutfitSpec, Quest } from "grimoire-kolmafia";
 import {
     abort,
@@ -10,8 +12,6 @@ import {
     writeCcs,
 } from "kolmafia";
 import { $effect, $path, CommunityService, get, PropertiesManager, uneffect } from "libram";
-import GLOBAL_QUEST from "./globaltasks";
-import { burnLibrams, CSTask } from "./lib";
 
 const HIGHLIGHT = isDarkMode() ? "yellow" : "blue";
 

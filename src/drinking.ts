@@ -1,7 +1,7 @@
-import { drink, myInebriety, use } from "kolmafia";
-import { $effect, $item, have } from "libram";
 import { songTask } from "./commons";
 import { CSQuest } from "./engine";
+import { drink, myInebriety, use } from "kolmafia";
+import { $effect, $item, have } from "libram";
 
 const Drink: CSQuest = {
     name: "Drink Pilsners",

@@ -1,3 +1,8 @@
+import { CSStrategy, Macro } from "./combat";
+import { beachTask, innerElf } from "./commons";
+import { CSQuest } from "./engine";
+import { burnLibrams, hasNcBird, synthExp } from "./lib";
+import uniform from "./outfit";
 import { OutfitSpec } from "grimoire-kolmafia";
 import {
     buy,
@@ -35,11 +40,7 @@ import {
     Witchess,
     withProperties,
 } from "libram";
-import { CSStrategy, Macro } from "./combat";
-import { beachTask, innerElf } from "./commons";
-import { CSQuest } from "./engine";
-import { burnLibrams, hasNcBird, synthExp } from "./lib";
-import uniform from "./outfit";
+
 const levellingComplete = myLevel() >= 13 && get("_neverendingPartyFreeTurns") >= 10;
 let lovePotionConsidered = false;
 

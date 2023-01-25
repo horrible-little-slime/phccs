@@ -1,3 +1,6 @@
+import { beachTask, innerElf, potionTask, restore, skillTask } from "./commons";
+import { CSEngine, CSQuest } from "./engine";
+import { CSTask } from "./lib";
 import { cliExecute, itemAmount, myThrall, Thrall, use, useSkill } from "kolmafia";
 import {
     $effect,
@@ -10,9 +13,6 @@ import {
     have,
     RetroCape,
 } from "libram";
-import { beachTask, innerElf, potionTask, restore, skillTask } from "./commons";
-import { CSEngine, CSQuest } from "./engine";
-import { CSTask } from "./lib";
 
 const SKILL_BUFFS = {
     MUSCLE: $effects`Feeling Excited, Big, Song of Bravado, Rage of the Reindeer, Quiet Determination, Disdain of the War Snapper`,

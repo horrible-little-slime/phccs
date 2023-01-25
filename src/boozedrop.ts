@@ -1,3 +1,7 @@
+import { CSStrategy, Macro } from "./combat";
+import { asdonTask, potionTask, skillTask, songTask } from "./commons";
+import { CSQuest } from "./engine";
+import uniform from "./outfit";
 import { OutfitSpec } from "grimoire-kolmafia";
 import {
     canAdventure,
@@ -22,10 +26,6 @@ import {
     have,
     SourceTerminal,
 } from "libram";
-import { CSStrategy, Macro } from "./combat";
-import { asdonTask, potionTask, skillTask, songTask } from "./commons";
-import { CSQuest } from "./engine";
-import uniform from "./outfit";
 
 const BoozeDrop: CSQuest = {
     name: "Booze Drop",

@@ -1,4 +1,3 @@
-import { sinceKolmafiaRevision } from "libram";
 import BoozeDrop from "./boozedrop";
 import CoilWire from "./coil wire";
 import Drink from "./drinking";
@@ -11,6 +10,7 @@ import Prologue from "./prologue";
 import Spell from "./spell";
 import { Hitpoints, Moxie, Muscle, Mysticality } from "./stattests";
 import Weapon from "./weapon";
+import { sinceKolmafiaRevision } from "libram";
 
 sinceKolmafiaRevision(27102);
 CSEngine.runTests(

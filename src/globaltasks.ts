@@ -1,9 +1,9 @@
-import { Quest } from "grimoire-kolmafia";
-import { abort, adv1, cliExecute, reverseNumberology, useSkill } from "kolmafia";
-import { $effect, $item, $location, $skill, get, have, withProperty } from "libram";
 import { CSStrategy, Macro } from "./combat";
 import { CSTask } from "./lib";
 import uniform from "./outfit";
+import { Quest } from "grimoire-kolmafia";
+import { abort, adv1, cliExecute, reverseNumberology, useSkill } from "kolmafia";
+import { $effect, $item, $location, $skill, get, have, withProperty } from "libram";
 
 const GLOBAL_TASKS: CSTask[] = [
     {

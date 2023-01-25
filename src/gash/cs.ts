@@ -1,6 +1,6 @@
+import { burnSafaris } from "./lib";
 import { getPermedSkills, Skill } from "kolmafia";
 import { $class, $item, $path, ascend, have, Lifestyle, prepareAscension } from "libram";
-import { burnSafaris } from "./lib";
 
 export function main(args = ""): void {
     burnSafaris();

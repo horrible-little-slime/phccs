@@ -1,3 +1,8 @@
+import { CSStrategy, Macro } from "./combat";
+import { beachTask, innerElf, potionTask, restore, skillTask, songTask } from "./commons";
+import { CSEngine, CSQuest } from "./engine";
+import { horse, horsery, unequip } from "./lib";
+import uniform from "./outfit";
 import {
     canadiaAvailable,
     cliExecute,
@@ -21,11 +26,7 @@ import {
     have,
     set,
 } from "libram";
-import { CSStrategy, Macro } from "./combat";
-import { beachTask, innerElf, potionTask, restore, skillTask, songTask } from "./commons";
-import { CSEngine, CSQuest } from "./engine";
-import { horse, horsery, unequip } from "./lib";
-import uniform from "./outfit";
+
 const buffs = $effects`Carol of the Bulls, Song of the North, Rage of the Reindeer, Scowl of the Auk, Disdain of the War Snapper, Tenacity of the Snapper, Blessing of the Bird`;
 
 let meteors: number;

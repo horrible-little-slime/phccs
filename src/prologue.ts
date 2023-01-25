@@ -1,3 +1,5 @@
+import { CSQuest } from "./engine";
+import { horse, horsery, setClan, tryUse } from "./lib";
 import {
     autosell,
     buy,
@@ -32,8 +34,6 @@ import {
     SongBoom,
     SourceTerminal,
 } from "libram";
-import { CSQuest } from "./engine";
-import { horse, horsery, setClan, tryUse } from "./lib";
 
 const PULLS = [
     $items`repaid diaper, Great Wolf's beastly trousers`,

@@ -1,3 +1,8 @@
+import { CSStrategy, Macro } from "./combat";
+import { commonFamiliarWeightBuffs, meteorShower, potionTask } from "./commons";
+import { CSQuest } from "./engine";
+import { availableFights, unequip } from "./lib";
+import uniform from "./outfit";
 import { create, mySign, runCombat, use, visitUrl } from "kolmafia";
 import {
     $effect,
@@ -10,11 +15,6 @@ import {
     have,
     Witchess,
 } from "libram";
-import { CSStrategy, Macro } from "./combat";
-import { commonFamiliarWeightBuffs, meteorShower, potionTask } from "./commons";
-import { CSQuest } from "./engine";
-import { availableFights, unequip } from "./lib";
-import uniform from "./outfit";
 
 const FamiliarWeight: CSQuest = {
     name: "Familiar Weight",

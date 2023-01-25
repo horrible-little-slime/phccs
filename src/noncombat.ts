@@ -1,10 +1,10 @@
-import { cliExecute, runChoice, runCombat, useSkill, visitUrl } from "kolmafia";
-import { $effect, $effects, $familiar, $item, $skill, CommunityService, get, have } from "libram";
 import { CSStrategy } from "./combat";
 import { asdonTask, commonFamiliarWeightBuffs, restore, skillTask, songTask } from "./commons";
 import { CSQuest } from "./engine";
 import { hasNcBird, horse, horsery } from "./lib";
 import uniform from "./outfit";
+import { cliExecute, runChoice, runCombat, useSkill, visitUrl } from "kolmafia";
+import { $effect, $effects, $familiar, $item, $skill, CommunityService, get, have } from "libram";
 
 const Noncombat: CSQuest = {
     name: "Noncombat",
