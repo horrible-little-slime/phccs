@@ -8,7 +8,7 @@ build({
         phccs_gash: "src/gash/cs.ts",
         looph_gash: "src/gash/casual.ts",
     },
-    outdir: "KoLmafia/scripts",
+    outdir: "KoLmafia/scripts/phccs",
     bundle: true,
     minifySyntax: true,
     platform: "node",
