@@ -361,13 +361,13 @@ const Level: CSQuest = {
                     "LOV Extraterrestrial Chocolate"
                 ),
             combat: new CSStrategy(() =>
-                Macro.if_("monstername LOV enforcer", Macro.attack().repeat())
+                Macro.if_($monster`LOV Enforcer`, Macro.attack().repeat())
                     .if_(
-                        "monstername LOV Engineer",
+                        $monster`LOV Engineer`,
                         Macro.candyblast().trySkillRepeat($skill`Weapon of the Pastalord`)
                     )
                     .if_(
-                        "monstername LOV equivocator",
+                        $monster`LOV Equivocator`,
                         Macro.delevel().easyFight().candyblast().defaultKill()
                     )
             ),

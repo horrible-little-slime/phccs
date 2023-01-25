@@ -3,7 +3,7 @@ import { CSTask } from "./lib";
 import uniform from "./outfit";
 import { Quest } from "grimoire-kolmafia";
 import { abort, adv1, cliExecute, reverseNumberology, useSkill } from "kolmafia";
-import { $effect, $item, $location, $skill, get, have, withProperty } from "libram";
+import { $effect, $item, $location, $skill, Counter, get, have, withProperty } from "libram";
 
 const GLOBAL_TASKS: CSTask[] = [
     {
@@ -21,6 +21,7 @@ const GLOBAL_TASKS: CSTask[] = [
     {
         name: "June Cleaver",
         completed: () => get("_juneCleaverFightsLeft") > 0,
+        ready: () => Counter.get("Portscan") === Infinity,
         do: () =>
             withProperty("recoveryScript", "", () => {
                 adv1($location`Noob Cave`, -1, "");
