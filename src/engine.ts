@@ -114,12 +114,10 @@ export class CSEngine extends Engine<never, CSTask> {
             const result = loggingFunction(() => {
                 this.run();
                 if (this.csOptions.type === "SERVICE") {
-                    const outfit = new Outfit();
-                    if (outfit.equip(this.csOptions.outfit())) {
-                        outfit.dress();
-                    } else {
-                        throw new Error(`Failed to equip outfit for ${this.name}`);
-                    }
+                    Outfit.from(
+                        this.csOptions.outfit(),
+                        new Error(`Failed to equip outfit for ${this.name}`)
+                    ).dress();
                     burnLibrams();
                 }
 
