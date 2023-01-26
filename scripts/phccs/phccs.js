@@ -12401,7 +12401,7 @@ var Muscle = {
       famequip: $items(_templateObject3216 || (_templateObject3216 = _taggedTemplateLiteral40(["Abracandalabra"]))),
       familiar: $familiar(_templateObject3315 || (_templateObject3315 = _taggedTemplateLiteral40(["Left-Hand Man"]))),
       modes: {
-        retrocape: ["vampire", RetroCape_exports.currentMode()]
+        retrocape: ["heck", RetroCape_exports.currentMode()]
       }
     };
   },
