@@ -88,7 +88,7 @@ const Mysticality: CSQuest = {
             acc3: $item`battle broom`,
             famequip: $items`Abracandalabra`,
             familiar: $familiar`Left-Hand Man`,
-            modes: { retrocape: ["vampire", RetroCape.currentMode()] },
+            modes: { retrocape: ["heck", RetroCape.currentMode()] },
         };
     },
     turnsSpent: 0,
