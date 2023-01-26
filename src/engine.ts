@@ -6,6 +6,7 @@ import {
     inHardcore,
     isDarkMode,
     myPath,
+    print,
     readCcs,
     setAutoAttack,
     visitUrl,
@@ -159,6 +160,10 @@ export class CSEngine extends Engine<never, CSTask> {
             }
             CSEngine.propertyManager.resetAll();
             CommunityService.printLog(HIGHLIGHT);
+            print(`${get("_cloudTalkSmoker")} has a message for you: ${get("_cloudTalkMessage")}`);
+            if (["food", "booze"].includes(get("_questPartyFairQuest"))) {
+                print("Talk to Gerald/ine!");
+            }
         }
     }
 }
