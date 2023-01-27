@@ -92,7 +92,10 @@ const Spell: CSQuest = {
             name: "Weeping Willow Wand",
             completed: () => have($item`weeping willow wand`),
             core: "hard",
-            do: () => retrieveItem($item`weeping willow wand`),
+            do: (): void => {
+                if (!have($item`flimsy hardwood scraps`)) use($item`SpinMaster™ lathe`);
+                retrieveItem($item`weeping willow wand`);
+            },
         },
         {
             name: "Tea Party",
