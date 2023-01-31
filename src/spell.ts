@@ -60,6 +60,22 @@ const Spell: CSQuest = {
     maxTurns: 30,
     tasks: [
         skillTask($skill`Simmer`),
+        {
+            name: "Do You Crush What I Crush?",
+            completed: () => have($effect`Do You Crush What I Crush?`),
+            ready: () => !have($effect`Holiday Yoked`),
+            do: $location`The Dire Warren`,
+            outfit: () =>
+                uniform({
+                    changes: { familiar: $familiar`Ghost of Crimbo Carols`, famequip: $item.none },
+                }),
+            prepare: () => horsery() === "pale" && horse("dark"),
+            combat: new CSStrategy(() =>
+                Macro.trySkill($skill`Asdon Martin: Spring-Loaded Front Bumper`).trySkill(
+                    $skill`Feel Hatred`
+                )
+            ),
+        },
         potionTask($item`tobiko marble soda`),
         songTask($effect`Jackasses' Symphony of Destruction`, $effect`The Sonata of Sneakiness`),
         ...buffs.map(skillTask),

@@ -69,6 +69,7 @@ const Weapon: CSQuest = {
         {
             name: "Do You Crush What I Crush?",
             completed: () => have($effect`Do You Crush What I Crush?`),
+            ready: () => !have($effect`Holiday Yoked`),
             do: $location`The Dire Warren`,
             outfit: () =>
                 uniform({
