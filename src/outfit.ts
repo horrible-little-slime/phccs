@@ -1,6 +1,15 @@
 import { OutfitSpec } from "grimoire-kolmafia";
 import { Familiar, Item, totalTurnsPlayed } from "kolmafia";
-import { $effect, $familiar, $item, $items, DaylightShavings, get, have } from "libram";
+import {
+    $effect,
+    $familiar,
+    $item,
+    $items,
+    CommunityService,
+    DaylightShavings,
+    get,
+    have,
+} from "libram";
 
 const DEFAULT_UNIFORM = (): OutfitSpec => ({
     hat: DaylightShavings.buffAvailable()
@@ -39,7 +48,9 @@ const FAMILIAR_PICKS = [
     },
     {
         familiar: $familiar`Shorter-Order Cook`,
-        condition: () => $familiar`Shorter-Order Cook`.dropsToday < 1,
+        condition: () =>
+            ![$effect`Shortly Stacked`, $item`short stack of pancakes`].some((x) => have(x)) &&
+            !CommunityService.FamiliarWeight.isDone(),
     },
     {
         familiar: $familiar`Garbage Fire`,

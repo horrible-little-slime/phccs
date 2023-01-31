@@ -35,6 +35,7 @@ const FamiliarWeight: CSQuest = {
     maxTurns: 30,
     tasks: [
         ...commonFamiliarWeightBuffs(),
+        potionTask($item`short stack of pancakes`),
         {
             name: "Moveable Feast",
             core: "soft",
@@ -60,7 +61,8 @@ const FamiliarWeight: CSQuest = {
         },
         {
             name: "Shorty Fights (Witchess)",
-            completed: () => $familiar`Shorter-Order Cook`.dropsToday > 0,
+            completed: () =>
+                [$effect`Shortly Stacked`, $item`short stack of pancakes`].some((x) => have(x)),
             ready: () =>
                 availableFights() >= 11 - get("_shortOrderCookCharge") && 5 > Witchess.fightsDone(),
             do: () => Witchess.fightPiece($monster`Witchess Bishop`),
@@ -69,7 +71,8 @@ const FamiliarWeight: CSQuest = {
         },
         {
             name: "Shorty Fights (BRICKO)",
-            completed: () => $familiar`Shorter-Order Cook`.dropsToday > 0,
+            completed: () =>
+                [$effect`Shortly Stacked`, $item`short stack of pancakes`].some((x) => have(x)),
             ready: () =>
                 availableFights() >= 11 - get("_shortOrderCookCharge") &&
                 have($item`BRICKO eye brick`),
