@@ -9792,7 +9792,7 @@ function beachTask(effect) {
       return (0, import_kolmafia31.getProperty)("_beachHeadsUsed").split(",").includes(num.toFixed(0));
     },
     ready: function() {
-      return get("_freeBeachWalksUsed") < 11;
+      return get("_freeBeachWalksUsed") < 11 && get("beachHeadsUnlocked").split(",").includes(num.toFixed(0));
     },
     do: function() {
       return BeachComb_exports.tryHead(effect);
