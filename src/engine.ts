@@ -158,9 +158,18 @@ export class CSEngine extends Engine<never, CSTask> {
                 CommunityService.donate();
                 uneffect($effect`Feeling Lost`);
             }
+
             CSEngine.propertyManager.resetAll();
+
             CommunityService.printLog(HIGHLIGHT);
-            print(`${get("_cloudTalkSmoker")} has a message for you: ${get("_cloudTalkMessage")}`);
+            if (get("_cloudTalkSmoker")) {
+                print(
+                    `${get("_cloudTalkSmoker").slice(10)} has a message for you: ${get(
+                        "_cloudTalkMessage"
+                    )}`
+                );
+            }
+
             if (["food", "booze"].includes(get("_questPartyFairQuest"))) {
                 print("Talk to Gerald/ine!");
             }
