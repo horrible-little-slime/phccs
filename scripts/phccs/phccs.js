@@ -10237,7 +10237,7 @@ var GLOBAL_TASKS = [{
     return Object.values((0, import_kolmafia35.reverseNumberology)()).includes(69);
   },
   completed: function() {
-    return get("_universeCalculated") >= get("skillLevel144");
+    return get("_universeCalculated") >= Math.min(get("skillLevel144"), 3);
   },
   do: function() {
     return (0, import_kolmafia35.cliExecute)("numberology 69");
