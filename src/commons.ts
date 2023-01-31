@@ -44,7 +44,9 @@ export function beachTask(effect: Effect): CSTask {
     return {
         name: `Beach Head: ${effect}`,
         completed: () => getProperty("_beachHeadsUsed").split(",").includes(num.toFixed(0)),
-        ready: () => get("_freeBeachWalksUsed") < 11,
+        ready: () =>
+            get("_freeBeachWalksUsed") < 11 &&
+            get("beachHeadsUnlocked").split(",").includes(num.toFixed(0)),
         do: () => BeachComb.tryHead(effect),
     };
 }
