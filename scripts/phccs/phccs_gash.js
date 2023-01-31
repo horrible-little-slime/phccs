@@ -2130,7 +2130,9 @@ var _templateObject7, _templateObject210;
 function _taggedTemplateLiteral3(strings, raw) {
   return raw || (raw = strings.slice(0)), Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } }));
 }
-var safariTargets = ["Kenny Kamakazi", "Busta_Rhymes", "Manendra", "Gausie", "Beldur", "worthawholebean", "ReverKiller", "Asmodais", "The Dictator", "Malibu Stacey", "DanceCommander6"];
+var lowercaseName = (0, import_kolmafia6.myName)().toLowerCase(), safariTargets = ["Kenny Kamakazi", "Busta_Rhymes", "Manendra", "Gausie", "Beldur", "worthawholebean", "ReverKiller", "Asmodais", "The Dictator", "Malibu Stacey", "DanceCommander6", "Captain Scotch", "threebullethamburgler", "BurningBman", "Katarn", "Baden", "Purple Shrimp", "Butts McGruff", "SSBBHax"].filter(function(n) {
+  return n.toLowerCase() !== lowercaseName;
+});
 function burnSafaris() {
   for (var i = safariTargets.length - 1; i > 0; i--) {
     var j = Math.floor(Math.random() * (i + 1)), temp = safariTargets[i];
