@@ -77,9 +77,10 @@ const Weapon: CSQuest = {
                 }),
             prepare: () => horsery() === "pale" && horse("dark"),
             combat: new CSStrategy(() =>
-                Macro.trySkill($skill`Asdon Martin: Spring-Loaded Front Bumper`).trySkill(
-                    $skill`Feel Hatred`
-                )
+                Macro.trySkill($skill`Asdon Martin: Spring-Loaded Front Bumper`)
+                    .trySkill($skill`Feel Hatred`)
+                    .trySkill($skill`Snokebomb`)
+                    .abort()
             ),
         },
         { ...innerElf(), core: "hard" },

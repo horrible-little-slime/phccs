@@ -71,9 +71,10 @@ const Spell: CSQuest = {
                 }),
             prepare: () => horsery() === "pale" && horse("dark"),
             combat: new CSStrategy(() =>
-                Macro.trySkill($skill`Asdon Martin: Spring-Loaded Front Bumper`).trySkill(
-                    $skill`Feel Hatred`
-                )
+                Macro.trySkill($skill`Asdon Martin: Spring-Loaded Front Bumper`)
+                    .trySkill($skill`Feel Hatred`)
+                    .trySkill($skill`Snokebomb`)
+                    .abort()
             ),
         },
         potionTask($item`tobiko marble soda`),
@@ -132,9 +133,10 @@ const Spell: CSQuest = {
             prepare: () => horsery() === "pale" && horse("dark"),
             outfit: () => uniform({ changes: { familiar: $familiar`Mini-Adventurer` } }),
             combat: new CSStrategy(() =>
-                Macro.trySkill($skill`Asdon Martin: Spring-Loaded Front Bumper`).skill(
-                    $skill`Feel Hatred`
-                )
+                Macro.trySkill($skill`Asdon Martin: Spring-Loaded Front Bumper`)
+                    .trySkill($skill`Feel Hatred`)
+                    .trySkill($skill`Snokebomb`)
+                    .abort()
             ),
             choices: { [768]: 4 },
         },
