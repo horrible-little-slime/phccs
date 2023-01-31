@@ -10515,7 +10515,7 @@ var HIGHLIGHT = (0, import_kolmafia36.isDarkMode)() ? "yellow" : "blue", CSEngin
           }
         }
       } finally {
-        CSEngine2.core === "soft" && (CommunityService.donate(), uneffect($effect(_templateObject260 || (_templateObject260 = _taggedTemplateLiteral33(["Feeling Lost"]))))), CSEngine2.propertyManager.resetAll(), CommunityService.printLog(HIGHLIGHT), (0, import_kolmafia36.print)("".concat(get("_cloudTalkSmoker"), " has a message for you: ").concat(get("_cloudTalkMessage"))), ["food", "booze"].includes(get("_questPartyFairQuest")) && (0, import_kolmafia36.print)("Talk to Gerald/ine!");
+        CSEngine2.core === "soft" && (CommunityService.donate(), uneffect($effect(_templateObject260 || (_templateObject260 = _taggedTemplateLiteral33(["Feeling Lost"]))))), CSEngine2.propertyManager.resetAll(), CommunityService.printLog(HIGHLIGHT), get("_cloudTalkSmoker") && (0, import_kolmafia36.print)("".concat(get("_cloudTalkSmoker").slice(10), " has a message for you: ").concat(get("_cloudTalkMessage"))), ["food", "booze"].includes(get("_questPartyFairQuest")) && (0, import_kolmafia36.print)("Talk to Gerald/ine!");
       }
     }
   }]), CSEngine2;
