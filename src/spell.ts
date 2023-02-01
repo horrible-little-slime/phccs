@@ -24,6 +24,7 @@ import {
     visitUrl,
 } from "kolmafia";
 import {
+    $classes,
     $effect,
     $effects,
     $familiar,
@@ -129,6 +130,7 @@ const Spell: CSQuest = {
             name: "Saucefingers",
             ready: () => myLevel() >= 15 && have($familiar`Mini-Adventurer`),
             completed: () => have($effect`Saucefingers`),
+            class: $classes`Pastamancer`,
             do: $location`The Dire Warren`,
             prepare: () => horsery() === "pale" && horse("dark"),
             outfit: () => uniform({ changes: { familiar: $familiar`Mini-Adventurer` } }),

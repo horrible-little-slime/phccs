@@ -2,6 +2,7 @@ import { Task } from "grimoire-kolmafia";
 import {
     availableAmount,
     buy,
+    Class,
     cliExecute,
     create,
     eat,
@@ -13,19 +14,23 @@ import {
     getProperty,
     haveEffect,
     Item,
+    myClass,
     myMaxmp,
     myMp,
+    myPrimestat,
     restoreMp,
     retrieveItem,
     setProperty,
     Skill,
     Slot,
+    StatType,
     sweetSynthesis,
     use,
     useSkill,
     visitUrl,
 } from "kolmafia";
 import {
+    $effect,
     $familiar,
     $item,
     $skill,
@@ -40,7 +45,7 @@ import {
     Witchess,
 } from "libram";
 
-export type CSTask = Task & { core?: "hard" | "soft" };
+export type CSTask = Task & { core?: "hard" | "soft"; class?: Class[] };
 export const PropertyManager = new PropertiesManager();
 
 export function fuelUp(): void {
@@ -51,14 +56,28 @@ export function fuelUp(): void {
     cliExecute(`asdonmartin fuel ${availableAmount($item`loaf of soda bread`)} soda bread`);
 }
 
-const SYNTH_PAIRS = [
-    [$item`Crimbo fudge`, $item`Crimbo fudge`],
-    [$item`Crimbo fudge`, $item`bag of many confections`],
-    [$item`Crimbo peppermint bark`, $item`Crimbo candied pecan`],
-    [$item`Crimbo peppermint bark`, $item`peppermint sprout`],
-    [$item`Crimbo candied pecan`, $item`peppermint crook`],
-] as const;
-
+const SYNTH_PAIRS = byStat({
+    Mysticality: [
+        [$item`Crimbo fudge`, $item`Crimbo fudge`],
+        [$item`Crimbo fudge`, $item`bag of many confections`],
+        [$item`Crimbo peppermint bark`, $item`Crimbo candied pecan`],
+        [$item`Crimbo peppermint bark`, $item`peppermint sprout`],
+        [$item`Crimbo candied pecan`, $item`peppermint crook`],
+    ],
+    Muscle: [
+        [$item`Crimbo fudge`, $item`Crimbo peppermint bark`],
+        [$item`bag of many confections`, $item`Crimbo peppermint bark`],
+        [$item`Crimbo candied pecan`, $item`peppermint patty`],
+        [$item`peppermint sprout`, $item`peppermint twist`],
+    ],
+    Moxie: [
+        [$item`Crimbo fudge`, $item`Crimbo candied pecan`],
+        [$item`Crimbo fudge`, $item`peppermint sprout`],
+        [$item`bag of many confections`, $item`Crimbo candied pecan`],
+        [$item`bag of many confections`, $item`peppermint sprout`],
+        [$item`Crimbo peppermint bark`, $item`peppermint twist`],
+    ],
+});
 export function synthExp(): void {
     if (getCampground()["Peppermint Pip Packet"]) {
         visitUrl("campground.php?action=garden");
@@ -74,6 +93,12 @@ export function synthExp(): void {
     }
     throw new Error("Failed to synthesize!");
 }
+
+export const SYNTH_EFFECT = byStat({
+    Mysticality: $effect`Synthesis: Learning`,
+    Moxie: $effect`Synthesis: Style`,
+    Muscle: $effect`Synthesis: Movement`,
+});
 
 export function setClan(target: string): boolean {
     //stolen directly from bean
@@ -271,4 +296,17 @@ export function hasNcBird(): boolean {
     return get("yourFavoriteBirdMods")
         .split(",")
         .some((mod) => mod.includes("Combat Rate: -"));
+}
+
+type StatSwitch<T> = Record<StatType, T> | (Partial<{ [x in StatType]: T }> & { default: T });
+type ClassSwitch<T> = { options: Map<Class, T>; default: T };
+export function byClass<T>(thing: ClassSwitch<T>): T {
+    return thing.options.get(myClass()) ?? thing.default;
+}
+export function byStat<T>(thing: StatSwitch<T>): T {
+    const stat = myPrimestat().toString();
+    if ("default" in thing) {
+        return thing[stat] ?? thing.default;
+    }
+    return thing[stat];
 }
