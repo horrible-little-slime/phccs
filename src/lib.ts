@@ -298,11 +298,15 @@ export function hasNcBird(): boolean {
         .some((mod) => mod.includes("Combat Rate: -"));
 }
 
-type StatSwitch<T> = Record<StatType, T>;
+type StatSwitch<T> = Record<StatType, T> | (Partial<{ [x in StatType]: T }> & { default: T });
 type ClassSwitch<T> = { options: Map<Class, T>; default: T };
 export function byClass<T>(thing: ClassSwitch<T>): T {
     return thing.options.get(myClass()) ?? thing.default;
 }
 export function byStat<T>(thing: StatSwitch<T>): T {
-    return thing[myPrimestat().toString()];
+    const stat = myPrimestat().toString();
+    if ("default" in thing) {
+        return thing[stat] ?? thing.default;
+    }
+    return thing[stat];
 }
