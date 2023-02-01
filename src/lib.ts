@@ -292,7 +292,7 @@ export function unequip(item: Item): void {
     }
 }
 
-export function hasNcBird(): boolean {
+export function hasNcFavouriteBird(): boolean {
     return get("yourFavoriteBirdMods")
         .split(",")
         .some((mod) => mod.includes("Combat Rate: -"));

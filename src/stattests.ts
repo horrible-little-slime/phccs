@@ -1,8 +1,10 @@
 import { beachTask, innerElf, potionTask, restore, skillTask } from "./commons";
 import { CSEngine, CSQuest } from "./engine";
-import { CSTask } from "./lib";
+import { byStat, CSTask } from "./lib";
+import { METEOR_ACCESSORY } from "./outfit";
 import { cliExecute, itemAmount, myThrall, Thrall, use, useSkill } from "kolmafia";
 import {
+    $classes,
     $effect,
     $effects,
     $familiar,
@@ -28,8 +30,22 @@ function skillBuffTasks(key: keyof typeof SKILL_BUFFS): CSTask[] {
 function thrallTask(thrall: Thrall): CSTask {
     return {
         name: thrall.toString(),
+        class: $classes`Pastamancer`,
         completed: () => myThrall() === thrall,
         do: () => useSkill(thrall.skill),
+    };
+}
+
+function equalizeTask(): CSTask {
+    return {
+        ...potionTask(
+            byStat({
+                Moxie: $item`oil of slipperiness`,
+                Muscle: $item`oil of stability`,
+                Mysticality: $item`oil of expertise`,
+            })
+        ),
+        class: $classes`Seal Clubber, Turtle Tamer, Disco Bandit, Accordion Thief, Sauceror`,
     };
 }
 
@@ -47,8 +63,11 @@ const Muscle: CSQuest = {
             back: $item`unwrapped knock-off retro superhero cape`,
             pants: $item`designer sweatpants`,
             acc1: $item`Brutal brogues`,
-            acc2: CSEngine.core === "soft" ? $item`meteorite necklace` : $item`Retrospecs`,
-            acc3: $item`Kremlin's Greatest Briefcase`,
+            acc2: CSEngine.core === "soft" ? METEOR_ACCESSORY : $item`Retrospecs`,
+            acc3: byStat({
+                Muscle: $item`your cowboy boots`,
+                default: $item`Kremlin's Greatest Briefcase`,
+            }),
             familiar: $familiar`Left-Hand Man`,
             modes: {
                 retrocape: ["vampire", RetroCape.currentMode()],
@@ -67,6 +86,7 @@ const Muscle: CSQuest = {
         beachTask($effect`Lack of Body-Building`),
         { ...innerElf(), core: "hard" },
         { ...potionTask($item`Ben-Gal™ Balm`), core: "hard" },
+        equalizeTask(),
     ],
 };
 
@@ -93,7 +113,7 @@ const Mysticality: CSQuest = {
     },
     turnsSpent: 0,
     maxTurns: 1,
-    tasks: [...skillBuffTasks("MYSTICALITY")],
+    tasks: [...skillBuffTasks("MYSTICALITY"), equalizeTask()],
 };
 
 const Moxie: CSQuest = {
@@ -108,8 +128,8 @@ const Moxie: CSQuest = {
         offhand: $item`unbreakable umbrella`,
         pants: $item`Cargo Cultist Shorts`,
         acc1: $item`Beach Comb`,
-        acc2: $item`"I Voted!" sticker`,
-        acc3: $item`Retrospecs`,
+        acc2: byStat({ Moxie: $item`your cowboy boots`, default: $item`"I Voted!" sticker` }),
+        acc3: CSEngine.core === "soft" ? METEOR_ACCESSORY : $item`Retrospecs`,
         famequip: $item`miniature crystal ball`,
         modes: { retrocape: ["robot", RetroCape.currentMode()], umbrella: "broken" },
     }),
@@ -126,6 +146,7 @@ const Moxie: CSQuest = {
             do: () => use(itemAmount($item`rhinestone`), $item`rhinestone`),
         },
         thrallTask($thrall`Penne Dreadful`),
+        equalizeTask(),
     ],
 };
 
@@ -145,8 +166,11 @@ const Hitpoints: CSQuest = {
             back: $item`unwrapped knock-off retro superhero cape`,
             pants: $item`Cargo Cultist Shorts`,
             acc1: $item`Brutal brogues`,
-            acc2: $item`Retrospecs`,
-            acc3: $item`Kremlin's Greatest Briefcase`,
+            acc2: byStat({
+                Muscle: $item`your cowboy boots`,
+                default: $item`Kremlin's Greatest Briefcase`,
+            }),
+            acc3: CSEngine.core === "soft" ? METEOR_ACCESSORY : $item`Retrospecs`,
             famequip: $item`miniature crystal ball`,
             modes: { retrocape: ["vampire", RetroCape.currentMode()], parka: "kachungasaur" },
         };
@@ -155,6 +179,7 @@ const Hitpoints: CSQuest = {
         ...skillBuffTasks("HP"),
         potionTask($item`LOV Elixir #3`),
         thrallTask($thrall`Elbow Macaroni`),
+        equalizeTask(),
     ],
 };
 
