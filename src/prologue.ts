@@ -1,8 +1,9 @@
 import { CSQuest } from "./engine";
-import { horse, horsery, setClan, tryUse } from "./lib";
+import { byClass, horse, horsery, setClan, tryUse } from "./lib";
 import {
     autosell,
     buy,
+    Class,
     cliExecute,
     create,
     equip,
@@ -19,6 +20,8 @@ import {
     visitUrl,
 } from "kolmafia";
 import {
+    $class,
+    $classes,
     $coinmaster,
     $familiar,
     $item,
@@ -50,6 +53,18 @@ const MARKET_QUESTS = [
     { pref: "questM24Doc", url: "shop.php?whichshop=doc&action=talk" },
     { pref: "questM25Armorer", url: "shop.php?whichshop=armory&action=talk" },
 ];
+
+const BEST_INITIATIVE = byClass({
+    options: new Map<Class, number>([
+        [$class`Seal Clubber`, 2], // Familiar exp: 2
+        [$class`Turtle Tamer`, 3], // Weapon Damage Percent: 100
+        [$class`Disco Bandit`, 4], // Maximum MP Percent: 30
+        [$class`Accordion Thief`, 1], // Booze Drop: 30
+        [$class`Pastamancer`, 2], // Familiar exp: 2
+        [$class`Sauceror`, 1], // Exp: 3
+    ]),
+    default: 0,
+});
 
 const Prologue: CSQuest = {
     type: "MISC",
@@ -128,7 +143,9 @@ const Prologue: CSQuest = {
             completed: () => have($item`"I Voted!" sticker`),
             do: (): void => {
                 visitUrl("place.php?whichplace=town_right&action=townright_vote");
-                visitUrl("choice.php?option=1&whichchoice=1331&g=2&local%5B%5D=2&local%5B%5D=3");
+                visitUrl(
+                    `choice.php?option=1&whichchoice=1331&g=2&local%5B%5D=${BEST_INITIATIVE}&local%5B%5D=${BEST_INITIATIVE}`
+                );
                 visitUrl("place.php?whichplace=town_right&action=townright_vote");
             },
         },
@@ -158,6 +175,7 @@ const Prologue: CSQuest = {
         },
         {
             name: "Accordion",
+            class: $classes`Seal Clubber, Turtle Tamer, Disco Bandit, Sauceror, Pastamancer`,
             completed: () => have($item`toy accordion`),
             do: () => buy(1, $item`toy accordion`),
         },
