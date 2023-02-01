@@ -258,13 +258,31 @@ const Level: CSQuest = {
             },
         },
         {
-            name: "Holiday Yoked",
+            name: "Holiday Yoked, Giant Growth, and Blue Rocket",
+            core: "hard",
             completed: () => have($effect`Holiday Yoked`),
             do: $location`The X-32-F Combat Training Snowman`,
             outfit: () =>
                 uniform({
                     changes: { familiar: $familiar`Ghost of Crimbo Carols`, famequip: $item.none },
                 }),
+            combat: new CSStrategy(() =>
+                Macro.externalIf(
+                    !have($effect`Cosmic Ball in the Air`),
+                    Macro.skill($skill`Bowl Straight Up`)
+                )
+                    .delevel()
+                    .tryItem($item`blue rocket`)
+                    .trySkill($skill`Giant Growth`)
+                    .defaultKill()
+            ),
+        },
+        {
+            name: "Giant Growth and Blue Rocket",
+            core: "soft",
+            completed: () => have($effect`Giant Growth`),
+            do: $location`The X-32-F Combat Training Snowman`,
+            outfit: uniform,
             combat: new CSStrategy(() =>
                 Macro.externalIf(
                     !have($effect`Cosmic Ball in the Air`),

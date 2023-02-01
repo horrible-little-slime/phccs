@@ -3,6 +3,7 @@ import { burnLibrams, CSTask } from "./lib";
 import { Engine, getTasks, Outfit, OutfitSpec, Quest } from "grimoire-kolmafia";
 import {
     abort,
+    cliExecute,
     inHardcore,
     isDarkMode,
     myPath,
@@ -154,14 +155,17 @@ export class CSEngine extends Engine<never, CSTask> {
                 }
             }
         } finally {
-            if (CSEngine.core === "soft") {
-                CommunityService.donate();
-                uneffect($effect`Feeling Lost`);
-            }
-
             CSEngine.propertyManager.resetAll();
 
             CommunityService.printLog(HIGHLIGHT);
+
+            if (CSEngine.core === "soft") {
+                CommunityService.donate();
+                cliExecute("refresh all");
+                cliExecute(get("kingLiberatedScript"));
+                uneffect($effect`Feeling Lost`);
+            }
+
             if (get("_cloudTalkSmoker")) {
                 print(
                     `${get("_cloudTalkSmoker").slice(10)} has a message for you: ${get(
