@@ -10,6 +10,13 @@ import {
     get,
     have,
 } from "libram";
+import { byStat } from "./lib";
+
+export const METEOR_ACCESSORY = byStat({
+    Mysticality: $item`meteorite necklace`,
+    Muscle: $item`meteorite ring`,
+    Moxie: $item`meteorite necklace`,
+});
 
 const DEFAULT_UNIFORM = (): OutfitSpec => ({
     hat: DaylightShavings.buffAvailable()
@@ -22,7 +29,7 @@ const DEFAULT_UNIFORM = (): OutfitSpec => ({
             ? $item`June cleaver`
             : $item`Fourth of May Cosplay Saber`,
     offhand: $item`unbreakable umbrella`,
-    acc1: $items`meteorite necklace, your cowboy boots`,
+    acc1: [METEOR_ACCESSORY, $item`your cowboy boots`],
     acc2: $item`codpiece`,
     acc3: $items`battle broom, Powerful Glove`,
     back:

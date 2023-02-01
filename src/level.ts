@@ -1,7 +1,7 @@
 import { CSStrategy, Macro } from "./combat";
 import { beachTask, innerElf } from "./commons";
 import { CSQuest } from "./engine";
-import { burnLibrams, hasNcBird, synthExp } from "./lib";
+import { burnLibrams, hasNcBird, SYNTH_EFFECT, synthExp } from "./lib";
 import uniform from "./outfit";
 import { OutfitSpec } from "grimoire-kolmafia";
 import {
@@ -101,8 +101,8 @@ const Level: CSQuest = {
             do: () => visitUrl("place.php?whichplace=campaway&action=campaway_sky"),
         },
         {
-            name: "Synth: Learning",
-            completed: () => have($effect`Synthesis: Learning`),
+            name: SYNTH_EFFECT.name,
+            completed: () => have(SYNTH_EFFECT),
             do: synthExp,
         },
         {

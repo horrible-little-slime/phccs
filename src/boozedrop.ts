@@ -8,13 +8,12 @@ import {
     cliExecute,
     create,
     knollAvailable,
-    myClass,
     use,
     useSkill,
     visitUrl,
 } from "kolmafia";
 import {
-    $class,
+    $classes,
     $effect,
     $familiar,
     $item,
@@ -106,7 +105,7 @@ const BoozeDrop: CSQuest = {
         },
         {
             name: "Pray",
-            ready: () => myClass() === $class`Pastamancer`,
+            class: $classes`Pastamancer`,
             completed: () => get("_barrelPrayer"),
             do: () => cliExecute("barrelprayer buff"),
         },

@@ -9,6 +9,7 @@ import {
     getClanName,
     getWorkshed,
     itemAmount,
+    myPrimestat,
     runChoice,
     storageAmount,
     takeStorage,
@@ -205,10 +206,10 @@ const Prologue: CSQuest = {
         },
         {
             name: "Mummery",
-            completed: () => get("_mummeryMods").includes("Mysticality"),
+            completed: () => get("_mummeryMods").includes(myPrimestat().toString()),
             do: (): void => {
                 useFamiliar($familiar`Melodramedary`);
-                cliExecute("mummery myst");
+                cliExecute(`mummery ${myPrimestat().toString()}`);
             },
         },
         {
