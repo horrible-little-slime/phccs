@@ -545,6 +545,7 @@ const Level: CSQuest = {
                     .trySkill($skill`Bowl Sideways`)
                     .defaultKill()
             ),
+            choices: { [1324]: 5 },
         },
         {
             name: "Freekill NEP",
@@ -577,6 +578,7 @@ const Level: CSQuest = {
                     .trySkill($skill`Gingerbread Mob Hit`)
                     .abort()
             ),
+            choices: { [1324]: 5 },
         },
     ],
 };
