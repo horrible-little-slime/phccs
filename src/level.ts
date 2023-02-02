@@ -1,7 +1,7 @@
 import { CSStrategy, Macro } from "./combat";
 import { beachTask, innerElf, potionTask } from "./commons";
 import { CSQuest } from "./engine";
-import { burnLibrams, byStat, hasNcBird, SYNTH_EFFECT, synthExp } from "./lib";
+import { burnLibrams, byStat, hasNcFavouriteBird, SYNTH_EFFECT, synthExp } from "./lib";
 import uniform from "./outfit";
 import { OutfitSpec } from "grimoire-kolmafia";
 import {
@@ -158,6 +158,7 @@ const Level: CSQuest = {
         },
         {
             name: "Consider Love Potion",
+            ready: () => have(lovePotion),
             completed: () => lovePotionConsidered,
             do: (): void => {
                 visitUrl(`desc_effect.php?whicheffect=${loveEffect.descid}`);
@@ -541,7 +542,7 @@ const Level: CSQuest = {
         },
         {
             name: "God Lobster",
-            completed: () => get("_godLobsterFights") >= (hasNcBird() ? 3 : 2),
+            completed: () => get("_godLobsterFights") >= (hasNcFavouriteBird() ? 3 : 2),
             do: (): void => {
                 visitUrl("main.php?fightgodlobster=1");
                 runCombat();
@@ -557,7 +558,7 @@ const Level: CSQuest = {
             },
             choices: {
                 // Stats
-                [1310]: () => (hasNcBird() ? 3 : 1),
+                [1310]: () => (hasNcFavouriteBird() ? 3 : 1),
             },
             combat: new CSStrategy(),
         },
