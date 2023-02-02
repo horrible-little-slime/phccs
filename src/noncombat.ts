@@ -1,7 +1,15 @@
 import { CSStrategy } from "./combat";
-import { asdonTask, commonFamiliarWeightBuffs, restore, skillTask, songTask } from "./commons";
+import {
+    asdonTask,
+    birdTask,
+    commonFamiliarWeightBuffs,
+    favouriteBirdTask,
+    restore,
+    skillTask,
+    songTask,
+} from "./commons";
 import { CSQuest } from "./engine";
-import { hasNcFavouriteBird, horse, horsery } from "./lib";
+import { horse, horsery } from "./lib";
 import uniform from "./outfit";
 import { cliExecute, runChoice, runCombat, useSkill, visitUrl } from "kolmafia";
 import { $effect, $effects, $familiar, $item, $skill, CommunityService, get, have } from "libram";
@@ -39,13 +47,8 @@ const Noncombat: CSQuest = {
             do: () => useSkill($skill`CHEAT CODE: Invisible Avatar`),
             outfit: { acc3: $item`Powerful Glove` },
         },
-        skillTask($effect`Blessing of the Bird`),
-        {
-            name: "Favourite Bird",
-            completed: () => get("_favoriteBirdVisited"),
-            ready: hasNcFavouriteBird,
-            do: () => useSkill($skill`Visit your Favorite Bird`),
-        },
+        birdTask("Combat Rate", false),
+        favouriteBirdTask("Combat Rate", false),
         songTask($effect`The Sonata of Sneakiness`, $effect`Fat Leon's Phat Loot Lyric`),
         restore($effects`Smooth Movements, The Sonata of Sneakiness`),
         {

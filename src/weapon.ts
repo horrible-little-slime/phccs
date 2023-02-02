@@ -1,5 +1,14 @@
 import { CSStrategy, Macro } from "./combat";
-import { beachTask, innerElf, potionTask, restore, skillTask, songTask } from "./commons";
+import {
+    beachTask,
+    birdTask,
+    favouriteBirdTask,
+    innerElf,
+    potionTask,
+    restore,
+    skillTask,
+    songTask,
+} from "./commons";
 import { CSEngine, CSQuest } from "./engine";
 import { horse, horsery, unequip } from "./lib";
 import uniform from "./outfit";
@@ -27,7 +36,7 @@ import {
     set,
 } from "libram";
 
-const buffs = $effects`Carol of the Bulls, Song of the North, Rage of the Reindeer, Scowl of the Auk, Disdain of the War Snapper, Tenacity of the Snapper, Blessing of the Bird`;
+const buffs = $effects`Carol of the Bulls, Song of the North, Rage of the Reindeer, Scowl of the Auk, Disdain of the War Snapper, Tenacity of the Snapper`;
 
 let meteors: number;
 const Weapon: CSQuest = {
@@ -56,6 +65,8 @@ const Weapon: CSQuest = {
     tasks: [
         ...buffs.map(skillTask),
         restore(buffs),
+        birdTask("Weapon Damage Percent"),
+        favouriteBirdTask("Weapon Damage Percent"),
         skillTask($effect`Frenzied, Bloody`),
         potionTask($item`LOV Elixir #3`),
         potionTask($item`vial of hamethyst juice`),

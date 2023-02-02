@@ -1,7 +1,14 @@
 import { CSStrategy, Macro } from "./combat";
-import { beachTask, innerElf, potionTask } from "./commons";
+import { beachTask, favouriteBirdTask, innerElf, potionTask } from "./commons";
 import { CSQuest } from "./engine";
-import { burnLibrams, byStat, hasNcFavouriteBird, SYNTH_EFFECT, synthExp } from "./lib";
+import {
+    burnLibrams,
+    byStat,
+    currentBirdHas,
+    favouriteBirdHas,
+    SYNTH_EFFECT,
+    synthExp,
+} from "./lib";
 import uniform from "./outfit";
 import { OutfitSpec } from "grimoire-kolmafia";
 import {
@@ -175,15 +182,7 @@ const Level: CSQuest = {
                 }
             },
         },
-        {
-            name: "Favourite Bird",
-            completed: () => get("_favoriteBirdVisited"),
-            ready: () =>
-                get("yourFavoriteBirdMods")
-                    .split(",")
-                    .some((mod) => mod.includes(`${myPrimestat()} Percent: +`)),
-            do: () => useSkill($skill`Visit your Favorite Bird`),
-        },
+        favouriteBirdTask(`${myPrimestat().toString()} Percent`),
         {
             name: "Vaccine",
             completed: () => get("_spacegateVaccine"),
@@ -542,7 +541,11 @@ const Level: CSQuest = {
         },
         {
             name: "God Lobster",
-            completed: () => get("_godLobsterFights") >= (hasNcFavouriteBird() ? 3 : 2),
+            completed: () =>
+                get("_godLobsterFights") >=
+                (favouriteBirdHas("Combat Rate", false) && currentBirdHas("Combat Rate", false)
+                    ? 3
+                    : 2),
             do: (): void => {
                 visitUrl("main.php?fightgodlobster=1");
                 runCombat();
@@ -558,7 +561,10 @@ const Level: CSQuest = {
             },
             choices: {
                 // Stats
-                [1310]: () => (hasNcFavouriteBird() ? 3 : 1),
+                [1310]: () =>
+                    favouriteBirdHas("Combat Rate", false) && currentBirdHas("Combat Rate", false)
+                        ? 3
+                        : 1,
             },
             combat: new CSStrategy(),
         },

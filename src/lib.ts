@@ -44,6 +44,7 @@ import {
     PropertiesManager,
     Witchess,
 } from "libram";
+import { NumericModifier } from "libram/dist/modifierTypes";
 
 export type CSTask = Task & { core?: "hard" | "soft"; class?: Class[] };
 export const PropertyManager = new PropertiesManager();
@@ -292,10 +293,18 @@ export function unequip(item: Item): void {
     }
 }
 
-export function hasNcFavouriteBird(): boolean {
+export function favouriteBirdHas(modifier: NumericModifier, positive = true): boolean {
+    const sign = positive ? "+" : "-";
     return get("yourFavoriteBirdMods")
         .split(",")
-        .some((mod) => mod.includes("Combat Rate: -"));
+        .some((mod) => mod.includes(`${modifier}: ${sign}`));
+}
+
+export function currentBirdHas(modifier: NumericModifier, positive = true): boolean {
+    const sign = positive ? "+" : "-";
+    return get("_birdOfTheDayMods")
+        .split(",")
+        .some((mod) => mod.includes(`${modifier}: ${sign}`));
 }
 
 type StatSwitch<T> = Record<StatType, T> | (Partial<{ [x in StatType]: T }> & { default: T });

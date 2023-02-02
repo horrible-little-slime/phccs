@@ -1,5 +1,6 @@
 import { CSQuest } from "./engine";
 import { byClass, horse, horsery, setClan, tryUse } from "./lib";
+import { METEOR_ACCESSORY } from "./outfit";
 import {
     autosell,
     buy,
@@ -41,7 +42,7 @@ import {
 
 const PULLS = [
     $items`repaid diaper, Great Wolf's beastly trousers`,
-    $items`meteorite necklace, meteorite ring, meteorite fragment, meteorite earring`,
+    [METEOR_ACCESSORY],
     $items`Stick-Knife of Loathing`,
     $items`moveable feast`,
 ];
