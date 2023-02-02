@@ -8,7 +8,7 @@ import Level from "./level";
 import Noncombat from "./noncombat";
 import Prologue from "./prologue";
 import Spell from "./spell";
-import { Hitpoints, Moxie, Muscle, Mysticality } from "./stattests";
+import StatTests from "./stattests";
 import Weapon from "./weapon";
 import { sinceKolmafiaRevision } from "libram";
 
@@ -17,10 +17,7 @@ CSEngine.runTests(
     Prologue,
     CoilWire,
     Level,
-    Moxie,
-    Muscle,
-    Hitpoints,
-    Mysticality,
+    ...StatTests,
     Drink,
     HotRes,
     Noncombat,

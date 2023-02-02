@@ -1,4 +1,12 @@
-import { beachTask, innerElf, potionTask, restore, skillTask } from "./commons";
+import {
+    beachTask,
+    birdTask,
+    favouriteBirdTask,
+    innerElf,
+    potionTask,
+    restore,
+    skillTask,
+} from "./commons";
 import { CSEngine, CSQuest } from "./engine";
 import { byStat, CSTask } from "./lib";
 import { METEOR_ACCESSORY } from "./outfit";
@@ -19,7 +27,7 @@ import {
 const SKILL_BUFFS = {
     MUSCLE: $effects`Feeling Excited, Big, Song of Bravado, Rage of the Reindeer, Quiet Determination, Disdain of the War Snapper`,
     MYSTICALITY: $effects`Feeling Excited, Big, Song of Bravado`,
-    MOXIE: $effects`Feeling Excited, Big, Song of Bravado, Blessing of the Bird, Quiet Desperation, Disco Fever, Blubbered Up, Mariachi Mood, Disco State of Mind`,
+    MOXIE: $effects`Feeling Excited, Big, Song of Bravado, Quiet Desperation, Disco Fever, Blubbered Up, Mariachi Mood, Disco State of Mind`,
     HP: $effects`Feeling Excited, Big, Song of Starch, Rage of the Reindeer, Quiet Determination, Disdain of the War Snapper`,
 };
 
@@ -84,6 +92,8 @@ const Muscle: CSQuest = {
         potionTask($item`LOV Elixir #3`),
         thrallTask($thrall`Elbow Macaroni`),
         beachTask($effect`Lack of Body-Building`),
+        birdTask("Muscle Percent"),
+        favouriteBirdTask("Muscle Percent"),
         { ...innerElf(), core: "hard" },
         { ...potionTask($item`Ben-Gal™ Balm`), core: "hard" },
         equalizeTask(),
@@ -113,7 +123,12 @@ const Mysticality: CSQuest = {
     },
     turnsSpent: 0,
     maxTurns: 1,
-    tasks: [...skillBuffTasks("MYSTICALITY"), equalizeTask()],
+    tasks: [
+        ...skillBuffTasks("MYSTICALITY"),
+        birdTask("Mysticality Percent"),
+        favouriteBirdTask("Mysticality Percent"),
+        equalizeTask(),
+    ],
 };
 
 const Moxie: CSQuest = {
@@ -137,6 +152,8 @@ const Moxie: CSQuest = {
     maxTurns: 1,
     tasks: [
         ...skillBuffTasks("MOXIE"),
+        birdTask("Moxie Percent"),
+        favouriteBirdTask("Moxie Percent"),
         ...$items`runproof mascara, confiscated love note, dollop of barbecue sauce`.map(
             potionTask
         ),
@@ -177,10 +194,18 @@ const Hitpoints: CSQuest = {
     },
     tasks: [
         ...skillBuffTasks("HP"),
+        birdTask("Muscle Percent"),
+        favouriteBirdTask("Muscle Percent"),
         potionTask($item`LOV Elixir #3`),
         thrallTask($thrall`Elbow Macaroni`),
         equalizeTask(),
     ],
 };
 
-export { Muscle, Mysticality, Moxie, Hitpoints };
+const StatTests = byStat({
+    Mysticality: [Moxie, Muscle, Hitpoints, Mysticality],
+    Muscle: [Moxie, Mysticality, Hitpoints, Muscle],
+    Moxie: [Mysticality, Muscle, Hitpoints, Moxie],
+});
+
+export default StatTests;
