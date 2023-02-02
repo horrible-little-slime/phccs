@@ -11590,7 +11590,8 @@ var levellingComplete = (0, import_kolmafia39.myLevel)() >= 13 && get("_neverend
       },
       combat: new CSStrategy(function() {
         return Macro2.delevel().if_($effect(_templateObject1119 || (_templateObject1119 = _taggedTemplateLiteral36(["Inner Elf"]))), Macro2.trySkill($skill(_templateObject1122 || (_templateObject1122 = _taggedTemplateLiteral36(["Feel Pride"]))))).trySkill($skill(_templateObject1132 || (_templateObject1132 = _taggedTemplateLiteral36(["Bowl Sideways"])))).defaultKill();
-      })
+      }),
+      choices: _defineProperty15({}, 1324, 5)
     },
     {
       name: "Freekill NEP",
@@ -11618,7 +11619,8 @@ var levellingComplete = (0, import_kolmafia39.myLevel)() >= 13 && get("_neverend
       },
       combat: new CSStrategy(function() {
         return Macro2.if_($monster(_templateObject1217 || (_templateObject1217 = _taggedTemplateLiteral36(["sausage goblin"]))), Macro2.defaultKill()).trySkill($skill(_templateObject1222 || (_templateObject1222 = _taggedTemplateLiteral36(["Spit jurassic acid"])))).trySkill($skill(_templateObject1232 || (_templateObject1232 = _taggedTemplateLiteral36(["Chest X-Ray"])))).trySkill($skill(_templateObject1242 || (_templateObject1242 = _taggedTemplateLiteral36(["Shattering Punch"])))).trySkill($skill(_templateObject1252 || (_templateObject1252 = _taggedTemplateLiteral36(["Gingerbread Mob Hit"])))).abort();
-      })
+      }),
+      choices: _defineProperty15({}, 1324, 5)
     }
   ])
 }, level_default = Level;
