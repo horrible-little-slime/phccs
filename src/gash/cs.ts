@@ -5,6 +5,7 @@ import {
     $class,
     $familiar,
     $item,
+    $items,
     $monster,
     $path,
     $slot,
@@ -103,6 +104,23 @@ export function main(input = ""): void {
                 !meets() &&
                 !userConfirm(
                     `We have failed to meet the requirement ${name} to ascend as a ${playerClass}; this is important because ${reason}. Are you sure you wish to proceed?`
+                )
+            ) {
+                abort();
+            }
+        }
+
+        if (args.softcore) {
+            const missingItems =
+                $items`repaid diaper, Stick-Knife of Loathing, moveable feast`.filter(
+                    (i) => !have(i)
+                );
+            if (
+                missingItems.length &&
+                !userConfirm(
+                    `You seem to be missing the following items required to run phccs in softcore: ${missingItems.join(
+                        ", "
+                    )}. Are you sure you wish to proceed?`
                 )
             ) {
                 abort();
