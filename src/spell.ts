@@ -111,7 +111,7 @@ const Spell: CSQuest = {
             completed: () => have($item`weeping willow wand`),
             core: "hard",
             do: (): void => {
-                if (!have($item`flimsy hardwood scraps`)) use($item`SpinMaster™ lathe`);
+                if (!have($item`flimsy hardwood scraps`)) visitUrl("shop.php?whichshop=lathe");
                 retrieveItem($item`weeping willow wand`);
             },
         },
