@@ -1,5 +1,5 @@
 import { CSStrategy, Macro } from "./combat";
-import { asdonTask, beachTask, commonFamiliarWeightBuffs, restore, skillTask } from "./commons";
+import { asdonTask, beachTask, commonFamiliarWeightBuffs, restoreBuffTasks } from "./commons";
 import { CSQuest } from "./engine";
 import { ensureMp, horse, horsery } from "./lib";
 import uniform from "./outfit";
@@ -49,8 +49,7 @@ const HotRes: CSQuest = {
     turnsSpent: 0,
     maxTurns: 1,
     tasks: [
-        ...buffs.map(skillTask),
-        restore(buffs),
+        ...restoreBuffTasks(buffs),
         ...commonFamiliarWeightBuffs(),
         beachTask($effect`Hot-Headed`),
         beachTask($effect`Does It Have a Skull In There??`),

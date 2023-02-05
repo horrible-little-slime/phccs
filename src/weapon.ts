@@ -5,7 +5,7 @@ import {
     favouriteBirdTask,
     innerElf,
     potionTask,
-    restore,
+    restoreBuffTasks,
     skillTask,
     songTask,
 } from "./commons";
@@ -63,8 +63,7 @@ const Weapon: CSQuest = {
     turnsSpent: 0,
     maxTurns: 1,
     tasks: [
-        ...buffs.map(skillTask),
-        restore(buffs),
+        ...restoreBuffTasks(buffs),
         birdTask("Weapon Damage Percent"),
         favouriteBirdTask("Weapon Damage Percent"),
         skillTask($effect`Frenzied, Bloody`),

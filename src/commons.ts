@@ -115,12 +115,15 @@ export function skillTask(x: Skill | Effect): CSTask {
     }
 }
 
+export function restoreBuffTasks(buffs: Effect[]): CSTask[] {
+    return [...buffs.map(skillTask), restore(buffs)];
+}
+
 export function commonFamiliarWeightBuffs(): CSTask[] {
     const buffs = $effects`Empathy, Leash of Linguini, Blood Bond`;
     return [
         potionTask($item`green candy heart`),
-        ...buffs.map(skillTask),
-        restore(buffs),
+        ...restoreBuffTasks(buffs),
         {
             name: "Witchess",
             completed: () => get("_witchessBuff"),
