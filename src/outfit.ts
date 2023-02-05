@@ -26,7 +26,7 @@ const UNCHANGING_OUTFIT: OutfitSpec = {
     acc2: byStat<Item | Item[]>({
         Mysticality: $item`codpiece`,
         Moxie: $items`LOV Earrings, Beach Comb`,
-        Muscle: $items`Retrospecs, Brutal brogues`,
+        Muscle: $items`Brutal brogues, Retrospecs`,
     }),
     acc3: byStat<Item | Item[]>({
         Mysticality: $items`battle broom, your cowboy boots`,
