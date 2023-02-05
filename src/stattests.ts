@@ -4,8 +4,7 @@ import {
     favouriteBirdTask,
     innerElf,
     potionTask,
-    restore,
-    skillTask,
+    restoreBuffTasks,
 } from "./commons";
 import { CSEngine, CSQuest } from "./engine";
 import { byStat, CSTask } from "./lib";
@@ -32,7 +31,7 @@ const SKILL_BUFFS = {
 };
 
 function skillBuffTasks(key: keyof typeof SKILL_BUFFS): CSTask[] {
-    return [...SKILL_BUFFS[key].map(skillTask), restore(SKILL_BUFFS[key])];
+    return restoreBuffTasks(SKILL_BUFFS[key]);
 }
 
 function thrallTask(thrall: Thrall): CSTask {

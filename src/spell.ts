@@ -4,7 +4,7 @@ import {
     innerElf,
     meteorShower,
     potionTask,
-    restore,
+    restoreBuffTasks,
     skillTask,
     songTask,
 } from "./commons";
@@ -80,8 +80,7 @@ const Spell: CSQuest = {
         },
         potionTask($item`tobiko marble soda`),
         songTask($effect`Jackasses' Symphony of Destruction`, $effect`The Sonata of Sneakiness`),
-        ...buffs.map(skillTask),
-        restore(buffs),
+        ...restoreBuffTasks(buffs),
         beachTask($effect`We're All Made of Starfish`),
         potionTask($item`LOV Elixir #6`),
         {
