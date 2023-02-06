@@ -33,7 +33,6 @@ import {
     visitUrl,
 } from "kolmafia";
 import {
-    $classes,
     $effect,
     $effects,
     $familiar,
@@ -44,7 +43,6 @@ import {
     $skill,
     $skills,
     Cartography,
-    CombatLoversLocket,
     Counter,
     get,
     have,
@@ -259,37 +257,6 @@ const Level: CSQuest = {
         },
         ...CastSkills,
         ...Recovery,
-        {
-            name: "Fruity Skeleton",
-            class: $classes`Sauceror, Seal Clubber, Turtle Tamer`,
-            completed: () => have($item`cherry`),
-            ready: () => !have($effect`Everything Looks Yellow`),
-            do: (): void => {
-                Cartography.mapMonster(
-                    $location`The Skeleton Store`,
-                    $monster`novelty tropical skeleton`
-                );
-            },
-            outfit: () =>
-                uniform({
-                    canAttack: false,
-                    changes: { shirt: $item`Jurassic Parka`, modes: { parka: "dilophosaur" } },
-                }),
-            combat: new CSStrategy(() => Macro.skill($skill`Spit jurassic acid`)),
-        },
-        {
-            name: "Evil Olive",
-            class: $classes`Disco Bandit, Accordion Thief`,
-            completed: () => have($item`jumbo olive`),
-            ready: () => !have($effect`Everything Looks Yellow`),
-            do: () => CombatLoversLocket.reminisce($monster`Evil Olive`),
-            outfit: () =>
-                uniform({
-                    canAttack: false,
-                    changes: { shirt: $item`Jurassic Parka`, modes: { parka: "dilophosaur" } },
-                }),
-            combat: new CSStrategy(() => Macro.skill($skill`Spit jurassic acid`)),
-        },
         {
             name: "Get Range",
             completed: () => get("hasRange"),

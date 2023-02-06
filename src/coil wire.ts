@@ -3,9 +3,14 @@ import { CSQuest } from "./engine";
 import uniform from "./outfit";
 import { adv1, create, eat } from "kolmafia";
 import {
+    $classes,
+    $effect,
     $item,
     $location,
+    $monster,
     $skill,
+    Cartography,
+    CombatLoversLocket,
     CommunityService,
     get,
     getKramcoWandererChance,
@@ -35,6 +40,37 @@ const CoilWire: CSQuest = {
                     .attack()
                     .repeat()
             ),
+        },
+        {
+            name: "Fruity Skeleton",
+            class: $classes`Sauceror, Seal Clubber, Turtle Tamer`,
+            completed: () => have($item`cherry`),
+            ready: () => !have($effect`Everything Looks Yellow`),
+            do: (): void => {
+                Cartography.mapMonster(
+                    $location`The Skeleton Store`,
+                    $monster`novelty tropical skeleton`
+                );
+            },
+            outfit: () =>
+                uniform({
+                    canAttack: false,
+                    changes: { shirt: $item`Jurassic Parka`, modes: { parka: "dilophosaur" } },
+                }),
+            combat: new CSStrategy(() => Macro.skill($skill`Spit jurassic acid`)),
+        },
+        {
+            name: "Evil Olive",
+            class: $classes`Disco Bandit, Accordion Thief`,
+            completed: () => have($item`jumbo olive`),
+            ready: () => !have($effect`Everything Looks Yellow`),
+            do: () => CombatLoversLocket.reminisce($monster`Evil Olive`),
+            outfit: () =>
+                uniform({
+                    canAttack: false,
+                    changes: { shirt: $item`Jurassic Parka`, modes: { parka: "dilophosaur" } },
+                }),
+            combat: new CSStrategy(() => Macro.skill($skill`Spit jurassic acid`)),
         },
     ],
     outfit: () => ({
