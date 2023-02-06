@@ -44,7 +44,7 @@ const HotRes: CSQuest = {
         acc3: $item`Brutal brogues`,
         familiar: $familiar`Exotic Parrot`,
         famequip: $item`tiny stillsuit`,
-        modes: { parka: "ghostasaurus", retrocape: ["vampire", "hold"] },
+        modes: { parka: "pterodactyl", retrocape: ["vampire", "hold"] },
     }),
     turnsSpent: 0,
     maxTurns: 1,
