@@ -140,9 +140,9 @@ const Prologue: CSQuest = {
             completed: () => $items`space blanket, MayDay™ supply package`.every((i) => !have(i)),
             do: (): void => {
                 if (have($item`MayDay™ supply package`)) use($item`MayDay™ supply package`);
-                autosell(1,$item`space blanket`);
+                autosell(1, $item`space blanket`);
             },
-            class: $classes`Turtle Tamer, Sauceror`
+            class: $classes`Turtle Tamer, Sauceror`,
         },
         {
             name: "Barrel Hoob Earring",
