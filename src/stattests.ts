@@ -9,7 +9,7 @@ import {
 import { CSEngine, CSQuest } from "./engine";
 import { byStat, CSTask } from "./lib";
 import { METEOR_ACCESSORY } from "./outfit";
-import { cliExecute, itemAmount, myThrall, Thrall, use, useSkill } from "kolmafia";
+import { cliExecute, Item, itemAmount, myThrall, Thrall, use, useSkill } from "kolmafia";
 import {
     $classes,
     $effect,
@@ -112,7 +112,10 @@ const Mysticality: CSQuest = {
             back: $item`unwrapped knock-off retro superhero cape`,
             shirt: $items`denim jacket, shoe ad T-shirt, fresh coat of paint`,
             pants: $item`designer sweatpants`,
-            acc1: $item`your cowboy boots`,
+            acc1: byStat<Item | Item[]>({
+                Mysticality: $item`your cowboy boots`,
+                default: $items`barrel hoop earring, Powerful Glove`,
+            }),
             acc2: $item`codpiece`,
             acc3: $item`battle broom`,
             famequip: $items`Abracandalabra`,
