@@ -145,7 +145,7 @@ const Prologue: CSQuest = {
             class: $classes`Turtle Tamer, Sauceror`,
         },
         {
-            name: "Barrel Hoob Earring",
+            name: "Barrel Hoop Earring",
             completed: () => get("_barrelPrayer"),
             class: $classes`Seal Clubber, Disco Bandit`,
             do: () => cliExecute("barrelprayer earring"),

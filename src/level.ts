@@ -580,7 +580,13 @@ const Level: CSQuest = {
             },
             combat: new CSStrategy(() =>
                 Macro.delevel()
-                    .if_($effect`Inner Elf`, Macro.trySkill($skill`Feel Pride`))
+                    .if_(
+                        $effect`Inner Elf`,
+                        Macro.if_(
+                            `!havecombatitem ${$item`cosmic bowling ball`}`,
+                            Macro.trySkill($skill`Feel Pride`)
+                        )
+                    )
                     .trySkill($skill`Bowl Sideways`)
                     .defaultKill()
             ),
@@ -611,6 +617,7 @@ const Level: CSQuest = {
             },
             combat: new CSStrategy(() =>
                 Macro.if_($monster`sausage goblin`, Macro.defaultKill())
+                    .trySkill($skill`Bowl Sideways`)
                     .trySkill($skill`Spit jurassic acid`)
                     .trySkill($skill`Chest X-Ray`)
                     .trySkill($skill`Shattering Punch`)
