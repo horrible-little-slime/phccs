@@ -228,17 +228,11 @@ const Level: CSQuest = {
             completed: () => get("_feelExcitementUsed") > 0,
             do: () => useSkill($skill`Feel Excitement`),
         },
-        {
-            name: "Misc Items",
-            completed: () =>
-                $items`votive of confidence, natural magick candle, MayDay™ supply package, Napalm In The Morning™ candle`.every(
-                    (i) => !have(i)
-                ),
-            do: () =>
-                $items`votive of confidence, natural magick candle, MayDay™ supply package, Napalm In The Morning™ candle`.forEach(
-                    (i) => have(i) && use(i)
-                ),
-        },
+
+        ...$items`votive of confidence, natural magick candle, MayDay™ supply package, Napalm In The Morning™ candle`.map(
+            potionTask
+        ),
+
         {
             name: "Acquire Blue Rocket",
             completed: () => have($effect`Glowing Blue`) || have($item`blue rocket`),

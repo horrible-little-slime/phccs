@@ -1,3 +1,4 @@
+import { deckTask } from "./commons";
 import { CSQuest } from "./engine";
 import { byClass, horse, horsery, setClan, tryUse } from "./lib";
 import { METEOR_ACCESSORY } from "./outfit";
@@ -122,14 +123,32 @@ const Prologue: CSQuest = {
                 use(1, $item`borrowed time`);
             },
         },
+        deckTask("Forest"),
+        deckTask("Island"),
         {
-            name: "Cheat At Cards",
-            completed: () => get("_deckCardsDrawn") >= 15,
+            ...deckTask("1952 Mickey Mantle"),
+            // These classes don't need to use Wheel of Fortune
+            class: $classes`Pastamancer, Seal Clubber, Disco Bandit, Accordion Thief`,
+        },
+        {
+            name: "Sell Mickey Mantle",
+            completed: () => !have($item`1952 Mickey Mantle card`),
+            do: () => autosell(1, $item`1952 Mickey Mantle card`),
+        },
+        {
+            name: "Sell Space Blanket",
+            completed: () => $items`space blanket, MayDay™ supply package`.every((i) => !have(i)),
             do: (): void => {
-                cliExecute("cheat forest; cheat island; cheat 1952");
-                autosell(1, $item`1952 Mickey Mantle card`);
-                useSkill(1, $skill`Ancestral Recall`);
+                if (have($item`MayDay™ supply package`)) use($item`MayDay™ supply package`);
+                autosell(1, $item`space blanket`);
             },
+            class: $classes`Turtle Tamer, Sauceror`,
+        },
+        {
+            name: "Barrel Hoob Earring",
+            completed: () => get("_barrelPrayer"),
+            class: $classes`Seal Clubber, Disco Bandit`,
+            do: () => cliExecute("barrelprayer earring"),
         },
         {
             name: "Juice Bar",

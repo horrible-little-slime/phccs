@@ -39,7 +39,7 @@ import {
 } from "libram";
 
 const buffs = $effects`Carol of the Hells, Arched Eyebrow of the Archmage, Song of Sauce`;
-const chefstaves = $items`Staff of the Roaring Hearth, Staff of Kitchen Royalty, Staff of the Deepest Freeze, Staff of Frozen Lard, Staff of the Peppermint Twist, Staff of the Roaring Hearth`;
+const chefstaves = $items`Staff of the Roaring Hearth, Staff of Simmering Hatred, Staff of Kitchen Royalty, Staff of the Deepest Freeze, Staff of Frozen Lard, Staff of the Peppermint Twist`;
 
 const Spell: CSQuest = {
     name: "Spell Damage",
@@ -47,7 +47,7 @@ const Spell: CSQuest = {
     test: CommunityService.SpellDamage,
     outfit: () => ({
         hat: $items`astral chapeau, Hollandaise helmet, Iunion Crown`,
-        weapon: CSEngine.core === "soft" ? chefstaves : $item`weeping willow wand`,
+        weapon: [...chefstaves, $item`weeping willow wand`],
         offhand: $item`Abracandalabra`,
         pants: $item`designer sweatpants`,
         acc1: $items`meteorite necklace, Kremlin's Greatest Briefcase`,
@@ -77,6 +77,12 @@ const Spell: CSQuest = {
                     .trySkill($skill`Snokebomb`)
                     .abort()
             ),
+        },
+        {
+            name: "Barrel Prayer",
+            class: $classes`Sauceror`,
+            completed: () => get("_barrelPrayer"),
+            do: () => cliExecute("barrelprayer buff"),
         },
         potionTask($item`tobiko marble soda`),
         songTask($effect`Jackasses' Symphony of Destruction`, $effect`The Sonata of Sneakiness`),

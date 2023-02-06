@@ -226,3 +226,13 @@ export function favouriteBirdTask(modifier: NumericModifier, positive = true): C
         do: () => useSkill($skill`Visit your Favorite Bird`),
     };
 }
+
+export function deckTask(card: string): CSTask {
+    return {
+        name: `Cheat At Cards: ${card}`,
+        completed: () =>
+            get("_deckCardsSeen").toLowerCase().split("|").includes(card.toLowerCase()),
+        ready: () => have($item`Deck of Every Card`) && get("_deckCardsDrawn") <= 10,
+        do: () => cliExecute(`cheat ${card.toLowerCase()}`),
+    };
+}
