@@ -1,5 +1,5 @@
 import GLOBAL_QUEST from "./globaltasks";
-import { burnLibrams, CSTask, printJson } from "./lib";
+import { burnLibrams, CSTask } from "./lib";
 import { Engine, getTasks, Outfit, OutfitSpec, Quest } from "grimoire-kolmafia";
 import {
     abort,
