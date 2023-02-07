@@ -4,6 +4,7 @@ import { Familiar, Item, totalTurnsPlayed } from "kolmafia";
 import {
     $effect,
     $familiar,
+    $familiars,
     $item,
     $items,
     CommunityService,
@@ -83,7 +84,11 @@ const FAMILIAR_PICKS = [
     },
 ];
 
-function chooseFamiliar(canAttack: boolean): { familiar: Familiar; famequip: Item } {
+function findFirstFamiliar(fams: Familiar[]) {
+    return fams.find((f) => have(f));
+}
+
+function chooseFamiliar(canAttack: boolean): Pick<OutfitSpec, "familiar" | "famequip"> {
     const pick = FAMILIAR_PICKS.find(
         ({ condition, familiar }) =>
             condition() &&
@@ -93,7 +98,10 @@ function chooseFamiliar(canAttack: boolean): { familiar: Familiar; famequip: Ite
     if (pick) {
         return { famequip: pick.famequip ?? $item`tiny stillsuit`, familiar: pick.familiar };
     }
-    return { famequip: $item`tiny stillsuit`, familiar: $familiar`Puck Man` };
+    return {
+        famequip: $item`tiny stillsuit`,
+        familiar: findFirstFamiliar($familiars`Puck Man, Ms. Puck Man`),
+    };
 }
 
 type UniformOptions = { changes: OutfitSpec; canAttack: boolean };

@@ -191,7 +191,7 @@ const Level: CSQuest = {
         {
             name: "Boxing Daybuff",
             completed: () => get("_daycareSpa"),
-            do: () => cliExecute(`daycare ${myPrimestat()}`),
+            do: () => cliExecute(`daycare ${myPrimestat().toString().toLowerCase()}`),
         },
         beachTask($effect`You Learned Something Maybe!`),
         beachTask($effect`We're All Made of Starfish`),
@@ -307,6 +307,7 @@ const Level: CSQuest = {
         {
             name: "Giant Growth and Blue Rocket",
             core: "soft",
+            ready: () => have($item`green mana`),
             completed: () => have($effect`Giant Growth`),
             ready: () => have($item`green mana`) && get("_snojoFreeFights") < 10,
             do: $location`The X-32-F Combat Training Snowman`,
@@ -362,7 +363,7 @@ const Level: CSQuest = {
             },
             ready: () => Witchess.fightsDone() < 5,
             do: () => Witchess.fightPiece($monster`Witchess Witch`),
-            combat: new CSStrategy(() => Macro.delevel().attack().repeat()),
+            combat: new CSStrategy(() => Macro.delevel(true).attack().repeat()),
         },
         {
             name: "King",
@@ -399,11 +400,7 @@ const Level: CSQuest = {
                     },
                 });
             },
-            combat: new CSStrategy(() =>
-                Macro.tryItem($item`Time-Spinner`)
-                    .attack()
-                    .repeat()
-            ),
+            combat: new CSStrategy(() => Macro.tryBowl().attack().repeat()),
             prepare: (): void => {
                 useSkill($skill`Cannelloni Cocoon`);
             },

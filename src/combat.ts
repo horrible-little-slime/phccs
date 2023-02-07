@@ -9,14 +9,27 @@ export class CSStrategy extends CombatStrategy {
     }
 }
 export class Macro extends StrictMacro {
-    delevel(): Macro {
+    tryBowl(): Macro {
+        return this.if_(
+            "!hascombatitem cosmic bowling ball",
+            Macro.item($item`Time-Spinner`).if_(
+                $item`cosmic bowling ball`,
+                Macro.item([$item`Time-Spinner`, $item`cosmic bowling ball`])
+            )
+        );
+    }
+    static tryBowl(): Macro {
+        return new Macro().tryBowl();
+    }
+
+    delevel(hard = false): Macro {
         return this.trySkill($skill`Curse of Weaksauce`)
             .trySkill($skill`Micrometeorite`)
-            .tryItem($item`Time-Spinner`)
+            .externalIf(hard, Macro.tryBowl(), Macro.item($item`Time-Spinner`))
             .trySkill($skill`Summon Love Gnats`);
     }
-    static delevel(): Macro {
-        return new Macro().delevel();
+    static delevel(hard = false): Macro {
+        return new Macro().delevel(hard);
     }
 
     candyblast(): Macro {

@@ -17,6 +17,7 @@ import {
     cliExecute,
     myLevel,
     numericModifier,
+    pullsRemaining,
     retrieveItem,
     storageAmount,
     takeStorage,
@@ -169,6 +170,9 @@ const Spell: CSQuest = {
         },
         {
             name: "Pull Staff",
+            ready: () =>
+                chefstaves.filter((s) => storageAmount(s) > 0 && canEquip(s)).length > 0 &&
+                pullsRemaining() > 0,
             completed: () => chefstaves.some((staff) => have(staff)),
             core: "soft",
             do: (): void => {

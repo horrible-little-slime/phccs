@@ -60,7 +60,7 @@ const SPECIAL_REQUIREMENTS: Record<
         },
         {
             name: "Cowboy Boots",
-            meets: () => equippedItem($slot`boot skin`) === $item`mountain lion skin`,
+            meets: () => equippedItem($slot`bootskin`) === $item`mountain lion skin`,
             reason: "we want to crank that mainstat for leveling reasons",
         },
     ],
@@ -72,7 +72,7 @@ const SPECIAL_REQUIREMENTS: Record<
         },
         {
             name: "Cowboy Boots",
-            meets: () => equippedItem($slot`boot skin`) === $item`grizzled bearskin`,
+            meets: () => equippedItem($slot`bootskin`) === $item`grizzled bearskin`,
             reason: "we want to crank that mainstat for leveling reasons",
         },
     ],
@@ -84,7 +84,7 @@ const SPECIAL_REQUIREMENTS: Record<
         },
         {
             name: "Cowboy Boots",
-            meets: () => equippedItem($slot`boot skin`) === $item`frontwinder skin`,
+            meets: () => equippedItem($slot`bootskin`) === $item`frontwinder skin`,
             reason: "we want to crank that mainstat for leveling reasons",
         },
     ],

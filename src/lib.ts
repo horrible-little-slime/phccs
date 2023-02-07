@@ -9,6 +9,7 @@ import {
     equip,
     equippedAmount,
     equippedItem,
+    Familiar,
     getCampground,
     getClanName,
     getProperty,
@@ -18,6 +19,7 @@ import {
     myMaxmp,
     myMp,
     myPrimestat,
+    print,
     restoreMp,
     retrieveItem,
     setProperty,
@@ -318,4 +320,15 @@ export function byStat<T>(thing: StatSwitch<T>): T {
         return thing[stat] ?? thing.default;
     }
     return thing[stat];
+}
+
+export function printJson<T extends object>(json: T): void {
+    print(
+        JSON.stringify(json, (k, v) => {
+            if (v instanceof Item || v instanceof Familiar) {
+                return v.toString();
+            }
+            return v;
+        })
+    );
 }

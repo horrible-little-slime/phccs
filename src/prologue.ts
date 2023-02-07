@@ -148,7 +148,7 @@ const Prologue: CSQuest = {
             name: "Barrel Hoop Earring",
             completed: () => get("_barrelPrayer"),
             class: $classes`Seal Clubber, Disco Bandit`,
-            do: () => cliExecute("barrelprayer earring"),
+            do: () => cliExecute("barrelprayer glamour"),
         },
         {
             name: "Juice Bar",
@@ -247,7 +247,7 @@ const Prologue: CSQuest = {
             completed: () => get("_mummeryMods").includes(myPrimestat().toString()),
             do: (): void => {
                 useFamiliar($familiar`Melodramedary`);
-                cliExecute(`mummery ${myPrimestat().toString()}`);
+                cliExecute(`mummery ${myPrimestat().toString().toLowerCase()}`);
             },
         },
         {
