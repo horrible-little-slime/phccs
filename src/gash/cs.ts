@@ -133,7 +133,13 @@ export function main(input = ""): void {
         eudora: "Our Daily Candles™ order form",
         chateau: {
             desk: "continental juice bar",
-            nightstand: "foreign language tapes",
+            nightstand: (
+                {
+                    Mysticality: "foreign language tapes",
+                    Moxie: "bowl of potpourri",
+                    Muscle: "electric muscle stimulator",
+                } as const
+            )[args.class.primestat.toString()],
             ceiling: "ceiling fan",
         },
     });

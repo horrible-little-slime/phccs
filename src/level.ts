@@ -307,7 +307,6 @@ const Level: CSQuest = {
         {
             name: "Giant Growth and Blue Rocket",
             core: "soft",
-            ready: () => have($item`green mana`),
             completed: () => have($effect`Giant Growth`),
             ready: () => have($item`green mana`) && get("_snojoFreeFights") < 10,
             do: $location`The X-32-F Combat Training Snowman`,
@@ -627,4 +626,3 @@ const Level: CSQuest = {
 };
 
 export default Level;
-
