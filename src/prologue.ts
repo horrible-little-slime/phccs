@@ -126,6 +126,11 @@ const Prologue: CSQuest = {
         deckTask("Forest"),
         deckTask("Island"),
         {
+            name: "Ancestral Recall",
+            completed: () => !have($item`blue mana`),
+            do: () => useSkill($skill`Ancestral Recall`),
+        },
+        {
             ...deckTask("1952 Mickey Mantle"),
             // These classes don't need to use Wheel of Fortune
             class: $classes`Pastamancer, Seal Clubber, Disco Bandit, Accordion Thief`,
