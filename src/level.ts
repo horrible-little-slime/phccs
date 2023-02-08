@@ -9,6 +9,7 @@ import {
     cliExecute,
     create,
     mpCost,
+    myHp,
     myLevel,
     myMaxmp,
     myMp,
@@ -261,6 +262,7 @@ const Level: CSQuest = {
             name: "Holiday Yoked, Giant Growth, and Blue Rocket",
             core: "hard",
             completed: () => have($effect`Holiday Yoked`),
+            ready: () => have($item`green mana`) && get("_snojoFreeFights") < 10,
             do: $location`The X-32-F Combat Training Snowman`,
             outfit: () =>
                 uniform({
@@ -281,6 +283,7 @@ const Level: CSQuest = {
             name: "Giant Growth and Blue Rocket",
             core: "soft",
             completed: () => have($effect`Giant Growth`),
+            ready: () => have($item`green mana`) && get("_snojoFreeFights") < 10,
             do: $location`The X-32-F Combat Training Snowman`,
             outfit: uniform,
             combat: new CSStrategy(() =>
@@ -421,7 +424,9 @@ const Level: CSQuest = {
                     } catch (e) {
                         print(`${e}`);
                     } finally {
-                        if (have($effect`Beaten Up`)) cliExecute("hottub");
+                        if (have($effect`Beaten Up`) || myHp() === 0 || !get("_lastCombatWon")) {
+                            cliExecute("hottub");
+                        }
                     }
                 }),
             outfit: uniform,
@@ -584,3 +589,4 @@ const Level: CSQuest = {
 };
 
 export default Level;
+
