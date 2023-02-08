@@ -589,4 +589,3 @@ const Level: CSQuest = {
 };
 
 export default Level;
-
