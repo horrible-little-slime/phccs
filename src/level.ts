@@ -1,5 +1,5 @@
 import { CSStrategy, Macro } from "./combat";
-import { beachTask, favouriteBirdTask, innerElf, potionTask } from "./commons";
+import { beachTask, favouriteBirdTask, innerElf, potionTask, restoreBuffTasks } from "./commons";
 import { CSQuest } from "./engine";
 import {
     burnLibrams,
@@ -252,6 +252,13 @@ const Level: CSQuest = {
         },
         ...CastSkills,
         ...Recovery,
+        ...restoreBuffTasks(
+            byStat({
+                Mysticality: $effects`Quiet Judgement`,
+                Moxie: $effects`Quiet Desperation`,
+                Muscle: $effects`Quiet Determination`,
+            })
+        ),
         {
             name: "Get Range",
             completed: () => get("hasRange"),
