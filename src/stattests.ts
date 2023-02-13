@@ -6,9 +6,8 @@ import {
     potionTask,
     restoreBuffTasks,
 } from "./commons";
-import { CSEngine, CSQuest } from "./engine";
+import { CSQuest } from "./engine";
 import { byStat, CSTask } from "./lib";
-import { METEOR_ACCESSORY } from "./outfit";
 import { cliExecute, Item, itemAmount, myThrall, Thrall, use, useSkill } from "kolmafia";
 import {
     $classes,
@@ -70,7 +69,7 @@ const Muscle: CSQuest = {
             back: $item`unwrapped knock-off retro superhero cape`,
             pants: $item`designer sweatpants`,
             acc1: $item`Brutal brogues`,
-            acc2: CSEngine.core === "soft" ? METEOR_ACCESSORY : $item`Retrospecs`,
+            acc2: $items`meteorite necklace, Retrospecs`,
             acc3: byStat({
                 Muscle: $item`your cowboy boots`,
                 default: $item`Kremlin's Greatest Briefcase`,
@@ -146,7 +145,7 @@ const Moxie: CSQuest = {
         pants: $item`Cargo Cultist Shorts`,
         acc1: $item`Beach Comb`,
         acc2: byStat({ Moxie: $item`your cowboy boots`, default: $item`"I Voted!" sticker` }),
-        acc3: CSEngine.core === "soft" ? METEOR_ACCESSORY : $item`Retrospecs`,
+        acc3: $items`meteorite necklace, Retrospecs`,
         famequip: $item`miniature crystal ball`,
         modes: { retrocape: ["robot", RetroCape.currentMode()], umbrella: "broken" },
     }),
@@ -189,7 +188,7 @@ const Hitpoints: CSQuest = {
                 Muscle: $item`your cowboy boots`,
                 default: $item`Kremlin's Greatest Briefcase`,
             }),
-            acc3: CSEngine.core === "soft" ? METEOR_ACCESSORY : $item`Retrospecs`,
+            acc3: $items`meteorite necklace, Retrospecs`,
             famequip: $item`miniature crystal ball`,
             modes: { retrocape: ["vampire", RetroCape.currentMode()], parka: "kachungasaur" },
         };

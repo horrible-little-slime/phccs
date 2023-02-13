@@ -309,17 +309,18 @@ export function currentBirdHas(modifier: NumericModifier, positive = true): bool
         .some((mod) => mod.includes(`${modifier}: ${sign}`));
 }
 
-type StatSwitch<T> = Record<StatType, T> | (Partial<{ [x in StatType]: T }> & { default: T });
+type StatSwitch<T> = undefined extends T
+    ? never
+    : null extends T
+    ? never
+    : Record<StatType, T> | (Partial<{ [x in StatType]: T }> & { default: T });
 type ClassSwitch<T> = { options: Map<Class, T>; default: T };
 export function byClass<T>(thing: ClassSwitch<T>): T {
     return thing.options.get(myClass()) ?? thing.default;
 }
 export function byStat<T>(thing: StatSwitch<T>): T {
     const stat = myPrimestat().toString();
-    if ("default" in thing) {
-        return thing[stat] ?? thing.default;
-    }
-    return thing[stat];
+    return thing[stat] ?? thing.default;
 }
 
 export function printJson<T extends object>(json: T): void {

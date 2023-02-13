@@ -1,7 +1,6 @@
 import { deckTask } from "./commons";
 import { CSQuest } from "./engine";
-import { byClass, horse, horsery, setClan, tryUse } from "./lib";
-import { METEOR_ACCESSORY } from "./outfit";
+import { byClass, byStat, horse, horsery, setClan, tryUse } from "./lib";
 import {
     autosell,
     buy,
@@ -43,9 +42,9 @@ import {
 
 const PULLS = [
     $items`repaid diaper, Great Wolf's beastly trousers`,
-    [METEOR_ACCESSORY],
+    byStat({ Mysticality: $items`meteorite necklace`, default: $items`moveable feast` }),
     $items`Stick-Knife of Loathing`,
-    $items`moveable feast`,
+    $items`over-the-shoulder Folder Holder`,
 ];
 
 let codpieceAttempted = false;

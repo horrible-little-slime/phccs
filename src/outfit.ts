@@ -13,17 +13,12 @@ import {
     have,
 } from "libram";
 
-export const METEOR_ACCESSORY = byStat({
-    Mysticality: $item`meteorite necklace`,
-    Muscle: $item`meteorite ring`,
-    Moxie: $item`meteorite necklace`,
-});
 
 const UNCHANGING_OUTFIT: OutfitSpec = {
     shirt: $items`LOV Eardigan, Jurassic Parka, fresh coat of paint`,
     pants: $items`designer sweatpants, old sweatpants`,
     offhand: $item`unbreakable umbrella`,
-    acc1: [METEOR_ACCESSORY, $item`Powerful Glove`],
+    acc1: $items`meteorite necklace, Powerful Glove`,
     acc2: byStat<Item | Item[]>({
         Mysticality: $item`codpiece`,
         Moxie: $items`LOV Earrings, Beach Comb`,
@@ -34,7 +29,10 @@ const UNCHANGING_OUTFIT: OutfitSpec = {
         default: $item`your cowboy boots`,
     }),
     modes: {
-        retrocape: [byStat({ Muscle: "vampire", Moxie: "robot", Mysticality: "heck" }), "thrill"],
+        retrocape: [
+            byStat({ Muscle: "vampire", Moxie: "robot", Mysticality: "heck" } as const),
+            "thrill",
+        ],
         umbrella: "broken",
     },
 };

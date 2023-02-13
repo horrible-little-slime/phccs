@@ -102,7 +102,10 @@ const Spell: CSQuest = {
         potionTask($item`Yeg's Motel hand soap`),
         {
             name: "Briefcase",
-            core: "hard",
+            ready: () =>
+                !$items`meteorite fragment, meteorite earring, meteorite necklace, meteorite ring`.some(
+                    (item) => have(item)
+                ),
             completed: () =>
                 numericModifier($item`Kremlin's Greatest Briefcase`, "Spell Damage Percent") > 0,
             do: () => cliExecute("Briefcase.ash enchantment spell"),
@@ -154,7 +157,11 @@ const Spell: CSQuest = {
             name: "Meteorite Necklace",
             core: "soft",
             completed: () => have($item`meteorite necklace`),
-            ready: () => canadiaAvailable(),
+            ready: () =>
+                canadiaAvailable() &&
+                $items`meteorite fragment, meteorite earring, meteorite ring`.some((item) =>
+                    have(item)
+                ),
             do: (): void => {
                 const meteor = $items`meteorite ring, meteorite fragment, meteorite earring`.find(
                     (item) => have(item)
@@ -163,7 +170,7 @@ const Spell: CSQuest = {
                     unequip(meteor);
                     retrieveItem(1, $item`tenderizing hammer`);
                     retrieveItem(1, $item`jewelry-making pliers`);
-                    cliExecute(`smash ${meteor}`);
+                    if (meteor !== $item`meteorite fragment`) cliExecute(`smash ${meteor}`);
                     cliExecute(`make ${$item`meteorite necklace`}`);
                 }
             },

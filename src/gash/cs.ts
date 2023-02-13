@@ -49,11 +49,6 @@ const SPECIAL_REQUIREMENTS: Record<
             reason: "we need to be able to make equalizer potions!",
         },
         {
-            name: "Meteor Earring",
-            meets: () => !args.softcore || have($item`meteorite earring`),
-            reason: "we don't start in a canadian moonsign!",
-        },
-        {
             name: "Stocking Mimic",
             meets: () => have($familiar`Stocking Mimic`),
             reason: "sweet synthesis is complicated!",
@@ -65,11 +60,6 @@ const SPECIAL_REQUIREMENTS: Record<
         },
     ],
     Muscle: [
-        {
-            name: "Meteor Ring",
-            meets: () => !args.softcore || have($item`meteorite ring`),
-            reason: "we don't start in a canadian moonsign!",
-        },
         {
             name: "Cowboy Boots",
             meets: () => equippedItem($slot`bootskin`) === $item`grizzled bearskin`,

@@ -136,7 +136,11 @@ const Weapon: CSQuest = {
             name: "Meteorite Ring",
             core: "soft",
             completed: () => have($item`meteorite ring`),
-            ready: () => canadiaAvailable(),
+            ready: () =>
+                canadiaAvailable() &&
+                $items`meteorite fragment, meteorite earring, meteorite necklace`.some((item) =>
+                    have(item)
+                ),
             do: (): void => {
                 const meteor =
                     $items`meteorite necklace, meteorite fragment, meteorite earring`.find((item) =>
@@ -146,7 +150,7 @@ const Weapon: CSQuest = {
                     unequip(meteor);
                     retrieveItem(1, $item`tenderizing hammer`);
                     retrieveItem(1, $item`jewelry-making pliers`);
-                    cliExecute(`smash ${meteor}`);
+                    if (meteor !== $item`meteorite fragment`) cliExecute(`smash ${meteor}`);
                     cliExecute(`make ${$item`meteorite ring`}`);
                 }
             },
