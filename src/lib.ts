@@ -320,7 +320,7 @@ export function byClass<T>(thing: ClassSwitch<T>): T {
 }
 export function byStat<T>(thing: StatSwitch<T>): T {
     const stat = myPrimestat().toString();
-    return thing[stat] ?? thing.default;
+    return "default" in thing ? thing[stat] ?? thing.default : thing[stat];
 }
 
 export function printJson<T extends object>(json: T): void {
