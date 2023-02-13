@@ -1,5 +1,5 @@
 import { CSStrategy, Macro } from "./combat";
-import { commonFamiliarWeightBuffs, meteorShower, potionTask } from "./commons";
+import { asdonTask, commonFamiliarWeightBuffs, meteorShower, potionTask } from "./commons";
 import { CSQuest } from "./engine";
 import { availableFights, unequip } from "./lib";
 import uniform from "./outfit";
@@ -17,7 +17,7 @@ import {
     Witchess,
 } from "libram";
 
-const outfit =() => ({
+const outfit = () => ({
     hat: $item`Daylight Shavings Helmet`,
     weapon: $item`Fourth of May Cosplay Saber`,
     offhand: $items`burning paper crane, familiar scrapbook`,
@@ -133,7 +133,9 @@ const FamiliarWeight: CSQuest = {
             core: "soft",
         },
         potionTask($item`silver face paint`),
-        { ...meteorShower(), outfit, do: $location`The Ice Hole`}
+        { ...asdonTask("Waterproofly"), core: "soft" },
+        { ...meteorShower(), outfit, do: $location`The Ice Hole`, core: "soft" },
+        { ...meteorShower(), core: "hard" },
     ],
 };
 
