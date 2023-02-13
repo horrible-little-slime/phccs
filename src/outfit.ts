@@ -13,7 +13,6 @@ import {
     have,
 } from "libram";
 
-
 const UNCHANGING_OUTFIT: OutfitSpec = {
     shirt: $items`LOV Eardigan, Jurassic Parka, fresh coat of paint`,
     pants: $items`designer sweatpants, old sweatpants`,
