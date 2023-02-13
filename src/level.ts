@@ -586,7 +586,7 @@ const Level: CSQuest = {
                     .if_(
                         $effect`Inner Elf`,
                         Macro.if_(
-                            `!havecombatitem ${$item`cosmic bowling ball`}`,
+                            `!hascombatitem ${$item`cosmic bowling ball`}`,
                             Macro.trySkill($skill`Feel Pride`)
                         )
                     )
