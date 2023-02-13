@@ -24,7 +24,7 @@ import {
 
 const SKILL_BUFFS = {
     MUSCLE: $effects`Feeling Excited, Big, Song of Bravado, Rage of the Reindeer, Quiet Determination, Disdain of the War Snapper`,
-    MYSTICALITY: $effects`Feeling Excited, Big, Song of Bravado`,
+    MYSTICALITY: $effects`Feeling Excited, Big, Song of Bravado, Quiet Judgement`,
     MOXIE: $effects`Feeling Excited, Big, Song of Bravado, Quiet Desperation, Disco Fever, Blubbered Up, Mariachi Mood, Disco State of Mind`,
     HP: $effects`Feeling Excited, Big, Song of Starch, Rage of the Reindeer, Quiet Determination, Disdain of the War Snapper`,
 };

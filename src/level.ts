@@ -254,7 +254,7 @@ const Level: CSQuest = {
         ...Recovery,
         ...restoreBuffTasks(
             byStat({
-                Mysticality: $effects`Quiet Judgement`,
+                Mysticality: $effects`Inscrutable Gaze`,
                 Moxie: $effects`Quiet Desperation`,
                 Muscle: $effects`Quiet Determination`,
             })
