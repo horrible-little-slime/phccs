@@ -9,12 +9,12 @@ import {
     equip,
     equippedAmount,
     equippedItem,
-    Familiar,
     getCampground,
     getClanName,
     getProperty,
     haveEffect,
     Item,
+    MafiaClass,
     myClass,
     myMaxmp,
     myMp,
@@ -323,10 +323,11 @@ export function byStat<T>(thing: StatSwitch<T>): T {
     return "default" in thing ? thing[stat] ?? thing.default : thing[stat];
 }
 
-export function printJson<T extends object>(json: T): void {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function printJson(json: any): void {
     print(
         JSON.stringify(json, (k, v) => {
-            if (v instanceof Item || v instanceof Familiar) {
+            if (v instanceof MafiaClass) {
                 return v.toString();
             }
             return v;
