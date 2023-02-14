@@ -582,15 +582,15 @@ const Level: CSQuest = {
                 return uniform({ changes });
             },
             combat: new CSStrategy(() =>
-                Macro.delevel()
-                    .if_(
-                        $effect`Inner Elf`,
-                        Macro.if_(
-                            `!hascombatitem ${$item`cosmic bowling ball`}`,
-                            Macro.trySkill($skill`Feel Pride`)
-                        )
+                Macro.if_(
+                    $effect`Inner Elf`,
+                    Macro.if_(
+                        `!hascombatitem ${$item`cosmic bowling ball`}`,
+                        Macro.trySkill($skill`Feel Pride`)
                     )
+                )
                     .trySkill($skill`Bowl Sideways`)
+                    .delevel()
                     .defaultKill()
             ),
             choices: { [1324]: 5 },
