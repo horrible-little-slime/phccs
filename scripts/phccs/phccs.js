@@ -9808,7 +9808,7 @@ function innerElf() {
       return have($effect(_templateObject111 || (_templateObject111 = _taggedTemplateLiteral28(["Inner Elf"]))));
     },
     ready: function() {
-      return (0, import_kolmafia31.myLevel)() >= 13;
+      return (0, import_kolmafia31.myLevel)() >= 13 && !counter_exports.exists("portscan.edu");
     },
     do: function() {
       return Clan.with(get("phccs_elfClan", "Hobopolis Vacation Home"), function() {
@@ -10248,7 +10248,7 @@ var GLOBAL_TASKS = [{
     return get("_juneCleaverFightsLeft") > 0;
   },
   ready: function() {
-    return counter_exports.get("Portscan") === 1 / 0;
+    return !counter_exports.exists("portscan.edu");
   },
   do: function() {
     return withProperty("recoveryScript", "", function() {
