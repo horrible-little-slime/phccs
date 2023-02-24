@@ -34,6 +34,7 @@ import {
     AsdonMartin,
     BeachComb,
     Clan,
+    Counter,
     get,
     have,
     set,
@@ -55,7 +56,7 @@ export function innerElf(): CSTask {
     return {
         name: "Inner Elf",
         completed: () => have($effect`Inner Elf`),
-        ready: () => myLevel() >= 13,
+        ready: () => myLevel() >= 13 && !Counter.exists("portscan.edu"),
         do: () =>
             Clan.with(get("phccs_elfClan", "Hobopolis Vacation Home"), () => {
                 adv1($location`The Slime Tube`, -1, "");
