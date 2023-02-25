@@ -1,11 +1,14 @@
-import { CombatStrategy } from "grimoire-kolmafia";
+import { CombatStrategy, Delayed, undelay } from "grimoire-kolmafia";
 import { myClass } from "kolmafia";
 import { $class, $item, $skill, have, StrictMacro } from "libram";
 
+function safeguardMacro(macro: Delayed<Macro>): () => Macro {
+    return () => Macro.ifHolidayWanderer(Macro.skill($skill`Feel Hatred`)).step(undelay(macro));
+}
 export class CSStrategy extends CombatStrategy {
     constructor(macro: () => Macro = () => Macro.defaultKill()) {
         super();
-        this.macro(macro).autoattack(macro);
+        this.macro(safeguardMacro(macro)).autoattack(safeguardMacro(macro));
     }
 }
 export class Macro extends StrictMacro {
@@ -50,11 +53,5 @@ export class Macro extends StrictMacro {
     }
     static defaultKill(): Macro {
         return new Macro().defaultKill();
-    }
-
-    toString(): string {
-        return `${StrictMacro.ifHolidayWanderer(
-            StrictMacro.skill($skill`Feel Hatred`)
-        ).toString()};${super.toString()}`;
     }
 }
