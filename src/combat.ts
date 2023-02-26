@@ -1,14 +1,14 @@
-import { CombatStrategy, Delayed, undelay } from "grimoire-kolmafia";
+import { CombatStrategy, Delayed } from "grimoire-kolmafia";
 import { myClass } from "kolmafia";
-import { $class, $item, $skill, have, StrictMacro } from "libram";
+import { $class, $item, $skill, getTodaysHolidayWanderers, have, StrictMacro } from "libram";
 
-function safeguardMacro(macro: Delayed<Macro>): () => Macro {
-    return () => Macro.ifHolidayWanderer(Macro.skill($skill`Feel Hatred`)).step(undelay(macro));
-}
 export class CSStrategy extends CombatStrategy {
-    constructor(macro: () => Macro = () => Macro.defaultKill()) {
+    constructor(macro: Delayed<Macro> = () => Macro.defaultKill(), fallthrough?: Delayed<Macro>) {
         super();
-        this.macro(safeguardMacro(macro)).autoattack(safeguardMacro(macro));
+        this.macro(Macro.skill($skill`Feel Hatred`), getTodaysHolidayWanderers())
+            .autoattack(Macro.skill($skill`Feel Hatred`), getTodaysHolidayWanderers())
+            .autoattack(macro)
+            .macro(fallthrough ?? macro);
     }
 }
 export class Macro extends StrictMacro {
