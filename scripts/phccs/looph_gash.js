@@ -2163,7 +2163,7 @@ function main() {
   }).map(function(s) {
     return [s, Lifestyle.hardcore];
   }));
-  ascend($path.none, $class(_templateObject8 || (_templateObject8 = _taggedTemplateLiteral4(["Seal Clubber"]))), Lifestyle.casual, "canadia", $item(_templateObject211 || (_templateObject211 = _taggedTemplateLiteral4(["astral six-pack"]))), void 0, {
+  (0, import_kolmafia7.visitUrl)("council.php"), ascend($path.none, $class(_templateObject8 || (_templateObject8 = _taggedTemplateLiteral4(["Seal Clubber"]))), Lifestyle.casual, "canadia", $item(_templateObject211 || (_templateObject211 = _taggedTemplateLiteral4(["astral six-pack"]))), void 0, {
     neverAbort: !0,
     permSkills: permSkills
   });

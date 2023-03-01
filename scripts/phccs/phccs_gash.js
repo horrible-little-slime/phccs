@@ -2164,7 +2164,7 @@ function main() {
   }).map(function(s) {
     return [s, Lifestyle.hardcore];
   }));
-  ascend($path(_templateObject35 || (_templateObject35 = _taggedTemplateLiteral4(["Community Service"]))), $class(_templateObject42 || (_templateObject42 = _taggedTemplateLiteral4(["Pastamancer"]))), lifestyle, "knoll", $item(_templateObject52 || (_templateObject52 = _taggedTemplateLiteral4(["astral six-pack"]))), pet, {
+  (0, import_kolmafia7.visitUrl)("council.php"), ascend($path(_templateObject35 || (_templateObject35 = _taggedTemplateLiteral4(["Community Service"]))), $class(_templateObject42 || (_templateObject42 = _taggedTemplateLiteral4(["Pastamancer"]))), lifestyle, "knoll", $item(_templateObject52 || (_templateObject52 = _taggedTemplateLiteral4(["astral six-pack"]))), pet, {
     neverAbort: !0,
     permSkills: permSkills
   });
