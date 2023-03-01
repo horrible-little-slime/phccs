@@ -1,5 +1,5 @@
 import { burnSafaris } from "./lib";
-import { getPermedSkills, Skill } from "kolmafia";
+import { getPermedSkills, Skill, visitUrl } from "kolmafia";
 import { $class, $item, $path, ascend, have, Lifestyle, prepareAscension } from "libram";
 
 export function main(args = ""): void {
@@ -25,6 +25,8 @@ export function main(args = ""): void {
             .filter((s) => have(s) && !perms[s.name] && s.permable)
             .map((s) => [s, Lifestyle.hardcore])
     );
+
+    visitUrl("council.php");
 
     ascend(
         $path`Community Service`,

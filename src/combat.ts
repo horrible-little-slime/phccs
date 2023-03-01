@@ -11,6 +11,7 @@ export class CSStrategy extends CombatStrategy {
             .macro(fallthrough ?? macro);
     }
 }
+
 export class Macro extends StrictMacro {
     delevel(): Macro {
         return this.trySkill($skill`Curse of Weaksauce`)
