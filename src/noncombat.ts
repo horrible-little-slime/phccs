@@ -12,17 +12,7 @@ import { CSQuest } from "./engine";
 import { horse, horsery } from "./lib";
 import uniform from "./outfit";
 import { cliExecute, runChoice, runCombat, useSkill, visitUrl } from "kolmafia";
-import {
-    $effect,
-    $effects,
-    $familiar,
-    $item,
-    $items,
-    $skill,
-    CommunityService,
-    get,
-    have,
-} from "libram";
+import { $effect, $effects, $familiar, $item, $skill, CommunityService, get, have } from "libram";
 
 const Noncombat: CSQuest = {
     name: "Noncombat",
@@ -34,7 +24,7 @@ const Noncombat: CSQuest = {
         weapon: $item`Fourth of May Cosplay Saber`,
         shirt: $item`Jurassic Parka`,
         offhand: $item`unbreakable umbrella`,
-        acc1: $items`over-the-shoulder Folder Holder, hewn moon-rune spoon`,
+        acc1: $item`hewn moon-rune spoon`,
         acc2: $item`codpiece`,
         acc3: $item`Brutal brogues`,
         familiar: $familiar`Disgeist`,

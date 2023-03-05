@@ -42,9 +42,9 @@ import {
 
 const PULLS = [
     $items`repaid diaper, Great Wolf's beastly trousers`,
-    byStat({ Mysticality: $items`meteorite necklace`, default: $items`moveable feast` }),
+    $items`meteorite necklace`,
     $items`Stick-Knife of Loathing`,
-    $items`over-the-shoulder Folder Holder`,
+    $items`moveable feast`,
 ];
 
 let codpieceAttempted = false;
