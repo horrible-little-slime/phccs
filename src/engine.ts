@@ -6,6 +6,7 @@ import {
     cliExecute,
     inHardcore,
     isDarkMode,
+    myClass,
     myPath,
     print,
     readCcs,
@@ -54,7 +55,11 @@ export class CSEngine extends Engine<never, CSTask> {
     }
 
     available(task: CSTask): boolean {
-        return super.available(task) && (!task.core || task.core === CSEngine.core);
+        return (
+            super.available(task) &&
+            (!task.core || task.core === CSEngine.core) &&
+            (!task.class || task.class.includes(myClass()))
+        );
     }
 
     // eslint-disable-next-line @typescript-eslint/no-empty-function

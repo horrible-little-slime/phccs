@@ -1,14 +1,17 @@
+import { deckTask } from "./commons";
 import { CSQuest } from "./engine";
-import { horse, horsery, setClan, tryUse } from "./lib";
+import { byClass, byStat, horse, horsery, setClan, tryUse } from "./lib";
 import {
     autosell,
     buy,
+    Class,
     cliExecute,
     create,
     equip,
     getClanName,
     getWorkshed,
     itemAmount,
+    myPrimestat,
     runChoice,
     storageAmount,
     takeStorage,
@@ -18,6 +21,8 @@ import {
     visitUrl,
 } from "kolmafia";
 import {
+    $class,
+    $classes,
     $coinmaster,
     $familiar,
     $item,
@@ -37,9 +42,9 @@ import {
 
 const PULLS = [
     $items`repaid diaper, Great Wolf's beastly trousers`,
-    $items`meteorite necklace, meteorite ring, meteorite fragment, meteorite earring`,
+    byStat({ Mysticality: $items`meteorite necklace`, default: $items`moveable feast` }),
     $items`Stick-Knife of Loathing`,
-    $items`moveable feast`,
+    $items`over-the-shoulder Folder Holder`,
 ];
 
 let codpieceAttempted = false;
@@ -49,6 +54,18 @@ const MARKET_QUESTS = [
     { pref: "questM24Doc", url: "shop.php?whichshop=doc&action=talk" },
     { pref: "questM25Armorer", url: "shop.php?whichshop=armory&action=talk" },
 ];
+
+const BEST_INITIATIVE = byClass({
+    options: new Map<Class, number>([
+        [$class`Seal Clubber`, 2], // Familiar exp: 2
+        [$class`Turtle Tamer`, 3], // Weapon Damage Percent: 100
+        [$class`Disco Bandit`, 4], // Maximum MP Percent: 30
+        [$class`Accordion Thief`, 1], // Booze Drop: 30
+        [$class`Pastamancer`, 2], // Familiar exp: 2
+        [$class`Sauceror`, 1], // Exp: 3
+    ]),
+    default: 0,
+});
 
 const Prologue: CSQuest = {
     type: "MISC",
@@ -105,14 +122,37 @@ const Prologue: CSQuest = {
                 use(1, $item`borrowed time`);
             },
         },
+        deckTask("Forest"),
+        deckTask("Island"),
         {
-            name: "Cheat At Cards",
-            completed: () => get("_deckCardsDrawn") >= 15,
+            name: "Ancestral Recall",
+            completed: () => !have($item`blue mana`),
+            do: () => useSkill($skill`Ancestral Recall`),
+        },
+        {
+            ...deckTask("1952 Mickey Mantle"),
+            // These classes don't need to use Wheel of Fortune
+            class: $classes`Pastamancer, Seal Clubber, Disco Bandit, Accordion Thief`,
+        },
+        {
+            name: "Sell Mickey Mantle",
+            completed: () => !have($item`1952 Mickey Mantle card`),
+            do: () => autosell(1, $item`1952 Mickey Mantle card`),
+        },
+        {
+            name: "Sell Space Blanket",
+            completed: () => $items`space blanket, MayDay™ supply package`.every((i) => !have(i)),
             do: (): void => {
-                cliExecute("cheat forest; cheat island; cheat 1952");
-                autosell(1, $item`1952 Mickey Mantle card`);
-                useSkill(1, $skill`Ancestral Recall`);
+                if (have($item`MayDay™ supply package`)) use($item`MayDay™ supply package`);
+                autosell(1, $item`space blanket`);
             },
+            class: $classes`Turtle Tamer, Sauceror`,
+        },
+        {
+            name: "Barrel Hoop Earring",
+            completed: () => get("_barrelPrayer"),
+            class: $classes`Seal Clubber, Disco Bandit`,
+            do: () => cliExecute("barrelprayer glamour"),
         },
         {
             name: "Juice Bar",
@@ -127,7 +167,9 @@ const Prologue: CSQuest = {
             completed: () => have($item`"I Voted!" sticker`),
             do: (): void => {
                 visitUrl("place.php?whichplace=town_right&action=townright_vote");
-                visitUrl("choice.php?option=1&whichchoice=1331&g=2&local%5B%5D=2&local%5B%5D=3");
+                visitUrl(
+                    `choice.php?option=1&whichchoice=1331&g=2&local%5B%5D=${BEST_INITIATIVE}&local%5B%5D=${BEST_INITIATIVE}`
+                );
                 visitUrl("place.php?whichplace=town_right&action=townright_vote");
             },
         },
@@ -157,6 +199,7 @@ const Prologue: CSQuest = {
         },
         {
             name: "Accordion",
+            class: $classes`Seal Clubber, Turtle Tamer, Disco Bandit, Sauceror, Pastamancer`,
             completed: () => have($item`toy accordion`),
             do: () => buy(1, $item`toy accordion`),
         },
@@ -205,10 +248,10 @@ const Prologue: CSQuest = {
         },
         {
             name: "Mummery",
-            completed: () => get("_mummeryMods").includes("Mysticality"),
+            completed: () => get("_mummeryMods").includes(myPrimestat().toString()),
             do: (): void => {
                 useFamiliar($familiar`Melodramedary`);
-                cliExecute("mummery myst");
+                cliExecute(`mummery ${myPrimestat().toString().toLowerCase()}`);
             },
         },
         {

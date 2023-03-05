@@ -1,5 +1,5 @@
 import { CSStrategy, Macro } from "./combat";
-import { asdonTask, potionTask, skillTask, songTask } from "./commons";
+import { asdonTask, deckTask, potionTask, skillTask, songTask } from "./commons";
 import { CSQuest } from "./engine";
 import uniform from "./outfit";
 import { OutfitSpec } from "grimoire-kolmafia";
@@ -8,13 +8,12 @@ import {
     cliExecute,
     create,
     knollAvailable,
-    myClass,
     use,
     useSkill,
     visitUrl,
 } from "kolmafia";
 import {
-    $class,
+    $classes,
     $effect,
     $familiar,
     $item,
@@ -40,7 +39,7 @@ const BoozeDrop: CSQuest = {
             back: $item`protonic accelerator pack`,
             acc1: $item`Guzzlr tablet`,
             acc2: $item`gold detective badge`,
-            acc3: $items`government-issued night-vision goggles, combat lover's locket`,
+            acc3: $items`barrel hoop earring, government-issued night-vision goggles, combat lover's locket`,
             famequip: $item`li'l ninja costume`,
             familiar: $familiar`Trick-or-Treating Tot`,
             modes: { umbrella: "bucket style" },
@@ -64,6 +63,11 @@ const BoozeDrop: CSQuest = {
             combat: new CSStrategy(() =>
                 Macro.skill($skill`Become a Bat`).skill($skill`Throw Latte on Opponent`)
             ),
+        },
+        {
+            ...deckTask("X - The Wheel of Fortune"),
+            // These classes aren't using barrel for +item
+            class: $classes`Sauceror, Turtle Tamer`,
         },
         songTask($effect`Fat Leon's Phat Loot Lyric`, $effect`Ode to Booze`),
         {
@@ -106,7 +110,7 @@ const BoozeDrop: CSQuest = {
         },
         {
             name: "Pray",
-            ready: () => myClass() === $class`Pastamancer`,
+            class: $classes`Pastamancer`,
             completed: () => get("_barrelPrayer"),
             do: () => cliExecute("barrelprayer buff"),
         },

@@ -1,10 +1,28 @@
 import { CSStrategy } from "./combat";
-import { asdonTask, commonFamiliarWeightBuffs, restore, skillTask, songTask } from "./commons";
+import {
+    asdonTask,
+    birdTask,
+    commonFamiliarWeightBuffs,
+    favouriteBirdTask,
+    restore,
+    skillTask,
+    songTask,
+} from "./commons";
 import { CSQuest } from "./engine";
-import { hasNcBird, horse, horsery } from "./lib";
+import { horse, horsery } from "./lib";
 import uniform from "./outfit";
 import { cliExecute, runChoice, runCombat, useSkill, visitUrl } from "kolmafia";
-import { $effect, $effects, $familiar, $item, $skill, CommunityService, get, have } from "libram";
+import {
+    $effect,
+    $effects,
+    $familiar,
+    $item,
+    $items,
+    $skill,
+    CommunityService,
+    get,
+    have,
+} from "libram";
 
 const Noncombat: CSQuest = {
     name: "Noncombat",
@@ -16,7 +34,7 @@ const Noncombat: CSQuest = {
         weapon: $item`Fourth of May Cosplay Saber`,
         shirt: $item`Jurassic Parka`,
         offhand: $item`unbreakable umbrella`,
-        acc1: $item`hewn moon-rune spoon`,
+        acc1: $items`over-the-shoulder Folder Holder, hewn moon-rune spoon`,
         acc2: $item`codpiece`,
         acc3: $item`Brutal brogues`,
         familiar: $familiar`Disgeist`,
@@ -39,13 +57,8 @@ const Noncombat: CSQuest = {
             do: () => useSkill($skill`CHEAT CODE: Invisible Avatar`),
             outfit: { acc3: $item`Powerful Glove` },
         },
-        skillTask($effect`Blessing of the Bird`),
-        {
-            name: "Favourite Bird",
-            completed: () => get("_favoriteBirdVisited"),
-            ready: hasNcBird,
-            do: () => useSkill($skill`Visit your Favorite Bird`),
-        },
+        birdTask("Combat Rate", false),
+        favouriteBirdTask("Combat Rate", false),
         songTask($effect`The Sonata of Sneakiness`, $effect`Fat Leon's Phat Loot Lyric`),
         restore($effects`Smooth Movements, The Sonata of Sneakiness`),
         {

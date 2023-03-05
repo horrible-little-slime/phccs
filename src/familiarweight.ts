@@ -1,5 +1,5 @@
 import { CSStrategy, Macro } from "./combat";
-import { commonFamiliarWeightBuffs, meteorShower, potionTask } from "./commons";
+import { asdonTask, commonFamiliarWeightBuffs, meteorShower, potionTask } from "./commons";
 import { CSQuest } from "./engine";
 import { availableFights, unequip } from "./lib";
 import uniform from "./outfit";
@@ -9,6 +9,7 @@ import {
     $familiar,
     $item,
     $items,
+    $location,
     $monster,
     CommunityService,
     get,
@@ -16,21 +17,23 @@ import {
     Witchess,
 } from "libram";
 
+const outfit = () => ({
+    hat: $item`Daylight Shavings Helmet`,
+    weapon: $item`Fourth of May Cosplay Saber`,
+    offhand: $items`burning paper crane, familiar scrapbook`,
+    pants: $items`repaid diaper, Great Wolf's beastly trousers, designer sweatpants`,
+    acc1: $item`Beach Comb`,
+    acc2: $item`Brutal brogues`,
+    acc3: $items`over-the-shoulder Folder Holder, hewn moon-rune spoon`,
+    familiar: $familiar`Mini-Trainbot`,
+    famequip: $item`overloaded Yule battery`,
+});
+
 const FamiliarWeight: CSQuest = {
     name: "Familiar Weight",
     type: "SERVICE",
     test: CommunityService.FamiliarWeight,
-    outfit: () => ({
-        hat: $item`Daylight Shavings Helmet`,
-        weapon: $item`Fourth of May Cosplay Saber`,
-        offhand: $items`burning paper crane, familiar scrapbook`,
-        pants: $items`repaid diaper, Great Wolf's beastly trousers, designer sweatpants`,
-        acc1: $item`Beach Comb`,
-        acc2: $item`Brutal brogues`,
-        acc3: $item`hewn moon-rune spoon`,
-        familiar: $familiar`Mini-Trainbot`,
-        famequip: $item`overloaded Yule battery`,
-    }),
+    outfit,
     turnsSpent: 0,
     maxTurns: 30,
     tasks: [
@@ -129,8 +132,10 @@ const FamiliarWeight: CSQuest = {
             },
             core: "soft",
         },
-        meteorShower(),
         potionTask($item`silver face paint`),
+        { ...asdonTask("Waterproofly"), core: "soft" },
+        { ...meteorShower(), outfit, do: $location`The Ice Hole`, core: "soft" },
+        { ...meteorShower(), core: "hard" },
     ],
 };
 

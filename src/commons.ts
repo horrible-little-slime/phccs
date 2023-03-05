@@ -1,5 +1,5 @@
 import { CSStrategy, Macro } from "./combat";
-import { CSTask, horse, horsery } from "./lib";
+import { CSTask, currentBirdHas, favouriteBirdHas, horse, horsery } from "./lib";
 import uniform from "./outfit";
 import {
     adv1,
@@ -39,6 +39,7 @@ import {
     have,
     set,
 } from "libram";
+import { NumericModifier } from "libram/dist/modifierTypes";
 
 export function beachTask(effect: Effect): CSTask {
     const num = 1 + BeachComb.headBuffs.indexOf(effect);
@@ -115,12 +116,15 @@ export function skillTask(x: Skill | Effect): CSTask {
     }
 }
 
+export function restoreBuffTasks(buffs: Effect[]): CSTask[] {
+    return [...buffs.map(skillTask), restore(buffs)];
+}
+
 export function commonFamiliarWeightBuffs(): CSTask[] {
     const buffs = $effects`Empathy, Leash of Linguini, Blood Bond`;
     return [
         potionTask($item`green candy heart`),
-        ...buffs.map(skillTask),
-        restore(buffs),
+        ...restoreBuffTasks(buffs),
         {
             name: "Witchess",
             completed: () => get("_witchessBuff"),
@@ -203,5 +207,33 @@ export function meteorShower(): CSTask {
             if (have($effect`Meteor Showered`)) showers++;
             set("_meteorShowerUses", showers);
         },
+    };
+}
+
+export function birdTask(modifier: NumericModifier, positive = true): CSTask {
+    return {
+        name: "Regular Bird",
+        completed: () => have($effect`Blessing of the Bird`),
+        ready: () => currentBirdHas(modifier, positive) && get("_birdsSoughtToday") < 6,
+        do: () => useSkill($skill`Seek out a Bird`),
+    };
+}
+
+export function favouriteBirdTask(modifier: NumericModifier, positive = true): CSTask {
+    return {
+        name: "Favourite Bird",
+        completed: () => get("_favoriteBirdVisited"),
+        ready: () => favouriteBirdHas(modifier, positive),
+        do: () => useSkill($skill`Visit your Favorite Bird`),
+    };
+}
+
+export function deckTask(card: string): CSTask {
+    return {
+        name: `Cheat At Cards: ${card}`,
+        completed: () =>
+            get("_deckCardsSeen").toLowerCase().split("|").includes(card.toLowerCase()),
+        ready: () => have($item`Deck of Every Card`) && get("_deckCardsDrawn") <= 10,
+        do: () => cliExecute(`cheat ${card.toLowerCase()}`),
     };
 }

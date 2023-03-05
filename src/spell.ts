@@ -4,7 +4,7 @@ import {
     innerElf,
     meteorShower,
     potionTask,
-    restore,
+    restoreBuffTasks,
     skillTask,
     songTask,
 } from "./commons";
@@ -17,6 +17,7 @@ import {
     cliExecute,
     myLevel,
     numericModifier,
+    pullsRemaining,
     retrieveItem,
     storageAmount,
     takeStorage,
@@ -24,6 +25,7 @@ import {
     visitUrl,
 } from "kolmafia";
 import {
+    $classes,
     $effect,
     $effects,
     $familiar,
@@ -38,7 +40,7 @@ import {
 } from "libram";
 
 const buffs = $effects`Carol of the Hells, Arched Eyebrow of the Archmage, Song of Sauce`;
-const chefstaves = $items`Staff of the Roaring Hearth, Staff of Kitchen Royalty, Staff of the Deepest Freeze, Staff of Frozen Lard, Staff of the Peppermint Twist, Staff of the Roaring Hearth`;
+const chefstaves = $items`Staff of the Roaring Hearth, Staff of Simmering Hatred, Staff of Kitchen Royalty, Staff of the Deepest Freeze, Staff of Frozen Lard, Staff of the Peppermint Twist`;
 
 const Spell: CSQuest = {
     name: "Spell Damage",
@@ -46,7 +48,7 @@ const Spell: CSQuest = {
     test: CommunityService.SpellDamage,
     outfit: () => ({
         hat: $items`astral chapeau, Hollandaise helmet, Iunion Crown`,
-        weapon: CSEngine.core === "soft" ? chefstaves : $item`weeping willow wand`,
+        weapon: [...chefstaves, $item`weeping willow wand`],
         offhand: $item`Abracandalabra`,
         pants: $item`designer sweatpants`,
         acc1: $items`meteorite necklace, Kremlin's Greatest Briefcase`,
@@ -77,10 +79,15 @@ const Spell: CSQuest = {
                     .abort()
             ),
         },
+        {
+            name: "Barrel Prayer",
+            class: $classes`Sauceror`,
+            completed: () => get("_barrelPrayer"),
+            do: () => cliExecute("barrelprayer buff"),
+        },
         potionTask($item`tobiko marble soda`),
         songTask($effect`Jackasses' Symphony of Destruction`, $effect`The Sonata of Sneakiness`),
-        ...buffs.map(skillTask),
-        restore(buffs),
+        ...restoreBuffTasks(buffs),
         beachTask($effect`We're All Made of Starfish`),
         potionTask($item`LOV Elixir #6`),
         {
@@ -95,7 +102,10 @@ const Spell: CSQuest = {
         potionTask($item`Yeg's Motel hand soap`),
         {
             name: "Briefcase",
-            core: "hard",
+            ready: () =>
+                !$items`meteorite fragment, meteorite earring, meteorite necklace, meteorite ring`.some(
+                    (item) => have(item)
+                ),
             completed: () =>
                 numericModifier($item`Kremlin's Greatest Briefcase`, "Spell Damage Percent") > 0,
             do: () => cliExecute("Briefcase.ash enchantment spell"),
@@ -110,7 +120,7 @@ const Spell: CSQuest = {
             completed: () => have($item`weeping willow wand`),
             core: "hard",
             do: (): void => {
-                if (!have($item`flimsy hardwood scraps`)) use($item`SpinMaster™ lathe`);
+                if (!have($item`flimsy hardwood scraps`)) visitUrl("shop.php?whichshop=lathe");
                 retrieveItem($item`weeping willow wand`);
             },
         },
@@ -129,6 +139,7 @@ const Spell: CSQuest = {
             name: "Saucefingers",
             ready: () => myLevel() >= 15 && have($familiar`Mini-Adventurer`),
             completed: () => have($effect`Saucefingers`),
+            class: $classes`Pastamancer`,
             do: $location`The Dire Warren`,
             prepare: () => horsery() === "pale" && horse("dark"),
             outfit: () => uniform({ changes: { familiar: $familiar`Mini-Adventurer` } }),
@@ -146,7 +157,11 @@ const Spell: CSQuest = {
             name: "Meteorite Necklace",
             core: "soft",
             completed: () => have($item`meteorite necklace`),
-            ready: () => canadiaAvailable(),
+            ready: () =>
+                canadiaAvailable() &&
+                $items`meteorite fragment, meteorite earring, meteorite ring`.some((item) =>
+                    have(item)
+                ),
             do: (): void => {
                 const meteor = $items`meteorite ring, meteorite fragment, meteorite earring`.find(
                     (item) => have(item)
@@ -155,13 +170,16 @@ const Spell: CSQuest = {
                     unequip(meteor);
                     retrieveItem(1, $item`tenderizing hammer`);
                     retrieveItem(1, $item`jewelry-making pliers`);
-                    cliExecute(`smash ${meteor}`);
+                    if (meteor !== $item`meteorite fragment`) cliExecute(`smash ${meteor}`);
                     cliExecute(`make ${$item`meteorite necklace`}`);
                 }
             },
         },
         {
             name: "Pull Staff",
+            ready: () =>
+                chefstaves.filter((s) => storageAmount(s) > 0 && canEquip(s)).length > 0 &&
+                pullsRemaining() > 0,
             completed: () => chefstaves.some((staff) => have(staff)),
             core: "soft",
             do: (): void => {

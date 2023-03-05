@@ -1,8 +1,10 @@
+import { byStat } from "./lib";
 import { OutfitSpec } from "grimoire-kolmafia";
 import { Familiar, Item, totalTurnsPlayed } from "kolmafia";
 import {
     $effect,
     $familiar,
+    $familiars,
     $item,
     $items,
     CommunityService,
@@ -11,28 +13,49 @@ import {
     have,
 } from "libram";
 
+const UNCHANGING_OUTFIT: OutfitSpec = {
+    shirt: $items`LOV Eardigan, Jurassic Parka, fresh coat of paint`,
+    pants: $items`designer sweatpants, old sweatpants`,
+    offhand: $item`unbreakable umbrella`,
+    acc1: $items`meteorite necklace, Powerful Glove`,
+    acc2: byStat<Item | Item[]>({
+        Mysticality: $item`codpiece`,
+        Moxie: $items`LOV Earrings, Beach Comb`,
+        Muscle: $items`Brutal brogues, Retrospecs`,
+    }),
+    acc3: byStat<Item | Item[]>({
+        Mysticality: $items`battle broom, your cowboy boots`,
+        default: $item`your cowboy boots`,
+    }),
+    modes: {
+        retrocape: [
+            byStat({ Muscle: "vampire", Moxie: "robot", Mysticality: "heck" } as const),
+            "thrill",
+        ],
+        umbrella: "broken",
+    },
+};
+
 const DEFAULT_UNIFORM = (): OutfitSpec => ({
+    ...UNCHANGING_OUTFIT,
     hat: DaylightShavings.buffAvailable()
         ? DaylightShavings.helmet
-        : $items`astral chapeau, Iunion Crown`,
-    shirt: $items`Jurassic Parka, fresh coat of paint`,
-    pants: $items`designer sweatpants, old sweatpants`,
+        : byStat<Item | Item[]>({
+              Moxie: $items`very pointy crown, Iunion Crown`,
+              Mysticality: $items`astral chapeau, Iunion Crown`,
+              Muscle: $item`Iunion Crown`,
+          }),
     weapon:
         get("_juneCleaverFightsLeft") > 0 && get("_juneCleaverEncounters") < 2
             ? $item`June cleaver`
-            : $item`Fourth of May Cosplay Saber`,
-    offhand: $item`unbreakable umbrella`,
-    acc1: $items`meteorite necklace, your cowboy boots`,
-    acc2: $item`codpiece`,
-    acc3: $items`battle broom, Powerful Glove`,
+            : byStat<Item | Item[]>({
+                  Muscle: $items`dented scepter, Fourth of May Cosplay Saber`,
+                  default: $item`Fourth of May Cosplay Saber`,
+              }),
     back:
         get("questPAGhost") === "unstarted" && get("nextParanormalActivity") <= totalTurnsPlayed()
             ? $item`protonic accelerator pack`
             : $items`LOV Epaulettes, unwrapped knock-off retro superhero cape`,
-    modes: {
-        retrocape: ["heck", "thrill"],
-        umbrella: "broken",
-    },
 });
 
 const FAMILIAR_PICKS = [
@@ -58,7 +81,11 @@ const FAMILIAR_PICKS = [
     },
 ];
 
-function chooseFamiliar(canAttack: boolean): { familiar: Familiar; famequip: Item } {
+function findFirstFamiliar(fams: Familiar[]) {
+    return fams.find((f) => have(f));
+}
+
+function chooseFamiliar(canAttack: boolean): Pick<OutfitSpec, "familiar" | "famequip"> {
     const pick = FAMILIAR_PICKS.find(
         ({ condition, familiar }) =>
             condition() &&
@@ -68,7 +95,10 @@ function chooseFamiliar(canAttack: boolean): { familiar: Familiar; famequip: Ite
     if (pick) {
         return { famequip: pick.famequip ?? $item`tiny stillsuit`, familiar: pick.familiar };
     }
-    return { famequip: $item`tiny stillsuit`, familiar: $familiar`Puck Man` };
+    return {
+        famequip: $item`tiny stillsuit`,
+        familiar: findFirstFamiliar($familiars`Puck Man, Ms. Puck Man`),
+    };
 }
 
 type UniformOptions = { changes: OutfitSpec; canAttack: boolean };

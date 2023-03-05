@@ -1,8 +1,16 @@
-import { beachTask, innerElf, potionTask, restore, skillTask } from "./commons";
-import { CSEngine, CSQuest } from "./engine";
-import { CSTask } from "./lib";
-import { cliExecute, itemAmount, myThrall, Thrall, use, useSkill } from "kolmafia";
 import {
+    beachTask,
+    birdTask,
+    favouriteBirdTask,
+    innerElf,
+    potionTask,
+    restoreBuffTasks,
+} from "./commons";
+import { CSQuest } from "./engine";
+import { byStat, CSTask } from "./lib";
+import { cliExecute, Item, itemAmount, myThrall, Thrall, use, useSkill } from "kolmafia";
+import {
+    $classes,
     $effect,
     $effects,
     $familiar,
@@ -16,20 +24,34 @@ import {
 
 const SKILL_BUFFS = {
     MUSCLE: $effects`Feeling Excited, Big, Song of Bravado, Rage of the Reindeer, Quiet Determination, Disdain of the War Snapper`,
-    MYSTICALITY: $effects`Feeling Excited, Big, Song of Bravado`,
-    MOXIE: $effects`Feeling Excited, Big, Song of Bravado, Blessing of the Bird, Quiet Desperation, Disco Fever, Blubbered Up, Mariachi Mood, Disco State of Mind`,
+    MYSTICALITY: $effects`Feeling Excited, Big, Song of Bravado, Quiet Judgement`,
+    MOXIE: $effects`Feeling Excited, Big, Song of Bravado, Quiet Desperation, Disco Fever, Blubbered Up, Mariachi Mood, Disco State of Mind`,
     HP: $effects`Feeling Excited, Big, Song of Starch, Rage of the Reindeer, Quiet Determination, Disdain of the War Snapper`,
 };
 
 function skillBuffTasks(key: keyof typeof SKILL_BUFFS): CSTask[] {
-    return [...SKILL_BUFFS[key].map(skillTask), restore(SKILL_BUFFS[key])];
+    return restoreBuffTasks(SKILL_BUFFS[key]);
 }
 
 function thrallTask(thrall: Thrall): CSTask {
     return {
         name: thrall.toString(),
+        class: $classes`Pastamancer`,
         completed: () => myThrall() === thrall,
         do: () => useSkill(thrall.skill),
+    };
+}
+
+function equalizeTask(): CSTask {
+    return {
+        ...potionTask(
+            byStat({
+                Moxie: $item`oil of slipperiness`,
+                Muscle: $item`oil of stability`,
+                Mysticality: $item`oil of expertise`,
+            })
+        ),
+        class: $classes`Seal Clubber, Turtle Tamer, Disco Bandit, Accordion Thief, Sauceror`,
     };
 }
 
@@ -47,8 +69,11 @@ const Muscle: CSQuest = {
             back: $item`unwrapped knock-off retro superhero cape`,
             pants: $item`designer sweatpants`,
             acc1: $item`Brutal brogues`,
-            acc2: CSEngine.core === "soft" ? $item`meteorite necklace` : $item`Retrospecs`,
-            acc3: $item`Kremlin's Greatest Briefcase`,
+            acc2: $items`meteorite necklace, Retrospecs`,
+            acc3: byStat({
+                Muscle: $item`your cowboy boots`,
+                default: $item`Kremlin's Greatest Briefcase`,
+            }),
             familiar: $familiar`Left-Hand Man`,
             modes: {
                 retrocape: ["vampire", RetroCape.currentMode()],
@@ -65,8 +90,11 @@ const Muscle: CSQuest = {
         potionTask($item`LOV Elixir #3`),
         thrallTask($thrall`Elbow Macaroni`),
         beachTask($effect`Lack of Body-Building`),
+        birdTask("Muscle Percent"),
+        favouriteBirdTask("Muscle Percent"),
         { ...innerElf(), core: "hard" },
         { ...potionTask($item`Ben-Gal™ Balm`), core: "hard" },
+        equalizeTask(),
     ],
 };
 
@@ -83,7 +111,10 @@ const Mysticality: CSQuest = {
             back: $item`unwrapped knock-off retro superhero cape`,
             shirt: $items`denim jacket, shoe ad T-shirt, fresh coat of paint`,
             pants: $item`designer sweatpants`,
-            acc1: $item`your cowboy boots`,
+            acc1: byStat<Item | Item[]>({
+                Mysticality: $item`your cowboy boots`,
+                default: $items`barrel hoop earring, Powerful Glove`,
+            }),
             acc2: $item`codpiece`,
             acc3: $item`battle broom`,
             famequip: $items`Abracandalabra`,
@@ -93,7 +124,12 @@ const Mysticality: CSQuest = {
     },
     turnsSpent: 0,
     maxTurns: 1,
-    tasks: [...skillBuffTasks("MYSTICALITY")],
+    tasks: [
+        ...skillBuffTasks("MYSTICALITY"),
+        birdTask("Mysticality Percent"),
+        favouriteBirdTask("Mysticality Percent"),
+        equalizeTask(),
+    ],
 };
 
 const Moxie: CSQuest = {
@@ -108,8 +144,8 @@ const Moxie: CSQuest = {
         offhand: $item`unbreakable umbrella`,
         pants: $item`Cargo Cultist Shorts`,
         acc1: $item`Beach Comb`,
-        acc2: $item`"I Voted!" sticker`,
-        acc3: $item`Retrospecs`,
+        acc2: byStat({ Moxie: $item`your cowboy boots`, default: $item`"I Voted!" sticker` }),
+        acc3: $items`meteorite necklace, Retrospecs`,
         famequip: $item`miniature crystal ball`,
         modes: { retrocape: ["robot", RetroCape.currentMode()], umbrella: "broken" },
     }),
@@ -117,6 +153,8 @@ const Moxie: CSQuest = {
     maxTurns: 1,
     tasks: [
         ...skillBuffTasks("MOXIE"),
+        birdTask("Moxie Percent"),
+        favouriteBirdTask("Moxie Percent"),
         ...$items`runproof mascara, confiscated love note, dollop of barbecue sauce`.map(
             potionTask
         ),
@@ -126,6 +164,7 @@ const Moxie: CSQuest = {
             do: () => use(itemAmount($item`rhinestone`), $item`rhinestone`),
         },
         thrallTask($thrall`Penne Dreadful`),
+        equalizeTask(),
     ],
 };
 
@@ -145,17 +184,29 @@ const Hitpoints: CSQuest = {
             back: $item`unwrapped knock-off retro superhero cape`,
             pants: $item`Cargo Cultist Shorts`,
             acc1: $item`Brutal brogues`,
-            acc2: $item`Retrospecs`,
-            acc3: $item`Kremlin's Greatest Briefcase`,
+            acc2: byStat({
+                Muscle: $item`your cowboy boots`,
+                default: $item`Kremlin's Greatest Briefcase`,
+            }),
+            acc3: $items`meteorite necklace, Retrospecs`,
             famequip: $item`miniature crystal ball`,
             modes: { retrocape: ["vampire", RetroCape.currentMode()], parka: "kachungasaur" },
         };
     },
     tasks: [
         ...skillBuffTasks("HP"),
+        birdTask("Muscle Percent"),
+        favouriteBirdTask("Muscle Percent"),
         potionTask($item`LOV Elixir #3`),
         thrallTask($thrall`Elbow Macaroni`),
+        equalizeTask(),
     ],
 };
 
-export { Muscle, Mysticality, Moxie, Hitpoints };
+const StatTests = byStat({
+    Mysticality: [Moxie, Muscle, Hitpoints, Mysticality],
+    Muscle: [Moxie, Mysticality, Hitpoints, Muscle],
+    Moxie: [Mysticality, Muscle, Hitpoints, Moxie],
+});
+
+export default StatTests;
