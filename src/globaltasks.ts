@@ -21,7 +21,7 @@ const GLOBAL_TASKS: CSTask[] = [
     {
         name: "June Cleaver",
         completed: () => get("_juneCleaverFightsLeft") > 0,
-        ready: () => Counter.get("Portscan") === Infinity,
+        ready: () => !Counter.exists("portscan.edu"),
         do: () =>
             withProperty("recoveryScript", "", () => {
                 adv1($location`Noob Cave`, -1, "");

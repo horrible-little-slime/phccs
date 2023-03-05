@@ -1,13 +1,17 @@
-import { CombatStrategy } from "grimoire-kolmafia";
+import { CombatStrategy, Delayed } from "grimoire-kolmafia";
 import { myClass } from "kolmafia";
-import { $class, $item, $skill, have, StrictMacro } from "libram";
+import { $class, $item, $skill, getTodaysHolidayWanderers, have, StrictMacro } from "libram";
 
 export class CSStrategy extends CombatStrategy {
-    constructor(macro: () => Macro = () => Macro.defaultKill()) {
+    constructor(macro: Delayed<Macro> = () => Macro.defaultKill(), fallthrough?: Delayed<Macro>) {
         super();
-        this.macro(macro).autoattack(macro);
+        this.macro(Macro.skill($skill`Feel Hatred`), getTodaysHolidayWanderers())
+            .autoattack(Macro.skill($skill`Feel Hatred`), getTodaysHolidayWanderers())
+            .autoattack(macro)
+            .macro(fallthrough ?? macro);
     }
 }
+
 export class Macro extends StrictMacro {
     tryBowl(): Macro {
         return this.if_(
@@ -63,11 +67,5 @@ export class Macro extends StrictMacro {
     }
     static defaultKill(): Macro {
         return new Macro().defaultKill();
-    }
-
-    toString(): string {
-        return `${StrictMacro.ifHolidayWanderer(
-            StrictMacro.skill($skill`Feel Hatred`)
-        ).toString()};${super.toString()}`;
     }
 }

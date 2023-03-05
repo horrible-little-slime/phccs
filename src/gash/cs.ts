@@ -1,6 +1,14 @@
 import { burnSafaris } from "./lib";
 import { Args } from "grimoire-kolmafia";
-import { abort, equippedItem, getPermedSkills, Skill, StatType, userConfirm } from "kolmafia";
+import {
+    abort,
+    equippedItem,
+    getPermedSkills,
+    Skill,
+    StatType,
+    userConfirm,
+    visitUrl,
+} from "kolmafia";
 import {
     $class,
     $familiar,
@@ -144,6 +152,8 @@ export function main(input = ""): void {
             .filter((s) => have(s) && !perms[s.name] && s.permable)
             .map((s) => [s, Lifestyle.hardcore])
     );
+
+    visitUrl("council.php");
 
     ascend($path`Community Service`, playerClass, lifestyle, "knoll", $item`astral six-pack`, pet, {
         neverAbort: true,
