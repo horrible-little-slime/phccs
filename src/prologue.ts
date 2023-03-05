@@ -316,6 +316,18 @@ const Prologue: CSQuest = {
             completed: () => !!get("_birdOfTheDay"),
             do: () => use($item`Bird-a-Day calendar`),
         },
+        {
+            name: "Guild Quest",
+            completed: () =>
+                questStep(
+                    byStat({
+                        Mysticality: "questG07Myst",
+                        Moxie: "questG08Moxie",
+                        Muscle: "questG09Muscle",
+                    })
+                ) >= 0,
+            do: () => visitUrl("guild.php?place=challenge"),
+        },
     ],
 };
 

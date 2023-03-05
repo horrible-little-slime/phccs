@@ -1,5 +1,6 @@
 import { CSStrategy, Macro } from "./combat";
 import { CSQuest } from "./engine";
+import { byStat } from "./lib";
 import uniform from "./outfit";
 import { adv1, create, eat } from "kolmafia";
 import {
@@ -28,7 +29,15 @@ const CoilWire: CSQuest = {
             ready: () => getKramcoWandererChance() >= 1,
             completed: () => get("_sausageFights") > 0,
             do: (): void => {
-                adv1($location`Noob Cave`, -1, "");
+                adv1(
+                    byStat({
+                        Mysticality: $location`The Haunted Pantry`,
+                        Moxie: $location`The Sleazy Back Alley`,
+                        Muscle: $location`The Outskirts of Cobb's Knob`,
+                    }),
+                    -1,
+                    ""
+                );
                 if (have($item`magical sausage casing`)) {
                     create(1, $item`magical sausage`);
                 }
