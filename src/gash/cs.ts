@@ -109,10 +109,9 @@ export function main(input = ""): void {
         }
 
         if (args.softcore) {
-            const missingItems =
-                $items`repaid diaper, Stick-Knife of Loathing, moveable feast`.filter(
-                    (i) => !have(i)
-                );
+            const missingItems = $items`Stick-Knife of Loathing, moveable feast`.filter(
+                (i) => !have(i)
+            );
             if (
                 missingItems.length &&
                 !userConfirm(
