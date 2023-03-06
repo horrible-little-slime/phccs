@@ -3662,7 +3662,7 @@ function main() {
       _iterator.f();
     }
     if (args.softcore) {
-      var missingItems = $items(_templateObject113 || (_templateObject113 = _taggedTemplateLiteral6(["repaid diaper, Stick-Knife of Loathing, moveable feast"]))).filter(function(i) {
+      var missingItems = $items(_templateObject113 || (_templateObject113 = _taggedTemplateLiteral6(["Stick-Knife of Loathing, moveable feast"]))).filter(function(i) {
         return !have(i);
       });
       missingItems.length && !(0, import_kolmafia14.userConfirm)("You seem to be missing the following items required to run phccs in softcore: ".concat(missingItems.join(", "), ". Are you sure you wish to proceed?")) && (0, import_kolmafia14.abort)();
