@@ -12110,10 +12110,10 @@ var PULLS = [$items(_templateObject161 || (_templateObject161 = _taggedTemplateL
 }], BEST_INITIATIVE = byClass({
   options: /* @__PURE__ */ new Map([
     [$class(_templateObject536 || (_templateObject536 = _taggedTemplateLiteral38(["Seal Clubber"]))), 2],
-    [$class(_templateObject631 || (_templateObject631 = _taggedTemplateLiteral38(["Turtle Tamer"]))), 3],
-    [$class(_templateObject728 || (_templateObject728 = _taggedTemplateLiteral38(["Disco Bandit"]))), 4],
-    [$class(_templateObject825 || (_templateObject825 = _taggedTemplateLiteral38(["Accordion Thief"]))), 1],
-    [$class(_templateObject923 || (_templateObject923 = _taggedTemplateLiteral38(["Pastamancer"]))), 2],
+    [$class(_templateObject631 || (_templateObject631 = _taggedTemplateLiteral38(["Turtle Tamer"]))), 0],
+    [$class(_templateObject728 || (_templateObject728 = _taggedTemplateLiteral38(["Disco Bandit"]))), 0],
+    [$class(_templateObject825 || (_templateObject825 = _taggedTemplateLiteral38(["Accordion Thief"]))), 2],
+    [$class(_templateObject923 || (_templateObject923 = _taggedTemplateLiteral38(["Pastamancer"]))), 3],
     [$class(_templateObject1021 || (_templateObject1021 = _taggedTemplateLiteral38(["Sauceror"]))), 1]
   ]),
   default: 0
