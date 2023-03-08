@@ -48,6 +48,7 @@ import {
     get,
     have,
     TunnelOfLove,
+    uneffect,
     Witchess,
     withProperties,
 } from "libram";
@@ -60,7 +61,7 @@ const foldshirt = (): void => {
 };
 
 const CastSkills =
-    $skills`Advanced Saucecrafting, Advanced Cocktailcrafting, Acquire Rhinestones, Prevent Scurvy and Sobriety, The Magical Mojomuscular Melody, Stevedave's Shanty of Superiority, Fat Leon's Phat Loot Lyric, The Polka of Plenty, Leash of Linguini, Empathy of the Newt, Blood Bond, Blood Bubble, Song of Bravado, Get Big`
+    $skills`Advanced Saucecrafting, Advanced Cocktailcrafting, Acquire Rhinestones, Prevent Scurvy and Sobriety, The Magical Mojomuscular Melody, Stevedave's Shanty of Superiority, Fat Leon's Phat Loot Lyric, Leash of Linguini, Empathy of the Newt, Blood Bond, Blood Bubble, Song of Bravado, Get Big, Mathematical Precision, Ruthless Efficiency`
         .map((s) => ({
             name: s.name,
             do: (): void => {
@@ -409,7 +410,9 @@ const Level: CSQuest = {
             combat: new CSStrategy(() => Macro.tryBowl().attack().repeat()),
             prepare: (): void => {
                 useSkill($skill`Cannelloni Cocoon`);
+                if (!have($effect`Psalm of Pointiness`)) useSkill($skill`The Psalm of Pointiness`);
             },
+            post: () => uneffect($effect`Psalm of Pointiness`),
         },
         {
             name: "Oliver's Place: Prime Portscan",
