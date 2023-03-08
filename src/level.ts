@@ -401,9 +401,13 @@ const Level: CSQuest = {
                 foldshirt();
                 return uniform({
                     changes: {
-                        weapon: $item`Fourth of May Cosplay Saber`,
+                        weapon: byStat({
+                            Muscle: $item`June cleaver`,
+                            default: $item`Fourth of May Cosplay Saber`,
+                        }),
                         shirt: $item`makeshift garbage shirt`,
                         offhand: $item`familiar scrapbook`,
+                        familiar: $familiar`Shorter-Order Cook`,
                     },
                 });
             },
