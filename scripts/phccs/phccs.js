@@ -9762,7 +9762,8 @@ var UNCHANGING_OUTFIT = {
       Moxie: "robot",
       Mysticality: "heck"
     }), "thrill"],
-    umbrella: "broken"
+    umbrella: "broken",
+    parka: "spikolodon"
   }
 }, DEFAULT_UNIFORM = function() {
   return _objectSpread6(_objectSpread6({}, UNCHANGING_OUTFIT), {}, {
