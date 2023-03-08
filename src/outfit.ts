@@ -36,6 +36,7 @@ const UNCHANGING_OUTFIT: OutfitSpec = {
             "thrill",
         ],
         umbrella: "broken",
+        parka: "spikolodon"
     },
 };
 
