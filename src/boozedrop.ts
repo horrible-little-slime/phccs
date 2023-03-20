@@ -3,15 +3,7 @@ import { asdonTask, deckTask, potionTask, skillTask, songTask } from "./commons"
 import { CSQuest } from "./engine";
 import uniform from "./outfit";
 import { OutfitSpec } from "grimoire-kolmafia";
-import {
-    canAdventure,
-    cliExecute,
-    create,
-    knollAvailable,
-    use,
-    useSkill,
-    visitUrl,
-} from "kolmafia";
+import { canAdventure, cliExecute, create, use, useSkill, visitUrl } from "kolmafia";
 import {
     $classes,
     $effect,
@@ -83,19 +75,6 @@ const BoozeDrop: CSQuest = {
             do: () => cliExecute("pool 3"),
         },
         asdonTask("Observantly"),
-        {
-            name: "Unlock Beach",
-            ready: () => have($item`government cheese`),
-            completed: () => canAdventure($location`South of the Border`),
-            do: (): void => {
-                const desertAccessItem = knollAvailable()
-                    ? $item`bitchin' meatcar`
-                    : $item`Desert Bus pass`;
-                if (!have(desertAccessItem)) {
-                    cliExecute(`acquire ${desertAccessItem.name}`);
-                }
-            },
-        },
         {
             name: "Get Anticheese",
             ready: () => canAdventure($location`South of the Border`),

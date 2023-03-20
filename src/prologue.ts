@@ -4,6 +4,7 @@ import { byClass, byStat, horse, horsery, setClan, tryUse } from "./lib";
 import {
     autosell,
     buy,
+    canAdventure,
     Class,
     cliExecute,
     create,
@@ -11,6 +12,7 @@ import {
     getClanName,
     getWorkshed,
     itemAmount,
+    knollAvailable,
     myPrimestat,
     runChoice,
     storageAmount,
@@ -153,6 +155,18 @@ const Prologue: CSQuest = {
             completed: () => get("_barrelPrayer"),
             class: $classes`Seal Clubber, Disco Bandit`,
             do: () => cliExecute("barrelprayer glamour"),
+        },
+        {
+            name: "Unlock Beach",
+            completed: () => canAdventure($location`South of the Border`),
+            do: (): void => {
+                const desertAccessItem = knollAvailable()
+                    ? $item`bitchin' meatcar`
+                    : $item`Desert Bus pass`;
+                if (!have(desertAccessItem)) {
+                    cliExecute(`acquire ${desertAccessItem.name}`);
+                }
+            },
         },
         {
             name: "Juice Bar",
