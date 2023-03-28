@@ -114,7 +114,7 @@ const Prologue: CSQuest = {
             ready: () => have($item`S.I.T. Course Completion Certificate`),
             completed: () => get("_sitCourseCompleted", true) || have($skill`Insectologist`),
             do: () => use($item`S.I.T. Course Completion Certificate`),
-            choices: { [1494]: 2 },
+            choices: { 1494: 2 },
         },
         {
             name: "Fallbot",

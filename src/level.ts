@@ -123,7 +123,7 @@ const { saucePotion, sauceFruit, sauceEffect } = byStat({
     },
 });
 
-const lovePotion = $item`Love Potion #0`;
+const lovePotion = $item`Love Potion #XYZ`;
 const loveEffect = $effect`Tainted Love Potion`;
 const Level: CSQuest = {
     type: "MISC",
