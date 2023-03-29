@@ -1,6 +1,6 @@
 import { deckTask } from "./commons";
 import { CSQuest } from "./engine";
-import {  horse, horsery, setClan, tryUse } from "./lib";
+import { horse, horsery, setClan, tryUse } from "./lib";
 import {
     autosell,
     buy,
@@ -58,12 +58,12 @@ const MARKET_QUESTS = [
 ];
 
 const BEST_INITIATIVE = byClass({
-        "Seal Clubber": 2, // Familiar exp: 2
-        "Turtle Tamer": 0, // Weapon Damage Percent: 100
-        "Disco Bandit": 0, // Maximum MP Percent: 30
-        "Accordion Thief": 2, // Booze Drop: 30
-        "Pastamancer": 3, // Familiar exp: 2
-        "Sauceror": 1, // Exp: 3
+    "Seal Clubber": 2, // Familiar exp: 2
+    "Turtle Tamer": 0, // Weapon Damage Percent: 100
+    "Disco Bandit": 0, // Maximum MP Percent: 30
+    "Accordion Thief": 2, // Booze Drop: 30
+    Pastamancer: 3, // Familiar exp: 2
+    Sauceror: 1, // Exp: 3
     default: 0,
 });
 

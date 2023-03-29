@@ -1,13 +1,7 @@
 import { CSStrategy, Macro } from "./combat";
 import { beachTask, favouriteBirdTask, innerElf, potionTask, restoreBuffTasks } from "./commons";
 import { CSQuest } from "./engine";
-import {
-    burnLibrams,
-    currentBirdHas,
-    favouriteBirdHas,
-    SYNTH_EFFECT,
-    synthExp,
-} from "./lib";
+import { burnLibrams, currentBirdHas, favouriteBirdHas, SYNTH_EFFECT, synthExp } from "./lib";
 import uniform from "./outfit";
 import { OutfitSpec } from "grimoire-kolmafia";
 import {
