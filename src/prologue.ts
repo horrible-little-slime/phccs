@@ -1,11 +1,10 @@
 import { deckTask } from "./commons";
 import { CSQuest } from "./engine";
-import { byClass, horse, horsery, setClan, tryUse } from "./lib";
+import {  horse, horsery, setClan, tryUse } from "./lib";
 import {
     autosell,
     buy,
     canAdventure,
-    Class,
     cliExecute,
     create,
     equip,
@@ -23,7 +22,6 @@ import {
     visitUrl,
 } from "kolmafia";
 import {
-    $class,
     $classes,
     $coinmaster,
     $familiar,
@@ -33,6 +31,7 @@ import {
     $skill,
     $skills,
     AutumnAton,
+    byClass,
     byStat,
     Clan,
     CommunityService,
@@ -59,14 +58,12 @@ const MARKET_QUESTS = [
 ];
 
 const BEST_INITIATIVE = byClass({
-    options: new Map<Class, number>([
-        [$class`Seal Clubber`, 2], // Familiar exp: 2
-        [$class`Turtle Tamer`, 0], // Weapon Damage Percent: 100
-        [$class`Disco Bandit`, 0], // Maximum MP Percent: 30
-        [$class`Accordion Thief`, 2], // Booze Drop: 30
-        [$class`Pastamancer`, 3], // Familiar exp: 2
-        [$class`Sauceror`, 1], // Exp: 3
-    ]),
+        "Seal Clubber": 2, // Familiar exp: 2
+        "Turtle Tamer": 0, // Weapon Damage Percent: 100
+        "Disco Bandit": 0, // Maximum MP Percent: 30
+        "Accordion Thief": 2, // Booze Drop: 30
+        "Pastamancer": 3, // Familiar exp: 2
+        "Sauceror": 1, // Exp: 3
     default: 0,
 });
 

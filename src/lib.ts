@@ -15,7 +15,6 @@ import {
     haveEffect,
     Item,
     MafiaClass,
-    myClass,
     myMaxmp,
     myMp,
     print,
@@ -306,11 +305,6 @@ export function currentBirdHas(modifier: NumericModifier, positive = true): bool
     return get("_birdOfTheDayMods")
         .split(",")
         .some((mod) => mod.includes(`${modifier}: ${sign}`));
-}
-
-type ClassSwitch<T> = { options: Map<Class, T>; default: T };
-export function byClass<T>(thing: ClassSwitch<T>): T {
-    return thing.options.get(myClass()) ?? thing.default;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
