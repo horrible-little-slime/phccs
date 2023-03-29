@@ -1,6 +1,5 @@
 import { CSStrategy, Macro } from "./combat";
 import { CSQuest } from "./engine";
-import { byStat } from "./lib";
 import uniform from "./outfit";
 import { adv1, create, eat } from "kolmafia";
 import {
@@ -10,6 +9,7 @@ import {
     $location,
     $monster,
     $skill,
+    byStat,
     Cartography,
     CombatLoversLocket,
     CommunityService,

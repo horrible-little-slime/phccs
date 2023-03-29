@@ -1,4 +1,3 @@
-import { byStat } from "./lib";
 import { OutfitSpec } from "grimoire-kolmafia";
 import { Familiar, Item, totalTurnsPlayed } from "kolmafia";
 import {
@@ -7,6 +6,7 @@ import {
     $familiars,
     $item,
     $items,
+    byStat,
     CommunityService,
     DaylightShavings,
     get,
