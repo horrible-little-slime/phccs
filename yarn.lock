@@ -964,14 +964,6 @@
     "@babel/helper-validator-option" "^7.18.6"
     "@babel/plugin-transform-typescript" "^7.18.6"
 
-"@babel/runtime-corejs3@^7.17.2":
-  version "7.18.6"
-  resolved "https://registry.yarnpkg.com/@babel/runtime-corejs3/-/runtime-corejs3-7.18.6.tgz#6f02c5536911f4b445946a2179554b95c8838635"
-  integrity sha512-cOu5wH2JFBgMjje+a+fz2JNIWU4GzYpl05oSob3UDvBEh6EuIn+TXFHMmBbhSb+k/4HMzgKCQfEEDArAWNF9Cw==
-  dependencies:
-    core-js-pure "^3.20.2"
-    regenerator-runtime "^0.13.4"
-
 "@babel/runtime@^7.8.4":
   version "7.15.3"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.15.3.tgz#2e1c2880ca118e5b2f9988322bd8a7656a32502b"
@@ -1526,20 +1518,10 @@ core-js-compat@^3.25.1:
   dependencies:
     browserslist "^4.21.4"
 
-core-js-pure@^3.20.2:
-  version "3.23.3"
-  resolved "https://registry.yarnpkg.com/core-js-pure/-/core-js-pure-3.23.3.tgz#bcd02d3d8ec68ad871ef50d5ccbb248ddb54f401"
-  integrity sha512-XpoouuqIj4P+GWtdyV8ZO3/u4KftkeDVMfvp+308eGMhCrA3lVDSmAxO0c6GGOcmgVlaKDrgWVMo49h2ab/TDA==
-
 core-js@^3.16.4:
   version "3.27.1"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.27.1.tgz#23cc909b315a6bb4e418bf40a52758af2103ba46"
   integrity sha512-GutwJLBChfGCpwwhbYoqfv03LAfmiz7e7D/BNxzeMxwQf10GRSzqiOjx7AmtEk+heiD/JWmBuyBPgFtx0Sg1ww==
-
-core-js@^3.21.0:
-  version "3.23.3"
-  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.23.3.tgz#3b977612b15da6da0c9cc4aec487e8d24f371112"
-  integrity sha512-oAKwkj9xcWNBAvGbT//WiCdOMpb9XQG92/Fe3ABFM/R16BsHgePG00mFOgKf7IsCtfj8tA1kHtf/VwErhriz5Q==
 
 cross-spawn@^7.0.2:
   version "7.0.3"
@@ -2187,14 +2169,10 @@ levn@^0.4.1:
     prelude-ls "^1.2.1"
     type-check "~0.4.0"
 
-libram@^0.7.10:
-  version "0.7.10"
-  resolved "https://registry.yarnpkg.com/libram/-/libram-0.7.10.tgz#42f86600af1f11723e6eeed5d83905bebf49311f"
-  integrity sha512-B4pv66ISaWX94MdT6d5JN57LA2Qx4tHjGqcw2fSfN2fs/krfVgOE8SDgTtGDUOxXGhDlBIyhnStu1EsPvl9bIw==
-  dependencies:
-    "@babel/runtime-corejs3" "^7.17.2"
-    core-js "^3.21.0"
-    lodash "^4.17.21"
+libram@^0.7.15:
+  version "0.7.15"
+  resolved "https://registry.yarnpkg.com/libram/-/libram-0.7.15.tgz#c7c4b5a9adfc1af334384c17176f1fda6c4e24ce"
+  integrity sha512-+ZybJTdnBUaFBOmRz+W9T/pidC3eDKLWclhm/8MZgI2uURgFMhZjYZajdyFRiZcqzpsRmM6TORx1/cjss9ijRQ==
 
 locate-path@^6.0.0:
   version "6.0.0"
@@ -2213,7 +2191,7 @@ lodash.merge@^4.6.2:
   resolved "https://registry.yarnpkg.com/lodash.merge/-/lodash.merge-4.6.2.tgz#558aa53b43b661e1925a0afdfa36a9a1085fe57a"
   integrity sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==
 
-lodash@4.17.21, lodash@^4.17.21:
+lodash@4.17.21:
   version "4.17.21"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==

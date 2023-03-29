@@ -18,14 +18,12 @@ import {
     myClass,
     myMaxmp,
     myMp,
-    myPrimestat,
     print,
     restoreMp,
     retrieveItem,
     setProperty,
     Skill,
     Slot,
-    StatType,
     sweetSynthesis,
     use,
     useSkill,
@@ -38,6 +36,7 @@ import {
     $skill,
     $skills,
     bestLibramToCast,
+    byStat,
     clamp,
     get,
     getModifier,
@@ -309,14 +308,9 @@ export function currentBirdHas(modifier: NumericModifier, positive = true): bool
         .some((mod) => mod.includes(`${modifier}: ${sign}`));
 }
 
-type StatSwitch<T> = Record<StatType, T> | (Partial<{ [x in StatType]: T }> & { default: T });
 type ClassSwitch<T> = { options: Map<Class, T>; default: T };
 export function byClass<T>(thing: ClassSwitch<T>): T {
     return thing.options.get(myClass()) ?? thing.default;
-}
-export function byStat<T>(thing: StatSwitch<T>): T {
-    const stat = myPrimestat().toString();
-    return "default" in thing ? thing[stat] ?? thing.default : thing[stat];
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

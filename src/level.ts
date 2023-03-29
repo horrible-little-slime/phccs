@@ -3,7 +3,6 @@ import { beachTask, favouriteBirdTask, innerElf, potionTask, restoreBuffTasks } 
 import { CSQuest } from "./engine";
 import {
     burnLibrams,
-    byStat,
     currentBirdHas,
     favouriteBirdHas,
     SYNTH_EFFECT,
@@ -43,6 +42,7 @@ import {
     $monster,
     $skill,
     $skills,
+    byStat,
     Cartography,
     Counter,
     get,

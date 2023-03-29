@@ -7,7 +7,7 @@ import {
     restoreBuffTasks,
 } from "./commons";
 import { CSQuest } from "./engine";
-import { byStat, CSTask } from "./lib";
+import { CSTask } from "./lib";
 import { cliExecute, Item, itemAmount, myThrall, Thrall, use, useSkill } from "kolmafia";
 import {
     $classes,
@@ -17,6 +17,7 @@ import {
     $item,
     $items,
     $thrall,
+    byStat,
     CommunityService,
     have,
     RetroCape,

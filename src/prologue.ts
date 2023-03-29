@@ -1,6 +1,6 @@
 import { deckTask } from "./commons";
 import { CSQuest } from "./engine";
-import { byClass, byStat, horse, horsery, setClan, tryUse } from "./lib";
+import { byClass, horse, horsery, setClan, tryUse } from "./lib";
 import {
     autosell,
     buy,
@@ -33,6 +33,7 @@ import {
     $skill,
     $skills,
     AutumnAton,
+    byStat,
     Clan,
     CommunityService,
     get,
