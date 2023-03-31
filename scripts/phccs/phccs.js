@@ -7292,11 +7292,13 @@ var _templateObject130, _templateObject251, _templateObject338, _templateObject4
 function _taggedTemplateLiteral31(strings, raw) {
   return raw || (raw = strings.slice(0)), Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } }));
 }
-var Drink = {
+var totalInebriety = function() {
+  return (0, import_kolmafia34.myInebriety)() + get("_sweatOutSomeBoozeUsed");
+}, Drink = {
   name: "Drink Pilsners",
   type: "MISC",
   completed: function() {
-    return (0, import_kolmafia34.myInebriety)() >= 5;
+    return totalInebriety() >= 5;
   },
   tasks: [{
     name: "Open Pilsners",
@@ -7312,10 +7314,10 @@ var Drink = {
       return have($item(_templateObject527 || (_templateObject527 = _taggedTemplateLiteral31(["astral pilsner"]))));
     },
     completed: function() {
-      return (0, import_kolmafia34.myInebriety)() >= 5;
+      return totalInebriety() >= 5;
     },
     do: function() {
-      return (0, import_kolmafia34.drink)($item(_templateObject624 || (_templateObject624 = _taggedTemplateLiteral31(["astral pilsner"]))), clamp((0, import_kolmafia34.itemAmount)($item(_templateObject721 || (_templateObject721 = _taggedTemplateLiteral31(["astral pilsner"])))), 0, (0, import_kolmafia34.inebrietyLimit)() - (0, import_kolmafia34.myInebriety)()));
+      return (0, import_kolmafia34.drink)($item(_templateObject624 || (_templateObject624 = _taggedTemplateLiteral31(["astral pilsner"]))), clamp((0, import_kolmafia34.itemAmount)($item(_templateObject721 || (_templateObject721 = _taggedTemplateLiteral31(["astral pilsner"])))), 0, 5 - totalInebriety()));
     }
   }]
 }, drinking_default = Drink;
