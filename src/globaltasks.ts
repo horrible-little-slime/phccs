@@ -2,7 +2,7 @@ import { CSStrategy, Macro } from "./combat";
 import { CSTask } from "./lib";
 import uniform from "./outfit";
 import { Quest } from "grimoire-kolmafia";
-import { abort, adv1, cliExecute, reverseNumberology, useSkill } from "kolmafia";
+import { abort, adv1, cliExecute, myInebriety, reverseNumberology, useSkill } from "kolmafia";
 import { $effect, $item, $location, $skill, Counter, get, have, withProperty } from "libram";
 
 const GLOBAL_TASKS: CSTask[] = [
@@ -11,6 +11,13 @@ const GLOBAL_TASKS: CSTask[] = [
         completed: () => !have($effect`Beaten Up`),
         ready: () => "Poetic Justice" !== get("lastEncounter"),
         do: () => abort("Beaten up!"),
+    },
+    {
+        name: "Sweat Out some Booze",
+        completed: () => get("_sweatOutSomeBoozeUsed") >= 3,
+        ready: () => myInebriety() > 0 && get("sweat") >= 25,
+        do: () => useSkill($skill`Sweat Out Some Booze`),
+        outfit: { pants: $item`designer sweatpants` },
     },
     {
         name: "Numberology",
