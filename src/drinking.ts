@@ -1,12 +1,13 @@
 import { songTask } from "./commons";
 import { CSQuest } from "./engine";
-import { drink, inebrietyLimit, itemAmount, myInebriety, use } from "kolmafia";
-import { $effect, $item, clamp, have } from "libram";
+import { drink, itemAmount, myInebriety, use } from "kolmafia";
+import { $effect, $item, clamp, get, have } from "libram";
 
+const totalInebriety = () => myInebriety() + get("_sweatOutSomeBoozeUsed");
 const Drink: CSQuest = {
     name: "Drink Pilsners",
     type: "MISC",
-    completed: () => myInebriety() >= 5,
+    completed: () => totalInebriety() >= 5,
     tasks: [
         {
             name: "Open Pilsners",
@@ -17,11 +18,11 @@ const Drink: CSQuest = {
         {
             name: "Drink Pilsners",
             ready: () => have($item`astral pilsner`),
-            completed: () => myInebriety() >= 5,
+            completed: () => totalInebriety() >= 5,
             do: () =>
                 drink(
                     $item`astral pilsner`,
-                    clamp(itemAmount($item`astral pilsner`), 0, inebrietyLimit() - myInebriety())
+                    clamp(itemAmount($item`astral pilsner`), 0, 5 - totalInebriety())
                 ),
         },
     ],
