@@ -131,11 +131,6 @@ export function commonFamiliarWeightBuffs(): CSTask[] {
             do: () => cliExecute("witchess"),
         },
         {
-            name: "Fixodene",
-            completed: () => get("_freePillKeeperUsed"),
-            do: () => cliExecute("pillkeeper familiar"),
-        },
-        {
             name: "Suzie's Blessing",
             completed: () => get("_clanFortuneBuffUsed"),
             do: () => cliExecute("fortune buff familiar"),
