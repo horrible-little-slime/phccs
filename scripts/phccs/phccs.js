@@ -6869,14 +6869,6 @@ function commonFamiliarWeightBuffs() {
       return (0, import_kolmafia31.cliExecute)("witchess");
     }
   }, {
-    name: "Fixodene",
-    completed: function() {
-      return get("_freePillKeeperUsed");
-    },
-    do: function() {
-      return (0, import_kolmafia31.cliExecute)("pillkeeper familiar");
-    }
-  }, {
     name: "Suzie's Blessing",
     completed: function() {
       return get("_clanFortuneBuffUsed");
