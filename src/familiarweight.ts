@@ -3,7 +3,7 @@ import { commonFamiliarWeightBuffs, meteorShower, potionTask } from "./commons";
 import { CSQuest } from "./engine";
 import { availableFights, unequip } from "./lib";
 import uniform from "./outfit";
-import { create, mySign, runCombat, use, visitUrl } from "kolmafia";
+import { create, mySign, runCombat, toInt, use, visitUrl } from "kolmafia";
 import {
     $effect,
     $familiar,
@@ -15,6 +15,10 @@ import {
     have,
     Witchess,
 } from "libram";
+
+const familiar = have($familiar`Comma Chameleon`)
+    ? $familiar`Comma Chameleon`
+    : $familiar`Mini-Trainbot`;
 
 const FamiliarWeight: CSQuest = {
     name: "Familiar Weight",
@@ -28,8 +32,14 @@ const FamiliarWeight: CSQuest = {
         acc1: $item`Beach Comb`,
         acc2: $item`Brutal brogues`,
         acc3: $item`hewn moon-rune spoon`,
-        familiar: $familiar`Mini-Trainbot`,
-        famequip: $item`overloaded Yule battery`,
+        ...(have($familiar`Comma Chameleon`)
+            ? {
+                  familiar,
+                  famequip: $item.none,
+                  back: $item`Buddy Bjorn`,
+                  riders: { "buddy-bjorn": $familiar`Misshapen Animal Skeleton` },
+              }
+            : { familiar, famequip: $item`overloaded Yule battery` }),
     }),
     turnsSpent: 0,
     maxTurns: 30,
@@ -40,18 +50,37 @@ const FamiliarWeight: CSQuest = {
             name: "Moveable Feast",
             core: "soft",
             completed: () => get("_feastedFamiliars").split(";").includes("Mini-Trainbot"),
-            ready: () => have($item`moveable feast`),
+            ready: () => have($item`moveable feast`) && familiar === $familiar`Mini-Trainbot`,
             do: () => use($item`moveable feast`),
-            outfit: { familiar: $familiar`Mini-Trainbot` },
+            outfit: { familiar },
         },
         {
-            name: "Get Yule Battery",
-            completed: () => have($item`overloaded Yule battery`),
+            name: "Get Familiar Equipment",
+            completed: () =>
+                have($item`overloaded Yule battery`) ||
+                have($item`homemade robot gear`) ||
+                get("commaFamiliar") === $familiar`Homemade Robot`,
             do: (): void => {
                 if (!have($item`box of Familiar Jacks`)) create($item`box of Familiar Jacks`);
                 use($item`box of Familiar Jacks`);
             },
-            outfit: { familiar: $familiar`Mini-Trainbot` },
+            outfit: {
+                familiar: have($familiar`Comma Chameleon`)
+                    ? $familiar`Homemade Robot`
+                    : $familiar`Mini-Trainbot`,
+            },
+        },
+        {
+            name: "Feed Chameleon",
+            completed: () => get("commaFamiliar") === $familiar`Homemade Robot`,
+            ready: () => have($familiar`Comma Chameleon`),
+            do: () =>
+                visitUrl(
+                    `inv_equip.php?which=2&action=equip&whichitem=${toInt(
+                        $item`homemade robot gear`
+                    )}&pwd`
+                ),
+            outfit: { familiar: $familiar`Comma Chameleon` },
         },
         {
             name: "Paper Crane",
