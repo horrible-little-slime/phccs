@@ -36,7 +36,7 @@ const FamiliarWeight: CSQuest = {
       ? {
           familiar,
           famequip: $item.none,
-          back: $item`Buddy Bjorn`,
+          back: $items`Buddy Bjorn`,
           riders: { "buddy-bjorn": $familiar`Misshapen Animal Skeleton` },
         }
       : { familiar, famequip: $item`overloaded Yule battery` }),
