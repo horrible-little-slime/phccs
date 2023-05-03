@@ -7730,7 +7730,7 @@ var familiar = have($familiar(_templateObject141 || (_templateObject141 = _tagge
     }, have($familiar(_templateObject1116 || (_templateObject1116 = _taggedTemplateLiteral34(["Comma Chameleon"])))) ? {
       familiar: familiar,
       famequip: $item.none,
-      back: $item(_templateObject1216 || (_templateObject1216 = _taggedTemplateLiteral34(["Buddy Bjorn"]))),
+      back: $items(_templateObject1216 || (_templateObject1216 = _taggedTemplateLiteral34(["Buddy Bjorn"]))),
       riders: {
         "buddy-bjorn": $familiar(_templateObject1316 || (_templateObject1316 = _taggedTemplateLiteral34(["Misshapen Animal Skeleton"])))
       }
