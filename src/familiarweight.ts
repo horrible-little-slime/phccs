@@ -1,6 +1,6 @@
 import { CSStrategy, Macro } from "./combat";
 import { commonFamiliarWeightBuffs, meteorShower, potionTask } from "./commons";
-import { CSQuest } from "./engine";
+import { CSEngine, CSQuest } from "./engine";
 import { availableFights, unequip } from "./lib";
 import uniform from "./outfit";
 import { create, mySign, runCombat, toInt, use, visitUrl } from "kolmafia";
@@ -36,8 +36,12 @@ const FamiliarWeight: CSQuest = {
       ? {
           familiar,
           famequip: $item.none,
-          back: $items`Buddy Bjorn`,
-          riders: { "buddy-bjorn": $familiar`Misshapen Animal Skeleton` },
+          ...(CSEngine.core === "soft"
+            ? {
+                back: $item`Buddy Bjorn`,
+                riders: { "buddy-bjorn": $familiar`Misshapen Animal Skeleton` },
+              }
+            : {}),
         }
       : { familiar, famequip: $item`overloaded Yule battery` }),
   }),
