@@ -14,15 +14,15 @@ import { sinceKolmafiaRevision } from "libram";
 
 sinceKolmafiaRevision(27102);
 CSEngine.runTests(
-    Prologue,
-    CoilWire,
-    Level,
-    ...StatTests,
-    Drink,
-    HotRes,
-    Noncombat,
-    FamiliarWeight,
-    Weapon,
-    Spell,
-    BoozeDrop
+  Prologue,
+  CoilWire,
+  Level,
+  ...StatTests,
+  Drink,
+  HotRes,
+  Noncombat,
+  FamiliarWeight,
+  Weapon,
+  Spell,
+  BoozeDrop
 );
