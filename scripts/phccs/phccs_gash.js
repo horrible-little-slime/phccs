@@ -2204,6 +2204,8 @@ var args = Args.create("phccs_gash", "This script is designed to help you hop th
     help: "Don't warn you when you are making a huge mistake",
     default: !1
   })
+}), byAscendingStat = makeByXFunction(function() {
+  return args.class.primestat.toString();
 }), SPECIAL_REQUIREMENTS = {
   Moxie: [{
     name: "Evil Olive in locket",
@@ -2248,13 +2250,13 @@ var args = Args.create("phccs_gash", "This script is designed to help you hop th
 function main() {
   var input = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : "";
   Args.fill(args, input);
-  var softcore = args.softcore, ignorewarnings = args.ignorewarnings, playerClass = args.class;
+  var softcore = args.softcore, ignorewarnings = args.ignorewarnings;
   if (burnSafaris(), !ignorewarnings) {
-    var _iterator = _createForOfIteratorHelper5(SPECIAL_REQUIREMENTS[playerClass.primestat.toString()]), _step;
+    var _iterator = _createForOfIteratorHelper5(byAscendingStat(SPECIAL_REQUIREMENTS)), _step;
     try {
       for (_iterator.s(); !(_step = _iterator.n()).done; ) {
         var _step$value = _step.value, name = _step$value.name, reason = _step$value.reason, meets = _step$value.meets;
-        !meets() && !(0, import_kolmafia14.userConfirm)("We have failed to meet the requirement ".concat(name, " to ascend as a ").concat(playerClass, "; this is important because ").concat(reason, ". Are you sure you wish to proceed?")) && (0, import_kolmafia14.abort)();
+        !meets() && !(0, import_kolmafia14.userConfirm)("We have failed to meet the requirement ".concat(name, " to ascend as a ").concat(args.class, "; this is important because ").concat(reason, ". Are you sure you wish to proceed?")) && (0, import_kolmafia14.abort)();
       }
     } catch (err) {
       _iterator.e(err);
@@ -2273,11 +2275,11 @@ function main() {
     eudora: "Our Daily Candles\u2122 order form",
     chateau: {
       desk: "continental juice bar",
-      nightstand: {
+      nightstand: byAscendingStat({
         Mysticality: "foreign language tapes",
         Moxie: "bowl of potpourri",
         Muscle: "electric muscle stimulator"
-      }[args.class.primestat.toString()],
+      }),
       ceiling: "ceiling fan"
     }
   });
@@ -2286,7 +2288,7 @@ function main() {
   }).map(function(s) {
     return [s, Lifestyle.hardcore];
   }));
-  (0, import_kolmafia14.visitUrl)("council.php"), ascend($path(_templateObject173 || (_templateObject173 = _taggedTemplateLiteral6(["Community Service"]))), playerClass, lifestyle, "knoll", $item(_templateObject183 || (_templateObject183 = _taggedTemplateLiteral6(["astral six-pack"]))), pet, {
+  (0, import_kolmafia14.visitUrl)("council.php"), ascend($path(_templateObject173 || (_templateObject173 = _taggedTemplateLiteral6(["Community Service"]))), args.class, lifestyle, "knoll", $item(_templateObject183 || (_templateObject183 = _taggedTemplateLiteral6(["astral six-pack"]))), pet, {
     neverAbort: !0,
     permSkills: permSkills
   });
