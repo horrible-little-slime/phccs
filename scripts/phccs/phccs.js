@@ -7776,7 +7776,7 @@ var familiar = have($familiar(_templateObject141 || (_templateObject141 = _tagge
       return have($familiar(_templateObject299 || (_templateObject299 = _taggedTemplateLiteral34(["Comma Chameleon"]))));
     },
     do: function() {
-      return (0, import_kolmafia37.visitUrl)("inv_equip.php?which=2&action=equip&whichitem=".concat((0, import_kolmafia37.toInt)($item(_templateObject308 || (_templateObject308 = _taggedTemplateLiteral34(["homemade robot gear"])))), "&pwd"));
+      (0, import_kolmafia37.visitUrl)("inv_equip.php?which=2&action=equip&whichitem=".concat((0, import_kolmafia37.toInt)($item(_templateObject308 || (_templateObject308 = _taggedTemplateLiteral34(["homemade robot gear"])))), "&pwd")), (0, import_kolmafia37.visitUrl)("charpane.php");
     },
     outfit: {
       familiar: $familiar(_templateObject3115 || (_templateObject3115 = _taggedTemplateLiteral34(["Comma Chameleon"])))
