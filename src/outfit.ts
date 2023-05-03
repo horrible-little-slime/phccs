@@ -101,7 +101,9 @@ function chooseFamiliar(canAttack: boolean): Pick<OutfitSpec, "familiar" | "fame
     }
     return {
         famequip: $item`tiny stillsuit`,
-        familiar: findFirstFamiliar($familiars`Puck Man, Ms. Puck Man`),
+        familiar:
+            findFirstFamiliar($familiars`Puck Man, Ms. Puck Man`) ??
+            $familiar`Blood-Faced Volleyball`,
     };
 }
 
