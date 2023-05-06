@@ -21,7 +21,6 @@ import {
   runCombat,
   Stat,
   toEffect,
-  totalFreeRests,
   use,
   useSkill,
   visitUrl,
@@ -68,30 +67,6 @@ const CastSkills =
       ...task,
       outfit: () => uniform({ changes: { offhand: $item`Abracandalabra` } }),
     }));
-
-const Recovery = [
-  {
-    name: "Rest",
-    completed: () => get("timesRested") >= totalFreeRests(),
-    mp: 150,
-    do: (): void => {
-      visitUrl("place.php?whichplace=chateau&action=chateau_restlabelfree");
-    },
-  },
-  {
-    name: "Psychokinetic Energy Blob",
-    completed: () => !have($item`psychokinetic energy blob`),
-    mp: 30,
-    do: (): void => {
-      use($item`psychokinetic energy blob`);
-    },
-  },
-].map((task) => ({
-  ...task,
-  outfit: () => uniform({ changes: { offhand: $item`Abracandalabra` } }),
-  completed: () => task.completed() || CastSkills.every(({ completed }) => completed()),
-  ready: () => myMp() + task.mp < myMaxmp(),
-}));
 
 const generalStoreItem = byStat({
   Muscle: $item`Ben-Gal™ Balm`,
@@ -241,7 +216,15 @@ const Level: CSQuest = {
         $items`turtle totem, saucepan`.forEach((i) => !have(i) && cliExecute(`acquire ${i}`)),
     },
     ...CastSkills,
-    ...Recovery,
+    {
+      name: "Psychokinetic Energy Blob",
+      completed: () => !have($item`psychokinetic energy blob`) || CastSkills.every(({ completed }) => completed()),
+      do: (): void => {
+        use($item`psychokinetic energy blob`);
+      },
+      outfit: () => uniform({ changes: { offhand: $item`Abracandalabra` } }),
+      ready: () => myMp() + 30 < myMaxmp(),
+    },
     ...restoreBuffTasks(
       byStat({
         Mysticality: $effects`Inscrutable Gaze`,
@@ -331,15 +314,6 @@ const Level: CSQuest = {
         Macro.if_($monster`amateur ninja`, Macro.skill($skill`Chest X-Ray`)).abort()
       ),
       outfit: () => uniform({ canAttack: false, changes: { acc3: $item`Lil' Doctor™ bag` } }),
-    },
-    {
-      name: "Eleven Rests",
-      completed: () => get("timesRested") >= 11,
-      do: (): void => {
-        burnLibrams();
-        visitUrl("place.php?whichplace=chateau&action=chateau_restlabelfree");
-      },
-      outfit: () => uniform({ changes: { offhand: $item`familiar scrapbook` } }),
     },
     {
       name: "Witch",
@@ -526,13 +500,7 @@ const Level: CSQuest = {
       },
       combat: new CSStrategy(),
     },
-    {
-      name: "Rest of the Rests",
-      completed: () => get("timesRested") >= totalFreeRests(),
-      outfit: () => uniform({ changes: { offhand: $item`familiar scrapbook` } }),
-      do: () => visitUrl("place.php?whichplace=chateau&action=chateau_restlabelfree"),
-      prepare: burnLibrams,
-    },
+
     {
       name: "DMT",
       completed: () => get("_machineTunnelsAdv") >= 5,
