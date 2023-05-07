@@ -85,7 +85,7 @@ const HotRes: CSQuest = {
     },
     {
       name: "Deep Dark Visions",
-      completed: () => have($effect`Visions of the Deep Dark Deeps`, 40),
+      completed: () => have($effect`Visions of the Deep Dark Deeps`, 20),
       do: (): void => {
         while (myHp() < myMaxhp()) {
           ensureMp(20);

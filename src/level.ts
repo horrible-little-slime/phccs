@@ -218,7 +218,8 @@ const Level: CSQuest = {
     ...CastSkills,
     {
       name: "Psychokinetic Energy Blob",
-      completed: () => !have($item`psychokinetic energy blob`) || CastSkills.every(({ completed }) => completed()),
+      completed: () =>
+        !have($item`psychokinetic energy blob`) || CastSkills.every(({ completed }) => completed()),
       do: (): void => {
         use($item`psychokinetic energy blob`);
       },
