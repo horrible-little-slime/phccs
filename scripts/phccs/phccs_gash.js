@@ -2249,7 +2249,10 @@ var args = Args.create("phccs_gash", "This script is designed to help you hop th
 };
 function main() {
   var input = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : "";
-  Args.fill(args, input);
+  if (Args.fill(args, input), args.help) {
+    Args.showHelp(args);
+    return;
+  }
   var softcore = args.softcore, ignorewarnings = args.ignorewarnings;
   if (burnSafaris(), !ignorewarnings) {
     var _iterator = _createForOfIteratorHelper5(byAscendingStat(SPECIAL_REQUIREMENTS)), _step;
