@@ -92,6 +92,12 @@ const SPECIAL_REQUIREMENTS: Record<
 
 export function main(input = ""): void {
   Args.fill(args, input);
+
+  if (args.help) {
+    Args.showHelp(args);
+    return;
+  }
+
   const { softcore, ignorewarnings } = args;
   burnSafaris();
 
