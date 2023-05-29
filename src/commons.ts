@@ -38,6 +38,7 @@ import {
   get,
   have,
   set,
+  SourceTerminal,
 } from "libram";
 import { NumericModifier } from "libram/dist/modifierTypes";
 
@@ -179,9 +180,12 @@ export function meteorShower(): CSTask {
     name: "Meteor Showered",
     ready: () => get("_meteorShowerUses") < 5 && get("_saberForceUses") < 5,
     completed: () => have($effect`Meteor Showered`),
-    prepare: () => horsery() === "pale" && horse("dark"),
+    prepare: () => {
+      if (horsery() === "pale") horse("dark");
+      SourceTerminal.educate([$skill`Turbo`, $skill`Extract`]);
+    },
     do: () => {
-      adv1($location`The Dire Warren`, -1, "");
+      adv1($location`The Neverending Party`, -1, "");
       if (handlingChoice()) runChoice(-1);
     },
     outfit: () =>
@@ -192,11 +196,17 @@ export function meteorShower(): CSTask {
           weapon: $item`Fourth of May Cosplay Saber`,
         },
       }),
-    choices: { [1387]: 3 },
-    combat: new CSStrategy(() => Macro.skill($skill`Meteor Shower`).skill($skill`Use the Force`)),
+    choices: { [1387]: 3, [1324]: 5 },
+    combat: new CSStrategy(() =>
+      Macro.skill($skill`Turbo`)
+        .skill($skill`Meteor Shower`)
+        .skill($skill`Use the Force`)
+    ),
     post: () => {
       if (have($effect`Meteor Showered`)) showers++;
       set("_meteorShowerUses", showers);
+
+      SourceTerminal.educate([$skill`Extract`, $skill`Portscan`]);
     },
   };
 }
