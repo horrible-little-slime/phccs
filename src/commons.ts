@@ -175,8 +175,8 @@ export function asdonTask(style: Effect | keyof typeof AsdonMartin.Driving): CST
   };
 }
 
+let showers = get("_meteorShowerUses");
 export function meteorShower(): CSTask {
-  let showers = get("_meteorShowerUses");
   return {
     name: "Meteor Showered",
     ready: () => get("_meteorShowerUses") < 5 && get("_saberForceUses") < 5,
