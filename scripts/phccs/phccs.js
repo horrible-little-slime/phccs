@@ -6911,9 +6911,8 @@ function asdonTask(style) {
     }
   };
 }
-var showers = get("_meteorShowerUses");
 function meteorShower() {
-  var _choices2;
+  var _choices2, showers = get("_meteorShowerUses");
   return {
     name: "Meteor Showered",
     ready: function() {
