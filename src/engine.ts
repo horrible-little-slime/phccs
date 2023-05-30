@@ -86,6 +86,7 @@ export class CSEngine extends Engine<never, CSTask> {
       autoSatisfyWithNPCs: true,
       autoSatisfyWithStorage: false,
       libramSkillsSoftcore: "none",
+      requireBoxServants: false,
     });
 
     CSEngine.propertyManager.setChoices({
