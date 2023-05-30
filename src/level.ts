@@ -44,6 +44,7 @@ import {
   uneffect,
   Witchess,
   withProperties,
+  withProperty,
 } from "libram";
 
 const levellingComplete = myLevel() >= 13 && get("_neverendingPartyFreeTurns") >= 10;
@@ -249,7 +250,7 @@ const Level: CSQuest = {
       ready: () => have(sauceFruit),
       do: (): void => {
         if (!have(saucePotion)) {
-          create(1, saucePotion);
+          withProperty("requireBoxServants", false, () => create(1, saucePotion));
         }
         if (have(saucePotion)) {
           use(1, saucePotion);
