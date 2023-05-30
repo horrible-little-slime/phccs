@@ -7278,7 +7278,8 @@ var HIGHLIGHT = (0, import_kolmafia33.isDarkMode)() ? "yellow" : "blue", CSEngin
         }).join(","),
         autoSatisfyWithNPCs: !0,
         autoSatisfyWithStorage: !1,
-        libramSkillsSoftcore: "none"
+        libramSkillsSoftcore: "none",
+        requireBoxServants: !1
       }), CSEngine2.propertyManager.setChoices({
         1467: 3,
         1468: 2,
