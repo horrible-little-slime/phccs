@@ -44,14 +44,7 @@ const GLOBAL_TASKS: CSTask[] = [
       get("questPAGhost") !== "unstarted" &&
       !!get("ghostLocation") &&
       !have($effect`Meteor Showered`),
-    do: (): void => {
-      const location = get("ghostLocation");
-      if (location) {
-        adv1(location, 0, "");
-      } else {
-        throw "Could not determine Proton Ghost location!";
-      }
-    },
+    do: () => get("ghostLocation") ?? abort("Failed to identify ghost location"),
     combat: new CSStrategy(() =>
       Macro.delevel()
         .easyFight()

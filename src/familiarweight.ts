@@ -53,7 +53,7 @@ const FamiliarWeight: CSQuest = {
         use($item`box of Familiar Jacks`);
       },
       outfit: {
-        familiar,
+        familiar: familiar === $familiar`Comma Chameleon` ? $familiar`Homemade Robot` : familiar,
       },
     },
     {
