@@ -1,6 +1,6 @@
 import { CSStrategy, Macro } from "./combat";
 import { commonFamiliarWeightBuffs, meteorShower, potionTask } from "./commons";
-import { CSEngine, CSQuest } from "./engine";
+import { CSQuest } from "./engine";
 import { availableFights, unequip } from "./lib";
 import uniform from "./outfit";
 import { create, mySign, runCombat, toInt, use, visitUrl } from "kolmafia";
@@ -32,32 +32,16 @@ const FamiliarWeight: CSQuest = {
     acc1: $item`Beach Comb`,
     acc2: $item`Brutal brogues`,
     acc3: $item`hewn moon-rune spoon`,
-    ...(have($familiar`Comma Chameleon`)
-      ? {
-          familiar,
-          famequip: $item.none,
-          ...(CSEngine.core === "soft"
-            ? {
-                back: $item`Buddy Bjorn`,
-                riders: { "buddy-bjorn": $familiar`Misshapen Animal Skeleton` },
-              }
-            : {}),
-        }
-      : { familiar, famequip: $item`overloaded Yule battery` }),
+    familiar,
+    ...(familiar === $familiar`Comma Chameleon` ? $item.none : $item`overloaded Yule battery`),
+    back: $items`Buddy Bjorn, protonic accelerator pack`,
+    riders: { "buddy-bjorn": $familiar`Misshapen Animal Skeleton` },
   }),
   turnsSpent: 0,
   maxTurns: 30,
   tasks: [
     ...commonFamiliarWeightBuffs(),
     potionTask($item`short stack of pancakes`),
-    {
-      name: "Moveable Feast",
-      core: "soft",
-      completed: () => get("_feastedFamiliars").split(";").includes("Mini-Trainbot"),
-      ready: () => have($item`moveable feast`) && familiar === $familiar`Mini-Trainbot`,
-      do: () => use($item`moveable feast`),
-      outfit: { familiar },
-    },
     {
       name: "Get Familiar Equipment",
       completed: () =>
@@ -69,9 +53,7 @@ const FamiliarWeight: CSQuest = {
         use($item`box of Familiar Jacks`);
       },
       outfit: {
-        familiar: have($familiar`Comma Chameleon`)
-          ? $familiar`Homemade Robot`
-          : $familiar`Mini-Trainbot`,
+        familiar,
       },
     },
     {

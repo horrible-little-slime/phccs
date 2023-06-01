@@ -57,12 +57,8 @@ const Spell: CSQuest = {
     ...(CSEngine.core === "soft"
       ? { familiar: $familiar`Disembodied Hand`, famequip: $item`Stick-Knife of Loathing` }
       : { familiar: $familiar`Left-Hand Man`, equipment: $item`astral statuette` }),
-    ...(have($item`Buddy Bjorn`)
-      ? {
-          back: $item`Buddy Bjorn`,
-          riders: { "buddy-bjorn": $familiar`Mechanical Songbird` },
-        }
-      : {}),
+    back: $items`Buddy Bjorn, protonic accelerator pack`,
+    riders: { "buddy-bjorn": $familiar`Mechanical Songbird` },
   }),
   turnsSpent: 1,
   maxTurns: 30,

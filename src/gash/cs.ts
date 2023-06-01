@@ -13,6 +13,7 @@ import {
   $class,
   $familiar,
   $item,
+  $items,
   $monster,
   $path,
   $slot,
@@ -114,10 +115,7 @@ export function main(input = ""): void {
     }
 
     if (args.softcore) {
-      const missingItems = [
-        $item`Stick-Knife of Loathing`,
-        have($familiar`Comma Chameleon`) ? $item`Buddy Bjorn` : $item`moveable feast`,
-      ].filter((i) => !have(i));
+      const missingItems = $items`Stick-Knife of Loathing, Buddy Bjorn`.filter((i) => !have(i));
       if (
         missingItems.length &&
         !userConfirm(

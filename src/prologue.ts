@@ -46,7 +46,7 @@ const PULLS = [
   $items`repaid diaper, Great Wolf's beastly trousers`,
   $items`meteorite necklace`,
   $items`Stick-Knife of Loathing`,
-  have($familiar`Comma Chameleon`) ? $items`Buddy Bjorn` : $items`moveable feast`,
+  $items`Buddy Bjorn`,
 ];
 
 let codpieceAttempted = false;
