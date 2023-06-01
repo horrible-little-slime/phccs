@@ -2343,7 +2343,7 @@ function inputToMoonId(moon, playerClass) {
         throw new AscendError("unknown prime stat for ".concat(playerClass));
     }
   }, fromNormalInput = signNameToId(tc(moon));
-  if (fromNormalInput >= 0)
+  if (fromNormalInput > 0)
     return fromNormalInput;
   switch (moon.toLowerCase()) {
     case "degrassi":
