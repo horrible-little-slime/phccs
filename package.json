@@ -31,9 +31,9 @@
         "typescript": "^4.7.4"
     },
     "dependencies": {
-        "grimoire-kolmafia": "^0.3.15",
+        "grimoire-kolmafia": "^0.3.18",
         "kolmafia": "^5.27099.0",
-        "libram": "^0.7.15"
+        "libram": "^0.8.2"
     },
     "author": "Phreddrickkv2",
     "license": "ISC",
