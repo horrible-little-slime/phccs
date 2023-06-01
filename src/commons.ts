@@ -35,6 +35,7 @@ import {
   BeachComb,
   Clan,
   Counter,
+  DeckOfEveryCard,
   get,
   have,
   set,
@@ -230,11 +231,11 @@ export function favouriteBirdTask(modifier: NumericModifier, positive = true): C
   };
 }
 
-export function deckTask(card: string): CSTask {
+export function deckTask(card: DeckOfEveryCard.Card): CSTask {
   return {
     name: `Cheat At Cards: ${card}`,
-    completed: () => get("_deckCardsSeen").toLowerCase().split("|").includes(card.toLowerCase()),
-    ready: () => have($item`Deck of Every Card`) && get("_deckCardsDrawn") <= 10,
-    do: () => cliExecute(`cheat ${card.toLowerCase()}`),
+    completed: () => DeckOfEveryCard.getCardsSeen().includes(card),
+    ready: () => DeckOfEveryCard.have() && DeckOfEveryCard.getRemainingCheats() > 0,
+    do: () => DeckOfEveryCard.cheatCard(card),
   };
 }
