@@ -36,6 +36,7 @@ import {
   $skill,
   $skills,
   byStat,
+  CampAway,
   Cartography,
   Counter,
   get,
@@ -102,8 +103,8 @@ const Level: CSQuest = {
     innerElf(),
     {
       name: "That's Just Cloud Talk, Man",
-      completed: () => !!get("_campAwayCloudBuffs"),
-      do: () => visitUrl("place.php?whichplace=campaway&action=campaway_sky"),
+      completed: () => CampAway.getCloudBuffsToday() > 0,
+      do: () => CampAway.gaze(),
     },
     {
       name: SYNTH_EFFECT.name,
