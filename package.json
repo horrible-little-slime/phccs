@@ -33,7 +33,7 @@
     "dependencies": {
         "grimoire-kolmafia": "^0.3.18",
         "kolmafia": "^5.27099.0",
-        "libram": "^0.8.2"
+        "libram": "^0.8.3"
     },
     "author": "Phreddrickkv2",
     "license": "ISC",

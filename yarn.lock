@@ -2169,10 +2169,10 @@ levn@^0.4.1:
     prelude-ls "^1.2.1"
     type-check "~0.4.0"
 
-libram@^0.8.2:
-  version "0.8.2"
-  resolved "https://registry.yarnpkg.com/libram/-/libram-0.8.2.tgz#ccdf2c3149452ae95e427c7d82dee17ecb0385e2"
-  integrity sha512-EkKFDPjxxdvGLWuNJ38Xefz/MffG/cC9jBJHV3rK8YtOxDnXNNae3D1TyHECu+KeoWOMNVHQgsbx1o5x+oboeg==
+libram@^0.8.3:
+  version "0.8.3"
+  resolved "https://registry.yarnpkg.com/libram/-/libram-0.8.3.tgz#4cb960a2fc5ef2b4b48a05004b1d2f325f389520"
+  integrity sha512-TL7t/BdlaQdTtfkZCS4e1bOIgqq11O6I02xdzFhVQqNqjo3SvkbaH2vTusdSmyO7aUrCFgn4daL1RpIDjsJThQ==
 
 locate-path@^6.0.0:
   version "6.0.0"
