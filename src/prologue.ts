@@ -117,7 +117,9 @@ const Prologue: CSQuest = {
     {
       name: "Fallbot",
       completed: () => !AutumnAton.available(),
-      do: () => AutumnAton.sendTo($location`The Sleazy Back Alley`),
+      do: () => {
+        AutumnAton.sendTo($location`The Sleazy Back Alley`);
+      },
     },
     {
       name: "Borrow Time",
