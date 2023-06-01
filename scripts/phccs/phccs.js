@@ -9359,7 +9359,7 @@ var PULLS = [$items(_templateObject161 || (_templateObject161 = _taggedTemplateL
       return !AutumnAton_exports.available();
     },
     do: function() {
-      return AutumnAton_exports.sendTo($location(_templateObject1023 || (_templateObject1023 = _taggedTemplateLiteral40(["The Sleazy Back Alley"]))));
+      AutumnAton_exports.sendTo($location(_templateObject1023 || (_templateObject1023 = _taggedTemplateLiteral40(["The Sleazy Back Alley"]))));
     }
   }, {
     name: "Borrow Time",
