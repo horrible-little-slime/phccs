@@ -2135,7 +2135,7 @@ var FORCE_REFRESH_REQUIREMENT = new Requirement([], {
 
 // src/gash/cs.ts
 var import_kolmafia14 = require("kolmafia");
-var _templateObject53, _templateObject213, _templateObject311, _templateObject411, _templateObject54, _templateObject63, _templateObject72, _templateObject82, _templateObject93, _templateObject103, _templateObject113, _templateObject123, _templateObject133, _templateObject143, _templateObject153, _templateObject163, _templateObject173, _templateObject183;
+var _templateObject53, _templateObject213, _templateObject311, _templateObject411, _templateObject54, _templateObject63, _templateObject72, _templateObject82, _templateObject93, _templateObject103, _templateObject113, _templateObject123, _templateObject133, _templateObject143, _templateObject153;
 function _createForOfIteratorHelper5(o, allowArrayLike) {
   var it = typeof Symbol != "undefined" && o[Symbol.iterator] || o["@@iterator"];
   if (!it) {
@@ -2267,7 +2267,7 @@ function main() {
       _iterator.f();
     }
     if (args.softcore) {
-      var missingItems = [$item(_templateObject113 || (_templateObject113 = _taggedTemplateLiteral6(["Stick-Knife of Loathing"]))), have($familiar(_templateObject123 || (_templateObject123 = _taggedTemplateLiteral6(["Comma Chameleon"])))) ? $item(_templateObject133 || (_templateObject133 = _taggedTemplateLiteral6(["Buddy Bjorn"]))) : $item(_templateObject143 || (_templateObject143 = _taggedTemplateLiteral6(["moveable feast"])))].filter(function(i) {
+      var missingItems = $items(_templateObject113 || (_templateObject113 = _taggedTemplateLiteral6(["Stick-Knife of Loathing, Buddy Bjorn"]))).filter(function(i) {
         return !have(i);
       });
       missingItems.length && !(0, import_kolmafia14.userConfirm)("You seem to be missing the following items required to run phccs in softcore: ".concat(missingItems.join(", "), ". Are you sure you wish to proceed?")) && (0, import_kolmafia14.abort)();
@@ -2286,12 +2286,12 @@ function main() {
       ceiling: "ceiling fan"
     }
   });
-  var lifestyle = softcore ? Lifestyle.softcore : Lifestyle.hardcore, pet = softcore ? $item(_templateObject153 || (_templateObject153 = _taggedTemplateLiteral6(["astral chapeau"]))) : $item(_templateObject163 || (_templateObject163 = _taggedTemplateLiteral6(["astral statuette"]))), perms = (0, import_kolmafia14.getPermedSkills)(), permSkills = new Map(import_kolmafia14.Skill.all().filter(function(s) {
+  var lifestyle = softcore ? Lifestyle.softcore : Lifestyle.hardcore, pet = softcore ? $item(_templateObject123 || (_templateObject123 = _taggedTemplateLiteral6(["astral chapeau"]))) : $item(_templateObject133 || (_templateObject133 = _taggedTemplateLiteral6(["astral statuette"]))), perms = (0, import_kolmafia14.getPermedSkills)(), permSkills = new Map(import_kolmafia14.Skill.all().filter(function(s) {
     return have(s) && !perms[s.name] && s.permable;
   }).map(function(s) {
     return [s, Lifestyle.hardcore];
   }));
-  (0, import_kolmafia14.visitUrl)("council.php"), ascend($path(_templateObject173 || (_templateObject173 = _taggedTemplateLiteral6(["Community Service"]))), args.class, lifestyle, "knoll", $item(_templateObject183 || (_templateObject183 = _taggedTemplateLiteral6(["astral six-pack"]))), pet, {
+  (0, import_kolmafia14.visitUrl)("council.php"), ascend($path(_templateObject143 || (_templateObject143 = _taggedTemplateLiteral6(["Community Service"]))), args.class, lifestyle, "knoll", $item(_templateObject153 || (_templateObject153 = _taggedTemplateLiteral6(["astral six-pack"]))), pet, {
     neverAbort: !0,
     permSkills: permSkills
   });
