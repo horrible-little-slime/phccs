@@ -1,6 +1,6 @@
 import { CSStrategy, Macro } from "./combat";
 import { asdonTask, deckTask, potionTask, skillTask, songTask } from "./commons";
-import { CSQuest } from "./engine";
+import { CSEngine, CSQuest } from "./engine";
 import uniform from "./outfit";
 import { OutfitSpec } from "grimoire-kolmafia";
 import { canAdventure, cliExecute, create, use, useSkill, visitUrl } from "kolmafia";
@@ -29,7 +29,7 @@ const BoozeDrop: CSQuest = {
       weapon: $items`extra-large utility candle, Fourth of May Cosplay Saber`,
       offhand: $item`unbreakable umbrella`,
       back: $items`Buddy Bjorn, protonic accelerator pack`,
-      riders: { "buddy-bjorn": $familiar`Party Mouse` },
+      riders: CSEngine.core === "soft" ? { "buddy-bjorn": $familiar`Party Mouse` } : {},
       acc1: $item`Guzzlr tablet`,
       acc2: $item`Cincho de Mayo`,
       acc3: $items`barrel hoop earring, gold detective badge, government-issued night-vision goggles, combat lover's locket`,
