@@ -43,7 +43,7 @@ const UNCHANGING_OUTFIT: OutfitSpec = {
 const DEFAULT_UNIFORM = (): OutfitSpec => ({
   ...UNCHANGING_OUTFIT,
   hat: DaylightShavings.buffAvailable()
-    ? DaylightShavings.helmet
+    ? $item`Daylight Shavings Helmet`
     : byStat<Item | Item[]>({
         Moxie: $items`very pointy crown, Iunion Crown`,
         Mysticality: $items`astral chapeau, Iunion Crown`,

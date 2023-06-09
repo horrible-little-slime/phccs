@@ -1,6 +1,14 @@
-import { CombatStrategy, Delayed } from "grimoire-kolmafia";
+import { CombatStrategy } from "grimoire-kolmafia";
 import { myClass } from "kolmafia";
-import { $class, $item, $skill, getTodaysHolidayWanderers, have, StrictMacro } from "libram";
+import {
+  $class,
+  $item,
+  $skill,
+  Delayed,
+  getTodaysHolidayWanderers,
+  have,
+  StrictMacro,
+} from "libram";
 
 export class CSStrategy extends CombatStrategy {
   constructor(macro: Delayed<Macro> = () => Macro.defaultKill(), fallthrough?: Delayed<Macro>) {
