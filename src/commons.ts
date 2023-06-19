@@ -132,11 +132,6 @@ export function commonFamiliarWeightBuffs(): CSTask[] {
       completed: () => get("_witchessBuff"),
       do: () => cliExecute("witchess"),
     },
-    {
-      name: "Suzie's Blessing",
-      completed: () => get("_clanFortuneBuffUsed"),
-      do: () => cliExecute("fortune buff familiar"),
-    },
     beachTask($effect`Do I Know You From Somewhere?`),
   ];
 }

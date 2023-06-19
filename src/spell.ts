@@ -21,7 +21,6 @@ import {
   retrieveItem,
   storageAmount,
   takeStorage,
-  use,
   visitUrl,
 } from "kolmafia";
 import {
@@ -113,26 +112,12 @@ const Spell: CSQuest = {
       do: () => cliExecute("Briefcase.ash enchantment spell"),
     },
     {
-      name: "Mariachi Hat",
-      completed: () => have($item`mariachi hat`),
-      do: () => retrieveItem($item`mariachi hat`),
-    },
-    {
       name: "Weeping Willow Wand",
       completed: () => have($item`weeping willow wand`),
       core: "hard",
       do: (): void => {
         if (!have($item`flimsy hardwood scraps`)) visitUrl("shop.php?whichshop=lathe");
         retrieveItem($item`weeping willow wand`);
-      },
-    },
-    {
-      name: "Tea Party",
-      completed: () => get("_madTeaParty"),
-      do: () => cliExecute("hatter mariachi hat"),
-      prepare: (): void => {
-        visitUrl("clan_viplounge.php?action=lookingglass&whichfloor=2");
-        use($item`"DRINK ME" potion`);
       },
     },
     skillTask($skill`Spirit of Cayenne`),
