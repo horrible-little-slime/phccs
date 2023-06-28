@@ -287,6 +287,32 @@ const Level: CSQuest = {
       ),
     },
     {
+      name: "Nanorhino",
+      completed: () =>
+        have(
+          byStat({
+            Mysticality: $effect`Nanobrainy`,
+            Muscle: $effect`Nanobrawny`,
+            Moxie: $effect`Nanoballsy`,
+          })
+        ),
+      ready: () =>
+        have($familiar`Nanorhino`) &&
+        get("_nanorhinoCharge") >= 100 &&
+        get("_speakeasyFreeFights") < 3,
+      do: $location`An Unusually Quiet Barroom Brawl`,
+      outfit: () => uniform({ changes: { familiar: $familiar`Nanorhino` } }),
+      combat: new CSStrategy(() =>
+        Macro.skill(
+          byStat({
+            Mysticality: $skill`Spaghetti Spear`,
+            Moxie: $skill`Suckerpunch`,
+            Muscle: $skill`Clobber`,
+          })
+        ).defaultKill()
+      ),
+    },
+    {
       name: "Giant Growth and Blue Rocket",
       core: "soft",
       completed: () => have($effect`Giant Growth`),
