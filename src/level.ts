@@ -10,6 +10,7 @@ import {
   create,
   effectModifier,
   mpCost,
+  myFamiliar,
   myHp,
   myLevel,
   myMaxmp,
@@ -287,32 +288,6 @@ const Level: CSQuest = {
       ),
     },
     {
-      name: "Nanorhino",
-      completed: () =>
-        have(
-          byStat({
-            Mysticality: $effect`Nanobrainy`,
-            Muscle: $effect`Nanobrawny`,
-            Moxie: $effect`Nanoballsy`,
-          })
-        ),
-      ready: () =>
-        have($familiar`Nanorhino`) &&
-        get("_nanorhinoCharge") >= 100 &&
-        get("_speakeasyFreeFights") < 3,
-      do: $location`An Unusually Quiet Barroom Brawl`,
-      outfit: () => uniform({ changes: { familiar: $familiar`Nanorhino` } }),
-      combat: new CSStrategy(() =>
-        Macro.skill(
-          byStat({
-            Mysticality: $skill`Spaghetti Spear`,
-            Moxie: $skill`Suckerpunch`,
-            Muscle: $skill`Clobber`,
-          })
-        ).defaultKill()
-      ),
-    },
-    {
       name: "Giant Growth and Blue Rocket",
       core: "soft",
       completed: () => have($effect`Giant Growth`),
@@ -411,10 +386,28 @@ const Level: CSQuest = {
     },
     {
       name: "Oliver's Place: Prime Portscan",
-      completed: () => get("_speakeasyFreeFights") > 0,
+      completed: () => get("_sourceTerminalPortscanUses") > 0,
       do: $location`An Unusually Quiet Barroom Brawl`,
-      outfit: () => uniform(),
-      combat: new CSStrategy(() => Macro.skill($skill`Portscan`).defaultKill()),
+      outfit: () =>
+        uniform(
+          have($familiar`Nanorhino`) && get("_nanorhinoCharge") >= 100
+            ? { changes: { familiar: $familiar`Nanorhino` } }
+            : {}
+        ),
+      combat: new CSStrategy(() =>
+        Macro.skill($skill`Portscan`)
+          .externalIf(
+            myFamiliar() === $familiar`Nanorhino`,
+            Macro.trySkill(
+              byStat({
+                Mysticality: $skill`Spaghetti Spear`,
+                Moxie: $skill`Suckerpunch`,
+                Muscle: $skill`Clobber`,
+              })
+            )
+          )
+          .defaultKill()
+      ),
     },
     {
       name: "Oliver's Place: Use Portscan",
