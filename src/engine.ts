@@ -14,7 +14,16 @@ import {
   visitUrl,
   writeCcs,
 } from "kolmafia";
-import { $effect, $path, CommunityService, get, PropertiesManager, uneffect } from "libram";
+import {
+  $effect,
+  $path,
+  CommunityService,
+  Delayed,
+  get,
+  PropertiesManager,
+  undelay,
+  uneffect,
+} from "libram";
 
 const HIGHLIGHT = isDarkMode() ? "yellow" : "blue";
 
@@ -28,7 +37,7 @@ type Misc = {
   type: "MISC";
   name: string;
 };
-export type CSQuest = Quest<CSTask> & { turnsSpent?: number | (() => number) } & (Service | Misc);
+export type CSQuest = Quest<CSTask> & { turnsSpent?: Delayed<number> } & (Service | Misc);
 
 export class CSEngine extends Engine<never, CSTask> {
   private static propertyManager = new PropertiesManager();
@@ -36,7 +45,7 @@ export class CSEngine extends Engine<never, CSTask> {
   propertyManager = CSEngine.propertyManager;
   name: string;
   csOptions: Service | Misc;
-  turnsSpent?: number | (() => number);
+  turnsSpent?: Delayed<number>;
 
   static get core(): "hard" | "soft" {
     return CSEngine.core_ as "hard" | "soft";
@@ -108,8 +117,7 @@ export class CSEngine extends Engine<never, CSTask> {
 
   private get turns(): number {
     if (!this.turnsSpent) return 0;
-    if (typeof this.turnsSpent === "function") return this.turnsSpent();
-    return this.turnsSpent;
+    return undelay(this.turnsSpent);
   }
 
   private runTest(): void {
