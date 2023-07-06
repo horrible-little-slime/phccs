@@ -7497,7 +7497,7 @@ var HIGHLIGHT = (0, import_kolmafia36.isDarkMode)() ? "yellow" : "blue", CSEngin
   }, {
     key: "turns",
     get: function() {
-      return this.turnsSpent ? typeof this.turnsSpent == "function" ? this.turnsSpent() : this.turnsSpent : 0;
+      return this.turnsSpent ? undelay(this.turnsSpent) : 0;
     }
   }, {
     key: "runTest",
