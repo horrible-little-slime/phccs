@@ -56,19 +56,17 @@ const foldshirt = (): void => {
 };
 
 const CastSkills =
-  $skills`Advanced Saucecrafting, Advanced Cocktailcrafting, Acquire Rhinestones, Prevent Scurvy and Sobriety, The Magical Mojomuscular Melody, Stevedave's Shanty of Superiority, Fat Leon's Phat Loot Lyric, Leash of Linguini, Empathy of the Newt, Blood Bond, Blood Bubble, Song of Bravado, Get Big, Mathematical Precision, Ruthless Efficiency`
-    .map((s) => ({
+  $skills`Advanced Saucecrafting, Advanced Cocktailcrafting, Acquire Rhinestones, Prevent Scurvy and Sobriety, The Magical Mojomuscular Melody, Stevedave's Shanty of Superiority, Fat Leon's Phat Loot Lyric, Leash of Linguini, Empathy of the Newt, Blood Bond, Blood Bubble, Song of Bravado, Get Big, Mathematical Precision, Ruthless Efficiency`.map(
+    (s) => ({
       name: s.name,
       do: (): void => {
         useSkill(s);
       },
-      completed: () => (s.buff ? have(toEffect(s)) : s.timescast > 0),
+      completed: () => (s.buff ? have(toEffect(s)) : s.timescast >= s.dailylimit),
       ready: () => myMp() >= mpCost(s),
-    }))
-    .map((task) => ({
-      ...task,
       outfit: () => uniform({ changes: { offhand: $item`Abracandalabra` } }),
-    }));
+    })
+  );
 
 const generalStoreItem = byStat({
   Muscle: $item`Ben-Gal™ Balm`,
