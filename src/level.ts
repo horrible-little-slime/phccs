@@ -419,8 +419,7 @@ const Level: CSQuest = {
       combat: new CSStrategy(() =>
         Macro.skill($skill`Become a Bat`)
           .skill($skill`Otoscope`)
-          .attack()
-          .repeat()
+          .defaultKill()
       ),
     },
     {

@@ -1,4 +1,5 @@
-import { Task } from "grimoire-kolmafia";
+import { CSStrategy } from "./combat";
+import { StrictCombatTask } from "grimoire-kolmafia";
 import {
   availableAmount,
   buy,
@@ -46,7 +47,10 @@ import {
 } from "libram";
 import { NumericModifier } from "libram/dist/modifierTypes";
 
-export type CSTask = Task & { core?: "hard" | "soft"; class?: Class[] };
+export type CSTask = StrictCombatTask<never, CSStrategy> & {
+  core?: "hard" | "soft";
+  class?: Class[];
+};
 export const PropertyManager = new PropertiesManager();
 
 export function fuelUp(): void {
