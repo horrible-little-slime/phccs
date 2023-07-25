@@ -407,19 +407,7 @@ const Level: CSQuest = {
             )
             .defaultKill(),
         {
-          holidayWanderer: () =>
-            Macro.skill($skill`Portscan`)
-              .externalIf(
-                myFamiliar() === $familiar`Nanorhino`,
-                Macro.trySkill(
-                  byStat({
-                    Mysticality: $skill`Spaghetti Spear`,
-                    Moxie: $skill`Suckerpunch`,
-                    Muscle: $skill`Clobber`,
-                  })
-                )
-              )
-              .defaultKill(),
+          fightHolidayWanderer: true,
         }
       ),
     },

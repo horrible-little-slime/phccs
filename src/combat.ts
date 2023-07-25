@@ -15,12 +15,18 @@ export class CSStrategy extends CombatStrategy {
     macro: Delayed<Macro> = () => Macro.defaultKill(),
     {
       fallthrough,
-      holidayWanderer,
-    }: { fallthrough?: Delayed<Macro>; holidayWanderer?: Delayed<Macro> } = {}
+      fightHolidayWanderer,
+    }: { fallthrough?: Delayed<Macro>; fightHolidayWanderer?: boolean } = {}
   ) {
     super();
-    this.macro(holidayWanderer ?? Macro.skill($skill`Feel Hatred`), getTodaysHolidayWanderers())
-      .autoattack(holidayWanderer ?? Macro.skill($skill`Feel Hatred`), getTodaysHolidayWanderers())
+    this.macro(
+      fightHolidayWanderer ? macro : Macro.skill($skill`Feel Hatred`),
+      getTodaysHolidayWanderers()
+    )
+      .autoattack(
+        fightHolidayWanderer ? macro : Macro.skill($skill`Feel Hatred`),
+        getTodaysHolidayWanderers()
+      )
       .autoattack(macro)
       .macro(fallthrough ?? macro);
   }
