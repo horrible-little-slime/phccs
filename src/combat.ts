@@ -11,10 +11,22 @@ import {
 } from "libram";
 
 export class CSStrategy extends CombatStrategy {
-  constructor(macro: Delayed<Macro> = () => Macro.defaultKill(), fallthrough?: Delayed<Macro>) {
+  constructor(
+    macro: Delayed<Macro> = () => Macro.defaultKill(),
+    {
+      fallthrough,
+      fightHolidayWanderer,
+    }: { fallthrough?: Delayed<Macro>; fightHolidayWanderer?: boolean } = {}
+  ) {
     super();
-    this.macro(Macro.skill($skill`Feel Hatred`), getTodaysHolidayWanderers())
-      .autoattack(Macro.skill($skill`Feel Hatred`), getTodaysHolidayWanderers())
+    this.macro(
+      fightHolidayWanderer ? macro : Macro.skill($skill`Feel Hatred`),
+      getTodaysHolidayWanderers()
+    )
+      .autoattack(
+        fightHolidayWanderer ? macro : Macro.skill($skill`Feel Hatred`),
+        getTodaysHolidayWanderers()
+      )
       .autoattack(macro)
       .macro(fallthrough ?? macro);
   }
