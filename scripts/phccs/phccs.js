@@ -6656,8 +6656,8 @@ var CSStrategy = /* @__PURE__ */ function(_CombatStrategy) {
   function CSStrategy2() {
     var _this, macro = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : function() {
       return Macro2.defaultKill();
-    }, fallthrough = arguments.length > 1 ? arguments[1] : void 0;
-    return _classCallCheck13(this, CSStrategy2), _this = _super.call(this), _this.macro(Macro2.skill($skill(_templateObject101 || (_templateObject101 = _taggedTemplateLiteral27(["Feel Hatred"])))), getTodaysHolidayWanderers()).autoattack(Macro2.skill($skill(_templateObject237 || (_templateObject237 = _taggedTemplateLiteral27(["Feel Hatred"])))), getTodaysHolidayWanderers()).autoattack(macro).macro(fallthrough != null ? fallthrough : macro), _this;
+    }, _ref = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {}, fallthrough = _ref.fallthrough, fightHolidayWanderer = _ref.fightHolidayWanderer;
+    return _classCallCheck13(this, CSStrategy2), _this = _super.call(this), _this.macro(fightHolidayWanderer ? macro : Macro2.skill($skill(_templateObject101 || (_templateObject101 = _taggedTemplateLiteral27(["Feel Hatred"])))), getTodaysHolidayWanderers()).autoattack(fightHolidayWanderer ? macro : Macro2.skill($skill(_templateObject237 || (_templateObject237 = _taggedTemplateLiteral27(["Feel Hatred"])))), getTodaysHolidayWanderers()).autoattack(macro).macro(fallthrough != null ? fallthrough : macro), _this;
   }
   return _createClass13(CSStrategy2);
 }(CombatStrategy), Macro2 = /* @__PURE__ */ function(_StrictMacro) {
@@ -8964,6 +8964,8 @@ var levellingComplete = (0, import_kolmafia42.myLevel)() >= 13 && get("_neverend
           Moxie: $skill(_templateObject952 || (_templateObject952 = _taggedTemplateLiteral38(["Suckerpunch"]))),
           Muscle: $skill(_templateObject962 || (_templateObject962 = _taggedTemplateLiteral38(["Clobber"])))
         }))).defaultKill();
+      }, {
+        fightHolidayWanderer: !0
       })
     },
     {
