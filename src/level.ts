@@ -392,19 +392,35 @@ const Level: CSQuest = {
             ? { changes: { familiar: $familiar`Nanorhino` } }
             : {}
         ),
-      combat: new CSStrategy(() =>
-        Macro.skill($skill`Portscan`)
-          .externalIf(
-            myFamiliar() === $familiar`Nanorhino`,
-            Macro.trySkill(
-              byStat({
-                Mysticality: $skill`Spaghetti Spear`,
-                Moxie: $skill`Suckerpunch`,
-                Muscle: $skill`Clobber`,
-              })
+      combat: new CSStrategy(
+        () =>
+          Macro.skill($skill`Portscan`)
+            .externalIf(
+              myFamiliar() === $familiar`Nanorhino`,
+              Macro.trySkill(
+                byStat({
+                  Mysticality: $skill`Spaghetti Spear`,
+                  Moxie: $skill`Suckerpunch`,
+                  Muscle: $skill`Clobber`,
+                })
+              )
             )
-          )
-          .defaultKill()
+            .defaultKill(),
+        {
+          holidayWanderer: () =>
+            Macro.skill($skill`Portscan`)
+              .externalIf(
+                myFamiliar() === $familiar`Nanorhino`,
+                Macro.trySkill(
+                  byStat({
+                    Mysticality: $skill`Spaghetti Spear`,
+                    Moxie: $skill`Suckerpunch`,
+                    Muscle: $skill`Clobber`,
+                  })
+                )
+              )
+              .defaultKill(),
+        }
       ),
     },
     {
