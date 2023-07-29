@@ -1,6 +1,6 @@
 # PHCCS
 
-This is a hardcore community service script made by me, Phreddrickkv2 (#1515124). It is designed to work for people who are me, Phreddrickkv2 (#1515124).
+This is a hardcore community service script made by me, sweaty bill (#1515124). It is designed to work for people who are me, sweaty bill (#1515124).
 
 If you aren't me, it may not work for you! It assumes you own a lot of things, and that you're whitelisted to `Alliance From Heck` and `Hobopolis Vacation Home`. For players not blessed with a whitelist to those clans, set the properties `phccs_mainClan` and `phccs_elfClan` to a clan that has a full VIP room, and a clan that has an available Mother Slime, respectively.
 
