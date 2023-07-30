@@ -1,7 +1,7 @@
 import { CSStrategy, Macro } from "./combat";
 import { asdonTask, beachTask, commonFamiliarWeightBuffs, restoreBuffTasks } from "./commons";
 import { CSQuest } from "./engine";
-import { ensureMp, horse, horsery } from "./lib";
+import { ensureMp } from "./lib";
 import uniform from "./outfit";
 import {
   adv1,
@@ -24,6 +24,7 @@ import {
   CommunityService,
   get,
   have,
+  Horsery,
 } from "libram";
 
 const buffs = $effects`Elemental Saucesphere, Astral Shell`;

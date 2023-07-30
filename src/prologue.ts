@@ -1,6 +1,6 @@
 import { deckTask } from "./commons";
 import { CSQuest } from "./engine";
-import { horse, horsery, setClan, tryUse } from "./lib";
+import { setClan, tryUse } from "./lib";
 import {
   autosell,
   buy,
@@ -37,6 +37,7 @@ import {
   CommunityService,
   get,
   have,
+  Horsery,
   questStep,
   SongBoom,
   SourceTerminal,
