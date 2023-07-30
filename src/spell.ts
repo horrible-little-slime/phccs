@@ -9,7 +9,7 @@ import {
   songTask,
 } from "./commons";
 import { CSEngine, CSQuest } from "./engine";
-import { horse, horsery, unequip } from "./lib";
+import { unequip } from "./lib";
 import uniform from "./outfit";
 import {
   canadiaAvailable,
@@ -36,6 +36,7 @@ import {
   get,
   getSaleValue,
   have,
+  Horsery,
 } from "libram";
 
 const buffs = $effects`Carol of the Hells, Arched Eyebrow of the Archmage, Song of Sauce`;
@@ -72,7 +73,7 @@ const Spell: CSQuest = {
         uniform({
           changes: { familiar: $familiar`Ghost of Crimbo Carols`, famequip: $item.none },
         }),
-      prepare: () => horsery() === "pale" && horse("dark"),
+      prepare: () => Horsery.current() === "pale" && Horsery.changeHorse("dark"),
       combat: new CSStrategy(() =>
         Macro.trySkill($skill`Asdon Martin: Spring-Loaded Front Bumper`)
           .trySkill($skill`Feel Hatred`)
@@ -128,7 +129,7 @@ const Spell: CSQuest = {
       completed: () => have($effect`Saucefingers`),
       class: $classes`Pastamancer`,
       do: $location`The Dire Warren`,
-      prepare: () => horsery() === "pale" && horse("dark"),
+      prepare: () => Horsery.current() === "pale" && Horsery.changeHorse("dark"),
       outfit: () => uniform({ changes: { familiar: $familiar`Mini-Adventurer` } }),
       combat: new CSStrategy(() =>
         Macro.trySkill($skill`Asdon Martin: Spring-Loaded Front Bumper`)

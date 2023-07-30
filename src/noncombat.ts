@@ -35,8 +35,8 @@ const Noncombat: CSQuest = {
   tasks: [
     {
       name: "Horse",
-      completed: () => horsery() === "dark",
-      do: () => horse("dark"),
+      completed: () => Horsery.current() === "dark",
+      do: () => Horsery.changeHorse("dark"),
     },
     ...commonFamiliarWeightBuffs(),
     skillTask($effect`Smooth Movements`),

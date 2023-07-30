@@ -80,8 +80,8 @@ const HotRes: CSQuest = {
     {
       core: "hard",
       name: "Pale Horse",
-      completed: () => horsery() === "pale",
-      do: () => horse("pale"),
+      completed: () => Horsery.current() === "pale",
+      do: () => Horsery.changeHorse("pale"),
     },
     {
       name: "Deep Dark Visions",

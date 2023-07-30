@@ -1,5 +1,5 @@
 import { CSStrategy, Macro } from "./combat";
-import { CSTask, currentBirdHas, favouriteBirdHas, horse, horsery } from "./lib";
+import { CSTask, currentBirdHas, favouriteBirdHas } from "./lib";
 import uniform from "./outfit";
 import {
   adv1,
@@ -38,6 +38,7 @@ import {
   DeckOfEveryCard,
   get,
   have,
+  Horsery,
   set,
   SourceTerminal,
 } from "libram";
@@ -178,7 +179,7 @@ export function meteorShower(): CSTask {
     ready: () => get("_meteorShowerUses") < 5 && get("_saberForceUses") < 5,
     completed: () => have($effect`Meteor Showered`),
     prepare: () => {
-      if (horsery() === "pale") horse("dark");
+      if (Horsery.current() === "pale") Horsery.changeHorse("dark");
       SourceTerminal.educate([$skill`Turbo`, $skill`Extract`]);
     },
     do: () => {

@@ -136,16 +136,6 @@ export function tryUse(quantity: number, it: Item): boolean {
   }
 }
 
-type Horse = "dark" | "normal" | "crazy" | "pale" | null;
-
-export function horsery(): Horse {
-  return (get("_horsery").split(" ")[0] as Horse) ?? null;
-}
-
-export function horse(horse: Horse): void {
-  if (horsery() !== horse) cliExecute(`horsery ${horse} horse`);
-}
-
 export function ensureMp(mp: number): void {
   if (myMp() > mp) return;
   if (mp > myMaxmp()) throw `Insufficient maximum mp!`;

@@ -10,7 +10,7 @@ import {
   songTask,
 } from "./commons";
 import { CSEngine, CSQuest } from "./engine";
-import { horse, horsery, unequip } from "./lib";
+import { unequip } from "./lib";
 import uniform from "./outfit";
 import {
   canadiaAvailable,
@@ -33,6 +33,7 @@ import {
   CommunityService,
   get,
   have,
+  Horsery,
   set,
 } from "libram";
 
@@ -85,7 +86,7 @@ const Weapon: CSQuest = {
         uniform({
           changes: { familiar: $familiar`Ghost of Crimbo Carols`, famequip: $item.none },
         }),
-      prepare: () => horsery() === "pale" && horse("dark"),
+      prepare: () => Horsery.current() === "pale" && Horsery.changeHorse("dark"),
       combat: new CSStrategy(() =>
         Macro.trySkill($skill`Asdon Martin: Spring-Loaded Front Bumper`)
           .trySkill($skill`Feel Hatred`)

@@ -281,8 +281,8 @@ const Prologue: CSQuest = {
     },
     {
       name: "Horsery",
-      completed: () => horsery() === "dark",
-      do: () => horse("dark"),
+      completed: () => Horsery.current() === "dark",
+      do: () => Horsery.changeHorse("dark"),
     },
     {
       name: "Cowboy Boots",
