@@ -11,7 +11,17 @@ import {
 import { CSQuest } from "./engine";
 import uniform from "./outfit";
 import { cliExecute, runChoice, runCombat, useSkill, visitUrl } from "kolmafia";
-import { $effect, $effects, $familiar, $item, $skill, CommunityService, get, have, Horsery } from "libram";
+import {
+  $effect,
+  $effects,
+  $familiar,
+  $item,
+  $skill,
+  CommunityService,
+  get,
+  have,
+  Horsery,
+} from "libram";
 
 const Noncombat: CSQuest = {
   name: "Noncombat",
