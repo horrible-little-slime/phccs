@@ -70,6 +70,7 @@ const Weapon: CSQuest = {
     skillTask($effect`Frenzied, Bloody`),
     potionTask($item`LOV Elixir #3`),
     potionTask($item`vial of hamethyst juice`),
+    potionTask($item`imported taffy`),
     beachTask($effect`Lack of Body-Building`),
     songTask($effect`Jackasses' Symphony of Destruction`, $effect`The Sonata of Sneakiness`),
     {
