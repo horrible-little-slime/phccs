@@ -292,8 +292,7 @@ export function currentBirdHas(modifier: NumericModifier, positive = true): bool
     .some((mod) => mod.includes(`${modifier}: ${sign}`));
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function printJson(json: any): void {
+export function printJson(json: Record<string, unknown>): void {
   print(
     JSON.stringify(json, (k, v) => {
       if (v instanceof MafiaClass) {
@@ -302,4 +301,13 @@ export function printJson(json: any): void {
       return v;
     })
   );
+}
+
+export function withCheckpoint(cb: () => unknown): void {
+  cliExecute("checkpoint");
+  try {
+    cb();
+  } finally {
+    cliExecute("outfit checkpoint");
+  }
 }
