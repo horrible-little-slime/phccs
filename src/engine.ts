@@ -120,9 +120,11 @@ export class CSEngine extends Engine<never, CSTask> {
    * @returns Next task or an early undefined if appropriate, stopping the task loop
    */
   getNextTask(): CSTask | undefined {
-    if (this.csOptions.type === "MISC") return super.getNextTask();
-
-    if (this.csOptions.test.prediction <= 1 && this.csOptions.test.actualCost() <= 1) {
+    if (
+      this.csOptions.type === "SERVICE" &&
+      this.csOptions.test.prediction <= 1 &&
+      this.csOptions.test.actualCost() <= 1
+    ) {
       return undefined;
     }
 
