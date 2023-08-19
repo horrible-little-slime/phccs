@@ -96,6 +96,7 @@ const Muscle: CSQuest = {
     { ...innerElf(), core: "hard" },
     { ...potionTask($item`Ben-Gal™ Balm`), core: "hard" },
     equalizeTask(),
+    potionTask($item`vial of hamethyst juice`),
   ],
 };
 
