@@ -115,6 +115,20 @@ export class CSEngine extends Engine<never, CSTask> {
     }
   }
 
+  /**
+   * If we have reached an actual cost of 1 turn, no need to do more tasks
+   * @returns Next task or an early undefined if appropriate, stopping the task loop
+   */
+  getNextTask(): CSTask | undefined {
+    if (this.csOptions.type === "MISC") return super.getNextTask();
+
+    if (this.csOptions.test.prediction <= 1 && this.csOptions.test.actualCost() <= 1) {
+      return undefined;
+    }
+
+    return super.getNextTask();
+  }
+
   private get turns(): number {
     if (!this.turnsSpent) return 0;
     return undelay(this.turnsSpent);
