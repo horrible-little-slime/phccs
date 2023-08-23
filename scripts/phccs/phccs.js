@@ -14554,7 +14554,7 @@ var buffs3 = $effects(_templateObject170 || (_templateObject170 = _taggedTemplat
       famequip: $item(_templateObject1123 || (_templateObject1123 = _taggedTemplateLiteral41(["Stick-Knife of Loathing"])))
     } : {
       familiar: $familiar(_templateObject1223 || (_templateObject1223 = _taggedTemplateLiteral41(["Left-Hand Man"]))),
-      equipment: $item(_templateObject1323 || (_templateObject1323 = _taggedTemplateLiteral41(["astral statuette"])))
+      famequip: $item(_templateObject1323 || (_templateObject1323 = _taggedTemplateLiteral41(["astral statuette"])))
     }), {}, {
       back: $items(_templateObject1419 || (_templateObject1419 = _taggedTemplateLiteral41(["Buddy Bjorn, protonic accelerator pack"]))),
       riders: {
