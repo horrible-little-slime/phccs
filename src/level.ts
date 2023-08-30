@@ -129,7 +129,8 @@ const Level: CSQuest = {
     },
     {
       name: "Get Love Potion",
-      completed: () => $skill`Love Mixology`.timescast > 0,
+      completed: () =>
+        $skill`Love Mixology`.timescast > 0 || have(lovePotion) || lovePotionConsidered,
       do: () => useSkill(1, $skill`Love Mixology`),
     },
     {
