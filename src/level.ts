@@ -129,14 +129,16 @@ const Level: CSQuest = {
     },
     {
       name: "Get Love Potion",
-      completed: () =>
-        $skill`Love Mixology`.timescast > 0 || have(lovePotion) || lovePotionConsidered,
-      do: () => useSkill(1, $skill`Love Mixology`),
+      completed: () => have(lovePotion) || have(loveEffect),
+      do: () => {
+        useSkill(1, $skill`Love Mixology`);
+        lovePotionConsidered = false;
+      },
     },
     {
       name: "Consider Love Potion",
       ready: () => have(lovePotion),
-      completed: () => lovePotionConsidered,
+      completed: () => lovePotionConsidered || have(loveEffect),
       do: (): void => {
         visitUrl(`desc_effect.php?whicheffect=${loveEffect.descid}`);
         lovePotionConsidered = true;
