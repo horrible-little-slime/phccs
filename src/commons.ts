@@ -68,8 +68,12 @@ export function innerElf(): CSTask {
     outfit: () =>
       uniform({
         changes: {
+          shirt: $item`Jurassic Parka`,
           acc3: $item`Kremlin's Greatest Briefcase`,
           familiar: $familiar`Machine Elf`,
+          modes: {
+            parka: "pterodactyl",
+          },
         },
       }),
     choices: { [326]: 1 },
