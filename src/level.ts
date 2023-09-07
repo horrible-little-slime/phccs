@@ -56,7 +56,7 @@ const foldshirt = (): void => {
 };
 
 const CastSkills =
-  $skills`Advanced Saucecrafting, Advanced Cocktailcrafting, Acquire Rhinestones, Prevent Scurvy and Sobriety, The Magical Mojomuscular Melody, Stevedave's Shanty of Superiority, Fat Leon's Phat Loot Lyric, Leash of Linguini, Empathy of the Newt, Blood Bond, Blood Bubble, Song of Bravado, Get Big, Mathematical Precision, Ruthless Efficiency`.map(
+  $skills`Advanced Saucecrafting, Advanced Cocktailcrafting, Acquire Rhinestones, Prevent Scurvy and Sobriety, The Magical Mojomuscular Melody, Stevedave's Shanty of Superiority, Fat Leon's Phat Loot Lyric, Leash of Linguini, Empathy of the Newt, Blood Bond, Blood Bubble, Song of Bravado, Get Big, Mathematical Precision, Ruthless Efficiency, Carol of the Bulls, Rage of the Reindeer, `.map(
     (s) => ({
       name: s.name,
       do: (): void => {
@@ -323,9 +323,13 @@ const Level: CSQuest = {
         foldshirt();
         return uniform({
           changes: {
-            weapon: $item`Fourth of May Cosplay Saber`,
+            weapon: byStat({
+              default: $item`Fourth of May Cosplay Saber`,
+              Muscle: $item`June cleaver`,
+            }),
             shirt: $item`makeshift garbage shirt`,
             offhand: $item`familiar scrapbook`,
+            familiar: $familiar`Shorter-Order Cook`,
           },
         });
       },
@@ -345,9 +349,13 @@ const Level: CSQuest = {
         foldshirt();
         return uniform({
           changes: {
-            weapon: $item`Fourth of May Cosplay Saber`,
+            weapon: byStat({
+              default: $item`Fourth of May Cosplay Saber`,
+              Muscle: $item`June cleaver`,
+            }),
             shirt: $item`makeshift garbage shirt`,
             offhand: $item`familiar scrapbook`,
+            familiar: $familiar`Shorter-Order Cook`,
           },
         });
       },
@@ -366,8 +374,8 @@ const Level: CSQuest = {
         return uniform({
           changes: {
             weapon: byStat({
-              Muscle: $item`June cleaver`,
               default: $item`Fourth of May Cosplay Saber`,
+              Muscle: $item`June cleaver`,
             }),
             shirt: $item`makeshift garbage shirt`,
             offhand: $item`familiar scrapbook`,
