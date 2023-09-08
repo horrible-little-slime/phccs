@@ -1,5 +1,5 @@
 import BoozeDrop from "./boozedrop";
-import CoilWire from "./coil wire";
+import CoilWire from "./coilwire";
 import Drink from "./drinking";
 import { CSEngine } from "./engine";
 import FamiliarWeight from "./familiarweight";
