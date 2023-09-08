@@ -12289,7 +12289,7 @@ var BoozeDrop = {
   }])
 }, boozedrop_default = BoozeDrop;
 
-// src/coil wire.ts
+// src/coilwire.ts
 init_kolmafia_polyfill();
 var import_kolmafia37 = require("kolmafia");
 var _templateObject121, _templateObject250, _templateObject338, _templateObject429, _templateObject526, _templateObject625, _templateObject721, _templateObject819, _templateObject917, _templateObject1016, _templateObject1115, _templateObject1215, _templateObject1315, _templateObject1413, _templateObject1512, _templateObject1612, _templateObject1711, _templateObject1811, _templateObject1911, _templateObject2011, _templateObject2116, _templateObject2216, _templateObject2313, _templateObject2410, _templateObject2510, _templateObject2610, _templateObject2710, _templateObject288, _templateObject298;
@@ -12391,7 +12391,7 @@ var CoilWire = {
       acc3: $item(_templateObject298 || (_templateObject298 = _taggedTemplateLiteral32(["Guzzlr tablet"])))
     };
   }
-}, coil_wire_default = CoilWire;
+}, coilwire_default = CoilWire;
 
 // src/drinking.ts
 init_kolmafia_polyfill();
@@ -13280,7 +13280,7 @@ function _taggedTemplateLiteral38(strings, raw) {
 }
 var levellingComplete = (0, import_kolmafia43.myLevel)() >= 13 && get("_neverendingPartyFreeTurns") >= 10, lovePotionConsidered = !1, foldshirt = function() {
   have($item(_templateObject151 || (_templateObject151 = _taggedTemplateLiteral38(["makeshift garbage shirt"])))) || (0, import_kolmafia43.cliExecute)("fold makeshift garbage shirt");
-}, CastSkills = $skills(_templateObject280 || (_templateObject280 = _taggedTemplateLiteral38(["Advanced Saucecrafting, Advanced Cocktailcrafting, Acquire Rhinestones, Prevent Scurvy and Sobriety, The Magical Mojomuscular Melody, Stevedave's Shanty of Superiority, Fat Leon's Phat Loot Lyric, Leash of Linguini, Empathy of the Newt, Blood Bond, Blood Bubble, Song of Bravado, Get Big, Mathematical Precision, Ruthless Efficiency, Carol of the Bulls, Rage of the Reindeer, "]))).map(function(s) {
+}, CastSkills = $skills(_templateObject280 || (_templateObject280 = _taggedTemplateLiteral38(["Advanced Saucecrafting, Advanced Cocktailcrafting, Acquire Rhinestones, Prevent Scurvy and Sobriety, The Magical Mojomuscular Melody, Stevedave's Shanty of Superiority, Fat Leon's Phat Loot Lyric, Leash of Linguini, Empathy of the Newt, Blood Bond, Blood Bubble, Song of Bravado, Get Big, Mathematical Precision, Ruthless Efficiency, Carol of the Bulls, Rage of the Reindeer"]))).map(function(s) {
   return {
     name: s.name,
     do: function() {
@@ -15169,4 +15169,4 @@ function _arrayLikeToArray30(arr, len) {
   return arr2;
 }
 sinceKolmafiaRevision(27102);
-CSEngine.runTests.apply(CSEngine, [prologue_default, coil_wire_default, level_default].concat(_toConsumableArray20(stattests_default), [drinking_default, hotres_default, noncombat_default, familiarweight_default, weapon_default, spell_default, boozedrop_default]));
+CSEngine.runTests.apply(CSEngine, [prologue_default, coilwire_default, level_default].concat(_toConsumableArray20(stattests_default), [drinking_default, hotres_default, noncombat_default, familiarweight_default, weapon_default, spell_default, boozedrop_default]));
