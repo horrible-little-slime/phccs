@@ -1,5 +1,5 @@
 import GLOBAL_QUEST from "./globaltasks";
-import { burnLibrams, CSTask } from "./lib";
+import { burnLibrams, CSTask, withCheckpoint } from "./lib";
 import { Engine, getTasks, Outfit, OutfitSpec, Quest } from "grimoire-kolmafia";
 import {
   abort,
@@ -115,9 +115,29 @@ export class CSEngine extends Engine<never, CSTask> {
     }
   }
 
+  /**
+   * If we have reached an actual cost of 1 turn, no need to do more tasks
+   * @returns Next task or an early undefined if appropriate, stopping the task loop
+   */
+  getNextTask(): CSTask | undefined {
+    if (
+      this.csOptions.type === "SERVICE" &&
+      this.csOptions.test.prediction <= 1 &&
+      this.csOptions.test.actualCost() <= 1
+    ) {
+      return undefined;
+    }
+
+    return super.getNextTask();
+  }
+
   private get turns(): number {
     if (!this.turnsSpent) return 0;
     return undelay(this.turnsSpent);
+  }
+
+  execute(task: CSTask): void {
+    withCheckpoint(() => super.execute(task));
   }
 
   private runTest(): void {
@@ -127,7 +147,6 @@ export class CSEngine extends Engine<never, CSTask> {
         : this.csOptions.test.run(action, this.csOptions.maxTurns);
     try {
       const result = loggingFunction(() => {
-        this.run();
         if (this.csOptions.type === "SERVICE") {
           Outfit.from(
             this.csOptions.outfit(),
@@ -135,6 +154,7 @@ export class CSEngine extends Engine<never, CSTask> {
           ).dress();
           burnLibrams();
         }
+        this.run();
 
         return this.turns;
       });
