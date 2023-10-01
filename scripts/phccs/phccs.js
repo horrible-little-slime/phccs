@@ -13605,8 +13605,9 @@ var levellingComplete = (0, import_kolmafia43.myLevel)() >= 13 && get("_neverend
         return have($item(_templateObject664 || (_templateObject664 = _taggedTemplateLiteral38(["battle broom"]))));
       },
       outfit: function() {
-        return foldshirt(), uniform({
+        return uniform({
           changes: {
+            beforeDress: [foldshirt],
             weapon: byStat({
               default: $item(_templateObject674 || (_templateObject674 = _taggedTemplateLiteral38(["Fourth of May Cosplay Saber"]))),
               Muscle: $item(_templateObject683 || (_templateObject683 = _taggedTemplateLiteral38(["June cleaver"])))
@@ -13642,8 +13643,9 @@ var levellingComplete = (0, import_kolmafia43.myLevel)() >= 13 && get("_neverend
         return Witchess_exports.fightsDone() < 5;
       },
       outfit: function() {
-        return foldshirt(), uniform({
+        return uniform({
           changes: {
+            beforeDress: [foldshirt],
             weapon: byStat({
               default: $item(_templateObject763 || (_templateObject763 = _taggedTemplateLiteral38(["Fourth of May Cosplay Saber"]))),
               Muscle: $item(_templateObject773 || (_templateObject773 = _taggedTemplateLiteral38(["June cleaver"])))
@@ -13673,8 +13675,9 @@ var levellingComplete = (0, import_kolmafia43.myLevel)() >= 13 && get("_neverend
         return Witchess_exports.fightsDone() < 5;
       },
       outfit: function() {
-        return foldshirt(), uniform({
+        return uniform({
           changes: {
+            beforeDress: [foldshirt],
             weapon: byStat({
               default: $item(_templateObject842 || (_templateObject842 = _taggedTemplateLiteral38(["Fourth of May Cosplay Saber"]))),
               Muscle: $item(_templateObject852 || (_templateObject852 = _taggedTemplateLiteral38(["June cleaver"])))
@@ -13745,8 +13748,9 @@ var levellingComplete = (0, import_kolmafia43.myLevel)() >= 13 && get("_neverend
         return get("_loveTunnelUsed");
       },
       outfit: function() {
-        return foldshirt(), uniform({
+        return uniform({
           changes: {
+            beforeDress: [foldshirt],
             weapon: $item(_templateObject1072 || (_templateObject1072 = _taggedTemplateLiteral38(["Fourth of May Cosplay Saber"]))),
             shirt: $item(_templateObject1082 || (_templateObject1082 = _taggedTemplateLiteral38(["makeshift garbage shirt"])))
           },
@@ -13847,8 +13851,9 @@ var levellingComplete = (0, import_kolmafia43.myLevel)() >= 13 && get("_neverend
       },
       do: $location(_templateObject12110 || (_templateObject12110 = _taggedTemplateLiteral38(["The Deep Machine Tunnels"]))),
       outfit: function() {
-        return foldshirt(), uniform({
+        return uniform({
           changes: {
+            beforeDress: [foldshirt],
             shirt: $item(_templateObject1222 || (_templateObject1222 = _taggedTemplateLiteral38(["makeshift garbage shirt"]))),
             familiar: $familiar(_templateObject1232 || (_templateObject1232 = _taggedTemplateLiteral38(["Machine Elf"])))
           }
@@ -13874,14 +13879,13 @@ var levellingComplete = (0, import_kolmafia43.myLevel)() >= 13 && get("_neverend
       },
       do: $location(_templateObject1242 || (_templateObject1242 = _taggedTemplateLiteral38(["The Neverending Party"]))),
       outfit: function() {
-        foldshirt();
-        var enoughSausages = get("_sausageFights") > 4, changes = _objectSpread11({
-          shirt: $items(_templateObject1252 || (_templateObject1252 = _taggedTemplateLiteral38(["makeshift garbage shirt"])))
-        }, enoughSausages ? {} : {
-          offhand: $item(_templateObject1262 || (_templateObject1262 = _taggedTemplateLiteral38(["Kramco Sausage-o-Matic\u2122"])))
-        });
         return uniform({
-          changes: changes
+          changes: _objectSpread11({
+            beforeDress: [foldshirt],
+            shirt: $items(_templateObject1252 || (_templateObject1252 = _taggedTemplateLiteral38(["makeshift garbage shirt"])))
+          }, get("_sausageFights") > 4 ? {} : {
+            offhand: $item(_templateObject1262 || (_templateObject1262 = _taggedTemplateLiteral38(["Kramco Sausage-o-Matic\u2122"])))
+          })
         });
       },
       combat: new CSStrategy(function() {
@@ -13896,7 +13900,6 @@ var levellingComplete = (0, import_kolmafia43.myLevel)() >= 13 && get("_neverend
       },
       do: $location(_templateObject1322 || (_templateObject1322 = _taggedTemplateLiteral38(["The Neverending Party"]))),
       outfit: function() {
-        foldshirt();
         var killSource = have($effect(_templateObject1332 || (_templateObject1332 = _taggedTemplateLiteral38(["Everything Looks Yellow"])))) ? get("_chestXRayUsed") < 3 ? {
           acc3: $item(_templateObject1352 || (_templateObject1352 = _taggedTemplateLiteral38(["Lil' Doctor\u2122 bag"])))
         } : {} : {
@@ -13905,6 +13908,7 @@ var levellingComplete = (0, import_kolmafia43.myLevel)() >= 13 && get("_neverend
             parka: "dilophosaur"
           }
         }, enoughSausages = get("_sausageFights") > 4, changes = _objectSpread11(_objectSpread11({
+          beforeDress: [foldshirt],
           shirt: $items(_templateObject1362 || (_templateObject1362 = _taggedTemplateLiteral38(["makeshift garbage shirt"])))
         }, killSource), enoughSausages ? {} : {
           offhand: $item(_templateObject1372 || (_templateObject1372 = _taggedTemplateLiteral38(["Kramco Sausage-o-Matic\u2122"])))
