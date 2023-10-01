@@ -8,7 +8,17 @@ import {
 } from "./commons";
 import { CSQuest } from "./engine";
 import { CSTask } from "./lib";
-import { cliExecute, Item, itemAmount, myThrall, Thrall, use, useSkill } from "kolmafia";
+import {
+  cliExecute,
+  create,
+  effectModifier,
+  Item,
+  itemAmount,
+  myThrall,
+  Thrall,
+  use,
+  useSkill,
+} from "kolmafia";
 import {
   $classes,
   $effect,
@@ -19,6 +29,7 @@ import {
   $thrall,
   byStat,
   CommunityService,
+  get,
   have,
   RetroCape,
 } from "libram";
@@ -43,17 +54,30 @@ function thrallTask(thrall: Thrall): CSTask {
   };
 }
 
-function equalizeTask(): CSTask {
-  return {
-    ...potionTask(
-      byStat({
-        Moxie: $item`oil of slipperiness`,
-        Muscle: $item`oil of stability`,
-        Mysticality: $item`oil of expertise`,
-      })
-    ),
-    class: $classes`Seal Clubber, Turtle Tamer, Disco Bandit, Accordion Thief, Sauceror`,
-  };
+function equalizeTasks(): CSTask[] {
+  const equalizerPotion = byStat({
+    Moxie: $item`oil of slipperiness`,
+    Muscle: $item`oil of stability`,
+    Mysticality: $item`oil of expertise`,
+  });
+  const equalizerFruit = byStat({
+    Moxie: $item`jumbo olive`,
+    Muscle: $item`lime`,
+    Mysticality: $item`cherry`,
+  });
+  return [
+    {
+      name: `Create ${equalizerPotion}`,
+      ready: () => have(equalizerFruit) && get("hasRange"),
+      completed: () => have(equalizerPotion) || have(effectModifier(equalizerPotion, "Effect")),
+      do: () => create(equalizerPotion),
+      class: $classes`Seal Clubber, Turtle Tamer, Disco Bandit, Accordion Thief, Sauceror`,
+    },
+    {
+      ...potionTask(equalizerPotion),
+      class: $classes`Seal Clubber, Turtle Tamer, Disco Bandit, Accordion Thief, Sauceror`,
+    },
+  ];
 }
 
 const Muscle: CSQuest = {
@@ -95,7 +119,7 @@ const Muscle: CSQuest = {
     favouriteBirdTask("Muscle Percent"),
     { ...innerElf(), core: "hard" },
     { ...potionTask($item`Ben-Gal™ Balm`), core: "hard" },
-    equalizeTask(),
+    ...equalizeTasks(),
   ],
 };
 
@@ -129,7 +153,7 @@ const Mysticality: CSQuest = {
     ...skillBuffTasks("MYSTICALITY"),
     birdTask("Mysticality Percent"),
     favouriteBirdTask("Mysticality Percent"),
-    equalizeTask(),
+    ...equalizeTasks(),
   ],
 };
 
@@ -163,7 +187,7 @@ const Moxie: CSQuest = {
       do: () => use(itemAmount($item`rhinestone`), $item`rhinestone`),
     },
     thrallTask($thrall`Penne Dreadful`),
-    equalizeTask(),
+    ...equalizeTasks(),
   ],
 };
 
@@ -198,7 +222,7 @@ const Hitpoints: CSQuest = {
     favouriteBirdTask("Muscle Percent"),
     potionTask($item`LOV Elixir #3`),
     thrallTask($thrall`Elbow Macaroni`),
-    equalizeTask(),
+    ...equalizeTasks(),
   ],
 };
 
