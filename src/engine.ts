@@ -11,6 +11,7 @@ import {
   print,
   readCcs,
   setAutoAttack,
+  toJson,
   visitUrl,
   writeCcs,
 } from "kolmafia";
@@ -129,9 +130,12 @@ export class CSEngine extends Engine<never, CSTask> {
       const result = loggingFunction(() => {
         this.run();
         if (this.csOptions.type === "SERVICE") {
+          const spec = this.csOptions.outfit();
           Outfit.from(
-            this.csOptions.outfit(),
-            new Error(`Failed to equip outfit for ${this.name}`)
+            spec,
+            new Error(
+              `Failed to equip outfit for ${this.name}. Also, that outfit is ${toJson(spec)}`
+            )
           ).dress();
           burnLibrams();
         }

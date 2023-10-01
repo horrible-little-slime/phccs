@@ -22,22 +22,20 @@ const BoozeDrop: CSQuest = {
   name: "Booze Drop",
   type: "SERVICE",
   test: CommunityService.BoozeDrop,
-  outfit: (): OutfitSpec => {
-    if (!have($item`wad of used tape`)) cliExecute("fold wad of used tape");
-    return {
-      hat: $item`wad of used tape`,
-      weapon: $items`extra-large utility candle, Fourth of May Cosplay Saber`,
-      offhand: $item`unbreakable umbrella`,
-      back: $items`Buddy Bjorn, protonic accelerator pack`,
-      riders: { "buddy-bjorn": $familiar`Party Mouse` },
-      acc1: $item`Guzzlr tablet`,
-      acc2: $item`Cincho de Mayo`,
-      acc3: $items`barrel hoop earring, gold detective badge, government-issued night-vision goggles, combat lover's locket`,
-      famequip: $item`li'l ninja costume`,
-      familiar: $familiar`Trick-or-Treating Tot`,
-      modes: { umbrella: "bucket style" },
-    };
-  },
+  outfit: (): OutfitSpec => ({
+    beforeDress: [() => cliExecute("fold wad of used tape")],
+    hat: $item`wad of used tape`,
+    weapon: $items`extra-large utility candle, runed taper candle, novelty sparkling candle, Fourth of May Cosplay Saber`,
+    offhand: $item`unbreakable umbrella`,
+    back: $items`Buddy Bjorn, protonic accelerator pack`,
+    riders: { "buddy-bjorn": $familiar`Party Mouse` },
+    acc1: $item`Guzzlr tablet`,
+    acc2: $item`Cincho de Mayo`,
+    acc3: $items`barrel hoop earring, gold detective badge, government-issued night-vision goggles, combat lover's locket`,
+    famequip: $item`li'l ninja costume`,
+    familiar: $familiar`Trick-or-Treating Tot`,
+    modes: { umbrella: "bucket style" },
+  }),
   turnsSpent: 0,
   maxTurns: 1,
   tasks: [
