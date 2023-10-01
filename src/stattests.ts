@@ -100,12 +100,12 @@ const Muscle: CSQuest = {
         default: $item`Kremlin's Greatest Briefcase`,
       }),
       familiar: $familiar`Left-Hand Man`,
+      famequip: $item`unbreakable umbrella`,
       modes: {
         retrocape: ["vampire", RetroCape.currentMode()],
         parka: "dilophosaur",
         umbrella: "broken",
       },
-      famequip: $item`unbreakable umbrella`,
     };
   },
   turnsSpent: 0,
@@ -130,11 +130,11 @@ const Mysticality: CSQuest = {
   outfit: () => {
     if (!have($item`wad of used tape`)) cliExecute("fold wad of used tape");
     return {
-      hat: $item`wad of used tape`,
+      hat: $items`astral chapeau, wad of used tape`,
       weapon: $item`Fourth of May Cosplay Saber`,
       offhand: $items`astral statuette, industrial fire extinguisher`,
       back: $item`unwrapped knock-off retro superhero cape`,
-      shirt: $items`denim jacket, shoe ad T-shirt, fresh coat of paint`,
+      shirt: $item`Jurassic Parka`,
       pants: $item`designer sweatpants`,
       acc1: byStat<Item | Item[]>({
         Mysticality: $item`your cowboy boots`,
@@ -142,7 +142,7 @@ const Mysticality: CSQuest = {
       }),
       acc2: $item`codpiece`,
       acc3: $item`battle broom`,
-      famequip: $items`Abracandalabra`,
+      famequip: $item`unbreakable umbrella`,
       familiar: $familiar`Left-Hand Man`,
       modes: { retrocape: ["heck", RetroCape.currentMode()] },
     };
@@ -212,7 +212,8 @@ const Hitpoints: CSQuest = {
         default: $item`Kremlin's Greatest Briefcase`,
       }),
       acc3: $items`meteorite necklace, Retrospecs`,
-      famequip: $item`miniature crystal ball`,
+      familiar: $familiar`Left-Hand Man`,
+      famequip: $item`unbreakable umbrella`,
       modes: { retrocape: ["vampire", RetroCape.currentMode()], parka: "kachungasaur" },
     };
   },
