@@ -52,6 +52,7 @@ export class Macro extends StrictMacro {
       .externalIf(hard, Macro.tryBowl(), Macro.item($item`Time-Spinner`))
       .trySkill($skill`Summon Love Gnats`);
   }
+
   static delevel(hard = false): Macro {
     return new Macro().delevel(hard);
   }
