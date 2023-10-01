@@ -21,6 +21,7 @@ import {
   useSkill,
 } from "kolmafia";
 import {
+  $classes,
   $effect,
   $effects,
   $familiar,
@@ -96,6 +97,11 @@ const Weapon: CSQuest = {
       ),
     },
     { ...innerElf(), core: "hard" },
+    {
+      ...innerElf(),
+      core: "soft",
+      class: $classes`Seal Clubber, Turtle Tamer, Disco Bandit, Accordion Thief`,
+    },
     {
       name: "Spit Ungulith",
       completed: () => have($effect`Spit Upon`),
