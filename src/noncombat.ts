@@ -4,14 +4,25 @@ import {
   birdTask,
   commonFamiliarWeightBuffs,
   favouriteBirdTask,
+  potionTask,
   restore,
   skillTask,
   songTask,
 } from "./commons";
 import { CSQuest } from "./engine";
+import { currentBirdHas, favouriteBirdHas } from "./lib";
 import uniform from "./outfit";
-import { cliExecute, runChoice, runCombat, useSkill, visitUrl } from "kolmafia";
 import {
+  buy,
+  cliExecute,
+  effectModifier,
+  runChoice,
+  runCombat,
+  useSkill,
+  visitUrl,
+} from "kolmafia";
+import {
+  $coinmaster,
   $effect,
   $effects,
   $familiar,
@@ -85,6 +96,16 @@ const Noncombat: CSQuest = {
       choices: { [1310]: 2 },
       combat: new CSStrategy(),
     },
+    {
+      name: "Acquire Shoe Gum",
+      completed: () => have($item`shoe gum`) || have(effectModifier($item`shoe gum`, "Effect")),
+      ready: () => !favouriteBirdHas("Combat Rate", false) && !currentBirdHas("Combat Rate", false),
+      do: (): void => {
+        cliExecute("Detective Solver");
+        buy($coinmaster`Precinct Materiel Division`, 1, $item`shoe gum`);
+      },
+    },
+    potionTask($item`shoe gum`),
   ],
 };
 
