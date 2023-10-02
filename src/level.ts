@@ -319,10 +319,10 @@ const Level: CSQuest = {
     {
       name: "Witch",
       completed: () => have($item`battle broom`),
-      outfit: (): OutfitSpec =>
-        uniform({
+      outfit: (): OutfitSpec => {
+        foldshirt();
+        return uniform({
           changes: {
-            beforeDress: [foldshirt],
             weapon: byStat({
               default: $item`Fourth of May Cosplay Saber`,
               Muscle: $item`June cleaver`,
@@ -331,7 +331,8 @@ const Level: CSQuest = {
             offhand: $item`familiar scrapbook`,
             familiar: $familiar`Shorter-Order Cook`,
           },
-        }),
+        });
+      },
       prepare: (): void => {
         useSkill($skill`Cannelloni Cocoon`);
       },
@@ -344,10 +345,10 @@ const Level: CSQuest = {
       completed: () => have($item`dented scepter`),
       do: () => Witchess.fightPiece($monster`Witchess King`),
       ready: () => Witchess.fightsDone() < 5,
-      outfit: (): OutfitSpec =>
-        uniform({
+      outfit: (): OutfitSpec => {
+        foldshirt();
+        return uniform({
           changes: {
-            beforeDress: [foldshirt],
             weapon: byStat({
               default: $item`Fourth of May Cosplay Saber`,
               Muscle: $item`June cleaver`,
@@ -356,7 +357,8 @@ const Level: CSQuest = {
             offhand: $item`familiar scrapbook`,
             familiar: $familiar`Shorter-Order Cook`,
           },
-        }),
+        });
+      },
       combat: new CSStrategy(() => Macro.attack().repeat()),
       prepare: (): void => {
         useSkill($skill`Cannelloni Cocoon`);
@@ -367,11 +369,10 @@ const Level: CSQuest = {
       completed: () => have($item`very pointy crown`),
       do: () => Witchess.fightPiece($monster`Witchess Queen`),
       ready: () => Witchess.fightsDone() < 5,
-      outfit: (): OutfitSpec =>
-        uniform({
+      outfit: (): OutfitSpec => {
+        foldshirt();
+        return uniform({
           changes: {
-            beforeDress: [foldshirt],
-
             weapon: byStat({
               default: $item`Fourth of May Cosplay Saber`,
               Muscle: $item`June cleaver`,
@@ -380,7 +381,8 @@ const Level: CSQuest = {
             offhand: $item`familiar scrapbook`,
             familiar: $familiar`Shorter-Order Cook`,
           },
-        }),
+        });
+      },
       combat: new CSStrategy(() => Macro.tryBowl().attack().repeat()),
       prepare: (): void => {
         useSkill($skill`Cannelloni Cocoon`);
@@ -435,15 +437,16 @@ const Level: CSQuest = {
     {
       name: "LOV",
       completed: () => get("_loveTunnelUsed"),
-      outfit: (): OutfitSpec =>
-        uniform({
+      outfit: (): OutfitSpec => {
+        foldshirt();
+        return uniform({
           changes: {
-            beforeDress: [foldshirt],
             weapon: $item`Fourth of May Cosplay Saber`,
             shirt: $item`makeshift garbage shirt`,
           },
           canAttack: false,
-        }),
+        });
+      },
       do: () =>
         TunnelOfLove.fightAll(
           byStat({
@@ -532,14 +535,15 @@ const Level: CSQuest = {
       name: "DMT",
       completed: () => get("_machineTunnelsAdv") >= 5,
       do: $location`The Deep Machine Tunnels`,
-      outfit: (): OutfitSpec =>
-        uniform({
+      outfit: (): OutfitSpec => {
+        foldshirt();
+        return uniform({
           changes: {
-            beforeDress: [foldshirt],
             shirt: $item`makeshift garbage shirt`,
             familiar: $familiar`Machine Elf`,
           },
-        }),
+        });
+      },
       combat: new CSStrategy(),
     },
     {
@@ -555,14 +559,15 @@ const Level: CSQuest = {
       name: "Regular NEP",
       completed: () => get("_neverendingPartyFreeTurns") >= 10,
       do: $location`The Neverending Party`,
-      outfit: (): OutfitSpec =>
-        uniform({
+      outfit: (): OutfitSpec => {
+        foldshirt();
+        return uniform({
           changes: {
-            beforeDress: [foldshirt],
             shirt: $items`makeshift garbage shirt`,
             ...(get("_sausageFights") > 4 ? {} : { offhand: $item`Kramco Sausage-o-Matic™` }),
           },
-        }),
+        });
+      },
       combat: new CSStrategy(() =>
         Macro.if_(
           $effect`Inner Elf`,
@@ -586,6 +591,7 @@ const Level: CSQuest = {
         get("_chestXRayUsed") >= 3,
       do: $location`The Neverending Party`,
       outfit: (): OutfitSpec => {
+        foldshirt();
         const killSource = !have($effect`Everything Looks Yellow`)
           ? { shirt: $item`Jurassic Parka`, modes: { parka: "dilophosaur" as const } }
           : get("_chestXRayUsed") < 3
@@ -593,7 +599,6 @@ const Level: CSQuest = {
           : {};
         const enoughSausages = get("_sausageFights") > 4;
         const changes = {
-          beforeDress: [foldshirt],
           shirt: $items`makeshift garbage shirt`,
           ...killSource,
           ...(enoughSausages ? {} : { offhand: $item`Kramco Sausage-o-Matic™` }),
