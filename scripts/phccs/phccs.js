@@ -12392,7 +12392,7 @@ var CoilWire = {
   }],
   outfit: function() {
     return {
-      hat: $item(_templateObject2216 || (_templateObject2216 = _taggedTemplateLiteral32(["Iunion Crown"]))),
+      hat: $items(_templateObject2216 || (_templateObject2216 = _taggedTemplateLiteral32(["astral chapeau, Iunion Crown"]))),
       shirt: $item(_templateObject2313 || (_templateObject2313 = _taggedTemplateLiteral32(["fresh coat of paint"]))),
       pants: $item(_templateObject2410 || (_templateObject2410 = _taggedTemplateLiteral32(["Cargo Cultist Shorts"]))),
       weapon: $item(_templateObject2510 || (_templateObject2510 = _taggedTemplateLiteral32(["Fourth of May Cosplay Saber"]))),
