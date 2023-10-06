@@ -102,7 +102,7 @@ const Weapon: CSQuest = {
       class: () =>
         inHardcore()
           ? $classes`Seal Clubber, Turtle Tamer, Disco Bandit, Accordion Thief`
-          : undefined,
+          : $classes.all(),
     },
     {
       name: "Spit Ungulith",
