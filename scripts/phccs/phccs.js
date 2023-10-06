@@ -12191,7 +12191,7 @@ var BoozeDrop = {
   test: CommunityService.BoozeDrop,
   outfit: function() {
     return (0, import_kolmafia36.cliExecute)("fold wad of used tape"), {
-      hat: $item(_templateObject120 || (_templateObject120 = _taggedTemplateLiteral31(["wad of used tape"]))),
+      hat: $items(_templateObject120 || (_templateObject120 = _taggedTemplateLiteral31(["norwhal helmet, wad of used tape"]))),
       weapon: $items(_templateObject241 || (_templateObject241 = _taggedTemplateLiteral31(["extra-large utility candle, runed taper candle, novelty sparkling candle, Fourth of May Cosplay Saber"]))),
       offhand: $item(_templateObject331 || (_templateObject331 = _taggedTemplateLiteral31(["unbreakable umbrella"]))),
       back: $items(_templateObject428 || (_templateObject428 = _taggedTemplateLiteral31(["Buddy Bjorn, protonic accelerator pack"]))),
