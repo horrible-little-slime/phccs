@@ -16,6 +16,7 @@ import {
   canadiaAvailable,
   cliExecute,
   handlingChoice,
+  inHardcore,
   retrieveItem,
   runChoice,
   useSkill,
@@ -96,11 +97,12 @@ const Weapon: CSQuest = {
           .abort()
       ),
     },
-    { ...innerElf(), core: "hard" },
     {
       ...innerElf(),
-      core: "soft",
-      class: $classes`Seal Clubber, Turtle Tamer, Disco Bandit, Accordion Thief`,
+      class: () =>
+        inHardcore()
+          ? $classes`Seal Clubber, Turtle Tamer, Disco Bandit, Accordion Thief`
+          : undefined,
     },
     {
       name: "Spit Ungulith",
