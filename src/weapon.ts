@@ -52,6 +52,7 @@ const Weapon: CSQuest = {
       hat: $items`seal-skull helmet, Iunion Crown`,
       weapon: $item`broken champagne bottle`,
       offhand: $item`dented scepter`,
+      pants: $items`astral trousers, designer sweatpants`,
       acc1: $item`Brutal brogues`,
       acc2: $item`Powerful Glove`,
       acc3: $items`meteorite ring, Kremlin's Greatest Briefcase`,
@@ -102,7 +103,7 @@ const Weapon: CSQuest = {
       class: () =>
         inHardcore()
           ? $classes`Seal Clubber, Turtle Tamer, Disco Bandit, Accordion Thief`
-          : undefined,
+          : $classes.all(),
     },
     {
       name: "Spit Ungulith",

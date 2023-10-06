@@ -92,7 +92,7 @@ const Muscle: CSQuest = {
       offhand: $item`dented scepter`,
       shirt: $item`Jurassic Parka`,
       back: $item`unwrapped knock-off retro superhero cape`,
-      pants: $item`designer sweatpants`,
+      pants: $items`astral trousers, designer sweatpants`,
       acc1: $item`Brutal brogues`,
       acc2: $items`meteorite necklace, Retrospecs`,
       acc3: byStat({
@@ -167,7 +167,7 @@ const Moxie: CSQuest = {
     back: $item`unwrapped knock-off retro superhero cape`,
     weapon: $item`Fourth of May Cosplay Saber`,
     offhand: $item`unbreakable umbrella`,
-    pants: $item`Cargo Cultist Shorts`,
+    pants: $items`astral shorts, Cargo Cultist Shorts`,
     acc1: $item`Beach Comb`,
     acc2: byStat({ Moxie: $item`your cowboy boots`, default: $item`"I Voted!" sticker` }),
     acc3: $items`meteorite necklace, Retrospecs`,

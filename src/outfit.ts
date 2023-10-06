@@ -15,7 +15,6 @@ import {
 
 const UNCHANGING_OUTFIT: OutfitSpec = {
   shirt: $items`LOV Eardigan, Jurassic Parka, fresh coat of paint`,
-  pants: $items`designer sweatpants, old sweatpants`,
   offhand: $item`unbreakable umbrella`,
   acc1: byStat<Item | Item[]>({
     Mysticality: $items`meteorite necklace, your cowboy boots`,
@@ -49,6 +48,10 @@ const DEFAULT_UNIFORM = (): OutfitSpec => ({
         Mysticality: $items`astral chapeau, Iunion Crown`,
         Muscle: $item`Iunion Crown`,
       }),
+  pants:
+    get("sweat") < 100
+      ? $item`designer sweatpants`
+      : $items`astral trousers, astral shorts, designer sweatpants`,
   weapon:
     get("_juneCleaverFightsLeft") > 0 && get("_juneCleaverEncounters") < 2
       ? $item`June cleaver`

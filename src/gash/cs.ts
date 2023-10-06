@@ -18,6 +18,7 @@ import {
   $path,
   $slot,
   ascend,
+  byStat,
   CombatLoversLocket,
   have,
   Lifestyle,
@@ -145,7 +146,13 @@ export function main(input = ""): void {
 
   const lifestyle = softcore ? Lifestyle.softcore : Lifestyle.hardcore;
 
-  const pet = softcore ? $item`astral chapeau` : $item`astral statuette`;
+  const pet = softcore
+    ? byStat({
+        Mysticality: $item`astral chapeau`,
+        Moxie: $item`astral shorts`,
+        Muscle: $item`astral trousers`,
+      })
+    : $item`astral statuette`;
 
   const perms = getPermedSkills();
   const permSkills = new Map(
