@@ -26,7 +26,7 @@ const BoozeDrop: CSQuest = {
   outfit: (): OutfitSpec => {
     cliExecute("fold wad of used tape");
     return {
-      hat: $item`wad of used tape`,
+      hat: $items`norwhal helmet, wad of used tape`,
       weapon: $items`extra-large utility candle, runed taper candle, novelty sparkling candle, Fourth of May Cosplay Saber`,
       offhand: $item`unbreakable umbrella`,
       back: $items`Buddy Bjorn, protonic accelerator pack`,
