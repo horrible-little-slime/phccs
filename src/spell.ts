@@ -112,15 +112,6 @@ const Spell: CSQuest = {
         numericModifier($item`Kremlin's Greatest Briefcase`, "Spell Damage Percent") > 0,
       do: () => cliExecute("Briefcase.ash enchantment spell"),
     },
-    {
-      name: "Weeping Willow Wand",
-      completed: () => have($item`weeping willow wand`),
-      core: "hard",
-      do: (): void => {
-        if (!have($item`flimsy hardwood scraps`)) visitUrl("shop.php?whichshop=lathe");
-        retrieveItem($item`weeping willow wand`);
-      },
-    },
     skillTask($skill`Spirit of Cayenne`),
     potionTask($item`flask of baconstone juice`),
     {
@@ -171,6 +162,15 @@ const Spell: CSQuest = {
       do: (): void => {
         const staff = chefstaves.find((s) => storageAmount(s) > 0 && canEquip(s));
         if (staff) takeStorage(staff, 1);
+      },
+    },
+    {
+      name: "Weeping Willow Wand",
+      completed: () => have($item`weeping willow wand`),
+      ready: () => !chefstaves.some((staff) => have(staff)),
+      do: (): void => {
+        if (!have($item`flimsy hardwood scraps`)) visitUrl("shop.php?whichshop=lathe");
+        retrieveItem($item`weeping willow wand`);
       },
     },
   ],

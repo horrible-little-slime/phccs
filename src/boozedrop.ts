@@ -12,6 +12,7 @@ import {
   $items,
   $location,
   $skill,
+  byClass,
   CommunityService,
   get,
   have,
@@ -39,7 +40,7 @@ const BoozeDrop: CSQuest = {
     };
   },
   turnsSpent: 0,
-  maxTurns: 1,
+  maxTurns: byClass({ Pastamancer: 1, default: 3 }),
   tasks: [
     {
       name: "Batform",
@@ -95,7 +96,7 @@ const BoozeDrop: CSQuest = {
       completed: () => get("_barrelPrayer"),
       do: () => cliExecute("barrelprayer buff"),
     },
-    ...$items`Salsa Caliente™ candle, lavender candy heart, bag of grain, emergency glowstick`.map(
+    ...$items`Salsa Caliente™ candle, lavender candy heart, bag of grain, emergency glowstick, autumn leaf`.map(
       potionTask
     ),
     {

@@ -64,10 +64,12 @@ export class CSEngine extends Engine<never, CSTask> {
   }
 
   available(task: CSTask): boolean {
+    const core = undelay(task.core);
+    const taskClass = undelay(task.class);
     return (
       super.available(task) &&
-      (!task.core || task.core === CSEngine.core) &&
-      (!task.class || task.class.includes(myClass()))
+      (!core || core === CSEngine.core) &&
+      (!taskClass || taskClass.includes(myClass()))
     );
   }
 
@@ -169,11 +171,6 @@ export class CSEngine extends Engine<never, CSTask> {
           engine.runTest();
         }
       }
-    } finally {
-      CSEngine.propertyManager.resetAll();
-
-      CommunityService.printLog(HIGHLIGHT);
-
       if (CSEngine.core === "soft") {
         CommunityService.donate();
         cliExecute("refresh all");
@@ -190,6 +187,10 @@ export class CSEngine extends Engine<never, CSTask> {
       if (["food", "booze"].includes(get("_questPartyFairQuest"))) {
         print("Talk to Gerald/ine!");
       }
+    } finally {
+      CSEngine.propertyManager.resetAll();
+
+      CommunityService.printLog(HIGHLIGHT);
     }
   }
 }

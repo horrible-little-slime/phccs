@@ -38,6 +38,7 @@ import {
   bestLibramToCast,
   byStat,
   clamp,
+  Delayed,
   get,
   getModifier,
   have,
@@ -48,8 +49,8 @@ import {
 import { NumericModifier } from "libram/dist/modifierTypes";
 
 export type CSTask = StrictCombatTask<never, CSStrategy> & {
-  core?: "hard" | "soft";
-  class?: Class[];
+  core?: Delayed<"hard" | "soft">;
+  class?: Delayed<Class[]>;
 };
 export const PropertyManager = new PropertiesManager();
 
