@@ -47,7 +47,7 @@ const Spell: CSQuest = {
   type: "SERVICE",
   test: CommunityService.SpellDamage,
   outfit: () => ({
-    hat: $items`astral chapeau, Hollandaise helmet, Iunion Crown`,
+    hat: $items`norwhal helmet, astral chapeau, Hollandaise helmet, Iunion Crown`,
     weapon: [...chefstaves, $item`weeping willow wand`],
     offhand: $item`Abracandalabra`,
     pants: $item`designer sweatpants`,
