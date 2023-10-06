@@ -6,6 +6,7 @@ import {
   $classes,
   $effect,
   $item,
+  $items,
   $location,
   $monster,
   $skill,
@@ -80,7 +81,7 @@ const CoilWire: CSQuest = {
     },
   ],
   outfit: () => ({
-    hat: $item`Iunion Crown`,
+    hat: $items`astral chapeau, Iunion Crown`,
     shirt: $item`fresh coat of paint`,
     pants: $item`Cargo Cultist Shorts`,
     weapon: $item`Fourth of May Cosplay Saber`,
