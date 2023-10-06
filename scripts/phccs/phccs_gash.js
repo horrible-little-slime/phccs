@@ -4678,7 +4678,7 @@ init_kolmafia_polyfill();
 
 // src/gash/cs.ts
 var import_kolmafia15 = require("kolmafia");
-var _templateObject69, _templateObject216, _templateObject314, _templateObject413, _templateObject510, _templateObject610, _templateObject73, _templateObject83, _templateObject94, _templateObject104, _templateObject114, _templateObject124, _templateObject134, _templateObject144, _templateObject154;
+var _templateObject69, _templateObject216, _templateObject314, _templateObject413, _templateObject510, _templateObject610, _templateObject73, _templateObject83, _templateObject94, _templateObject104, _templateObject114, _templateObject124, _templateObject134, _templateObject144, _templateObject154, _templateObject164, _templateObject174;
 function _createForOfIteratorHelper9(o, allowArrayLike) {
   var it = typeof Symbol != "undefined" && o[Symbol.iterator] || o["@@iterator"];
   if (!it) {
@@ -4829,12 +4829,16 @@ function main() {
       ceiling: "ceiling fan"
     }
   });
-  var lifestyle = softcore ? Lifestyle.softcore : Lifestyle.hardcore, pet = softcore ? $item(_templateObject124 || (_templateObject124 = _taggedTemplateLiteral8(["astral chapeau"]))) : $item(_templateObject134 || (_templateObject134 = _taggedTemplateLiteral8(["astral statuette"]))), perms = (0, import_kolmafia15.getPermedSkills)(), permSkills = new Map(import_kolmafia15.Skill.all().filter(function(s) {
+  var lifestyle = softcore ? Lifestyle.softcore : Lifestyle.hardcore, pet = softcore ? byStat({
+    Mysticality: $item(_templateObject124 || (_templateObject124 = _taggedTemplateLiteral8(["astral chapeau"]))),
+    Moxie: $item(_templateObject134 || (_templateObject134 = _taggedTemplateLiteral8(["astral shorts"]))),
+    Muscle: $item(_templateObject144 || (_templateObject144 = _taggedTemplateLiteral8(["astral trousers"])))
+  }) : $item(_templateObject154 || (_templateObject154 = _taggedTemplateLiteral8(["astral statuette"]))), perms = (0, import_kolmafia15.getPermedSkills)(), permSkills = new Map(import_kolmafia15.Skill.all().filter(function(s) {
     return have(s) && !perms[s.name] && s.permable;
   }).map(function(s) {
     return [s, Lifestyle.hardcore];
   }));
-  (0, import_kolmafia15.visitUrl)("council.php"), ascend($path(_templateObject144 || (_templateObject144 = _taggedTemplateLiteral8(["Community Service"]))), args.class, lifestyle, "knoll", $item(_templateObject154 || (_templateObject154 = _taggedTemplateLiteral8(["astral six-pack"]))), pet, {
+  (0, import_kolmafia15.visitUrl)("council.php"), ascend($path(_templateObject164 || (_templateObject164 = _taggedTemplateLiteral8(["Community Service"]))), args.class, lifestyle, "knoll", $item(_templateObject174 || (_templateObject174 = _taggedTemplateLiteral8(["astral six-pack"]))), pet, {
     neverAbort: !0,
     permSkills: permSkills
   });
