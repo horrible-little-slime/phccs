@@ -41,6 +41,7 @@ import {
   Cartography,
   Counter,
   get,
+  getActiveSongs,
   have,
   TunnelOfLove,
   uneffect,
@@ -390,9 +391,16 @@ const Level: CSQuest = {
       combat: new CSStrategy(() => Macro.tryBowl().attack().repeat()),
       prepare: (): void => {
         useSkill($skill`Cannelloni Cocoon`);
-        if (!have($effect`Psalm of Pointiness`)) useSkill($skill`The Psalm of Pointiness`);
+        if (!have($effect`Psalm of Pointiness`)) {
+          if (getActiveSongs().length >= 4) uneffect($effect`Fat Leon's Phat Loot Lyric`);
+          useSkill($skill`The Psalm of Pointiness`);
+        }
       },
-      post: () => uneffect($effect`Psalm of Pointiness`),
+      post: () => {
+        uneffect($effect`Psalm of Pointiness`);
+        use($item`psychokinetic energy blob`);
+        useSkill($skill`Fat Leon's Phat Loot Lyric`);
+      },
     },
     {
       name: "Oliver's Place: Prime Portscan",
