@@ -12201,7 +12201,10 @@ var BoozeDrop = {
     };
   },
   turnsSpent: 0,
-  maxTurns: 1,
+  maxTurns: byClass({
+    Pastamancer: 1,
+    default: 3
+  }),
   tasks: [{
     name: "Batform",
     completed: function() {
@@ -12270,7 +12273,7 @@ var BoozeDrop = {
     do: function() {
       return (0, import_kolmafia36.cliExecute)("barrelprayer buff");
     }
-  }].concat(_toConsumableArray10($items(_templateObject3212 || (_templateObject3212 = _taggedTemplateLiteral31(["Salsa Caliente\u2122 candle, lavender candy heart, bag of grain, emergency glowstick"]))).map(potionTask)), [{
+  }].concat(_toConsumableArray10($items(_templateObject3212 || (_templateObject3212 = _taggedTemplateLiteral31(["Salsa Caliente\u2122 candle, lavender candy heart, bag of grain, emergency glowstick, autumn leaf"]))).map(potionTask)), [{
     name: "Steely-Eyed Squint",
     completed: function() {
       return have($effect(_templateObject337 || (_templateObject337 = _taggedTemplateLiteral31(["Steely-Eyed Squint"]))));
@@ -12328,7 +12331,7 @@ var CoilWire = {
     })
   }, {
     name: "Fruity Skeleton",
-    class: $classes(_templateObject917 || (_templateObject917 = _taggedTemplateLiteral32(["Sauceror, Seal Clubber, Turtle Tamer"]))),
+    class: $classes(_templateObject917 || (_templateObject917 = _taggedTemplateLiteral32(["Sauceror"]))),
     completed: function() {
       return have($item(_templateObject1016 || (_templateObject1016 = _taggedTemplateLiteral32(["cherry"]))));
     },
@@ -12668,7 +12671,8 @@ var HIGHLIGHT = (0, import_kolmafia40.isDarkMode)() ? "yellow" : "blue", CSEngin
   }, {
     key: "available",
     value: function(task) {
-      return _get2(_getPrototypeOf6(CSEngine2.prototype), "available", this).call(this, task) && (!task.core || task.core === CSEngine2.core) && (!task.class || task.class.includes((0, import_kolmafia40.myClass)()));
+      var core = undelay(task.core), taskClass = undelay(task.class);
+      return _get2(_getPrototypeOf6(CSEngine2.prototype), "available", this).call(this, task) && (!core || core === CSEngine2.core) && (!taskClass || taskClass.includes((0, import_kolmafia40.myClass)()));
     }
   }, {
     key: "initPropertiesManager",
@@ -12750,8 +12754,9 @@ var HIGHLIGHT = (0, import_kolmafia40.isDarkMode)() ? "yellow" : "blue", CSEngin
             engine.runTest();
           }
         }
+        CSEngine2.core === "soft" && (CommunityService.donate(), (0, import_kolmafia40.cliExecute)("refresh all"), (0, import_kolmafia40.cliExecute)(get("kingLiberatedScript")), uneffect($effect(_templateObject261 || (_templateObject261 = _taggedTemplateLiteral35(["Feeling Lost"]))))), get("_cloudTalkSmoker") && (0, import_kolmafia40.print)("".concat(get("_cloudTalkSmoker").slice(10), " has a message for you: ").concat(get("_cloudTalkMessage"))), ["food", "booze"].includes(get("_questPartyFairQuest")) && (0, import_kolmafia40.print)("Talk to Gerald/ine!");
       } finally {
-        CSEngine2.propertyManager.resetAll(), CommunityService.printLog(HIGHLIGHT), CSEngine2.core === "soft" && (CommunityService.donate(), (0, import_kolmafia40.cliExecute)("refresh all"), (0, import_kolmafia40.cliExecute)(get("kingLiberatedScript")), uneffect($effect(_templateObject261 || (_templateObject261 = _taggedTemplateLiteral35(["Feeling Lost"]))))), get("_cloudTalkSmoker") && (0, import_kolmafia40.print)("".concat(get("_cloudTalkSmoker").slice(10), " has a message for you: ").concat(get("_cloudTalkMessage"))), ["food", "booze"].includes(get("_questPartyFairQuest")) && (0, import_kolmafia40.print)("Talk to Gerald/ine!");
+        CSEngine2.propertyManager.resetAll(), CommunityService.printLog(HIGHLIGHT);
       }
     }
   }]), CSEngine2;
@@ -14647,55 +14652,46 @@ var buffs3 = $effects(_templateObject170 || (_templateObject170 = _taggedTemplat
     do: function() {
       return (0, import_kolmafia46.cliExecute)("Briefcase.ash enchantment spell");
     }
-  }, {
-    name: "Weeping Willow Wand",
-    completed: function() {
-      return have($item(_templateObject3412 || (_templateObject3412 = _taggedTemplateLiteral41(["weeping willow wand"]))));
-    },
-    core: "hard",
-    do: function() {
-      have($item(_templateObject3511 || (_templateObject3511 = _taggedTemplateLiteral41(["flimsy hardwood scraps"])))) || (0, import_kolmafia46.visitUrl)("shop.php?whichshop=lathe"), (0, import_kolmafia46.retrieveItem)($item(_templateObject3610 || (_templateObject3610 = _taggedTemplateLiteral41(["weeping willow wand"]))));
-    }
-  }, skillTask($skill(_templateObject379 || (_templateObject379 = _taggedTemplateLiteral41(["Spirit of Cayenne"])))), potionTask($item(_templateObject388 || (_templateObject388 = _taggedTemplateLiteral41(["flask of baconstone juice"])))), {
+  }, skillTask($skill(_templateObject3412 || (_templateObject3412 = _taggedTemplateLiteral41(["Spirit of Cayenne"])))), potionTask($item(_templateObject3511 || (_templateObject3511 = _taggedTemplateLiteral41(["flask of baconstone juice"])))), {
     name: "Saucefingers",
     ready: function() {
-      return (0, import_kolmafia46.myLevel)() >= 15 && have($familiar(_templateObject397 || (_templateObject397 = _taggedTemplateLiteral41(["Mini-Adventurer"]))));
+      return (0, import_kolmafia46.myLevel)() >= 15 && have($familiar(_templateObject3610 || (_templateObject3610 = _taggedTemplateLiteral41(["Mini-Adventurer"]))));
     },
     completed: function() {
-      return have($effect(_templateObject407 || (_templateObject407 = _taggedTemplateLiteral41(["Saucefingers"]))));
+      return have($effect(_templateObject379 || (_templateObject379 = _taggedTemplateLiteral41(["Saucefingers"]))));
     },
-    class: $classes(_templateObject4115 || (_templateObject4115 = _taggedTemplateLiteral41(["Pastamancer"]))),
-    do: $location(_templateObject4213 || (_templateObject4213 = _taggedTemplateLiteral41(["The Dire Warren"]))),
+    class: $classes(_templateObject388 || (_templateObject388 = _taggedTemplateLiteral41(["Pastamancer"]))),
+    do: $location(_templateObject397 || (_templateObject397 = _taggedTemplateLiteral41(["The Dire Warren"]))),
     prepare: function() {
       return Horsery_exports.current() === "pale" && Horsery_exports.changeHorse("dark");
     },
     outfit: function() {
       return uniform({
         changes: {
-          familiar: $familiar(_templateObject4311 || (_templateObject4311 = _taggedTemplateLiteral41(["Mini-Adventurer"])))
+          familiar: $familiar(_templateObject407 || (_templateObject407 = _taggedTemplateLiteral41(["Mini-Adventurer"])))
         }
       });
     },
     combat: new CSStrategy(function() {
-      return Macro2.trySkill($skill(_templateObject447 || (_templateObject447 = _taggedTemplateLiteral41(["Asdon Martin: Spring-Loaded Front Bumper"])))).trySkill($skill(_templateObject457 || (_templateObject457 = _taggedTemplateLiteral41(["Feel Hatred"])))).trySkill($skill(_templateObject467 || (_templateObject467 = _taggedTemplateLiteral41(["Snokebomb"])))).abort();
+      return Macro2.trySkill($skill(_templateObject4115 || (_templateObject4115 = _taggedTemplateLiteral41(["Asdon Martin: Spring-Loaded Front Bumper"])))).trySkill($skill(_templateObject4213 || (_templateObject4213 = _taggedTemplateLiteral41(["Feel Hatred"])))).trySkill($skill(_templateObject4311 || (_templateObject4311 = _taggedTemplateLiteral41(["Snokebomb"])))).abort();
     }),
     choices: _defineProperty21({}, 768, 4)
   }, innerElf(), meteorShower(), {
     name: "Meteorite Necklace",
     core: "soft",
     completed: function() {
-      return have($item(_templateObject477 || (_templateObject477 = _taggedTemplateLiteral41(["meteorite necklace"]))));
+      return have($item(_templateObject447 || (_templateObject447 = _taggedTemplateLiteral41(["meteorite necklace"]))));
     },
     ready: function() {
-      return (0, import_kolmafia46.canadiaAvailable)() && $items(_templateObject487 || (_templateObject487 = _taggedTemplateLiteral41(["meteorite fragment, meteorite earring, meteorite ring"]))).some(function(item6) {
+      return (0, import_kolmafia46.canadiaAvailable)() && $items(_templateObject457 || (_templateObject457 = _taggedTemplateLiteral41(["meteorite fragment, meteorite earring, meteorite ring"]))).some(function(item6) {
         return have(item6);
       });
     },
     do: function() {
-      var meteor = $items(_templateObject497 || (_templateObject497 = _taggedTemplateLiteral41(["meteorite ring, meteorite fragment, meteorite earring"]))).find(function(item6) {
+      var meteor = $items(_templateObject467 || (_templateObject467 = _taggedTemplateLiteral41(["meteorite ring, meteorite fragment, meteorite earring"]))).find(function(item6) {
         return have(item6);
       });
-      meteor && (unequip(meteor), (0, import_kolmafia46.retrieveItem)(1, $item(_templateObject507 || (_templateObject507 = _taggedTemplateLiteral41(["tenderizing hammer"])))), (0, import_kolmafia46.retrieveItem)(1, $item(_templateObject5115 || (_templateObject5115 = _taggedTemplateLiteral41(["jewelry-making pliers"])))), meteor !== $item(_templateObject5213 || (_templateObject5213 = _taggedTemplateLiteral41(["meteorite fragment"]))) && (0, import_kolmafia46.cliExecute)("smash ".concat(meteor)), (0, import_kolmafia46.cliExecute)("make ".concat($item(_templateObject5310 || (_templateObject5310 = _taggedTemplateLiteral41(["meteorite necklace"]))))));
+      meteor && (unequip(meteor), (0, import_kolmafia46.retrieveItem)(1, $item(_templateObject477 || (_templateObject477 = _taggedTemplateLiteral41(["tenderizing hammer"])))), (0, import_kolmafia46.retrieveItem)(1, $item(_templateObject487 || (_templateObject487 = _taggedTemplateLiteral41(["jewelry-making pliers"])))), meteor !== $item(_templateObject497 || (_templateObject497 = _taggedTemplateLiteral41(["meteorite fragment"]))) && (0, import_kolmafia46.cliExecute)("smash ".concat(meteor)), (0, import_kolmafia46.cliExecute)("make ".concat($item(_templateObject507 || (_templateObject507 = _taggedTemplateLiteral41(["meteorite necklace"]))))));
     }
   }, {
     name: "Pull Staff",
@@ -14715,6 +14711,19 @@ var buffs3 = $effects(_templateObject170 || (_templateObject170 = _taggedTemplat
         return (0, import_kolmafia46.storageAmount)(s) > 0 && (0, import_kolmafia46.canEquip)(s);
       });
       staff && (0, import_kolmafia46.takeStorage)(staff, 1);
+    }
+  }, {
+    name: "Weeping Willow Wand",
+    completed: function() {
+      return have($item(_templateObject5115 || (_templateObject5115 = _taggedTemplateLiteral41(["weeping willow wand"]))));
+    },
+    ready: function() {
+      return !chefstaves.some(function(staff) {
+        return have(staff);
+      });
+    },
+    do: function() {
+      have($item(_templateObject5213 || (_templateObject5213 = _taggedTemplateLiteral41(["flimsy hardwood scraps"])))) || (0, import_kolmafia46.visitUrl)("shop.php?whichshop=lathe"), (0, import_kolmafia46.retrieveItem)($item(_templateObject5310 || (_templateObject5310 = _taggedTemplateLiteral41(["weeping willow wand"]))));
     }
   }])
 }, spell_default = Spell;
@@ -15106,10 +15115,9 @@ var buffs4 = $effects(_templateObject180 || (_templateObject180 = _taggedTemplat
       return Macro2.trySkill($skill(_templateObject2321 || (_templateObject2321 = _taggedTemplateLiteral43(["Asdon Martin: Spring-Loaded Front Bumper"])))).trySkill($skill(_templateObject2418 || (_templateObject2418 = _taggedTemplateLiteral43(["Feel Hatred"])))).trySkill($skill(_templateObject2517 || (_templateObject2517 = _taggedTemplateLiteral43(["Snokebomb"])))).abort();
     })
   }, _objectSpread15(_objectSpread15({}, innerElf()), {}, {
-    core: "hard"
-  }), _objectSpread15(_objectSpread15({}, innerElf()), {}, {
-    core: "soft",
-    class: $classes(_templateObject2617 || (_templateObject2617 = _taggedTemplateLiteral43(["Seal Clubber, Turtle Tamer, Disco Bandit, Accordion Thief"])))
+    class: function() {
+      return (0, import_kolmafia48.inHardcore)() ? $classes(_templateObject2617 || (_templateObject2617 = _taggedTemplateLiteral43(["Seal Clubber, Turtle Tamer, Disco Bandit, Accordion Thief"]))) : void 0;
+    }
   }), {
     name: "Spit Ungulith",
     completed: function() {
