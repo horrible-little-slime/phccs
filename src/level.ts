@@ -282,12 +282,12 @@ const Level: CSQuest = {
       combat: new CSStrategy(() =>
         Macro.externalIf(
           !have($effect`Cosmic Ball in the Air`),
-          Macro.skill($skill`Bowl Straight Up`)
+          Macro.trySkill($skill`Bowl Straight Up`)
         )
-          .delevel()
           .tryItem($item`blue rocket`)
           .trySkill($skill`Giant Growth`)
-          .defaultKill()
+          .attack()
+          .repeat()
       ),
     },
     {
@@ -300,12 +300,12 @@ const Level: CSQuest = {
       combat: new CSStrategy(() =>
         Macro.externalIf(
           !have($effect`Cosmic Ball in the Air`),
-          Macro.skill($skill`Bowl Straight Up`)
+          Macro.trySkill($skill`Bowl Straight Up`)
         )
-          .delevel()
           .tryItem($item`blue rocket`)
           .trySkill($skill`Giant Growth`)
-          .defaultKill()
+          .attack()
+          .repeat()
       ),
     },
     // A proton ghost should get fought here

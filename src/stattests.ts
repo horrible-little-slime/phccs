@@ -117,7 +117,11 @@ const Muscle: CSQuest = {
     beachTask($effect`Lack of Body-Building`),
     birdTask("Muscle Percent"),
     favouriteBirdTask("Muscle Percent"),
-    { ...innerElf(), core: "hard" },
+    {
+      ...innerElf(),
+      core: "hard",
+      class: $classes`Pastamancer, Sauceror, Disco Bandit, Accordion Thief`,
+    },
     { ...potionTask($item`Ben-Gal™ Balm`), core: "hard" },
     ...equalizeTasks(),
   ],
@@ -154,6 +158,7 @@ const Mysticality: CSQuest = {
     birdTask("Mysticality Percent"),
     favouriteBirdTask("Mysticality Percent"),
     ...equalizeTasks(),
+    { ...innerElf(), class: $classes`Seal Clubber, Turtle Tamer, Disco Bandit, Accordion Thief` },
   ],
 };
 
