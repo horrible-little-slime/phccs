@@ -1,7 +1,7 @@
 import { songTask } from "./commons";
 import { CSQuest } from "./engine";
 import { drink, itemAmount, myInebriety, use } from "kolmafia";
-import { $effect, $item, clamp, get, have } from "libram";
+import { $effect, $item, byStat, clamp, get, have } from "libram";
 
 const totalInebriety = () => myInebriety() + get("_sweatOutSomeBoozeUsed");
 const Drink: CSQuest = {
@@ -14,7 +14,14 @@ const Drink: CSQuest = {
       completed: () => !have($item`astral six-pack`),
       do: () => use($item`astral six-pack`),
     },
-    songTask($effect`Ode to Booze`, $effect`The Magical Mojomuscular Melody`),
+    songTask(
+      $effect`Ode to Booze`,
+      byStat({
+        Mysticality: $effect`The Magical Mojomuscular Melody`,
+        Muscle: $effect`Power Ballad of the Arrowsmith`,
+        Moxie: $effect`The Moxious Madrigal`,
+      })
+    ),
     {
       name: "Drink Pilsners",
       ready: () => have($item`astral pilsner`),
