@@ -13586,7 +13586,7 @@ var levellingComplete = (0, import_kolmafia43.myLevel)() >= 13 && get("_neverend
         });
       },
       combat: new CSStrategy(function() {
-        return Macro2.externalIf(!have($effect(_templateObject5211 || (_templateObject5211 = _taggedTemplateLiteral38(["Cosmic Ball in the Air"])))), Macro2.skill($skill(_templateObject535 || (_templateObject535 = _taggedTemplateLiteral38(["Bowl Straight Up"]))))).delevel().tryItem($item(_templateObject545 || (_templateObject545 = _taggedTemplateLiteral38(["blue rocket"])))).trySkill($skill(_templateObject555 || (_templateObject555 = _taggedTemplateLiteral38(["Giant Growth"])))).defaultKill();
+        return Macro2.externalIf(!have($effect(_templateObject5211 || (_templateObject5211 = _taggedTemplateLiteral38(["Cosmic Ball in the Air"])))), Macro2.trySkill($skill(_templateObject535 || (_templateObject535 = _taggedTemplateLiteral38(["Bowl Straight Up"]))))).tryItem($item(_templateObject545 || (_templateObject545 = _taggedTemplateLiteral38(["blue rocket"])))).trySkill($skill(_templateObject555 || (_templateObject555 = _taggedTemplateLiteral38(["Giant Growth"])))).attack().repeat();
       })
     },
     {
@@ -13601,7 +13601,7 @@ var levellingComplete = (0, import_kolmafia43.myLevel)() >= 13 && get("_neverend
       do: $location(_templateObject585 || (_templateObject585 = _taggedTemplateLiteral38(["The X-32-F Combat Training Snowman"]))),
       outfit: uniform,
       combat: new CSStrategy(function() {
-        return Macro2.externalIf(!have($effect(_templateObject594 || (_templateObject594 = _taggedTemplateLiteral38(["Cosmic Ball in the Air"])))), Macro2.skill($skill(_templateObject604 || (_templateObject604 = _taggedTemplateLiteral38(["Bowl Straight Up"]))))).delevel().tryItem($item(_templateObject6111 || (_templateObject6111 = _taggedTemplateLiteral38(["blue rocket"])))).trySkill($skill(_templateObject6210 || (_templateObject6210 = _taggedTemplateLiteral38(["Giant Growth"])))).defaultKill();
+        return Macro2.externalIf(!have($effect(_templateObject594 || (_templateObject594 = _taggedTemplateLiteral38(["Cosmic Ball in the Air"])))), Macro2.trySkill($skill(_templateObject604 || (_templateObject604 = _taggedTemplateLiteral38(["Bowl Straight Up"]))))).tryItem($item(_templateObject6111 || (_templateObject6111 = _taggedTemplateLiteral38(["blue rocket"])))).trySkill($skill(_templateObject6210 || (_templateObject6210 = _taggedTemplateLiteral38(["Giant Growth"])))).attack().repeat();
       })
     },
     {
@@ -14750,7 +14750,7 @@ var buffs3 = $effects(_templateObject170 || (_templateObject170 = _taggedTemplat
 // src/stattests.ts
 init_kolmafia_polyfill();
 var import_kolmafia47 = require("kolmafia");
-var _templateObject171, _templateObject2100, _templateObject361, _templateObject448, _templateObject540, _templateObject638, _templateObject734, _templateObject829, _templateObject927, _templateObject1025, _templateObject1124, _templateObject1224, _templateObject1324, _templateObject1421, _templateObject1519, _templateObject1619, _templateObject1718, _templateObject1818, _templateObject1918, _templateObject2018, _templateObject2123, _templateObject2223, _templateObject2320, _templateObject2417, _templateObject2516, _templateObject2616, _templateObject2716, _templateObject2814, _templateObject2914, _templateObject3013, _templateObject3120, _templateObject3218, _templateObject3315, _templateObject3414, _templateObject3512, _templateObject3611, _templateObject3710, _templateObject389, _templateObject398, _templateObject408, _templateObject4116, _templateObject4214, _templateObject4312, _templateObject449, _templateObject458, _templateObject468, _templateObject478, _templateObject488, _templateObject498, _templateObject508, _templateObject5116, _templateObject5214, _templateObject5311, _templateObject547, _templateObject557, _templateObject567, _templateObject577, _templateObject587, _templateObject596, _templateObject606, _templateObject6113, _templateObject6212, _templateObject639, _templateObject646, _templateObject656, _templateObject665, _templateObject675, _templateObject684, _templateObject694, _templateObject704, _templateObject7111, _templateObject7210, _templateObject735, _templateObject744;
+var _templateObject171, _templateObject2100, _templateObject361, _templateObject448, _templateObject540, _templateObject638, _templateObject734, _templateObject829, _templateObject927, _templateObject1025, _templateObject1124, _templateObject1224, _templateObject1324, _templateObject1421, _templateObject1519, _templateObject1619, _templateObject1718, _templateObject1818, _templateObject1918, _templateObject2018, _templateObject2123, _templateObject2223, _templateObject2320, _templateObject2417, _templateObject2516, _templateObject2616, _templateObject2716, _templateObject2814, _templateObject2914, _templateObject3013, _templateObject3120, _templateObject3218, _templateObject3315, _templateObject3414, _templateObject3512, _templateObject3611, _templateObject3710, _templateObject389, _templateObject398, _templateObject408, _templateObject4116, _templateObject4214, _templateObject4312, _templateObject449, _templateObject458, _templateObject468, _templateObject478, _templateObject488, _templateObject498, _templateObject508, _templateObject5116, _templateObject5214, _templateObject5311, _templateObject547, _templateObject557, _templateObject567, _templateObject577, _templateObject587, _templateObject596, _templateObject606, _templateObject6113, _templateObject6212, _templateObject639, _templateObject646, _templateObject656, _templateObject665, _templateObject675, _templateObject684, _templateObject694, _templateObject704, _templateObject7111, _templateObject7210, _templateObject735, _templateObject744, _templateObject754, _templateObject764;
 function _toConsumableArray18(arr) {
   return _arrayWithoutHoles18(arr) || _iterableToArray18(arr) || _unsupportedIterableToArray28(arr) || _nonIterableSpread18();
 }
@@ -14902,8 +14902,9 @@ var Muscle = {
   turnsSpent: 0,
   maxTurns: 1,
   tasks: [].concat(_toConsumableArray18(skillBuffTasks("MUSCLE")), [potionTask($item(_templateObject2716 || (_templateObject2716 = _taggedTemplateLiteral42(["LOV Elixir #3"])))), thrallTask($thrall(_templateObject2814 || (_templateObject2814 = _taggedTemplateLiteral42(["Elbow Macaroni"])))), beachTask($effect(_templateObject2914 || (_templateObject2914 = _taggedTemplateLiteral42(["Lack of Body-Building"])))), birdTask("Muscle Percent"), favouriteBirdTask("Muscle Percent"), _objectSpread14(_objectSpread14({}, innerElf()), {}, {
-    core: "hard"
-  }), _objectSpread14(_objectSpread14({}, potionTask($item(_templateObject3013 || (_templateObject3013 = _taggedTemplateLiteral42(["Ben-Gal\u2122 Balm"]))))), {}, {
+    core: "hard",
+    class: $classes(_templateObject3013 || (_templateObject3013 = _taggedTemplateLiteral42(["Pastamancer, Sauceror, Disco Bandit, Accordion Thief"])))
+  }), _objectSpread14(_objectSpread14({}, potionTask($item(_templateObject3120 || (_templateObject3120 = _taggedTemplateLiteral42(["Ben-Gal\u2122 Balm"]))))), {}, {
     core: "hard"
   })], _toConsumableArray18(equalizeTasks()))
 }, Mysticality = {
@@ -14911,21 +14912,21 @@ var Muscle = {
   type: "SERVICE",
   test: CommunityService.Mysticality,
   outfit: function() {
-    return have($item(_templateObject3120 || (_templateObject3120 = _taggedTemplateLiteral42(["wad of used tape"])))) || (0, import_kolmafia47.cliExecute)("fold wad of used tape"), {
-      hat: $items(_templateObject3218 || (_templateObject3218 = _taggedTemplateLiteral42(["astral chapeau, wad of used tape"]))),
-      weapon: $item(_templateObject3315 || (_templateObject3315 = _taggedTemplateLiteral42(["Fourth of May Cosplay Saber"]))),
-      offhand: $items(_templateObject3414 || (_templateObject3414 = _taggedTemplateLiteral42(["astral statuette, industrial fire extinguisher"]))),
-      back: $item(_templateObject3512 || (_templateObject3512 = _taggedTemplateLiteral42(["unwrapped knock-off retro superhero cape"]))),
-      shirt: $item(_templateObject3611 || (_templateObject3611 = _taggedTemplateLiteral42(["Jurassic Parka"]))),
-      pants: $item(_templateObject3710 || (_templateObject3710 = _taggedTemplateLiteral42(["designer sweatpants"]))),
+    return have($item(_templateObject3218 || (_templateObject3218 = _taggedTemplateLiteral42(["wad of used tape"])))) || (0, import_kolmafia47.cliExecute)("fold wad of used tape"), {
+      hat: $items(_templateObject3315 || (_templateObject3315 = _taggedTemplateLiteral42(["astral chapeau, wad of used tape"]))),
+      weapon: $item(_templateObject3414 || (_templateObject3414 = _taggedTemplateLiteral42(["Fourth of May Cosplay Saber"]))),
+      offhand: $items(_templateObject3512 || (_templateObject3512 = _taggedTemplateLiteral42(["astral statuette, industrial fire extinguisher"]))),
+      back: $item(_templateObject3611 || (_templateObject3611 = _taggedTemplateLiteral42(["unwrapped knock-off retro superhero cape"]))),
+      shirt: $item(_templateObject3710 || (_templateObject3710 = _taggedTemplateLiteral42(["Jurassic Parka"]))),
+      pants: $item(_templateObject389 || (_templateObject389 = _taggedTemplateLiteral42(["designer sweatpants"]))),
       acc1: byStat({
-        Mysticality: $item(_templateObject389 || (_templateObject389 = _taggedTemplateLiteral42(["your cowboy boots"]))),
-        default: $items(_templateObject398 || (_templateObject398 = _taggedTemplateLiteral42(["barrel hoop earring, Powerful Glove"])))
+        Mysticality: $item(_templateObject398 || (_templateObject398 = _taggedTemplateLiteral42(["your cowboy boots"]))),
+        default: $items(_templateObject408 || (_templateObject408 = _taggedTemplateLiteral42(["barrel hoop earring, Powerful Glove"])))
       }),
-      acc2: $item(_templateObject408 || (_templateObject408 = _taggedTemplateLiteral42(["codpiece"]))),
-      acc3: $item(_templateObject4116 || (_templateObject4116 = _taggedTemplateLiteral42(["battle broom"]))),
-      famequip: $item(_templateObject4214 || (_templateObject4214 = _taggedTemplateLiteral42(["unbreakable umbrella"]))),
-      familiar: $familiar(_templateObject4312 || (_templateObject4312 = _taggedTemplateLiteral42(["Left-Hand Man"]))),
+      acc2: $item(_templateObject4116 || (_templateObject4116 = _taggedTemplateLiteral42(["codpiece"]))),
+      acc3: $item(_templateObject4214 || (_templateObject4214 = _taggedTemplateLiteral42(["battle broom"]))),
+      famequip: $item(_templateObject4312 || (_templateObject4312 = _taggedTemplateLiteral42(["unbreakable umbrella"]))),
+      familiar: $familiar(_templateObject449 || (_templateObject449 = _taggedTemplateLiteral42(["Left-Hand Man"]))),
       modes: {
         retrocape: ["heck", RetroCape_exports.currentMode()]
       }
@@ -14933,26 +14934,28 @@ var Muscle = {
   },
   turnsSpent: 0,
   maxTurns: 1,
-  tasks: [].concat(_toConsumableArray18(skillBuffTasks("MYSTICALITY")), [birdTask("Mysticality Percent"), favouriteBirdTask("Mysticality Percent")], _toConsumableArray18(equalizeTasks()))
+  tasks: [].concat(_toConsumableArray18(skillBuffTasks("MYSTICALITY")), [birdTask("Mysticality Percent"), favouriteBirdTask("Mysticality Percent")], _toConsumableArray18(equalizeTasks()), [_objectSpread14(_objectSpread14({}, innerElf()), {}, {
+    class: $classes(_templateObject458 || (_templateObject458 = _taggedTemplateLiteral42(["Seal Clubber, Turtle Tamer, Disco Bandit, Accordion Thief"])))
+  })])
 }, Moxie = {
   name: "Moxie",
   type: "SERVICE",
   test: CommunityService.Moxie,
   outfit: function() {
     return {
-      hat: $item(_templateObject449 || (_templateObject449 = _taggedTemplateLiteral42(["very pointy crown"]))),
-      shirt: $item(_templateObject458 || (_templateObject458 = _taggedTemplateLiteral42(["Jurassic Parka"]))),
-      back: $item(_templateObject468 || (_templateObject468 = _taggedTemplateLiteral42(["unwrapped knock-off retro superhero cape"]))),
-      weapon: $item(_templateObject478 || (_templateObject478 = _taggedTemplateLiteral42(["Fourth of May Cosplay Saber"]))),
-      offhand: $item(_templateObject488 || (_templateObject488 = _taggedTemplateLiteral42(["unbreakable umbrella"]))),
-      pants: $items(_templateObject498 || (_templateObject498 = _taggedTemplateLiteral42(["astral shorts, Cargo Cultist Shorts"]))),
-      acc1: $item(_templateObject508 || (_templateObject508 = _taggedTemplateLiteral42(["Beach Comb"]))),
+      hat: $item(_templateObject468 || (_templateObject468 = _taggedTemplateLiteral42(["very pointy crown"]))),
+      shirt: $item(_templateObject478 || (_templateObject478 = _taggedTemplateLiteral42(["Jurassic Parka"]))),
+      back: $item(_templateObject488 || (_templateObject488 = _taggedTemplateLiteral42(["unwrapped knock-off retro superhero cape"]))),
+      weapon: $item(_templateObject498 || (_templateObject498 = _taggedTemplateLiteral42(["Fourth of May Cosplay Saber"]))),
+      offhand: $item(_templateObject508 || (_templateObject508 = _taggedTemplateLiteral42(["unbreakable umbrella"]))),
+      pants: $items(_templateObject5116 || (_templateObject5116 = _taggedTemplateLiteral42(["astral shorts, Cargo Cultist Shorts"]))),
+      acc1: $item(_templateObject5214 || (_templateObject5214 = _taggedTemplateLiteral42(["Beach Comb"]))),
       acc2: byStat({
-        Moxie: $item(_templateObject5116 || (_templateObject5116 = _taggedTemplateLiteral42(["your cowboy boots"]))),
-        default: $item(_templateObject5214 || (_templateObject5214 = _taggedTemplateLiteral42(['"I Voted!" sticker'])))
+        Moxie: $item(_templateObject5311 || (_templateObject5311 = _taggedTemplateLiteral42(["your cowboy boots"]))),
+        default: $item(_templateObject547 || (_templateObject547 = _taggedTemplateLiteral42(['"I Voted!" sticker'])))
       }),
-      acc3: $items(_templateObject5311 || (_templateObject5311 = _taggedTemplateLiteral42(["meteorite necklace, Retrospecs"]))),
-      famequip: $item(_templateObject547 || (_templateObject547 = _taggedTemplateLiteral42(["miniature crystal ball"]))),
+      acc3: $items(_templateObject557 || (_templateObject557 = _taggedTemplateLiteral42(["meteorite necklace, Retrospecs"]))),
+      famequip: $item(_templateObject567 || (_templateObject567 = _taggedTemplateLiteral42(["miniature crystal ball"]))),
       modes: {
         retrocape: ["robot", RetroCape_exports.currentMode()],
         umbrella: "broken"
@@ -14961,15 +14964,15 @@ var Muscle = {
   },
   turnsSpent: 0,
   maxTurns: 1,
-  tasks: [].concat(_toConsumableArray18(skillBuffTasks("MOXIE")), [birdTask("Moxie Percent"), favouriteBirdTask("Moxie Percent")], _toConsumableArray18($items(_templateObject557 || (_templateObject557 = _taggedTemplateLiteral42(["runproof mascara, confiscated love note, dollop of barbecue sauce"]))).map(potionTask)), [{
+  tasks: [].concat(_toConsumableArray18(skillBuffTasks("MOXIE")), [birdTask("Moxie Percent"), favouriteBirdTask("Moxie Percent")], _toConsumableArray18($items(_templateObject577 || (_templateObject577 = _taggedTemplateLiteral42(["runproof mascara, confiscated love note, dollop of barbecue sauce"]))).map(potionTask)), [{
     name: "Rhinestones",
     completed: function() {
-      return !have($item(_templateObject567 || (_templateObject567 = _taggedTemplateLiteral42(["rhinestone"]))));
+      return !have($item(_templateObject587 || (_templateObject587 = _taggedTemplateLiteral42(["rhinestone"]))));
     },
     do: function() {
-      return (0, import_kolmafia47.use)((0, import_kolmafia47.itemAmount)($item(_templateObject577 || (_templateObject577 = _taggedTemplateLiteral42(["rhinestone"])))), $item(_templateObject587 || (_templateObject587 = _taggedTemplateLiteral42(["rhinestone"]))));
+      return (0, import_kolmafia47.use)((0, import_kolmafia47.itemAmount)($item(_templateObject596 || (_templateObject596 = _taggedTemplateLiteral42(["rhinestone"])))), $item(_templateObject606 || (_templateObject606 = _taggedTemplateLiteral42(["rhinestone"]))));
     }
-  }, thrallTask($thrall(_templateObject596 || (_templateObject596 = _taggedTemplateLiteral42(["Penne Dreadful"]))))], _toConsumableArray18(equalizeTasks()))
+  }, thrallTask($thrall(_templateObject6113 || (_templateObject6113 = _taggedTemplateLiteral42(["Penne Dreadful"]))))], _toConsumableArray18(equalizeTasks()))
 }, Hitpoints = {
   name: "Hitpoints",
   type: "SERVICE",
@@ -14977,28 +14980,28 @@ var Muscle = {
   turnsSpent: 0,
   maxTurns: 1,
   outfit: function() {
-    return have($item(_templateObject606 || (_templateObject606 = _taggedTemplateLiteral42(["wad of used tape"])))) || (0, import_kolmafia47.cliExecute)("fold wad of used tape"), {
-      hat: $item(_templateObject6113 || (_templateObject6113 = _taggedTemplateLiteral42(["wad of used tape"]))),
-      weapon: $item(_templateObject6212 || (_templateObject6212 = _taggedTemplateLiteral42(["dented scepter"]))),
-      offhand: $item(_templateObject639 || (_templateObject639 = _taggedTemplateLiteral42(["Fourth of May Cosplay Saber"]))),
-      shirt: $items(_templateObject646 || (_templateObject646 = _taggedTemplateLiteral42(["Jurassic Parka, shoe ad T-shirt, fresh coat of paint"]))),
-      back: $item(_templateObject656 || (_templateObject656 = _taggedTemplateLiteral42(["unwrapped knock-off retro superhero cape"]))),
-      pants: $item(_templateObject665 || (_templateObject665 = _taggedTemplateLiteral42(["Cargo Cultist Shorts"]))),
-      acc1: $item(_templateObject675 || (_templateObject675 = _taggedTemplateLiteral42(["Brutal brogues"]))),
+    return have($item(_templateObject6212 || (_templateObject6212 = _taggedTemplateLiteral42(["wad of used tape"])))) || (0, import_kolmafia47.cliExecute)("fold wad of used tape"), {
+      hat: $item(_templateObject639 || (_templateObject639 = _taggedTemplateLiteral42(["wad of used tape"]))),
+      weapon: $item(_templateObject646 || (_templateObject646 = _taggedTemplateLiteral42(["dented scepter"]))),
+      offhand: $item(_templateObject656 || (_templateObject656 = _taggedTemplateLiteral42(["Fourth of May Cosplay Saber"]))),
+      shirt: $items(_templateObject665 || (_templateObject665 = _taggedTemplateLiteral42(["Jurassic Parka, shoe ad T-shirt, fresh coat of paint"]))),
+      back: $item(_templateObject675 || (_templateObject675 = _taggedTemplateLiteral42(["unwrapped knock-off retro superhero cape"]))),
+      pants: $item(_templateObject684 || (_templateObject684 = _taggedTemplateLiteral42(["Cargo Cultist Shorts"]))),
+      acc1: $item(_templateObject694 || (_templateObject694 = _taggedTemplateLiteral42(["Brutal brogues"]))),
       acc2: byStat({
-        Muscle: $item(_templateObject684 || (_templateObject684 = _taggedTemplateLiteral42(["your cowboy boots"]))),
-        default: $item(_templateObject694 || (_templateObject694 = _taggedTemplateLiteral42(["Kremlin's Greatest Briefcase"])))
+        Muscle: $item(_templateObject704 || (_templateObject704 = _taggedTemplateLiteral42(["your cowboy boots"]))),
+        default: $item(_templateObject7111 || (_templateObject7111 = _taggedTemplateLiteral42(["Kremlin's Greatest Briefcase"])))
       }),
-      acc3: $items(_templateObject704 || (_templateObject704 = _taggedTemplateLiteral42(["meteorite necklace, Retrospecs"]))),
-      familiar: $familiar(_templateObject7111 || (_templateObject7111 = _taggedTemplateLiteral42(["Left-Hand Man"]))),
-      famequip: $item(_templateObject7210 || (_templateObject7210 = _taggedTemplateLiteral42(["unbreakable umbrella"]))),
+      acc3: $items(_templateObject7210 || (_templateObject7210 = _taggedTemplateLiteral42(["meteorite necklace, Retrospecs"]))),
+      familiar: $familiar(_templateObject735 || (_templateObject735 = _taggedTemplateLiteral42(["Left-Hand Man"]))),
+      famequip: $item(_templateObject744 || (_templateObject744 = _taggedTemplateLiteral42(["unbreakable umbrella"]))),
       modes: {
         retrocape: ["vampire", RetroCape_exports.currentMode()],
         parka: "kachungasaur"
       }
     };
   },
-  tasks: [].concat(_toConsumableArray18(skillBuffTasks("HP")), [birdTask("Muscle Percent"), favouriteBirdTask("Muscle Percent"), potionTask($item(_templateObject735 || (_templateObject735 = _taggedTemplateLiteral42(["LOV Elixir #3"])))), thrallTask($thrall(_templateObject744 || (_templateObject744 = _taggedTemplateLiteral42(["Elbow Macaroni"]))))], _toConsumableArray18(equalizeTasks()))
+  tasks: [].concat(_toConsumableArray18(skillBuffTasks("HP")), [birdTask("Muscle Percent"), favouriteBirdTask("Muscle Percent"), potionTask($item(_templateObject754 || (_templateObject754 = _taggedTemplateLiteral42(["LOV Elixir #3"])))), thrallTask($thrall(_templateObject764 || (_templateObject764 = _taggedTemplateLiteral42(["Elbow Macaroni"]))))], _toConsumableArray18(equalizeTasks()))
 }, StatTests = byStat({
   Mysticality: [Moxie, Muscle, Hitpoints, Mysticality],
   Muscle: [Moxie, Mysticality, Hitpoints, Muscle],
