@@ -5,6 +5,7 @@ import { adv1, create, eat } from "kolmafia";
 import {
   $classes,
   $effect,
+  $familiar,
   $item,
   $items,
   $location,
@@ -89,6 +90,8 @@ const CoilWire: CSQuest = {
     acc1: $item`Eight Days a Week Pill Keeper`,
     acc2: $item`Powerful Glove`,
     acc3: $item`Guzzlr tablet`,
+    familiar: $familiar`Left-Hand Man`,
+    famequip: $items`Abracandalabra, unbreakable umbrella`,
   }),
 };
 

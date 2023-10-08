@@ -16,18 +16,22 @@ import {
 const UNCHANGING_OUTFIT: OutfitSpec = {
   shirt: $items`LOV Eardigan, Jurassic Parka, fresh coat of paint`,
   offhand: $item`unbreakable umbrella`,
-  acc1: byStat<Item | Item[]>({
-    Mysticality: $items`meteorite necklace, your cowboy boots`,
-    default: $item`Powerful Glove`,
-  }),
-  acc2: byStat<Item | Item[]>({
-    Mysticality: $item`codpiece`,
-    Moxie: $items`LOV Earrings, Beach Comb`,
-    Muscle: $items`Brutal brogues, Retrospecs`,
-  }),
-  acc3: byStat<Item | Item[]>({
-    Mysticality: $items`battle broom, Powerful Glove`,
-    default: $item`your cowboy boots`,
+  ...byStat({
+    Mysticality: {
+      acc1: $items`meteorite necklace, your cowboy boots`,
+      acc2: $item`codpiece`,
+      acc3: $items`battle broom, Retrospecs`,
+    },
+    Muscle: {
+      acc1: $item`your cowboy boots`,
+      acc2: $items`Brutal brogues, Powerful Glove`,
+      acc3: $items`Retrospecs`,
+    },
+    Moxie: {
+      acc1: $item`your cowboy boots`,
+      acc2: $items`LOV Earrings, Beach Comb`,
+      acc3: $item`Cincho de Mayo`,
+    },
   }),
   modes: {
     retrocape: [
