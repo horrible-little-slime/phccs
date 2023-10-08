@@ -103,8 +103,11 @@ export function restore(effects: Effect[]): CSTask {
       }
       if (have($item`magical sausage`)) {
         eat(1, $item`magical sausage`);
-      } else {
+      } else if (have($item`psychokinetic energy blob`)) {
         use(1, $item`psychokinetic energy blob`);
+      } else {
+        buy(1, $item`Doc Galaktik's Invigorating Tonic`);
+        use($item`Doc Galaktik's Invigorating Tonic`);
       }
     },
   };
