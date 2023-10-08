@@ -12748,14 +12748,33 @@ var HIGHLIGHT = (0, import_kolmafia40.isDarkMode)() ? "yellow" : "blue", CSEngin
         requireBoxServants: !1
       }), CSEngine2.propertyManager.setChoices({
         1467: 3,
-        1468: 2,
+        1468: byStat({
+          Moxie: 1,
+          default: 2
+        }),
         1469: 3,
-        1470: 2,
-        1471: 3,
-        1472: 1,
+        1470: byStat({
+          Muscle: 3,
+          default: 2
+        }),
+        1471: byStat({
+          Mysticality: 3,
+          default: 1
+        }),
+        1472: byStat({
+          Moxie: 3,
+          default: 1
+        }),
         1473: 1,
-        1474: 1,
-        1475: 1
+        1474: byStat({
+          Mysticality: 1,
+          Moxie: 2,
+          Muscle: 3
+        }),
+        1475: byStat({
+          Muscle: 2,
+          default: 1
+        })
       }), (0, import_kolmafia40.readCcs)("grimoire_macro") || (0, import_kolmafia40.writeCcs)("[ default ]\nabort", "grimoire_macro");
     }
   }, {
