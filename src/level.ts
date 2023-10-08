@@ -652,6 +652,7 @@ const Level: CSQuest = {
       },
       combat: new CSStrategy(() =>
         Macro.if_($monster`sausage goblin`, Macro.defaultKill())
+          .trySkill($skill`Feel Pride`)
           .trySkill($skill`Bowl Sideways`)
           .trySkill($skill`Spit jurassic acid`)
           .trySkill($skill`Chest X-Ray`)
