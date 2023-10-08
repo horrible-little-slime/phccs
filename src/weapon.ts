@@ -12,11 +12,13 @@ import {
 import { CSEngine, CSQuest } from "./engine";
 import { unequip } from "./lib";
 import uniform from "./outfit";
+import { OutfitSpec } from "grimoire-kolmafia";
 import {
   canadiaAvailable,
   cliExecute,
   handlingChoice,
   inHardcore,
+  myFamiliar,
   retrieveItem,
   runChoice,
   useSkill,
@@ -107,23 +109,23 @@ const Weapon: CSQuest = {
     },
     {
       name: "Spit Ungulith",
-      completed: () => have($effect`Spit Upon`),
-      ready: () => get("camelSpit") >= 100,
+      completed: () => have($item`corrupted marrow`) || have($effect`Cowrruption`),
       do: (): void => {
         meteors = get("_meteorShowerUses");
         CombatLoversLocket.reminisce($monster`ungulith`);
         if (handlingChoice()) runChoice(-1);
       },
       choices: { [1387]: 3 },
-      outfit: () =>
-        uniform({
-          changes: {
-            familiar: $familiar`Melodramedary`,
-            weapon: $item`Fourth of May Cosplay Saber`,
-          },
-        }),
+      outfit: () => {
+        const changes: OutfitSpec = {
+          weapon: $item`Fourth of May Cosplay Saber`,
+        };
+        if (get("camelSpit") >= 100) changes.familiar = $familiar`Melodramedary`;
+        return uniform({ changes, canAttack: false });
+      },
       post: (): void => {
-        if (have($effect`Spit Upon`)) set("camelSpit", 0);
+        if (myFamiliar() === $familiar`Melodramedary` && have($effect`Spit Upon`, 15))
+          set("camelSpit", 0);
         if (meteors && have($effect`Meteor Showered`)) set("_meteorShowerUses", meteors + 1);
 
         const ungId = $monster`ungulith`.id.toFixed(0);
