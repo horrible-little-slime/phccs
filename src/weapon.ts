@@ -28,6 +28,7 @@ import {
   $effect,
   $effects,
   $familiar,
+  $familiars,
   $item,
   $items,
   $location,
@@ -64,6 +65,8 @@ const Weapon: CSQuest = {
             familiar: $familiar`Disembodied Hand`,
           }
         : {}),
+      back: $items`Buddy Bjorn, unwrapped knock-off retro superhero cape`,
+      riders: { "buddy-bjorn": $familiar`Mosquito` },
     };
   },
   turnsSpent: 0,
