@@ -13154,7 +13154,7 @@ var buffs2 = $effects(_templateObject150 || (_templateObject150 = _taggedTemplat
       shirt: $items(_templateObject349 || (_templateObject349 = _taggedTemplateLiteral37(["Jurassic Parka, denim jacket"]))),
       back: $item(_templateObject436 || (_templateObject436 = _taggedTemplateLiteral37(["unwrapped knock-off retro superhero cape"]))),
       weapon: $item(_templateObject530 || (_templateObject530 = _taggedTemplateLiteral37(["industrial fire extinguisher"]))),
-      offhand: $item(_templateObject629 || (_templateObject629 = _taggedTemplateLiteral37(["meteorite guard"]))),
+      offhand: $items(_templateObject629 || (_templateObject629 = _taggedTemplateLiteral37(["meteorite guard, Fourth of May Cosplay Saber"]))),
       pants: $item(_templateObject726 || (_templateObject726 = _taggedTemplateLiteral37(["designer sweatpants"]))),
       acc1: $item(_templateObject823 || (_templateObject823 = _taggedTemplateLiteral37(["your cowboy boots"]))),
       acc2: $item(_templateObject921 || (_templateObject921 = _taggedTemplateLiteral37(["Beach Comb"]))),
@@ -13252,7 +13252,7 @@ var buffs2 = $effects(_templateObject150 || (_templateObject150 = _taggedTemplat
 // src/level.ts
 init_kolmafia_polyfill();
 var import_kolmafia43 = require("kolmafia");
-var _templateObject151, _templateObject280, _templateObject350, _templateObject437, _templateObject531, _templateObject630, _templateObject727, _templateObject824, _templateObject922, _templateObject1020, _templateObject1119, _templateObject1219, _templateObject1319, _templateObject1416, _templateObject1515, _templateObject1615, _templateObject1714, _templateObject1814, _templateObject1914, _templateObject2014, _templateObject2119, _templateObject2219, _templateObject2316, _templateObject2413, _templateObject2513, _templateObject2613, _templateObject2713, _templateObject2811, _templateObject2911, _templateObject3011, _templateObject3118, _templateObject3215, _templateObject3312, _templateObject3411, _templateObject359, _templateObject369, _templateObject377, _templateObject387, _templateObject396, _templateObject406, _templateObject4113, _templateObject4211, _templateObject438, _templateObject445, _templateObject455, _templateObject465, _templateObject475, _templateObject485, _templateObject495, _templateObject505, _templateObject5113, _templateObject5211, _templateObject535, _templateObject545, _templateObject555, _templateObject565, _templateObject575, _templateObject585, _templateObject594, _templateObject604, _templateObject6111, _templateObject6210, _templateObject634, _templateObject644, _templateObject654, _templateObject664, _templateObject674, _templateObject683, _templateObject693, _templateObject703, _templateObject7110, _templateObject728, _templateObject733, _templateObject743, _templateObject753, _templateObject763, _templateObject773, _templateObject783, _templateObject793, _templateObject803, _templateObject8110, _templateObject825, _templateObject832, _templateObject842, _templateObject852, _templateObject862, _templateObject872, _templateObject882, _templateObject892, _templateObject902, _templateObject9110, _templateObject923, _templateObject932, _templateObject942, _templateObject952, _templateObject962, _templateObject972, _templateObject982, _templateObject992, _templateObject1002, _templateObject10110, _templateObject1022, _templateObject1032, _templateObject1042, _templateObject1052, _templateObject1062, _templateObject1072, _templateObject1082, _templateObject1092, _templateObject1102, _templateObject11110, _templateObject1122, _templateObject1132, _templateObject1142, _templateObject1152, _templateObject1162, _templateObject1172, _templateObject1182, _templateObject1192, _templateObject1202, _templateObject12110, _templateObject1222, _templateObject1232, _templateObject1242, _templateObject1252, _templateObject1262, _templateObject1272, _templateObject1282, _templateObject1292, _templateObject1302, _templateObject13110, _templateObject1322, _templateObject1332, _templateObject1342, _templateObject1352, _templateObject1362, _templateObject1372, _templateObject1382, _templateObject1392, _templateObject1402, _templateObject1417, _templateObject1422, _templateObject1432, _templateObject1442, _templateObject1452, _templateObject1462, _templateObject1472, _templateObject1482, _templateObject1492, _templateObject1502, _templateObject1516, _templateObject1522, _templateObject1532, _templateObject1542, _templateObject1552, _templateObject1562, _templateObject1572, _templateObject1582, _templateObject1592, _templateObject160, _templateObject161, _templateObject1622;
+var _templateObject151, _templateObject280, _templateObject350, _templateObject437, _templateObject531, _templateObject630, _templateObject727, _templateObject824, _templateObject922, _templateObject1020, _templateObject1119, _templateObject1219, _templateObject1319, _templateObject1416, _templateObject1515, _templateObject1615, _templateObject1714, _templateObject1814, _templateObject1914, _templateObject2014, _templateObject2119, _templateObject2219, _templateObject2316, _templateObject2413, _templateObject2513, _templateObject2613, _templateObject2713, _templateObject2811, _templateObject2911, _templateObject3011, _templateObject3118, _templateObject3215, _templateObject3312, _templateObject3411, _templateObject359, _templateObject369, _templateObject377, _templateObject387, _templateObject396, _templateObject406, _templateObject4113, _templateObject4211, _templateObject438, _templateObject445, _templateObject455, _templateObject465, _templateObject475, _templateObject485, _templateObject495, _templateObject505, _templateObject5113, _templateObject5211, _templateObject535, _templateObject545, _templateObject555, _templateObject565, _templateObject575, _templateObject585, _templateObject594, _templateObject604, _templateObject6111, _templateObject6210, _templateObject634, _templateObject644, _templateObject654, _templateObject664, _templateObject674, _templateObject683, _templateObject693, _templateObject703, _templateObject7110, _templateObject728, _templateObject733, _templateObject743, _templateObject753, _templateObject763, _templateObject773, _templateObject783, _templateObject793, _templateObject803, _templateObject8110, _templateObject825, _templateObject832, _templateObject842, _templateObject852, _templateObject862, _templateObject872, _templateObject882, _templateObject892, _templateObject902, _templateObject9110, _templateObject923, _templateObject932, _templateObject942, _templateObject952, _templateObject962, _templateObject972, _templateObject982, _templateObject992, _templateObject1002, _templateObject10110, _templateObject1022, _templateObject1032, _templateObject1042, _templateObject1052, _templateObject1062, _templateObject1072, _templateObject1082, _templateObject1092, _templateObject1102, _templateObject11110, _templateObject1122, _templateObject1132, _templateObject1142, _templateObject1152, _templateObject1162, _templateObject1172, _templateObject1182, _templateObject1192, _templateObject1202, _templateObject12110, _templateObject1222, _templateObject1232, _templateObject1242, _templateObject1252, _templateObject1262, _templateObject1272, _templateObject1282, _templateObject1292, _templateObject1302, _templateObject13110, _templateObject1322, _templateObject1332, _templateObject1342, _templateObject1352, _templateObject1362, _templateObject1372, _templateObject1382, _templateObject1392, _templateObject1402, _templateObject1417, _templateObject1422, _templateObject1432, _templateObject1442, _templateObject1452, _templateObject1462, _templateObject1472, _templateObject1482, _templateObject1492, _templateObject1502, _templateObject1516, _templateObject1522, _templateObject1532, _templateObject1542, _templateObject1552, _templateObject1562, _templateObject1572, _templateObject1582, _templateObject1592, _templateObject160, _templateObject161, _templateObject1622, _templateObject1632, _templateObject1642, _templateObject1652, _templateObject1662;
 function ownKeys11(object, enumerableOnly) {
   var keys = Object.keys(object);
   if (Object.getOwnPropertySymbols) {
@@ -13800,8 +13800,11 @@ var levellingComplete = (0, import_kolmafia43.myLevel)() >= 13 && get("_neverend
       outfit: function() {
         return foldshirt(), uniform({
           changes: {
-            weapon: $item(_templateObject1142 || (_templateObject1142 = _taggedTemplateLiteral38(["Fourth of May Cosplay Saber"]))),
-            shirt: $item(_templateObject1152 || (_templateObject1152 = _taggedTemplateLiteral38(["makeshift garbage shirt"])))
+            weapon: byStat({
+              Muscle: $item(_templateObject1142 || (_templateObject1142 = _taggedTemplateLiteral38(["June cleaver"]))),
+              default: $item(_templateObject1152 || (_templateObject1152 = _taggedTemplateLiteral38(["Fourth of May Cosplay Saber"])))
+            }),
+            shirt: $item(_templateObject1162 || (_templateObject1162 = _taggedTemplateLiteral38(["makeshift garbage shirt"])))
           },
           canAttack: !1
         });
@@ -13814,12 +13817,17 @@ var levellingComplete = (0, import_kolmafia43.myLevel)() >= 13 && get("_neverend
         }), "Open Heart Surgery", "LOV Extraterrestrial Chocolate");
       },
       combat: new CSStrategy(function() {
-        return Macro2.if_($monster(_templateObject1162 || (_templateObject1162 = _taggedTemplateLiteral38(["LOV Enforcer"]))), Macro2.attack().repeat()).if_($monster(_templateObject1172 || (_templateObject1172 = _taggedTemplateLiteral38(["LOV Engineer"]))), Macro2.candyblast().trySkillRepeat($skill(_templateObject1182 || (_templateObject1182 = _taggedTemplateLiteral38(["Weapon of the Pastalord"]))))).if_($monster(_templateObject1192 || (_templateObject1192 = _taggedTemplateLiteral38(["LOV Equivocator"]))), Macro2.delevel().easyFight().candyblast().defaultKill());
+        return Macro2.if_($monster(_templateObject1172 || (_templateObject1172 = _taggedTemplateLiteral38(["LOV Enforcer"]))), Macro2.attack().repeat()).if_($monster(_templateObject1182 || (_templateObject1182 = _taggedTemplateLiteral38(["LOV Engineer"]))), Macro2.candyblast().trySkillRepeat($skill(_templateObject1192 || (_templateObject1192 = _taggedTemplateLiteral38(["Weapon of the Pastalord"]))))).if_($monster(_templateObject1202 || (_templateObject1202 = _taggedTemplateLiteral38(["LOV Equivocator"]))), Macro2.step("pickpocket").delevel().easyFight().candyblast().defaultKill());
       }),
       post: function() {
-        (0, import_kolmafia43.use)(1, $item(_templateObject1202 || (_templateObject1202 = _taggedTemplateLiteral38(["LOV Extraterrestrial Chocolate"])))), burnLibrams();
+        (0, import_kolmafia43.use)(1, $item(_templateObject12110 || (_templateObject12110 = _taggedTemplateLiteral38(["LOV Extraterrestrial Chocolate"])))), burnLibrams();
       }
     },
+    potionTask(byStat({
+      Muscle: $item(_templateObject1222 || (_templateObject1222 = _taggedTemplateLiteral38(["LOV Elixir #3"]))),
+      Mysticality: $item(_templateObject1232 || (_templateObject1232 = _taggedTemplateLiteral38(["LOV Elixir #6"]))),
+      Moxie: $item(_templateObject1242 || (_templateObject1242 = _taggedTemplateLiteral38(["LOV Elixir #9"])))
+    })),
     {
       name: "Snojo",
       completed: function() {
@@ -13829,7 +13837,7 @@ var levellingComplete = (0, import_kolmafia43.myLevel)() >= 13 && get("_neverend
         return !!get("snojoSetting");
       },
       outfit: uniform,
-      do: $location(_templateObject12110 || (_templateObject12110 = _taggedTemplateLiteral38(["The X-32-F Combat Training Snowman"]))),
+      do: $location(_templateObject1252 || (_templateObject1252 = _taggedTemplateLiteral38(["The X-32-F Combat Training Snowman"]))),
       combat: new CSStrategy(function() {
         return Macro2.delevel().easyFight().attack().repeat();
       })
@@ -13837,7 +13845,7 @@ var levellingComplete = (0, import_kolmafia43.myLevel)() >= 13 && get("_neverend
     {
       name: "Post-Snojo Hottub",
       completed: function() {
-        return $effects(_templateObject1222 || (_templateObject1222 = _taggedTemplateLiteral38(["Snowballed, Half-Blooded, Half-Drained, Bruised, Relaxed Muscles, Hypnotized, Bad Haircut"]))).every(function(effect) {
+        return $effects(_templateObject1262 || (_templateObject1262 = _taggedTemplateLiteral38(["Snowballed, Half-Blooded, Half-Drained, Bruised, Relaxed Muscles, Hypnotized, Bad Haircut"]))).every(function(effect) {
           return !have(effect);
         });
       },
@@ -13856,11 +13864,11 @@ var levellingComplete = (0, import_kolmafia43.myLevel)() >= 13 && get("_neverend
           hpAutoRecoveryTarget: -0.05
         }, function() {
           try {
-            (0, import_kolmafia43.useSkill)($skill(_templateObject1232 || (_templateObject1232 = _taggedTemplateLiteral38(["Evoke Eldritch Horror"])))), (0, import_kolmafia43.runCombat)();
+            (0, import_kolmafia43.useSkill)($skill(_templateObject1272 || (_templateObject1272 = _taggedTemplateLiteral38(["Evoke Eldritch Horror"])))), (0, import_kolmafia43.runCombat)();
           } catch (e) {
             (0, import_kolmafia43.print)("".concat(e));
           } finally {
-            (have($effect(_templateObject1242 || (_templateObject1242 = _taggedTemplateLiteral38(["Beaten Up"])))) || (0, import_kolmafia43.myHp)() === 0 || !get("_lastCombatWon")) && (0, import_kolmafia43.cliExecute)("hottub");
+            (have($effect(_templateObject1282 || (_templateObject1282 = _taggedTemplateLiteral38(["Beaten Up"])))) || (0, import_kolmafia43.myHp)() === 0 || !get("_lastCombatWon")) && (0, import_kolmafia43.cliExecute)("hottub");
           }
         });
       },
@@ -13878,12 +13886,12 @@ var levellingComplete = (0, import_kolmafia43.myLevel)() >= 13 && get("_neverend
         (0, import_kolmafia43.visitUrl)("main.php?fightgodlobster=1"), (0, import_kolmafia43.runCombat)(), (0, import_kolmafia43.visitUrl)("choice.php"), (0, import_kolmafia43.runChoice)(-1);
       },
       outfit: function() {
-        var _find, gear = (_find = $items(_templateObject1252 || (_templateObject1252 = _taggedTemplateLiteral38(["God Lobster's Crown, God Lobster's Robe, God Lobster's Rod, God Lobster's Ring, God Lobster's Scepter"]))).find(function(it) {
+        var _find, gear = (_find = $items(_templateObject1292 || (_templateObject1292 = _taggedTemplateLiteral38(["God Lobster's Crown, God Lobster's Robe, God Lobster's Rod, God Lobster's Ring, God Lobster's Scepter"]))).find(function(it) {
           return have(it);
-        })) !== null && _find !== void 0 ? _find : $item(_templateObject1262 || (_templateObject1262 = _taggedTemplateLiteral38(["tiny stillsuit"])));
+        })) !== null && _find !== void 0 ? _find : $item(_templateObject1302 || (_templateObject1302 = _taggedTemplateLiteral38(["tiny stillsuit"])));
         return uniform({
           changes: {
-            familiar: $familiar(_templateObject1272 || (_templateObject1272 = _taggedTemplateLiteral38(["God Lobster"]))),
+            familiar: $familiar(_templateObject13110 || (_templateObject13110 = _taggedTemplateLiteral38(["God Lobster"]))),
             famequip: gear
           }
         });
@@ -13898,12 +13906,12 @@ var levellingComplete = (0, import_kolmafia43.myLevel)() >= 13 && get("_neverend
       completed: function() {
         return get("_machineTunnelsAdv") >= 5;
       },
-      do: $location(_templateObject1282 || (_templateObject1282 = _taggedTemplateLiteral38(["The Deep Machine Tunnels"]))),
+      do: $location(_templateObject1322 || (_templateObject1322 = _taggedTemplateLiteral38(["The Deep Machine Tunnels"]))),
       outfit: function() {
         return foldshirt(), uniform({
           changes: {
-            shirt: $item(_templateObject1292 || (_templateObject1292 = _taggedTemplateLiteral38(["makeshift garbage shirt"]))),
-            familiar: $familiar(_templateObject1302 || (_templateObject1302 = _taggedTemplateLiteral38(["Machine Elf"])))
+            shirt: $item(_templateObject1332 || (_templateObject1332 = _taggedTemplateLiteral38(["makeshift garbage shirt"]))),
+            familiar: $familiar(_templateObject1342 || (_templateObject1342 = _taggedTemplateLiteral38(["Machine Elf"])))
           }
         });
       },
@@ -13923,25 +13931,25 @@ var levellingComplete = (0, import_kolmafia43.myLevel)() >= 13 && get("_neverend
     {
       name: "NEP Spit",
       completed: function() {
-        return have($effect(_templateObject13110 || (_templateObject13110 = _taggedTemplateLiteral38(["Spit Upon"]))));
+        return have($effect(_templateObject1352 || (_templateObject1352 = _taggedTemplateLiteral38(["Spit Upon"]))));
       },
       ready: function() {
-        return get("camelSpit") >= 100 && have($familiar(_templateObject1322 || (_templateObject1322 = _taggedTemplateLiteral38(["Comma Chameleon"])))) && get("_neverendingPartyFreeTurns") >= 10;
+        return get("camelSpit") >= 100 && have($familiar(_templateObject1362 || (_templateObject1362 = _taggedTemplateLiteral38(["Comma Chameleon"])))) && get("_neverendingPartyFreeTurns") >= 10;
       },
-      do: $location(_templateObject1332 || (_templateObject1332 = _taggedTemplateLiteral38(["The Neverending Party"]))),
+      do: $location(_templateObject1372 || (_templateObject1372 = _taggedTemplateLiteral38(["The Neverending Party"]))),
       outfit: function() {
         return foldshirt(), uniform({
           changes: _objectSpread11(_objectSpread11({
-            shirt: $items(_templateObject1342 || (_templateObject1342 = _taggedTemplateLiteral38(["makeshift garbage shirt"])))
+            shirt: $items(_templateObject1382 || (_templateObject1382 = _taggedTemplateLiteral38(["makeshift garbage shirt"])))
           }, get("_sausageFights") > 4 ? {} : {
-            offhand: $item(_templateObject1352 || (_templateObject1352 = _taggedTemplateLiteral38(["Kramco Sausage-o-Matic\u2122"])))
+            offhand: $item(_templateObject1392 || (_templateObject1392 = _taggedTemplateLiteral38(["Kramco Sausage-o-Matic\u2122"])))
           }), {}, {
-            familiar: $familiar(_templateObject1362 || (_templateObject1362 = _taggedTemplateLiteral38(["Melodramedary"])))
+            familiar: $familiar(_templateObject1402 || (_templateObject1402 = _taggedTemplateLiteral38(["Melodramedary"])))
           })
         });
       },
       combat: new CSStrategy(function() {
-        return Macro2.trySkill($skill(_templateObject1372 || (_templateObject1372 = _taggedTemplateLiteral38(["%fn, spit on me!"])))).if_($effect(_templateObject1382 || (_templateObject1382 = _taggedTemplateLiteral38(["Inner Elf"]))), Macro2.if_("!hascombatitem ".concat($item(_templateObject1392 || (_templateObject1392 = _taggedTemplateLiteral38(["cosmic bowling ball"])))), Macro2.trySkill($skill(_templateObject1402 || (_templateObject1402 = _taggedTemplateLiteral38(["Feel Pride"])))))).trySkill($skill(_templateObject1417 || (_templateObject1417 = _taggedTemplateLiteral38(["Bowl Sideways"])))).delevel().defaultKill();
+        return Macro2.trySkill($skill(_templateObject1417 || (_templateObject1417 = _taggedTemplateLiteral38(["%fn, spit on me!"])))).if_($effect(_templateObject1422 || (_templateObject1422 = _taggedTemplateLiteral38(["Inner Elf"]))), Macro2.if_("!hascombatitem ".concat($item(_templateObject1432 || (_templateObject1432 = _taggedTemplateLiteral38(["cosmic bowling ball"])))), Macro2.trySkill($skill(_templateObject1442 || (_templateObject1442 = _taggedTemplateLiteral38(["Feel Pride"])))))).trySkill($skill(_templateObject1452 || (_templateObject1452 = _taggedTemplateLiteral38(["Bowl Sideways"])))).delevel().defaultKill();
       }),
       choices: _defineProperty18({}, 1324, 5)
     },
@@ -13950,47 +13958,47 @@ var levellingComplete = (0, import_kolmafia43.myLevel)() >= 13 && get("_neverend
       completed: function() {
         return get("_neverendingPartyFreeTurns") >= 10;
       },
-      do: $location(_templateObject1422 || (_templateObject1422 = _taggedTemplateLiteral38(["The Neverending Party"]))),
+      do: $location(_templateObject1462 || (_templateObject1462 = _taggedTemplateLiteral38(["The Neverending Party"]))),
       outfit: function() {
         return foldshirt(), uniform({
           changes: _objectSpread11({
-            shirt: $items(_templateObject1432 || (_templateObject1432 = _taggedTemplateLiteral38(["makeshift garbage shirt"])))
+            shirt: $items(_templateObject1472 || (_templateObject1472 = _taggedTemplateLiteral38(["makeshift garbage shirt"])))
           }, get("_sausageFights") > 4 ? {} : {
-            offhand: $item(_templateObject1442 || (_templateObject1442 = _taggedTemplateLiteral38(["Kramco Sausage-o-Matic\u2122"])))
+            offhand: $item(_templateObject1482 || (_templateObject1482 = _taggedTemplateLiteral38(["Kramco Sausage-o-Matic\u2122"])))
           })
         });
       },
       combat: new CSStrategy(function() {
-        return Macro2.if_($effect(_templateObject1452 || (_templateObject1452 = _taggedTemplateLiteral38(["Inner Elf"]))), Macro2.if_("!hascombatitem ".concat($item(_templateObject1462 || (_templateObject1462 = _taggedTemplateLiteral38(["cosmic bowling ball"])))), Macro2.trySkill($skill(_templateObject1472 || (_templateObject1472 = _taggedTemplateLiteral38(["Feel Pride"])))))).trySkill($skill(_templateObject1482 || (_templateObject1482 = _taggedTemplateLiteral38(["Bowl Sideways"])))).delevel().defaultKill();
+        return Macro2.if_($effect(_templateObject1492 || (_templateObject1492 = _taggedTemplateLiteral38(["Inner Elf"]))), Macro2.if_("!hascombatitem ".concat($item(_templateObject1502 || (_templateObject1502 = _taggedTemplateLiteral38(["cosmic bowling ball"])))), Macro2.trySkill($skill(_templateObject1516 || (_templateObject1516 = _taggedTemplateLiteral38(["Feel Pride"])))))).trySkill($skill(_templateObject1522 || (_templateObject1522 = _taggedTemplateLiteral38(["Bowl Sideways"])))).delevel().defaultKill();
       }),
       choices: _defineProperty18({}, 1324, 5)
     },
     {
       name: "Freekill NEP",
       completed: function() {
-        return get("_shatteringPunchUsed") >= 3 && get("_gingerbreadMobHitUsed") && have($effect(_templateObject1492 || (_templateObject1492 = _taggedTemplateLiteral38(["Everything Looks Yellow"])))) && get("_chestXRayUsed") >= 3;
+        return get("_shatteringPunchUsed") >= 3 && get("_gingerbreadMobHitUsed") && have($effect(_templateObject1532 || (_templateObject1532 = _taggedTemplateLiteral38(["Everything Looks Yellow"])))) && get("_chestXRayUsed") >= 3;
       },
-      do: $location(_templateObject1502 || (_templateObject1502 = _taggedTemplateLiteral38(["The Neverending Party"]))),
+      do: $location(_templateObject1542 || (_templateObject1542 = _taggedTemplateLiteral38(["The Neverending Party"]))),
       outfit: function() {
         foldshirt();
-        var killSource = have($effect(_templateObject1516 || (_templateObject1516 = _taggedTemplateLiteral38(["Everything Looks Yellow"])))) ? get("_chestXRayUsed") < 3 ? {
-          acc3: $item(_templateObject1532 || (_templateObject1532 = _taggedTemplateLiteral38(["Lil' Doctor\u2122 bag"])))
+        var killSource = have($effect(_templateObject1552 || (_templateObject1552 = _taggedTemplateLiteral38(["Everything Looks Yellow"])))) ? get("_chestXRayUsed") < 3 ? {
+          acc3: $item(_templateObject1572 || (_templateObject1572 = _taggedTemplateLiteral38(["Lil' Doctor\u2122 bag"])))
         } : {} : {
-          shirt: $item(_templateObject1522 || (_templateObject1522 = _taggedTemplateLiteral38(["Jurassic Parka"]))),
+          shirt: $item(_templateObject1562 || (_templateObject1562 = _taggedTemplateLiteral38(["Jurassic Parka"]))),
           modes: {
             parka: "dilophosaur"
           }
         }, enoughSausages = get("_sausageFights") > 4, changes = _objectSpread11(_objectSpread11({
-          shirt: $items(_templateObject1542 || (_templateObject1542 = _taggedTemplateLiteral38(["makeshift garbage shirt"])))
+          shirt: $items(_templateObject1582 || (_templateObject1582 = _taggedTemplateLiteral38(["makeshift garbage shirt"])))
         }, killSource), enoughSausages ? {} : {
-          offhand: $item(_templateObject1552 || (_templateObject1552 = _taggedTemplateLiteral38(["Kramco Sausage-o-Matic\u2122"])))
+          offhand: $item(_templateObject1592 || (_templateObject1592 = _taggedTemplateLiteral38(["Kramco Sausage-o-Matic\u2122"])))
         });
         return uniform({
           changes: changes
         });
       },
       combat: new CSStrategy(function() {
-        return Macro2.if_($monster(_templateObject1562 || (_templateObject1562 = _taggedTemplateLiteral38(["sausage goblin"]))), Macro2.defaultKill()).trySkill($skill(_templateObject1572 || (_templateObject1572 = _taggedTemplateLiteral38(["Feel Pride"])))).trySkill($skill(_templateObject1582 || (_templateObject1582 = _taggedTemplateLiteral38(["Bowl Sideways"])))).trySkill($skill(_templateObject1592 || (_templateObject1592 = _taggedTemplateLiteral38(["Spit jurassic acid"])))).trySkill($skill(_templateObject160 || (_templateObject160 = _taggedTemplateLiteral38(["Chest X-Ray"])))).trySkill($skill(_templateObject161 || (_templateObject161 = _taggedTemplateLiteral38(["Shattering Punch"])))).trySkill($skill(_templateObject1622 || (_templateObject1622 = _taggedTemplateLiteral38(["Gingerbread Mob Hit"])))).abort();
+        return Macro2.if_($monster(_templateObject160 || (_templateObject160 = _taggedTemplateLiteral38(["sausage goblin"]))), Macro2.defaultKill()).trySkill($skill(_templateObject161 || (_templateObject161 = _taggedTemplateLiteral38(["Feel Pride"])))).trySkill($skill(_templateObject1622 || (_templateObject1622 = _taggedTemplateLiteral38(["Bowl Sideways"])))).trySkill($skill(_templateObject1632 || (_templateObject1632 = _taggedTemplateLiteral38(["Spit jurassic acid"])))).trySkill($skill(_templateObject1642 || (_templateObject1642 = _taggedTemplateLiteral38(["Chest X-Ray"])))).trySkill($skill(_templateObject1652 || (_templateObject1652 = _taggedTemplateLiteral38(["Shattering Punch"])))).trySkill($skill(_templateObject1662 || (_templateObject1662 = _taggedTemplateLiteral38(["Gingerbread Mob Hit"])))).abort();
       }),
       choices: _defineProperty18({}, 1324, 5)
     }
