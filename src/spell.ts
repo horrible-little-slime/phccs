@@ -49,7 +49,7 @@ const Spell: CSQuest = {
   outfit: () => ({
     hat: $items`norwhal helmet, astral chapeau, Hollandaise helmet, Iunion Crown`,
     weapon: [...chefstaves, $item`weeping willow wand`],
-    offhand: $item`Abracandalabra`,
+    offhand: $items`Abracandalabra, august scepter`,
     pants: $item`designer sweatpants`,
     acc1: $items`meteorite necklace, Kremlin's Greatest Briefcase`,
     acc2: $item`codpiece`,
