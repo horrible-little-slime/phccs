@@ -454,7 +454,10 @@ const Level: CSQuest = {
         foldshirt();
         return uniform({
           changes: {
-            weapon: $item`Fourth of May Cosplay Saber`,
+            weapon: byStat({
+              Muscle: $item`June cleaver`,
+              default: $item`Fourth of May Cosplay Saber`,
+            }),
             shirt: $item`makeshift garbage shirt`,
           },
           canAttack: false,
@@ -476,13 +479,23 @@ const Level: CSQuest = {
             $monster`LOV Engineer`,
             Macro.candyblast().trySkillRepeat($skill`Weapon of the Pastalord`)
           )
-          .if_($monster`LOV Equivocator`, Macro.delevel().easyFight().candyblast().defaultKill())
+          .if_(
+            $monster`LOV Equivocator`,
+            Macro.step("pickpocket").delevel().easyFight().candyblast().defaultKill()
+          )
       ),
       post: (): void => {
         use(1, $item`LOV Extraterrestrial Chocolate`);
         burnLibrams();
       },
     },
+    potionTask(
+      byStat({
+        Muscle: $item`LOV Elixir #3`,
+        Mysticality: $item`LOV Elixir #6`,
+        Moxie: $item`LOV Elixir #9`,
+      })
+    ),
     {
       name: "Snojo",
       completed: () => get("_snojoFreeFights") >= 10,
