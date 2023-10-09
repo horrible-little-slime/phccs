@@ -114,7 +114,6 @@ const Muscle: CSQuest = {
     ...skillBuffTasks("MUSCLE"),
     potionTask($item`LOV Elixir #3`),
     thrallTask($thrall`Elbow Macaroni`),
-    beachTask($effect`Lack of Body-Building`),
     birdTask("Muscle Percent"),
     favouriteBirdTask("Muscle Percent"),
     {

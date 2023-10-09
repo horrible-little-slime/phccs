@@ -168,6 +168,7 @@ const Level: CSQuest = {
     },
     beachTask($effect`You Learned Something Maybe!`),
     beachTask($effect`We're All Made of Starfish`),
+    beachTask($effect`Lack of Body-Building`),
     {
       name: "Smile of Lyle",
       completed: () => get("_lyleFavored"),
