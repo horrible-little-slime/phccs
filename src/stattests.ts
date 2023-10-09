@@ -1,11 +1,4 @@
-import {
-  beachTask,
-  birdTask,
-  favouriteBirdTask,
-  innerElf,
-  potionTask,
-  restoreBuffTasks,
-} from "./commons";
+import { birdTask, favouriteBirdTask, innerElf, potionTask, restoreBuffTasks } from "./commons";
 import { CSQuest } from "./engine";
 import { CSTask } from "./lib";
 import {
@@ -21,7 +14,6 @@ import {
 } from "kolmafia";
 import {
   $classes,
-  $effect,
   $effects,
   $familiar,
   $item,
