@@ -14646,7 +14646,7 @@ var buffs3 = $effects(_templateObject180 || (_templateObject180 = _taggedTemplat
     return _objectSpread13(_objectSpread13({
       hat: $items(_templateObject361 || (_templateObject361 = _taggedTemplateLiteral41(["norwhal helmet, astral chapeau, Hollandaise helmet, Iunion Crown"]))),
       weapon: [].concat(_toConsumableArray17(chefstaves), [$item(_templateObject441 || (_templateObject441 = _taggedTemplateLiteral41(["weeping willow wand"])))]),
-      offhand: $item(_templateObject539 || (_templateObject539 = _taggedTemplateLiteral41(["Abracandalabra"]))),
+      offhand: $items(_templateObject539 || (_templateObject539 = _taggedTemplateLiteral41(["Abracandalabra, august scepter"]))),
       pants: $item(_templateObject637 || (_templateObject637 = _taggedTemplateLiteral41(["designer sweatpants"]))),
       acc1: $items(_templateObject731 || (_templateObject731 = _taggedTemplateLiteral41(["meteorite necklace, Kremlin's Greatest Briefcase"]))),
       acc2: $item(_templateObject828 || (_templateObject828 = _taggedTemplateLiteral41(["codpiece"]))),
