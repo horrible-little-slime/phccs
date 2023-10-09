@@ -63,7 +63,7 @@ const Weapon: CSQuest = {
             famequip: $item`Stick-Knife of Loathing`,
             familiar: $familiar`Disembodied Hand`,
           }
-        : {}),
+        : { famequip: $item`august scepter`, familiar: $familiar`Left-Hand Man` }),
       back: $items`Buddy Bjorn, unwrapped knock-off retro superhero cape`,
       riders: { "buddy-bjorn": $familiar`Mosquito` },
     };

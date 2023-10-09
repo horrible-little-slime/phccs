@@ -86,7 +86,7 @@ const CoilWire: CSQuest = {
     shirt: $item`Jurassic Parka`,
     pants: $item`Cargo Cultist Shorts`,
     weapon: $item`Fourth of May Cosplay Saber`,
-    offhand: $item`familiar scrapbook`,
+    offhand: $item`august scepter`,
     acc1: $item`Eight Days a Week Pill Keeper`,
     acc2: $item`Powerful Glove`,
     acc3: $item`Guzzlr tablet`,
