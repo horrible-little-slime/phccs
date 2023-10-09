@@ -28,7 +28,6 @@ import {
   $effect,
   $effects,
   $familiar,
-  $familiars,
   $item,
   $items,
   $location,
