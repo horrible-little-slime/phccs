@@ -38,7 +38,7 @@ const HotRes: CSQuest = {
     shirt: $items`Jurassic Parka, denim jacket`,
     back: $item`unwrapped knock-off retro superhero cape`,
     weapon: $item`industrial fire extinguisher`,
-    offhand: $item`meteorite guard`,
+    offhand: $items`meteorite guard, Fourth of May Cosplay Saber`,
     pants: $item`designer sweatpants`,
     acc1: $item`your cowboy boots`,
     acc2: $item`Beach Comb`,
