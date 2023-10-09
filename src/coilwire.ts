@@ -83,7 +83,7 @@ const CoilWire: CSQuest = {
   ],
   outfit: () => ({
     hat: $items`astral chapeau, Iunion Crown`,
-    shirt: $item`fresh coat of paint`,
+    shirt: $item`Jurassic Parka`,
     pants: $item`Cargo Cultist Shorts`,
     weapon: $item`Fourth of May Cosplay Saber`,
     offhand: $item`familiar scrapbook`,
@@ -92,6 +92,7 @@ const CoilWire: CSQuest = {
     acc3: $item`Guzzlr tablet`,
     familiar: $familiar`Left-Hand Man`,
     famequip: $items`Abracandalabra, unbreakable umbrella`,
+    modes: { parka: "ghostasaurus" },
   }),
 };
 
