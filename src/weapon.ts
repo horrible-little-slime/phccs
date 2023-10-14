@@ -106,8 +106,8 @@ const Weapon: CSQuest = {
       ...innerElf(),
       class: () =>
         inHardcore()
-          ? $classes`Seal Clubber, Turtle Tamer, Disco Bandit, Accordion Thief`
-          : $classes.all(),
+          ? $classes.all()
+          : $classes`Seal Clubber, Turtle Tamer, Disco Bandit, Accordion Thief`,
     },
     {
       name: "Spit Ungulith",
