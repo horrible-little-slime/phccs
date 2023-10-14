@@ -15208,7 +15208,7 @@ var buffs4 = $effects(_templateObject190 || (_templateObject190 = _taggedTemplat
     })
   }, _objectSpread15(_objectSpread15({}, innerElf()), {}, {
     class: function() {
-      return (0, import_kolmafia48.inHardcore)() ? $classes(_templateObject3122 || (_templateObject3122 = _taggedTemplateLiteral43(["Seal Clubber, Turtle Tamer, Disco Bandit, Accordion Thief"]))) : $classes.all();
+      return (0, import_kolmafia48.inHardcore)() ? $classes.all() : $classes(_templateObject3122 || (_templateObject3122 = _taggedTemplateLiteral43(["Seal Clubber, Turtle Tamer, Disco Bandit, Accordion Thief"])));
     }
   }), {
     name: "Spit Ungulith",
