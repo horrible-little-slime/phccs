@@ -1,5 +1,12 @@
 import { CSStrategy, Macro } from "./combat";
-import { beachTask, favouriteBirdTask, innerElf, potionTask, restoreBuffTasks } from "./commons";
+import {
+  beachTask,
+  favouriteBirdTask,
+  innerElf,
+  potionTask,
+  restore,
+  restoreBuffTasks,
+} from "./commons";
 import { CSQuest } from "./engine";
 import { burnLibrams, currentBirdHas, favouriteBirdHas, SYNTH_EFFECT, synthExp } from "./lib";
 import uniform from "./outfit";
@@ -13,7 +20,6 @@ import {
   myFamiliar,
   myHp,
   myLevel,
-  myMaxmp,
   myMp,
   myPrimestat,
   numericModifier,
@@ -223,14 +229,9 @@ const Level: CSQuest = {
     },
     ...CastSkills,
     {
-      name: "Psychokinetic Energy Blob",
-      completed: () =>
-        !have($item`psychokinetic energy blob`) || CastSkills.every(({ completed }) => completed()),
-      do: (): void => {
-        use($item`psychokinetic energy blob`);
-      },
-      outfit: () => uniform({ changes: { offhand: $item`Abracandalabra` } }),
-      ready: () => myMp() + 30 < myMaxmp(),
+      ...restore([]),
+      completed: () => CastSkills.every(({ completed }) => completed()),
+      outfit: { offhand: $items`Abracandalabra, august scepter` },
     },
     ...restoreBuffTasks(
       byStat({
