@@ -43,7 +43,6 @@ import {
   getModifier,
   have,
   possibleLibramSummons,
-  PropertiesManager,
   Witchess,
 } from "libram";
 import { NumericModifier } from "libram/dist/modifierTypes";
@@ -52,7 +51,6 @@ export type CSTask = StrictCombatTask<never, CSStrategy> & {
   core?: Delayed<"hard" | "soft">;
   class?: Delayed<Class[]>;
 };
-export const PropertyManager = new PropertiesManager();
 
 export function fuelUp(): void {
   buy(1, $item`all-purpose flower`);
