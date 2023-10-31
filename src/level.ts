@@ -588,7 +588,7 @@ const Level: CSQuest = {
       ready: () =>
         get("camelSpit") >= 100 &&
         have($familiar`Comma Chameleon`) &&
-        get("_neverendingPartyFreeTurns") >= 10,
+        get("_neverendingPartyFreeTurns") < 10,
       do: $location`The Neverending Party`,
       outfit: (): OutfitSpec => {
         foldshirt();
