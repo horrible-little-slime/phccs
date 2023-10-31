@@ -13922,7 +13922,7 @@ var levellingComplete = (0, import_kolmafia43.myLevel)() >= 13 && get("_neverend
         return have($effect(_templateObject1332 || (_templateObject1332 = _taggedTemplateLiteral38(["Spit Upon"]))));
       },
       ready: function() {
-        return get("camelSpit") >= 100 && have($familiar(_templateObject1342 || (_templateObject1342 = _taggedTemplateLiteral38(["Comma Chameleon"])))) && get("_neverendingPartyFreeTurns") >= 10;
+        return get("camelSpit") >= 100 && have($familiar(_templateObject1342 || (_templateObject1342 = _taggedTemplateLiteral38(["Comma Chameleon"])))) && get("_neverendingPartyFreeTurns") < 10;
       },
       do: $location(_templateObject1352 || (_templateObject1352 = _taggedTemplateLiteral38(["The Neverending Party"]))),
       outfit: function() {
