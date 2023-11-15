@@ -3,16 +3,7 @@ import { asdonTask, beachTask, commonFamiliarWeightBuffs, restoreBuffTasks } fro
 import { CSQuest } from "./engine";
 import { ensureMp } from "./lib";
 import uniform from "./outfit";
-import {
-  adv1,
-  create,
-  handlingChoice,
-  myHp,
-  myMaxhp,
-  runChoice,
-  useSkill,
-  visitUrl,
-} from "kolmafia";
+import { adv1, create, handlingChoice, myHp, myMaxhp, runChoice, useSkill } from "kolmafia";
 import {
   $effect,
   $effects,
@@ -22,6 +13,7 @@ import {
   $location,
   $skill,
   CommunityService,
+  examine,
   get,
   have,
   Horsery,
@@ -76,7 +68,7 @@ const HotRes: CSQuest = {
       combat: new CSStrategy(() =>
         Macro.skill($skill`Fire Extinguisher: Foam Yourself`).skill($skill`Use the Force`)
       ),
-      post: () => visitUrl(`desc_item.php?whichitem=${$item`industrial fire extinguisher`.descid}`),
+      post: () => examine($item`industrial fire extinguisher`),
     },
     {
       core: "hard",
