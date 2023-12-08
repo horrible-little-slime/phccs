@@ -23,13 +23,13 @@ export function main(): void {
 
   visitUrl("council.php");
 
-  ascend(
-    $path.none,
-    $class`Seal Clubber`,
-    Lifestyle.casual,
-    "canadia",
-    $item`astral six-pack`,
-    undefined,
-    { neverAbort: true, permSkills }
-  );
+  ascend({
+    path: $path.none,
+    playerClass: $class`Seal Clubber`,
+    lifestyle: Lifestyle.casual,
+    moon: "canadia",
+    consumable: $item`astral six-pack`,
+    pet: undefined,
+    permOptions: { neverAbort: true, permSkills },
+  });
 }

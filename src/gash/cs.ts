@@ -163,8 +163,16 @@ export function main(input = ""): void {
 
   visitUrl("council.php");
 
-  ascend($path`Community Service`, args.class, lifestyle, "knoll", $item`astral six-pack`, pet, {
-    neverAbort: true,
-    permSkills,
+  ascend({
+    path: $path`Community Service`,
+    playerClass: args.class,
+    lifestyle,
+    moon: "knoll",
+    consumable: $item`astral six-pack`,
+    pet,
+    permOptions: {
+      neverAbort: true,
+      permSkills,
+    },
   });
 }
