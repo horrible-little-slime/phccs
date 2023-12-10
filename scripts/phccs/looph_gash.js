@@ -1079,7 +1079,6 @@ function main() {
     lifestyle: Lifestyle.casual,
     moon: "canadia",
     consumable: $item(_templateObject211 || (_templateObject211 = _taggedTemplateLiteral4(["astral six-pack"]))),
-    pet: void 0,
     permOptions: {
       neverAbort: !0,
       permSkills: permSkills
