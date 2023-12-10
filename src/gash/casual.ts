@@ -29,7 +29,6 @@ export function main(): void {
     lifestyle: Lifestyle.casual,
     moon: "canadia",
     consumable: $item`astral six-pack`,
-    pet: undefined,
     permOptions: { neverAbort: true, permSkills },
   });
 }
