@@ -18,10 +18,10 @@ const safariTargets = [
   "threebullethamburgler",
   "BurningBman",
   "Katarn",
-  "Baden",
+  "MrFizzyBubbs",
   "Purple Shrimp",
   "Butts McGruff",
-  "SSBBHax",
+  "Haxxi",
 ].filter((n) => n.toLowerCase() !== lowercaseName);
 
 export function burnSafaris(): void {
