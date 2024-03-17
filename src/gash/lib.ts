@@ -1,4 +1,13 @@
-import { getPermedSkills, myName, retrieveItem, Skill, use, useSkill } from "kolmafia";
+import {
+  getPermedSkills,
+  myId,
+  myName,
+  retrieveItem,
+  Skill,
+  use,
+  useSkill,
+  visitUrl,
+} from "kolmafia";
 import { $item, $skill, get, have, Lifestyle, withChoice } from "libram";
 
 const lowercaseName = myName().toLowerCase();
@@ -47,8 +56,18 @@ export function getSkillsToPerm(): Map<Skill, Lifestyle> {
   );
 }
 
-const MESSAGE = "By running this script I have affirmed that I believe in Hawaiin sovereignty";
 export function smokeEmIfYouGotEm(): void {
+  const fullText = visitUrl("https://www.gutenberg.org/cache/epub/1321/pg1321.txt");
+  const lines = fullText
+    .split("\n")
+    .map((line) => line.trim())
+    .filter(Boolean);
+  const poemLines = lines.slice(
+    lines.indexOf("*** START OF THE PROJECT GUTENBERG EBOOK THE WASTE LAND ***"),
+    lines.indexOf("*** END OF THE PROJECT GUTENBERG EBOOK THE WASTE LAND ***")
+  );
+  const MESSAGE = poemLines[Number(myId()) % poemLines.length];
+
   retrieveItem($item`campfire smoke`);
   withChoice(1394, `1&message=${MESSAGE}`, () => use($item`campfire smoke`));
 }
