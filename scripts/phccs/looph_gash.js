@@ -259,6 +259,28 @@ function setProperties(properties) {
     _set(prop, value);
   }
 }
+function withProperties(properties, callback) {
+  var propertiesBackup = Object.fromEntries(Object.entries(properties).map(function(_ref) {
+    var _ref2 = _slicedToArray(_ref, 1), prop = _ref2[0];
+    return [prop, get(prop)];
+  }));
+  setProperties(properties);
+  try {
+    return callback();
+  } finally {
+    setProperties(propertiesBackup);
+  }
+}
+function withChoices(choices, callback) {
+  var properties = Object.fromEntries(Object.entries(choices).map(function(_ref3) {
+    var _ref4 = _slicedToArray(_ref3, 2), choice = _ref4[0], option = _ref4[1];
+    return ["choiceAdventure".concat(choice), option];
+  }));
+  return withProperties(properties, callback);
+}
+function withChoice(choice, value, callback) {
+  return withChoices(_defineProperty({}, choice, value), callback);
+}
 var PropertiesManager = /* @__PURE__ */ function() {
   function PropertiesManager2() {
     _classCallCheck(this, PropertiesManager2), _defineProperty(this, "properties", {});
@@ -1036,7 +1058,7 @@ function prepareAscension() {
 }
 
 // src/gash/lib.ts
-var _templateObject35, _templateObject210;
+var _templateObject35, _templateObject210, _templateObject36, _templateObject42;
 function _taggedTemplateLiteral3(strings, raw) {
   return raw || (raw = strings.slice(0)), Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } }));
 }
@@ -1051,15 +1073,31 @@ function burnSafaris() {
   for (; $skill(_templateObject35 || (_templateObject35 = _taggedTemplateLiteral3(["Experience Safari"]))).timescast < get("skillLevel180") && safariTargets.length; )
     (0, import_kolmafia6.useSkill)($skill(_templateObject210 || (_templateObject210 = _taggedTemplateLiteral3(["Experience Safari"]))), 1, safariTargets[0]), safariTargets.shift();
 }
+function getSkillsToPerm() {
+  var perms = (0, import_kolmafia6.getPermedSkills)();
+  return new Map(import_kolmafia6.Skill.all().filter(function(s) {
+    return have(s) && !perms[s.name] && s.permable;
+  }).map(function(s) {
+    return [s, Lifestyle.hardcore];
+  }));
+}
+function smokeEmIfYouGotEm() {
+  var fullText = (0, import_kolmafia6.visitUrl)("https://www.gutenberg.org/cache/epub/1321/pg1321.txt"), lines = fullText.split("\n").map(function(line) {
+    return line.trim();
+  }).filter(Boolean), poemLines = lines.slice(lines.indexOf("*** START OF THE PROJECT GUTENBERG EBOOK THE WASTE LAND ***"), lines.indexOf("*** END OF THE PROJECT GUTENBERG EBOOK THE WASTE LAND ***")), MESSAGE = poemLines[Number((0, import_kolmafia6.myId)()) % poemLines.length];
+  (0, import_kolmafia6.retrieveItem)($item(_templateObject36 || (_templateObject36 = _taggedTemplateLiteral3(["campfire smoke"])))), withChoice(1394, "1&message=".concat(MESSAGE), function() {
+    return (0, import_kolmafia6.use)($item(_templateObject42 || (_templateObject42 = _taggedTemplateLiteral3(["campfire smoke"]))));
+  });
+}
 
 // src/gash/casual.ts
 var import_kolmafia7 = require("kolmafia");
-var _templateObject36, _templateObject211;
+var _templateObject37, _templateObject211;
 function _taggedTemplateLiteral4(strings, raw) {
   return raw || (raw = strings.slice(0)), Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } }));
 }
 function main() {
-  burnSafaris(), prepareAscension({
+  burnSafaris(), smokeEmIfYouGotEm(), prepareAscension({
     garden: "packet of thanksgarden seeds",
     eudora: "Our Daily Candles\u2122 order form",
     chateau: {
@@ -1067,21 +1105,15 @@ function main() {
       nightstand: "electric muscle stimulator",
       ceiling: "ceiling fan"
     }
-  });
-  var perms = (0, import_kolmafia7.getPermedSkills)(), permSkills = new Map(import_kolmafia7.Skill.all().filter(function(s) {
-    return have(s) && !perms[s.name] && s.permable;
-  }).map(function(s) {
-    return [s, Lifestyle.hardcore];
-  }));
-  (0, import_kolmafia7.visitUrl)("council.php"), ascend({
+  }), (0, import_kolmafia7.visitUrl)("council.php"), ascend({
     path: $path.none,
-    playerClass: $class(_templateObject36 || (_templateObject36 = _taggedTemplateLiteral4(["Seal Clubber"]))),
+    playerClass: $class(_templateObject37 || (_templateObject37 = _taggedTemplateLiteral4(["Seal Clubber"]))),
     lifestyle: Lifestyle.casual,
     moon: "canadia",
     consumable: $item(_templateObject211 || (_templateObject211 = _taggedTemplateLiteral4(["astral six-pack"]))),
     permOptions: {
       neverAbort: !0,
-      permSkills: permSkills
+      permSkills: getSkillsToPerm()
     }
   });
 }

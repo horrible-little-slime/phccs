@@ -14276,10 +14276,10 @@ var PULLS = [$items(_templateObject171 || (_templateObject171 = _taggedTemplateL
   tasks: [{
     name: "Set Workshed",
     completed: function() {
-      return (0, import_kolmafia44.getWorkshed)() === $item(_templateObject635 || (_templateObject635 = _taggedTemplateLiteral40(["Asdon Martin keyfob"])));
+      return (0, import_kolmafia44.getWorkshed)() === $item(_templateObject635 || (_templateObject635 = _taggedTemplateLiteral40(["Asdon Martin keyfob (on ring)"])));
     },
     do: function() {
-      return (0, import_kolmafia44.use)($item(_templateObject730 || (_templateObject730 = _taggedTemplateLiteral40(["Asdon Martin keyfob"]))));
+      return (0, import_kolmafia44.use)($item(_templateObject730 || (_templateObject730 = _taggedTemplateLiteral40(["Asdon Martin keyfob (on ring)"]))));
     }
   }].concat(_toConsumableArray16(MARKET_QUESTS.map(function(_ref) {
     var pref = _ref.pref, url = _ref.url;
