@@ -42,7 +42,7 @@ export function main(input = ""): void {
   visitUrl("council.php");
 
   ascend({
-    path: $path`A Shrunken Adventurer Is You`,
+    path: $path`A Shrunken Adventurer am I`,
     playerClass: args.class,
     lifestyle: Lifestyle.softcore,
     moon: "platypus",

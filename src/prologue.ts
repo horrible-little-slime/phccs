@@ -78,8 +78,8 @@ const Prologue: CSQuest = {
   tasks: [
     {
       name: "Set Workshed",
-      completed: () => getWorkshed() === $item`Asdon Martin keyfob`,
-      do: () => use($item`Asdon Martin keyfob`),
+      completed: () => getWorkshed() === $item`Asdon Martin keyfob (on ring)`,
+      do: () => use($item`Asdon Martin keyfob (on ring)`),
     },
     ...MARKET_QUESTS.map(({ pref, url }) => ({
       name: `Start Quest: ${pref}`,
