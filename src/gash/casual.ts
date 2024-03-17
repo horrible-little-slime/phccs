@@ -1,9 +1,10 @@
-import { burnSafaris } from "./lib";
-import { getPermedSkills, Skill, visitUrl } from "kolmafia";
-import { $class, $item, $path, ascend, have, Lifestyle, prepareAscension } from "libram";
+import { burnSafaris, getSkillsToPerm, smokeEmIfYouGotEm } from "./lib";
+import { visitUrl } from "kolmafia";
+import { $class, $item, $path, ascend, Lifestyle, prepareAscension } from "libram";
 
 export function main(): void {
   burnSafaris();
+  smokeEmIfYouGotEm();
   prepareAscension({
     garden: "packet of thanksgarden seeds",
     eudora: "Our Daily Candles™ order form",
@@ -14,13 +15,6 @@ export function main(): void {
     },
   });
 
-  const perms = getPermedSkills();
-  const permSkills = new Map(
-    Skill.all()
-      .filter((s) => have(s) && !perms[s.name] && s.permable)
-      .map((s) => [s, Lifestyle.hardcore])
-  );
-
   visitUrl("council.php");
 
   ascend({
@@ -29,6 +23,6 @@ export function main(): void {
     lifestyle: Lifestyle.casual,
     moon: "canadia",
     consumable: $item`astral six-pack`,
-    permOptions: { neverAbort: true, permSkills },
+    permOptions: { neverAbort: true, permSkills: getSkillsToPerm() },
   });
 }

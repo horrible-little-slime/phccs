@@ -1,14 +1,6 @@
-import { burnSafaris } from "./lib";
+import { burnSafaris, getSkillsToPerm, smokeEmIfYouGotEm } from "./lib";
 import { Args } from "grimoire-kolmafia";
-import {
-  abort,
-  equippedItem,
-  getPermedSkills,
-  Skill,
-  StatType,
-  userConfirm,
-  visitUrl,
-} from "kolmafia";
+import { abort, equippedItem, StatType, userConfirm, visitUrl } from "kolmafia";
 import {
   $class,
   $familiar,
@@ -102,6 +94,7 @@ export function main(input = ""): void {
 
   const { softcore, ignorewarnings } = args;
   burnSafaris();
+  smokeEmIfYouGotEm();
 
   if (!ignorewarnings) {
     for (const { name, reason, meets } of byAscendingStat(SPECIAL_REQUIREMENTS)) {
@@ -154,13 +147,6 @@ export function main(input = ""): void {
       })
     : $item`astral statuette`;
 
-  const perms = getPermedSkills();
-  const permSkills = new Map(
-    Skill.all()
-      .filter((s) => have(s) && !perms[s.name] && s.permable)
-      .map((s) => [s, Lifestyle.hardcore])
-  );
-
   visitUrl("council.php");
 
   ascend({
@@ -172,7 +158,7 @@ export function main(input = ""): void {
     pet,
     permOptions: {
       neverAbort: true,
-      permSkills,
+      permSkills: getSkillsToPerm(),
     },
   });
 }

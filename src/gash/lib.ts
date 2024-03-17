@@ -1,5 +1,5 @@
-import { myName, useSkill } from "kolmafia";
-import { $skill, get } from "libram";
+import { getPermedSkills, myName, retrieveItem, Skill, use, useSkill } from "kolmafia";
+import { $item, $skill, get, have, Lifestyle, withChoice } from "libram";
 
 const lowercaseName = myName().toLowerCase();
 const safariTargets = [
@@ -36,4 +36,19 @@ export function burnSafaris(): void {
     useSkill($skill`Experience Safari`, 1, safariTargets[0]);
     safariTargets.shift();
   }
+}
+
+export function getSkillsToPerm(): Map<Skill, Lifestyle> {
+  const perms = getPermedSkills();
+  return new Map(
+    Skill.all()
+      .filter((s) => have(s) && !perms[s.name] && s.permable)
+      .map((s) => [s, Lifestyle.hardcore])
+  );
+}
+
+const MESSAGE = "By running this script I have affirmed that I believe in Hawaiin sovereignty";
+export function smokeEmIfYouGotEm(): void {
+  retrieveItem($item`campfire smoke`);
+  withChoice(1394, `1&message=${MESSAGE}`, () => use($item`campfire smoke`));
 }
