@@ -14548,7 +14548,7 @@ var PULLS = [$items(_templateObject171 || (_templateObject171 = _taggedTemplateL
       return have($item(_templateObject645 || (_templateObject645 = _taggedTemplateLiteral40(["codpiece"])))) || codpieceAttempted;
     },
     do: function() {
-      Clan.with(get("phccs_mainClan", "Bonus Adventures From Hell"), function() {
+      Clan.with(get("phccs_codClan", "Floundry"), function() {
         return (0, import_kolmafia44.cliExecute)("acquire codpiece");
       }), codpieceAttempted = !0;
     }
