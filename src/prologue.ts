@@ -310,9 +310,7 @@ const Prologue: CSQuest = {
       name: "Codpiece",
       completed: () => have($item`codpiece`) || codpieceAttempted,
       do: (): void => {
-        Clan.with(get("phccs_mainClan", "Bonus Adventures From Hell"), () =>
-          cliExecute("acquire codpiece")
-        );
+        Clan.with(get("phccs_codClan", "Floundry"), () => cliExecute("acquire codpiece"));
         codpieceAttempted = true;
       },
     },
