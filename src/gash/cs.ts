@@ -10,7 +10,6 @@ import {
   $path,
   $slot,
   ascend,
-  byStat,
   CombatLoversLocket,
   have,
   Lifestyle,
@@ -140,7 +139,7 @@ export function main(input = ""): void {
   const lifestyle = softcore ? Lifestyle.softcore : Lifestyle.hardcore;
 
   const pet = softcore
-    ? byStat({
+    ? byAscendingStat({
         Mysticality: $item`astral chapeau`,
         Moxie: $item`astral shorts`,
         Muscle: $item`astral trousers`,
