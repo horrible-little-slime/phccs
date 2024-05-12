@@ -4908,7 +4908,7 @@ function main() {
       ceiling: "ceiling fan"
     }
   });
-  var lifestyle = softcore ? Lifestyle.softcore : Lifestyle.hardcore, pet = softcore ? byStat({
+  var lifestyle = softcore ? Lifestyle.softcore : Lifestyle.hardcore, pet = softcore ? byAscendingStat({
     Mysticality: $item(_templateObject124 || (_templateObject124 = _taggedTemplateLiteral8(["astral chapeau"]))),
     Moxie: $item(_templateObject134 || (_templateObject134 = _taggedTemplateLiteral8(["astral shorts"]))),
     Muscle: $item(_templateObject144 || (_templateObject144 = _taggedTemplateLiteral8(["astral trousers"])))
