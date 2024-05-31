@@ -78,12 +78,8 @@ export class CSEngine extends Engine<never, CSTask> {
   initPropertiesManager(): void {}
   private static initiate(): void {
     CSEngine.propertyManager.set({
+      ...CSEngine.defaultSettings,
       customCombatScript: "grimoire_macro",
-      battleAction: "custom combat script",
-      dontStopForCounters: true,
-      hpAutoRecovery: -0.05,
-      mpAutoRecovery: -0.05,
-      logPreferenceChange: true,
       logPreferenceChangeFilter: [
         ...new Set([
           ...get("logPreferenceChangeFilter").split(","),
@@ -96,9 +92,6 @@ export class CSEngine extends Engine<never, CSTask> {
         .sort()
         .filter((a) => a)
         .join(","),
-      autoSatisfyWithNPCs: true,
-      autoSatisfyWithStorage: false,
-      libramSkillsSoftcore: "none",
       requireBoxServants: false,
     });
 
