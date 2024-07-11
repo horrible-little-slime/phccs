@@ -1,7 +1,7 @@
-import { CSStrategy, Macro } from "./combat";
-import { asdonTask, deckTask, potionTask, skillTask, songTask } from "./commons";
-import { CSQuest } from "./engine";
-import uniform from "./outfit";
+import { CSStrategy, Macro } from "./combat.js";
+import { asdonTask, deckTask, potionTask, skillTask, songTask } from "./commons.js";
+import { CSQuest } from "./engine.js";
+import uniform from "./outfit.js";
 import { OutfitSpec } from "grimoire-kolmafia";
 import { canAdventure, cliExecute, create, use, useSkill, visitUrl } from "kolmafia";
 import {
@@ -55,7 +55,7 @@ const BoozeDrop: CSQuest = {
           canAttack: false,
         }),
       combat: new CSStrategy(() =>
-        Macro.skill($skill`Become a Bat`).skill($skill`Throw Latte on Opponent`)
+        Macro.skill($skill`Become a Bat`).skill($skill`Throw Latte on Opponent`),
       ),
     },
     {
@@ -97,7 +97,7 @@ const BoozeDrop: CSQuest = {
       do: () => cliExecute("barrelprayer buff"),
     },
     ...$items`Salsa Caliente™ candle, lavender candy heart, bag of grain, emergency glowstick, autumn leaf`.map(
-      potionTask
+      potionTask,
     ),
     {
       name: "Steely-Eyed Squint",

@@ -1,4 +1,4 @@
-import { CSStrategy, Macro } from "./combat";
+import { CSStrategy, Macro } from "./combat.js";
 import {
   beachTask,
   birdTask,
@@ -8,10 +8,10 @@ import {
   restoreBuffTasks,
   skillTask,
   songTask,
-} from "./commons";
-import { CSEngine, CSQuest } from "./engine";
-import { unequip } from "./lib";
-import uniform from "./outfit";
+} from "./commons.js";
+import { CSEngine, CSQuest } from "./engine.js";
+import { unequip } from "./lib.js";
+import uniform from "./outfit.js";
 import { OutfitSpec } from "grimoire-kolmafia";
 import {
   canadiaAvailable,
@@ -99,7 +99,7 @@ const Weapon: CSQuest = {
         Macro.trySkill($skill`Asdon Martin: Spring-Loaded Front Bumper`)
           .trySkill($skill`Feel Hatred`)
           .trySkill($skill`Snokebomb`)
-          .abort()
+          .abort(),
       ),
     },
     {
@@ -143,7 +143,7 @@ const Weapon: CSQuest = {
       combat: new CSStrategy(() =>
         Macro.trySkill($skill`%fn, spit on me!`)
           .trySkill($skill`Meteor Shower`)
-          .skill($skill`Use the Force`)
+          .skill($skill`Use the Force`),
       ),
     },
     {
@@ -153,11 +153,11 @@ const Weapon: CSQuest = {
       ready: () =>
         canadiaAvailable() &&
         $items`meteorite fragment, meteorite earring, meteorite necklace`.some((item) =>
-          have(item)
+          have(item),
         ),
       do: (): void => {
         const meteor = $items`meteorite necklace, meteorite fragment, meteorite earring`.find(
-          (item) => have(item)
+          (item) => have(item),
         );
         if (meteor) {
           unequip(meteor);

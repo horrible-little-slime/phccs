@@ -1,4 +1,4 @@
-import { CSStrategy, Macro } from "./combat";
+import { CSStrategy, Macro } from "./combat.js";
 import {
   beachTask,
   innerElf,
@@ -7,10 +7,10 @@ import {
   restoreBuffTasks,
   skillTask,
   songTask,
-} from "./commons";
-import { CSEngine, CSQuest } from "./engine";
-import { unequip } from "./lib";
-import uniform from "./outfit";
+} from "./commons.js";
+import { CSEngine, CSQuest } from "./engine.js";
+import { unequip } from "./lib.js";
+import uniform from "./outfit.js";
 import {
   canadiaAvailable,
   canEquip,
@@ -78,7 +78,7 @@ const Spell: CSQuest = {
         Macro.trySkill($skill`Asdon Martin: Spring-Loaded Front Bumper`)
           .trySkill($skill`Feel Hatred`)
           .trySkill($skill`Snokebomb`)
-          .abort()
+          .abort(),
       ),
     },
     {
@@ -97,7 +97,7 @@ const Spell: CSQuest = {
       completed: () => get("_cargoPocketEmptied"),
       ready: () =>
         $items`sizzling desk bell, frost-rimed desk bell, uncanny desk bell, nasty desk bell, greasy desk bell`.every(
-          (item) => getSaleValue(item) < 4 * get("valueOfAdventure")
+          (item) => getSaleValue(item) < 4 * get("valueOfAdventure"),
         ),
       do: () => cliExecute("cargo 177"),
     },
@@ -106,7 +106,7 @@ const Spell: CSQuest = {
       name: "Briefcase",
       ready: () =>
         !$items`meteorite fragment, meteorite earring, meteorite necklace, meteorite ring`.some(
-          (item) => have(item)
+          (item) => have(item),
         ),
       completed: () =>
         numericModifier($item`Kremlin's Greatest Briefcase`, "Spell Damage Percent") > 0,
@@ -126,7 +126,7 @@ const Spell: CSQuest = {
         Macro.trySkill($skill`Asdon Martin: Spring-Loaded Front Bumper`)
           .trySkill($skill`Feel Hatred`)
           .trySkill($skill`Snokebomb`)
-          .abort()
+          .abort(),
       ),
       choices: { [768]: 4 },
     },
@@ -141,7 +141,7 @@ const Spell: CSQuest = {
         $items`meteorite fragment, meteorite earring, meteorite ring`.some((item) => have(item)),
       do: (): void => {
         const meteor = $items`meteorite ring, meteorite fragment, meteorite earring`.find((item) =>
-          have(item)
+          have(item),
         );
         if (meteor) {
           unequip(meteor);

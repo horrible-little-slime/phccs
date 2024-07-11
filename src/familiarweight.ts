@@ -1,8 +1,8 @@
-import { CSStrategy, Macro } from "./combat";
-import { commonFamiliarWeightBuffs, meteorShower, potionTask } from "./commons";
-import { CSQuest } from "./engine";
-import { availableFights, unequip } from "./lib";
-import uniform from "./outfit";
+import { CSStrategy, Macro } from "./combat.js";
+import { commonFamiliarWeightBuffs, meteorShower, potionTask } from "./commons.js";
+import { CSQuest } from "./engine.js";
+import { availableFights, unequip } from "./lib.js";
+import uniform from "./outfit.js";
 import { create, mySign, runCombat, toInt, use, visitUrl } from "kolmafia";
 import {
   $effect,
@@ -62,7 +62,7 @@ const FamiliarWeight: CSQuest = {
       ready: () => have($familiar`Comma Chameleon`),
       do: (): void => {
         visitUrl(
-          `inv_equip.php?which=2&action=equip&whichitem=${toInt($item`homemade robot gear`)}&pwd`
+          `inv_equip.php?which=2&action=equip&whichitem=${toInt($item`homemade robot gear`)}&pwd`,
         );
         visitUrl("charpane.php");
       },

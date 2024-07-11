@@ -1,6 +1,6 @@
-import { birdTask, favouriteBirdTask, innerElf, potionTask, restoreBuffTasks } from "./commons";
-import { CSQuest } from "./engine";
-import { CSTask } from "./lib";
+import { birdTask, favouriteBirdTask, innerElf, potionTask, restoreBuffTasks } from "./commons.js";
+import { CSQuest } from "./engine.js";
+import { CSTask } from "./lib.js";
 import {
   cliExecute,
   create,

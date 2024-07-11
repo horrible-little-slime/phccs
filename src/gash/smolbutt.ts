@@ -1,4 +1,4 @@
-import { burnSafaris, getSkillsToPerm, smokeEmIfYouGotEm } from "./lib";
+import { burnSafaris, getSkillsToPerm, smokeEmIfYouGotEm } from "./lib.js";
 import { Args } from "grimoire-kolmafia";
 import { visitUrl } from "kolmafia";
 import { $class, $item, $path, ascend, Lifestyle, makeByXFunction, prepareAscension } from "libram";
@@ -11,7 +11,7 @@ const args = Args.create(
       help: "What class should we ascend as?",
       default: $class`Seal Clubber`,
     }),
-  }
+  },
 );
 
 const byAscendingStat = makeByXFunction(() => args.class.primestat.toString());

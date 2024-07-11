@@ -1,73 +1,73 @@
 name: Build & Lint
 
 on:
-    push:
-        branches: [main]
-    pull_request:
-        branches: [main]
-    workflow_dispatch:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
 
 env:
-    node-version: "18"
-    path: "KoLmafia" # The directory where your assets are generated, should match build.mjs
+  node-version: "18"
+  path: "KoLmafia" # The directory where your assets are generated, should match build.mjs
 
 jobs:
-    test:
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v3
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
 
-            - name: Use Node.js ${{ env.node-version }}
-              uses: actions/setup-node@v3
-              with:
-                  node-version: ${{ env.node-version }}
+      - name: Use Node.js ${{ env.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.node-version }}
 
-            - name: Install Dependencies
-              run: yarn install --immutable
+      - name: Install Dependencies
+        run: yarn install --immutable
 
-            - name: Build
-              run: yarn run build
+      - name: Build
+        run: yarn run build
 
-    lint:
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v3
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
 
-            - name: Use Node.js ${{ env.node-version }}
-              uses: actions/setup-node@v3
-              with:
-                  node-version: ${{ env.node-version }}
+      - name: Use Node.js ${{ env.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.node-version }}
 
-            - name: Install Dependencies
-              run: yarn install --immutable
+      - name: Install Dependencies
+        run: yarn install --immutable
 
-            - name: ESLint & Prettier
-              run: yarn run lint
+      - name: ESLint & Prettier
+        run: yarn run lint
 
-    push:
-        runs-on: ubuntu-latest
-        needs: [test, lint]
-        if: github.ref == 'refs/heads/main'
-        steps:
-            - uses: actions/checkout@v3
+  push:
+    runs-on: ubuntu-latest
+    needs: [test, lint]
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - uses: actions/checkout@v3
 
-            - name: Use Node.js ${{ env.node-version }}
-              uses: actions/setup-node@v3
-              with:
-                  node-version: ${{ env.node-version }}
+      - name: Use Node.js ${{ env.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.node-version }}
 
-            - name: Install Dependencies
-              run: yarn install --immutable
+      - name: Install Dependencies
+        run: yarn install --immutable
 
-            - name: Build
-              run: yarn run build
+      - name: Build
+        run: yarn run build
 
-            - name: Push to Release
-              uses: s0/git-publish-subdir-action@develop
-              env:
-                  REPO: self
-                  BRANCH: release
-                  FOLDER: ${{ env.path }}
-                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-                  MESSAGE: "Build: ({sha}) {msg}"
-                  SKIP_EMPTY_COMMITS: true
+      - name: Push to Release
+        uses: s0/git-publish-subdir-action@develop
+        env:
+          REPO: self
+          BRANCH: release
+          FOLDER: ${{ env.path }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MESSAGE: "Build: ({sha}) {msg}"
+          SKIP_EMPTY_COMMITS: true

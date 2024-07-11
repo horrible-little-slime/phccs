@@ -1,5 +1,5 @@
-import GLOBAL_QUEST from "./globaltasks";
-import { burnLibrams, CSTask } from "./lib";
+import GLOBAL_QUEST from "./globaltasks.js";
+import { burnLibrams, CSTask } from "./lib.js";
 import { Engine, getTasks, Outfit, OutfitSpec, Quest } from "grimoire-kolmafia";
 import {
   abort,
@@ -74,7 +74,6 @@ export class CSEngine extends Engine<never, CSTask> {
     );
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
   initPropertiesManager(): void {}
   private static initiate(): void {
     CSEngine.propertyManager.set({
@@ -130,8 +129,8 @@ export class CSEngine extends Engine<never, CSTask> {
           Outfit.from(
             spec,
             new Error(
-              `Failed to equip outfit for ${this.name}. Also, that outfit is ${toJson(spec)}`
-            )
+              `Failed to equip outfit for ${this.name}. Also, that outfit is ${toJson(spec)}`,
+            ),
           ).dress();
           burnLibrams();
         }
@@ -174,7 +173,7 @@ export class CSEngine extends Engine<never, CSTask> {
 
       if (get("_cloudTalkSmoker")) {
         print(
-          `${get("_cloudTalkSmoker").slice(10)} has a message for you: ${get("_cloudTalkMessage")}`
+          `${get("_cloudTalkSmoker").slice(10)} has a message for you: ${get("_cloudTalkMessage")}`,
         );
       }
 
