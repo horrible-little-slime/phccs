@@ -1,5 +1,5 @@
-import { songTask } from "./commons";
-import { CSQuest } from "./engine";
+import { songTask } from "./commons.js";
+import { CSQuest } from "./engine.js";
 import { drink, itemAmount, myInebriety, use } from "kolmafia";
 import { $effect, $item, byStat, clamp, get, have } from "libram";
 
@@ -20,7 +20,7 @@ const Drink: CSQuest = {
         Mysticality: $effect`The Magical Mojomuscular Melody`,
         Muscle: $effect`Power Ballad of the Arrowsmith`,
         Moxie: $effect`The Moxious Madrigal`,
-      })
+      }),
     ),
     {
       name: "Drink Pilsners",
@@ -29,7 +29,7 @@ const Drink: CSQuest = {
       do: () =>
         drink(
           $item`astral pilsner`,
-          clamp(itemAmount($item`astral pilsner`), 0, 5 - totalInebriety())
+          clamp(itemAmount($item`astral pilsner`), 0, 5 - totalInebriety()),
         ),
     },
   ],

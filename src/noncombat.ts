@@ -1,4 +1,4 @@
-import { CSStrategy } from "./combat";
+import { CSStrategy } from "./combat.js";
 import {
   asdonTask,
   birdTask,
@@ -8,10 +8,10 @@ import {
   restore,
   skillTask,
   songTask,
-} from "./commons";
-import { CSQuest } from "./engine";
-import { currentBirdHas, favouriteBirdHas } from "./lib";
-import uniform from "./outfit";
+} from "./commons.js";
+import { CSQuest } from "./engine.js";
+import { currentBirdHas, favouriteBirdHas } from "./lib.js";
+import uniform from "./outfit.js";
 import {
   buy,
   cliExecute,

@@ -1,8 +1,8 @@
-import { CSStrategy, Macro } from "./combat";
-import { asdonTask, beachTask, commonFamiliarWeightBuffs, restoreBuffTasks } from "./commons";
-import { CSQuest } from "./engine";
-import { ensureMp } from "./lib";
-import uniform from "./outfit";
+import { CSStrategy, Macro } from "./combat.js";
+import { asdonTask, beachTask, commonFamiliarWeightBuffs, restoreBuffTasks } from "./commons.js";
+import { CSQuest } from "./engine.js";
+import { ensureMp } from "./lib.js";
+import uniform from "./outfit.js";
 import { adv1, create, handlingChoice, myHp, myMaxhp, runChoice, useSkill } from "kolmafia";
 import {
   $effect,
@@ -66,7 +66,7 @@ const HotRes: CSQuest = {
           },
         }),
       combat: new CSStrategy(() =>
-        Macro.skill($skill`Fire Extinguisher: Foam Yourself`).skill($skill`Use the Force`)
+        Macro.skill($skill`Fire Extinguisher: Foam Yourself`).skill($skill`Use the Force`),
       ),
       post: () => examine($item`industrial fire extinguisher`),
     },

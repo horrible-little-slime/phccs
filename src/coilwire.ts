@@ -1,6 +1,6 @@
-import { CSStrategy, Macro } from "./combat";
-import { CSQuest } from "./engine";
-import uniform from "./outfit";
+import { CSStrategy, Macro } from "./combat.js";
+import { CSQuest } from "./engine.js";
+import uniform from "./outfit.js";
 import { adv1, create, eat } from "kolmafia";
 import {
   $classes,
@@ -38,7 +38,7 @@ const CoilWire: CSQuest = {
             Muscle: $location`The Outskirts of Cobb's Knob`,
           }),
           -1,
-          ""
+          "",
         );
         if (have($item`magical sausage casing`)) {
           create(1, $item`magical sausage`);
@@ -49,7 +49,7 @@ const CoilWire: CSQuest = {
       combat: new CSStrategy(() =>
         Macro.skill($skill`Micrometeorite`)
           .attack()
-          .repeat()
+          .repeat(),
       ),
     },
     {

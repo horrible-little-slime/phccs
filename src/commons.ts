@@ -1,6 +1,6 @@
-import { CSStrategy, Macro } from "./combat";
-import { CSTask, currentBirdHas, favouriteBirdHas } from "./lib";
-import uniform from "./outfit";
+import { CSStrategy, Macro } from "./combat.js";
+import { CSTask, currentBirdHas, favouriteBirdHas } from "./lib.js";
+import uniform from "./outfit.js";
 import {
   adv1,
   availableAmount,
@@ -42,7 +42,7 @@ import {
   set,
   SourceTerminal,
 } from "libram";
-import { NumericModifier } from "libram/dist/modifierTypes";
+import { NumericModifier } from "libram";
 
 export function beachTask(effect: Effect): CSTask {
   const num = 1 + BeachComb.headBuffs.indexOf(effect);
@@ -78,7 +78,7 @@ export function innerElf(): CSTask {
       }),
     choices: { [326]: 1 },
     combat: new CSStrategy(() =>
-      Macro.trySkill($skill`KGB tranquilizer dart`).trySkill($skill`Snokebomb`)
+      Macro.trySkill($skill`KGB tranquilizer dart`).trySkill($skill`Snokebomb`),
     ),
   };
 }
@@ -205,7 +205,7 @@ export function meteorShower(): CSTask {
     combat: new CSStrategy(() =>
       Macro.skill($skill`Turbo`)
         .skill($skill`Meteor Shower`)
-        .skill($skill`Use the Force`)
+        .skill($skill`Use the Force`),
     ),
     post: () => {
       if (have($effect`Meteor Showered`)) showers++;

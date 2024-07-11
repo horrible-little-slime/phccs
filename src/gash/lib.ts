@@ -52,7 +52,7 @@ export function getSkillsToPerm(): Map<Skill, Lifestyle> {
   return new Map(
     Skill.all()
       .filter((s) => have(s) && !perms[s.name] && s.permable)
-      .map((s) => [s, Lifestyle.hardcore])
+      .map((s) => [s, Lifestyle.hardcore]),
   );
 }
 
@@ -64,7 +64,7 @@ export function smokeEmIfYouGotEm(): void {
     .filter(Boolean);
   const poemLines = lines.slice(
     lines.indexOf("*** START OF THE PROJECT GUTENBERG EBOOK THE WASTE LAND ***"),
-    lines.indexOf("*** END OF THE PROJECT GUTENBERG EBOOK THE WASTE LAND ***")
+    lines.indexOf("*** END OF THE PROJECT GUTENBERG EBOOK THE WASTE LAND ***"),
   );
   const MESSAGE = poemLines[Number(myId()) % poemLines.length];
 

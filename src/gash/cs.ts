@@ -1,4 +1,4 @@
-import { burnSafaris, getSkillsToPerm, smokeEmIfYouGotEm } from "./lib";
+import { burnSafaris, getSkillsToPerm, smokeEmIfYouGotEm } from "./lib.js";
 import { Args } from "grimoire-kolmafia";
 import { abort, equippedItem, StatType, userConfirm, visitUrl } from "kolmafia";
 import {
@@ -36,7 +36,7 @@ const args = Args.create(
       help: "Don't warn you when you are making a huge mistake",
       default: false,
     }),
-  }
+  },
 );
 
 const byAscendingStat = makeByXFunction(() => args.class.primestat.toString());
@@ -100,7 +100,7 @@ export function main(input = ""): void {
       if (
         !meets() &&
         !userConfirm(
-          `We have failed to meet the requirement ${name} to ascend as a ${args.class}; this is important because ${reason}. Are you sure you wish to proceed?`
+          `We have failed to meet the requirement ${name} to ascend as a ${args.class}; this is important because ${reason}. Are you sure you wish to proceed?`,
         )
       ) {
         abort();
@@ -113,8 +113,8 @@ export function main(input = ""): void {
         missingItems.length &&
         !userConfirm(
           `You seem to be missing the following items required to run phccs in softcore: ${missingItems.join(
-            ", "
-          )}. Are you sure you wish to proceed?`
+            ", ",
+          )}. Are you sure you wish to proceed?`,
         )
       ) {
         abort();

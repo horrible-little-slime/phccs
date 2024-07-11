@@ -1,4 +1,4 @@
-import { burnSafaris, getSkillsToPerm, smokeEmIfYouGotEm } from "./lib";
+import { burnSafaris, getSkillsToPerm, smokeEmIfYouGotEm } from "./lib.js";
 import { visitUrl } from "kolmafia";
 import { $class, $item, $path, ascend, Lifestyle, prepareAscension } from "libram";
 
@@ -14,6 +14,8 @@ export function main(): void {
       ceiling: "ceiling fan",
     },
   });
+
+  $item`farto`;
 
   visitUrl("council.php");
 

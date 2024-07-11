@@ -1,6 +1,6 @@
-import { CSStrategy, Macro } from "./combat";
-import { CSTask } from "./lib";
-import uniform from "./outfit";
+import { CSStrategy, Macro } from "./combat.js";
+import { CSTask } from "./lib.js";
+import uniform from "./outfit.js";
 import { Quest } from "grimoire-kolmafia";
 import { abort, adv1, cliExecute, myInebriety, reverseNumberology, useSkill } from "kolmafia";
 import { $effect, $item, $location, $skill, Counter, get, have, withProperty } from "libram";
@@ -51,7 +51,7 @@ const GLOBAL_TASKS: CSTask[] = [
         .trySkill($skill`Shoot Ghost`)
         .trySkill($skill`Shoot Ghost`)
         .trySkill($skill`Shoot Ghost`)
-        .trySkill($skill`Trap Ghost`)
+        .trySkill($skill`Trap Ghost`),
     ),
     outfit: () => uniform({ changes: { back: $item`protonic accelerator pack` } }),
   },

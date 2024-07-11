@@ -1,4 +1,4 @@
-import { CSStrategy } from "./combat";
+import { CSStrategy } from "./combat.js";
 import { StrictCombatTask } from "grimoire-kolmafia";
 import {
   availableAmount,
@@ -45,7 +45,7 @@ import {
   possibleLibramSummons,
   Witchess,
 } from "libram";
-import { NumericModifier } from "libram/dist/modifierTypes";
+import { NumericModifier } from "libram";
 
 export type CSTask = StrictCombatTask<never, CSStrategy> & {
   core?: Delayed<"hard" | "soft">;
@@ -184,7 +184,7 @@ export function burnLibrams(): void {
   const testsDone = get("csServicesPerformed").split(",");
   if (
     !$skills`Summon BRICKOs, Summon Taffy, Summon Love Song, Summon Candy Heart`.some((skill) =>
-      have(skill)
+      have(skill),
     )
   )
     return;
@@ -212,16 +212,16 @@ export function burnLibrams(): void {
         const currentWeightValue = clamp(
           Math.ceil(totalDuration($item`love song of icy revenge`) / 2),
           0,
-          10
+          10,
         );
         const newWeightValue = clamp(
           Math.ceil((totalDuration($item`love song of icy revenge`) + 5) / 2),
           0,
-          10
+          10,
         );
         decisionMap.set(
           $skill`Summon Love Song`,
-          probability * (newWeightValue - currentWeightValue)
+          probability * (newWeightValue - currentWeightValue),
         );
       }
 
@@ -240,7 +240,7 @@ export function burnLibrams(): void {
         ) {
           decisionMap.set(
             $skill`Summon BRICKOs`,
-            (probability * 11) / (11 - get("_shortOrderCookCharge") - availableFights())
+            (probability * 11) / (11 - get("_shortOrderCookCharge") - availableFights()),
           );
         }
 
@@ -299,6 +299,6 @@ export function printJson(json: any): void {
         return v.toString();
       }
       return v;
-    })
+    }),
   );
 }

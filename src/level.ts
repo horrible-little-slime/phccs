@@ -1,4 +1,4 @@
-import { CSStrategy, Macro } from "./combat";
+import { CSStrategy, Macro } from "./combat.js";
 import {
   beachTask,
   favouriteBirdTask,
@@ -6,10 +6,10 @@ import {
   potionTask,
   restore,
   restoreBuffTasks,
-} from "./commons";
-import { CSQuest } from "./engine";
-import { burnLibrams, currentBirdHas, favouriteBirdHas, SYNTH_EFFECT, synthExp } from "./lib";
-import uniform from "./outfit";
+} from "./commons.js";
+import { CSQuest } from "./engine.js";
+import { burnLibrams, currentBirdHas, favouriteBirdHas, SYNTH_EFFECT, synthExp } from "./lib.js";
+import uniform from "./outfit.js";
 import { OutfitSpec } from "grimoire-kolmafia";
 import {
   buy,
@@ -212,7 +212,7 @@ const Level: CSQuest = {
     },
 
     ...$items`votive of confidence, natural magick candle, MayDay™ supply package, Napalm In The Morning™ candle`.map(
-      potionTask
+      potionTask,
     ),
 
     {
@@ -241,7 +241,7 @@ const Level: CSQuest = {
         Mysticality: $effects`Inscrutable Gaze`,
         Moxie: $effects`Quiet Desperation`,
         Muscle: $effects`Quiet Determination`,
-      })
+      }),
     ),
     {
       name: "Get Range",
@@ -287,12 +287,12 @@ const Level: CSQuest = {
       combat: new CSStrategy(() =>
         Macro.externalIf(
           !have($effect`Cosmic Ball in the Air`),
-          Macro.trySkill($skill`Bowl Straight Up`)
+          Macro.trySkill($skill`Bowl Straight Up`),
         )
           .tryItem($item`blue rocket`)
           .trySkill($skill`Giant Growth`)
           .attack()
-          .repeat()
+          .repeat(),
       ),
     },
     {
@@ -305,12 +305,12 @@ const Level: CSQuest = {
       combat: new CSStrategy(() =>
         Macro.externalIf(
           !have($effect`Cosmic Ball in the Air`),
-          Macro.trySkill($skill`Bowl Straight Up`)
+          Macro.trySkill($skill`Bowl Straight Up`),
         )
           .tryItem($item`blue rocket`)
           .trySkill($skill`Giant Growth`)
           .attack()
-          .repeat()
+          .repeat(),
       ),
     },
     // A proton ghost should get fought here
@@ -322,7 +322,7 @@ const Level: CSQuest = {
         Cartography.mapMonster($location`The Haiku Dungeon`, $monster`amateur ninja`);
       },
       combat: new CSStrategy(() =>
-        Macro.if_($monster`amateur ninja`, Macro.skill($skill`Chest X-Ray`)).abort()
+        Macro.if_($monster`amateur ninja`, Macro.skill($skill`Chest X-Ray`)).abort(),
       ),
       outfit: () => uniform({ canAttack: false, changes: { acc3: $item`Lil' Doctor™ bag` } }),
     },
@@ -415,7 +415,7 @@ const Level: CSQuest = {
         uniform(
           have($familiar`Nanorhino`) && get("_nanorhinoCharge") >= 100
             ? { changes: { familiar: $familiar`Nanorhino` } }
-            : {}
+            : {},
         ),
       combat: new CSStrategy(
         () =>
@@ -427,13 +427,13 @@ const Level: CSQuest = {
                   Mysticality: $skill`Spaghetti Spear`,
                   Moxie: $skill`Suckerpunch`,
                   Muscle: $skill`Clobber`,
-                })
-              )
+                }),
+              ),
             )
             .defaultKill(),
         {
           fightHolidayWanderer: true,
-        }
+        },
       ),
     },
     {
@@ -448,7 +448,7 @@ const Level: CSQuest = {
       combat: new CSStrategy(() =>
         Macro.skill($skill`Become a Bat`)
           .skill($skill`Otoscope`)
-          .defaultKill()
+          .defaultKill(),
       ),
     },
     {
@@ -475,18 +475,18 @@ const Level: CSQuest = {
             Moxie: "LOV Earring",
           }),
           "Open Heart Surgery",
-          "LOV Extraterrestrial Chocolate"
+          "LOV Extraterrestrial Chocolate",
         ),
       combat: new CSStrategy(() =>
         Macro.if_($monster`LOV Enforcer`, Macro.attack().repeat())
           .if_(
             $monster`LOV Engineer`,
-            Macro.candyblast().trySkillRepeat($skill`Weapon of the Pastalord`)
+            Macro.candyblast().trySkillRepeat($skill`Weapon of the Pastalord`),
           )
           .if_(
             $monster`LOV Equivocator`,
-            Macro.step("pickpocket").delevel().easyFight().candyblast().defaultKill()
-          )
+            Macro.step("pickpocket").delevel().easyFight().candyblast().defaultKill(),
+          ),
       ),
       post: (): void => {
         use(1, $item`LOV Extraterrestrial Chocolate`);
@@ -498,7 +498,7 @@ const Level: CSQuest = {
         Muscle: $item`LOV Elixir #3`,
         Mysticality: $item`LOV Elixir #6`,
         Moxie: $item`LOV Elixir #9`,
-      })
+      }),
     ),
     {
       name: "Snojo",
@@ -512,7 +512,7 @@ const Level: CSQuest = {
       name: "Post-Snojo Hottub",
       completed: () =>
         $effects`Snowballed, Half-Blooded, Half-Drained, Bruised, Relaxed Muscles, Hypnotized, Bad Haircut`.every(
-          (effect) => !have(effect)
+          (effect) => !have(effect),
         ),
       do: () => cliExecute("hottub"),
     },
@@ -549,7 +549,7 @@ const Level: CSQuest = {
       outfit: (): OutfitSpec => {
         const gear =
           $items`God Lobster's Crown, God Lobster's Robe, God Lobster's Rod, God Lobster's Ring, God Lobster's Scepter`.find(
-            (it) => have(it)
+            (it) => have(it),
           ) ?? $item`tiny stillsuit`;
         return uniform({ changes: { familiar: $familiar`God Lobster`, famequip: gear } });
       },
@@ -609,12 +609,12 @@ const Level: CSQuest = {
             $effect`Inner Elf`,
             Macro.if_(
               `!hascombatitem ${$item`cosmic bowling ball`}`,
-              Macro.trySkill($skill`Feel Pride`)
-            )
+              Macro.trySkill($skill`Feel Pride`),
+            ),
           )
           .trySkill($skill`Bowl Sideways`)
           .delevel()
-          .defaultKill()
+          .defaultKill(),
       ),
       choices: { [1324]: 5 },
     },
@@ -636,12 +636,12 @@ const Level: CSQuest = {
           $effect`Inner Elf`,
           Macro.if_(
             `!hascombatitem ${$item`cosmic bowling ball`}`,
-            Macro.trySkill($skill`Feel Pride`)
-          )
+            Macro.trySkill($skill`Feel Pride`),
+          ),
         )
           .trySkill($skill`Bowl Sideways`)
           .delevel()
-          .defaultKill()
+          .defaultKill(),
       ),
       choices: { [1324]: 5 },
     },
@@ -658,8 +658,8 @@ const Level: CSQuest = {
         const killSource = !have($effect`Everything Looks Yellow`)
           ? { shirt: $item`Jurassic Parka`, modes: { parka: "dilophosaur" as const } }
           : get("_chestXRayUsed") < 3
-          ? { acc3: $item`Lil' Doctor™ bag` }
-          : {};
+            ? { acc3: $item`Lil' Doctor™ bag` }
+            : {};
         const enoughSausages = get("_sausageFights") > 4;
         const changes = {
           shirt: $items`makeshift garbage shirt`,
@@ -676,7 +676,7 @@ const Level: CSQuest = {
           .trySkill($skill`Chest X-Ray`)
           .trySkill($skill`Shattering Punch`)
           .trySkill($skill`Gingerbread Mob Hit`)
-          .abort()
+          .abort(),
       ),
       choices: { [1324]: 5 },
     },

@@ -101,7 +101,7 @@ function chooseFamiliar(canAttack: boolean): Pick<OutfitSpec, "familiar" | "fame
     ({ condition, familiar }) =>
       condition() &&
       have(familiar) &&
-      (canAttack || !(familiar.elementalDamage || familiar.physicalDamage))
+      (canAttack || !(familiar.elementalDamage || familiar.physicalDamage)),
   );
   if (pick) {
     return { famequip: pick.famequip ?? $item`tiny stillsuit`, familiar: pick.familiar };
