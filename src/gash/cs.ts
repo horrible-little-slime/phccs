@@ -1,6 +1,15 @@
 import { burnSafaris, getSkillsToPerm, smokeEmIfYouGotEm } from "./lib";
 import { Args } from "grimoire-kolmafia";
-import { abort, equippedItem, StatType, userConfirm, visitUrl } from "kolmafia";
+import {
+  abort,
+  equippedItem,
+  Item,
+  print,
+  runChoice,
+  StatType,
+  userConfirm,
+  visitUrl,
+} from "kolmafia";
 import {
   $class,
   $familiar,
@@ -41,6 +50,22 @@ const args = Args.create(
 
 const byAscendingStat = makeByXFunction(() => args.class.primestat.toString());
 
+const bootRequirement = (skin: Item) => ({
+  name: `Cowboy Boots: ${skin}`,
+  meets: () => {
+    if (!have($item`your cowboy boots`)) {
+      visitUrl("place.php?whichplace=town_right&action=townright_ltt");
+      runChoice(5);
+    }
+    if (!have($item`your cowboy boots`)) {
+      print("You don't have LT&T, a hard requirement!", "red");
+      return false;
+    }
+    return equippedItem($slot`bootskin`) === skin;
+  },
+  reason: `we want to crank that mainstat for levelling reasons, so your bootskin must be ${skin}`,
+});
+
 const SPECIAL_REQUIREMENTS: Record<
   StatType,
   { name: string; meets: () => boolean; reason: string }[]
@@ -56,30 +81,16 @@ const SPECIAL_REQUIREMENTS: Record<
       meets: () => have($familiar`Stocking Mimic`),
       reason: "sweet synthesis is complicated!",
     },
-    {
-      name: "Cowboy Boots",
-      meets: () => equippedItem($slot`bootskin`) === $item`mountain lion skin`,
-      reason: "we want to crank that mainstat for leveling reasons",
-    },
+    bootRequirement($item`mountain lion skin`),
   ],
-  Muscle: [
-    {
-      name: "Cowboy Boots",
-      meets: () => equippedItem($slot`bootskin`) === $item`grizzled bearskin`,
-      reason: "we want to crank that mainstat for leveling reasons",
-    },
-  ],
+  Muscle: [bootRequirement($item`grizzled bearskin`)],
   Mysticality: [
     {
       name: "Meteor Necklace",
       meets: () => !args.softcore || have($item`meteorite necklace`),
       reason: "we don't start in a canadian moonsign!",
     },
-    {
-      name: "Cowboy Boots",
-      meets: () => equippedItem($slot`bootskin`) === $item`frontwinder skin`,
-      reason: "we want to crank that mainstat for leveling reasons",
-    },
+    bootRequirement($item`frontwinder skin`),
   ],
 };
 
