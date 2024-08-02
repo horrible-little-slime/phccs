@@ -2435,7 +2435,9 @@ function getSkillsToPerm() {
 function smokeEmIfYouGotEm() {
   var fullText = (0, import_kolmafia9.visitUrl)("https://www.gutenberg.org/cache/epub/1321/pg1321.txt"), lines = fullText.split("\n").map(function(line) {
     return line.trim();
-  }).filter(Boolean), poemLines = lines.slice(lines.indexOf("*** START OF THE PROJECT GUTENBERG EBOOK THE WASTE LAND ***"), lines.indexOf("*** END OF THE PROJECT GUTENBERG EBOOK THE WASTE LAND ***")), MESSAGE = poemLines[Number((0, import_kolmafia9.myId)()) % poemLines.length];
+  }).filter(Boolean), poemLines = lines.slice(lines.indexOf("*** START OF THE PROJECT GUTENBERG EBOOK THE WASTE LAND ***"), lines.indexOf("*** END OF THE PROJECT GUTENBERG EBOOK THE WASTE LAND ***")), poemLine = (get("phccs_wasteLand", Number((0, import_kolmafia9.myId)())) + 1) % poemLines.length;
+  _set("phccs_wasteLand", poemLine);
+  var MESSAGE = poemLines[poemLine];
   (0, import_kolmafia9.retrieveItem)($item(_templateObject311 || (_templateObject311 = _taggedTemplateLiteral4(["campfire smoke"])))), withChoice(1394, "1&message=".concat(MESSAGE), function() {
     return (0, import_kolmafia9.use)($item(_templateObject411 || (_templateObject411 = _taggedTemplateLiteral4(["campfire smoke"]))));
   });

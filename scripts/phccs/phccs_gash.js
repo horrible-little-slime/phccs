@@ -2569,7 +2569,9 @@ function getSkillsToPerm() {
 function smokeEmIfYouGotEm() {
   var fullText = (0, import_kolmafia10.visitUrl)("https://www.gutenberg.org/cache/epub/1321/pg1321.txt"), lines = fullText.split("\n").map(function(line) {
     return line.trim();
-  }).filter(Boolean), poemLines = lines.slice(lines.indexOf("*** START OF THE PROJECT GUTENBERG EBOOK THE WASTE LAND ***"), lines.indexOf("*** END OF THE PROJECT GUTENBERG EBOOK THE WASTE LAND ***")), MESSAGE = poemLines[Number((0, import_kolmafia10.myId)()) % poemLines.length];
+  }).filter(Boolean), poemLines = lines.slice(lines.indexOf("*** START OF THE PROJECT GUTENBERG EBOOK THE WASTE LAND ***"), lines.indexOf("*** END OF THE PROJECT GUTENBERG EBOOK THE WASTE LAND ***")), poemLine = (get("phccs_wasteLand", Number((0, import_kolmafia10.myId)())) + 1) % poemLines.length;
+  _set("phccs_wasteLand", poemLine);
+  var MESSAGE = poemLines[poemLine];
   (0, import_kolmafia10.retrieveItem)($item(_templateObject311 || (_templateObject311 = _taggedTemplateLiteral5(["campfire smoke"])))), withChoice(1394, "1&message=".concat(MESSAGE), function() {
     return (0, import_kolmafia10.use)($item(_templateObject411 || (_templateObject411 = _taggedTemplateLiteral5(["campfire smoke"]))));
   });
@@ -4828,46 +4830,36 @@ var args = Args.create("phccs_gash", "This script is designed to help you hop th
   })
 }), byAscendingStat = makeByXFunction(function() {
   return args.class.primestat.toString();
-}), SPECIAL_REQUIREMENTS = {
+}), bootRequirement = function(skin) {
+  return {
+    name: "Cowboy Boots: ".concat(skin),
+    meets: function() {
+      return have($item(_templateObject216 || (_templateObject216 = _taggedTemplateLiteral8(["your cowboy boots"])))) || ((0, import_kolmafia15.visitUrl)("place.php?whichplace=town_right&action=townright_ltt"), (0, import_kolmafia15.runChoice)(5)), have($item(_templateObject315 || (_templateObject315 = _taggedTemplateLiteral8(["your cowboy boots"])))) ? (0, import_kolmafia15.equippedItem)($slot(_templateObject414 || (_templateObject414 = _taggedTemplateLiteral8(["bootskin"])))) === skin : ((0, import_kolmafia15.print)("You don't have LT&T, a hard requirement!", "red"), !1);
+    },
+    reason: "we want to crank that mainstat for levelling reasons, so your bootskin must be ".concat(skin)
+  };
+}, SPECIAL_REQUIREMENTS = {
   Moxie: [{
     name: "Evil Olive in locket",
     meets: function() {
-      return CombatLoversLocket_exports.unlockedLocketMonsters().includes($monster(_templateObject216 || (_templateObject216 = _taggedTemplateLiteral8(["Evil Olive"]))));
+      return CombatLoversLocket_exports.unlockedLocketMonsters().includes($monster(_templateObject510 || (_templateObject510 = _taggedTemplateLiteral8(["Evil Olive"]))));
     },
     reason: "we need to be able to make equalizer potions!"
   }, {
     name: "Stocking Mimic",
     meets: function() {
-      return have($familiar(_templateObject315 || (_templateObject315 = _taggedTemplateLiteral8(["Stocking Mimic"]))));
+      return have($familiar(_templateObject610 || (_templateObject610 = _taggedTemplateLiteral8(["Stocking Mimic"]))));
     },
     reason: "sweet synthesis is complicated!"
-  }, {
-    name: "Cowboy Boots",
-    meets: function() {
-      return (0, import_kolmafia15.equippedItem)($slot(_templateObject414 || (_templateObject414 = _taggedTemplateLiteral8(["bootskin"])))) === $item(_templateObject510 || (_templateObject510 = _taggedTemplateLiteral8(["mountain lion skin"])));
-    },
-    reason: "we want to crank that mainstat for leveling reasons"
-  }],
-  Muscle: [{
-    name: "Cowboy Boots",
-    meets: function() {
-      return (0, import_kolmafia15.equippedItem)($slot(_templateObject610 || (_templateObject610 = _taggedTemplateLiteral8(["bootskin"])))) === $item(_templateObject74 || (_templateObject74 = _taggedTemplateLiteral8(["grizzled bearskin"])));
-    },
-    reason: "we want to crank that mainstat for leveling reasons"
-  }],
+  }, bootRequirement($item(_templateObject74 || (_templateObject74 = _taggedTemplateLiteral8(["mountain lion skin"]))))],
+  Muscle: [bootRequirement($item(_templateObject84 || (_templateObject84 = _taggedTemplateLiteral8(["grizzled bearskin"]))))],
   Mysticality: [{
     name: "Meteor Necklace",
     meets: function() {
-      return !args.softcore || have($item(_templateObject84 || (_templateObject84 = _taggedTemplateLiteral8(["meteorite necklace"]))));
+      return !args.softcore || have($item(_templateObject95 || (_templateObject95 = _taggedTemplateLiteral8(["meteorite necklace"]))));
     },
     reason: "we don't start in a canadian moonsign!"
-  }, {
-    name: "Cowboy Boots",
-    meets: function() {
-      return (0, import_kolmafia15.equippedItem)($slot(_templateObject95 || (_templateObject95 = _taggedTemplateLiteral8(["bootskin"])))) === $item(_templateObject104 || (_templateObject104 = _taggedTemplateLiteral8(["frontwinder skin"])));
-    },
-    reason: "we want to crank that mainstat for leveling reasons"
-  }]
+  }, bootRequirement($item(_templateObject104 || (_templateObject104 = _taggedTemplateLiteral8(["frontwinder skin"]))))]
 };
 function main() {
   var input = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : "";
