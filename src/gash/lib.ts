@@ -8,7 +8,7 @@ import {
   useSkill,
   visitUrl,
 } from "kolmafia";
-import { $item, $skill, get, have, Lifestyle, withChoice } from "libram";
+import { $item, $skill, get, have, Lifestyle, set, withChoice } from "libram";
 
 const lowercaseName = myName().toLowerCase();
 const safariTargets = [
@@ -66,7 +66,9 @@ export function smokeEmIfYouGotEm(): void {
     lines.indexOf("*** START OF THE PROJECT GUTENBERG EBOOK THE WASTE LAND ***"),
     lines.indexOf("*** END OF THE PROJECT GUTENBERG EBOOK THE WASTE LAND ***")
   );
-  const MESSAGE = poemLines[Number(myId()) % poemLines.length];
+  const poemLine = (get("phccs_wasteLand", Number(myId())) + 1) % poemLines.length;
+  set("phccs_wasteLand", poemLine);
+  const MESSAGE = poemLines[poemLine];
 
   retrieveItem($item`campfire smoke`);
   withChoice(1394, `1&message=${MESSAGE}`, () => use($item`campfire smoke`));
