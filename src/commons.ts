@@ -172,7 +172,10 @@ export function asdonTask(style: Effect | keyof typeof AsdonMartin.Driving): CST
         use(1, $item`all-purpose flower`);
         buy(availableAmount($item`wad of dough`), $item`soda water`);
         create(availableAmount($item`wad of dough`), $item`loaf of soda bread`);
-        cliExecute(`asdonmartin fuel ${availableAmount($item`loaf of soda bread`)} soda bread`);
+        AsdonMartin.insertFuel(
+          $item`loaf of soda bread`,
+          availableAmount($item`loaf of soda bread`)
+        );
       }
       AsdonMartin.drive(effect);
     },
