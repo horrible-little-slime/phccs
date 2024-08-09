@@ -553,11 +553,11 @@ const Level: CSQuest = {
           ) ?? $item`tiny stillsuit`;
         return uniform({ changes: { familiar: $familiar`God Lobster`, famequip: gear } });
       },
-      choices: {
+      choices: () => ({
         // Stats
-        [1310]: () =>
+        1310:
           favouriteBirdHas("Combat Rate", false) && currentBirdHas("Combat Rate", false) ? 3 : 1,
-      },
+      }),
       combat: new CSStrategy(),
     },
 

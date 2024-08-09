@@ -25,6 +25,7 @@ import {
   Skill,
   Slot,
   sweetSynthesis,
+  toEffect,
   use,
   useSkill,
   visitUrl,
@@ -162,7 +163,7 @@ function canCastLibrams(): boolean {
 }
 
 function totalDuration(item: Item): number {
-  const effect = getModifier("Effect", item);
+  const effect = toEffect(getModifier("Effect", item));
   return haveEffect(effect) + getModifier("Effect Duration", item) * availableAmount(item);
 }
 
