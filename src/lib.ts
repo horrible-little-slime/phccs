@@ -2,10 +2,7 @@ import { CSStrategy } from "./combat";
 import { StrictCombatTask } from "grimoire-kolmafia";
 import {
   availableAmount,
-  buy,
   Class,
-  cliExecute,
-  create,
   eat,
   equip,
   equippedAmount,
@@ -15,10 +12,8 @@ import {
   getProperty,
   haveEffect,
   Item,
-  MafiaClass,
   myMaxmp,
   myMp,
-  print,
   restoreMp,
   retrieveItem,
   setProperty,
@@ -52,14 +47,6 @@ export type CSTask = StrictCombatTask<never, CSStrategy> & {
   core?: Delayed<"hard" | "soft">;
   class?: Delayed<Class[]>;
 };
-
-export function fuelUp(): void {
-  buy(1, $item`all-purpose flower`);
-  use(1, $item`all-purpose flower`);
-  buy(availableAmount($item`wad of dough`), $item`soda water`);
-  create(availableAmount($item`wad of dough`), $item`loaf of soda bread`);
-  cliExecute(`asdonmartin fuel ${availableAmount($item`loaf of soda bread`)} soda bread`);
-}
 
 const SYNTH_PAIRS = byStat({
   Mysticality: [
@@ -151,10 +138,6 @@ export function ensureMp(mp: number): void {
   }
   if (myMp() < mp) restoreMp(mp);
 }
-
-export const maximizeFamiliar = have($familiar`Disembodied Hand`)
-  ? $familiar`Disembodied Hand`
-  : $familiar`Left-Hand Man`;
 
 function canCastLibrams(): boolean {
   const summonNumber = 1 + get("libramSummons");
@@ -290,16 +273,4 @@ export function currentBirdHas(modifier: NumericModifier, positive = true): bool
   return get("_birdOfTheDayMods")
     .split(",")
     .some((mod) => mod.includes(`${modifier}: ${sign}`));
-}
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function printJson(json: any): void {
-  print(
-    JSON.stringify(json, (k, v) => {
-      if (v instanceof MafiaClass) {
-        return v.toString();
-      }
-      return v;
-    })
-  );
 }
