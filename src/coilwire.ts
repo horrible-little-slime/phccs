@@ -45,9 +45,18 @@ const CoilWire: CSQuest = {
         }
         eat(1, $item`magical sausage`);
       },
-      outfit: () => uniform({ changes: { offhand: $item`Kramco Sausage-o-Matic™` } }),
+      outfit: () =>
+        uniform({
+          changes: {
+            offhand: $item`Kramco Sausage-o-Matic™`,
+            familiar: $familiar`Left-Hand Man`,
+            famequip: $item`Roman Candelabra`,
+          },
+        }),
       combat: new CSStrategy(() =>
-        Macro.skill($skill`Micrometeorite`)
+        Macro.trySkill($skill`Blow the Purple Candle!`)
+          .trySkill($skill`Blow the Red Candle!`)
+          .skill($skill`Micrometeorite`)
           .attack()
           .repeat()
       ),

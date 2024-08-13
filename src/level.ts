@@ -48,6 +48,7 @@ import {
   Counter,
   get,
   getActiveSongs,
+  getKramcoWandererChance,
   have,
   TunnelOfLove,
   uneffect,
@@ -617,6 +618,33 @@ const Level: CSQuest = {
           .defaultKill()
       ),
       choices: { [1324]: 5 },
+    },
+    {
+      name: "Purple Candle Kramco",
+      completed: () => getKramcoWandererChance() < 1,
+      do: byStat({
+        Mysticality: $location`The Haunted Pantry`,
+        Moxie: $location`The Sleazy Back Alley`,
+        Muscle: $location`The Outskirts of Cobb's Knob`,
+      }),
+      outfit: (): OutfitSpec => {
+        foldshirt();
+        return uniform({
+          changes: {
+            shirt: $item`makeshift garbage shirt`,
+            offhand: $item`Kramco Sausage-o-Matic™`,
+            familiar: $familiar`Left-Hand Man`,
+            famequip: $item`Roman Candelabra`,
+          },
+        });
+      },
+      combat: new CSStrategy(() =>
+        Macro.trySkill($skill`Blow the Purple Candle!`)
+          .trySkill($skill`Blow the Red Candle!`)
+          .skill($skill`Micrometeorite`)
+          .attack()
+          .repeat()
+      ),
     },
     {
       name: "Regular NEP",
