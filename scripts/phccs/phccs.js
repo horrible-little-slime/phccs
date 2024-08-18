@@ -12849,7 +12849,7 @@ var HIGHLIGHT = (0, import_kolmafia39.isDarkMode)() ? "yellow" : "blue", CSEngin
   }, {
     key: "runTests",
     value: function() {
-      (0, import_kolmafia39.myPath)() !== $path(_templateObject141 || (_templateObject141 = _taggedTemplateLiteral35(["Community Service"]))) && (0, import_kolmafia39.abort)(), (0, import_kolmafia39.visitUrl)("council.php"), CSEngine2.initiate();
+      (0, import_kolmafia39.myPath)() !== $path(_templateObject141 || (_templateObject141 = _taggedTemplateLiteral35(["Community Service"]))) && (0, import_kolmafia39.abort)("phccs doesn't ascend on your behalf! Run phccs_gash to ascend."), (0, import_kolmafia39.visitUrl)("council.php"), CSEngine2.initiate();
       try {
         for (var _len = arguments.length, quests = new Array(_len), _key = 0; _key < _len; _key++)
           quests[_key] = arguments[_key];
