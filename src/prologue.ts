@@ -346,7 +346,7 @@ const Prologue: CSQuest = {
           })
         ) >= 0,
       do: () => visitUrl("guild.php?place=challenge"),
-      outfit: () => byStat({ Moxie: { pants: $item`Tearaway pants` }, default: {} }),
+      outfit: () => byStat({ Moxie: { pants: $item`tearaway pants` }, default: {} }),
     },
   ],
 };
