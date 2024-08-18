@@ -153,7 +153,9 @@ export class CSEngine extends Engine<never, CSTask> {
   }
 
   static runTests(...quests: CSQuest[]): void {
-    if (myPath() !== $path`Community Service`) abort();
+    if (myPath() !== $path`Community Service`) {
+      abort("phccs doesn't ascend on your behalf! Run phccs_gash to ascend.");
+    }
     visitUrl("council.php");
     CSEngine.initiate();
 
