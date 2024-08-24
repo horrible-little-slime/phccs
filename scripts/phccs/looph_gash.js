@@ -1101,7 +1101,7 @@ function smokeEmIfYouGotEm() {
   }).filter(Boolean), poemLines = lines.slice(lines.indexOf("*** START OF THE PROJECT GUTENBERG EBOOK THE WASTE LAND ***"), lines.indexOf("*** END OF THE PROJECT GUTENBERG EBOOK THE WASTE LAND ***")), poemLine = (get("phccs_wasteLand", Number((0, import_kolmafia6.myId)())) + 1) % poemLines.length;
   _set("phccs_wasteLand", poemLine);
   var MESSAGE = poemLines[poemLine];
-  (0, import_kolmafia6.retrieveItem)($item(_templateObject36 || (_templateObject36 = _taggedTemplateLiteral3(["campfire smoke"])))), withChoice(1394, "1&message=".concat(MESSAGE), function() {
+  (0, import_kolmafia6.retrieveItem)($item(_templateObject36 || (_templateObject36 = _taggedTemplateLiteral3(["campfire smoke"])))), withChoice(1394, "1&message=".concat((0, import_kolmafia6.urlEncode)(MESSAGE)), function() {
     return (0, import_kolmafia6.use)($item(_templateObject42 || (_templateObject42 = _taggedTemplateLiteral3(["campfire smoke"]))));
   });
 }
