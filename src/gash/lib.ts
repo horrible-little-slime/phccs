@@ -4,6 +4,7 @@ import {
   myName,
   retrieveItem,
   Skill,
+  urlEncode,
   use,
   useSkill,
   visitUrl,
@@ -71,5 +72,5 @@ export function smokeEmIfYouGotEm(): void {
   const MESSAGE = poemLines[poemLine];
 
   retrieveItem($item`campfire smoke`);
-  withChoice(1394, `1&message=${MESSAGE}`, () => use($item`campfire smoke`));
+  withChoice(1394, `1&message=${urlEncode(MESSAGE)}`, () => use($item`campfire smoke`));
 }
