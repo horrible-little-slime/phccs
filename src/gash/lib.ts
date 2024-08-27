@@ -49,6 +49,7 @@ export function burnSafaris(): void {
 }
 
 export function getSkillsToPerm(): Map<Skill, Lifestyle> {
+  visitUrl("charsheet.php"); // refresh knowledge of skills
   const perms = getPermedSkills();
   return new Map(
     Skill.all()
