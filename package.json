@@ -47,5 +47,5 @@
         "url": "https://github.com/horrible-little-slime/phccs/issues"
     },
     "homepage": "https://github.com/horrible-little-slime/phccs#readme",
-    "private": false
+    "packageManager": "yarn@3.6.4"
 }
