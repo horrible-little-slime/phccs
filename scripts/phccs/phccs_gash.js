@@ -2589,6 +2589,7 @@ function burnSafaris() {
     (0, import_kolmafia10.useSkill)($skill(_templateObject213 || (_templateObject213 = _taggedTemplateLiteral5(["Experience Safari"]))), 1, safariTargets[0]), safariTargets.shift();
 }
 function getSkillsToPerm() {
+  (0, import_kolmafia10.visitUrl)("charsheet.php");
   var perms = (0, import_kolmafia10.getPermedSkills)();
   return new Map(import_kolmafia10.Skill.all().filter(function(s) {
     return have(s) && !perms[s.name] && s.permable;
