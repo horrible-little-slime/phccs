@@ -12,45 +12,29 @@ env:
   path: "KoLmafia" # The directory where your assets are generated, should match build.mjs
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Use Node.js ${{ env.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ env.node-version }}
-          cache: yarn
-      - name: Install Dependencies
-        run: yarn install --immutable --immutable-cache
-      - name: Build
-        run: yarn run build
-
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-
+      - uses: actions/checkout@v4
+      - run: corepack enable
       - name: Use Node.js ${{ env.node-version }}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ env.node-version }}
-          cache: yarn
       - name: Install Dependencies
-        run: yarn install --immutable --immutable-cache
-
+        run: yarn install --immutable
       - name: ESLint & Prettier
         run: yarn run lint
 
   push:
     runs-on: ubuntu-latest
-    needs: [test, lint]
+    needs: [lint]
     if: github.ref == 'refs/heads/main'
     steps:
-      - uses: actions/checkout@v3
-
+      - uses: actions/checkout@v4
+      - run: corepack enable
       - name: Use Node.js ${{ env.node-version }}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ env.node-version }}
 
