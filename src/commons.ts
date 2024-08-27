@@ -31,6 +31,7 @@ import {
   $item,
   $location,
   $skill,
+  AprilingBandHelmet,
   AsdonMartin,
   BeachComb,
   Clan,
@@ -243,5 +244,14 @@ export function deckTask(card: DeckOfEveryCard.Card): CSTask {
     completed: () => DeckOfEveryCard.getCardsSeen().includes(card),
     ready: () => DeckOfEveryCard.have() && DeckOfEveryCard.getRemainingCheats() > 0,
     do: () => DeckOfEveryCard.cheatCard(card),
+  };
+}
+
+export function aprilTask(song: AprilingBandHelmet.MarchingSong): CSTask {
+  return {
+    name: `Conduct ${song}`,
+    ready: () => AprilingBandHelmet.canChangeSong(),
+    completed: () => have(Effect.get(song)),
+    do: () => AprilingBandHelmet.changeSong(song),
   };
 }

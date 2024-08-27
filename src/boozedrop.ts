@@ -1,5 +1,5 @@
 import { CSStrategy, Macro } from "./combat";
-import { asdonTask, deckTask, potionTask, skillTask, songTask } from "./commons";
+import { aprilTask, asdonTask, deckTask, potionTask, skillTask, songTask } from "./commons";
 import { CSQuest } from "./engine";
 import uniform from "./outfit";
 import { OutfitSpec } from "grimoire-kolmafia";
@@ -104,6 +104,7 @@ const BoozeDrop: CSQuest = {
       completed: () => have($effect`Steely-Eyed Squint`),
       do: () => useSkill($skill`Steely-Eyed Squint`),
     },
+    aprilTask("Apriling Band Celebration Bop"),
     {
       name: "Feel Lost",
       completed: () => have($effect`Feeling Lost`),

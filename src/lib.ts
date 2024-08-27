@@ -29,6 +29,7 @@ import {
   $effect,
   $familiar,
   $item,
+  $location,
   $skill,
   $skills,
   bestLibramToCast,
@@ -274,3 +275,9 @@ export function currentBirdHas(modifier: NumericModifier, positive = true): bool
     .split(",")
     .some((mod) => mod.includes(`${modifier}: ${sign}`));
 }
+
+export const guildQuestZone = byStat({
+  Mysticality: $location`The Haunted Pantry`,
+  Moxie: $location`The Sleazy Back Alley`,
+  Muscle: $location`The Outskirts of Cobb's Knob`,
+});

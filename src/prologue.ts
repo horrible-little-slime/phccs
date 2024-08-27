@@ -1,4 +1,4 @@
-import { deckTask } from "./commons";
+import { aprilTask, deckTask } from "./commons";
 import { CSQuest } from "./engine";
 import { setClan, tryUse } from "./lib";
 import {
@@ -348,6 +348,7 @@ const Prologue: CSQuest = {
       do: () => visitUrl("guild.php?place=challenge"),
       outfit: () => byStat({ Moxie: { pants: $item`tearaway pants` }, default: {} }),
     },
+    aprilTask("Apriling Band Battle Cadence"),
   ],
 };
 

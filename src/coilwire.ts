@@ -1,7 +1,9 @@
 import { CSStrategy, Macro } from "./combat";
+import { asdonTask } from "./commons";
 import { CSQuest } from "./engine";
+import { guildQuestZone } from "./lib";
 import uniform from "./outfit";
-import { adv1, create, eat } from "kolmafia";
+import { adv1, buy, create, eat, visitUrl } from "kolmafia";
 import {
   $classes,
   $effect,
@@ -11,7 +13,6 @@ import {
   $location,
   $monster,
   $skill,
-  byStat,
   Cartography,
   CombatLoversLocket,
   CommunityService,
@@ -31,15 +32,7 @@ const CoilWire: CSQuest = {
       ready: () => getKramcoWandererChance() >= 1,
       completed: () => get("_sausageFights") > 0,
       do: (): void => {
-        adv1(
-          byStat({
-            Mysticality: $location`The Haunted Pantry`,
-            Moxie: $location`The Sleazy Back Alley`,
-            Muscle: $location`The Outskirts of Cobb's Knob`,
-          }),
-          -1,
-          ""
-        );
+        adv1(guildQuestZone, -1, "");
         if (have($item`magical sausage casing`)) {
           create(1, $item`magical sausage`);
         }
@@ -60,6 +53,26 @@ const CoilWire: CSQuest = {
           .attack()
           .repeat()
       ),
+    },
+    {
+      name: "Acquire Sombrero-Mounted Sparkler",
+      completed: () => have($item`sombrero-mounted sparkler`),
+      do: () => {
+        visitUrl("clan_viplounge.php?action=fwshop&whichfloor=2");
+        buy(1, $item`sombrero-mounted sparkler`);
+      },
+    },
+    asdonTask("Obnoxiously"),
+    {
+      name: "Spring Run",
+      completed: () => have($effect`Everything Looks Green`),
+      do: guildQuestZone,
+      outfit: () =>
+        uniform({
+          canAttack: false,
+          changes: { acc1: $item`spring shoes`, hat: $item`sombrero-mounted sparkler` },
+        }),
+      combat: new CSStrategy(() => Macro.trySkill($skill`Spring Away`)),
     },
     {
       name: "Fruity Skeleton",

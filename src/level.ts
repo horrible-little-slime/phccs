@@ -8,7 +8,14 @@ import {
   restoreBuffTasks,
 } from "./commons";
 import { CSQuest } from "./engine";
-import { burnLibrams, currentBirdHas, favouriteBirdHas, SYNTH_EFFECT, synthExp } from "./lib";
+import {
+  burnLibrams,
+  currentBirdHas,
+  favouriteBirdHas,
+  guildQuestZone,
+  SYNTH_EFFECT,
+  synthExp,
+} from "./lib";
 import uniform from "./outfit";
 import { OutfitSpec } from "grimoire-kolmafia";
 import {
@@ -622,11 +629,7 @@ const Level: CSQuest = {
     {
       name: "Purple Candle Kramco",
       completed: () => getKramcoWandererChance() < 1,
-      do: byStat({
-        Mysticality: $location`The Haunted Pantry`,
-        Moxie: $location`The Sleazy Back Alley`,
-        Muscle: $location`The Outskirts of Cobb's Knob`,
-      }),
+      do: guildQuestZone,
       outfit: (): OutfitSpec => {
         foldshirt();
         return uniform({
