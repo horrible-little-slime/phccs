@@ -16,15 +16,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-
       - name: Use Node.js ${{ env.node-version }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ env.node-version }}
-
+          cache: yarn
       - name: Install Dependencies
         run: yarn install --immutable --immutable-cache
-
       - name: Build
         run: yarn run build
 
