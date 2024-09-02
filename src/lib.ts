@@ -70,7 +70,7 @@ const SYNTH_PAIRS = byStat({
     [$item`bag of many confections`, $item`peppermint sprout`],
     [$item`Crimbo peppermint bark`, $item`peppermint twist`],
   ],
-});
+} as const);
 export function synthExp(): void {
   if (getCampground()["Peppermint Pip Packet"]) {
     visitUrl("campground.php?action=garden");
