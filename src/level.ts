@@ -324,17 +324,6 @@ const Level: CSQuest = {
     // A proton ghost should get fought here
     // It happens in globaltasks.ts
     {
-      name: "Map Ninja",
-      completed: () => have($item`li'l ninja costume`),
-      do: (): void => {
-        Cartography.mapMonster($location`The Haiku Dungeon`, $monster`amateur ninja`);
-      },
-      combat: new CSStrategy(() =>
-        Macro.if_($monster`amateur ninja`, Macro.skill($skill`Chest X-Ray`)).abort()
-      ),
-      outfit: () => uniform({ canAttack: false, changes: { acc3: $item`Lil' Doctor™ bag` } }),
-    },
-    {
       name: "Witch",
       completed: () => have($item`battle broom`),
       outfit: (): OutfitSpec => {
@@ -458,6 +447,17 @@ const Level: CSQuest = {
           .skill($skill`Otoscope`)
           .defaultKill()
       ),
+    },
+    {
+      name: "Map Ninja",
+      completed: () => have($item`li'l ninja costume`),
+      do: (): void => {
+        Cartography.mapMonster($location`The Haiku Dungeon`, $monster`amateur ninja`);
+      },
+      combat: new CSStrategy(() =>
+        Macro.if_($monster`amateur ninja`, Macro.skill($skill`Chest X-Ray`)).abort()
+      ),
+      outfit: () => uniform({ canAttack: false, changes: { acc3: $item`Lil' Doctor™ bag` } }),
     },
     {
       name: "LOV",

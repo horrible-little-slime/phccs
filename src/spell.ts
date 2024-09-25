@@ -88,6 +88,7 @@ const Spell: CSQuest = {
       do: () => cliExecute("barrelprayer buff"),
     },
     potionTask($item`tobiko marble soda`),
+    potionTask($item`imported taffy`),
     songTask($effect`Jackasses' Symphony of Destruction`, $effect`The Sonata of Sneakiness`),
     ...restoreBuffTasks(buffs),
     beachTask($effect`We're All Made of Starfish`),
