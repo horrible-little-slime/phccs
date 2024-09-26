@@ -1,13 +1,17 @@
 import { CombatStrategy } from "grimoire-kolmafia";
-import { myClass } from "kolmafia";
+import { Item, itemAmount, myClass } from "kolmafia";
 import {
   $class,
   $item,
+  $items,
   $skill,
+  byStat,
+  chunk,
   Delayed,
   getTodaysHolidayWanderers,
   have,
   StrictMacro,
+  Tuple,
 } from "libram";
 
 export class CSStrategy extends CombatStrategy {
@@ -88,5 +92,24 @@ export class Macro extends StrictMacro {
   }
   static defaultKill(): Macro {
     return new Macro().defaultKill();
+  }
+
+  throwLoveSongs(): Macro {
+    const LOVE_SONG_PRIORITY = byStat({
+      Moxie: $items`love song of naughty innuendo, love song of vague ambiguity, love song of smoldering passion, love song of disturbing obsession`,
+      Muscle: $items`love song of vague ambiguity, love song of smoldering passion, love song of naughty innuendo, love song of disturbing obsession`,
+      Mysticality: [],
+    });
+
+    const odds = LOVE_SONG_PRIORITY.filter((song) => itemAmount(song) % 2);
+    for (const songChunk of chunk(odds, 2)) {
+      this.item(songChunk.length === 2 ? (songChunk as Tuple<Item, 2>) : songChunk[0]);
+    }
+    for (const song of LOVE_SONG_PRIORITY) this.while_(song, Macro.item([song, song]));
+    return this;
+  }
+
+  static throwLoveSongs(): Macro {
+    return new Macro().throwLoveSongs();
   }
 }
