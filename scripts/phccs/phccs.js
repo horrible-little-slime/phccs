@@ -12031,12 +12031,8 @@ function chooseFamiliar(canAttack) {
     familiar: (_findFirstFamiliar = findFirstFamiliar($familiars(_templateObject345 || (_templateObject345 = _taggedTemplateLiteral30(["Puck Man, Ms. Puck Man"]))))) !== null && _findFirstFamiliar !== void 0 ? _findFirstFamiliar : $familiar(_templateObject354 || (_templateObject354 = _taggedTemplateLiteral30(["Blood-Faced Volleyball"])))
   };
 }
-var DEFAULT_OPTIONS = {
-  changes: {},
-  canAttack: !0
-};
 function uniform() {
-  var options = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : {}, _DEFAULT_OPTIONS$opti = _objectSpread7(_objectSpread7({}, DEFAULT_OPTIONS), options), changes = _DEFAULT_OPTIONS$opti.changes, canAttack = _DEFAULT_OPTIONS$opti.canAttack;
+  var _ref2 = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : {}, _ref2$changes = _ref2.changes, changes = _ref2$changes === void 0 ? {} : _ref2$changes, _ref2$canAttack = _ref2.canAttack, canAttack = _ref2$canAttack === void 0 ? !0 : _ref2$canAttack;
   return "familiar" in changes && !("famequip" in changes) && (changes.famequip = $item(_templateObject364 || (_templateObject364 = _taggedTemplateLiteral30(["tiny stillsuit"])))), _objectSpread7(_objectSpread7(_objectSpread7({}, DEFAULT_UNIFORM()), chooseFamiliar(canAttack)), changes);
 }
 
