@@ -113,10 +113,7 @@ function chooseFamiliar(canAttack: boolean): Pick<OutfitSpec, "familiar" | "fame
   };
 }
 
-type UniformOptions = { changes: OutfitSpec; canAttack: boolean };
-const DEFAULT_OPTIONS = { changes: {} as OutfitSpec, canAttack: true };
-export default function uniform(options: Partial<UniformOptions> = {}): OutfitSpec {
-  const { changes, canAttack } = { ...DEFAULT_OPTIONS, ...options };
+export default function uniform({ changes = {} as OutfitSpec, canAttack = true } = {}): OutfitSpec {
   if ("familiar" in changes && !("famequip" in changes)) changes.famequip = $item`tiny stillsuit`;
   return { ...DEFAULT_UNIFORM(), ...chooseFamiliar(canAttack), ...changes };
 }
