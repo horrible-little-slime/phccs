@@ -8,15 +8,12 @@ import {
   equippedAmount,
   equippedItem,
   getCampground,
-  getClanName,
-  getProperty,
   haveEffect,
   Item,
   myMaxmp,
   myMp,
   restoreMp,
   retrieveItem,
-  setProperty,
   Skill,
   Slot,
   sweetSynthesis,
@@ -92,28 +89,6 @@ export const SYNTH_EFFECT = byStat({
   Moxie: $effect`Synthesis: Style`,
   Muscle: $effect`Synthesis: Movement`,
 });
-
-export function setClan(target: string): boolean {
-  //stolen directly from bean
-  if (getClanName() !== target) {
-    const clanCache = JSON.parse(getProperty("hccs_clanCache") || "{}");
-    if (clanCache.target === undefined) {
-      const recruiter = visitUrl("clan_signup.php");
-      const clanRe = /<option value=([0-9]+)>([^<]+)<\/option>/g;
-      let match;
-      while ((match = clanRe.exec(recruiter)) !== null) {
-        clanCache[match[2]] = match[1];
-      }
-    }
-    setProperty("hccs_clanCache", JSON.stringify(clanCache));
-
-    visitUrl(`showclan.php?whichclan=${clanCache[target]}&action=joinclan&confirm=on&pwd`);
-    if (getClanName() !== target) {
-      throw `failed to switch clans to ${target}. Did you spell it correctly? Are you whitelisted?`;
-    }
-  }
-  return true;
-}
 
 export function tryUse(quantity: number, it: Item): boolean {
   //ripped straight from bean

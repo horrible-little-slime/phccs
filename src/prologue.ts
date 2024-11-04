@@ -1,6 +1,6 @@
 import { aprilTask, deckTask } from "./commons";
 import { CSQuest } from "./engine";
-import { setClan, tryUse } from "./lib";
+import { tryUse } from "./lib";
 import {
   autosell,
   buy,
@@ -205,7 +205,7 @@ const Prologue: CSQuest = {
     {
       name: "Change Clan",
       completed: () => getClanName() === get("phccs_mainClan", "Bonus Adventures from Hell"),
-      do: () => setClan(get("phccs_mainClan", "Bonus Adventures from Hell")),
+      do: () => Clan.join(get("phccs_mainClan", "Bonus Adventures from Hell")),
     },
     {
       name: "Toot",
