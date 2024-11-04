@@ -11782,17 +11782,6 @@ var SYNTH_EFFECT = byStat({
   Moxie: $effect(_templateObject3112 || (_templateObject3112 = _taggedTemplateLiteral29(["Synthesis: Style"]))),
   Muscle: $effect(_templateObject3210 || (_templateObject3210 = _taggedTemplateLiteral29(["Synthesis: Movement"])))
 });
-function setClan(target) {
-  if ((0, import_kolmafia33.getClanName)() !== target) {
-    var clanCache = JSON.parse((0, import_kolmafia33.getProperty)("hccs_clanCache") || "{}");
-    if (clanCache.target === void 0)
-      for (var recruiter = (0, import_kolmafia33.visitUrl)("clan_signup.php"), clanRe = /<option value=([0-9]+)>([^<]+)<\/option>/g, match; (match = clanRe.exec(recruiter)) !== null; )
-        clanCache[match[2]] = match[1];
-    if ((0, import_kolmafia33.setProperty)("hccs_clanCache", JSON.stringify(clanCache)), (0, import_kolmafia33.visitUrl)("showclan.php?whichclan=".concat(clanCache[target], "&action=joinclan&confirm=on&pwd")), (0, import_kolmafia33.getClanName)() !== target)
-      throw "failed to switch clans to ".concat(target, ". Did you spell it correctly? Are you whitelisted?");
-  }
-  return !0;
-}
 function tryUse(quantity, it) {
   return (0, import_kolmafia33.availableAmount)(it) > 0 ? (0, import_kolmafia33.use)(quantity, it) : !1;
 }
@@ -14658,7 +14647,7 @@ var PULLS = [$items(_templateObject180 || (_templateObject180 = _taggedTemplateL
       return (0, import_kolmafia45.getClanName)() === get("phccs_mainClan", "Bonus Adventures from Hell");
     },
     do: function() {
-      return setClan(get("phccs_mainClan", "Bonus Adventures from Hell"));
+      return Clan.join(get("phccs_mainClan", "Bonus Adventures from Hell"));
     }
   }, {
     name: "Toot",
