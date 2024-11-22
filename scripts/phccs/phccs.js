@@ -11962,9 +11962,9 @@ var UNCHANGING_OUTFIT = _objectSpread7(_objectSpread7({
 }), DEFAULT_UNIFORM = function() {
   return _objectSpread7(_objectSpread7({}, UNCHANGING_OUTFIT), {}, {
     hat: DaylightShavings_exports.buffAvailable() ? $item(_templateObject1211 || (_templateObject1211 = _taggedTemplateLiteral30(["Daylight Shavings Helmet"]))) : byStat({
-      Moxie: $items(_templateObject1311 || (_templateObject1311 = _taggedTemplateLiteral30(["very pointy crown, Iunion Crown"]))),
-      Mysticality: $items(_templateObject1410 || (_templateObject1410 = _taggedTemplateLiteral30(["astral chapeau, Iunion Crown"]))),
-      Muscle: $item(_templateObject159 || (_templateObject159 = _taggedTemplateLiteral30(["Iunion Crown"])))
+      Moxie: $items(_templateObject1311 || (_templateObject1311 = _taggedTemplateLiteral30(["very pointy crown, Apriling band helmet"]))),
+      Mysticality: $items(_templateObject1410 || (_templateObject1410 = _taggedTemplateLiteral30(["astral chapeau, Apriling band helmet"]))),
+      Muscle: $item(_templateObject159 || (_templateObject159 = _taggedTemplateLiteral30(["Apriling band helmet"])))
     }),
     pants: get("sweat") < 100 ? $item(_templateObject169 || (_templateObject169 = _taggedTemplateLiteral30(["designer sweatpants"]))) : $items(_templateObject178 || (_templateObject178 = _taggedTemplateLiteral30(["astral trousers, astral shorts, designer sweatpants"]))),
     weapon: get("_juneCleaverFightsLeft") > 0 && get("_juneCleaverEncounters") < 2 ? $item(_templateObject188 || (_templateObject188 = _taggedTemplateLiteral30(["June cleaver"]))) : byStat({
@@ -13398,7 +13398,7 @@ var buffs2 = $effects(_templateObject151 || (_templateObject151 = _taggedTemplat
       pants: $item(_templateObject728 || (_templateObject728 = _taggedTemplateLiteral38(["designer sweatpants"]))),
       acc1: $item(_templateObject823 || (_templateObject823 = _taggedTemplateLiteral38(["your cowboy boots"]))),
       acc2: $item(_templateObject920 || (_templateObject920 = _taggedTemplateLiteral38(["Beach Comb"]))),
-      acc3: $item(_templateObject1018 || (_templateObject1018 = _taggedTemplateLiteral38(["Brutal brogues"]))),
+      acc3: $item(_templateObject1018 || (_templateObject1018 = _taggedTemplateLiteral38(["cursed monkey glove"]))),
       familiar: $familiar(_templateObject1117 || (_templateObject1117 = _taggedTemplateLiteral38(["Exotic Parrot"]))),
       famequip: $item(_templateObject1217 || (_templateObject1217 = _taggedTemplateLiteral38(["tiny stillsuit"]))),
       modes: {
