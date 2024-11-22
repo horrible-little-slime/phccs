@@ -34,7 +34,7 @@ const HotRes: CSQuest = {
     pants: $item`designer sweatpants`,
     acc1: $item`your cowboy boots`,
     acc2: $item`Beach Comb`,
-    acc3: $item`Brutal brogues`,
+    acc3: $item`cursed monkey glove`,
     familiar: $familiar`Exotic Parrot`,
     famequip: $item`tiny stillsuit`,
     modes: { parka: "pterodactyl", retrocape: ["vampire", "hold"] },

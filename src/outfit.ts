@@ -48,9 +48,9 @@ const DEFAULT_UNIFORM = (): OutfitSpec => ({
   hat: DaylightShavings.buffAvailable()
     ? $item`Daylight Shavings Helmet`
     : byStat<Item | Item[]>({
-        Moxie: $items`very pointy crown, Iunion Crown`,
-        Mysticality: $items`astral chapeau, Iunion Crown`,
-        Muscle: $item`Iunion Crown`,
+        Moxie: $items`very pointy crown, Apriling band helmet`,
+        Mysticality: $items`astral chapeau, Apriling band helmet`,
+        Muscle: $item`Apriling band helmet`,
       }),
   pants:
     get("sweat") < 100
