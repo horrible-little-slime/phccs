@@ -13398,7 +13398,7 @@ var buffs2 = $effects(_templateObject151 || (_templateObject151 = _taggedTemplat
       pants: $item(_templateObject728 || (_templateObject728 = _taggedTemplateLiteral38(["designer sweatpants"]))),
       acc1: $item(_templateObject823 || (_templateObject823 = _taggedTemplateLiteral38(["your cowboy boots"]))),
       acc2: $item(_templateObject920 || (_templateObject920 = _taggedTemplateLiteral38(["Beach Comb"]))),
-      acc3: $item(_templateObject1018 || (_templateObject1018 = _taggedTemplateLiteral38(["cursed monkey glove"]))),
+      acc3: $item(_templateObject1018 || (_templateObject1018 = _taggedTemplateLiteral38(["cursed monkey's paw"]))),
       familiar: $familiar(_templateObject1117 || (_templateObject1117 = _taggedTemplateLiteral38(["Exotic Parrot"]))),
       famequip: $item(_templateObject1217 || (_templateObject1217 = _taggedTemplateLiteral38(["tiny stillsuit"]))),
       modes: {
