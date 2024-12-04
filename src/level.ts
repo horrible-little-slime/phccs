@@ -390,7 +390,7 @@ const Level: CSQuest = {
           },
         });
       },
-      combat: new CSStrategy(() => Macro.tryBowl().attack().repeat()),
+      combat: new CSStrategy(() => Macro.tryBowl().throwLoveSongs().attack().repeat()),
       prepare: (): void => {
         useSkill($skill`Cannelloni Cocoon`);
         if (!have($effect`Psalm of Pointiness`)) {
