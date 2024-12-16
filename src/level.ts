@@ -397,6 +397,7 @@ const Level: CSQuest = {
           if (getActiveSongs().length >= 4) uneffect($effect`Fat Leon's Phat Loot Lyric`);
           useSkill($skill`The Psalm of Pointiness`);
         }
+        while (myMp() >= mpCost($skill`Summon Love Song`)) useSkill($skill`Summon Love Song`);
       },
       post: () => {
         uneffect($effect`Psalm of Pointiness`);

@@ -36,12 +36,9 @@ export class CSStrategy extends CombatStrategy {
 
 export class Macro extends StrictMacro {
   tryBowl(): Macro {
-    return this.if_(
-      "!hascombatitem cosmic bowling ball",
-      Macro.item($item`Time-Spinner`).if_(
-        $item`cosmic bowling ball`,
-        Macro.item([$item`Time-Spinner`, $item`cosmic bowling ball`])
-      )
+    return this.ifNot($item`cosmic bowling ball`, Macro.item($item`Time-Spinner`)).if_(
+      $item`cosmic bowling ball`,
+      Macro.item([$item`Time-Spinner`, $item`cosmic bowling ball`])
     );
   }
   static tryBowl(): Macro {
