@@ -84,7 +84,7 @@ const CastSkills = [
   },
   completed: () => (s.buff ? have(toEffect(s)) : s.timescast >= s.dailylimit),
   ready: () => myMp() >= mpCost(s),
-  outfit: () => uniform({ changes: { offhand: $item`Abracandalabra` } }),
+  outfit: () => uniform({ changes: { offhand: $items`Abracandalabra, unbreakable umbrella` } }),
 }));
 
 const generalStoreItem = byStat({
