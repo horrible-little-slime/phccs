@@ -3,7 +3,9 @@ import { myClass } from "kolmafia";
 import {
   $class,
   $item,
+  $items,
   $skill,
+  byStat,
   Delayed,
   getTodaysHolidayWanderers,
   have,
@@ -88,5 +90,24 @@ export class Macro extends StrictMacro {
   }
   static defaultKill(): Macro {
     return new Macro().defaultKill();
+  }
+
+  throwLoveSongs(): Macro {
+    const LOVE_SONG_PRIORITY = byStat({
+      Moxie: $items`love song of naughty innuendo, love song of vague ambiguity, love song of smoldering passion, love song of disturbing obsession`,
+      Muscle: $items`love song of vague ambiguity, love song of smoldering passion, love song of naughty innuendo, love song of disturbing obsession`,
+      Mysticality: [],
+    }).filter((i) => have(i));
+
+    for (const [index, song] of LOVE_SONG_PRIORITY.entries()) {
+      this.while_([song, song], Macro.item([song, song]));
+      const nextSong = LOVE_SONG_PRIORITY[index + 1];
+      if (nextSong) Macro.tryItem([song, nextSong]);
+    }
+    return this;
+  }
+
+  static throwLoveSongs(): Macro {
+    return new Macro().throwLoveSongs();
   }
 }
