@@ -84,7 +84,7 @@ const CastSkills = [
   },
   completed: () => (s.buff ? have(toEffect(s)) : s.timescast >= s.dailylimit),
   ready: () => myMp() >= mpCost(s),
-  outfit: () => uniform({ changes: { offhand: $item`Abracandalabra` } }),
+  outfit: () => uniform({ changes: { offhand: $items`Abracandalabra, unbreakable umbrella` } }),
 }));
 
 const generalStoreItem = byStat({
@@ -397,6 +397,7 @@ const Level: CSQuest = {
           if (getActiveSongs().length >= 4) uneffect($effect`Fat Leon's Phat Loot Lyric`);
           useSkill($skill`The Psalm of Pointiness`);
         }
+        while (myMp() >= mpCost($skill`Summon Love Song`)) useSkill($skill`Summon Love Song`);
       },
       post: () => {
         uneffect($effect`Psalm of Pointiness`);
