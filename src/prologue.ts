@@ -28,6 +28,7 @@ import {
   $item,
   $items,
   $location,
+  $locations,
   $skill,
   $skills,
   AutumnAton,
@@ -117,9 +118,23 @@ const Prologue: CSQuest = {
     },
     {
       name: "Fallbot",
-      completed: () => !AutumnAton.available(),
+      completed: () =>
+        $locations`The Sleazy Back Alley, The Overgrown Lot, Noob Cave`.every((l) =>
+          (AutumnAton.currentUpgrades() as (AutumnAton.Upgrade | undefined)[]).includes(
+            AutumnAton.getUniques(l)?.upgrade
+          )
+        ),
+      ready: () => AutumnAton.available(),
       do: () => {
-        AutumnAton.sendTo($location`The Sleazy Back Alley`);
+        AutumnAton.sendTo(
+          () =>
+            $locations`The Sleazy Back Alley, The Overgrown Lot, Noob Cave`.find(
+              (l) =>
+                !(AutumnAton.currentUpgrades() as (AutumnAton.Upgrade | undefined)[]).includes(
+                  AutumnAton.getUniques(l)?.upgrade
+                )
+            ) ?? $location.none
+        );
       },
     },
     {
