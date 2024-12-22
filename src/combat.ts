@@ -99,7 +99,7 @@ export class Macro extends StrictMacro {
     for (const [index, song] of LOVE_SONG_PRIORITY.entries()) {
       this.while_([song, song], Macro.item([song, song]));
       const nextSong = LOVE_SONG_PRIORITY[index + 1];
-      if (nextSong) Macro.tryItem([song, nextSong]);
+      if (nextSong) this.tryItem([song, nextSong]);
     }
     return this;
   }
