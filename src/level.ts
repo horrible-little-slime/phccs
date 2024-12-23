@@ -70,6 +70,7 @@ const foldshirt = (): void => {
   if (!have($item`makeshift garbage shirt`)) cliExecute("fold makeshift garbage shirt");
 };
 
+let queenPrep = false;
 const CastSkills = [
   ...$skills`Advanced Saucecrafting, Advanced Cocktailcrafting, Acquire Rhinestones, Prevent Scurvy and Sobriety, Stevedave's Shanty of Superiority, Fat Leon's Phat Loot Lyric, Paul's Passionate Pop Song, Leash of Linguini, Empathy of the Newt, Blood Bond, Blood Bubble, Song of Bravado, Get Big, Mathematical Precision, Ruthless Efficiency, Carol of the Bulls, Rage of the Reindeer`,
   byStat({
@@ -83,7 +84,7 @@ const CastSkills = [
     useSkill(s);
   },
   completed: () => (s.buff ? have(toEffect(s)) : s.timescast >= s.dailylimit),
-  ready: () => myMp() >= mpCost(s),
+  ready: () => myMp() >= mpCost(s) && !queenPrep,
   outfit: () => uniform({ changes: { offhand: $items`Abracandalabra, unbreakable umbrella` } }),
 }));
 
@@ -241,6 +242,7 @@ const Level: CSQuest = {
     ...CastSkills,
     {
       ...restore([]),
+      ready: () => !queenPrep,
       completed: () => CastSkills.every(({ completed }) => completed()),
       outfit: { offhand: $items`Abracandalabra, august scepter` },
     },
@@ -372,6 +374,21 @@ const Level: CSQuest = {
       },
     },
     {
+      name: "Prepare for Queen",
+      completed: () => have($item`very pointy crown`),
+      ready: () =>
+        !have($effect`Psalm of Pointiness`) || myMp() >= mpCost($skill`Summon Love Song`),
+      do: () => {
+        useSkill($skill`Cannelloni Cocoon`);
+        if (!have($effect`Psalm of Pointiness`)) {
+          if (getActiveSongs().length >= 4) uneffect($effect`Fat Leon's Phat Loot Lyric`);
+          useSkill($skill`The Psalm of Pointiness`);
+        }
+        while (myMp() >= mpCost($skill`Summon Love Song`)) useSkill($skill`Summon Love Song`);
+      },
+      prepare: () => (queenPrep = true),
+    },
+    {
       name: "Queen",
       completed: () => have($item`very pointy crown`),
       do: () => Witchess.fightPiece($monster`Witchess Queen`),
@@ -391,15 +408,8 @@ const Level: CSQuest = {
         });
       },
       combat: new CSStrategy(() => Macro.tryBowl().throwLoveSongs().attack().repeat()),
-      prepare: (): void => {
-        useSkill($skill`Cannelloni Cocoon`);
-        if (!have($effect`Psalm of Pointiness`)) {
-          if (getActiveSongs().length >= 4) uneffect($effect`Fat Leon's Phat Loot Lyric`);
-          useSkill($skill`The Psalm of Pointiness`);
-        }
-        while (myMp() >= mpCost($skill`Summon Love Song`)) useSkill($skill`Summon Love Song`);
-      },
       post: () => {
+        queenPrep = false;
         uneffect($effect`Psalm of Pointiness`);
         use($item`psychokinetic energy blob`);
         useSkill($skill`Fat Leon's Phat Loot Lyric`);
