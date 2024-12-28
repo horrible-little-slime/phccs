@@ -49,6 +49,7 @@ import {
   $monster,
   $skill,
   $skills,
+  $stat,
   byStat,
   CampAway,
   Cartography,
@@ -377,14 +378,17 @@ const Level: CSQuest = {
       name: "Prepare for Queen",
       completed: () => have($item`very pointy crown`),
       ready: () =>
-        !have($effect`Psalm of Pointiness`) || myMp() >= mpCost($skill`Summon Love Song`),
+        !have($effect`Psalm of Pointiness`) ||
+        (myPrimestat() === $stat`Moxie` && myMp() >= mpCost($skill`Summon Love Song`)),
       do: () => {
         useSkill($skill`Cannelloni Cocoon`);
         if (!have($effect`Psalm of Pointiness`)) {
           if (getActiveSongs().length >= 4) uneffect($effect`Fat Leon's Phat Loot Lyric`);
           useSkill($skill`The Psalm of Pointiness`);
         }
-        while (myMp() >= mpCost($skill`Summon Love Song`)) useSkill($skill`Summon Love Song`);
+        while (myPrimestat() === $stat`Moxie` && myMp() >= mpCost($skill`Summon Love Song`)) {
+          useSkill($skill`Summon Love Song`);
+        }
       },
       prepare: () => (queenPrep = true),
     },
